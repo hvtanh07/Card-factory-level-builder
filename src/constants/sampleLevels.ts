@@ -380,7 +380,6 @@ export const LEVEL_3_SAMPLE: LevelData = {
       "InitCards": [
         1,
         1,
-        2,
         2
       ],
       "IsHidden": false,
@@ -395,7 +394,6 @@ export const LEVEL_3_SAMPLE: LevelData = {
         "1_1_0"
       ],
       "InitCards": [
-        0,
         0,
         2,
         2
@@ -413,7 +411,6 @@ export const LEVEL_3_SAMPLE: LevelData = {
       ],
       "InitCards": [
         0,
-        0,
         1,
         1
       ],
@@ -429,7 +426,6 @@ export const LEVEL_3_SAMPLE: LevelData = {
         "1_1_0"
       ],
       "InitCards": [
-        1,
         1,
         2,
         2
@@ -448,9 +444,7 @@ export const LEVEL_3_SAMPLE: LevelData = {
       ],
       "InitCards": [
         0,
-        0,
-        2,
-        2
+        0
       ],
       "IsHidden": false,
       "LockedTurn": 0,
@@ -466,8 +460,6 @@ export const LEVEL_3_SAMPLE: LevelData = {
       ],
       "InitCards": [
         0,
-        0,
-        1,
         1
       ],
       "IsHidden": false,
@@ -479,7 +471,12 @@ export const LEVEL_3_SAMPLE: LevelData = {
       "TypeId": 4,
       "BoxColor": 5,
       "BlockedNodes": [],
-      "InitCards": [],
+      "InitCards": [
+        0,
+        0,
+        1,
+        2
+      ],
       "IsHidden": false,
       "LockedTurn": 0,
       "IsCardsHidden": false
@@ -489,7 +486,12 @@ export const LEVEL_3_SAMPLE: LevelData = {
       "TypeId": 4,
       "BoxColor": 5,
       "BlockedNodes": [],
-      "InitCards": [],
+      "InitCards": [
+        0,
+        1,
+        2,
+        2
+      ],
       "IsHidden": false,
       "LockedTurn": 0,
       "IsCardsHidden": false
@@ -679,7 +681,8 @@ export const LEVEL_4_SAMPLE: LevelData = {
         1,
         1
       ],
-      "IsHidden": false
+      "IsHidden": false,
+      "IsCardsHidden": false
     },
     {
       "Id": "0_1_-2",
@@ -694,7 +697,8 @@ export const LEVEL_4_SAMPLE: LevelData = {
         2,
         2
       ],
-      "IsHidden": false
+      "IsHidden": false,
+      "IsCardsHidden": false
     },
     {
       "Id": "0_-2_-2",
@@ -709,7 +713,8 @@ export const LEVEL_4_SAMPLE: LevelData = {
         3,
         3
       ],
-      "IsHidden": false
+      "IsHidden": false,
+      "IsCardsHidden": false
     },
     {
       "Id": "0_1_1",
@@ -724,7 +729,8 @@ export const LEVEL_4_SAMPLE: LevelData = {
         3,
         3
       ],
-      "IsHidden": false
+      "IsHidden": false,
+      "IsCardsHidden": false
     },
     {
       "Id": "1_-2_0",
@@ -740,7 +746,8 @@ export const LEVEL_4_SAMPLE: LevelData = {
         2,
         2
       ],
-      "IsHidden": false
+      "IsHidden": false,
+      "IsCardsHidden": false
     },
     {
       "Id": "1_-1_1",
@@ -754,7 +761,8 @@ export const LEVEL_4_SAMPLE: LevelData = {
         3,
         3
       ],
-      "IsHidden": false
+      "IsHidden": false,
+      "IsCardsHidden": false
     },
     {
       "Id": "1_1_0",
@@ -772,7 +780,8 @@ export const LEVEL_4_SAMPLE: LevelData = {
         0,
         0
       ],
-      "IsHidden": false
+      "IsHidden": false,
+      "IsCardsHidden": false
     },
     {
       "Id": "1_-1_-2",
@@ -790,7 +799,8 @@ export const LEVEL_4_SAMPLE: LevelData = {
         1,
         1
       ],
-      "IsHidden": false
+      "IsHidden": false,
+      "IsCardsHidden": false
     },
     {
       "Id": "2_-1_1",
@@ -808,7 +818,8 @@ export const LEVEL_4_SAMPLE: LevelData = {
         1,
         1
       ],
-      "IsHidden": false
+      "IsHidden": false,
+      "IsCardsHidden": false
     },
     {
       "Id": "2_1_0",
@@ -826,7 +837,8 @@ export const LEVEL_4_SAMPLE: LevelData = {
         3,
         3
       ],
-      "IsHidden": false
+      "IsHidden": false,
+      "IsCardsHidden": false
     },
     {
       "Id": "2_-1_-2",
@@ -844,7 +856,8 @@ export const LEVEL_4_SAMPLE: LevelData = {
         0,
         0
       ],
-      "IsHidden": false
+      "IsHidden": false,
+      "IsCardsHidden": false
     },
     {
       "Id": "2_-2_0",
@@ -862,7 +875,8 @@ export const LEVEL_4_SAMPLE: LevelData = {
         2,
         2
       ],
-      "IsHidden": false
+      "IsHidden": false,
+      "IsCardsHidden": false
     },
     {
       "Id": "3_-1_0",
@@ -875,7 +889,8 @@ export const LEVEL_4_SAMPLE: LevelData = {
         2,
         2
       ],
-      "IsHidden": false
+      "IsHidden": false,
+      "IsCardsHidden": false
     },
     {
       "Id": "3_-1_-3",
@@ -890,7 +905,8 @@ export const LEVEL_4_SAMPLE: LevelData = {
         3,
         3
       ],
-      "IsHidden": false
+      "IsHidden": false,
+      "IsCardsHidden": false
     },
     {
       "Id": "3_-1_-2",
@@ -907,7 +923,8 @@ export const LEVEL_4_SAMPLE: LevelData = {
         3,
         3
       ],
-      "IsHidden": false
+      "IsHidden": false,
+      "IsCardsHidden": false
     },
     {
       "Id": "3_0_-1",
@@ -920,7 +937,8 @@ export const LEVEL_4_SAMPLE: LevelData = {
         3,
         3
       ],
-      "IsHidden": false
+      "IsHidden": false,
+      "IsCardsHidden": false
     }
   ],
   "SpawnerNodes": [],
@@ -1055,10 +1073,9 @@ export const LEVEL_5_SAMPLE: LevelData = {
         "1_1_-1"
       ],
       "InitCards": [
+        0,
         1,
-        1,
-        2,
-        2,
+        3,
         3,
         3
       ],
@@ -1077,9 +1094,8 @@ export const LEVEL_5_SAMPLE: LevelData = {
       "InitCards": [
         0,
         0,
-        0,
         1,
-        1,
+        2,
         2
       ],
       "IsHidden": false,
@@ -1096,10 +1112,9 @@ export const LEVEL_5_SAMPLE: LevelData = {
       ],
       "InitCards": [
         0,
-        1,
-        1,
+        0,
         2,
-        3,
+        2,
         3
       ],
       "IsHidden": false,
@@ -1115,7 +1130,6 @@ export const LEVEL_5_SAMPLE: LevelData = {
         "2_0_-2"
       ],
       "InitCards": [
-        0,
         0,
         1,
         2,
@@ -1139,7 +1153,6 @@ export const LEVEL_5_SAMPLE: LevelData = {
         1,
         1,
         1,
-        2,
         3
       ],
       "IsHidden": false,
@@ -1155,10 +1168,9 @@ export const LEVEL_5_SAMPLE: LevelData = {
       ],
       "InitCards": [
         0,
+        0,
         1,
         2,
-        2,
-        3,
         3
       ],
       "IsHidden": false,
@@ -1174,8 +1186,6 @@ export const LEVEL_5_SAMPLE: LevelData = {
       ],
       "InitCards": [
         0,
-        0,
-        1,
         2,
         3,
         3
@@ -1194,11 +1204,9 @@ export const LEVEL_5_SAMPLE: LevelData = {
       ],
       "InitCards": [
         0,
-        0,
-        0,
-        0,
+        1,
         2,
-        3
+        2
       ],
       "IsHidden": false,
       "LockedTurn": 0,
@@ -1215,8 +1223,6 @@ export const LEVEL_5_SAMPLE: LevelData = {
       "InitCards": [
         0,
         0,
-        0,
-        0,
         2,
         3
       ],
@@ -1229,7 +1235,14 @@ export const LEVEL_5_SAMPLE: LevelData = {
       "TypeId": 5,
       "BoxColor": 5,
       "BlockedNodes": [],
-      "InitCards": [],
+      "InitCards": [
+        0,
+        0,
+        0,
+        1,
+        2,
+        3
+      ],
       "IsHidden": false,
       "LockedTurn": 0,
       "IsCardsHidden": false
@@ -1239,7 +1252,14 @@ export const LEVEL_5_SAMPLE: LevelData = {
       "TypeId": 5,
       "BoxColor": 5,
       "BlockedNodes": [],
-      "InitCards": [],
+      "InitCards": [
+        0,
+        0,
+        1,
+        1,
+        1,
+        3
+      ],
       "IsHidden": false,
       "LockedTurn": 0,
       "IsCardsHidden": false
@@ -1386,10 +1406,8 @@ export const LEVEL_6_SAMPLE: LevelData = {
       ],
       "InitCards": [
         1,
-        1,
-        2,
         3,
-        3,
+        4,
         4
       ],
       "IsHidden": false,
@@ -1408,9 +1426,7 @@ export const LEVEL_6_SAMPLE: LevelData = {
         0,
         0,
         1,
-        1,
-        2,
-        2
+        3
       ],
       "IsHidden": false,
       "LockedTurn": 0,
@@ -1428,9 +1444,7 @@ export const LEVEL_6_SAMPLE: LevelData = {
         0,
         1,
         2,
-        2,
-        3,
-        4
+        2
       ],
       "IsHidden": false,
       "LockedTurn": 0,
@@ -1446,9 +1460,7 @@ export const LEVEL_6_SAMPLE: LevelData = {
       ],
       "InitCards": [
         0,
-        0,
-        1,
-        3,
+        2,
         3,
         4
       ],
@@ -1464,11 +1476,9 @@ export const LEVEL_6_SAMPLE: LevelData = {
         "2_0_0"
       ],
       "InitCards": [
-        0,
         1,
-        2,
-        2,
-        2,
+        1,
+        3,
         3
       ],
       "IsHidden": false,
@@ -1486,8 +1496,6 @@ export const LEVEL_6_SAMPLE: LevelData = {
         1,
         2,
         2,
-        3,
-        4,
         4
       ],
       "IsHidden": false,
@@ -1503,11 +1511,9 @@ export const LEVEL_6_SAMPLE: LevelData = {
       ],
       "InitCards": [
         0,
-        1,
         2,
-        3,
-        3,
-        4
+        2,
+        2
       ],
       "IsHidden": false,
       "LockedTurn": 0,
@@ -1523,9 +1529,7 @@ export const LEVEL_6_SAMPLE: LevelData = {
       "InitCards": [
         0,
         0,
-        0,
-        1,
-        2,
+        3,
         3
       ],
       "IsHidden": false,
@@ -1543,11 +1547,9 @@ export const LEVEL_6_SAMPLE: LevelData = {
       ],
       "InitCards": [
         0,
-        0,
         1,
-        1,
-        3,
-        3
+        2,
+        4
       ],
       "IsHidden": false,
       "LockedTurn": 0,
@@ -1558,7 +1560,14 @@ export const LEVEL_6_SAMPLE: LevelData = {
       "TypeId": 5,
       "BoxColor": 5,
       "BlockedNodes": [],
-      "InitCards": [],
+      "InitCards": [
+        0,
+        1,
+        2,
+        3,
+        3,
+        3
+      ],
       "IsHidden": false,
       "LockedTurn": 0,
       "IsCardsHidden": false
@@ -1568,7 +1577,14 @@ export const LEVEL_6_SAMPLE: LevelData = {
       "TypeId": 5,
       "BoxColor": 5,
       "BlockedNodes": [],
-      "InitCards": [],
+      "InitCards": [
+        0,
+        0,
+        1,
+        2,
+        3,
+        4
+      ],
       "IsHidden": false,
       "LockedTurn": 0,
       "IsCardsHidden": false
@@ -1578,7 +1594,14 @@ export const LEVEL_6_SAMPLE: LevelData = {
       "TypeId": 5,
       "BoxColor": 5,
       "BlockedNodes": [],
-      "InitCards": [],
+      "InitCards": [
+        0,
+        1,
+        1,
+        1,
+        2,
+        3
+      ],
       "IsHidden": false,
       "LockedTurn": 0,
       "IsCardsHidden": false
@@ -1714,14 +1737,14 @@ export const LEVEL_7_SAMPLE: LevelData = {
         "1_0_1"
       ],
       "InitCards": [
+        0,
         1,
         2,
-        2,
-        2
+        3
       ],
       "IsHidden": false,
       "LockedTurn": 0,
-      "IsCardsHidden": true
+      "IsCardsHidden": false
     },
     {
       "Id": "0_1_1",
@@ -1734,8 +1757,8 @@ export const LEVEL_7_SAMPLE: LevelData = {
       "InitCards": [
         0,
         2,
-        3,
-        3
+        4,
+        4
       ],
       "IsHidden": false,
       "LockedTurn": 2,
@@ -1752,12 +1775,12 @@ export const LEVEL_7_SAMPLE: LevelData = {
       "InitCards": [
         0,
         0,
-        1,
-        3
+        2,
+        4
       ],
       "IsHidden": false,
       "LockedTurn": 0,
-      "IsCardsHidden": true
+      "IsCardsHidden": false
     },
     {
       "Id": "0_1_-1",
@@ -1769,7 +1792,7 @@ export const LEVEL_7_SAMPLE: LevelData = {
       ],
       "InitCards": [
         1,
-        2,
+        3,
         3,
         4
       ],
@@ -1785,12 +1808,10 @@ export const LEVEL_7_SAMPLE: LevelData = {
         "2_0_0"
       ],
       "InitCards": [
-        1,
+        2,
         2,
         3,
-        3,
-        3,
-        4
+        3
       ],
       "IsHidden": false,
       "LockedTurn": 0,
@@ -1804,12 +1825,10 @@ export const LEVEL_7_SAMPLE: LevelData = {
         "2_0_0"
       ],
       "InitCards": [
-        2,
-        2,
-        2,
-        3,
-        4,
-        4
+        0,
+        0,
+        0,
+        3
       ],
       "IsHidden": false,
       "LockedTurn": 0,
@@ -1823,12 +1842,10 @@ export const LEVEL_7_SAMPLE: LevelData = {
         "2_0_0"
       ],
       "InitCards": [
-        0,
         1,
         1,
-        1,
-        3,
-        4
+        2,
+        3
       ],
       "IsHidden": false,
       "LockedTurn": 0,
@@ -1843,11 +1860,9 @@ export const LEVEL_7_SAMPLE: LevelData = {
       ],
       "InitCards": [
         0,
-        0,
         2,
         3,
-        3,
-        4
+        3
       ],
       "IsHidden": false,
       "LockedTurn": 0,
@@ -1862,13 +1877,9 @@ export const LEVEL_7_SAMPLE: LevelData = {
         "3_1_0"
       ],
       "InitCards": [
-        0,
-        0,
-        0,
-        0,
         1,
         1,
-        1,
+        3,
         3
       ],
       "IsHidden": false,
@@ -1880,7 +1891,14 @@ export const LEVEL_7_SAMPLE: LevelData = {
       "TypeId": 5,
       "BoxColor": 5,
       "BlockedNodes": [],
-      "InitCards": [],
+      "InitCards": [
+        0,
+        1,
+        1,
+        2,
+        3,
+        4
+      ],
       "IsHidden": false,
       "LockedTurn": 0,
       "IsCardsHidden": false
@@ -1890,7 +1908,14 @@ export const LEVEL_7_SAMPLE: LevelData = {
       "TypeId": 5,
       "BoxColor": 5,
       "BlockedNodes": [],
-      "InitCards": [],
+      "InitCards": [
+        0,
+        1,
+        1,
+        2,
+        2,
+        4
+      ],
       "IsHidden": false,
       "LockedTurn": 0,
       "IsCardsHidden": false
@@ -1998,10 +2023,8 @@ export const LEVEL_8_SAMPLE: LevelData = {
       "InitCards": [
         0,
         0,
+        0,
         1,
-        1,
-        2,
-        2,
         2,
         3
       ],
@@ -2020,11 +2043,9 @@ export const LEVEL_8_SAMPLE: LevelData = {
       "InitCards": [
         0,
         0,
-        0,
-        0,
         2,
-        3,
-        3,
+        4,
+        4,
         4
       ],
       "IsHidden": false,
@@ -2040,12 +2061,9 @@ export const LEVEL_8_SAMPLE: LevelData = {
         "2_-1_0"
       ],
       "InitCards": [
-        1,
+        0,
         2,
-        2,
-        2,
-        3,
-        3,
+        4,
         4,
         4
       ],
@@ -2063,13 +2081,10 @@ export const LEVEL_8_SAMPLE: LevelData = {
       ],
       "InitCards": [
         0,
+        0,
         1,
-        1,
-        1,
-        1,
-        4,
-        4,
-        4
+        2,
+        3
       ],
       "IsHidden": false,
       "LockedTurn": 0,
@@ -2086,12 +2101,9 @@ export const LEVEL_8_SAMPLE: LevelData = {
       "InitCards": [
         0,
         0,
-        0,
+        1,
         2,
-        3,
-        3,
-        3,
-        4
+        3
       ],
       "IsHidden": false,
       "LockedTurn": 0,
@@ -2107,13 +2119,10 @@ export const LEVEL_8_SAMPLE: LevelData = {
       ],
       "InitCards": [
         0,
-        0,
-        0,
-        0,
-        0,
-        0,
         1,
-        4
+        2,
+        3,
+        3
       ],
       "IsHidden": false,
       "LockedTurn": 0,
@@ -2124,7 +2133,16 @@ export const LEVEL_8_SAMPLE: LevelData = {
       "TypeId": 6,
       "BoxColor": 5,
       "BlockedNodes": [],
-      "InitCards": [],
+      "InitCards": [
+        0,
+        0,
+        0,
+        1,
+        2,
+        3,
+        3,
+        4
+      ],
       "IsHidden": false,
       "LockedTurn": 0,
       "IsCardsHidden": false
@@ -2134,7 +2152,16 @@ export const LEVEL_8_SAMPLE: LevelData = {
       "TypeId": 6,
       "BoxColor": 5,
       "BlockedNodes": [],
-      "InitCards": [],
+      "InitCards": [
+        0,
+        0,
+        1,
+        1,
+        1,
+        2,
+        3,
+        4
+      ],
       "IsHidden": false,
       "LockedTurn": 0,
       "IsCardsHidden": false
@@ -2873,8 +2900,8 @@ export const PRESET_LEVELS: PresetLevel[] = [
   },
   {
     id: 'preset_7',
-    name: "Level 7 (Mystery & Locks)",
-    description: "Turn-locked boxes and face-down mystery cards",
+    name: "Level 7 (Turn Locks Challenge)",
+    description: "Turn-locked boxes requiring strategic sequencing",
     data: LEVEL_7_SAMPLE
   },
   {

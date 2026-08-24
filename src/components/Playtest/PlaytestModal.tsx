@@ -329,7 +329,7 @@ export const PlaytestModal: React.FC<PlaytestModalProps> = ({ levelData, onClose
           clearedNodesRef.current.size >= levelData.BoardNodes.length &&
           conveyorCardsRef.current.length === 0 &&
           flyingCardsRef.current.length === 0 &&
-          currentSlots.every(b => !b || b.isClearing || b.boxColor === 5)
+          currentSlots.every(b => !b || b.isClearing)
         ) {
           setIsWon(true);
         }
@@ -347,7 +347,7 @@ export const PlaytestModal: React.FC<PlaytestModalProps> = ({ levelData, onClose
     };
   }, [levelData]);
 
-  // Handle clicking an unblocked box or spawner on the board
+  // Handle clicking an unblocked box or tray on the board
   const handleBoardBoxClick = (nodeId: string) => {
     const blockers = liveBlockedByMap.get(nodeId) || [];
     if (blockers.length > 0) return;
@@ -358,6 +358,51 @@ export const PlaytestModal: React.FC<PlaytestModalProps> = ({ levelData, onClose
 
     if (!boardNode || (!boxNode && (!spawnerBoxes || spawnerBoxes.length === 0))) return;
 
+    const activeBox = boxNode || (spawnerBoxes ? spawnerBoxes[0] : null);
+    if (!activeBox) return;
+
+    const boxType = getBoxType(activeBox.TypeId);
+    const isTray = activeBox.BoxColor === 5 || boxType.isTray;
+
+    // === TRAY LOGIC ===
+    // Trays store spare cards. When clicked:
+    // 1. Only its cards are sent to the conveyor belt.
+    // 2. The tray disappears immediately without occupying any of the 5 box slots!
+    if (isTray) {
+      const incomingCount = activeBox.InitCards.length;
+      if (conveyorCardsRef.current.length + incomingCount > MAX_CARD_SLOTS) {
+        showWarning(`Conveyor full! (Would result in ${conveyorCardsRef.current.length + incomingCount}/${MAX_CARD_SLOTS} cards). Match cards before sending tray.`);
+        return;
+      }
+
+      // Inject cards onto conveyor belt (they will automatically rearrange with fixed uniform padding)
+      const newCards: ConveyorCard[] = activeBox.InitCards.map((col, idx) => ({
+        uid: `card_tray_${Date.now()}_${idx}_${Math.random().toString(36).substring(2, 6)}`,
+        color: col,
+      }));
+      conveyorCardsRef.current = [...conveyorCardsRef.current, ...newCards];
+
+      // Disappear from board
+      const newClearedNodes = new Set(clearedNodes);
+      if (spawnerBoxes && spawnerBoxes.length > 0) {
+        const remainingSpawnBoxes = spawnerBoxes.slice(1);
+        const updatedMap = new Map(spawnerQueues);
+        updatedMap.set(nodeId, remainingSpawnBoxes);
+        setSpawnerQueues(updatedMap);
+
+        if (remainingSpawnBoxes.length === 0) {
+          newClearedNodes.add(nodeId);
+        }
+      } else {
+        newClearedNodes.add(nodeId);
+      }
+
+      setClearedNodes(newClearedNodes);
+      clearedNodesRef.current = newClearedNodes;
+      return;
+    }
+
+    // === NORMAL COLORED BOX LOGIC ===
     // 1. Find first available box slot (0..4)
     const currentSlots = boxSlotsRef.current;
     const availableSlotIdx = currentSlots.findIndex(s => s === null);
@@ -366,27 +411,17 @@ export const PlaytestModal: React.FC<PlaytestModalProps> = ({ levelData, onClose
       return;
     }
 
-    const activeBox = boxNode || (spawnerBoxes ? spawnerBoxes[0] : null);
-    if (!activeBox) return;
-
-    const boxType = getBoxType(activeBox.TypeId);
-    const isTray = activeBox.BoxColor === 5 || boxType.isTray;
-
     // STRICT IN-BOX COLOR FILTER:
     // Only cards matching activeBox.BoxColor stay in the box!
     // All other cards go to the conveyor belt!
     let matchingInBox: number[] = [];
     let unmatchedInBox: number[] = [];
 
-    if (isTray) {
-      unmatchedInBox = [...activeBox.InitCards];
-    } else {
-      for (const c of activeBox.InitCards) {
-        if (c === activeBox.BoxColor && matchingInBox.length < boxType.capacity) {
-          matchingInBox.push(c);
-        } else {
-          unmatchedInBox.push(c);
-        }
+    for (const c of activeBox.InitCards) {
+      if (c === activeBox.BoxColor && matchingInBox.length < boxType.capacity) {
+        matchingInBox.push(c);
+      } else {
+        unmatchedInBox.push(c);
       }
     }
 
@@ -394,7 +429,6 @@ export const PlaytestModal: React.FC<PlaytestModalProps> = ({ levelData, onClose
     let immediateAbsorbCount = 0;
     for (const card of conveyorCardsRef.current) {
       if (
-        !isTray &&
         card.color === activeBox.BoxColor &&
         matchingInBox.length + immediateAbsorbCount < boxType.capacity
       ) {
@@ -408,7 +442,7 @@ export const PlaytestModal: React.FC<PlaytestModalProps> = ({ levelData, onClose
       return;
     }
 
-    // 3. Move is VALID: dock box in available slot and inject cards onto conveyor
+    // 3. Move is VALID: dock box in available slot and inject unmatched cards onto conveyor
     const uniqueInstanceId = `box_${nodeId}_${Date.now()}_${Math.random().toString(36).substring(2, 6)}`;
     const newDockedBox: DockedBox = {
       instanceId: uniqueInstanceId,
@@ -423,17 +457,6 @@ export const PlaytestModal: React.FC<PlaytestModalProps> = ({ levelData, onClose
       isFull: matchingInBox.length >= boxType.capacity,
     };
 
-    if (isTray) {
-      setTimeout(() => {
-        setBoxSlots(prev => {
-          const updated = [...prev];
-          updated[availableSlotIdx] = null;
-          return updated;
-        });
-      }, 400);
-    }
-
-    // Inject cards to conveyor: they will automatically rearrange with fixed uniform padding
     const newCards: ConveyorCard[] = unmatchedInBox.map((col, idx) => ({
       uid: `card_${Date.now()}_${idx}_${Math.random().toString(36).substring(2, 6)}`,
       color: col,
@@ -510,11 +533,11 @@ export const PlaytestModal: React.FC<PlaytestModalProps> = ({ levelData, onClose
                   Playtest Simulator
                 </h2>
                 <span className="text-[10px] bg-amber-500/20 text-amber-300 border border-amber-500/40 px-2 py-0.5 rounded font-bold uppercase">
-                  Auto-Rearrange Conveyor • 60 FPS
+                  Feeder Trays & Strict Sorting • 60 FPS
                 </span>
               </div>
               <span className="text-[11px] text-slate-400 hidden sm:inline">
-                Cards circulate along the conveyor with uniform fixed spacing and fly to matching boxes!
+                Trays feed spare cards directly to the conveyor and disappear immediately!
               </span>
             </div>
           </div>
@@ -928,7 +951,7 @@ export const PlaytestModal: React.FC<PlaytestModalProps> = ({ levelData, onClose
                             </g>
                           )}
 
-                          {/* Cards Stack inside Box */}
+                          {/* Cards Stack inside Box / Tray */}
                           {activeBox.InitCards.map((cCol, cIdx) => {
                             const spacing = (h - 16) / Math.max(activeBox.InitCards.length, 1);
                             const cardY = -h / 2 + 8 + cIdx * spacing;
