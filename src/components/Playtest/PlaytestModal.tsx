@@ -1,4 +1,4 @@
-import React, { useState, useEffect, useMemo, useCallback } from 'react';
+import React, { useState, useEffect, useMemo, useCallback, useRef } from 'react';
 import { LevelData, BoardNode, BoxNode, SpawnerNode, SpawnBox } from '../../types/level';
 import { getColor } from '../../constants/colors';
 import { getBoxType } from '../../constants/boxTypes';
@@ -10,11 +10,8 @@ import {
   ZoomIn, 
   ZoomOut, 
   Maximize2, 
-  PackageCheck, 
   AlertTriangle,
-  Sparkles,
   Layers,
-  Inbox,
   Move
 } from 'lucide-react';
 
@@ -24,28 +21,102 @@ interface PlaytestModalProps {
 }
 
 interface DockedBox {
+  instanceId: string; // Unique instance ID
+  slotIdx: number;     // Fixed slot index 0..4
   id: string;
   boardNode: BoardNode;
   boxColor: number;
   capacity: number;
   currentCards: number[];
+  incomingCount: number; // Reserved cards currently flying to this box
   timestamp: number;
   isFull: boolean;
+  isClearing?: boolean;
+}
+
+interface ConveyorCard {
+  uid: string;
+  color: number;
+}
+
+interface FlyingCard {
+  uid: string;
+  color: number;
+  startX: number;
+  startY: number;
+  targetX: number;
+  targetY: number;
+  targetInstanceId: string;
+  progress: number; // 0 to 1
+  duration: number; // in seconds
 }
 
 const MAX_BOX_SLOTS = 5;
 const MAX_CARD_SLOTS = 24;
+const BELT_SPEED = 185.0; // pixels per second
+
+// Racetrack Conveyor Geometry with Fixed Spacing & No Overlap
+const TOP_Y = 105.0;
+const BOTTOM_Y = 185.0;
+const RADIUS = 40.0;
+const LEFT_X = 110.0;
+const RIGHT_X = 750.0;
+
+const L_STRAIGHT = RIGHT_X - LEFT_X; // 640.0
+const L_ARC = Math.PI * RADIUS;       // ~125.66
+const L_TOTAL = 2 * L_STRAIGHT + 2 * L_ARC; // ~1531.33
+
+// 5 Docked Boxes with Fixed Positions (64px width, 46px padding)
+const BOX_X_POSITIONS = [200.0, 310.0, 420.0, 530.0, 640.0];
+const BOX_CHECKPOINTS = BOX_X_POSITIONS.map(bx => bx - LEFT_X);
+
+function getTrackCoords(distance: number) {
+  const d = ((distance % L_TOTAL) + L_TOTAL) % L_TOTAL;
+  if (d < L_STRAIGHT) {
+    // Top straight: left to right (y = TOP_Y)
+    return {
+      x: LEFT_X + d,
+      y: TOP_Y,
+      angle: 0.0,
+    };
+  } else if (d < L_STRAIGHT + L_ARC) {
+    // Right curve
+    const arcD = d - L_STRAIGHT;
+    const theta = -Math.PI / 2.0 + (arcD / L_ARC) * Math.PI;
+    return {
+      x: RIGHT_X + RADIUS * Math.cos(theta),
+      y: (TOP_Y + BOTTOM_Y) / 2.0 + RADIUS * Math.sin(theta),
+      angle: 90.0 + (arcD / L_ARC) * 180.0,
+    };
+  } else if (d < 2 * L_STRAIGHT + L_ARC) {
+    // Bottom straight: right to left (y = BOTTOM_Y)
+    const straightD = d - (L_STRAIGHT + L_ARC);
+    return {
+      x: RIGHT_X - straightD,
+      y: BOTTOM_Y,
+      angle: 180.0,
+    };
+  } else {
+    // Left curve
+    const arcD = d - (2 * L_STRAIGHT + L_ARC);
+    const theta = Math.PI / 2.0 + (arcD / L_ARC) * Math.PI;
+    return {
+      x: LEFT_X + RADIUS * Math.cos(theta),
+      y: (TOP_Y + BOTTOM_Y) / 2.0 + RADIUS * Math.sin(theta),
+      angle: 270.0 + (arcD / L_ARC) * 180.0,
+    };
+  }
+}
 
 export const PlaytestModal: React.FC<PlaytestModalProps> = ({ levelData, onClose }) => {
-  // Zoom & Pan state
+  // Zoom & Pan state for board
   const [zoom, setZoom] = useState(1);
   const [pan, setPan] = useState({ x: 0, y: 0 });
   const [isPanning, setIsPanning] = useState(false);
   const [panStart, setPanStart] = useState({ x: 0, y: 0 });
 
-  // Game state
-  const [dockedBoxes, setDockedBoxes] = useState<DockedBox[]>([]);
-  const [cardList, setCardList] = useState<number[]>([]);
+  // Game state: 5 fixed slots (either a DockedBox or null)
+  const [boxSlots, setBoxSlots] = useState<(DockedBox | null)[]>([null, null, null, null, null]);
   const [clearedNodes, setClearedNodes] = useState<Set<string>>(new Set());
   const [spawnerQueues, setSpawnerQueues] = useState<Map<string, SpawnBox[]>>(new Map());
   const [deliveredCardsCount, setDeliveredCardsCount] = useState<number>(0);
@@ -53,15 +124,41 @@ export const PlaytestModal: React.FC<PlaytestModalProps> = ({ levelData, onClose
   const [isWon, setIsWon] = useState<boolean>(false);
   const [warningMessage, setWarningMessage] = useState<string | null>(null);
 
+  // High-performance real-time simulation state
+  const conveyorCardsRef = useRef<ConveyorCard[]>([]);
+  const flyingCardsRef = useRef<FlyingCard[]>([]);
+  const boxSlotsRef = useRef<(DockedBox | null)[]>([null, null, null, null, null]);
+  const clearedNodesRef = useRef<Set<string>>(new Set());
+  const beltBaseDistRef = useRef<number>(0);
+
+  // Render trigger for animation frames
+  const [, setFrameTick] = useState(0);
+  const lastTimeRef = useRef<number>(performance.now());
+  const animationFrameRef = useRef<number | null>(null);
+
+  // Sync ref with state
+  useEffect(() => {
+    boxSlotsRef.current = boxSlots;
+  }, [boxSlots]);
+
+  useEffect(() => {
+    clearedNodesRef.current = clearedNodes;
+  }, [clearedNodes]);
+
   const showWarning = (msg: string) => {
     setWarningMessage(msg);
     setTimeout(() => setWarningMessage(null), 3000);
   };
 
-  // Reset entire level playtest
+  // Reset entire playtest
   const resetGame = useCallback(() => {
-    setDockedBoxes([]);
-    setCardList([]);
+    conveyorCardsRef.current = [];
+    flyingCardsRef.current = [];
+    boxSlotsRef.current = [null, null, null, null, null];
+    clearedNodesRef.current = new Set();
+    beltBaseDistRef.current = 0;
+
+    setBoxSlots([null, null, null, null, null]);
     setClearedNodes(new Set());
     
     // Initialize spawner queues
@@ -93,82 +190,164 @@ export const PlaytestModal: React.FC<PlaytestModalProps> = ({ levelData, onClose
     return count;
   }, [levelData]);
 
-  // Live blocked nodes on the board
+  // Live blocked nodes on board
   const liveBlockedByMap = useMemo(() => {
     const remainingBoxNodes = levelData.BoxNodes.filter(b => !clearedNodes.has(b.Id));
     return getBlockedByMap(remainingBoxNodes);
   }, [levelData.BoxNodes, clearedNodes]);
 
-  // Process matching cards from the card list into docked boxes (FIFO order)
-  const processCardMatches = useCallback(
-    (
-      currentDocked: DockedBox[],
-      cardsToProcess: number[]
-    ): { updatedBoxes: DockedBox[]; remainingCards: number[]; cardsMoved: number; boxesCompleted: number } => {
-      let boxes = currentDocked.map(b => ({ ...b, currentCards: [...b.currentCards] }));
-      let cards = [...cardsToProcess];
-      let cardsMoved = 0;
-      let boxesCompleted = 0;
+  // Main 60FPS Continuous Animation & Physics Loop with Uniform Card Spacing
+  useEffect(() => {
+    const updateLoop = (now: number) => {
+      const dt = Math.min((now - lastTimeRef.current) / 1000, 0.05);
+      lastTimeRef.current = now;
 
-      let matched = true;
-      while (matched) {
-        matched = false;
-        const nextRemainingCards: number[] = [];
+      // Advance conveyor belt base travel position
+      const prevBase = beltBaseDistRef.current;
+      const newBase = (prevBase + BELT_SPEED * dt) % L_TOTAL;
+      beltBaseDistRef.current = newBase;
 
-        for (const cardColor of cards) {
-          let absorbed = false;
+      let hasStateChanges = false;
+      const currentConveyor = conveyorCardsRef.current;
+      const currentFlying = flyingCardsRef.current;
+      const currentSlots = [...boxSlotsRef.current];
 
-          // Scan docked boxes from oldest (index 0) to latest
-          for (let i = 0; i < boxes.length; i++) {
-            const b = boxes[i];
-            if (
-              b.boxColor !== 5 &&
-              b.boxColor === cardColor &&
-              b.currentCards.length < b.capacity
-            ) {
-              b.currentCards.push(cardColor);
-              absorbed = true;
-              matched = true;
-              cardsMoved++;
-              break;
+      const nCards = currentConveyor.length;
+      // Fixed uniform padding: each card is spaced equally along the whole loop
+      const cardSpacing = nCards > 0 ? L_TOTAL / nCards : L_TOTAL;
+
+      // 1. Check Proximity Flying for Each Card
+      const remainingConveyor: ConveyorCard[] = [];
+
+      for (let i = 0; i < nCards; i++) {
+        const card = currentConveyor[i];
+        const cardDist = (newBase + i * cardSpacing) % L_TOTAL;
+        const prevCardDist = (prevBase + i * cardSpacing) % L_TOTAL;
+
+        let triggeredFly = false;
+
+        // Check if card on top straight passes any matching docked box checkpoint
+        if (prevCardDist < L_STRAIGHT || cardDist < L_STRAIGHT) {
+          for (let slotIdx = 0; slotIdx < MAX_BOX_SLOTS; slotIdx++) {
+            const box = currentSlots[slotIdx];
+            // STRICT CHECK: Box must exist, NOT be neutral tray (5), NOT be clearing, and MUST MATCH CARD COLOR
+            if (!box || box.boxColor === 5 || box.isClearing || box.boxColor !== card.color) {
+              continue;
+            }
+
+            const checkpoint = BOX_CHECKPOINTS[slotIdx];
+            const neededCards = box.capacity - (box.currentCards.length + box.incomingCount);
+
+            if (neededCards > 0) {
+              const distDiff = Math.abs(cardDist - checkpoint);
+              const crossed = prevCardDist <= checkpoint && cardDist >= checkpoint;
+
+              if (crossed || distDiff < BELT_SPEED * dt * 1.5) {
+                // Spawn flying card animation to this specific box instance
+                const cardPos = getTrackCoords(checkpoint);
+                const targetX = BOX_X_POSITIONS[slotIdx];
+                const targetY = 42.0;
+
+                box.incomingCount += 1;
+                currentFlying.push({
+                  uid: `fly_${card.uid}_${Date.now()}`,
+                  color: card.color,
+                  startX: cardPos.x,
+                  startY: cardPos.y,
+                  targetX,
+                  targetY,
+                  targetInstanceId: box.instanceId,
+                  progress: 0,
+                  duration: 0.32,
+                });
+
+                triggeredFly = true;
+                hasStateChanges = true;
+                break;
+              }
+            }
+          }
+        }
+
+        if (!triggeredFly) {
+          remainingConveyor.push(card);
+        }
+      }
+
+      conveyorCardsRef.current = remainingConveyor;
+
+      // 2. Update Flying Cards Trajectory & Landing
+      const activeFlying: FlyingCard[] = [];
+
+      for (let f = 0; f < currentFlying.length; f++) {
+        const fc = currentFlying[f];
+        fc.progress += dt / fc.duration;
+
+        if (fc.progress >= 1.0) {
+          // Card has landed! Find target box by unique instanceId
+          const targetBox = currentSlots.find(b => b && b.instanceId === fc.targetInstanceId);
+          if (targetBox) {
+            targetBox.incomingCount = Math.max(0, targetBox.incomingCount - 1);
+
+            // STRICT COLOR VALIDATION: Card MUST match box color
+            if (targetBox.boxColor === fc.color && targetBox.currentCards.length < targetBox.capacity) {
+              targetBox.currentCards.push(fc.color);
+            }
+
+            // Check if box is now completely full
+            if (targetBox.currentCards.length >= targetBox.capacity && !targetBox.isClearing) {
+              targetBox.isFull = true;
+              targetBox.isClearing = true;
+              setDeliveredBoxesCount(prev => prev + 1);
+
+              const slotToClear = targetBox.slotIdx;
+              setTimeout(() => {
+                setBoxSlots(prev => {
+                  const updated = [...prev];
+                  updated[slotToClear] = null;
+                  return updated;
+                });
+              }, 380);
             }
           }
 
-          if (!absorbed) {
-            nextRemainingCards.push(cardColor);
-          }
+          setDeliveredCardsCount(prev => prev + 1);
+          hasStateChanges = true;
+        } else {
+          activeFlying.push(fc);
         }
-
-        cards = nextRemainingCards;
-
-        // Check for completed full boxes or emptied neutral trays
-        const activeBoxes: DockedBox[] = [];
-        for (const b of boxes) {
-          if (b.boxColor !== 5 && b.currentCards.length >= b.capacity) {
-            boxesCompleted++;
-            matched = true;
-          } else if (b.boxColor === 5) {
-            boxesCompleted++;
-            matched = true;
-          } else {
-            activeBoxes.push(b);
-          }
-        }
-
-        boxes = activeBoxes;
       }
 
-      return {
-        updatedBoxes: boxes,
-        remainingCards: cards,
-        cardsMoved,
-        boxesCompleted,
-      };
-    },
-    []
-  );
+      flyingCardsRef.current = activeFlying;
 
-  // Handle clicking an unblocked box or spawner on the board with Swap-First evaluation
+      if (hasStateChanges) {
+        setBoxSlots(currentSlots);
+        boxSlotsRef.current = currentSlots;
+
+        // Check Win condition
+        if (
+          clearedNodesRef.current.size >= levelData.BoardNodes.length &&
+          conveyorCardsRef.current.length === 0 &&
+          flyingCardsRef.current.length === 0 &&
+          currentSlots.every(b => !b || b.isClearing || b.boxColor === 5)
+        ) {
+          setIsWon(true);
+        }
+      }
+
+      setFrameTick(t => (t + 1) % 1000000);
+      animationFrameRef.current = requestAnimationFrame(updateLoop);
+    };
+
+    animationFrameRef.current = requestAnimationFrame(updateLoop);
+    return () => {
+      if (animationFrameRef.current) {
+        cancelAnimationFrame(animationFrameRef.current);
+      }
+    };
+  }, [levelData]);
+
+  // Handle clicking an unblocked box or spawner on the board
   const handleBoardBoxClick = (nodeId: string) => {
     const blockers = liveBlockedByMap.get(nodeId) || [];
     if (blockers.length > 0) return;
@@ -179,8 +358,10 @@ export const PlaytestModal: React.FC<PlaytestModalProps> = ({ levelData, onClose
 
     if (!boardNode || (!boxNode && (!spawnerBoxes || spawnerBoxes.length === 0))) return;
 
-    // 1. Check 5 box slots capacity
-    if (dockedBoxes.length >= MAX_BOX_SLOTS) {
+    // 1. Find first available box slot (0..4)
+    const currentSlots = boxSlotsRef.current;
+    const availableSlotIdx = currentSlots.findIndex(s => s === null);
+    if (availableSlotIdx === -1) {
       showWarning('All 5 box slots are occupied! Clear a matching box first.');
       return;
     }
@@ -191,7 +372,9 @@ export const PlaytestModal: React.FC<PlaytestModalProps> = ({ levelData, onClose
     const boxType = getBoxType(activeBox.TypeId);
     const isTray = activeBox.BoxColor === 5 || boxType.isTray;
 
-    // Separate matching cards that stay in the box from unmatched cards entering the card list
+    // STRICT IN-BOX COLOR FILTER:
+    // Only cards matching activeBox.BoxColor stay in the box!
+    // All other cards go to the conveyor belt!
     let matchingInBox: number[] = [];
     let unmatchedInBox: number[] = [];
 
@@ -207,33 +390,64 @@ export const PlaytestModal: React.FC<PlaytestModalProps> = ({ levelData, onClose
       }
     }
 
+    // 2. Dynamic Capacity Check:
+    let immediateAbsorbCount = 0;
+    for (const card of conveyorCardsRef.current) {
+      if (
+        !isTray &&
+        card.color === activeBox.BoxColor &&
+        matchingInBox.length + immediateAbsorbCount < boxType.capacity
+      ) {
+        immediateAbsorbCount++;
+      }
+    }
+
+    const projectedBeltCards = conveyorCardsRef.current.length + unmatchedInBox.length - immediateAbsorbCount;
+    if (projectedBeltCards > MAX_CARD_SLOTS) {
+      showWarning(`Conveyor full! (Would result in ${projectedBeltCards}/${MAX_CARD_SLOTS} cards). Match cards before sending more.`);
+      return;
+    }
+
+    // 3. Move is VALID: dock box in available slot and inject cards onto conveyor
+    const uniqueInstanceId = `box_${nodeId}_${Date.now()}_${Math.random().toString(36).substring(2, 6)}`;
     const newDockedBox: DockedBox = {
+      instanceId: uniqueInstanceId,
+      slotIdx: availableSlotIdx,
       id: nodeId,
       boardNode,
       boxColor: activeBox.BoxColor,
       capacity: boxType.capacity,
       currentCards: matchingInBox,
+      incomingCount: 0,
       timestamp: Date.now(),
       isFull: matchingInBox.length >= boxType.capacity,
     };
 
-    // Swap-First Simulation Check:
-    // Append the new box to docked boxes and unmatched cards to the card queue
-    const simulatedDockedList = [...dockedBoxes, newDockedBox];
-    const simulatedCardQueue = [...cardList, ...unmatchedInBox];
-
-    // Run the atomic matching & card absorption process
-    const result = processCardMatches(simulatedDockedList, simulatedCardQueue);
-
-    // If the resulting card list after all immediate swaps/matches exceeds MAX_CARD_SLOTS (24), reject
-    if (result.remainingCards.length > MAX_CARD_SLOTS) {
-      showWarning(
-        `Card list full! (Would result in ${result.remainingCards.length}/${MAX_CARD_SLOTS} cards). Match cards before sending more.`
-      );
-      return;
+    if (isTray) {
+      setTimeout(() => {
+        setBoxSlots(prev => {
+          const updated = [...prev];
+          updated[availableSlotIdx] = null;
+          return updated;
+        });
+      }, 400);
     }
 
-    // Move is VALID! Apply the transaction
+    // Inject cards to conveyor: they will automatically rearrange with fixed uniform padding
+    const newCards: ConveyorCard[] = unmatchedInBox.map((col, idx) => ({
+      uid: `card_${Date.now()}_${idx}_${Math.random().toString(36).substring(2, 6)}`,
+      color: col,
+    }));
+
+    conveyorCardsRef.current = [...conveyorCardsRef.current, ...newCards];
+
+    // Update docked slots
+    const updatedSlots = [...currentSlots];
+    updatedSlots[availableSlotIdx] = newDockedBox;
+    setBoxSlots(updatedSlots);
+    boxSlotsRef.current = updatedSlots;
+
+    // Update board state & spawners
     const newClearedNodes = new Set(clearedNodes);
 
     if (spawnerBoxes && spawnerBoxes.length > 0) {
@@ -249,20 +463,8 @@ export const PlaytestModal: React.FC<PlaytestModalProps> = ({ levelData, onClose
       newClearedNodes.add(nodeId);
     }
 
-    setDockedBoxes(result.updatedBoxes);
-    setCardList(result.remainingCards);
     setClearedNodes(newClearedNodes);
-    setDeliveredCardsCount(prev => prev + result.cardsMoved);
-    setDeliveredBoxesCount(prev => prev + result.boxesCompleted);
-
-    // Check Win condition
-    if (
-      newClearedNodes.size >= levelData.BoardNodes.length &&
-      result.remainingCards.length === 0 &&
-      result.updatedBoxes.length === 0
-    ) {
-      setIsWon(true);
-    }
+    clearedNodesRef.current = newClearedNodes;
   };
 
   // Zoom handlers
@@ -289,6 +491,9 @@ export const PlaytestModal: React.FC<PlaytestModalProps> = ({ levelData, onClose
     setIsPanning(false);
   };
 
+  const currentConveyorCount = conveyorCardsRef.current.length;
+  const currentCardSpacing = currentConveyorCount > 0 ? L_TOTAL / currentConveyorCount : L_TOTAL;
+
   return (
     <div className="fixed inset-0 z-50 bg-slate-950/90 backdrop-blur-md flex items-center justify-center p-2 sm:p-4 select-none">
       <div className="relative w-full max-w-5xl h-[94vh] bg-[#629fc9] rounded-3xl overflow-hidden border-4 border-slate-700 shadow-2xl flex flex-col">
@@ -305,11 +510,11 @@ export const PlaytestModal: React.FC<PlaytestModalProps> = ({ levelData, onClose
                   Playtest Simulator
                 </h2>
                 <span className="text-[10px] bg-amber-500/20 text-amber-300 border border-amber-500/40 px-2 py-0.5 rounded font-bold uppercase">
-                  Swap-First Matching • Max 24 Cards
+                  Auto-Rearrange Conveyor • 60 FPS
                 </span>
               </div>
               <span className="text-[11px] text-slate-400 hidden sm:inline">
-                Click unblocked boxes to dock them. Cards match and swap dynamically with the 24-slot queue!
+                Cards circulate along the conveyor with uniform fixed spacing and fly to matching boxes!
               </span>
             </div>
           </div>
@@ -344,115 +549,252 @@ export const PlaytestModal: React.FC<PlaytestModalProps> = ({ levelData, onClose
         {/* Main Playable Area */}
         <div className="flex-1 relative overflow-hidden flex flex-col">
           
-          {/* TOP SECTION: 5 BOX SLOTS & 24 CARD SLOTS QUEUE */}
-          <div className="w-full bg-[#5287aa] border-b-2 border-[#8ebfda]/40 p-3 flex flex-col items-center gap-3 shadow-lg shrink-0 z-20">
+          {/* TOP SECTION: 5 DOCKED BOXES & REAL-TIME ANIMATED CONVEYOR BELT */}
+          <div className="w-full bg-[#5287aa] border-b-2 border-[#8ebfda]/40 p-2 flex flex-col items-center gap-1 shadow-lg shrink-0 z-20">
             
-            {/* Row 1: 5 Box Holding Slots */}
-            <div className="w-full max-w-4xl flex items-center justify-between gap-4">
-              <div className="flex items-center gap-2 shrink-0">
-                <span className="text-xs font-bold text-white uppercase tracking-wider drop-shadow">
-                  Box Slots ({dockedBoxes.length}/5):
-                </span>
-              </div>
-
-              {/* 5 Box Slots Grid */}
-              <div className="flex items-center justify-center gap-3 flex-1">
-                {[0, 1, 2, 3, 4].map(slotIdx => {
-                  const box = dockedBoxes[slotIdx];
-                  const colorDef = box ? getColor(box.boxColor) : null;
-
-                  return (
-                    <div
-                      key={`box-slot-${slotIdx}`}
-                      className="w-20 h-20 rounded-2xl bg-[#3b6685]/80 border-2 border-dashed border-[#8ebfda] relative flex flex-col items-center justify-center shadow-md overflow-hidden transition-all"
-                    >
-                      {/* Corner Rivets */}
-                      <div className="absolute top-1 left-1 w-1.5 h-1.5 rounded-full bg-slate-100/80"></div>
-                      <div className="absolute top-1 right-1 w-1.5 h-1.5 rounded-full bg-slate-100/80"></div>
-                      <div className="absolute bottom-1 left-1 w-1.5 h-1.5 rounded-full bg-slate-100/80"></div>
-                      <div className="absolute bottom-1 right-1 w-1.5 h-1.5 rounded-full bg-slate-100/80"></div>
-
-                      {box && colorDef ? (
-                        <div
-                          className="w-full h-full p-1.5 rounded-xl flex flex-col justify-between items-center shadow-inner"
-                          style={{
-                            backgroundColor: colorDef.hex,
-                            border: `2px solid #ffffff`,
-                          }}
-                        >
-                          <div className="flex items-center justify-between w-full px-0.5">
-                            <span className="text-[9px] font-mono font-bold text-white truncate">
-                              {box.id}
-                            </span>
-                            <span className="text-[9px] font-mono font-black text-white bg-slate-900/60 px-1 rounded">
-                              {box.currentCards.length}/{box.capacity}
-                            </span>
-                          </div>
-
-                          {/* Inner Card Stack */}
-                          <div className="w-full flex-1 flex flex-col justify-center gap-0.5 px-0.5">
-                            {box.currentCards.map((cCol, idx) => (
-                              <div
-                                key={idx}
-                                className="w-full h-2 rounded border border-white/40 shadow-sm"
-                                style={{ backgroundColor: getColor(cCol).hex }}
-                              />
-                            ))}
-                          </div>
-                        </div>
-                      ) : (
-                        <div className="flex flex-col items-center justify-center text-white/30 font-bold text-xs">
-                          <span>Slot {slotIdx + 1}</span>
-                        </div>
-                      )}
-                    </div>
-                  );
-                })}
-              </div>
-
-              {/* Progress badge */}
-              <div className="bg-slate-950/80 border border-slate-700 px-3 py-1.5 rounded-xl text-xs font-mono font-bold text-sky-400 shrink-0 shadow">
+            {/* Header info & score */}
+            <div className="w-full max-w-4xl flex items-center justify-between px-2 text-[11px] font-bold text-white uppercase tracking-wider">
+              <span className="drop-shadow">
+                Docked Boxes ({boxSlots.filter(b => b !== null && !b.isClearing).length}/5) • Conveyor Cards ({currentConveyorCount}/24)
+              </span>
+              <div className="bg-slate-950/80 border border-slate-700 px-3 py-1 rounded-xl text-xs font-mono text-sky-400 shadow">
                 Delivered: {deliveredCardsCount}/{totalCardsInLevel}
               </div>
             </div>
 
-            {/* Row 2: 24 Card Slots Queue Grid */}
-            <div className="w-full max-w-4xl bg-slate-950/40 p-2 rounded-2xl border border-slate-700/50 flex flex-col gap-1.5">
-              <div className="flex items-center justify-between px-1">
-                <span className="text-[11px] font-bold text-sky-200 uppercase tracking-wider flex items-center gap-1.5">
-                  <Inbox size={12} className="text-sky-400" />
-                  Card Queue ({cardList.length}/24 slots):
-                </span>
-                <span className="text-[10px] text-slate-300 font-mono">
-                  Scanned Oldest → Latest
-                </span>
-              </div>
+            {/* Integrated SVG Conveyor System & Docked Boxes */}
+            <div className="w-full max-w-4xl h-48 bg-slate-950/40 rounded-2xl border border-slate-700/50 relative overflow-hidden flex items-center justify-center shadow-inner">
+              <svg className="w-full h-full" viewBox="0 0 860 230">
+                {/* Defs for gradients & shadows */}
+                <defs>
+                  <linearGradient id="beltGradient" x1="0" y1="0" x2="1" y2="0">
+                    <stop offset="0%" stopColor="#1e293b" />
+                    <stop offset="50%" stopColor="#334155" />
+                    <stop offset="100%" stopColor="#1e293b" />
+                  </linearGradient>
+                </defs>
 
-              {/* 24 Card Slots Grid (2 rows x 12 columns) */}
-              <div className="grid grid-cols-12 gap-1.5">
-                {Array.from({ length: MAX_CARD_SLOTS }).map((_, slotIdx) => {
-                  const cardColor = cardList[slotIdx];
-                  const hasCard = cardColor !== undefined;
-                  const colorDef = hasCard ? getColor(cardColor) : null;
+                {/* 1. Conveyor Track Rail */}
+                <path
+                  d={`M ${LEFT_X} ${TOP_Y} L ${RIGHT_X} ${TOP_Y} A ${RADIUS} ${RADIUS} 0 0 1 ${RIGHT_X} ${BOTTOM_Y} L ${LEFT_X} ${BOTTOM_Y} A ${RADIUS} ${RADIUS} 0 0 1 ${LEFT_X} ${TOP_Y} Z`}
+                  fill="none"
+                  stroke="#0f172a"
+                  strokeWidth="42"
+                  strokeLinecap="round"
+                  strokeLinejoin="round"
+                />
+                <path
+                  d={`M ${LEFT_X} ${TOP_Y} L ${RIGHT_X} ${TOP_Y} A ${RADIUS} ${RADIUS} 0 0 1 ${RIGHT_X} ${BOTTOM_Y} L ${LEFT_X} ${BOTTOM_Y} A ${RADIUS} ${RADIUS} 0 0 1 ${LEFT_X} ${TOP_Y} Z`}
+                  fill="none"
+                  stroke="url(#beltGradient)"
+                  strokeWidth="32"
+                  strokeLinecap="round"
+                  strokeLinejoin="round"
+                />
+                <path
+                  d={`M ${LEFT_X} ${TOP_Y} L ${RIGHT_X} ${TOP_Y} A ${RADIUS} ${RADIUS} 0 0 1 ${RIGHT_X} ${BOTTOM_Y} L ${LEFT_X} ${BOTTOM_Y} A ${RADIUS} ${RADIUS} 0 0 1 ${LEFT_X} ${TOP_Y} Z`}
+                  fill="none"
+                  stroke="#475569"
+                  strokeWidth="24"
+                  strokeDasharray="6,6"
+                />
+                <path
+                  d={`M ${LEFT_X} ${TOP_Y} L ${RIGHT_X} ${TOP_Y} A ${RADIUS} ${RADIUS} 0 0 1 ${RIGHT_X} ${BOTTOM_Y} L ${LEFT_X} ${BOTTOM_Y} A ${RADIUS} ${RADIUS} 0 0 1 ${LEFT_X} ${TOP_Y} Z`}
+                  fill="none"
+                  stroke="#38bdf8"
+                  strokeWidth="2"
+                  opacity="0.5"
+                />
+
+                {/* 2. Docked Box Slots with Fixed Spacing & No Overlap (64px width, 46px gap) */}
+                {BOX_X_POSITIONS.map((bx, slotIdx) => {
+                  const box = boxSlots[slotIdx];
+                  const colorDef = box ? getColor(box.boxColor) : null;
+                  const isClearing = box?.isClearing;
 
                   return (
-                    <div
-                      key={`card-slot-${slotIdx}`}
-                      className={`h-7 rounded-lg border flex items-center justify-center text-[10px] font-mono font-bold transition-all ${
-                        hasCard && colorDef
-                          ? 'border-white text-white shadow-md animate-fadeIn'
-                          : 'bg-slate-900/60 border-slate-800 text-slate-600'
-                      }`}
-                      style={{
-                        backgroundColor: colorDef ? colorDef.hex : undefined,
-                      }}
-                      title={hasCard && colorDef ? `${colorDef.name} Card` : `Empty Slot ${slotIdx + 1}`}
-                    >
-                      {hasCard ? '' : slotIdx + 1}
-                    </div>
+                    <g key={`docked-slot-${slotIdx}`} transform={`translate(${bx}, 44)`}>
+                      {/* Slot Docking Base Plate */}
+                      <rect
+                        x="-32"
+                        y="-30"
+                        width="64"
+                        height="60"
+                        rx="12"
+                        fill="#1e293b"
+                        stroke="#475569"
+                        strokeWidth="2"
+                        strokeDasharray={box ? 'none' : '4,3'}
+                      />
+
+                      {/* Docked Box Body */}
+                      {box && colorDef ? (
+                        <g
+                          className={`transition-all duration-300 ${
+                            isClearing ? 'scale-110 opacity-0' : 'scale-100 opacity-100'
+                          }`}
+                        >
+                          {/* Outer Box */}
+                          <rect
+                            x="-30"
+                            y="-28"
+                            width="60"
+                            height="56"
+                            rx="10"
+                            fill={colorDef.hex}
+                            stroke="#ffffff"
+                            strokeWidth="2"
+                          />
+                          {/* Inner Recess */}
+                          <rect
+                            x="-26"
+                            y="-12"
+                            width="52"
+                            height="36"
+                            rx="6"
+                            fill={colorDef.darkHex}
+                            opacity="0.4"
+                          />
+
+                          {/* ID & Capacity Label */}
+                          <text
+                            x="0"
+                            y="-16"
+                            textAnchor="middle"
+                            fill="#ffffff"
+                            fontSize="9"
+                            fontWeight="900"
+                            fontFamily="monospace"
+                          >
+                            {box.currentCards.length}/{box.capacity}
+                          </text>
+
+                          {/* Cards Stacked inside Box (Strictly Matching Box Color Only!) */}
+                          {box.currentCards.map((cCol, cIdx) => {
+                            const cColor = getColor(cCol);
+                            const cardH = 4.5;
+                            const cardY = 18 - cIdx * (cardH + 1);
+
+                            return (
+                              <rect
+                                key={`stacked-card-${cIdx}`}
+                                x="-22"
+                                y={cardY}
+                                width="44"
+                                height={cardH}
+                                rx="2"
+                                fill={cColor.hex}
+                                stroke="#ffffff"
+                                strokeWidth="0.8"
+                              />
+                            );
+                          })}
+                        </g>
+                      ) : (
+                        <text
+                          x="0"
+                          y="4"
+                          textAnchor="middle"
+                          fill="#64748b"
+                          fontSize="10"
+                          fontWeight="700"
+                        >
+                          Slot {slotIdx + 1}
+                        </text>
+                      )}
+                    </g>
                   );
                 })}
-              </div>
+
+                {/* 3. Cards in Motion along Conveyor (Evenly Distributed with Fixed Padding) */}
+                {conveyorCardsRef.current.map((card, cardIdx) => {
+                  const cardDist = (beltBaseDistRef.current + cardIdx * currentCardSpacing) % L_TOTAL;
+                  const pt = getTrackCoords(cardDist);
+                  const colorDef = getColor(card.color);
+
+                  return (
+                    <g
+                      key={`riding-card-${card.uid}`}
+                      transform={`translate(${pt.x}, ${pt.y}) rotate(${pt.angle})`}
+                    >
+                      {/* Card Drop Shadow */}
+                      <rect
+                        x="-10"
+                        y="-13"
+                        width="20"
+                        height="26"
+                        rx="4"
+                        fill="rgba(0, 0, 0, 0.45)"
+                      />
+                      {/* Card Body */}
+                      <rect
+                        x="-9"
+                        y="-12"
+                        width="18"
+                        height="24"
+                        rx="4"
+                        fill={colorDef.hex}
+                        stroke="#ffffff"
+                        strokeWidth="1.5"
+                      />
+                      {/* Card Gloss Stripe */}
+                      <rect
+                        x="-7"
+                        y="-10"
+                        width="14"
+                        height="4"
+                        rx="2"
+                        fill="rgba(255, 255, 255, 0.55)"
+                      />
+                    </g>
+                  );
+                })}
+
+                {/* 4. Flying Cards to Matching Box (Smooth Parabolic Trajectory) */}
+                {flyingCardsRef.current.map(fc => {
+                  const p = fc.progress;
+                  const currX = fc.startX + (fc.targetX - fc.startX) * p;
+                  const currY = fc.startY + (fc.targetY - fc.startY) * p - Math.sin(p * Math.PI) * 22;
+                  const colorDef = getColor(fc.color);
+
+                  return (
+                    <g
+                      key={`flying-${fc.uid}`}
+                      transform={`translate(${currX}, ${currY}) scale(${1 + 0.2 * Math.sin(p * Math.PI)})`}
+                    >
+                      {/* Flying Card Shadow */}
+                      <ellipse
+                        cx="0"
+                        cy="14"
+                        rx="12"
+                        ry="4"
+                        fill="rgba(0, 0, 0, 0.35)"
+                        opacity={1 - p * 0.4}
+                      />
+                      {/* Card Body */}
+                      <rect
+                        x="-10"
+                        y="-13"
+                        width="20"
+                        height="26"
+                        rx="4"
+                        fill={colorDef.hex}
+                        stroke="#ffffff"
+                        strokeWidth="2"
+                        filter="drop-shadow(0px 4px 6px rgba(0,0,0,0.3))"
+                      />
+                      <rect
+                        x="-8"
+                        y="-10"
+                        width="16"
+                        height="4"
+                        rx="2"
+                        fill="rgba(255, 255, 255, 0.6)"
+                      />
+                    </g>
+                  );
+                })}
+              </svg>
             </div>
           </div>
 
