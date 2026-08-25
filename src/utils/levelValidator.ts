@@ -61,9 +61,9 @@ export function validateLevel(data: LevelData): ValidationIssue[] {
         const targetBoard = boardMap.get(blockedId);
         if (targetBoard && targetBoard.TileMapId <= myBoard.TileMapId) {
           issues.push({
-            type: 'warning',
+            type: 'error',
             nodeId: bx.Id,
-            message: `Node "${bx.Id}" (Layer ${myBoard.TileMapId}) is blocking "${blockedId}" (Layer ${targetBoard.TileMapId}). Blocking is usually upper layer (lower TileMapId) blocking lower layer.`,
+            message: `Node "${bx.Id}" (Layer ${myBoard.TileMapId}) cannot block "${blockedId}" (Layer ${targetBoard.TileMapId}). Lower/same layer is not allowed to block a higher layer (Layer 0 is top, Layer 1/2/3 are below).`,
           });
         }
       }
