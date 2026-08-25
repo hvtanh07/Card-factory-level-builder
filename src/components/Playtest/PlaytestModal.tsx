@@ -37,6 +37,7 @@ interface DockedBox {
 interface ConveyorCard {
   uid: string;
   color: number;
+  dist: number; // Distance along track (0 to L_TOTAL)
 }
 
 interface FlyingCard {
@@ -54,8 +55,9 @@ interface FlyingCard {
 const MAX_BOX_SLOTS = 5;
 const MAX_CARD_SLOTS = 24;
 const BELT_SPEED = 185.0; // pixels per second
+const MIN_CARD_DISTANCE = 32.0; // Fixed separation distance to prevent overlap
 
-// Racetrack Conveyor Geometry with Fixed Spacing & No Overlap
+// Racetrack Conveyor Geometry
 const TOP_Y = 105.0;
 const BOTTOM_Y = 185.0;
 const RADIUS = 40.0;
@@ -69,6 +71,35 @@ const L_TOTAL = 2 * L_STRAIGHT + 2 * L_ARC; // ~1531.33
 // 5 Docked Boxes with Fixed Positions (64px width, 46px padding)
 const BOX_X_POSITIONS = [200.0, 310.0, 420.0, 530.0, 640.0];
 const BOX_CHECKPOINTS = BOX_X_POSITIONS.map(bx => bx - LEFT_X);
+
+/**
+ * Resolves any overlapping cards on the conveyor belt by enforcing
+ * a fixed minimum distance between consecutive cards along the track loop.
+ */
+function resolveCardOverlaps(cards: ConveyorCard[]): void {
+  if (cards.length <= 1) return;
+
+  cards.sort((a, b) => a.dist - b.dist);
+
+  for (let iter = 0; iter < 4; iter++) {
+    for (let i = 0; i < cards.length - 1; i++) {
+      const diff = cards[i + 1].dist - cards[i].dist;
+      if (diff < MIN_CARD_DISTANCE) {
+        cards[i + 1].dist = (cards[i].dist + MIN_CARD_DISTANCE) % L_TOTAL;
+      }
+    }
+
+    // Check circular wrap gap between the last card and first card
+    const wrapGap = (cards[0].dist + L_TOTAL) - cards[cards.length - 1].dist;
+    if (wrapGap < MIN_CARD_DISTANCE) {
+      const shift = MIN_CARD_DISTANCE - wrapGap;
+      for (let i = 0; i < cards.length; i++) {
+        cards[i].dist = (cards[i].dist + shift / 2) % L_TOTAL;
+      }
+      cards.sort((a, b) => a.dist - b.dist);
+    }
+  }
+}
 
 function getTrackCoords(distance: number) {
   const d = ((distance % L_TOTAL) + L_TOTAL) % L_TOTAL;
@@ -196,38 +227,34 @@ export const PlaytestModal: React.FC<PlaytestModalProps> = ({ levelData, onClose
     return getBlockedByMap(remainingBoxNodes);
   }, [levelData.BoxNodes, clearedNodes]);
 
-  // Main 60FPS Continuous Animation & Physics Loop with Uniform Card Spacing
+  // Main 60FPS Continuous Animation & Physics Loop with Individual Card Movement & Overlap Prevention
   useEffect(() => {
     const updateLoop = (now: number) => {
       const dt = Math.min((now - lastTimeRef.current) / 1000, 0.05);
       lastTimeRef.current = now;
-
-      // Advance conveyor belt base travel position
-      const prevBase = beltBaseDistRef.current;
-      const newBase = (prevBase + BELT_SPEED * dt) % L_TOTAL;
-      beltBaseDistRef.current = newBase;
 
       let hasStateChanges = false;
       const currentConveyor = conveyorCardsRef.current;
       const currentFlying = flyingCardsRef.current;
       const currentSlots = [...boxSlotsRef.current];
 
-      const nCards = currentConveyor.length;
-      // Fixed uniform padding: each card is spaced equally along the whole loop
-      const cardSpacing = nCards > 0 ? L_TOTAL / nCards : L_TOTAL;
+      // 1. Advance each card along the track
+      for (let i = 0; i < currentConveyor.length; i++) {
+        currentConveyor[i].dist = (currentConveyor[i].dist + BELT_SPEED * dt) % L_TOTAL;
+      }
 
-      // 1. Check Proximity Flying for Each Card
+      // Maintain minimum fixed distance between cards and prevent any overlapping
+      resolveCardOverlaps(currentConveyor);
+
+      // 2. Check Proximity Flying for Each Card
       const remainingConveyor: ConveyorCard[] = [];
 
-      for (let i = 0; i < nCards; i++) {
+      for (let i = 0; i < currentConveyor.length; i++) {
         const card = currentConveyor[i];
-        const cardDist = (newBase + i * cardSpacing) % L_TOTAL;
-        const prevCardDist = (prevBase + i * cardSpacing) % L_TOTAL;
-
         let triggeredFly = false;
 
         // Check if card on top straight passes any matching docked box checkpoint
-        if (prevCardDist < L_STRAIGHT || cardDist < L_STRAIGHT) {
+        if (card.dist <= L_STRAIGHT + 25.0) {
           for (let slotIdx = 0; slotIdx < MAX_BOX_SLOTS; slotIdx++) {
             const box = currentSlots[slotIdx];
             // STRICT CHECK: Box must exist, NOT be neutral tray (5), NOT be clearing, and MUST MATCH CARD COLOR
@@ -239,12 +266,10 @@ export const PlaytestModal: React.FC<PlaytestModalProps> = ({ levelData, onClose
             const neededCards = box.capacity - (box.currentCards.length + box.incomingCount);
 
             if (neededCards > 0) {
-              const distDiff = Math.abs(cardDist - checkpoint);
-              const crossed = prevCardDist <= checkpoint && cardDist >= checkpoint;
-
-              if (crossed || distDiff < BELT_SPEED * dt * 1.5) {
+              const distDiff = Math.abs(card.dist - checkpoint);
+              if (distDiff < BELT_SPEED * dt * 1.5 || (card.dist >= checkpoint && card.dist - checkpoint < 20.0)) {
                 // Spawn flying card animation to this specific box instance
-                const cardPos = getTrackCoords(checkpoint);
+                const cardPos = getTrackCoords(card.dist);
                 const targetX = BOX_X_POSITIONS[slotIdx];
                 const targetY = 42.0;
 
@@ -258,7 +283,7 @@ export const PlaytestModal: React.FC<PlaytestModalProps> = ({ levelData, onClose
                   targetY,
                   targetInstanceId: box.instanceId,
                   progress: 0,
-                  duration: 0.32,
+                  duration: 0.30,
                 });
 
                 triggeredFly = true;
@@ -375,12 +400,15 @@ export const PlaytestModal: React.FC<PlaytestModalProps> = ({ levelData, onClose
         return;
       }
 
-      // Inject cards onto conveyor belt (they will automatically rearrange with fixed uniform padding)
+      // Inject cards onto conveyor belt with individual distance and no overlap
+      const entryBase = 620.0;
       const newCards: ConveyorCard[] = activeBox.InitCards.map((col, idx) => ({
         uid: `card_tray_${Date.now()}_${idx}_${Math.random().toString(36).substring(2, 6)}`,
         color: col,
+        dist: ((entryBase - idx * MIN_CARD_DISTANCE) % L_TOTAL + L_TOTAL) % L_TOTAL,
       }));
       conveyorCardsRef.current = [...conveyorCardsRef.current, ...newCards];
+      resolveCardOverlaps(conveyorCardsRef.current);
 
       // Disappear from board
       const newClearedNodes = new Set(clearedNodes);
@@ -457,12 +485,15 @@ export const PlaytestModal: React.FC<PlaytestModalProps> = ({ levelData, onClose
       isFull: matchingInBox.length >= boxType.capacity,
     };
 
+    const entryBase = 620.0;
     const newCards: ConveyorCard[] = unmatchedInBox.map((col, idx) => ({
       uid: `card_${Date.now()}_${idx}_${Math.random().toString(36).substring(2, 6)}`,
       color: col,
+      dist: ((entryBase - idx * MIN_CARD_DISTANCE) % L_TOTAL + L_TOTAL) % L_TOTAL,
     }));
 
     conveyorCardsRef.current = [...conveyorCardsRef.current, ...newCards];
+    resolveCardOverlaps(conveyorCardsRef.current);
 
     // Update docked slots
     const updatedSlots = [...currentSlots];
@@ -515,7 +546,6 @@ export const PlaytestModal: React.FC<PlaytestModalProps> = ({ levelData, onClose
   };
 
   const currentConveyorCount = conveyorCardsRef.current.length;
-  const currentCardSpacing = currentConveyorCount > 0 ? L_TOTAL / currentConveyorCount : L_TOTAL;
 
   return (
     <div className="fixed inset-0 z-50 bg-slate-950/90 backdrop-blur-md flex items-center justify-center p-2 sm:p-4 select-none">
@@ -729,10 +759,9 @@ export const PlaytestModal: React.FC<PlaytestModalProps> = ({ levelData, onClose
                   );
                 })}
 
-                {/* 3. Cards in Motion along Conveyor (Evenly Distributed with Fixed Padding) */}
-                {conveyorCardsRef.current.map((card, cardIdx) => {
-                  const cardDist = (beltBaseDistRef.current + cardIdx * currentCardSpacing) % L_TOTAL;
-                  const pt = getTrackCoords(cardDist);
+                {/* 3. Cards in Motion along Conveyor (No Overlap, Fixed Separation Distance) */}
+                {conveyorCardsRef.current.map((card) => {
+                  const pt = getTrackCoords(card.dist);
                   const colorDef = getColor(card.color);
 
                   return (
