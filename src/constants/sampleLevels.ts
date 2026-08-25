@@ -741,16 +741,6 @@ export const LEVEL_EASY_4_DATA: LevelData = {
 export const LEVEL_EASY_5_DATA: LevelData = {
   "BoardNodes": [
     {
-      "Id": "0_0_0",
-      "NodeId": 0,
-      "TileMapId": 0,
-      "MapPosX": 0.0,
-      "MapPosY": 0.0,
-      "ZRotation": 0.0,
-      "XPosition": 0.0,
-      "YPosition": 0.0
-    },
-    {
       "Id": "0_-0.6_0.6",
       "NodeId": 0,
       "TileMapId": 0,
@@ -771,9 +761,19 @@ export const LEVEL_EASY_5_DATA: LevelData = {
       "YPosition": 0.0
     },
     {
-      "Id": "1_0_1.3",
+      "Id": "1_0_0",
       "NodeId": 0,
       "TileMapId": 1,
+      "MapPosX": 0.0,
+      "MapPosY": 0.0,
+      "ZRotation": 0.0,
+      "XPosition": 0.0,
+      "YPosition": 0.0
+    },
+    {
+      "Id": "2_0_1.3",
+      "NodeId": 0,
+      "TileMapId": 2,
       "MapPosX": 0.0,
       "MapPosY": 1.3,
       "ZRotation": 45.0,
@@ -781,9 +781,9 @@ export const LEVEL_EASY_5_DATA: LevelData = {
       "YPosition": 0.0
     },
     {
-      "Id": "1_1.3_0",
+      "Id": "2_1.3_0",
       "NodeId": 0,
-      "TileMapId": 1,
+      "TileMapId": 2,
       "MapPosX": 1.3,
       "MapPosY": 0.0,
       "ZRotation": 45.0,
@@ -791,9 +791,9 @@ export const LEVEL_EASY_5_DATA: LevelData = {
       "YPosition": 0.0
     },
     {
-      "Id": "1_0_-1.3",
+      "Id": "2_0_-1.3",
       "NodeId": 0,
-      "TileMapId": 1,
+      "TileMapId": 2,
       "MapPosX": 0.0,
       "MapPosY": -1.3,
       "ZRotation": 45.0,
@@ -801,9 +801,9 @@ export const LEVEL_EASY_5_DATA: LevelData = {
       "YPosition": 0.0
     },
     {
-      "Id": "1_-1.3_0",
+      "Id": "2_-1.3_0",
       "NodeId": 0,
-      "TileMapId": 1,
+      "TileMapId": 2,
       "MapPosX": -1.3,
       "MapPosY": 0.0,
       "ZRotation": 45.0,
@@ -813,32 +813,17 @@ export const LEVEL_EASY_5_DATA: LevelData = {
   ],
   "BoxNodes": [
     {
-      "Id": "0_0_0",
-      "TypeId": 2,
-      "BoxColor": 4,
-      "BlockedNodes": [],
-      "InitCards": [
-        0,
-        0,
-        0,
-        4,
-        4,
-        4
-      ],
-      "IsHidden": false,
-      "LockedTurn": 0,
-      "IsCardsHidden": false
-    },
-    {
       "Id": "0_-0.6_0.6",
       "TypeId": 2,
       "BoxColor": 0,
-      "BlockedNodes": [],
+      "BlockedNodes": [
+        "1_0_0"
+      ],
       "InitCards": [
         0,
         0,
         0,
-        0,
+        4,
         4,
         4
       ],
@@ -850,6 +835,25 @@ export const LEVEL_EASY_5_DATA: LevelData = {
       "Id": "0_0.6_-0.6",
       "TypeId": 2,
       "BoxColor": 1,
+      "BlockedNodes": [
+        "1_0_0"
+      ],
+      "InitCards": [
+        0,
+        0,
+        0,
+        0,
+        4,
+        4
+      ],
+      "IsHidden": false,
+      "LockedTurn": 0,
+      "IsCardsHidden": false
+    },
+    {
+      "Id": "1_0_0",
+      "TypeId": 2,
+      "BoxColor": 4,
       "BlockedNodes": [],
       "InitCards": [
         0,
@@ -864,7 +868,7 @@ export const LEVEL_EASY_5_DATA: LevelData = {
       "IsCardsHidden": false
     },
     {
-      "Id": "1_0_1.3",
+      "Id": "2_0_1.3",
       "TypeId": 2,
       "BoxColor": 0,
       "BlockedNodes": [],
@@ -881,7 +885,7 @@ export const LEVEL_EASY_5_DATA: LevelData = {
       "IsCardsHidden": false
     },
     {
-      "Id": "1_1.3_0",
+      "Id": "2_1.3_0",
       "TypeId": 2,
       "BoxColor": 1,
       "BlockedNodes": [],
@@ -898,7 +902,7 @@ export const LEVEL_EASY_5_DATA: LevelData = {
       "IsCardsHidden": false
     },
     {
-      "Id": "1_0_-1.3",
+      "Id": "2_0_-1.3",
       "TypeId": 2,
       "BoxColor": 4,
       "BlockedNodes": [],
@@ -915,7 +919,7 @@ export const LEVEL_EASY_5_DATA: LevelData = {
       "IsCardsHidden": false
     },
     {
-      "Id": "1_-1.3_0",
+      "Id": "2_-1.3_0",
       "TypeId": 2,
       "BoxColor": 0,
       "BlockedNodes": [],
@@ -4607,29 +4611,29 @@ export const LEVEL_MEDIUM_10_DATA: LevelData = {
       "YPosition": 0.0
     },
     {
-      "Id": "1_-0.7_0",
+      "Id": "1_-0.9_0",
       "NodeId": 0,
       "TileMapId": 1,
-      "MapPosX": -0.7,
+      "MapPosX": -0.9,
       "MapPosY": 0.0,
       "ZRotation": 0.0,
       "XPosition": 0.0,
       "YPosition": 0.0
     },
     {
-      "Id": "1_0.7_0",
+      "Id": "1_0.9_0",
       "NodeId": 0,
       "TileMapId": 1,
-      "MapPosX": 0.7,
+      "MapPosX": 0.9,
       "MapPosY": 0.0,
       "ZRotation": 0.0,
       "XPosition": 0.0,
       "YPosition": 0.0
     },
     {
-      "Id": "1_0_0",
+      "Id": "2_0_0",
       "NodeId": 0,
-      "TileMapId": 1,
+      "TileMapId": 2,
       "MapPosX": 0.0,
       "MapPosY": 0.0,
       "ZRotation": 0.0,
@@ -4637,41 +4641,41 @@ export const LEVEL_MEDIUM_10_DATA: LevelData = {
       "YPosition": 0.0
     },
     {
-      "Id": "2_-1.1_1.1",
+      "Id": "2_-1.3_1.3",
       "NodeId": 0,
       "TileMapId": 2,
-      "MapPosX": -1.1,
-      "MapPosY": 1.1,
+      "MapPosX": -1.3,
+      "MapPosY": 1.3,
       "ZRotation": 45.0,
       "XPosition": 0.0,
       "YPosition": 0.0
     },
     {
-      "Id": "2_1.1_1.1",
+      "Id": "2_1.3_1.3",
       "NodeId": 0,
       "TileMapId": 2,
-      "MapPosX": 1.1,
-      "MapPosY": 1.1,
+      "MapPosX": 1.3,
+      "MapPosY": 1.3,
       "ZRotation": 315.0,
       "XPosition": 0.0,
       "YPosition": 0.0
     },
     {
-      "Id": "2_-1.1_-1.1",
+      "Id": "2_-1.3_-1.3",
       "NodeId": 0,
       "TileMapId": 2,
-      "MapPosX": -1.1,
-      "MapPosY": -1.1,
+      "MapPosX": -1.3,
+      "MapPosY": -1.3,
       "ZRotation": 135.0,
       "XPosition": 0.0,
       "YPosition": 0.0
     },
     {
-      "Id": "2_1.1_-1.1",
+      "Id": "2_1.3_-1.3",
       "NodeId": 0,
       "TileMapId": 2,
-      "MapPosX": 1.1,
-      "MapPosY": -1.1,
+      "MapPosX": 1.3,
+      "MapPosY": -1.3,
       "ZRotation": 225.0,
       "XPosition": 0.0,
       "YPosition": 0.0
@@ -4773,7 +4777,7 @@ export const LEVEL_MEDIUM_10_DATA: LevelData = {
       "IsCardsHidden": false
     },
     {
-      "Id": "1_-0.7_0",
+      "Id": "1_-0.9_0",
       "TypeId": 2,
       "BoxColor": 0,
       "BlockedNodes": [],
@@ -4790,7 +4794,7 @@ export const LEVEL_MEDIUM_10_DATA: LevelData = {
       "IsCardsHidden": false
     },
     {
-      "Id": "1_0.7_0",
+      "Id": "1_0.9_0",
       "TypeId": 2,
       "BoxColor": 1,
       "BlockedNodes": [],
@@ -4807,7 +4811,7 @@ export const LEVEL_MEDIUM_10_DATA: LevelData = {
       "IsCardsHidden": false
     },
     {
-      "Id": "1_0_0",
+      "Id": "2_0_0",
       "TypeId": 2,
       "BoxColor": 2,
       "BlockedNodes": [],
@@ -4824,7 +4828,7 @@ export const LEVEL_MEDIUM_10_DATA: LevelData = {
       "IsCardsHidden": false
     },
     {
-      "Id": "2_-1.1_1.1",
+      "Id": "2_-1.3_1.3",
       "TypeId": 2,
       "BoxColor": 3,
       "BlockedNodes": [
@@ -4843,7 +4847,7 @@ export const LEVEL_MEDIUM_10_DATA: LevelData = {
       "IsCardsHidden": false
     },
     {
-      "Id": "2_1.1_1.1",
+      "Id": "2_1.3_1.3",
       "TypeId": 2,
       "BoxColor": 4,
       "BlockedNodes": [
@@ -4862,7 +4866,7 @@ export const LEVEL_MEDIUM_10_DATA: LevelData = {
       "IsCardsHidden": false
     },
     {
-      "Id": "2_-1.1_-1.1",
+      "Id": "2_-1.3_-1.3",
       "TypeId": 2,
       "BoxColor": 0,
       "BlockedNodes": [
@@ -4881,7 +4885,7 @@ export const LEVEL_MEDIUM_10_DATA: LevelData = {
       "IsCardsHidden": false
     },
     {
-      "Id": "2_1.1_-1.1",
+      "Id": "2_1.3_-1.3",
       "TypeId": 2,
       "BoxColor": 1,
       "BlockedNodes": [
@@ -5000,7 +5004,7 @@ export const LEVEL_MEDIUM_10_DATA: LevelData = {
     {
       "Id": "0_-1.3_0",
       "BlockedNodes": [
-        "1_-0.7_0"
+        "1_-0.9_0"
       ],
       "SpawnBoxes": [
         {
@@ -5056,7 +5060,7 @@ export const LEVEL_MEDIUM_10_DATA: LevelData = {
     {
       "Id": "0_1.3_0",
       "BlockedNodes": [
-        "1_0.7_0"
+        "1_0.9_0"
       ],
       "SpawnBoxes": [
         {

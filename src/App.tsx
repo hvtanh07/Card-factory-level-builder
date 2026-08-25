@@ -7,7 +7,7 @@ import {
   parseMultipleFiles, 
   exportAllLevelsAsZip 
 } from './utils/fileParser';
-import { calculateAutoBlockers } from './utils/autoBlocker';
+import { calculateAutoBlockers, calculateAutoBlockersResult } from './utils/autoBlocker';
 import { validateLevel, balanceLevelCardDeck } from './utils/levelValidator';
 import { Navbar } from './components/Header/Navbar';
 import { StatsBar } from './components/Header/StatsBar';
@@ -160,7 +160,7 @@ export function App() {
 
   // Auto-Calculate Blockers
   const handleAutoCalculateBlockers = () => {
-    const updatedBoxes = calculateAutoBlockers(levelData);
+    const { updatedBoxes, updatedSpawners, sameLayerConflicts } = calculateAutoBlockersResult(levelData);
     let changeCount = 0;
     for (let i = 0; i < updatedBoxes.length; i++) {
       const oldBox = levelData.BoxNodes[i];
@@ -169,11 +169,24 @@ export function App() {
         changeCount++;
       }
     }
+    for (let i = 0; i < updatedSpawners.length; i++) {
+      const oldSp = (levelData.SpawnerNodes || [])[i];
+      const newSp = updatedSpawners[i];
+      if (oldSp && JSON.stringify(oldSp.BlockedNodes) !== JSON.stringify(newSp.BlockedNodes)) {
+        changeCount++;
+      }
+    }
     setLevelData(prev => ({
       ...prev,
       BoxNodes: updatedBoxes,
+      SpawnerNodes: updatedSpawners,
     }));
-    showToast(`Auto-blockers computed! Updated dependencies for ${changeCount} boxes.`);
+
+    if (sameLayerConflicts.length > 0) {
+      showToast(`Computed blockers (${changeCount} updated). ⚠️ Warning: ${sameLayerConflicts.length} pairs overlap on the same layer!`);
+    } else {
+      showToast(`Auto-blockers computed! Updated dependencies for ${changeCount} nodes.`);
+    }
   };
 
   // Auto-Balance Card Deck
