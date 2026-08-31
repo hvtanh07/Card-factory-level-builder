@@ -60,10 +60,10 @@ export function calculateAutoBlockersResult(
 
     const blocked: string[] = [];
 
-    // Check against all nodes in LOWER layers (strictly higher TileMapId)
+    // Check against all nodes in LOWER layers (strictly lower TileMapId)
     for (const otherBbox of boundingBoxes) {
       if (otherBbox.id === boxNode.Id) continue;
-      if (otherBbox.tileMapId <= myBbox.tileMapId) continue; // Upper layers block lower layers only
+      if (otherBbox.tileMapId >= myBbox.tileMapId) continue; // Higher layer (higher TileMapId) blocks lower layer (lower TileMapId) only
 
       // Check distance or SAT intersection
       const centerDist = distance(myBbox.center, otherBbox.center);
@@ -97,7 +97,7 @@ export function calculateAutoBlockersResult(
 
     for (const otherBbox of boundingBoxes) {
       if (otherBbox.id === spawnerNode.Id) continue;
-      if (otherBbox.tileMapId <= myBbox.tileMapId) continue;
+      if (otherBbox.tileMapId >= myBbox.tileMapId) continue; // Higher layer blocks lower layer only
 
       const centerDist = distance(myBbox.center, otherBbox.center);
       const approxRadius = (Math.max(myBbox.width, myBbox.height) + Math.max(otherBbox.width, otherBbox.height)) / 2;

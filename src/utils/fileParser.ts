@@ -35,17 +35,28 @@ export function parseLevelData(rawInput: string | ArrayBuffer | Uint8Array): Lev
   }
 
   const levelData: LevelData = {
+    Id: parsed.Id ?? 1,
+    MaxCardsOnBelt: Number(parsed.MaxCardsOnBelt ?? 0),
     BoardNodes: Array.isArray(parsed.BoardNodes)
-      ? parsed.BoardNodes.map((n: any, idx: number): BoardNode => ({
-          Id: String(n.Id ?? `node_${idx}`),
-          NodeId: Number(n.NodeId ?? 0),
-          TileMapId: Number(n.TileMapId ?? 0),
-          MapPosX: Number(n.MapPosX ?? 0),
-          MapPosY: Number(n.MapPosY ?? 0),
-          ZRotation: Number(n.ZRotation ?? 0),
-          XPosition: Number(n.XPosition ?? 0),
-          YPosition: Number(n.YPosition ?? 0),
-        }))
+      ? parsed.BoardNodes.map((n: any, idx: number): BoardNode => {
+          const layerId = Number(n.LayerId ?? n.TileMapId ?? 0);
+          const yRot = Number(n.YRotation ?? n.ZRotation ?? 0);
+          const xPos = Number(n.XPosition ?? ((n.MapPosX ?? 0) + (n.XPosition ?? 0)));
+          const zPos = Number(n.ZPosition ?? ((n.MapPosY ?? 0) + (n.YPosition ?? 0)));
+          return {
+            Id: String(n.Id ?? `node_${idx}`),
+            NodeId: Number(n.NodeId ?? 1),
+            LayerId: layerId,
+            YRotation: yRot,
+            XPosition: xPos,
+            ZPosition: zPos,
+            TileMapId: layerId,
+            ZRotation: yRot,
+            MapPosX: Math.floor(xPos),
+            MapPosY: Math.floor(zPos),
+            YPosition: zPos - Math.floor(zPos),
+          };
+        })
       : [],
     BoxNodes: Array.isArray(parsed.BoxNodes)
       ? parsed.BoxNodes.map((b: any, idx: number): BoxNode => ({
@@ -88,15 +99,15 @@ export function parseLevelData(rawInput: string | ArrayBuffer | Uint8Array): Lev
 
 export function levelDataToJson(data: LevelData, pretty = true): string {
   const output = {
+    Id: data.Id ?? 1,
+    MaxCardsOnBelt: data.MaxCardsOnBelt ?? 0,
     BoardNodes: data.BoardNodes.map(b => ({
       Id: b.Id,
       NodeId: b.NodeId,
-      TileMapId: b.TileMapId,
-      MapPosX: b.MapPosX,
-      MapPosY: b.MapPosY,
-      ZRotation: b.ZRotation,
-      XPosition: b.XPosition,
-      YPosition: b.YPosition,
+      LayerId: b.LayerId ?? b.TileMapId ?? 0,
+      YRotation: b.YRotation ?? b.ZRotation ?? 0,
+      XPosition: b.XPosition !== undefined && b.MapPosX === undefined ? b.XPosition : Number(((b.MapPosX ?? 0) + (b.XPosition ?? 0)).toFixed(3)),
+      ZPosition: b.ZPosition !== undefined && b.MapPosY === undefined ? b.ZPosition : Number(((b.MapPosY ?? 0) + (b.YPosition ?? (b.ZPosition ?? 0))).toFixed(3)),
     })),
     BoxNodes: data.BoxNodes.map(b => ({
       Id: b.Id,

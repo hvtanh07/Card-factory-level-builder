@@ -1,12 +1,16 @@
 export interface BoardNode {
   Id: string;
   NodeId: number;
-  TileMapId: number;
-  MapPosX: number;
-  MapPosY: number;
-  ZRotation: number;
+  LayerId: number;
+  YRotation: number;
   XPosition: number;
-  YPosition: number;
+  ZPosition: number;
+  // Optional backwards compatibility fields
+  TileMapId?: number;
+  MapPosX?: number;
+  MapPosY?: number;
+  ZRotation?: number;
+  YPosition?: number;
 }
 
 export interface BoxNode {
@@ -38,6 +42,8 @@ export interface SpawnerNode {
 }
 
 export interface LevelData {
+  Id?: number | string;
+  MaxCardsOnBelt?: number;
   BoardNodes: BoardNode[];
   BoxNodes: BoxNode[];
   SpawnerNodes: SpawnerNode[];

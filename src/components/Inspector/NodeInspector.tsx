@@ -238,8 +238,8 @@ export const NodeInspector: React.FC<NodeInspectorProps> = ({
             </div>
           </div>
 
-          {/* Extra Flags: LockedTurn & IsCardsHidden */}
-          <div className="grid grid-cols-2 gap-2 pt-1 border-t border-slate-800">
+          {/* Extra Flags: LockedTurn, IsHidden, IsCardsHidden */}
+          <div className="grid grid-cols-3 gap-2 pt-1 border-t border-slate-800">
             <div>
               <span className="text-[11px] text-slate-400 mb-1 block">Locked Turn</span>
               <input
@@ -254,16 +254,33 @@ export const NodeInspector: React.FC<NodeInspectorProps> = ({
               />
             </div>
             <div>
+              <span className="text-[11px] text-slate-400 mb-1 block">Mystery Box</span>
+              <button
+                onClick={() => {
+                  if (boxNode) onUpdateBoxNode({ ...boxNode, IsHidden: !boxNode.IsHidden });
+                }}
+                className={`w-full py-1 px-1.5 rounded-lg text-[11px] font-medium border flex items-center justify-center gap-1 transition ${
+                  currentBox.IsHidden
+                    ? 'bg-purple-500/20 text-purple-300 border-purple-500/40 font-bold'
+                    : 'bg-slate-900 text-slate-400 border-slate-700 hover:text-slate-300'
+                }`}
+                title="Hides box color until unblocked"
+              >
+                {currentBox.IsHidden ? 'Mystery (?)' : 'Visible'}
+              </button>
+            </div>
+            <div>
               <span className="text-[11px] text-slate-400 mb-1 block">Cards Hidden</span>
               <button
                 onClick={() => {
                   if (boxNode) onUpdateBoxNode({ ...boxNode, IsCardsHidden: !boxNode.IsCardsHidden });
                 }}
-                className={`w-full py-1 px-2 rounded-lg text-xs font-medium border flex items-center justify-center gap-1.5 transition ${
+                className={`w-full py-1 px-1.5 rounded-lg text-[11px] font-medium border flex items-center justify-center gap-1 transition ${
                   currentBox.IsCardsHidden
-                    ? 'bg-purple-500/20 text-purple-300 border-purple-500/40'
+                    ? 'bg-slate-700/50 text-slate-200 border-slate-500 font-bold'
                     : 'bg-slate-900 text-slate-400 border-slate-700 hover:text-slate-300'
                 }`}
+                title="Hides cards color until dispatched to conveyor"
               >
                 {currentBox.IsCardsHidden ? 'Hidden (?)' : 'Face Up'}
               </button>
@@ -275,96 +292,105 @@ export const NodeInspector: React.FC<NodeInspectorProps> = ({
         <div className="space-y-3 bg-slate-850/50 p-3 rounded-xl border border-slate-800">
           <label className="text-xs font-semibold uppercase tracking-wider text-slate-400 flex items-center gap-1.5">
             <Compass size={13} className="text-sky-400" />
-            Grid Coordinates & Transform
+            Position & Transform (Layer 0 = Base)
           </label>
 
-          {/* Layer / TileMapId */}
+          {/* Layer / LayerId */}
           <div className="flex items-center justify-between">
-            <span className="text-xs text-slate-400">TileMap Layer ID</span>
+            <span className="text-xs text-slate-400">Layer ID</span>
             <div className="flex items-center gap-1">
-              {[0, 1, 2, 3, 4].map(layerId => (
-                <button
-                  key={`layer-${layerId}`}
-                  onClick={() => onUpdateBoardNode({ ...boardNode, TileMapId: layerId })}
-                  className={`w-7 h-6 rounded text-xs font-bold font-mono transition ${
-                    boardNode.TileMapId === layerId
-                      ? 'bg-sky-500 text-white shadow'
-                      : 'bg-slate-800 text-slate-400 hover:bg-slate-700 hover:text-slate-200'
-                  }`}
-                >
-                  {layerId}
-                </button>
-              ))}
+              {[0, 1, 2, 3, 4].map(layerId => {
+                const currentLayer = boardNode.LayerId ?? boardNode.TileMapId ?? 0;
+                return (
+                  <button
+                    key={`layer-${layerId}`}
+                    onClick={() => onUpdateBoardNode({
+                      ...boardNode,
+                      LayerId: layerId,
+                      TileMapId: layerId
+                    })}
+                    className={`w-7 h-6 rounded text-xs font-bold font-mono transition ${
+                      currentLayer === layerId
+                        ? 'bg-sky-500 text-white shadow'
+                        : 'bg-slate-800 text-slate-400 hover:bg-slate-700 hover:text-slate-200'
+                    }`}
+                  >
+                    {layerId}
+                  </button>
+                );
+              })}
             </div>
           </div>
 
-          {/* Grid Position (MapPosX, MapPosY) */}
+          {/* Position (XPosition, ZPosition) */}
           <div className="grid grid-cols-2 gap-2">
             <div>
-              <span className="text-[11px] text-slate-400 mb-1 block">MapPosX (Grid X)</span>
+              <span className="text-[11px] text-slate-400 mb-1 block">XPosition</span>
               <input
                 type="number"
-                value={boardNode.MapPosX}
-                onChange={(e) => onUpdateBoardNode({ ...boardNode, MapPosX: Number(e.target.value) })}
+                step="0.1"
+                value={boardNode.XPosition !== undefined && boardNode.MapPosX === undefined ? boardNode.XPosition : Number(((boardNode.MapPosX ?? 0) + (boardNode.XPosition ?? 0)).toFixed(3))}
+                onChange={(e) => {
+                  const val = parseFloat(e.target.value) || 0;
+                  onUpdateBoardNode({
+                    ...boardNode,
+                    XPosition: val,
+                    MapPosX: Math.floor(val),
+                  });
+                }}
                 className="w-full bg-slate-900 border border-slate-700 rounded-lg px-2.5 py-1.5 text-xs text-slate-200 font-mono focus:border-sky-500 focus:outline-none"
               />
             </div>
             <div>
-              <span className="text-[11px] text-slate-400 mb-1 block">MapPosY (Grid Y)</span>
+              <span className="text-[11px] text-slate-400 mb-1 block">ZPosition</span>
               <input
                 type="number"
-                value={boardNode.MapPosY}
-                onChange={(e) => onUpdateBoardNode({ ...boardNode, MapPosY: Number(e.target.value) })}
+                step="0.1"
+                value={boardNode.ZPosition !== undefined && boardNode.MapPosY === undefined ? boardNode.ZPosition : Number(((boardNode.MapPosY ?? 0) + (boardNode.YPosition ?? (boardNode.ZPosition ?? 0))).toFixed(3))}
+                onChange={(e) => {
+                  const val = parseFloat(e.target.value) || 0;
+                  onUpdateBoardNode({
+                    ...boardNode,
+                    ZPosition: val,
+                    YPosition: val - Math.floor(val),
+                    MapPosY: Math.floor(val),
+                  });
+                }}
                 className="w-full bg-slate-900 border border-slate-700 rounded-lg px-2.5 py-1.5 text-xs text-slate-200 font-mono focus:border-sky-500 focus:outline-none"
               />
             </div>
           </div>
 
-          {/* Subpixel Offset (XPosition, YPosition) */}
-          <div className="grid grid-cols-2 gap-2">
-            <div>
-              <span className="text-[11px] text-slate-400 mb-1 block">XPosition (Offset)</span>
-              <input
-                type="number"
-                step="0.01"
-                value={boardNode.XPosition}
-                onChange={(e) => onUpdateBoardNode({ ...boardNode, XPosition: parseFloat(e.target.value) || 0 })}
-                className="w-full bg-slate-900 border border-slate-700 rounded-lg px-2.5 py-1.5 text-xs text-slate-200 font-mono focus:border-sky-500 focus:outline-none"
-              />
-            </div>
-            <div>
-              <span className="text-[11px] text-slate-400 mb-1 block">YPosition (Offset)</span>
-              <input
-                type="number"
-                step="0.01"
-                value={boardNode.YPosition}
-                onChange={(e) => onUpdateBoardNode({ ...boardNode, YPosition: parseFloat(e.target.value) || 0 })}
-                className="w-full bg-slate-900 border border-slate-700 rounded-lg px-2.5 py-1.5 text-xs text-slate-200 font-mono focus:border-sky-500 focus:outline-none"
-              />
-            </div>
-          </div>
-
-          {/* ZRotation */}
+          {/* YRotation */}
           <div className="space-y-1.5">
             <div className="flex items-center justify-between">
-              <span className="text-[11px] text-slate-400">ZRotation (Degrees)</span>
-              <span className="text-xs font-mono font-bold text-sky-400">{boardNode.ZRotation}°</span>
+              <span className="text-[11px] text-slate-400">YRotation (Degrees)</span>
+              <span className="text-xs font-mono font-bold text-sky-400">
+                {boardNode.YRotation ?? boardNode.ZRotation ?? 0}°
+              </span>
             </div>
 
             <div className="grid grid-cols-4 gap-1">
-              {[0, 45, 90, 135, 180, 225, 270, 315].map(deg => (
-                <button
-                  key={`deg-${deg}`}
-                  onClick={() => handleQuickAngle(deg)}
-                  className={`py-1 text-[10px] font-mono rounded border transition ${
-                    Math.abs((boardNode.ZRotation % 360) - deg) < 1
-                      ? 'bg-sky-500/20 text-sky-300 border-sky-500/50 font-bold'
-                      : 'bg-slate-900 text-slate-400 border-slate-800 hover:border-slate-700 hover:text-slate-300'
-                  }`}
-                >
-                  {deg}°
-                </button>
-              ))}
+              {[0, 45, 90, 135, 180, 225, 270, 315].map(deg => {
+                const currentRot = boardNode.YRotation ?? boardNode.ZRotation ?? 0;
+                return (
+                  <button
+                    key={`deg-${deg}`}
+                    onClick={() => onUpdateBoardNode({
+                      ...boardNode,
+                      YRotation: deg,
+                      ZRotation: deg
+                    })}
+                    className={`py-1 text-[10px] font-mono rounded border transition ${
+                      Math.abs((currentRot % 360) - deg) < 1
+                        ? 'bg-sky-500/20 text-sky-300 border-sky-500/50 font-bold'
+                        : 'bg-slate-900 text-slate-400 border-slate-800 hover:border-slate-700 hover:text-slate-300'
+                    }`}
+                  >
+                    {deg}°
+                  </button>
+                );
+              })}
             </div>
 
             <input
@@ -372,8 +398,15 @@ export const NodeInspector: React.FC<NodeInspectorProps> = ({
               min="0"
               max="360"
               step="1"
-              value={boardNode.ZRotation}
-              onChange={(e) => onUpdateBoardNode({ ...boardNode, ZRotation: Number(e.target.value) })}
+              value={boardNode.YRotation ?? boardNode.ZRotation ?? 0}
+              onChange={(e) => {
+                const val = Number(e.target.value);
+                onUpdateBoardNode({
+                  ...boardNode,
+                  YRotation: val,
+                  ZRotation: val
+                });
+              }}
               className="w-full h-1.5 bg-slate-800 rounded-lg appearance-none cursor-pointer accent-sky-500"
             />
           </div>
@@ -463,7 +496,9 @@ export const NodeInspector: React.FC<NodeInspectorProps> = ({
             {levelData.BoardNodes.filter(bn => bn.Id !== boardNode.Id).map(otherNode => {
               const otherBox = levelData.BoxNodes.find(b => b.Id === otherNode.Id);
               const isBlocked = (currentBox.BlockedNodes || []).includes(otherNode.Id);
-              const isLowerLayer = otherNode.TileMapId > boardNode.TileMapId;
+              const otherLayer = otherNode.LayerId ?? otherNode.TileMapId ?? 0;
+              const myLayer = boardNode.LayerId ?? boardNode.TileMapId ?? 0;
+              const isLowerLayer = otherLayer < myLayer;
 
               return (
                 <button
@@ -477,7 +512,7 @@ export const NodeInspector: React.FC<NodeInspectorProps> = ({
                 >
                   <div className="flex items-center gap-1.5 text-xs font-mono">
                     <span className={`w-2 h-2 rounded-full ${isLowerLayer ? 'bg-emerald-400' : 'bg-slate-600'}`} />
-                    <span>L{otherNode.TileMapId}:{otherNode.Id}</span>
+                    <span>L{otherLayer}:{otherNode.Id}</span>
                   </div>
                   <div className="flex items-center gap-1.5">
                     {otherBox && (

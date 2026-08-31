@@ -122,8 +122,12 @@ export const LevelCanvas: React.FC<LevelCanvasProps> = ({
 
     let minX = Infinity, maxX = -Infinity, minY = Infinity, maxY = -Infinity;
     for (const bn of levelData.BoardNodes) {
-      const ux = bn.MapPosX + bn.XPosition;
-      const uy = bn.MapPosY + bn.YPosition;
+      const ux = bn.XPosition !== undefined && bn.MapPosX === undefined
+        ? bn.XPosition
+        : (bn.MapPosX ?? 0) + (bn.XPosition ?? 0);
+      const uy = bn.ZPosition !== undefined && bn.MapPosY === undefined
+        ? bn.ZPosition
+        : (bn.MapPosY ?? 0) + (bn.YPosition ?? (bn.ZPosition ?? 0));
       if (ux < minX) minX = ux;
       if (ux > maxX) maxX = ux;
       if (uy < minY) minY = uy;
@@ -185,13 +189,16 @@ export const LevelCanvas: React.FC<LevelCanvasProps> = ({
     const bn = boardMap.get(id);
     if (!bn) return;
 
+    const x = bn.XPosition !== undefined && bn.MapPosX === undefined ? bn.XPosition : (bn.MapPosX ?? 0) + (bn.XPosition ?? 0);
+    const z = bn.ZPosition !== undefined && bn.MapPosY === undefined ? bn.ZPosition : (bn.MapPosY ?? 0) + (bn.YPosition ?? (bn.ZPosition ?? 0));
+
     setDraggingNodeId(id);
     setDragStartMouse({ x: e.clientX, y: e.clientY });
     setDragStartNodePos({
-      mapPosX: bn.MapPosX,
-      mapPosY: bn.MapPosY,
-      xPos: bn.XPosition,
-      yPos: bn.YPosition,
+      mapPosX: Math.floor(x),
+      mapPosY: Math.floor(z),
+      xPos: Number((x - Math.floor(x)).toFixed(3)),
+      yPos: Number((z - Math.floor(z)).toFixed(3)),
     });
   };
 
@@ -200,7 +207,7 @@ export const LevelCanvas: React.FC<LevelCanvasProps> = ({
     const bn = boardMap.get(id);
     if (!bn) return;
     setRotatingNodeId(id);
-    setRotateStartAngle(bn.ZRotation);
+    setRotateStartAngle(bn.YRotation ?? bn.ZRotation ?? 0);
   };
 
   const handleMouseMove = (e: React.MouseEvent) => {
@@ -225,9 +232,10 @@ export const LevelCanvas: React.FC<LevelCanvasProps> = ({
         const mapPosY = Math.round(newTotalY);
         onUpdateBoardNode({
           ...bn,
+          XPosition: mapPosX,
+          ZPosition: mapPosY,
           MapPosX: mapPosX,
           MapPosY: mapPosY,
-          XPosition: 0,
           YPosition: 0,
         });
       } else {
@@ -237,9 +245,10 @@ export const LevelCanvas: React.FC<LevelCanvasProps> = ({
         const yPos = Number((newTotalY - mapPosY).toFixed(3));
         onUpdateBoardNode({
           ...bn,
+          XPosition: Number(newTotalX.toFixed(3)),
+          ZPosition: Number(newTotalY.toFixed(3)),
           MapPosX: mapPosX,
           MapPosY: mapPosY,
-          XPosition: xPos,
           YPosition: yPos,
         });
       }
@@ -265,6 +274,7 @@ export const LevelCanvas: React.FC<LevelCanvasProps> = ({
 
       onUpdateBoardNode({
         ...bn,
+        YRotation: Number(unityAngle.toFixed(1)),
         ZRotation: Number(unityAngle.toFixed(1)),
       });
     }
@@ -276,9 +286,9 @@ export const LevelCanvas: React.FC<LevelCanvasProps> = ({
     setRotatingNodeId(null);
   };
 
-  // Sort nodes by TileMapId descending
+  // Sort nodes by LayerId ascending (Layer 0 at base, higher layers on top)
   const sortedBoardNodes = useMemo(() => {
-    return [...levelData.BoardNodes].sort((a, b) => b.TileMapId - a.TileMapId);
+    return [...levelData.BoardNodes].sort((a, b) => (a.LayerId ?? a.TileMapId ?? 0) - (b.LayerId ?? b.TileMapId ?? 0));
   }, [levelData.BoardNodes]);
 
   const boxScaleMultiplier = realBoxSize ? viewport.zoom : 1.0;
@@ -305,8 +315,8 @@ export const LevelCanvas: React.FC<LevelCanvasProps> = ({
           showCoordinates={showCoordinates}
         />
 
-        {/* Board & Box Nodes Layer */}
-        <g id="nodes-layer">
+        {/* Board Boxes (Sorted by LayerId ascending so Layer 0 is at bottom, higher layers on top) */}
+        <g id="board-boxes">
           {sortedBoardNodes.map(bn => {
             const bx = boxMap.get(bn.Id) || {
               Id: bn.Id,
@@ -318,11 +328,12 @@ export const LevelCanvas: React.FC<LevelCanvasProps> = ({
             };
             const sn = spawnerMap.get(bn.Id);
 
-            const isVisible = visibleLayers.has(bn.TileMapId);
+            const layerId = bn.LayerId ?? bn.TileMapId ?? 0;
+            const isVisible = visibleLayers.has(layerId);
             if (!isVisible) return null;
 
             const isIsolated = isolatedLayer !== null;
-            const isTargetLayer = isolatedLayer === bn.TileMapId;
+            const isTargetLayer = isolatedLayer === layerId;
             const layerOpacity = isIsolated ? (isTargetLayer ? 1.0 : 0.2) : 1.0;
 
             const center = nodeCenters.get(bn.Id) || { x: 0, y: 0 };

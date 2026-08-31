@@ -10,6 +10,7 @@ export interface Point {
 
 export interface BoundingBox {
   id: string;
+  layerId: number;
   tileMapId: number;
   center: Point;
   width: number;
@@ -27,10 +28,14 @@ export function nodeToScreenPos(
   originY: number,
   gridUnit: number = DEFAULT_GRID_UNIT
 ): Point {
-  const unityX = node.MapPosX + node.XPosition;
-  const unityY = node.MapPosY + node.YPosition;
+  const unityX = node.XPosition !== undefined && node.MapPosX === undefined
+    ? node.XPosition
+    : (node.MapPosX ?? 0) + (node.XPosition ?? 0);
+  const unityY = node.ZPosition !== undefined && node.MapPosY === undefined
+    ? node.ZPosition
+    : (node.MapPosY ?? 0) + (node.YPosition ?? (node.ZPosition ?? 0));
 
-  // Unity: +X is right, +Y is up. Canvas: +X is right, +Y is down.
+  // Unity: +X is right, +Z is up (Canvas: +X is right, +Y is down).
   const screenX = originX + unityX * gridUnit;
   const screenY = originY - unityY * gridUnit;
 
@@ -91,8 +96,11 @@ export function getNodeBoundingBox(
   const halfW = boxType.width / 2;
   const halfH = boxType.height / 2;
 
-  // In SVG, clockwise angle is -ZRotation
-  const rad = (-boardNode.ZRotation * Math.PI) / 180;
+  const rot = boardNode.YRotation ?? boardNode.ZRotation ?? 0;
+  const layerId = boardNode.LayerId ?? boardNode.TileMapId ?? 0;
+
+  // In SVG, clockwise angle is -YRotation
+  const rad = (-rot * Math.PI) / 180;
   const cos = Math.cos(rad);
   const sin = Math.sin(rad);
 
@@ -110,11 +118,12 @@ export function getNodeBoundingBox(
 
   return {
     id: boardNode.Id,
-    tileMapId: boardNode.TileMapId,
+    layerId,
+    tileMapId: layerId,
     center,
     width: boxType.width,
     height: boxType.height,
-    rotationDeg: boardNode.ZRotation,
+    rotationDeg: rot,
     points,
   };
 }

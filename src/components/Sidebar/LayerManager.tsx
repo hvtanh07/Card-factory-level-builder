@@ -43,13 +43,14 @@ export const LayerManager: React.FC<LayerManagerProps> = ({
   // Group nodes by layer
   const layersMap = new Map<number, BoardNode[]>();
   for (const bn of levelData.BoardNodes) {
-    const list = layersMap.get(bn.TileMapId) || [];
+    const layerId = bn.LayerId ?? bn.TileMapId ?? 0;
+    const list = layersMap.get(layerId) || [];
     list.push(bn);
-    layersMap.set(bn.TileMapId, list);
+    layersMap.set(layerId, list);
   }
 
-  // Ensure default layers 0..3 are listed even if empty
-  const allLayerIds = Array.from(new Set([0, 1, 2, 3, ...layersMap.keys()])).sort((a, b) => a - b);
+  // Ensure default layers 0..3 are listed even if empty, sorted top-to-bottom (highest layer at top, Layer 0 Base at bottom)
+  const allLayerIds = Array.from(new Set([0, 1, 2, 3, ...layersMap.keys()])).sort((a, b) => b - a);
   const boxMap = new Map(levelData.BoxNodes.map(b => [b.Id, b]));
 
   const toggleExpand = (layerId: number) => {
@@ -105,6 +106,11 @@ export const LayerManager: React.FC<LayerManagerProps> = ({
                     <span className="text-xs font-bold text-slate-200">
                       Layer {layerId}
                     </span>
+                    {layerId === 0 && (
+                      <span className="text-[9px] text-emerald-400 bg-emerald-950/60 border border-emerald-500/30 px-1 rounded font-bold uppercase">
+                        Base
+                      </span>
+                    )}
                     <span className="text-[10px] text-slate-400 bg-slate-800 px-1.5 py-0.2 rounded font-mono">
                       {nodes.length}
                     </span>

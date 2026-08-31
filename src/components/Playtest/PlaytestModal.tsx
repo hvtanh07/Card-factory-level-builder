@@ -53,7 +53,6 @@ interface FlyingCard {
 }
 
 const MAX_BOX_SLOTS = 5;
-const MAX_CARD_SLOTS = 24;
 const BELT_SPEED = 185.0; // pixels per second
 const MIN_CARD_DISTANCE = 32.0; // Fixed separation distance to prevent overlap
 
@@ -389,14 +388,16 @@ export const PlaytestModal: React.FC<PlaytestModalProps> = ({ levelData, onClose
     const boxType = getBoxType(activeBox.TypeId);
     const isTray = activeBox.BoxColor === 5 || boxType.isTray;
 
+    const maxBeltCards = levelData.MaxCardsOnBelt && levelData.MaxCardsOnBelt > 0 ? levelData.MaxCardsOnBelt : Infinity;
+
     // === TRAY LOGIC ===
     // Trays store spare cards. When clicked:
     // 1. Only its cards are sent to the conveyor belt.
     // 2. The tray disappears immediately without occupying any of the 5 box slots!
     if (isTray) {
       const incomingCount = activeBox.InitCards.length;
-      if (conveyorCardsRef.current.length + incomingCount > MAX_CARD_SLOTS) {
-        showWarning(`Conveyor full! (Would result in ${conveyorCardsRef.current.length + incomingCount}/${MAX_CARD_SLOTS} cards). Match cards before sending tray.`);
+      if (maxBeltCards !== Infinity && conveyorCardsRef.current.length + incomingCount > maxBeltCards) {
+        showWarning(`Conveyor full! (Would result in ${conveyorCardsRef.current.length + incomingCount}/${maxBeltCards} cards). Match cards before sending tray.`);
         return;
       }
 
@@ -465,8 +466,8 @@ export const PlaytestModal: React.FC<PlaytestModalProps> = ({ levelData, onClose
     }
 
     const projectedBeltCards = conveyorCardsRef.current.length + unmatchedInBox.length - immediateAbsorbCount;
-    if (projectedBeltCards > MAX_CARD_SLOTS) {
-      showWarning(`Conveyor full! (Would result in ${projectedBeltCards}/${MAX_CARD_SLOTS} cards). Match cards before sending more.`);
+    if (maxBeltCards !== Infinity && projectedBeltCards > maxBeltCards) {
+      showWarning(`Conveyor full! (Would result in ${projectedBeltCards}/${maxBeltCards} cards). Match cards before sending more.`);
       return;
     }
 
@@ -608,7 +609,7 @@ export const PlaytestModal: React.FC<PlaytestModalProps> = ({ levelData, onClose
             {/* Header info & score */}
             <div className="w-full max-w-4xl flex items-center justify-between px-2 text-[11px] font-bold text-white uppercase tracking-wider">
               <span className="drop-shadow">
-                Docked Boxes ({boxSlots.filter(b => b !== null && !b.isClearing).length}/5) • Conveyor Cards ({currentConveyorCount}/24)
+                Docked Boxes ({boxSlots.filter(b => b !== null && !b.isClearing).length}/5) • Conveyor Cards ({currentConveyorCount}{levelData.MaxCardsOnBelt && levelData.MaxCardsOnBelt > 0 ? `/${levelData.MaxCardsOnBelt}` : ''})
               </span>
               <div className="bg-slate-950/80 border border-slate-700 px-3 py-1 rounded-xl text-xs font-mono text-sky-400 shadow">
                 Delivered: {deliveredCardsCount}/{totalCardsInLevel}
@@ -869,7 +870,7 @@ export const PlaytestModal: React.FC<PlaytestModalProps> = ({ levelData, onClose
               <svg className="w-[700px] h-[700px] pointer-events-auto" viewBox="-350 -350 700 700">
                 <g id="board-boxes-system">
                   {[...levelData.BoardNodes]
-                    .sort((a, b) => b.TileMapId - a.TileMapId)
+                    .sort((a, b) => (a.LayerId ?? a.TileMapId ?? 0) - (b.LayerId ?? b.TileMapId ?? 0))
                     .map(bn => {
                       if (clearedNodes.has(bn.Id)) return null;
 
@@ -885,14 +886,27 @@ export const PlaytestModal: React.FC<PlaytestModalProps> = ({ levelData, onClose
                       const blockers = liveBlockedByMap.get(bn.Id) || [];
                       const isBlocked = blockers.length > 0;
 
-                      const cx = (bn.MapPosX + bn.XPosition) * 74;
-                      const cy = -(bn.MapPosY + bn.YPosition) * 74;
-                      const svgAngle = (-bn.ZRotation + 360) % 360;
+                      // Mystery Box: color is hidden while blocked
+                      const isHidden = activeBox.IsHidden && isBlocked;
+                      const areCardsHidden = activeBox.IsCardsHidden;
+
+                      const unityX = bn.XPosition !== undefined && bn.MapPosX === undefined
+                        ? bn.XPosition
+                        : (bn.MapPosX ?? 0) + (bn.XPosition ?? 0);
+                      const unityZ = bn.ZPosition !== undefined && bn.MapPosY === undefined
+                        ? bn.ZPosition
+                        : (bn.MapPosY ?? 0) + (bn.YPosition ?? (bn.ZPosition ?? 0));
+
+                      const cx = unityX * 74;
+                      const cy = -unityZ * 74;
+                      const rot = bn.YRotation ?? bn.ZRotation ?? 0;
+                      const svgAngle = (-rot + 360) % 360;
 
                       const w = boxType.width;
                       const h = boxType.height;
                       const isTray = boxType.isTray || activeBox.BoxColor === 5;
-                      const layerElev = 4 - Math.min(bn.TileMapId, 4);
+                      const layerId = bn.LayerId ?? bn.TileMapId ?? 0;
+                      const layerElev = Math.min(Math.max(layerId, 0), 4);
                       const shadowY = layerElev * 3 + 3;
 
                       return (
@@ -956,6 +970,40 @@ export const PlaytestModal: React.FC<PlaytestModalProps> = ({ levelData, onClose
                                 fill="#cbd5e1"
                               />
                             </g>
+                          ) : isHidden ? (
+                            /* Hidden Mystery Box Body */
+                            <g>
+                              <rect
+                                x={-w / 2}
+                                y={-h / 2}
+                                width={w}
+                                height={h}
+                                rx={12}
+                                fill="#1e293b"
+                                stroke="#a855f7"
+                                strokeWidth={2}
+                                strokeDasharray="4,2"
+                              />
+                              <rect
+                                x={-w / 2 + 4}
+                                y={-h / 2 + 4}
+                                width={w - 8}
+                                height={h - 8}
+                                rx={8}
+                                fill="#334155"
+                                opacity={0.6}
+                              />
+                              <text
+                                x="0"
+                                y="7"
+                                textAnchor="middle"
+                                fill="#c084fc"
+                                fontSize="22"
+                                fontWeight="900"
+                              >
+                                ?
+                              </text>
+                            </g>
                           ) : (
                             <g>
                               <rect
@@ -980,8 +1028,8 @@ export const PlaytestModal: React.FC<PlaytestModalProps> = ({ levelData, onClose
                             </g>
                           )}
 
-                          {/* Cards Stack inside Box / Tray */}
-                          {activeBox.InitCards.map((cCol, cIdx) => {
+                          {/* Cards Stack inside Box / Tray (only if not full mystery box) */}
+                          {!isHidden && activeBox.InitCards.map((cCol, cIdx) => {
                             const spacing = (h - 16) / Math.max(activeBox.InitCards.length, 1);
                             const cardY = -h / 2 + 8 + cIdx * spacing;
                             const cardW = w - 12;
@@ -995,18 +1043,31 @@ export const PlaytestModal: React.FC<PlaytestModalProps> = ({ levelData, onClose
                                   width={cardW}
                                   height={Math.min(spacing - 2, 14)}
                                   rx={3}
-                                  fill={cColorDef.hex}
-                                  stroke={cColorDef.borderHex}
+                                  fill={areCardsHidden ? '#334155' : cColorDef.hex}
+                                  stroke={areCardsHidden ? '#64748b' : cColorDef.borderHex}
                                   strokeWidth={1}
                                 />
-                                <rect
-                                  x={-cardW / 2 + 2}
-                                  y={cardY + 1}
-                                  width={cardW - 4}
-                                  height={3}
-                                  rx={1.5}
-                                  fill="rgba(255, 255, 255, 0.4)"
-                                />
+                                {areCardsHidden ? (
+                                  <text
+                                    x="0"
+                                    y={cardY + Math.min(spacing - 2, 14) / 2 + 3}
+                                    textAnchor="middle"
+                                    fill="#94a3b8"
+                                    fontSize="8"
+                                    fontWeight="bold"
+                                  >
+                                    ?
+                                  </text>
+                                ) : (
+                                  <rect
+                                    x={-cardW / 2 + 2}
+                                    y={cardY + 1}
+                                    width={cardW - 4}
+                                    height={3}
+                                    rx={1.5}
+                                    fill="rgba(255, 255, 255, 0.4)"
+                                  />
+                                )}
                               </g>
                             );
                           })}

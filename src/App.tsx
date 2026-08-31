@@ -244,11 +244,14 @@ export function App() {
     const newBoardNode: BoardNode = {
       Id: newId,
       NodeId: 1,
+      LayerId: layerId,
       TileMapId: layerId,
-      MapPosX: 0,
-      MapPosY: index,
+      YRotation: 0,
       ZRotation: 0,
       XPosition: 0,
+      ZPosition: index,
+      MapPosX: 0,
+      MapPosY: index,
       YPosition: 0,
     };
 
@@ -259,6 +262,8 @@ export function App() {
       BlockedNodes: [],
       InitCards: [layerId % 6, layerId % 6, layerId % 6, layerId % 6],
       IsHidden: false,
+      LockedTurn: 0,
+      IsCardsHidden: false,
     };
 
     setLevelData(prev => ({
@@ -284,11 +289,14 @@ export function App() {
     const newBoardNode: BoardNode = {
       Id: newId,
       NodeId: typeId,
+      LayerId: targetLayer,
       TileMapId: targetLayer,
+      YRotation: rotation,
+      ZRotation: rotation,
+      XPosition: index,
+      ZPosition: 0,
       MapPosX: index,
       MapPosY: 0,
-      ZRotation: rotation,
-      XPosition: 0,
       YPosition: 0,
     };
 
@@ -299,6 +307,8 @@ export function App() {
       BlockedNodes: [],
       InitCards: [...cards],
       IsHidden: false,
+      LockedTurn: 0,
+      IsCardsHidden: false,
     };
 
     setLevelData(prev => ({
@@ -317,17 +327,30 @@ export function App() {
     const sourceBox = levelData.BoxNodes.find(b => b.Id === id);
     if (!sourceBoard || !sourceBox) return;
 
+    const layer = sourceBoard.LayerId ?? sourceBoard.TileMapId ?? 0;
+    const x = (sourceBoard.XPosition !== undefined && sourceBoard.MapPosX === undefined)
+      ? sourceBoard.XPosition
+      : ((sourceBoard.MapPosX ?? 0) + (sourceBoard.XPosition ?? 0));
+    const z = (sourceBoard.ZPosition !== undefined && sourceBoard.MapPosY === undefined)
+      ? sourceBoard.ZPosition
+      : ((sourceBoard.MapPosY ?? 0) + (sourceBoard.YPosition ?? (sourceBoard.ZPosition ?? 0)));
+
     let index = 1;
-    let newId = `${sourceBoard.TileMapId}_${sourceBoard.MapPosX + 1}_${sourceBoard.MapPosY}`;
+    let newId = `${layer}_${Math.round(x + 1)}_${Math.round(z)}`;
     while (levelData.BoardNodes.some(n => n.Id === newId)) {
       index++;
-      newId = `${sourceBoard.TileMapId}_${sourceBoard.MapPosX + index}_${sourceBoard.MapPosY}`;
+      newId = `${layer}_${Math.round(x + index)}_${Math.round(z)}`;
     }
 
     const newBoardNode: BoardNode = {
       ...sourceBoard,
       Id: newId,
-      MapPosX: sourceBoard.MapPosX + 1,
+      LayerId: layer,
+      TileMapId: layer,
+      XPosition: x + 1,
+      ZPosition: z,
+      MapPosX: Math.floor(x + 1),
+      MapPosY: Math.floor(z),
     };
 
     const newBoxNode: BoxNode = {

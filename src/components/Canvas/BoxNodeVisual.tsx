@@ -44,7 +44,8 @@ export const BoxNodeVisual: React.FC<BoxNodeVisualProps> = ({
 
   const boxType = getBoxType(activeBox.TypeId);
   const boxColorDef = getColor(activeBox.BoxColor);
-  const svgAngle = (-boardNode.ZRotation + 360) % 360;
+  const rot = boardNode.YRotation ?? boardNode.ZRotation ?? 0;
+  const svgAngle = (-rot + 360) % 360;
 
   const w = boxType.width * scaleMultiplier;
   const h = boxType.height * scaleMultiplier;
@@ -58,8 +59,8 @@ export const BoxNodeVisual: React.FC<BoxNodeVisualProps> = ({
   const isCardsHidden = activeBox.IsCardsHidden;
   const lockedTurn = activeBox.LockedTurn || 0;
 
-  // Elevation shadow based on layer
-  const layerElevation = 4 - Math.min(boardNode.TileMapId, 4);
+  // Elevation shadow based on layer (higher LayerId has higher elevation)
+  const layerElevation = Math.min(Math.max(boardNode.LayerId ?? boardNode.TileMapId ?? 0, 0), 4);
   const shadowOffsetY = (layerElevation * 3 + 2) * scaleMultiplier;
 
   // Handle color calculations
@@ -254,6 +255,26 @@ export const BoxNodeVisual: React.FC<BoxNodeVisualProps> = ({
         </g>
       )}
 
+      {/* IsHidden Mystery Box Badge */}
+      {activeBox.IsHidden && (
+        <g transform={`translate(${-halfW + 12 * scaleMultiplier}, ${halfH - 8 * scaleMultiplier})`}>
+          <rect x="-10" y="-7" width="20" height="14" rx="4" fill="#a855f7" stroke="#ffffff" strokeWidth="1.2" />
+          <text x="0" y="3.5" textAnchor="middle" fill="#ffffff" fontSize="9" fontWeight="900">
+            ?
+          </text>
+        </g>
+      )}
+
+      {/* IsCardsHidden Badge */}
+      {activeBox.IsCardsHidden && (
+        <g transform={`translate(${halfW - 30 * scaleMultiplier}, ${halfH - 8 * scaleMultiplier})`}>
+          <rect x="-10" y="-7" width="20" height="14" rx="4" fill="#475569" stroke="#94a3b8" strokeWidth="1.2" />
+          <text x="0" y="3" textAnchor="middle" fill="#f8fafc" fontSize="8" fontWeight="bold">
+            🔒
+          </text>
+        </g>
+      )}
+
       {/* Lock Turn Badge */}
       {lockedTurn > 0 && (
         <g transform={`translate(${halfW - 10 * scaleMultiplier}, ${halfH - 8 * scaleMultiplier})`}>
@@ -338,7 +359,7 @@ export const BoxNodeVisual: React.FC<BoxNodeVisualProps> = ({
             fontWeight="bold"
             fontFamily="JetBrains Mono, monospace"
           >
-            {isSpawner ? `S:` : `L${boardNode.TileMapId}:`}{boardNode.Id}
+            {isSpawner ? `S:` : `L${boardNode.LayerId ?? boardNode.TileMapId ?? 0}:`}{boardNode.Id}
           </text>
         </g>
       )}

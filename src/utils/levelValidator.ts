@@ -59,12 +59,16 @@ export function validateLevel(data: LevelData): ValidationIssue[] {
         });
       } else if (myBoard) {
         const targetBoard = boardMap.get(blockedId);
-        if (targetBoard && targetBoard.TileMapId <= myBoard.TileMapId) {
-          issues.push({
-            type: 'error',
-            nodeId: bx.Id,
-            message: `Node "${bx.Id}" (Layer ${myBoard.TileMapId}) cannot block "${blockedId}" (Layer ${targetBoard.TileMapId}). Lower/same layer is not allowed to block a higher layer (Layer 0 is top, Layer 1/2/3 are below).`,
-          });
+        if (targetBoard) {
+          const myLayer = myBoard.LayerId ?? myBoard.TileMapId ?? 0;
+          const targetLayer = targetBoard.LayerId ?? targetBoard.TileMapId ?? 0;
+          if (targetLayer >= myLayer) {
+            issues.push({
+              type: 'error',
+              nodeId: bx.Id,
+              message: `Node "${bx.Id}" (Layer ${myLayer}) cannot block "${blockedId}" (Layer ${targetLayer}). Lower/same layer is not allowed to block a higher layer (Layer 0 is lowest base, Layer 1/2/3 are on top).`,
+            });
+          }
         }
       }
     }
