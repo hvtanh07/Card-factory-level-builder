@@ -6,6 +6,8 @@
     "description": "Two twin vertical columns bridged by top-tier cross-pieces. Intro to physical layer stacking.",
     "data": {
       "Id": 1,
+      "BoardOffsetX": 0,
+      "BoardOffsetZ": 0,
       "BoardNodes": [
         {
           "Id": "0_-0.8_0.5",
@@ -170,7 +172,6 @@
       "TurnSpawnerNodes": [],
       "LinkedBoxes": [],
       "IsOddSize": false,
-      "MaxCardsOnBelt": 0,
       "Version": 2
     }
   },
@@ -181,6 +182,8 @@
     "description": "Four foundation boxes arranged in a quad-block supporting dual horizontal bridging bars.",
     "data": {
       "Id": 2,
+      "BoardOffsetX": 0,
+      "BoardOffsetZ": 0,
       "BoardNodes": [
         {
           "Id": "0_-0.5_0.5",
@@ -345,7 +348,6 @@
       "TurnSpawnerNodes": [],
       "LinkedBoxes": [],
       "IsOddSize": false,
-      "MaxCardsOnBelt": 0,
       "Version": 2
     }
   },
@@ -356,6 +358,8 @@
     "description": "A 3-tiered pyramid stepping cleanly from 4 foundation boxes up to an apex capstone.",
     "data": {
       "Id": 3,
+      "BoardOffsetX": 0,
+      "BoardOffsetZ": 0,
       "BoardNodes": [
         {
           "Id": "0_-0.5_0.5",
@@ -552,7 +556,6 @@
       "TurnSpawnerNodes": [],
       "LinkedBoxes": [],
       "IsOddSize": false,
-      "MaxCardsOnBelt": 0,
       "Version": 2
     }
   },
@@ -563,6 +566,8 @@
     "description": "Introduction to Feeder Trays with a solid foundation supporting an upper dispatch station.",
     "data": {
       "Id": 4,
+      "BoardOffsetX": 0,
+      "BoardOffsetZ": 0,
       "BoardNodes": [
         {
           "Id": "0_-0.8_0.5",
@@ -721,7 +726,6 @@
       "TurnSpawnerNodes": [],
       "LinkedBoxes": [],
       "IsOddSize": false,
-      "MaxCardsOnBelt": 0,
       "Version": 2
     }
   },
@@ -732,6 +736,8 @@
     "description": "Layer 0 has 4 boxes (with 2 Mystery Boxes), supported by 2 mid-tier boxes and 1 apex capstone.",
     "data": {
       "Id": 5,
+      "BoardOffsetX": 0,
+      "BoardOffsetZ": 0,
       "BoardNodes": [
         {
           "Id": "0_-0.5_0.5",
@@ -928,7 +934,6 @@
       "TurnSpawnerNodes": [],
       "LinkedBoxes": [],
       "IsOddSize": false,
-      "MaxCardsOnBelt": 0,
       "Version": 2
     }
   },
@@ -939,6 +944,8 @@
     "description": "A stable 5-box foundation supporting an interlocking 3-box upper brick tier.",
     "data": {
       "Id": 6,
+      "BoardOffsetX": 0,
+      "BoardOffsetZ": 0,
       "BoardNodes": [
         {
           "Id": "0_-1.0_0.6",
@@ -1156,7 +1163,6 @@
       "TurnSpawnerNodes": [],
       "LinkedBoxes": [],
       "IsOddSize": false,
-      "MaxCardsOnBelt": 0,
       "Version": 2
     }
   },
@@ -1167,6 +1173,8 @@
     "description": "Dual side trays resting on an expanded 6-box foundation grid.",
     "data": {
       "Id": 7,
+      "BoardOffsetX": 0,
+      "BoardOffsetZ": 0,
       "BoardNodes": [
         {
           "Id": "0_-1.0_0.6",
@@ -1373,7 +1381,6 @@
       "TurnSpawnerNodes": [],
       "LinkedBoxes": [],
       "IsOddSize": false,
-      "MaxCardsOnBelt": 0,
       "Version": 2
     }
   },
@@ -1384,6 +1391,8 @@
     "description": "Fortress battlements with turn-locked gates and a hidden Mystery Box on Layer 0.",
     "data": {
       "Id": 8,
+      "BoardOffsetX": 0,
+      "BoardOffsetZ": 0,
       "BoardNodes": [
         {
           "Id": "0_-1.0_0.6",
@@ -1604,7 +1613,6 @@
       "TurnSpawnerNodes": [],
       "LinkedBoxes": [],
       "IsOddSize": false,
-      "MaxCardsOnBelt": 0,
       "Version": 2
     }
   },
@@ -1615,6 +1623,8 @@
     "description": "Dual rampart columns supporting mid-tier bridges and an apex feeder station.",
     "data": {
       "Id": 9,
+      "BoardOffsetX": 0,
+      "BoardOffsetZ": 0,
       "BoardNodes": [
         {
           "Id": "0_-1.0_0.6",
@@ -1853,7 +1863,6 @@
       "TurnSpawnerNodes": [],
       "LinkedBoxes": [],
       "IsOddSize": false,
-      "MaxCardsOnBelt": 0,
       "Version": 2
     }
   },
@@ -1864,6 +1873,8 @@
     "description": "Grand 16-box 4-tier step pyramid with full physical support underneath every box and a hidden Mystery Box.",
     "data": {
       "Id": 10,
+      "BoardOffsetX": 0,
+      "BoardOffsetZ": 0,
       "BoardNodes": [
         {
           "Id": "0_-1.5_0.8",
@@ -2301,7 +2312,6 @@
       "TurnSpawnerNodes": [],
       "LinkedBoxes": [],
       "IsOddSize": false,
-      "MaxCardsOnBelt": 0,
       "Version": 2
     }
   },
@@ -2312,6 +2322,8 @@
     "description": "Four foundation boxes supporting two interlocking top crossbars.",
     "data": {
       "Id": 11,
+      "BoardOffsetX": 0,
+      "BoardOffsetZ": 0,
       "BoardNodes": [
         {
           "Id": "0_-0.5_0.5",
@@ -2476,7 +2488,6 @@
       "TurnSpawnerNodes": [],
       "LinkedBoxes": [],
       "IsOddSize": false,
-      "MaxCardsOnBelt": 0,
       "Version": 2
     }
   },
@@ -2487,6 +2498,8 @@
     "description": "A 5-box foundation cross directly supporting 3 interlocking upper crossbars.",
     "data": {
       "Id": 12,
+      "BoardOffsetX": 0,
+      "BoardOffsetZ": 0,
       "BoardNodes": [
         {
           "Id": "0_-0.8_0.0",
@@ -2706,7 +2719,6 @@
       "TurnSpawnerNodes": [],
       "LinkedBoxes": [],
       "IsOddSize": false,
-      "MaxCardsOnBelt": 0,
       "Version": 2
     }
   },
@@ -2717,6 +2729,8 @@
     "description": "5 foundation boxes supporting 3 mid-tier boxes and an apex feeder station.",
     "data": {
       "Id": 13,
+      "BoardOffsetX": 0,
+      "BoardOffsetZ": 0,
       "BoardNodes": [
         {
           "Id": "0_-1.0_0.6",
@@ -2948,7 +2962,6 @@
       "TurnSpawnerNodes": [],
       "LinkedBoxes": [],
       "IsOddSize": false,
-      "MaxCardsOnBelt": 0,
       "Version": 2
     }
   },
@@ -2959,6 +2972,8 @@
     "description": "Six base boxes supporting 4 mid-tier crossbars and dual top-tier feeder stations.",
     "data": {
       "Id": 14,
+      "BoardOffsetX": 0,
+      "BoardOffsetZ": 0,
       "BoardNodes": [
         {
           "Id": "0_-1.0_0.6",
@@ -3275,7 +3290,6 @@
       "TurnSpawnerNodes": [],
       "LinkedBoxes": [],
       "IsOddSize": false,
-      "MaxCardsOnBelt": 0,
       "Version": 2
     }
   },
@@ -3286,6 +3300,8 @@
     "description": "Authentic 4-tier step pyramid with 6 foundation boxes, 3 mid-tier boxes, 2 upper supports, and an apex feeder.",
     "data": {
       "Id": 15,
+      "BoardOffsetX": 0,
+      "BoardOffsetZ": 0,
       "BoardNodes": [
         {
           "Id": "0_-1.0_0.6",
@@ -3618,7 +3634,6 @@
       "TurnSpawnerNodes": [],
       "LinkedBoxes": [],
       "IsOddSize": false,
-      "MaxCardsOnBelt": 0,
       "Version": 2
     }
   },
@@ -3629,6 +3644,8 @@
     "description": "Six-box spiral foundation supporting 4 interlocking cross struts and dual apex boxes.",
     "data": {
       "Id": 16,
+      "BoardOffsetX": 0,
+      "BoardOffsetZ": 0,
       "BoardNodes": [
         {
           "Id": "0_-1.0_0.6",
@@ -3957,7 +3974,6 @@
       "TurnSpawnerNodes": [],
       "LinkedBoxes": [],
       "IsOddSize": false,
-      "MaxCardsOnBelt": 0,
       "Version": 2
     }
   },
@@ -3968,6 +3984,8 @@
     "description": "Multi-tier fortified lock structure requiring turn-based unlocking.",
     "data": {
       "Id": 17,
+      "BoardOffsetX": 0,
+      "BoardOffsetZ": 0,
       "BoardNodes": [
         {
           "Id": "0_-1.0_0.6",
@@ -4302,7 +4320,6 @@
       "TurnSpawnerNodes": [],
       "LinkedBoxes": [],
       "IsOddSize": false,
-      "MaxCardsOnBelt": 0,
       "Version": 2
     }
   },
@@ -4313,6 +4330,8 @@
     "description": "High-capacity 8-slot megabox foundry with dual feeder trays and a hidden Mystery Box.",
     "data": {
       "Id": 18,
+      "BoardOffsetX": 0,
+      "BoardOffsetZ": 0,
       "BoardNodes": [
         {
           "Id": "0_-1.2_0.7",
@@ -4596,7 +4615,6 @@
       "TurnSpawnerNodes": [],
       "LinkedBoxes": [],
       "IsOddSize": false,
-      "MaxCardsOnBelt": 0,
       "Version": 2
     }
   },
@@ -4607,6 +4625,8 @@
     "description": "Multi-tier citadel with 7 foundation boxes, 4 intermediate supports, 2 high bastions, and an apex feeder station.",
     "data": {
       "Id": 19,
+      "BoardOffsetX": 0,
+      "BoardOffsetZ": 0,
       "BoardNodes": [
         {
           "Id": "0_-1.2_0.8",
@@ -5001,7 +5021,6 @@
       "TurnSpawnerNodes": [],
       "LinkedBoxes": [],
       "IsOddSize": false,
-      "MaxCardsOnBelt": 0,
       "Version": 2
     }
   },
@@ -5012,6 +5031,8 @@
     "description": "Grand 21-box amphitheater with 10 base foundation boxes, 6 tier-1 supports, 3 tier-2 bastions, and dual crown feeder trays.",
     "data": {
       "Id": 20,
+      "BoardOffsetX": 0,
+      "BoardOffsetZ": 0,
       "BoardNodes": [
         {
           "Id": "0_-2.0_0.6",
@@ -5584,7 +5605,6 @@
       "TurnSpawnerNodes": [],
       "LinkedBoxes": [],
       "IsOddSize": false,
-      "MaxCardsOnBelt": 0,
       "Version": 2
     }
   },
@@ -5595,6 +5615,8 @@
     "description": "Four foundation boxes supporting two interlocking top crossbars. Gentle warmup for Hard Mode.",
     "data": {
       "Id": 21,
+      "BoardOffsetX": 0,
+      "BoardOffsetZ": 0,
       "BoardNodes": [
         {
           "Id": "0_-0.5_0.5",
@@ -5759,7 +5781,6 @@
       "TurnSpawnerNodes": [],
       "LinkedBoxes": [],
       "IsOddSize": false,
-      "MaxCardsOnBelt": 0,
       "Version": 2
     }
   },
@@ -5770,6 +5791,8 @@
     "description": "A 5-box foundation cross directly supporting 3 interlocking upper crossbars.",
     "data": {
       "Id": 22,
+      "BoardOffsetX": 0,
+      "BoardOffsetZ": 0,
       "BoardNodes": [
         {
           "Id": "0_-0.8_0.0",
@@ -5989,7 +6012,6 @@
       "TurnSpawnerNodes": [],
       "LinkedBoxes": [],
       "IsOddSize": false,
-      "MaxCardsOnBelt": 0,
       "Version": 2
     }
   },
@@ -6000,6 +6022,8 @@
     "description": "Two 3-box obelisk columns bridged by mid-tier struts and dual apex crossbars.",
     "data": {
       "Id": 23,
+      "BoardOffsetX": 0,
+      "BoardOffsetZ": 0,
       "BoardNodes": [
         {
           "Id": "0_-1.0_0.8",
@@ -6330,7 +6354,6 @@
       "TurnSpawnerNodes": [],
       "LinkedBoxes": [],
       "IsOddSize": false,
-      "MaxCardsOnBelt": 0,
       "Version": 2
     }
   },
@@ -6341,6 +6364,8 @@
     "description": "Seven-box foundation supporting 4 mid-tier bastions, 2 upper struts, and an apex feeder station.",
     "data": {
       "Id": 24,
+      "BoardOffsetX": 0,
+      "BoardOffsetZ": 0,
       "BoardNodes": [
         {
           "Id": "0_-1.0_0.8",
@@ -6735,7 +6760,6 @@
       "TurnSpawnerNodes": [],
       "LinkedBoxes": [],
       "IsOddSize": false,
-      "MaxCardsOnBelt": 0,
       "Version": 2
     }
   },
@@ -6746,6 +6770,8 @@
     "description": "Octagonal matrix base with a hidden Mystery Box on Layer 0 supporting 4 mid-tier bars and an apex feeder station.",
     "data": {
       "Id": 25,
+      "BoardOffsetX": 0,
+      "BoardOffsetZ": 0,
       "BoardNodes": [
         {
           "Id": "0_-1.2_0.8",
@@ -7140,7 +7166,6 @@
       "TurnSpawnerNodes": [],
       "LinkedBoxes": [],
       "IsOddSize": false,
-      "MaxCardsOnBelt": 0,
       "Version": 2
     }
   },
@@ -7151,6 +7176,8 @@
     "description": "Eight-box foundation supporting 4 mid-tier struts, 2 upper bastions, and an apex feeder station across 6 full colors.",
     "data": {
       "Id": 26,
+      "BoardOffsetX": 0,
+      "BoardOffsetZ": 0,
       "BoardNodes": [
         {
           "Id": "0_-1.5_0.8",
@@ -7557,7 +7584,6 @@
       "TurnSpawnerNodes": [],
       "LinkedBoxes": [],
       "IsOddSize": false,
-      "MaxCardsOnBelt": 0,
       "Version": 2
     }
   },
@@ -7568,6 +7594,8 @@
     "description": "Eight-box foundation supporting 5 mid-tier struts, 2 high towers, and an apex feeder station.",
     "data": {
       "Id": 27,
+      "BoardOffsetX": 0,
+      "BoardOffsetZ": 0,
       "BoardNodes": [
         {
           "Id": "0_-1.5_0.8",
@@ -8005,7 +8033,6 @@
       "TurnSpawnerNodes": [],
       "LinkedBoxes": [],
       "IsOddSize": false,
-      "MaxCardsOnBelt": 0,
       "Version": 2
     }
   },
@@ -8016,6 +8043,8 @@
     "description": "Massive 10-slot megabox bastion with dual feeder trays and a hidden Mystery Box on Layer 0.",
     "data": {
       "Id": 28,
+      "BoardOffsetX": 0,
+      "BoardOffsetZ": 0,
       "BoardNodes": [
         {
           "Id": "0_-1.2_0.8",
@@ -8310,7 +8339,6 @@
       "TurnSpawnerNodes": [],
       "LinkedBoxes": [],
       "IsOddSize": false,
-      "MaxCardsOnBelt": 0,
       "Version": 2
     }
   },
@@ -8321,6 +8349,8 @@
     "description": "Multi-tier fortified fortress guarded by turn-locked gates, requiring careful unblocking routes.",
     "data": {
       "Id": 29,
+      "BoardOffsetX": 0,
+      "BoardOffsetZ": 0,
       "BoardNodes": [
         {
           "Id": "0_-1.5_0.8",
@@ -8758,7 +8788,6 @@
       "TurnSpawnerNodes": [],
       "LinkedBoxes": [],
       "IsOddSize": false,
-      "MaxCardsOnBelt": 0,
       "Version": 2
     }
   },
@@ -8769,6 +8798,8 @@
     "description": "The ultimate 27-box 5-tier master step pyramid with dense nested geometry, full structural support, and a hidden Mystery Box.",
     "data": {
       "Id": 30,
+      "BoardOffsetX": 0,
+      "BoardOffsetZ": 0,
       "BoardNodes": [
         {
           "Id": "0_-2.5_0.6",
@@ -9519,7 +9550,6 @@
       "TurnSpawnerNodes": [],
       "LinkedBoxes": [],
       "IsOddSize": false,
-      "MaxCardsOnBelt": 0,
       "Version": 2
     }
   }

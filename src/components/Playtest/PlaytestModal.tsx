@@ -388,18 +388,11 @@ export const PlaytestModal: React.FC<PlaytestModalProps> = ({ levelData, onClose
     const boxType = getBoxType(activeBox.TypeId);
     const isTray = activeBox.BoxColor === 5 || boxType.isTray;
 
-    const maxBeltCards = levelData.MaxCardsOnBelt && levelData.MaxCardsOnBelt > 0 ? levelData.MaxCardsOnBelt : Infinity;
-
     // === TRAY LOGIC ===
     // Trays store spare cards. When clicked:
     // 1. Only its cards are sent to the conveyor belt.
     // 2. The tray disappears immediately without occupying any of the 5 box slots!
     if (isTray) {
-      const incomingCount = activeBox.InitCards.length;
-      if (maxBeltCards !== Infinity && conveyorCardsRef.current.length + incomingCount > maxBeltCards) {
-        showWarning(`Conveyor full! (Would result in ${conveyorCardsRef.current.length + incomingCount}/${maxBeltCards} cards). Match cards before sending tray.`);
-        return;
-      }
 
       // Inject cards onto conveyor belt with individual distance and no overlap
       const entryBase = 620.0;
@@ -463,12 +456,6 @@ export const PlaytestModal: React.FC<PlaytestModalProps> = ({ levelData, onClose
       ) {
         immediateAbsorbCount++;
       }
-    }
-
-    const projectedBeltCards = conveyorCardsRef.current.length + unmatchedInBox.length - immediateAbsorbCount;
-    if (maxBeltCards !== Infinity && projectedBeltCards > maxBeltCards) {
-      showWarning(`Conveyor full! (Would result in ${projectedBeltCards}/${maxBeltCards} cards). Match cards before sending more.`);
-      return;
     }
 
     // 3. Move is VALID: dock box in available slot and inject unmatched cards onto conveyor
@@ -609,7 +596,7 @@ export const PlaytestModal: React.FC<PlaytestModalProps> = ({ levelData, onClose
             {/* Header info & score */}
             <div className="w-full max-w-4xl flex items-center justify-between px-2 text-[11px] font-bold text-white uppercase tracking-wider">
               <span className="drop-shadow">
-                Docked Boxes ({boxSlots.filter(b => b !== null && !b.isClearing).length}/5) • Conveyor Cards ({currentConveyorCount}{levelData.MaxCardsOnBelt && levelData.MaxCardsOnBelt > 0 ? `/${levelData.MaxCardsOnBelt}` : ''})
+                Docked Boxes ({boxSlots.filter(b => b !== null && !b.isClearing).length}/5) • Conveyor Cards ({currentConveyorCount})
               </span>
               <div className="bg-slate-950/80 border border-slate-700 px-3 py-1 rounded-xl text-xs font-mono text-sky-400 shadow">
                 Delivered: {deliveredCardsCount}/{totalCardsInLevel}

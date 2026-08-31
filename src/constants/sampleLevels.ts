@@ -2,6 +2,8 @@ import { LevelData } from "../types/level";
 
 export const LEVEL_EASY_1_DATA: LevelData = {
   "Id": 1,
+  "BoardOffsetX": 0,
+  "BoardOffsetZ": 0,
   "BoardNodes": [
     {
       "Id": "0_-0.8_0.5",
@@ -166,12 +168,13 @@ export const LEVEL_EASY_1_DATA: LevelData = {
   "TurnSpawnerNodes": [],
   "LinkedBoxes": [],
   "IsOddSize": false,
-  "MaxCardsOnBelt": 0,
   "Version": 2
 };
 
 export const LEVEL_EASY_2_DATA: LevelData = {
   "Id": 2,
+  "BoardOffsetX": 0,
+  "BoardOffsetZ": 0,
   "BoardNodes": [
     {
       "Id": "0_-0.5_0.5",
@@ -336,12 +339,13 @@ export const LEVEL_EASY_2_DATA: LevelData = {
   "TurnSpawnerNodes": [],
   "LinkedBoxes": [],
   "IsOddSize": false,
-  "MaxCardsOnBelt": 0,
   "Version": 2
 };
 
 export const LEVEL_EASY_3_DATA: LevelData = {
   "Id": 3,
+  "BoardOffsetX": 0,
+  "BoardOffsetZ": 0,
   "BoardNodes": [
     {
       "Id": "0_-0.5_0.5",
@@ -538,12 +542,13 @@ export const LEVEL_EASY_3_DATA: LevelData = {
   "TurnSpawnerNodes": [],
   "LinkedBoxes": [],
   "IsOddSize": false,
-  "MaxCardsOnBelt": 0,
   "Version": 2
 };
 
 export const LEVEL_EASY_4_DATA: LevelData = {
   "Id": 4,
+  "BoardOffsetX": 0,
+  "BoardOffsetZ": 0,
   "BoardNodes": [
     {
       "Id": "0_-0.8_0.5",
@@ -702,12 +707,13 @@ export const LEVEL_EASY_4_DATA: LevelData = {
   "TurnSpawnerNodes": [],
   "LinkedBoxes": [],
   "IsOddSize": false,
-  "MaxCardsOnBelt": 0,
   "Version": 2
 };
 
 export const LEVEL_EASY_5_DATA: LevelData = {
   "Id": 5,
+  "BoardOffsetX": 0,
+  "BoardOffsetZ": 0,
   "BoardNodes": [
     {
       "Id": "0_-0.5_0.5",
@@ -904,12 +910,13 @@ export const LEVEL_EASY_5_DATA: LevelData = {
   "TurnSpawnerNodes": [],
   "LinkedBoxes": [],
   "IsOddSize": false,
-  "MaxCardsOnBelt": 0,
   "Version": 2
 };
 
 export const LEVEL_EASY_6_DATA: LevelData = {
   "Id": 6,
+  "BoardOffsetX": 0,
+  "BoardOffsetZ": 0,
   "BoardNodes": [
     {
       "Id": "0_-1.0_0.6",
@@ -1127,12 +1134,13 @@ export const LEVEL_EASY_6_DATA: LevelData = {
   "TurnSpawnerNodes": [],
   "LinkedBoxes": [],
   "IsOddSize": false,
-  "MaxCardsOnBelt": 0,
   "Version": 2
 };
 
 export const LEVEL_EASY_7_DATA: LevelData = {
   "Id": 7,
+  "BoardOffsetX": 0,
+  "BoardOffsetZ": 0,
   "BoardNodes": [
     {
       "Id": "0_-1.0_0.6",
@@ -1339,12 +1347,13 @@ export const LEVEL_EASY_7_DATA: LevelData = {
   "TurnSpawnerNodes": [],
   "LinkedBoxes": [],
   "IsOddSize": false,
-  "MaxCardsOnBelt": 0,
   "Version": 2
 };
 
 export const LEVEL_EASY_8_DATA: LevelData = {
   "Id": 8,
+  "BoardOffsetX": 0,
+  "BoardOffsetZ": 0,
   "BoardNodes": [
     {
       "Id": "0_-1.0_0.6",
@@ -1565,12 +1574,13 @@ export const LEVEL_EASY_8_DATA: LevelData = {
   "TurnSpawnerNodes": [],
   "LinkedBoxes": [],
   "IsOddSize": false,
-  "MaxCardsOnBelt": 0,
   "Version": 2
 };
 
 export const LEVEL_EASY_9_DATA: LevelData = {
   "Id": 9,
+  "BoardOffsetX": 0,
+  "BoardOffsetZ": 0,
   "BoardNodes": [
     {
       "Id": "0_-1.0_0.6",
@@ -1809,12 +1819,13 @@ export const LEVEL_EASY_9_DATA: LevelData = {
   "TurnSpawnerNodes": [],
   "LinkedBoxes": [],
   "IsOddSize": false,
-  "MaxCardsOnBelt": 0,
   "Version": 2
 };
 
 export const LEVEL_EASY_10_DATA: LevelData = {
   "Id": 10,
+  "BoardOffsetX": 0,
+  "BoardOffsetZ": 0,
   "BoardNodes": [
     {
       "Id": "0_-1.5_0.8",
@@ -2252,12 +2263,13 @@ export const LEVEL_EASY_10_DATA: LevelData = {
   "TurnSpawnerNodes": [],
   "LinkedBoxes": [],
   "IsOddSize": false,
-  "MaxCardsOnBelt": 0,
   "Version": 2
 };
 
 export const LEVEL_MEDIUM_1_DATA: LevelData = {
   "Id": 11,
+  "BoardOffsetX": 0,
+  "BoardOffsetZ": 0,
   "BoardNodes": [
     {
       "Id": "0_-0.5_0.5",
@@ -2422,12 +2434,13 @@ export const LEVEL_MEDIUM_1_DATA: LevelData = {
   "TurnSpawnerNodes": [],
   "LinkedBoxes": [],
   "IsOddSize": false,
-  "MaxCardsOnBelt": 0,
   "Version": 2
 };
 
 export const LEVEL_MEDIUM_2_DATA: LevelData = {
   "Id": 12,
+  "BoardOffsetX": 0,
+  "BoardOffsetZ": 0,
   "BoardNodes": [
     {
       "Id": "0_-0.8_0.0",
@@ -2647,12 +2660,13 @@ export const LEVEL_MEDIUM_2_DATA: LevelData = {
   "TurnSpawnerNodes": [],
   "LinkedBoxes": [],
   "IsOddSize": false,
-  "MaxCardsOnBelt": 0,
   "Version": 2
 };
 
 export const LEVEL_MEDIUM_3_DATA: LevelData = {
   "Id": 13,
+  "BoardOffsetX": 0,
+  "BoardOffsetZ": 0,
   "BoardNodes": [
     {
       "Id": "0_-1.0_0.6",
@@ -2884,12 +2898,13 @@ export const LEVEL_MEDIUM_3_DATA: LevelData = {
   "TurnSpawnerNodes": [],
   "LinkedBoxes": [],
   "IsOddSize": false,
-  "MaxCardsOnBelt": 0,
   "Version": 2
 };
 
 export const LEVEL_MEDIUM_4_DATA: LevelData = {
   "Id": 14,
+  "BoardOffsetX": 0,
+  "BoardOffsetZ": 0,
   "BoardNodes": [
     {
       "Id": "0_-1.0_0.6",
@@ -3206,12 +3221,13 @@ export const LEVEL_MEDIUM_4_DATA: LevelData = {
   "TurnSpawnerNodes": [],
   "LinkedBoxes": [],
   "IsOddSize": false,
-  "MaxCardsOnBelt": 0,
   "Version": 2
 };
 
 export const LEVEL_MEDIUM_5_DATA: LevelData = {
   "Id": 15,
+  "BoardOffsetX": 0,
+  "BoardOffsetZ": 0,
   "BoardNodes": [
     {
       "Id": "0_-1.0_0.6",
@@ -3544,12 +3560,13 @@ export const LEVEL_MEDIUM_5_DATA: LevelData = {
   "TurnSpawnerNodes": [],
   "LinkedBoxes": [],
   "IsOddSize": false,
-  "MaxCardsOnBelt": 0,
   "Version": 2
 };
 
 export const LEVEL_MEDIUM_6_DATA: LevelData = {
   "Id": 16,
+  "BoardOffsetX": 0,
+  "BoardOffsetZ": 0,
   "BoardNodes": [
     {
       "Id": "0_-1.0_0.6",
@@ -3878,12 +3895,13 @@ export const LEVEL_MEDIUM_6_DATA: LevelData = {
   "TurnSpawnerNodes": [],
   "LinkedBoxes": [],
   "IsOddSize": false,
-  "MaxCardsOnBelt": 0,
   "Version": 2
 };
 
 export const LEVEL_MEDIUM_7_DATA: LevelData = {
   "Id": 17,
+  "BoardOffsetX": 0,
+  "BoardOffsetZ": 0,
   "BoardNodes": [
     {
       "Id": "0_-1.0_0.6",
@@ -4218,12 +4236,13 @@ export const LEVEL_MEDIUM_7_DATA: LevelData = {
   "TurnSpawnerNodes": [],
   "LinkedBoxes": [],
   "IsOddSize": false,
-  "MaxCardsOnBelt": 0,
   "Version": 2
 };
 
 export const LEVEL_MEDIUM_8_DATA: LevelData = {
   "Id": 18,
+  "BoardOffsetX": 0,
+  "BoardOffsetZ": 0,
   "BoardNodes": [
     {
       "Id": "0_-1.2_0.7",
@@ -4507,12 +4526,13 @@ export const LEVEL_MEDIUM_8_DATA: LevelData = {
   "TurnSpawnerNodes": [],
   "LinkedBoxes": [],
   "IsOddSize": false,
-  "MaxCardsOnBelt": 0,
   "Version": 2
 };
 
 export const LEVEL_MEDIUM_9_DATA: LevelData = {
   "Id": 19,
+  "BoardOffsetX": 0,
+  "BoardOffsetZ": 0,
   "BoardNodes": [
     {
       "Id": "0_-1.2_0.8",
@@ -4907,12 +4927,13 @@ export const LEVEL_MEDIUM_9_DATA: LevelData = {
   "TurnSpawnerNodes": [],
   "LinkedBoxes": [],
   "IsOddSize": false,
-  "MaxCardsOnBelt": 0,
   "Version": 2
 };
 
 export const LEVEL_MEDIUM_10_DATA: LevelData = {
   "Id": 20,
+  "BoardOffsetX": 0,
+  "BoardOffsetZ": 0,
   "BoardNodes": [
     {
       "Id": "0_-2.0_0.6",
@@ -5485,12 +5506,13 @@ export const LEVEL_MEDIUM_10_DATA: LevelData = {
   "TurnSpawnerNodes": [],
   "LinkedBoxes": [],
   "IsOddSize": false,
-  "MaxCardsOnBelt": 0,
   "Version": 2
 };
 
 export const LEVEL_HARD_1_DATA: LevelData = {
   "Id": 21,
+  "BoardOffsetX": 0,
+  "BoardOffsetZ": 0,
   "BoardNodes": [
     {
       "Id": "0_-0.5_0.5",
@@ -5655,12 +5677,13 @@ export const LEVEL_HARD_1_DATA: LevelData = {
   "TurnSpawnerNodes": [],
   "LinkedBoxes": [],
   "IsOddSize": false,
-  "MaxCardsOnBelt": 0,
   "Version": 2
 };
 
 export const LEVEL_HARD_2_DATA: LevelData = {
   "Id": 22,
+  "BoardOffsetX": 0,
+  "BoardOffsetZ": 0,
   "BoardNodes": [
     {
       "Id": "0_-0.8_0.0",
@@ -5880,12 +5903,13 @@ export const LEVEL_HARD_2_DATA: LevelData = {
   "TurnSpawnerNodes": [],
   "LinkedBoxes": [],
   "IsOddSize": false,
-  "MaxCardsOnBelt": 0,
   "Version": 2
 };
 
 export const LEVEL_HARD_3_DATA: LevelData = {
   "Id": 23,
+  "BoardOffsetX": 0,
+  "BoardOffsetZ": 0,
   "BoardNodes": [
     {
       "Id": "0_-1.0_0.8",
@@ -6216,12 +6240,13 @@ export const LEVEL_HARD_3_DATA: LevelData = {
   "TurnSpawnerNodes": [],
   "LinkedBoxes": [],
   "IsOddSize": false,
-  "MaxCardsOnBelt": 0,
   "Version": 2
 };
 
 export const LEVEL_HARD_4_DATA: LevelData = {
   "Id": 24,
+  "BoardOffsetX": 0,
+  "BoardOffsetZ": 0,
   "BoardNodes": [
     {
       "Id": "0_-1.0_0.8",
@@ -6616,12 +6641,13 @@ export const LEVEL_HARD_4_DATA: LevelData = {
   "TurnSpawnerNodes": [],
   "LinkedBoxes": [],
   "IsOddSize": false,
-  "MaxCardsOnBelt": 0,
   "Version": 2
 };
 
 export const LEVEL_HARD_5_DATA: LevelData = {
   "Id": 25,
+  "BoardOffsetX": 0,
+  "BoardOffsetZ": 0,
   "BoardNodes": [
     {
       "Id": "0_-1.2_0.8",
@@ -7016,12 +7042,13 @@ export const LEVEL_HARD_5_DATA: LevelData = {
   "TurnSpawnerNodes": [],
   "LinkedBoxes": [],
   "IsOddSize": false,
-  "MaxCardsOnBelt": 0,
   "Version": 2
 };
 
 export const LEVEL_HARD_6_DATA: LevelData = {
   "Id": 26,
+  "BoardOffsetX": 0,
+  "BoardOffsetZ": 0,
   "BoardNodes": [
     {
       "Id": "0_-1.5_0.8",
@@ -7428,12 +7455,13 @@ export const LEVEL_HARD_6_DATA: LevelData = {
   "TurnSpawnerNodes": [],
   "LinkedBoxes": [],
   "IsOddSize": false,
-  "MaxCardsOnBelt": 0,
   "Version": 2
 };
 
 export const LEVEL_HARD_7_DATA: LevelData = {
   "Id": 27,
+  "BoardOffsetX": 0,
+  "BoardOffsetZ": 0,
   "BoardNodes": [
     {
       "Id": "0_-1.5_0.8",
@@ -7871,12 +7899,13 @@ export const LEVEL_HARD_7_DATA: LevelData = {
   "TurnSpawnerNodes": [],
   "LinkedBoxes": [],
   "IsOddSize": false,
-  "MaxCardsOnBelt": 0,
   "Version": 2
 };
 
 export const LEVEL_HARD_8_DATA: LevelData = {
   "Id": 28,
+  "BoardOffsetX": 0,
+  "BoardOffsetZ": 0,
   "BoardNodes": [
     {
       "Id": "0_-1.2_0.8",
@@ -8171,12 +8200,13 @@ export const LEVEL_HARD_8_DATA: LevelData = {
   "TurnSpawnerNodes": [],
   "LinkedBoxes": [],
   "IsOddSize": false,
-  "MaxCardsOnBelt": 0,
   "Version": 2
 };
 
 export const LEVEL_HARD_9_DATA: LevelData = {
   "Id": 29,
+  "BoardOffsetX": 0,
+  "BoardOffsetZ": 0,
   "BoardNodes": [
     {
       "Id": "0_-1.5_0.8",
@@ -8614,12 +8644,13 @@ export const LEVEL_HARD_9_DATA: LevelData = {
   "TurnSpawnerNodes": [],
   "LinkedBoxes": [],
   "IsOddSize": false,
-  "MaxCardsOnBelt": 0,
   "Version": 2
 };
 
 export const LEVEL_HARD_10_DATA: LevelData = {
   "Id": 30,
+  "BoardOffsetX": 0,
+  "BoardOffsetZ": 0,
   "BoardNodes": [
     {
       "Id": "0_-2.5_0.6",
@@ -9370,7 +9401,6 @@ export const LEVEL_HARD_10_DATA: LevelData = {
   "TurnSpawnerNodes": [],
   "LinkedBoxes": [],
   "IsOddSize": false,
-  "MaxCardsOnBelt": 0,
   "Version": 2
 };
 

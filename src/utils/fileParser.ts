@@ -36,7 +36,8 @@ export function parseLevelData(rawInput: string | ArrayBuffer | Uint8Array): Lev
 
   const levelData: LevelData = {
     Id: parsed.Id ?? 1,
-    MaxCardsOnBelt: Number(parsed.MaxCardsOnBelt ?? 0),
+    BoardOffsetX: Number(parsed.BoardOffsetX ?? 0),
+    BoardOffsetZ: Number(parsed.BoardOffsetZ ?? 0),
     BoardNodes: Array.isArray(parsed.BoardNodes)
       ? parsed.BoardNodes.map((n: any, idx: number): BoardNode => {
           const layerId = Number(n.LayerId ?? n.TileMapId ?? 0);
@@ -100,7 +101,8 @@ export function parseLevelData(rawInput: string | ArrayBuffer | Uint8Array): Lev
 export function levelDataToJson(data: LevelData, pretty = true): string {
   const output = {
     Id: data.Id ?? 1,
-    MaxCardsOnBelt: data.MaxCardsOnBelt ?? 0,
+    BoardOffsetX: data.BoardOffsetX ?? 0,
+    BoardOffsetZ: data.BoardOffsetZ ?? 0,
     BoardNodes: data.BoardNodes.map(b => ({
       Id: b.Id,
       NodeId: b.NodeId,

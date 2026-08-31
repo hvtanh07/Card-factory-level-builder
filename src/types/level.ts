@@ -43,7 +43,8 @@ export interface SpawnerNode {
 
 export interface LevelData {
   Id?: number | string;
-  MaxCardsOnBelt?: number;
+  BoardOffsetX?: number;
+  BoardOffsetZ?: number;
   BoardNodes: BoardNode[];
   BoxNodes: BoxNode[];
   SpawnerNodes: SpawnerNode[];
