@@ -7,7 +7,6 @@ export const LEVEL_EASY_1_DATA: LevelData = {
   "BoardNodes": [
     {
       "Id": "0_-0.8_0.5",
-      "NodeId": 1,
       "LayerId": 0,
       "YRotation": 0.0,
       "XPosition": -0.8,
@@ -15,7 +14,6 @@ export const LEVEL_EASY_1_DATA: LevelData = {
     },
     {
       "Id": "0_-0.8_-0.5",
-      "NodeId": 1,
       "LayerId": 0,
       "YRotation": 0.0,
       "XPosition": -0.8,
@@ -23,7 +21,6 @@ export const LEVEL_EASY_1_DATA: LevelData = {
     },
     {
       "Id": "0_0.8_0.5",
-      "NodeId": 1,
       "LayerId": 0,
       "YRotation": 0.0,
       "XPosition": 0.8,
@@ -31,7 +28,6 @@ export const LEVEL_EASY_1_DATA: LevelData = {
     },
     {
       "Id": "0_0.8_-0.5",
-      "NodeId": 1,
       "LayerId": 0,
       "YRotation": 0.0,
       "XPosition": 0.8,
@@ -39,7 +35,6 @@ export const LEVEL_EASY_1_DATA: LevelData = {
     },
     {
       "Id": "1_-0.8_0.0",
-      "NodeId": 1,
       "LayerId": 1,
       "YRotation": 90.0,
       "XPosition": -0.8,
@@ -47,7 +42,6 @@ export const LEVEL_EASY_1_DATA: LevelData = {
     },
     {
       "Id": "1_0.8_0.0",
-      "NodeId": 1,
       "LayerId": 1,
       "YRotation": 90.0,
       "XPosition": 0.8,
@@ -178,7 +172,6 @@ export const LEVEL_EASY_2_DATA: LevelData = {
   "BoardNodes": [
     {
       "Id": "0_-0.5_0.5",
-      "NodeId": 1,
       "LayerId": 0,
       "YRotation": 0.0,
       "XPosition": -0.5,
@@ -186,7 +179,6 @@ export const LEVEL_EASY_2_DATA: LevelData = {
     },
     {
       "Id": "0_0.5_0.5",
-      "NodeId": 1,
       "LayerId": 0,
       "YRotation": 0.0,
       "XPosition": 0.5,
@@ -194,7 +186,6 @@ export const LEVEL_EASY_2_DATA: LevelData = {
     },
     {
       "Id": "0_-0.5_-0.5",
-      "NodeId": 1,
       "LayerId": 0,
       "YRotation": 0.0,
       "XPosition": -0.5,
@@ -202,7 +193,6 @@ export const LEVEL_EASY_2_DATA: LevelData = {
     },
     {
       "Id": "0_0.5_-0.5",
-      "NodeId": 1,
       "LayerId": 0,
       "YRotation": 0.0,
       "XPosition": 0.5,
@@ -210,7 +200,6 @@ export const LEVEL_EASY_2_DATA: LevelData = {
     },
     {
       "Id": "1_0.0_0.5",
-      "NodeId": 1,
       "LayerId": 1,
       "YRotation": 90.0,
       "XPosition": 0.0,
@@ -218,7 +207,6 @@ export const LEVEL_EASY_2_DATA: LevelData = {
     },
     {
       "Id": "1_0.0_-0.5",
-      "NodeId": 1,
       "LayerId": 1,
       "YRotation": 90.0,
       "XPosition": 0.0,
@@ -349,7 +337,6 @@ export const LEVEL_EASY_3_DATA: LevelData = {
   "BoardNodes": [
     {
       "Id": "0_-0.5_0.5",
-      "NodeId": 1,
       "LayerId": 0,
       "YRotation": 0.0,
       "XPosition": -0.5,
@@ -357,7 +344,6 @@ export const LEVEL_EASY_3_DATA: LevelData = {
     },
     {
       "Id": "0_0.5_0.5",
-      "NodeId": 1,
       "LayerId": 0,
       "YRotation": 0.0,
       "XPosition": 0.5,
@@ -365,7 +351,6 @@ export const LEVEL_EASY_3_DATA: LevelData = {
     },
     {
       "Id": "0_-0.5_-0.5",
-      "NodeId": 1,
       "LayerId": 0,
       "YRotation": 0.0,
       "XPosition": -0.5,
@@ -373,7 +358,6 @@ export const LEVEL_EASY_3_DATA: LevelData = {
     },
     {
       "Id": "0_0.5_-0.5",
-      "NodeId": 1,
       "LayerId": 0,
       "YRotation": 0.0,
       "XPosition": 0.5,
@@ -381,7 +365,6 @@ export const LEVEL_EASY_3_DATA: LevelData = {
     },
     {
       "Id": "1_0.0_0.5",
-      "NodeId": 1,
       "LayerId": 1,
       "YRotation": 90.0,
       "XPosition": 0.0,
@@ -389,7 +372,6 @@ export const LEVEL_EASY_3_DATA: LevelData = {
     },
     {
       "Id": "1_0.0_-0.5",
-      "NodeId": 1,
       "LayerId": 1,
       "YRotation": 90.0,
       "XPosition": 0.0,
@@ -397,7 +379,6 @@ export const LEVEL_EASY_3_DATA: LevelData = {
     },
     {
       "Id": "2_0.0_0.0",
-      "NodeId": 1,
       "LayerId": 2,
       "YRotation": 0.0,
       "XPosition": 0.0,
@@ -552,7 +533,6 @@ export const LEVEL_EASY_4_DATA: LevelData = {
   "BoardNodes": [
     {
       "Id": "0_-0.8_0.5",
-      "NodeId": 1,
       "LayerId": 0,
       "YRotation": 0.0,
       "XPosition": -0.8,
@@ -560,7 +540,6 @@ export const LEVEL_EASY_4_DATA: LevelData = {
     },
     {
       "Id": "0_0.0_0.5",
-      "NodeId": 1,
       "LayerId": 0,
       "YRotation": 0.0,
       "XPosition": 0.0,
@@ -568,7 +547,6 @@ export const LEVEL_EASY_4_DATA: LevelData = {
     },
     {
       "Id": "0_0.8_0.5",
-      "NodeId": 1,
       "LayerId": 0,
       "YRotation": 0.0,
       "XPosition": 0.8,
@@ -576,7 +554,6 @@ export const LEVEL_EASY_4_DATA: LevelData = {
     },
     {
       "Id": "0_0.0_-0.5",
-      "NodeId": 1,
       "LayerId": 0,
       "YRotation": 0.0,
       "XPosition": 0.0,
@@ -584,7 +561,6 @@ export const LEVEL_EASY_4_DATA: LevelData = {
     },
     {
       "Id": "1_-0.4_0.5",
-      "NodeId": 1,
       "LayerId": 1,
       "YRotation": 90.0,
       "XPosition": -0.4,
@@ -592,7 +568,6 @@ export const LEVEL_EASY_4_DATA: LevelData = {
     },
     {
       "Id": "1_0.4_0.5",
-      "NodeId": 1,
       "LayerId": 1,
       "YRotation": 90.0,
       "XPosition": 0.4,
@@ -717,7 +692,6 @@ export const LEVEL_EASY_5_DATA: LevelData = {
   "BoardNodes": [
     {
       "Id": "0_-0.5_0.5",
-      "NodeId": 1,
       "LayerId": 0,
       "YRotation": 0.0,
       "XPosition": -0.5,
@@ -725,7 +699,6 @@ export const LEVEL_EASY_5_DATA: LevelData = {
     },
     {
       "Id": "0_0.5_0.5",
-      "NodeId": 1,
       "LayerId": 0,
       "YRotation": 0.0,
       "XPosition": 0.5,
@@ -733,7 +706,6 @@ export const LEVEL_EASY_5_DATA: LevelData = {
     },
     {
       "Id": "0_-0.5_-0.5",
-      "NodeId": 1,
       "LayerId": 0,
       "YRotation": 0.0,
       "XPosition": -0.5,
@@ -741,7 +713,6 @@ export const LEVEL_EASY_5_DATA: LevelData = {
     },
     {
       "Id": "0_0.5_-0.5",
-      "NodeId": 1,
       "LayerId": 0,
       "YRotation": 0.0,
       "XPosition": 0.5,
@@ -749,7 +720,6 @@ export const LEVEL_EASY_5_DATA: LevelData = {
     },
     {
       "Id": "1_0.0_0.5",
-      "NodeId": 1,
       "LayerId": 1,
       "YRotation": 90.0,
       "XPosition": 0.0,
@@ -757,7 +727,6 @@ export const LEVEL_EASY_5_DATA: LevelData = {
     },
     {
       "Id": "1_0.0_-0.5",
-      "NodeId": 1,
       "LayerId": 1,
       "YRotation": 90.0,
       "XPosition": 0.0,
@@ -765,7 +734,6 @@ export const LEVEL_EASY_5_DATA: LevelData = {
     },
     {
       "Id": "2_0.0_0.0",
-      "NodeId": 1,
       "LayerId": 2,
       "YRotation": 0.0,
       "XPosition": 0.0,
@@ -920,7 +888,6 @@ export const LEVEL_EASY_6_DATA: LevelData = {
   "BoardNodes": [
     {
       "Id": "0_-1.0_0.6",
-      "NodeId": 1,
       "LayerId": 0,
       "YRotation": 0.0,
       "XPosition": -1.0,
@@ -928,7 +895,6 @@ export const LEVEL_EASY_6_DATA: LevelData = {
     },
     {
       "Id": "0_0.0_0.6",
-      "NodeId": 1,
       "LayerId": 0,
       "YRotation": 0.0,
       "XPosition": 0.0,
@@ -936,7 +902,6 @@ export const LEVEL_EASY_6_DATA: LevelData = {
     },
     {
       "Id": "0_1.0_0.6",
-      "NodeId": 1,
       "LayerId": 0,
       "YRotation": 0.0,
       "XPosition": 1.0,
@@ -944,7 +909,6 @@ export const LEVEL_EASY_6_DATA: LevelData = {
     },
     {
       "Id": "0_-0.5_-0.6",
-      "NodeId": 1,
       "LayerId": 0,
       "YRotation": 0.0,
       "XPosition": -0.5,
@@ -952,7 +916,6 @@ export const LEVEL_EASY_6_DATA: LevelData = {
     },
     {
       "Id": "0_0.5_-0.6",
-      "NodeId": 1,
       "LayerId": 0,
       "YRotation": 0.0,
       "XPosition": 0.5,
@@ -960,7 +923,6 @@ export const LEVEL_EASY_6_DATA: LevelData = {
     },
     {
       "Id": "1_-0.5_0.6",
-      "NodeId": 1,
       "LayerId": 1,
       "YRotation": 90.0,
       "XPosition": -0.5,
@@ -968,7 +930,6 @@ export const LEVEL_EASY_6_DATA: LevelData = {
     },
     {
       "Id": "1_0.5_0.6",
-      "NodeId": 1,
       "LayerId": 1,
       "YRotation": 90.0,
       "XPosition": 0.5,
@@ -976,7 +937,6 @@ export const LEVEL_EASY_6_DATA: LevelData = {
     },
     {
       "Id": "1_0.0_-0.6",
-      "NodeId": 1,
       "LayerId": 1,
       "YRotation": 90.0,
       "XPosition": 0.0,
@@ -1144,7 +1104,6 @@ export const LEVEL_EASY_7_DATA: LevelData = {
   "BoardNodes": [
     {
       "Id": "0_-1.0_0.6",
-      "NodeId": 1,
       "LayerId": 0,
       "YRotation": 0.0,
       "XPosition": -1.0,
@@ -1152,7 +1111,6 @@ export const LEVEL_EASY_7_DATA: LevelData = {
     },
     {
       "Id": "0_0.0_0.6",
-      "NodeId": 1,
       "LayerId": 0,
       "YRotation": 0.0,
       "XPosition": 0.0,
@@ -1160,7 +1118,6 @@ export const LEVEL_EASY_7_DATA: LevelData = {
     },
     {
       "Id": "0_1.0_0.6",
-      "NodeId": 1,
       "LayerId": 0,
       "YRotation": 0.0,
       "XPosition": 1.0,
@@ -1168,7 +1125,6 @@ export const LEVEL_EASY_7_DATA: LevelData = {
     },
     {
       "Id": "0_-1.0_-0.6",
-      "NodeId": 1,
       "LayerId": 0,
       "YRotation": 0.0,
       "XPosition": -1.0,
@@ -1176,7 +1132,6 @@ export const LEVEL_EASY_7_DATA: LevelData = {
     },
     {
       "Id": "0_0.0_-0.6",
-      "NodeId": 1,
       "LayerId": 0,
       "YRotation": 0.0,
       "XPosition": 0.0,
@@ -1184,7 +1139,6 @@ export const LEVEL_EASY_7_DATA: LevelData = {
     },
     {
       "Id": "0_1.0_-0.6",
-      "NodeId": 1,
       "LayerId": 0,
       "YRotation": 0.0,
       "XPosition": 1.0,
@@ -1192,7 +1146,6 @@ export const LEVEL_EASY_7_DATA: LevelData = {
     },
     {
       "Id": "1_-0.5_0.0",
-      "NodeId": 1,
       "LayerId": 1,
       "YRotation": 90.0,
       "XPosition": -0.5,
@@ -1200,7 +1153,6 @@ export const LEVEL_EASY_7_DATA: LevelData = {
     },
     {
       "Id": "1_0.5_0.0",
-      "NodeId": 1,
       "LayerId": 1,
       "YRotation": 90.0,
       "XPosition": 0.5,
@@ -1357,7 +1309,6 @@ export const LEVEL_EASY_8_DATA: LevelData = {
   "BoardNodes": [
     {
       "Id": "0_-1.0_0.6",
-      "NodeId": 1,
       "LayerId": 0,
       "YRotation": 0.0,
       "XPosition": -1.0,
@@ -1365,7 +1316,6 @@ export const LEVEL_EASY_8_DATA: LevelData = {
     },
     {
       "Id": "0_0.0_0.6",
-      "NodeId": 1,
       "LayerId": 0,
       "YRotation": 0.0,
       "XPosition": 0.0,
@@ -1373,7 +1323,6 @@ export const LEVEL_EASY_8_DATA: LevelData = {
     },
     {
       "Id": "0_1.0_0.6",
-      "NodeId": 1,
       "LayerId": 0,
       "YRotation": 0.0,
       "XPosition": 1.0,
@@ -1381,7 +1330,6 @@ export const LEVEL_EASY_8_DATA: LevelData = {
     },
     {
       "Id": "0_-0.5_-0.6",
-      "NodeId": 1,
       "LayerId": 0,
       "YRotation": 0.0,
       "XPosition": -0.5,
@@ -1389,7 +1337,6 @@ export const LEVEL_EASY_8_DATA: LevelData = {
     },
     {
       "Id": "0_0.5_-0.6",
-      "NodeId": 1,
       "LayerId": 0,
       "YRotation": 0.0,
       "XPosition": 0.5,
@@ -1397,7 +1344,6 @@ export const LEVEL_EASY_8_DATA: LevelData = {
     },
     {
       "Id": "1_-0.5_0.6",
-      "NodeId": 1,
       "LayerId": 1,
       "YRotation": 90.0,
       "XPosition": -0.5,
@@ -1405,7 +1351,6 @@ export const LEVEL_EASY_8_DATA: LevelData = {
     },
     {
       "Id": "1_0.5_0.6",
-      "NodeId": 1,
       "LayerId": 1,
       "YRotation": 90.0,
       "XPosition": 0.5,
@@ -1413,7 +1358,6 @@ export const LEVEL_EASY_8_DATA: LevelData = {
     },
     {
       "Id": "2_0.0_0.0",
-      "NodeId": 1,
       "LayerId": 2,
       "YRotation": 0.0,
       "XPosition": 0.0,
@@ -1584,7 +1528,6 @@ export const LEVEL_EASY_9_DATA: LevelData = {
   "BoardNodes": [
     {
       "Id": "0_-1.0_0.6",
-      "NodeId": 1,
       "LayerId": 0,
       "YRotation": 0.0,
       "XPosition": -1.0,
@@ -1592,7 +1535,6 @@ export const LEVEL_EASY_9_DATA: LevelData = {
     },
     {
       "Id": "0_1.0_0.6",
-      "NodeId": 1,
       "LayerId": 0,
       "YRotation": 0.0,
       "XPosition": 1.0,
@@ -1600,7 +1542,6 @@ export const LEVEL_EASY_9_DATA: LevelData = {
     },
     {
       "Id": "0_-1.0_-0.6",
-      "NodeId": 1,
       "LayerId": 0,
       "YRotation": 0.0,
       "XPosition": -1.0,
@@ -1608,7 +1549,6 @@ export const LEVEL_EASY_9_DATA: LevelData = {
     },
     {
       "Id": "0_1.0_-0.6",
-      "NodeId": 1,
       "LayerId": 0,
       "YRotation": 0.0,
       "XPosition": 1.0,
@@ -1616,7 +1556,6 @@ export const LEVEL_EASY_9_DATA: LevelData = {
     },
     {
       "Id": "0_0.0_0.0",
-      "NodeId": 1,
       "LayerId": 0,
       "YRotation": 0.0,
       "XPosition": 0.0,
@@ -1624,7 +1563,6 @@ export const LEVEL_EASY_9_DATA: LevelData = {
     },
     {
       "Id": "1_-1.0_0.0",
-      "NodeId": 1,
       "LayerId": 1,
       "YRotation": 90.0,
       "XPosition": -1.0,
@@ -1632,7 +1570,6 @@ export const LEVEL_EASY_9_DATA: LevelData = {
     },
     {
       "Id": "1_1.0_0.0",
-      "NodeId": 1,
       "LayerId": 1,
       "YRotation": 90.0,
       "XPosition": 1.0,
@@ -1640,7 +1577,6 @@ export const LEVEL_EASY_9_DATA: LevelData = {
     },
     {
       "Id": "1_0.0_0.6",
-      "NodeId": 1,
       "LayerId": 1,
       "YRotation": 90.0,
       "XPosition": 0.0,
@@ -1648,7 +1584,6 @@ export const LEVEL_EASY_9_DATA: LevelData = {
     },
     {
       "Id": "2_0.0_0.3",
-      "NodeId": 1,
       "LayerId": 2,
       "YRotation": 0.0,
       "XPosition": 0.0,
@@ -1829,7 +1764,6 @@ export const LEVEL_EASY_10_DATA: LevelData = {
   "BoardNodes": [
     {
       "Id": "0_-1.5_0.8",
-      "NodeId": 1,
       "LayerId": 0,
       "YRotation": 0.0,
       "XPosition": -1.5,
@@ -1837,7 +1771,6 @@ export const LEVEL_EASY_10_DATA: LevelData = {
     },
     {
       "Id": "0_-0.5_0.8",
-      "NodeId": 1,
       "LayerId": 0,
       "YRotation": 0.0,
       "XPosition": -0.5,
@@ -1845,7 +1778,6 @@ export const LEVEL_EASY_10_DATA: LevelData = {
     },
     {
       "Id": "0_0.5_0.8",
-      "NodeId": 1,
       "LayerId": 0,
       "YRotation": 0.0,
       "XPosition": 0.5,
@@ -1853,7 +1785,6 @@ export const LEVEL_EASY_10_DATA: LevelData = {
     },
     {
       "Id": "0_1.5_0.8",
-      "NodeId": 1,
       "LayerId": 0,
       "YRotation": 0.0,
       "XPosition": 1.5,
@@ -1861,7 +1792,6 @@ export const LEVEL_EASY_10_DATA: LevelData = {
     },
     {
       "Id": "0_-1.5_-0.8",
-      "NodeId": 1,
       "LayerId": 0,
       "YRotation": 0.0,
       "XPosition": -1.5,
@@ -1869,7 +1799,6 @@ export const LEVEL_EASY_10_DATA: LevelData = {
     },
     {
       "Id": "0_-0.5_-0.8",
-      "NodeId": 1,
       "LayerId": 0,
       "YRotation": 0.0,
       "XPosition": -0.5,
@@ -1877,7 +1806,6 @@ export const LEVEL_EASY_10_DATA: LevelData = {
     },
     {
       "Id": "0_0.5_-0.8",
-      "NodeId": 1,
       "LayerId": 0,
       "YRotation": 0.0,
       "XPosition": 0.5,
@@ -1885,7 +1813,6 @@ export const LEVEL_EASY_10_DATA: LevelData = {
     },
     {
       "Id": "0_1.5_-0.8",
-      "NodeId": 1,
       "LayerId": 0,
       "YRotation": 0.0,
       "XPosition": 1.5,
@@ -1893,7 +1820,6 @@ export const LEVEL_EASY_10_DATA: LevelData = {
     },
     {
       "Id": "1_-1.0_0.8",
-      "NodeId": 1,
       "LayerId": 1,
       "YRotation": 90.0,
       "XPosition": -1.0,
@@ -1901,7 +1827,6 @@ export const LEVEL_EASY_10_DATA: LevelData = {
     },
     {
       "Id": "1_0.0_0.8",
-      "NodeId": 1,
       "LayerId": 1,
       "YRotation": 90.0,
       "XPosition": 0.0,
@@ -1909,7 +1834,6 @@ export const LEVEL_EASY_10_DATA: LevelData = {
     },
     {
       "Id": "1_1.0_0.8",
-      "NodeId": 1,
       "LayerId": 1,
       "YRotation": 90.0,
       "XPosition": 1.0,
@@ -1917,7 +1841,6 @@ export const LEVEL_EASY_10_DATA: LevelData = {
     },
     {
       "Id": "1_-0.5_-0.8",
-      "NodeId": 1,
       "LayerId": 1,
       "YRotation": 90.0,
       "XPosition": -0.5,
@@ -1925,7 +1848,6 @@ export const LEVEL_EASY_10_DATA: LevelData = {
     },
     {
       "Id": "1_0.5_-0.8",
-      "NodeId": 1,
       "LayerId": 1,
       "YRotation": 90.0,
       "XPosition": 0.5,
@@ -1933,7 +1855,6 @@ export const LEVEL_EASY_10_DATA: LevelData = {
     },
     {
       "Id": "2_-0.5_0.0",
-      "NodeId": 1,
       "LayerId": 2,
       "YRotation": 0.0,
       "XPosition": -0.5,
@@ -1941,7 +1862,6 @@ export const LEVEL_EASY_10_DATA: LevelData = {
     },
     {
       "Id": "2_0.5_0.0",
-      "NodeId": 1,
       "LayerId": 2,
       "YRotation": 0.0,
       "XPosition": 0.5,
@@ -1949,7 +1869,6 @@ export const LEVEL_EASY_10_DATA: LevelData = {
     },
     {
       "Id": "3_0.0_0.0",
-      "NodeId": 1,
       "LayerId": 3,
       "YRotation": 90.0,
       "XPosition": 0.0,
@@ -2273,7 +2192,6 @@ export const LEVEL_MEDIUM_1_DATA: LevelData = {
   "BoardNodes": [
     {
       "Id": "0_-0.5_0.5",
-      "NodeId": 1,
       "LayerId": 0,
       "YRotation": 0.0,
       "XPosition": -0.5,
@@ -2281,7 +2199,6 @@ export const LEVEL_MEDIUM_1_DATA: LevelData = {
     },
     {
       "Id": "0_0.5_0.5",
-      "NodeId": 1,
       "LayerId": 0,
       "YRotation": 0.0,
       "XPosition": 0.5,
@@ -2289,7 +2206,6 @@ export const LEVEL_MEDIUM_1_DATA: LevelData = {
     },
     {
       "Id": "0_-0.5_-0.5",
-      "NodeId": 1,
       "LayerId": 0,
       "YRotation": 0.0,
       "XPosition": -0.5,
@@ -2297,7 +2213,6 @@ export const LEVEL_MEDIUM_1_DATA: LevelData = {
     },
     {
       "Id": "0_0.5_-0.5",
-      "NodeId": 1,
       "LayerId": 0,
       "YRotation": 0.0,
       "XPosition": 0.5,
@@ -2305,7 +2220,6 @@ export const LEVEL_MEDIUM_1_DATA: LevelData = {
     },
     {
       "Id": "1_0.0_0.5",
-      "NodeId": 1,
       "LayerId": 1,
       "YRotation": 90.0,
       "XPosition": 0.0,
@@ -2313,7 +2227,6 @@ export const LEVEL_MEDIUM_1_DATA: LevelData = {
     },
     {
       "Id": "1_0.0_-0.5",
-      "NodeId": 1,
       "LayerId": 1,
       "YRotation": 90.0,
       "XPosition": 0.0,
@@ -2444,7 +2357,6 @@ export const LEVEL_MEDIUM_2_DATA: LevelData = {
   "BoardNodes": [
     {
       "Id": "0_-0.8_0.0",
-      "NodeId": 1,
       "LayerId": 0,
       "YRotation": 0.0,
       "XPosition": -0.8,
@@ -2452,7 +2364,6 @@ export const LEVEL_MEDIUM_2_DATA: LevelData = {
     },
     {
       "Id": "0_0.8_0.0",
-      "NodeId": 1,
       "LayerId": 0,
       "YRotation": 0.0,
       "XPosition": 0.8,
@@ -2460,7 +2371,6 @@ export const LEVEL_MEDIUM_2_DATA: LevelData = {
     },
     {
       "Id": "0_0.0_0.0",
-      "NodeId": 1,
       "LayerId": 0,
       "YRotation": 0.0,
       "XPosition": 0.0,
@@ -2468,7 +2378,6 @@ export const LEVEL_MEDIUM_2_DATA: LevelData = {
     },
     {
       "Id": "0_0.0_0.9",
-      "NodeId": 1,
       "LayerId": 0,
       "YRotation": 90.0,
       "XPosition": 0.0,
@@ -2476,7 +2385,6 @@ export const LEVEL_MEDIUM_2_DATA: LevelData = {
     },
     {
       "Id": "0_0.0_-0.9",
-      "NodeId": 1,
       "LayerId": 0,
       "YRotation": 90.0,
       "XPosition": 0.0,
@@ -2484,7 +2392,6 @@ export const LEVEL_MEDIUM_2_DATA: LevelData = {
     },
     {
       "Id": "1_-0.4_0.0",
-      "NodeId": 1,
       "LayerId": 1,
       "YRotation": 90.0,
       "XPosition": -0.4,
@@ -2492,7 +2399,6 @@ export const LEVEL_MEDIUM_2_DATA: LevelData = {
     },
     {
       "Id": "1_0.4_0.0",
-      "NodeId": 1,
       "LayerId": 1,
       "YRotation": 90.0,
       "XPosition": 0.4,
@@ -2500,7 +2406,6 @@ export const LEVEL_MEDIUM_2_DATA: LevelData = {
     },
     {
       "Id": "1_0.0_0.45",
-      "NodeId": 1,
       "LayerId": 1,
       "YRotation": 0.0,
       "XPosition": 0.0,
@@ -2670,7 +2575,6 @@ export const LEVEL_MEDIUM_3_DATA: LevelData = {
   "BoardNodes": [
     {
       "Id": "0_-1.0_0.6",
-      "NodeId": 1,
       "LayerId": 0,
       "YRotation": 0.0,
       "XPosition": -1.0,
@@ -2678,7 +2582,6 @@ export const LEVEL_MEDIUM_3_DATA: LevelData = {
     },
     {
       "Id": "0_0.0_0.6",
-      "NodeId": 1,
       "LayerId": 0,
       "YRotation": 0.0,
       "XPosition": 0.0,
@@ -2686,7 +2589,6 @@ export const LEVEL_MEDIUM_3_DATA: LevelData = {
     },
     {
       "Id": "0_1.0_0.6",
-      "NodeId": 1,
       "LayerId": 0,
       "YRotation": 0.0,
       "XPosition": 1.0,
@@ -2694,7 +2596,6 @@ export const LEVEL_MEDIUM_3_DATA: LevelData = {
     },
     {
       "Id": "0_-0.5_-0.6",
-      "NodeId": 1,
       "LayerId": 0,
       "YRotation": 0.0,
       "XPosition": -0.5,
@@ -2702,7 +2603,6 @@ export const LEVEL_MEDIUM_3_DATA: LevelData = {
     },
     {
       "Id": "0_0.5_-0.6",
-      "NodeId": 1,
       "LayerId": 0,
       "YRotation": 0.0,
       "XPosition": 0.5,
@@ -2710,7 +2610,6 @@ export const LEVEL_MEDIUM_3_DATA: LevelData = {
     },
     {
       "Id": "1_-0.5_0.6",
-      "NodeId": 1,
       "LayerId": 1,
       "YRotation": 90.0,
       "XPosition": -0.5,
@@ -2718,7 +2617,6 @@ export const LEVEL_MEDIUM_3_DATA: LevelData = {
     },
     {
       "Id": "1_0.5_0.6",
-      "NodeId": 1,
       "LayerId": 1,
       "YRotation": 90.0,
       "XPosition": 0.5,
@@ -2726,7 +2624,6 @@ export const LEVEL_MEDIUM_3_DATA: LevelData = {
     },
     {
       "Id": "1_0.0_-0.6",
-      "NodeId": 1,
       "LayerId": 1,
       "YRotation": 90.0,
       "XPosition": 0.0,
@@ -2734,7 +2631,6 @@ export const LEVEL_MEDIUM_3_DATA: LevelData = {
     },
     {
       "Id": "2_0.0_0.0",
-      "NodeId": 1,
       "LayerId": 2,
       "YRotation": 0.0,
       "XPosition": 0.0,
@@ -2908,7 +2804,6 @@ export const LEVEL_MEDIUM_4_DATA: LevelData = {
   "BoardNodes": [
     {
       "Id": "0_-1.0_0.6",
-      "NodeId": 1,
       "LayerId": 0,
       "YRotation": 0.0,
       "XPosition": -1.0,
@@ -2916,7 +2811,6 @@ export const LEVEL_MEDIUM_4_DATA: LevelData = {
     },
     {
       "Id": "0_0.0_0.6",
-      "NodeId": 1,
       "LayerId": 0,
       "YRotation": 0.0,
       "XPosition": 0.0,
@@ -2924,7 +2818,6 @@ export const LEVEL_MEDIUM_4_DATA: LevelData = {
     },
     {
       "Id": "0_1.0_0.6",
-      "NodeId": 1,
       "LayerId": 0,
       "YRotation": 0.0,
       "XPosition": 1.0,
@@ -2932,7 +2825,6 @@ export const LEVEL_MEDIUM_4_DATA: LevelData = {
     },
     {
       "Id": "0_-1.0_-0.6",
-      "NodeId": 1,
       "LayerId": 0,
       "YRotation": 0.0,
       "XPosition": -1.0,
@@ -2940,7 +2832,6 @@ export const LEVEL_MEDIUM_4_DATA: LevelData = {
     },
     {
       "Id": "0_0.0_-0.6",
-      "NodeId": 1,
       "LayerId": 0,
       "YRotation": 0.0,
       "XPosition": 0.0,
@@ -2948,7 +2839,6 @@ export const LEVEL_MEDIUM_4_DATA: LevelData = {
     },
     {
       "Id": "0_1.0_-0.6",
-      "NodeId": 1,
       "LayerId": 0,
       "YRotation": 0.0,
       "XPosition": 1.0,
@@ -2956,7 +2846,6 @@ export const LEVEL_MEDIUM_4_DATA: LevelData = {
     },
     {
       "Id": "1_-0.5_0.6",
-      "NodeId": 1,
       "LayerId": 1,
       "YRotation": 90.0,
       "XPosition": -0.5,
@@ -2964,7 +2853,6 @@ export const LEVEL_MEDIUM_4_DATA: LevelData = {
     },
     {
       "Id": "1_0.5_0.6",
-      "NodeId": 1,
       "LayerId": 1,
       "YRotation": 90.0,
       "XPosition": 0.5,
@@ -2972,7 +2860,6 @@ export const LEVEL_MEDIUM_4_DATA: LevelData = {
     },
     {
       "Id": "1_-0.5_-0.6",
-      "NodeId": 1,
       "LayerId": 1,
       "YRotation": 90.0,
       "XPosition": -0.5,
@@ -2980,7 +2867,6 @@ export const LEVEL_MEDIUM_4_DATA: LevelData = {
     },
     {
       "Id": "1_0.5_-0.6",
-      "NodeId": 1,
       "LayerId": 1,
       "YRotation": 90.0,
       "XPosition": 0.5,
@@ -2988,7 +2874,6 @@ export const LEVEL_MEDIUM_4_DATA: LevelData = {
     },
     {
       "Id": "2_0.0_0.6",
-      "NodeId": 1,
       "LayerId": 2,
       "YRotation": 0.0,
       "XPosition": 0.0,
@@ -2996,7 +2881,6 @@ export const LEVEL_MEDIUM_4_DATA: LevelData = {
     },
     {
       "Id": "2_0.0_-0.6",
-      "NodeId": 1,
       "LayerId": 2,
       "YRotation": 0.0,
       "XPosition": 0.0,
@@ -3231,7 +3115,6 @@ export const LEVEL_MEDIUM_5_DATA: LevelData = {
   "BoardNodes": [
     {
       "Id": "0_-1.0_0.6",
-      "NodeId": 1,
       "LayerId": 0,
       "YRotation": 0.0,
       "XPosition": -1.0,
@@ -3239,7 +3122,6 @@ export const LEVEL_MEDIUM_5_DATA: LevelData = {
     },
     {
       "Id": "0_0.0_0.6",
-      "NodeId": 1,
       "LayerId": 0,
       "YRotation": 0.0,
       "XPosition": 0.0,
@@ -3247,7 +3129,6 @@ export const LEVEL_MEDIUM_5_DATA: LevelData = {
     },
     {
       "Id": "0_1.0_0.6",
-      "NodeId": 1,
       "LayerId": 0,
       "YRotation": 0.0,
       "XPosition": 1.0,
@@ -3255,7 +3136,6 @@ export const LEVEL_MEDIUM_5_DATA: LevelData = {
     },
     {
       "Id": "0_-1.0_-0.6",
-      "NodeId": 1,
       "LayerId": 0,
       "YRotation": 0.0,
       "XPosition": -1.0,
@@ -3263,7 +3143,6 @@ export const LEVEL_MEDIUM_5_DATA: LevelData = {
     },
     {
       "Id": "0_0.0_-0.6",
-      "NodeId": 1,
       "LayerId": 0,
       "YRotation": 0.0,
       "XPosition": 0.0,
@@ -3271,7 +3150,6 @@ export const LEVEL_MEDIUM_5_DATA: LevelData = {
     },
     {
       "Id": "0_1.0_-0.6",
-      "NodeId": 1,
       "LayerId": 0,
       "YRotation": 0.0,
       "XPosition": 1.0,
@@ -3279,7 +3157,6 @@ export const LEVEL_MEDIUM_5_DATA: LevelData = {
     },
     {
       "Id": "1_-0.5_0.6",
-      "NodeId": 1,
       "LayerId": 1,
       "YRotation": 90.0,
       "XPosition": -0.5,
@@ -3287,7 +3164,6 @@ export const LEVEL_MEDIUM_5_DATA: LevelData = {
     },
     {
       "Id": "1_0.5_0.6",
-      "NodeId": 1,
       "LayerId": 1,
       "YRotation": 90.0,
       "XPosition": 0.5,
@@ -3295,7 +3171,6 @@ export const LEVEL_MEDIUM_5_DATA: LevelData = {
     },
     {
       "Id": "1_0.0_-0.6",
-      "NodeId": 1,
       "LayerId": 1,
       "YRotation": 90.0,
       "XPosition": 0.0,
@@ -3303,7 +3178,6 @@ export const LEVEL_MEDIUM_5_DATA: LevelData = {
     },
     {
       "Id": "2_-0.5_0.0",
-      "NodeId": 1,
       "LayerId": 2,
       "YRotation": 0.0,
       "XPosition": -0.5,
@@ -3311,7 +3185,6 @@ export const LEVEL_MEDIUM_5_DATA: LevelData = {
     },
     {
       "Id": "2_0.5_0.0",
-      "NodeId": 1,
       "LayerId": 2,
       "YRotation": 0.0,
       "XPosition": 0.5,
@@ -3319,7 +3192,6 @@ export const LEVEL_MEDIUM_5_DATA: LevelData = {
     },
     {
       "Id": "3_0.0_0.0",
-      "NodeId": 1,
       "LayerId": 3,
       "YRotation": 90.0,
       "XPosition": 0.0,
@@ -3570,7 +3442,6 @@ export const LEVEL_MEDIUM_6_DATA: LevelData = {
   "BoardNodes": [
     {
       "Id": "0_-1.0_0.6",
-      "NodeId": 1,
       "LayerId": 0,
       "YRotation": 0.0,
       "XPosition": -1.0,
@@ -3578,7 +3449,6 @@ export const LEVEL_MEDIUM_6_DATA: LevelData = {
     },
     {
       "Id": "0_0.0_0.6",
-      "NodeId": 1,
       "LayerId": 0,
       "YRotation": 0.0,
       "XPosition": 0.0,
@@ -3586,7 +3456,6 @@ export const LEVEL_MEDIUM_6_DATA: LevelData = {
     },
     {
       "Id": "0_1.0_0.6",
-      "NodeId": 1,
       "LayerId": 0,
       "YRotation": 0.0,
       "XPosition": 1.0,
@@ -3594,7 +3463,6 @@ export const LEVEL_MEDIUM_6_DATA: LevelData = {
     },
     {
       "Id": "0_-1.0_-0.6",
-      "NodeId": 1,
       "LayerId": 0,
       "YRotation": 0.0,
       "XPosition": -1.0,
@@ -3602,7 +3470,6 @@ export const LEVEL_MEDIUM_6_DATA: LevelData = {
     },
     {
       "Id": "0_0.0_-0.6",
-      "NodeId": 1,
       "LayerId": 0,
       "YRotation": 0.0,
       "XPosition": 0.0,
@@ -3610,7 +3477,6 @@ export const LEVEL_MEDIUM_6_DATA: LevelData = {
     },
     {
       "Id": "0_1.0_-0.6",
-      "NodeId": 1,
       "LayerId": 0,
       "YRotation": 0.0,
       "XPosition": 1.0,
@@ -3618,7 +3484,6 @@ export const LEVEL_MEDIUM_6_DATA: LevelData = {
     },
     {
       "Id": "1_-0.5_0.6",
-      "NodeId": 1,
       "LayerId": 1,
       "YRotation": 90.0,
       "XPosition": -0.5,
@@ -3626,7 +3491,6 @@ export const LEVEL_MEDIUM_6_DATA: LevelData = {
     },
     {
       "Id": "1_0.5_0.6",
-      "NodeId": 1,
       "LayerId": 1,
       "YRotation": 90.0,
       "XPosition": 0.5,
@@ -3634,7 +3498,6 @@ export const LEVEL_MEDIUM_6_DATA: LevelData = {
     },
     {
       "Id": "1_-0.5_-0.6",
-      "NodeId": 1,
       "LayerId": 1,
       "YRotation": 90.0,
       "XPosition": -0.5,
@@ -3642,7 +3505,6 @@ export const LEVEL_MEDIUM_6_DATA: LevelData = {
     },
     {
       "Id": "1_0.5_-0.6",
-      "NodeId": 1,
       "LayerId": 1,
       "YRotation": 90.0,
       "XPosition": 0.5,
@@ -3650,7 +3512,6 @@ export const LEVEL_MEDIUM_6_DATA: LevelData = {
     },
     {
       "Id": "2_0.0_0.6",
-      "NodeId": 1,
       "LayerId": 2,
       "YRotation": 0.0,
       "XPosition": 0.0,
@@ -3658,7 +3519,6 @@ export const LEVEL_MEDIUM_6_DATA: LevelData = {
     },
     {
       "Id": "2_0.0_-0.6",
-      "NodeId": 1,
       "LayerId": 2,
       "YRotation": 0.0,
       "XPosition": 0.0,
@@ -3905,7 +3765,6 @@ export const LEVEL_MEDIUM_7_DATA: LevelData = {
   "BoardNodes": [
     {
       "Id": "0_-1.0_0.6",
-      "NodeId": 1,
       "LayerId": 0,
       "YRotation": 0.0,
       "XPosition": -1.0,
@@ -3913,7 +3772,6 @@ export const LEVEL_MEDIUM_7_DATA: LevelData = {
     },
     {
       "Id": "0_0.0_0.6",
-      "NodeId": 1,
       "LayerId": 0,
       "YRotation": 0.0,
       "XPosition": 0.0,
@@ -3921,7 +3779,6 @@ export const LEVEL_MEDIUM_7_DATA: LevelData = {
     },
     {
       "Id": "0_1.0_0.6",
-      "NodeId": 1,
       "LayerId": 0,
       "YRotation": 0.0,
       "XPosition": 1.0,
@@ -3929,7 +3786,6 @@ export const LEVEL_MEDIUM_7_DATA: LevelData = {
     },
     {
       "Id": "0_-1.0_-0.6",
-      "NodeId": 1,
       "LayerId": 0,
       "YRotation": 0.0,
       "XPosition": -1.0,
@@ -3937,7 +3793,6 @@ export const LEVEL_MEDIUM_7_DATA: LevelData = {
     },
     {
       "Id": "0_0.0_-0.6",
-      "NodeId": 1,
       "LayerId": 0,
       "YRotation": 0.0,
       "XPosition": 0.0,
@@ -3945,7 +3800,6 @@ export const LEVEL_MEDIUM_7_DATA: LevelData = {
     },
     {
       "Id": "0_1.0_-0.6",
-      "NodeId": 1,
       "LayerId": 0,
       "YRotation": 0.0,
       "XPosition": 1.0,
@@ -3953,7 +3807,6 @@ export const LEVEL_MEDIUM_7_DATA: LevelData = {
     },
     {
       "Id": "1_-0.5_0.6",
-      "NodeId": 1,
       "LayerId": 1,
       "YRotation": 90.0,
       "XPosition": -0.5,
@@ -3961,7 +3814,6 @@ export const LEVEL_MEDIUM_7_DATA: LevelData = {
     },
     {
       "Id": "1_0.5_0.6",
-      "NodeId": 1,
       "LayerId": 1,
       "YRotation": 90.0,
       "XPosition": 0.5,
@@ -3969,7 +3821,6 @@ export const LEVEL_MEDIUM_7_DATA: LevelData = {
     },
     {
       "Id": "1_-0.5_-0.6",
-      "NodeId": 1,
       "LayerId": 1,
       "YRotation": 90.0,
       "XPosition": -0.5,
@@ -3977,7 +3828,6 @@ export const LEVEL_MEDIUM_7_DATA: LevelData = {
     },
     {
       "Id": "1_0.5_-0.6",
-      "NodeId": 1,
       "LayerId": 1,
       "YRotation": 90.0,
       "XPosition": 0.5,
@@ -3985,7 +3835,6 @@ export const LEVEL_MEDIUM_7_DATA: LevelData = {
     },
     {
       "Id": "2_-0.5_0.0",
-      "NodeId": 1,
       "LayerId": 2,
       "YRotation": 0.0,
       "XPosition": -0.5,
@@ -3993,7 +3842,6 @@ export const LEVEL_MEDIUM_7_DATA: LevelData = {
     },
     {
       "Id": "2_0.5_0.0",
-      "NodeId": 1,
       "LayerId": 2,
       "YRotation": 0.0,
       "XPosition": 0.5,
@@ -4246,7 +4094,6 @@ export const LEVEL_MEDIUM_8_DATA: LevelData = {
   "BoardNodes": [
     {
       "Id": "0_-1.2_0.7",
-      "NodeId": 1,
       "LayerId": 0,
       "YRotation": 0.0,
       "XPosition": -1.2,
@@ -4254,7 +4101,6 @@ export const LEVEL_MEDIUM_8_DATA: LevelData = {
     },
     {
       "Id": "0_0.0_0.7",
-      "NodeId": 1,
       "LayerId": 0,
       "YRotation": 0.0,
       "XPosition": 0.0,
@@ -4262,7 +4108,6 @@ export const LEVEL_MEDIUM_8_DATA: LevelData = {
     },
     {
       "Id": "0_1.2_0.7",
-      "NodeId": 1,
       "LayerId": 0,
       "YRotation": 0.0,
       "XPosition": 1.2,
@@ -4270,7 +4115,6 @@ export const LEVEL_MEDIUM_8_DATA: LevelData = {
     },
     {
       "Id": "0_-0.6_-0.7",
-      "NodeId": 1,
       "LayerId": 0,
       "YRotation": 0.0,
       "XPosition": -0.6,
@@ -4278,7 +4122,6 @@ export const LEVEL_MEDIUM_8_DATA: LevelData = {
     },
     {
       "Id": "0_0.6_-0.7",
-      "NodeId": 1,
       "LayerId": 0,
       "YRotation": 0.0,
       "XPosition": 0.6,
@@ -4286,7 +4129,6 @@ export const LEVEL_MEDIUM_8_DATA: LevelData = {
     },
     {
       "Id": "1_-0.6_0.7",
-      "NodeId": 1,
       "LayerId": 1,
       "YRotation": 90.0,
       "XPosition": -0.6,
@@ -4294,7 +4136,6 @@ export const LEVEL_MEDIUM_8_DATA: LevelData = {
     },
     {
       "Id": "1_0.6_0.7",
-      "NodeId": 1,
       "LayerId": 1,
       "YRotation": 90.0,
       "XPosition": 0.6,
@@ -4302,7 +4143,6 @@ export const LEVEL_MEDIUM_8_DATA: LevelData = {
     },
     {
       "Id": "1_0.0_-0.7",
-      "NodeId": 1,
       "LayerId": 1,
       "YRotation": 90.0,
       "XPosition": 0.0,
@@ -4310,7 +4150,6 @@ export const LEVEL_MEDIUM_8_DATA: LevelData = {
     },
     {
       "Id": "2_-0.3_0.0",
-      "NodeId": 1,
       "LayerId": 2,
       "YRotation": 0.0,
       "XPosition": -0.3,
@@ -4318,7 +4157,6 @@ export const LEVEL_MEDIUM_8_DATA: LevelData = {
     },
     {
       "Id": "2_0.3_0.0",
-      "NodeId": 1,
       "LayerId": 2,
       "YRotation": 0.0,
       "XPosition": 0.3,
@@ -4536,7 +4374,6 @@ export const LEVEL_MEDIUM_9_DATA: LevelData = {
   "BoardNodes": [
     {
       "Id": "0_-1.2_0.8",
-      "NodeId": 1,
       "LayerId": 0,
       "YRotation": 0.0,
       "XPosition": -1.2,
@@ -4544,7 +4381,6 @@ export const LEVEL_MEDIUM_9_DATA: LevelData = {
     },
     {
       "Id": "0_0.0_0.8",
-      "NodeId": 1,
       "LayerId": 0,
       "YRotation": 0.0,
       "XPosition": 0.0,
@@ -4552,7 +4388,6 @@ export const LEVEL_MEDIUM_9_DATA: LevelData = {
     },
     {
       "Id": "0_1.2_0.8",
-      "NodeId": 1,
       "LayerId": 0,
       "YRotation": 0.0,
       "XPosition": 1.2,
@@ -4560,7 +4395,6 @@ export const LEVEL_MEDIUM_9_DATA: LevelData = {
     },
     {
       "Id": "0_0.0_0.0",
-      "NodeId": 1,
       "LayerId": 0,
       "YRotation": 0.0,
       "XPosition": 0.0,
@@ -4568,7 +4402,6 @@ export const LEVEL_MEDIUM_9_DATA: LevelData = {
     },
     {
       "Id": "0_-1.2_-0.8",
-      "NodeId": 1,
       "LayerId": 0,
       "YRotation": 0.0,
       "XPosition": -1.2,
@@ -4576,7 +4409,6 @@ export const LEVEL_MEDIUM_9_DATA: LevelData = {
     },
     {
       "Id": "0_0.0_-0.8",
-      "NodeId": 1,
       "LayerId": 0,
       "YRotation": 0.0,
       "XPosition": 0.0,
@@ -4584,7 +4416,6 @@ export const LEVEL_MEDIUM_9_DATA: LevelData = {
     },
     {
       "Id": "0_1.2_-0.8",
-      "NodeId": 1,
       "LayerId": 0,
       "YRotation": 0.0,
       "XPosition": 1.2,
@@ -4592,7 +4423,6 @@ export const LEVEL_MEDIUM_9_DATA: LevelData = {
     },
     {
       "Id": "1_-0.6_0.8",
-      "NodeId": 1,
       "LayerId": 1,
       "YRotation": 90.0,
       "XPosition": -0.6,
@@ -4600,7 +4430,6 @@ export const LEVEL_MEDIUM_9_DATA: LevelData = {
     },
     {
       "Id": "1_0.6_0.8",
-      "NodeId": 1,
       "LayerId": 1,
       "YRotation": 90.0,
       "XPosition": 0.6,
@@ -4608,7 +4437,6 @@ export const LEVEL_MEDIUM_9_DATA: LevelData = {
     },
     {
       "Id": "1_-0.6_-0.8",
-      "NodeId": 1,
       "LayerId": 1,
       "YRotation": 90.0,
       "XPosition": -0.6,
@@ -4616,7 +4444,6 @@ export const LEVEL_MEDIUM_9_DATA: LevelData = {
     },
     {
       "Id": "1_0.6_-0.8",
-      "NodeId": 1,
       "LayerId": 1,
       "YRotation": 90.0,
       "XPosition": 0.6,
@@ -4624,7 +4451,6 @@ export const LEVEL_MEDIUM_9_DATA: LevelData = {
     },
     {
       "Id": "2_-0.6_0.0",
-      "NodeId": 1,
       "LayerId": 2,
       "YRotation": 0.0,
       "XPosition": -0.6,
@@ -4632,7 +4458,6 @@ export const LEVEL_MEDIUM_9_DATA: LevelData = {
     },
     {
       "Id": "2_0.6_0.0",
-      "NodeId": 1,
       "LayerId": 2,
       "YRotation": 0.0,
       "XPosition": 0.6,
@@ -4640,7 +4465,6 @@ export const LEVEL_MEDIUM_9_DATA: LevelData = {
     },
     {
       "Id": "3_0.0_0.0",
-      "NodeId": 1,
       "LayerId": 3,
       "YRotation": 90.0,
       "XPosition": 0.0,
@@ -4937,7 +4761,6 @@ export const LEVEL_MEDIUM_10_DATA: LevelData = {
   "BoardNodes": [
     {
       "Id": "0_-2.0_0.6",
-      "NodeId": 1,
       "LayerId": 0,
       "YRotation": 0.0,
       "XPosition": -2.0,
@@ -4945,7 +4768,6 @@ export const LEVEL_MEDIUM_10_DATA: LevelData = {
     },
     {
       "Id": "0_-1.0_0.6",
-      "NodeId": 1,
       "LayerId": 0,
       "YRotation": 0.0,
       "XPosition": -1.0,
@@ -4953,7 +4775,6 @@ export const LEVEL_MEDIUM_10_DATA: LevelData = {
     },
     {
       "Id": "0_0.0_0.6",
-      "NodeId": 1,
       "LayerId": 0,
       "YRotation": 0.0,
       "XPosition": 0.0,
@@ -4961,7 +4782,6 @@ export const LEVEL_MEDIUM_10_DATA: LevelData = {
     },
     {
       "Id": "0_1.0_0.6",
-      "NodeId": 1,
       "LayerId": 0,
       "YRotation": 0.0,
       "XPosition": 1.0,
@@ -4969,7 +4789,6 @@ export const LEVEL_MEDIUM_10_DATA: LevelData = {
     },
     {
       "Id": "0_2.0_0.6",
-      "NodeId": 1,
       "LayerId": 0,
       "YRotation": 0.0,
       "XPosition": 2.0,
@@ -4977,7 +4796,6 @@ export const LEVEL_MEDIUM_10_DATA: LevelData = {
     },
     {
       "Id": "0_-2.0_-0.6",
-      "NodeId": 1,
       "LayerId": 0,
       "YRotation": 0.0,
       "XPosition": -2.0,
@@ -4985,7 +4803,6 @@ export const LEVEL_MEDIUM_10_DATA: LevelData = {
     },
     {
       "Id": "0_-1.0_-0.6",
-      "NodeId": 1,
       "LayerId": 0,
       "YRotation": 0.0,
       "XPosition": -1.0,
@@ -4993,7 +4810,6 @@ export const LEVEL_MEDIUM_10_DATA: LevelData = {
     },
     {
       "Id": "0_0.0_-0.6",
-      "NodeId": 1,
       "LayerId": 0,
       "YRotation": 0.0,
       "XPosition": 0.0,
@@ -5001,7 +4817,6 @@ export const LEVEL_MEDIUM_10_DATA: LevelData = {
     },
     {
       "Id": "0_1.0_-0.6",
-      "NodeId": 1,
       "LayerId": 0,
       "YRotation": 0.0,
       "XPosition": 1.0,
@@ -5009,7 +4824,6 @@ export const LEVEL_MEDIUM_10_DATA: LevelData = {
     },
     {
       "Id": "0_2.0_-0.6",
-      "NodeId": 1,
       "LayerId": 0,
       "YRotation": 0.0,
       "XPosition": 2.0,
@@ -5017,7 +4831,6 @@ export const LEVEL_MEDIUM_10_DATA: LevelData = {
     },
     {
       "Id": "1_-1.5_0.6",
-      "NodeId": 1,
       "LayerId": 1,
       "YRotation": 90.0,
       "XPosition": -1.5,
@@ -5025,7 +4838,6 @@ export const LEVEL_MEDIUM_10_DATA: LevelData = {
     },
     {
       "Id": "1_-0.5_0.6",
-      "NodeId": 1,
       "LayerId": 1,
       "YRotation": 90.0,
       "XPosition": -0.5,
@@ -5033,7 +4845,6 @@ export const LEVEL_MEDIUM_10_DATA: LevelData = {
     },
     {
       "Id": "1_0.5_0.6",
-      "NodeId": 1,
       "LayerId": 1,
       "YRotation": 90.0,
       "XPosition": 0.5,
@@ -5041,7 +4852,6 @@ export const LEVEL_MEDIUM_10_DATA: LevelData = {
     },
     {
       "Id": "1_1.5_0.6",
-      "NodeId": 1,
       "LayerId": 1,
       "YRotation": 90.0,
       "XPosition": 1.5,
@@ -5049,7 +4859,6 @@ export const LEVEL_MEDIUM_10_DATA: LevelData = {
     },
     {
       "Id": "1_-1.0_-0.6",
-      "NodeId": 1,
       "LayerId": 1,
       "YRotation": 90.0,
       "XPosition": -1.0,
@@ -5057,7 +4866,6 @@ export const LEVEL_MEDIUM_10_DATA: LevelData = {
     },
     {
       "Id": "1_1.0_-0.6",
-      "NodeId": 1,
       "LayerId": 1,
       "YRotation": 90.0,
       "XPosition": 1.0,
@@ -5065,7 +4873,6 @@ export const LEVEL_MEDIUM_10_DATA: LevelData = {
     },
     {
       "Id": "2_-1.0_0.0",
-      "NodeId": 1,
       "LayerId": 2,
       "YRotation": 0.0,
       "XPosition": -1.0,
@@ -5073,7 +4880,6 @@ export const LEVEL_MEDIUM_10_DATA: LevelData = {
     },
     {
       "Id": "2_0.0_0.0",
-      "NodeId": 1,
       "LayerId": 2,
       "YRotation": 0.0,
       "XPosition": 0.0,
@@ -5081,7 +4887,6 @@ export const LEVEL_MEDIUM_10_DATA: LevelData = {
     },
     {
       "Id": "2_1.0_0.0",
-      "NodeId": 1,
       "LayerId": 2,
       "YRotation": 0.0,
       "XPosition": 1.0,
@@ -5089,7 +4894,6 @@ export const LEVEL_MEDIUM_10_DATA: LevelData = {
     },
     {
       "Id": "3_-0.5_0.0",
-      "NodeId": 1,
       "LayerId": 3,
       "YRotation": 90.0,
       "XPosition": -0.5,
@@ -5097,7 +4901,6 @@ export const LEVEL_MEDIUM_10_DATA: LevelData = {
     },
     {
       "Id": "3_0.5_0.0",
-      "NodeId": 1,
       "LayerId": 3,
       "YRotation": 90.0,
       "XPosition": 0.5,
@@ -5516,7 +5319,6 @@ export const LEVEL_HARD_1_DATA: LevelData = {
   "BoardNodes": [
     {
       "Id": "0_-0.5_0.5",
-      "NodeId": 1,
       "LayerId": 0,
       "YRotation": 0.0,
       "XPosition": -0.5,
@@ -5524,7 +5326,6 @@ export const LEVEL_HARD_1_DATA: LevelData = {
     },
     {
       "Id": "0_0.5_0.5",
-      "NodeId": 1,
       "LayerId": 0,
       "YRotation": 0.0,
       "XPosition": 0.5,
@@ -5532,7 +5333,6 @@ export const LEVEL_HARD_1_DATA: LevelData = {
     },
     {
       "Id": "0_-0.5_-0.5",
-      "NodeId": 1,
       "LayerId": 0,
       "YRotation": 0.0,
       "XPosition": -0.5,
@@ -5540,7 +5340,6 @@ export const LEVEL_HARD_1_DATA: LevelData = {
     },
     {
       "Id": "0_0.5_-0.5",
-      "NodeId": 1,
       "LayerId": 0,
       "YRotation": 0.0,
       "XPosition": 0.5,
@@ -5548,7 +5347,6 @@ export const LEVEL_HARD_1_DATA: LevelData = {
     },
     {
       "Id": "1_0.0_0.5",
-      "NodeId": 1,
       "LayerId": 1,
       "YRotation": 90.0,
       "XPosition": 0.0,
@@ -5556,7 +5354,6 @@ export const LEVEL_HARD_1_DATA: LevelData = {
     },
     {
       "Id": "1_0.0_-0.5",
-      "NodeId": 1,
       "LayerId": 1,
       "YRotation": 90.0,
       "XPosition": 0.0,
@@ -5687,7 +5484,6 @@ export const LEVEL_HARD_2_DATA: LevelData = {
   "BoardNodes": [
     {
       "Id": "0_-0.8_0.0",
-      "NodeId": 1,
       "LayerId": 0,
       "YRotation": 0.0,
       "XPosition": -0.8,
@@ -5695,7 +5491,6 @@ export const LEVEL_HARD_2_DATA: LevelData = {
     },
     {
       "Id": "0_0.8_0.0",
-      "NodeId": 1,
       "LayerId": 0,
       "YRotation": 0.0,
       "XPosition": 0.8,
@@ -5703,7 +5498,6 @@ export const LEVEL_HARD_2_DATA: LevelData = {
     },
     {
       "Id": "0_0.0_0.0",
-      "NodeId": 1,
       "LayerId": 0,
       "YRotation": 0.0,
       "XPosition": 0.0,
@@ -5711,7 +5505,6 @@ export const LEVEL_HARD_2_DATA: LevelData = {
     },
     {
       "Id": "0_0.0_0.9",
-      "NodeId": 1,
       "LayerId": 0,
       "YRotation": 90.0,
       "XPosition": 0.0,
@@ -5719,7 +5512,6 @@ export const LEVEL_HARD_2_DATA: LevelData = {
     },
     {
       "Id": "0_0.0_-0.9",
-      "NodeId": 1,
       "LayerId": 0,
       "YRotation": 90.0,
       "XPosition": 0.0,
@@ -5727,7 +5519,6 @@ export const LEVEL_HARD_2_DATA: LevelData = {
     },
     {
       "Id": "1_-0.4_0.0",
-      "NodeId": 1,
       "LayerId": 1,
       "YRotation": 90.0,
       "XPosition": -0.4,
@@ -5735,7 +5526,6 @@ export const LEVEL_HARD_2_DATA: LevelData = {
     },
     {
       "Id": "1_0.4_0.0",
-      "NodeId": 1,
       "LayerId": 1,
       "YRotation": 90.0,
       "XPosition": 0.4,
@@ -5743,7 +5533,6 @@ export const LEVEL_HARD_2_DATA: LevelData = {
     },
     {
       "Id": "1_0.0_0.45",
-      "NodeId": 1,
       "LayerId": 1,
       "YRotation": 0.0,
       "XPosition": 0.0,
@@ -5913,7 +5702,6 @@ export const LEVEL_HARD_3_DATA: LevelData = {
   "BoardNodes": [
     {
       "Id": "0_-1.0_0.8",
-      "NodeId": 1,
       "LayerId": 0,
       "YRotation": 0.0,
       "XPosition": -1.0,
@@ -5921,7 +5709,6 @@ export const LEVEL_HARD_3_DATA: LevelData = {
     },
     {
       "Id": "0_-1.0_0.0",
-      "NodeId": 1,
       "LayerId": 0,
       "YRotation": 0.0,
       "XPosition": -1.0,
@@ -5929,7 +5716,6 @@ export const LEVEL_HARD_3_DATA: LevelData = {
     },
     {
       "Id": "0_-1.0_-0.8",
-      "NodeId": 1,
       "LayerId": 0,
       "YRotation": 0.0,
       "XPosition": -1.0,
@@ -5937,7 +5723,6 @@ export const LEVEL_HARD_3_DATA: LevelData = {
     },
     {
       "Id": "0_1.0_0.8",
-      "NodeId": 1,
       "LayerId": 0,
       "YRotation": 0.0,
       "XPosition": 1.0,
@@ -5945,7 +5730,6 @@ export const LEVEL_HARD_3_DATA: LevelData = {
     },
     {
       "Id": "0_1.0_0.0",
-      "NodeId": 1,
       "LayerId": 0,
       "YRotation": 0.0,
       "XPosition": 1.0,
@@ -5953,7 +5737,6 @@ export const LEVEL_HARD_3_DATA: LevelData = {
     },
     {
       "Id": "0_1.0_-0.8",
-      "NodeId": 1,
       "LayerId": 0,
       "YRotation": 0.0,
       "XPosition": 1.0,
@@ -5961,7 +5744,6 @@ export const LEVEL_HARD_3_DATA: LevelData = {
     },
     {
       "Id": "1_-1.0_0.4",
-      "NodeId": 1,
       "LayerId": 1,
       "YRotation": 90.0,
       "XPosition": -1.0,
@@ -5969,7 +5751,6 @@ export const LEVEL_HARD_3_DATA: LevelData = {
     },
     {
       "Id": "1_-1.0_-0.4",
-      "NodeId": 1,
       "LayerId": 1,
       "YRotation": 90.0,
       "XPosition": -1.0,
@@ -5977,7 +5758,6 @@ export const LEVEL_HARD_3_DATA: LevelData = {
     },
     {
       "Id": "1_1.0_0.4",
-      "NodeId": 1,
       "LayerId": 1,
       "YRotation": 90.0,
       "XPosition": 1.0,
@@ -5985,7 +5765,6 @@ export const LEVEL_HARD_3_DATA: LevelData = {
     },
     {
       "Id": "1_1.0_-0.4",
-      "NodeId": 1,
       "LayerId": 1,
       "YRotation": 90.0,
       "XPosition": 1.0,
@@ -5993,7 +5772,6 @@ export const LEVEL_HARD_3_DATA: LevelData = {
     },
     {
       "Id": "2_0.0_0.4",
-      "NodeId": 1,
       "LayerId": 2,
       "YRotation": 90.0,
       "XPosition": 0.0,
@@ -6001,7 +5779,6 @@ export const LEVEL_HARD_3_DATA: LevelData = {
     },
     {
       "Id": "2_0.0_-0.4",
-      "NodeId": 1,
       "LayerId": 2,
       "YRotation": 90.0,
       "XPosition": 0.0,
@@ -6250,7 +6027,6 @@ export const LEVEL_HARD_4_DATA: LevelData = {
   "BoardNodes": [
     {
       "Id": "0_-1.0_0.8",
-      "NodeId": 1,
       "LayerId": 0,
       "YRotation": 0.0,
       "XPosition": -1.0,
@@ -6258,7 +6034,6 @@ export const LEVEL_HARD_4_DATA: LevelData = {
     },
     {
       "Id": "0_0.0_0.8",
-      "NodeId": 1,
       "LayerId": 0,
       "YRotation": 0.0,
       "XPosition": 0.0,
@@ -6266,7 +6041,6 @@ export const LEVEL_HARD_4_DATA: LevelData = {
     },
     {
       "Id": "0_1.0_0.8",
-      "NodeId": 1,
       "LayerId": 0,
       "YRotation": 0.0,
       "XPosition": 1.0,
@@ -6274,7 +6048,6 @@ export const LEVEL_HARD_4_DATA: LevelData = {
     },
     {
       "Id": "0_0.0_0.0",
-      "NodeId": 1,
       "LayerId": 0,
       "YRotation": 0.0,
       "XPosition": 0.0,
@@ -6282,7 +6055,6 @@ export const LEVEL_HARD_4_DATA: LevelData = {
     },
     {
       "Id": "0_-1.0_-0.8",
-      "NodeId": 1,
       "LayerId": 0,
       "YRotation": 0.0,
       "XPosition": -1.0,
@@ -6290,7 +6062,6 @@ export const LEVEL_HARD_4_DATA: LevelData = {
     },
     {
       "Id": "0_0.0_-0.8",
-      "NodeId": 1,
       "LayerId": 0,
       "YRotation": 0.0,
       "XPosition": 0.0,
@@ -6298,7 +6069,6 @@ export const LEVEL_HARD_4_DATA: LevelData = {
     },
     {
       "Id": "0_1.0_-0.8",
-      "NodeId": 1,
       "LayerId": 0,
       "YRotation": 0.0,
       "XPosition": 1.0,
@@ -6306,7 +6076,6 @@ export const LEVEL_HARD_4_DATA: LevelData = {
     },
     {
       "Id": "1_-0.5_0.8",
-      "NodeId": 1,
       "LayerId": 1,
       "YRotation": 90.0,
       "XPosition": -0.5,
@@ -6314,7 +6083,6 @@ export const LEVEL_HARD_4_DATA: LevelData = {
     },
     {
       "Id": "1_0.5_0.8",
-      "NodeId": 1,
       "LayerId": 1,
       "YRotation": 90.0,
       "XPosition": 0.5,
@@ -6322,7 +6090,6 @@ export const LEVEL_HARD_4_DATA: LevelData = {
     },
     {
       "Id": "1_-0.5_-0.8",
-      "NodeId": 1,
       "LayerId": 1,
       "YRotation": 90.0,
       "XPosition": -0.5,
@@ -6330,7 +6097,6 @@ export const LEVEL_HARD_4_DATA: LevelData = {
     },
     {
       "Id": "1_0.5_-0.8",
-      "NodeId": 1,
       "LayerId": 1,
       "YRotation": 90.0,
       "XPosition": 0.5,
@@ -6338,7 +6104,6 @@ export const LEVEL_HARD_4_DATA: LevelData = {
     },
     {
       "Id": "2_-0.5_0.0",
-      "NodeId": 1,
       "LayerId": 2,
       "YRotation": 0.0,
       "XPosition": -0.5,
@@ -6346,7 +6111,6 @@ export const LEVEL_HARD_4_DATA: LevelData = {
     },
     {
       "Id": "2_0.5_0.0",
-      "NodeId": 1,
       "LayerId": 2,
       "YRotation": 0.0,
       "XPosition": 0.5,
@@ -6354,7 +6118,6 @@ export const LEVEL_HARD_4_DATA: LevelData = {
     },
     {
       "Id": "3_0.0_0.0",
-      "NodeId": 1,
       "LayerId": 3,
       "YRotation": 90.0,
       "XPosition": 0.0,
@@ -6651,7 +6414,6 @@ export const LEVEL_HARD_5_DATA: LevelData = {
   "BoardNodes": [
     {
       "Id": "0_-1.2_0.8",
-      "NodeId": 1,
       "LayerId": 0,
       "YRotation": 0.0,
       "XPosition": -1.2,
@@ -6659,7 +6421,6 @@ export const LEVEL_HARD_5_DATA: LevelData = {
     },
     {
       "Id": "0_0.0_0.8",
-      "NodeId": 1,
       "LayerId": 0,
       "YRotation": 0.0,
       "XPosition": 0.0,
@@ -6667,7 +6428,6 @@ export const LEVEL_HARD_5_DATA: LevelData = {
     },
     {
       "Id": "0_1.2_0.8",
-      "NodeId": 1,
       "LayerId": 0,
       "YRotation": 0.0,
       "XPosition": 1.2,
@@ -6675,7 +6435,6 @@ export const LEVEL_HARD_5_DATA: LevelData = {
     },
     {
       "Id": "0_0.0_0.0",
-      "NodeId": 1,
       "LayerId": 0,
       "YRotation": 0.0,
       "XPosition": 0.0,
@@ -6683,7 +6442,6 @@ export const LEVEL_HARD_5_DATA: LevelData = {
     },
     {
       "Id": "0_-1.2_-0.8",
-      "NodeId": 1,
       "LayerId": 0,
       "YRotation": 0.0,
       "XPosition": -1.2,
@@ -6691,7 +6449,6 @@ export const LEVEL_HARD_5_DATA: LevelData = {
     },
     {
       "Id": "0_0.0_-0.8",
-      "NodeId": 1,
       "LayerId": 0,
       "YRotation": 0.0,
       "XPosition": 0.0,
@@ -6699,7 +6456,6 @@ export const LEVEL_HARD_5_DATA: LevelData = {
     },
     {
       "Id": "0_1.2_-0.8",
-      "NodeId": 1,
       "LayerId": 0,
       "YRotation": 0.0,
       "XPosition": 1.2,
@@ -6707,7 +6463,6 @@ export const LEVEL_HARD_5_DATA: LevelData = {
     },
     {
       "Id": "1_-0.6_0.8",
-      "NodeId": 1,
       "LayerId": 1,
       "YRotation": 90.0,
       "XPosition": -0.6,
@@ -6715,7 +6470,6 @@ export const LEVEL_HARD_5_DATA: LevelData = {
     },
     {
       "Id": "1_0.6_0.8",
-      "NodeId": 1,
       "LayerId": 1,
       "YRotation": 90.0,
       "XPosition": 0.6,
@@ -6723,7 +6477,6 @@ export const LEVEL_HARD_5_DATA: LevelData = {
     },
     {
       "Id": "1_-0.6_-0.8",
-      "NodeId": 1,
       "LayerId": 1,
       "YRotation": 90.0,
       "XPosition": -0.6,
@@ -6731,7 +6484,6 @@ export const LEVEL_HARD_5_DATA: LevelData = {
     },
     {
       "Id": "1_0.6_-0.8",
-      "NodeId": 1,
       "LayerId": 1,
       "YRotation": 90.0,
       "XPosition": 0.6,
@@ -6739,7 +6491,6 @@ export const LEVEL_HARD_5_DATA: LevelData = {
     },
     {
       "Id": "2_-0.6_0.0",
-      "NodeId": 1,
       "LayerId": 2,
       "YRotation": 0.0,
       "XPosition": -0.6,
@@ -6747,7 +6498,6 @@ export const LEVEL_HARD_5_DATA: LevelData = {
     },
     {
       "Id": "2_0.6_0.0",
-      "NodeId": 1,
       "LayerId": 2,
       "YRotation": 0.0,
       "XPosition": 0.6,
@@ -6755,7 +6505,6 @@ export const LEVEL_HARD_5_DATA: LevelData = {
     },
     {
       "Id": "3_0.0_0.0",
-      "NodeId": 1,
       "LayerId": 3,
       "YRotation": 90.0,
       "XPosition": 0.0,
@@ -7052,7 +6801,6 @@ export const LEVEL_HARD_6_DATA: LevelData = {
   "BoardNodes": [
     {
       "Id": "0_-1.5_0.8",
-      "NodeId": 1,
       "LayerId": 0,
       "YRotation": 0.0,
       "XPosition": -1.5,
@@ -7060,7 +6808,6 @@ export const LEVEL_HARD_6_DATA: LevelData = {
     },
     {
       "Id": "0_-0.5_0.8",
-      "NodeId": 1,
       "LayerId": 0,
       "YRotation": 0.0,
       "XPosition": -0.5,
@@ -7068,7 +6815,6 @@ export const LEVEL_HARD_6_DATA: LevelData = {
     },
     {
       "Id": "0_0.5_0.8",
-      "NodeId": 1,
       "LayerId": 0,
       "YRotation": 0.0,
       "XPosition": 0.5,
@@ -7076,7 +6822,6 @@ export const LEVEL_HARD_6_DATA: LevelData = {
     },
     {
       "Id": "0_1.5_0.8",
-      "NodeId": 1,
       "LayerId": 0,
       "YRotation": 0.0,
       "XPosition": 1.5,
@@ -7084,7 +6829,6 @@ export const LEVEL_HARD_6_DATA: LevelData = {
     },
     {
       "Id": "0_-1.5_-0.8",
-      "NodeId": 1,
       "LayerId": 0,
       "YRotation": 0.0,
       "XPosition": -1.5,
@@ -7092,7 +6836,6 @@ export const LEVEL_HARD_6_DATA: LevelData = {
     },
     {
       "Id": "0_-0.5_-0.8",
-      "NodeId": 1,
       "LayerId": 0,
       "YRotation": 0.0,
       "XPosition": -0.5,
@@ -7100,7 +6843,6 @@ export const LEVEL_HARD_6_DATA: LevelData = {
     },
     {
       "Id": "0_0.5_-0.8",
-      "NodeId": 1,
       "LayerId": 0,
       "YRotation": 0.0,
       "XPosition": 0.5,
@@ -7108,7 +6850,6 @@ export const LEVEL_HARD_6_DATA: LevelData = {
     },
     {
       "Id": "0_1.5_-0.8",
-      "NodeId": 1,
       "LayerId": 0,
       "YRotation": 0.0,
       "XPosition": 1.5,
@@ -7116,7 +6857,6 @@ export const LEVEL_HARD_6_DATA: LevelData = {
     },
     {
       "Id": "1_-1.0_0.8",
-      "NodeId": 1,
       "LayerId": 1,
       "YRotation": 90.0,
       "XPosition": -1.0,
@@ -7124,7 +6864,6 @@ export const LEVEL_HARD_6_DATA: LevelData = {
     },
     {
       "Id": "1_1.0_0.8",
-      "NodeId": 1,
       "LayerId": 1,
       "YRotation": 90.0,
       "XPosition": 1.0,
@@ -7132,7 +6871,6 @@ export const LEVEL_HARD_6_DATA: LevelData = {
     },
     {
       "Id": "1_-1.0_-0.8",
-      "NodeId": 1,
       "LayerId": 1,
       "YRotation": 90.0,
       "XPosition": -1.0,
@@ -7140,7 +6878,6 @@ export const LEVEL_HARD_6_DATA: LevelData = {
     },
     {
       "Id": "1_1.0_-0.8",
-      "NodeId": 1,
       "LayerId": 1,
       "YRotation": 90.0,
       "XPosition": 1.0,
@@ -7148,7 +6885,6 @@ export const LEVEL_HARD_6_DATA: LevelData = {
     },
     {
       "Id": "2_-0.5_0.0",
-      "NodeId": 1,
       "LayerId": 2,
       "YRotation": 0.0,
       "XPosition": -0.5,
@@ -7156,7 +6892,6 @@ export const LEVEL_HARD_6_DATA: LevelData = {
     },
     {
       "Id": "2_0.5_0.0",
-      "NodeId": 1,
       "LayerId": 2,
       "YRotation": 0.0,
       "XPosition": 0.5,
@@ -7164,7 +6899,6 @@ export const LEVEL_HARD_6_DATA: LevelData = {
     },
     {
       "Id": "3_0.0_0.0",
-      "NodeId": 1,
       "LayerId": 3,
       "YRotation": 90.0,
       "XPosition": 0.0,
@@ -7465,7 +7199,6 @@ export const LEVEL_HARD_7_DATA: LevelData = {
   "BoardNodes": [
     {
       "Id": "0_-1.5_0.8",
-      "NodeId": 1,
       "LayerId": 0,
       "YRotation": 0.0,
       "XPosition": -1.5,
@@ -7473,7 +7206,6 @@ export const LEVEL_HARD_7_DATA: LevelData = {
     },
     {
       "Id": "0_-0.5_0.8",
-      "NodeId": 1,
       "LayerId": 0,
       "YRotation": 0.0,
       "XPosition": -0.5,
@@ -7481,7 +7213,6 @@ export const LEVEL_HARD_7_DATA: LevelData = {
     },
     {
       "Id": "0_0.5_0.8",
-      "NodeId": 1,
       "LayerId": 0,
       "YRotation": 0.0,
       "XPosition": 0.5,
@@ -7489,7 +7220,6 @@ export const LEVEL_HARD_7_DATA: LevelData = {
     },
     {
       "Id": "0_1.5_0.8",
-      "NodeId": 1,
       "LayerId": 0,
       "YRotation": 0.0,
       "XPosition": 1.5,
@@ -7497,7 +7227,6 @@ export const LEVEL_HARD_7_DATA: LevelData = {
     },
     {
       "Id": "0_-1.5_-0.8",
-      "NodeId": 1,
       "LayerId": 0,
       "YRotation": 0.0,
       "XPosition": -1.5,
@@ -7505,7 +7234,6 @@ export const LEVEL_HARD_7_DATA: LevelData = {
     },
     {
       "Id": "0_-0.5_-0.8",
-      "NodeId": 1,
       "LayerId": 0,
       "YRotation": 0.0,
       "XPosition": -0.5,
@@ -7513,7 +7241,6 @@ export const LEVEL_HARD_7_DATA: LevelData = {
     },
     {
       "Id": "0_0.5_-0.8",
-      "NodeId": 1,
       "LayerId": 0,
       "YRotation": 0.0,
       "XPosition": 0.5,
@@ -7521,7 +7248,6 @@ export const LEVEL_HARD_7_DATA: LevelData = {
     },
     {
       "Id": "0_1.5_-0.8",
-      "NodeId": 1,
       "LayerId": 0,
       "YRotation": 0.0,
       "XPosition": 1.5,
@@ -7529,7 +7255,6 @@ export const LEVEL_HARD_7_DATA: LevelData = {
     },
     {
       "Id": "1_-1.0_0.8",
-      "NodeId": 1,
       "LayerId": 1,
       "YRotation": 90.0,
       "XPosition": -1.0,
@@ -7537,7 +7262,6 @@ export const LEVEL_HARD_7_DATA: LevelData = {
     },
     {
       "Id": "1_0.0_0.8",
-      "NodeId": 1,
       "LayerId": 1,
       "YRotation": 90.0,
       "XPosition": 0.0,
@@ -7545,7 +7269,6 @@ export const LEVEL_HARD_7_DATA: LevelData = {
     },
     {
       "Id": "1_1.0_0.8",
-      "NodeId": 1,
       "LayerId": 1,
       "YRotation": 90.0,
       "XPosition": 1.0,
@@ -7553,7 +7276,6 @@ export const LEVEL_HARD_7_DATA: LevelData = {
     },
     {
       "Id": "1_-0.5_-0.8",
-      "NodeId": 1,
       "LayerId": 1,
       "YRotation": 90.0,
       "XPosition": -0.5,
@@ -7561,7 +7283,6 @@ export const LEVEL_HARD_7_DATA: LevelData = {
     },
     {
       "Id": "1_0.5_-0.8",
-      "NodeId": 1,
       "LayerId": 1,
       "YRotation": 90.0,
       "XPosition": 0.5,
@@ -7569,7 +7290,6 @@ export const LEVEL_HARD_7_DATA: LevelData = {
     },
     {
       "Id": "2_-0.5_0.0",
-      "NodeId": 1,
       "LayerId": 2,
       "YRotation": 0.0,
       "XPosition": -0.5,
@@ -7577,7 +7297,6 @@ export const LEVEL_HARD_7_DATA: LevelData = {
     },
     {
       "Id": "2_0.5_0.0",
-      "NodeId": 1,
       "LayerId": 2,
       "YRotation": 0.0,
       "XPosition": 0.5,
@@ -7585,7 +7304,6 @@ export const LEVEL_HARD_7_DATA: LevelData = {
     },
     {
       "Id": "3_0.0_0.0",
-      "NodeId": 1,
       "LayerId": 3,
       "YRotation": 90.0,
       "XPosition": 0.0,
@@ -7909,7 +7627,6 @@ export const LEVEL_HARD_8_DATA: LevelData = {
   "BoardNodes": [
     {
       "Id": "0_-1.2_0.8",
-      "NodeId": 1,
       "LayerId": 0,
       "YRotation": 0.0,
       "XPosition": -1.2,
@@ -7917,7 +7634,6 @@ export const LEVEL_HARD_8_DATA: LevelData = {
     },
     {
       "Id": "0_0.0_0.8",
-      "NodeId": 1,
       "LayerId": 0,
       "YRotation": 0.0,
       "XPosition": 0.0,
@@ -7925,7 +7641,6 @@ export const LEVEL_HARD_8_DATA: LevelData = {
     },
     {
       "Id": "0_1.2_0.8",
-      "NodeId": 1,
       "LayerId": 0,
       "YRotation": 0.0,
       "XPosition": 1.2,
@@ -7933,7 +7648,6 @@ export const LEVEL_HARD_8_DATA: LevelData = {
     },
     {
       "Id": "0_-1.2_-0.8",
-      "NodeId": 1,
       "LayerId": 0,
       "YRotation": 0.0,
       "XPosition": -1.2,
@@ -7941,7 +7655,6 @@ export const LEVEL_HARD_8_DATA: LevelData = {
     },
     {
       "Id": "0_0.0_-0.8",
-      "NodeId": 1,
       "LayerId": 0,
       "YRotation": 0.0,
       "XPosition": 0.0,
@@ -7949,7 +7662,6 @@ export const LEVEL_HARD_8_DATA: LevelData = {
     },
     {
       "Id": "0_1.2_-0.8",
-      "NodeId": 1,
       "LayerId": 0,
       "YRotation": 0.0,
       "XPosition": 1.2,
@@ -7957,7 +7669,6 @@ export const LEVEL_HARD_8_DATA: LevelData = {
     },
     {
       "Id": "1_-0.6_0.8",
-      "NodeId": 1,
       "LayerId": 1,
       "YRotation": 90.0,
       "XPosition": -0.6,
@@ -7965,7 +7676,6 @@ export const LEVEL_HARD_8_DATA: LevelData = {
     },
     {
       "Id": "1_0.6_0.8",
-      "NodeId": 1,
       "LayerId": 1,
       "YRotation": 90.0,
       "XPosition": 0.6,
@@ -7973,7 +7683,6 @@ export const LEVEL_HARD_8_DATA: LevelData = {
     },
     {
       "Id": "1_-0.6_-0.8",
-      "NodeId": 1,
       "LayerId": 1,
       "YRotation": 90.0,
       "XPosition": -0.6,
@@ -7981,7 +7690,6 @@ export const LEVEL_HARD_8_DATA: LevelData = {
     },
     {
       "Id": "1_0.6_-0.8",
-      "NodeId": 1,
       "LayerId": 1,
       "YRotation": 90.0,
       "XPosition": 0.6,
@@ -7989,7 +7697,6 @@ export const LEVEL_HARD_8_DATA: LevelData = {
     },
     {
       "Id": "2_-0.5_0.0",
-      "NodeId": 1,
       "LayerId": 2,
       "YRotation": 0.0,
       "XPosition": -0.5,
@@ -7997,7 +7704,6 @@ export const LEVEL_HARD_8_DATA: LevelData = {
     },
     {
       "Id": "2_0.5_0.0",
-      "NodeId": 1,
       "LayerId": 2,
       "YRotation": 0.0,
       "XPosition": 0.5,
@@ -8210,7 +7916,6 @@ export const LEVEL_HARD_9_DATA: LevelData = {
   "BoardNodes": [
     {
       "Id": "0_-1.5_0.8",
-      "NodeId": 1,
       "LayerId": 0,
       "YRotation": 0.0,
       "XPosition": -1.5,
@@ -8218,7 +7923,6 @@ export const LEVEL_HARD_9_DATA: LevelData = {
     },
     {
       "Id": "0_-0.5_0.8",
-      "NodeId": 1,
       "LayerId": 0,
       "YRotation": 0.0,
       "XPosition": -0.5,
@@ -8226,7 +7930,6 @@ export const LEVEL_HARD_9_DATA: LevelData = {
     },
     {
       "Id": "0_0.5_0.8",
-      "NodeId": 1,
       "LayerId": 0,
       "YRotation": 0.0,
       "XPosition": 0.5,
@@ -8234,7 +7937,6 @@ export const LEVEL_HARD_9_DATA: LevelData = {
     },
     {
       "Id": "0_1.5_0.8",
-      "NodeId": 1,
       "LayerId": 0,
       "YRotation": 0.0,
       "XPosition": 1.5,
@@ -8242,7 +7944,6 @@ export const LEVEL_HARD_9_DATA: LevelData = {
     },
     {
       "Id": "0_-1.5_-0.8",
-      "NodeId": 1,
       "LayerId": 0,
       "YRotation": 0.0,
       "XPosition": -1.5,
@@ -8250,7 +7951,6 @@ export const LEVEL_HARD_9_DATA: LevelData = {
     },
     {
       "Id": "0_-0.5_-0.8",
-      "NodeId": 1,
       "LayerId": 0,
       "YRotation": 0.0,
       "XPosition": -0.5,
@@ -8258,7 +7958,6 @@ export const LEVEL_HARD_9_DATA: LevelData = {
     },
     {
       "Id": "0_0.5_-0.8",
-      "NodeId": 1,
       "LayerId": 0,
       "YRotation": 0.0,
       "XPosition": 0.5,
@@ -8266,7 +7965,6 @@ export const LEVEL_HARD_9_DATA: LevelData = {
     },
     {
       "Id": "0_1.5_-0.8",
-      "NodeId": 1,
       "LayerId": 0,
       "YRotation": 0.0,
       "XPosition": 1.5,
@@ -8274,7 +7972,6 @@ export const LEVEL_HARD_9_DATA: LevelData = {
     },
     {
       "Id": "1_-1.0_0.8",
-      "NodeId": 1,
       "LayerId": 1,
       "YRotation": 90.0,
       "XPosition": -1.0,
@@ -8282,7 +7979,6 @@ export const LEVEL_HARD_9_DATA: LevelData = {
     },
     {
       "Id": "1_0.0_0.8",
-      "NodeId": 1,
       "LayerId": 1,
       "YRotation": 90.0,
       "XPosition": 0.0,
@@ -8290,7 +7986,6 @@ export const LEVEL_HARD_9_DATA: LevelData = {
     },
     {
       "Id": "1_1.0_0.8",
-      "NodeId": 1,
       "LayerId": 1,
       "YRotation": 90.0,
       "XPosition": 1.0,
@@ -8298,7 +7993,6 @@ export const LEVEL_HARD_9_DATA: LevelData = {
     },
     {
       "Id": "1_-0.5_-0.8",
-      "NodeId": 1,
       "LayerId": 1,
       "YRotation": 90.0,
       "XPosition": -0.5,
@@ -8306,7 +8000,6 @@ export const LEVEL_HARD_9_DATA: LevelData = {
     },
     {
       "Id": "1_0.5_-0.8",
-      "NodeId": 1,
       "LayerId": 1,
       "YRotation": 90.0,
       "XPosition": 0.5,
@@ -8314,7 +8007,6 @@ export const LEVEL_HARD_9_DATA: LevelData = {
     },
     {
       "Id": "2_-0.5_0.0",
-      "NodeId": 1,
       "LayerId": 2,
       "YRotation": 0.0,
       "XPosition": -0.5,
@@ -8322,7 +8014,6 @@ export const LEVEL_HARD_9_DATA: LevelData = {
     },
     {
       "Id": "2_0.5_0.0",
-      "NodeId": 1,
       "LayerId": 2,
       "YRotation": 0.0,
       "XPosition": 0.5,
@@ -8330,7 +8021,6 @@ export const LEVEL_HARD_9_DATA: LevelData = {
     },
     {
       "Id": "3_0.0_0.0",
-      "NodeId": 1,
       "LayerId": 3,
       "YRotation": 90.0,
       "XPosition": 0.0,
@@ -8654,7 +8344,6 @@ export const LEVEL_HARD_10_DATA: LevelData = {
   "BoardNodes": [
     {
       "Id": "0_-2.5_0.6",
-      "NodeId": 1,
       "LayerId": 0,
       "YRotation": 0.0,
       "XPosition": -2.5,
@@ -8662,7 +8351,6 @@ export const LEVEL_HARD_10_DATA: LevelData = {
     },
     {
       "Id": "0_-1.5_0.6",
-      "NodeId": 1,
       "LayerId": 0,
       "YRotation": 0.0,
       "XPosition": -1.5,
@@ -8670,7 +8358,6 @@ export const LEVEL_HARD_10_DATA: LevelData = {
     },
     {
       "Id": "0_-0.5_0.6",
-      "NodeId": 1,
       "LayerId": 0,
       "YRotation": 0.0,
       "XPosition": -0.5,
@@ -8678,7 +8365,6 @@ export const LEVEL_HARD_10_DATA: LevelData = {
     },
     {
       "Id": "0_0.5_0.6",
-      "NodeId": 1,
       "LayerId": 0,
       "YRotation": 0.0,
       "XPosition": 0.5,
@@ -8686,7 +8372,6 @@ export const LEVEL_HARD_10_DATA: LevelData = {
     },
     {
       "Id": "0_1.5_0.6",
-      "NodeId": 1,
       "LayerId": 0,
       "YRotation": 0.0,
       "XPosition": 1.5,
@@ -8694,7 +8379,6 @@ export const LEVEL_HARD_10_DATA: LevelData = {
     },
     {
       "Id": "0_2.5_0.6",
-      "NodeId": 1,
       "LayerId": 0,
       "YRotation": 0.0,
       "XPosition": 2.5,
@@ -8702,7 +8386,6 @@ export const LEVEL_HARD_10_DATA: LevelData = {
     },
     {
       "Id": "0_-2.5_-0.6",
-      "NodeId": 1,
       "LayerId": 0,
       "YRotation": 0.0,
       "XPosition": -2.5,
@@ -8710,7 +8393,6 @@ export const LEVEL_HARD_10_DATA: LevelData = {
     },
     {
       "Id": "0_-1.5_-0.6",
-      "NodeId": 1,
       "LayerId": 0,
       "YRotation": 0.0,
       "XPosition": -1.5,
@@ -8718,7 +8400,6 @@ export const LEVEL_HARD_10_DATA: LevelData = {
     },
     {
       "Id": "0_-0.5_-0.6",
-      "NodeId": 1,
       "LayerId": 0,
       "YRotation": 0.0,
       "XPosition": -0.5,
@@ -8726,7 +8407,6 @@ export const LEVEL_HARD_10_DATA: LevelData = {
     },
     {
       "Id": "0_0.5_-0.6",
-      "NodeId": 1,
       "LayerId": 0,
       "YRotation": 0.0,
       "XPosition": 0.5,
@@ -8734,7 +8414,6 @@ export const LEVEL_HARD_10_DATA: LevelData = {
     },
     {
       "Id": "0_1.5_-0.6",
-      "NodeId": 1,
       "LayerId": 0,
       "YRotation": 0.0,
       "XPosition": 1.5,
@@ -8742,7 +8421,6 @@ export const LEVEL_HARD_10_DATA: LevelData = {
     },
     {
       "Id": "0_2.5_-0.6",
-      "NodeId": 1,
       "LayerId": 0,
       "YRotation": 0.0,
       "XPosition": 2.5,
@@ -8750,7 +8428,6 @@ export const LEVEL_HARD_10_DATA: LevelData = {
     },
     {
       "Id": "1_-2.0_0.6",
-      "NodeId": 1,
       "LayerId": 1,
       "YRotation": 90.0,
       "XPosition": -2.0,
@@ -8758,7 +8435,6 @@ export const LEVEL_HARD_10_DATA: LevelData = {
     },
     {
       "Id": "1_-1.0_0.6",
-      "NodeId": 1,
       "LayerId": 1,
       "YRotation": 90.0,
       "XPosition": -1.0,
@@ -8766,7 +8442,6 @@ export const LEVEL_HARD_10_DATA: LevelData = {
     },
     {
       "Id": "1_0.0_0.6",
-      "NodeId": 1,
       "LayerId": 1,
       "YRotation": 90.0,
       "XPosition": 0.0,
@@ -8774,7 +8449,6 @@ export const LEVEL_HARD_10_DATA: LevelData = {
     },
     {
       "Id": "1_1.0_0.6",
-      "NodeId": 1,
       "LayerId": 1,
       "YRotation": 90.0,
       "XPosition": 1.0,
@@ -8782,7 +8456,6 @@ export const LEVEL_HARD_10_DATA: LevelData = {
     },
     {
       "Id": "1_2.0_0.6",
-      "NodeId": 1,
       "LayerId": 1,
       "YRotation": 90.0,
       "XPosition": 2.0,
@@ -8790,7 +8463,6 @@ export const LEVEL_HARD_10_DATA: LevelData = {
     },
     {
       "Id": "1_-1.5_-0.6",
-      "NodeId": 1,
       "LayerId": 1,
       "YRotation": 90.0,
       "XPosition": -1.5,
@@ -8798,7 +8470,6 @@ export const LEVEL_HARD_10_DATA: LevelData = {
     },
     {
       "Id": "1_0.0_-0.6",
-      "NodeId": 1,
       "LayerId": 1,
       "YRotation": 90.0,
       "XPosition": 0.0,
@@ -8806,7 +8477,6 @@ export const LEVEL_HARD_10_DATA: LevelData = {
     },
     {
       "Id": "1_1.5_-0.6",
-      "NodeId": 1,
       "LayerId": 1,
       "YRotation": 90.0,
       "XPosition": 1.5,
@@ -8814,7 +8484,6 @@ export const LEVEL_HARD_10_DATA: LevelData = {
     },
     {
       "Id": "2_-1.5_0.0",
-      "NodeId": 1,
       "LayerId": 2,
       "YRotation": 0.0,
       "XPosition": -1.5,
@@ -8822,7 +8491,6 @@ export const LEVEL_HARD_10_DATA: LevelData = {
     },
     {
       "Id": "2_-0.5_0.0",
-      "NodeId": 1,
       "LayerId": 2,
       "YRotation": 0.0,
       "XPosition": -0.5,
@@ -8830,7 +8498,6 @@ export const LEVEL_HARD_10_DATA: LevelData = {
     },
     {
       "Id": "2_0.5_0.0",
-      "NodeId": 1,
       "LayerId": 2,
       "YRotation": 0.0,
       "XPosition": 0.5,
@@ -8838,7 +8505,6 @@ export const LEVEL_HARD_10_DATA: LevelData = {
     },
     {
       "Id": "2_1.5_0.0",
-      "NodeId": 1,
       "LayerId": 2,
       "YRotation": 0.0,
       "XPosition": 1.5,
@@ -8846,7 +8512,6 @@ export const LEVEL_HARD_10_DATA: LevelData = {
     },
     {
       "Id": "3_-0.5_0.0",
-      "NodeId": 1,
       "LayerId": 3,
       "YRotation": 90.0,
       "XPosition": -0.5,
@@ -8854,7 +8519,6 @@ export const LEVEL_HARD_10_DATA: LevelData = {
     },
     {
       "Id": "3_0.5_0.0",
-      "NodeId": 1,
       "LayerId": 3,
       "YRotation": 90.0,
       "XPosition": 0.5,
@@ -8862,7 +8526,6 @@ export const LEVEL_HARD_10_DATA: LevelData = {
     },
     {
       "Id": "4_0.0_0.0",
-      "NodeId": 1,
       "LayerId": 4,
       "YRotation": 90.0,
       "XPosition": 0.0,

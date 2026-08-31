@@ -1,11 +1,11 @@
 export interface BoardNode {
   Id: string;
-  NodeId: number;
   LayerId: number;
   YRotation: number;
   XPosition: number;
   ZPosition: number;
   // Optional backwards compatibility fields
+  NodeId?: number;
   TileMapId?: number;
   MapPosX?: number;
   MapPosY?: number;

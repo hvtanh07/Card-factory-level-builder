@@ -46,7 +46,6 @@ export function parseLevelData(rawInput: string | ArrayBuffer | Uint8Array): Lev
           const zPos = Number(n.ZPosition ?? ((n.MapPosY ?? 0) + (n.YPosition ?? 0)));
           return {
             Id: String(n.Id ?? `node_${idx}`),
-            NodeId: Number(n.NodeId ?? 1),
             LayerId: layerId,
             YRotation: yRot,
             XPosition: xPos,
@@ -105,7 +104,6 @@ export function levelDataToJson(data: LevelData, pretty = true): string {
     BoardOffsetZ: data.BoardOffsetZ ?? 0,
     BoardNodes: data.BoardNodes.map(b => ({
       Id: b.Id,
-      NodeId: b.NodeId,
       LayerId: b.LayerId ?? b.TileMapId ?? 0,
       YRotation: b.YRotation ?? b.ZRotation ?? 0,
       XPosition: b.XPosition !== undefined && b.MapPosX === undefined ? b.XPosition : Number(((b.MapPosX ?? 0) + (b.XPosition ?? 0)).toFixed(3)),
