@@ -52,7 +52,7 @@ export const BoxNodeVisual: React.FC<BoxNodeVisualProps> = ({
   const halfW = w / 2;
   const halfH = h / 2;
 
-  const isTray = boxType.isTray || activeBox.BoxColor === 5;
+  const isTray = Boolean(activeBox.IsPaperBox || boxType.isTray);
   const cardCount = activeBox.InitCards.length;
   const capacity = boxType.capacity;
   const slotCount = Math.max(capacity, cardCount || 1);
@@ -255,8 +255,8 @@ export const BoxNodeVisual: React.FC<BoxNodeVisualProps> = ({
         </g>
       )}
 
-      {/* IsHidden Mystery Box Badge */}
-      {activeBox.IsHidden && (
+      {/* IsRainbowBox Mystery Box Badge */}
+      {(activeBox.IsRainbowBox || activeBox.IsHidden) && (
         <g transform={`translate(${-halfW + 12 * scaleMultiplier}, ${halfH - 8 * scaleMultiplier})`}>
           <rect x="-10" y="-7" width="20" height="14" rx="4" fill="#a855f7" stroke="#ffffff" strokeWidth="1.2" />
           <text x="0" y="3.5" textAnchor="middle" fill="#ffffff" fontSize="9" fontWeight="900">

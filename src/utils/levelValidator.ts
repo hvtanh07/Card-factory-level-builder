@@ -157,13 +157,13 @@ export function getCardDistribution(data: LevelData): Record<number, number> {
 export function getColoredBoxCapacities(data: LevelData): Record<number, number> {
   const capacities: Record<number, number> = {};
   for (const bx of data.BoxNodes) {
-    if (bx.BoxColor === 5) continue; // Skip neutral trays
+    if (bx.IsPaperBox) continue; // Skip neutral paper trays
     const boxType = getBoxType(bx.TypeId);
     capacities[bx.BoxColor] = (capacities[bx.BoxColor] || 0) + boxType.capacity;
   }
   for (const sn of (data.SpawnerNodes || [])) {
     for (const sb of sn.SpawnBoxes) {
-      if (sb.BoxColor === 5) continue;
+      if (sb.IsPaperBox) continue;
       const boxType = getBoxType(sb.TypeId);
       capacities[sb.BoxColor] = (capacities[sb.BoxColor] || 0) + boxType.capacity;
     }
@@ -198,7 +198,7 @@ export function balanceLevelCardDeck(data: LevelData): LevelData {
       if (poolIdx < colorPool.length) {
         newCards.push(colorPool[poolIdx++]);
       } else {
-        newCards.push(bx.BoxColor === 5 ? 0 : bx.BoxColor);
+        newCards.push(bx.IsPaperBox ? 1 : bx.BoxColor);
       }
     }
 
@@ -219,7 +219,7 @@ export function balanceLevelCardDeck(data: LevelData): LevelData {
         if (poolIdx < colorPool.length) {
           newCards.push(colorPool[poolIdx++]);
         } else {
-          newCards.push(sb.BoxColor === 5 ? 0 : sb.BoxColor);
+          newCards.push(sb.IsPaperBox ? 1 : sb.BoxColor);
         }
       }
 

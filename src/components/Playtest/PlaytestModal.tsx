@@ -386,7 +386,7 @@ export const PlaytestModal: React.FC<PlaytestModalProps> = ({ levelData, onClose
     if (!activeBox) return;
 
     const boxType = getBoxType(activeBox.TypeId);
-    const isTray = activeBox.BoxColor === 5 || boxType.isTray;
+    const isTray = Boolean(activeBox.IsPaperBox || boxType.isTray);
 
     // === TRAY LOGIC ===
     // Trays store spare cards. When clicked:
@@ -873,8 +873,8 @@ export const PlaytestModal: React.FC<PlaytestModalProps> = ({ levelData, onClose
                       const blockers = liveBlockedByMap.get(bn.Id) || [];
                       const isBlocked = blockers.length > 0;
 
-                      // Mystery Box: color is hidden while blocked
-                      const isHidden = activeBox.IsHidden && isBlocked;
+                      // Mystery / Rainbow Box: color is hidden while blocked
+                      const isHidden = (activeBox.IsRainbowBox || activeBox.IsHidden) && isBlocked;
                       const areCardsHidden = activeBox.IsCardsHidden;
 
                       const unityX = bn.XPosition !== undefined && bn.MapPosX === undefined
@@ -891,7 +891,7 @@ export const PlaytestModal: React.FC<PlaytestModalProps> = ({ levelData, onClose
 
                       const w = boxType.width;
                       const h = boxType.height;
-                      const isTray = boxType.isTray || activeBox.BoxColor === 5;
+                      const isTray = Boolean(activeBox.IsPaperBox || boxType.isTray);
                       const layerId = bn.LayerId ?? bn.TileMapId ?? 0;
                       const layerElev = Math.min(Math.max(layerId, 0), 4);
                       const shadowY = layerElev * 3 + 3;

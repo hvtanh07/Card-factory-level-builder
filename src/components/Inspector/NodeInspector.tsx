@@ -208,10 +208,10 @@ export const NodeInspector: React.FC<NodeInspectorProps> = ({
             </select>
           </div>
 
-          {/* Box Color Selector (10 Colors Grid) */}
+          {/* Box Color Selector (8 Colors Grid) */}
           <div>
             <span className="text-[11px] text-slate-400 mb-1.5 block">Box Color Theme</span>
-            <div className="grid grid-cols-5 gap-1.5">
+            <div className="grid grid-cols-4 gap-1.5">
               {COLOR_LIST.map(c => {
                 const isSelectedColor = currentBox.BoxColor === c.id;
                 return (
@@ -225,20 +225,20 @@ export const NodeInspector: React.FC<NodeInspectorProps> = ({
                         onUpdateSpawnerNode({ ...spawnerNode, SpawnBoxes: updatedBoxes });
                       }
                     }}
-                    className={`h-7 rounded-lg border flex items-center justify-center transition active:scale-95 ${
-                      isSelectedColor ? 'ring-2 ring-sky-400 border-white shadow-lg' : 'border-transparent opacity-85 hover:opacity-100'
+                    className={`h-7 rounded-lg border flex items-center justify-center transition active:scale-95 text-[10px] font-bold text-white shadow-sm ${
+                      isSelectedColor ? 'ring-2 ring-sky-400 border-white shadow-lg scale-105' : 'border-transparent opacity-85 hover:opacity-100'
                     }`}
                     style={{ backgroundColor: c.hex }}
-                    title={c.name}
+                    title={`${c.id}: ${c.name}`}
                   >
-                    {isSelectedColor && <Check size={13} className="text-white drop-shadow" />}
+                    {isSelectedColor ? <Check size={13} className="text-white drop-shadow" /> : c.id}
                   </button>
                 );
               })}
             </div>
           </div>
 
-          {/* Extra Flags: LockedTurn, IsHidden, IsCardsHidden */}
+          {/* Extra Flags: LockedTurn, IsPaperBox, IsRainbowBox */}
           <div className="grid grid-cols-3 gap-2 pt-1 border-t border-slate-800">
             <div>
               <span className="text-[11px] text-slate-400 mb-1 block">Locked Turn</span>
@@ -254,35 +254,35 @@ export const NodeInspector: React.FC<NodeInspectorProps> = ({
               />
             </div>
             <div>
-              <span className="text-[11px] text-slate-400 mb-1 block">Mystery Box</span>
+              <span className="text-[11px] text-slate-400 mb-1 block">Paper Box (Tray)</span>
               <button
                 onClick={() => {
-                  if (boxNode) onUpdateBoxNode({ ...boxNode, IsHidden: !boxNode.IsHidden });
+                  if (boxNode) onUpdateBoxNode({ ...boxNode, IsPaperBox: !boxNode.IsPaperBox });
                 }}
                 className={`w-full py-1 px-1.5 rounded-lg text-[11px] font-medium border flex items-center justify-center gap-1 transition ${
-                  currentBox.IsHidden
-                    ? 'bg-purple-500/20 text-purple-300 border-purple-500/40 font-bold'
+                  currentBox.IsPaperBox
+                    ? 'bg-amber-500/20 text-amber-300 border-amber-500/40 font-bold'
                     : 'bg-slate-900 text-slate-400 border-slate-700 hover:text-slate-300'
                 }`}
-                title="Hides box color until unblocked"
+                title="Sets whether this box acts as a paper tray"
               >
-                {currentBox.IsHidden ? 'Mystery (?)' : 'Visible'}
+                {currentBox.IsPaperBox ? 'Tray Box' : 'Standard'}
               </button>
             </div>
             <div>
-              <span className="text-[11px] text-slate-400 mb-1 block">Cards Hidden</span>
+              <span className="text-[11px] text-slate-400 mb-1 block">Rainbow Box</span>
               <button
                 onClick={() => {
-                  if (boxNode) onUpdateBoxNode({ ...boxNode, IsCardsHidden: !boxNode.IsCardsHidden });
+                  if (boxNode) onUpdateBoxNode({ ...boxNode, IsRainbowBox: !boxNode.IsRainbowBox, IsHidden: false });
                 }}
                 className={`w-full py-1 px-1.5 rounded-lg text-[11px] font-medium border flex items-center justify-center gap-1 transition ${
-                  currentBox.IsCardsHidden
-                    ? 'bg-slate-700/50 text-slate-200 border-slate-500 font-bold'
+                  currentBox.IsRainbowBox
+                    ? 'bg-purple-500/20 text-purple-300 border-purple-500/40 font-bold'
                     : 'bg-slate-900 text-slate-400 border-slate-700 hover:text-slate-300'
                 }`}
-                title="Hides cards color until dispatched to conveyor"
+                title="Sets whether this box is a rainbow/mystery box"
               >
-                {currentBox.IsCardsHidden ? 'Hidden (?)' : 'Face Up'}
+                {currentBox.IsRainbowBox ? 'Rainbow (?)' : 'Standard'}
               </button>
             </div>
           </div>

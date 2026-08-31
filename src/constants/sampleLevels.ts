@@ -16,6 +16,8 @@ export const SAMPLE_LEVELS: SampleLevelPreset[] = [
     "description": "Two parallel foundation pillars supporting interlocking upper bridge crossbars.",
     "data": {
       "Id": 1,
+      "BoardOffsetX": 0,
+      "BoardOffsetZ": 0,
       "BoardNodes": [
         {
           "Id": "0_-1.75_1.05",
@@ -64,114 +66,118 @@ export const SAMPLE_LEVELS: SampleLevelPreset[] = [
         {
           "Id": "0_-1.75_1.05",
           "TypeId": 2,
-          "BoxColor": 0,
+          "BoxColor": 1,
           "BlockedNodes": [],
           "InitCards": [
-            0,
-            0,
             1,
             1,
-            2,
-            2
+            1,
+            1,
+            3,
+            3
           ],
           "IsHidden": false,
           "LockedTurn": 0,
-          "IsCardsHidden": false
+          "IsPaperBox": false,
+          "IsRainbowBox": false
         },
         {
           "Id": "0_1.75_1.05",
           "TypeId": 2,
-          "BoxColor": 1,
+          "BoxColor": 2,
           "BlockedNodes": [],
           "InitCards": [
-            0,
             1,
-            2,
-            2,
-            2,
-            2
+            1,
+            3,
+            3,
+            3,
+            3
           ],
           "IsHidden": false,
           "LockedTurn": 0,
-          "IsCardsHidden": false
+          "IsPaperBox": false,
+          "IsRainbowBox": false
         },
         {
           "Id": "0_-1.75_-1.05",
           "TypeId": 2,
-          "BoxColor": 2,
+          "BoxColor": 3,
           "BlockedNodes": [],
           "InitCards": [
-            0,
-            0,
-            1,
             1,
             2,
-            2
+            2,
+            2,
+            3,
+            3
           ],
           "IsHidden": false,
           "LockedTurn": 0,
-          "IsCardsHidden": false
+          "IsPaperBox": false,
+          "IsRainbowBox": false
         },
         {
           "Id": "0_1.75_-1.05",
           "TypeId": 2,
-          "BoxColor": 0,
+          "BoxColor": 1,
           "BlockedNodes": [],
           "InitCards": [
-            0,
-            0,
             1,
             1,
             2,
-            2
+            2,
+            3,
+            3
           ],
           "IsHidden": false,
           "LockedTurn": 0,
-          "IsCardsHidden": false
+          "IsPaperBox": false,
+          "IsRainbowBox": false
         },
         {
           "Id": "1_-1.75_0.0",
           "TypeId": 2,
-          "BoxColor": 1,
+          "BoxColor": 2,
           "BlockedNodes": [
             "0_-1.75_1.05",
             "0_-1.75_-1.05"
           ],
           "InitCards": [
-            0,
-            0,
-            1,
             1,
             2,
-            2
+            2,
+            2,
+            2,
+            3
           ],
           "IsHidden": false,
           "LockedTurn": 0,
-          "IsCardsHidden": false
+          "IsPaperBox": false,
+          "IsRainbowBox": false
         },
         {
           "Id": "1_1.75_0.0",
           "TypeId": 2,
-          "BoxColor": 2,
+          "BoxColor": 3,
           "BlockedNodes": [
             "0_1.75_1.05",
             "0_1.75_-1.05"
           ],
           "InitCards": [
-            0,
-            0,
-            0,
             1,
             1,
-            1
+            2,
+            2,
+            2,
+            3
           ],
           "IsHidden": false,
           "LockedTurn": 0,
-          "IsCardsHidden": false
+          "IsPaperBox": false,
+          "IsRainbowBox": false
         }
       ],
-      "BoardOffsetX": 0,
-      "BoardOffsetZ": 0,
       "SpawnerNodes": [],
       "TurnSpawnerNodes": [],
       "LinkedBoxes": [],
@@ -186,6 +192,8 @@ export const SAMPLE_LEVELS: SampleLevelPreset[] = [
     "description": "Cross-shaped base layout supporting two upper connector crossbars.",
     "data": {
       "Id": 2,
+      "BoardOffsetX": 0,
+      "BoardOffsetZ": 0,
       "BoardNodes": [
         {
           "Id": "0_0.0_1.55",
@@ -234,27 +242,28 @@ export const SAMPLE_LEVELS: SampleLevelPreset[] = [
         {
           "Id": "0_0.0_1.55",
           "TypeId": 2,
-          "BoxColor": 0,
+          "BoxColor": 1,
           "BlockedNodes": [],
           "InitCards": [
-            0,
-            0,
-            1,
             1,
             2,
-            2
+            2,
+            2,
+            3,
+            3
           ],
           "IsHidden": false,
           "LockedTurn": 0,
-          "IsCardsHidden": false
+          "IsPaperBox": false,
+          "IsRainbowBox": false
         },
         {
           "Id": "0_0.0_-1.55",
           "TypeId": 2,
-          "BoxColor": 1,
+          "BoxColor": 2,
           "BlockedNodes": [],
           "InitCards": [
-            0,
+            1,
             1,
             2,
             2,
@@ -263,87 +272,90 @@ export const SAMPLE_LEVELS: SampleLevelPreset[] = [
           ],
           "IsHidden": false,
           "LockedTurn": 0,
-          "IsCardsHidden": false
+          "IsPaperBox": false,
+          "IsRainbowBox": false
         },
         {
           "Id": "0_-1.55_0.0",
           "TypeId": 2,
-          "BoxColor": 2,
+          "BoxColor": 3,
           "BlockedNodes": [],
           "InitCards": [
-            0,
-            0,
+            1,
             1,
             1,
             2,
-            2
+            2,
+            3
           ],
           "IsHidden": false,
           "LockedTurn": 0,
-          "IsCardsHidden": false
+          "IsPaperBox": false,
+          "IsRainbowBox": false
         },
         {
           "Id": "0_1.55_0.0",
           "TypeId": 2,
-          "BoxColor": 0,
+          "BoxColor": 1,
           "BlockedNodes": [],
           "InitCards": [
-            0,
-            0,
-            1,
             1,
             2,
-            2
+            2,
+            3,
+            3,
+            3
           ],
           "IsHidden": false,
           "LockedTurn": 0,
-          "IsCardsHidden": false
+          "IsPaperBox": false,
+          "IsRainbowBox": false
         },
         {
           "Id": "1_-0.8_0.0",
           "TypeId": 2,
-          "BoxColor": 1,
+          "BoxColor": 2,
           "BlockedNodes": [
             "0_0.0_1.55",
             "0_0.0_-1.55",
             "0_-1.55_0.0"
           ],
           "InitCards": [
-            0,
-            0,
+            1,
             1,
             1,
             2,
-            2
+            3,
+            3
           ],
           "IsHidden": false,
           "LockedTurn": 0,
-          "IsCardsHidden": false
+          "IsPaperBox": false,
+          "IsRainbowBox": false
         },
         {
           "Id": "1_0.8_0.0",
           "TypeId": 2,
-          "BoxColor": 2,
+          "BoxColor": 3,
           "BlockedNodes": [
             "0_0.0_1.55",
             "0_0.0_-1.55",
             "0_1.55_0.0"
           ],
           "InitCards": [
-            0,
-            0,
-            0,
             1,
             1,
-            1
+            3,
+            3,
+            3,
+            3
           ],
           "IsHidden": false,
           "LockedTurn": 0,
-          "IsCardsHidden": false
+          "IsPaperBox": false,
+          "IsRainbowBox": false
         }
       ],
-      "BoardOffsetX": 0,
-      "BoardOffsetZ": 0,
       "SpawnerNodes": [],
       "TurnSpawnerNodes": [],
       "LinkedBoxes": [],
@@ -358,6 +370,8 @@ export const SAMPLE_LEVELS: SampleLevelPreset[] = [
     "description": "Three distinct physical layers creating a clean 3-tier stepped pyramid.",
     "data": {
       "Id": 3,
+      "BoardOffsetX": 0,
+      "BoardOffsetZ": 0,
       "BoardNodes": [
         {
           "Id": "0_-1.05_1.05",
@@ -413,115 +427,121 @@ export const SAMPLE_LEVELS: SampleLevelPreset[] = [
         {
           "Id": "0_-1.05_1.05",
           "TypeId": 2,
-          "BoxColor": 0,
+          "BoxColor": 1,
           "BlockedNodes": [],
           "InitCards": [
-            0,
-            0,
-            0,
             1,
             1,
-            2
+            2,
+            2,
+            2,
+            3
           ],
           "IsHidden": false,
           "LockedTurn": 0,
-          "IsCardsHidden": false
+          "IsPaperBox": false,
+          "IsRainbowBox": false
         },
         {
           "Id": "0_1.05_1.05",
           "TypeId": 2,
-          "BoxColor": 1,
+          "BoxColor": 2,
           "BlockedNodes": [],
           "InitCards": [
-            0,
-            0,
+            1,
             1,
             1,
             2,
-            2
+            3,
+            3
           ],
           "IsHidden": false,
           "LockedTurn": 0,
-          "IsCardsHidden": false
+          "IsPaperBox": false,
+          "IsRainbowBox": false
         },
         {
           "Id": "0_-1.05_-1.05",
           "TypeId": 2,
-          "BoxColor": 2,
+          "BoxColor": 3,
           "BlockedNodes": [],
           "InitCards": [
-            0,
             1,
             1,
             1,
-            2,
-            2
+            3,
+            3,
+            3
           ],
           "IsHidden": false,
           "LockedTurn": 0,
-          "IsCardsHidden": false
+          "IsPaperBox": false,
+          "IsRainbowBox": false
         },
         {
           "Id": "0_1.05_-1.05",
           "TypeId": 2,
-          "BoxColor": 0,
+          "BoxColor": 1,
           "BlockedNodes": [],
           "InitCards": [
-            0,
-            1,
             1,
             1,
             2,
-            2
+            3,
+            3,
+            3
           ],
           "IsHidden": false,
           "LockedTurn": 0,
-          "IsCardsHidden": false
+          "IsPaperBox": false,
+          "IsRainbowBox": false
         },
         {
           "Id": "1_-1.05_0.0",
           "TypeId": 2,
-          "BoxColor": 1,
+          "BoxColor": 2,
           "BlockedNodes": [
             "0_-1.05_1.05",
             "0_-1.05_-1.05"
           ],
           "InitCards": [
-            0,
             1,
             2,
             2,
             2,
-            2
+            2,
+            3
           ],
           "IsHidden": false,
           "LockedTurn": 0,
-          "IsCardsHidden": false
+          "IsPaperBox": false,
+          "IsRainbowBox": false
         },
         {
           "Id": "1_1.05_0.0",
           "TypeId": 2,
-          "BoxColor": 2,
+          "BoxColor": 3,
           "BlockedNodes": [
             "0_1.05_1.05",
             "0_1.05_-1.05"
           ],
           "InitCards": [
-            0,
-            0,
-            0,
-            0,
-            0,
-            1
+            1,
+            1,
+            1,
+            1,
+            2,
+            3
           ],
           "IsHidden": false,
           "LockedTurn": 0,
-          "IsCardsHidden": false
+          "IsPaperBox": false,
+          "IsRainbowBox": false
         },
         {
           "Id": "2_0.0_0.0",
           "TypeId": 2,
-          "BoxColor": 0,
+          "BoxColor": 1,
           "BlockedNodes": [
             "0_-1.05_1.05",
             "0_1.05_1.05",
@@ -531,20 +551,19 @@ export const SAMPLE_LEVELS: SampleLevelPreset[] = [
             "1_1.05_0.0"
           ],
           "InitCards": [
-            0,
-            0,
-            0,
-            0,
-            0,
-            2
+            1,
+            1,
+            1,
+            2,
+            2,
+            3
           ],
           "IsHidden": false,
           "LockedTurn": 0,
-          "IsCardsHidden": false
+          "IsPaperBox": false,
+          "IsRainbowBox": false
         }
       ],
-      "BoardOffsetX": 0,
-      "BoardOffsetZ": 0,
       "SpawnerNodes": [],
       "TurnSpawnerNodes": [],
       "LinkedBoxes": [],
@@ -559,6 +578,8 @@ export const SAMPLE_LEVELS: SampleLevelPreset[] = [
     "description": "Introduction to feeder trays supporting cards above base columns.",
     "data": {
       "Id": 4,
+      "BoardOffsetX": 0,
+      "BoardOffsetZ": 0,
       "BoardNodes": [
         {
           "Id": "0_-1.15_1.05",
@@ -607,108 +628,112 @@ export const SAMPLE_LEVELS: SampleLevelPreset[] = [
         {
           "Id": "0_-1.15_1.05",
           "TypeId": 2,
-          "BoxColor": 0,
+          "BoxColor": 1,
           "BlockedNodes": [],
           "InitCards": [
-            0,
-            0,
-            0,
             1,
             1,
-            1
+            2,
+            2,
+            2,
+            2
           ],
           "IsHidden": false,
           "LockedTurn": 0,
-          "IsCardsHidden": false
+          "IsPaperBox": false,
+          "IsRainbowBox": false
         },
         {
           "Id": "0_1.15_1.05",
           "TypeId": 2,
-          "BoxColor": 1,
+          "BoxColor": 2,
           "BlockedNodes": [],
           "InitCards": [
-            0,
+            1,
             1,
             1,
             2,
-            2
+            3
           ],
           "IsHidden": false,
           "LockedTurn": 0,
-          "IsCardsHidden": false
+          "IsPaperBox": false,
+          "IsRainbowBox": false
         },
         {
           "Id": "0_-1.15_-1.05",
           "TypeId": 2,
-          "BoxColor": 2,
+          "BoxColor": 3,
           "BlockedNodes": [],
           "InitCards": [
-            0,
-            0,
             1,
-            1,
-            2
+            2,
+            3,
+            3,
+            3
           ],
           "IsHidden": false,
           "LockedTurn": 0,
-          "IsCardsHidden": false
+          "IsPaperBox": false,
+          "IsRainbowBox": false
         },
         {
           "Id": "0_1.15_-1.05",
           "TypeId": 2,
-          "BoxColor": 0,
+          "BoxColor": 1,
           "BlockedNodes": [],
           "InitCards": [
-            0,
-            0,
+            1,
             1,
             2,
-            2
+            2,
+            3
           ],
           "IsHidden": false,
           "LockedTurn": 0,
-          "IsCardsHidden": false
+          "IsPaperBox": false,
+          "IsRainbowBox": false
         },
         {
           "Id": "1_-1.15_0.0",
           "TypeId": 2,
-          "BoxColor": 1,
+          "BoxColor": 2,
           "BlockedNodes": [
             "0_-1.15_1.05",
             "0_-1.15_-1.05"
           ],
           "InitCards": [
-            0,
-            0,
-            0,
             1,
-            1
+            1,
+            2,
+            2,
+            3
           ],
           "IsHidden": false,
           "LockedTurn": 0,
-          "IsCardsHidden": false
+          "IsPaperBox": false,
+          "IsRainbowBox": false
         },
         {
           "Id": "1_1.15_0.0",
           "TypeId": 1,
-          "BoxColor": 5,
+          "BoxColor": 1,
           "BlockedNodes": [
             "0_1.15_1.05",
             "0_1.15_-1.05"
           ],
           "InitCards": [
-            0,
             1,
             1,
+            2,
             2
           ],
           "IsHidden": false,
           "LockedTurn": 0,
-          "IsCardsHidden": false
+          "IsPaperBox": true,
+          "IsRainbowBox": false
         }
       ],
-      "BoardOffsetX": 0,
-      "BoardOffsetZ": 0,
       "SpawnerNodes": [],
       "TurnSpawnerNodes": [],
       "LinkedBoxes": [],
@@ -723,6 +748,8 @@ export const SAMPLE_LEVELS: SampleLevelPreset[] = [
     "description": "Two symmetrically placed Mystery Boxes concealed on the ground layer, supporting mid-tier struts and a capstone.",
     "data": {
       "Id": 5,
+      "BoardOffsetX": 0,
+      "BoardOffsetZ": 0,
       "BoardNodes": [
         {
           "Id": "0_-1.10_1.05",
@@ -778,44 +805,64 @@ export const SAMPLE_LEVELS: SampleLevelPreset[] = [
         {
           "Id": "0_-1.10_1.05",
           "TypeId": 2,
-          "BoxColor": 0,
+          "BoxColor": 1,
           "BlockedNodes": [],
           "InitCards": [
-            0,
-            0,
-            0,
             1,
             1,
-            2
+            1,
+            2,
+            3,
+            3
           ],
-          "IsHidden": true,
+          "IsHidden": false,
           "LockedTurn": 0,
-          "IsCardsHidden": false
+          "IsPaperBox": false,
+          "IsRainbowBox": true
         },
         {
           "Id": "0_1.10_1.05",
           "TypeId": 2,
-          "BoxColor": 1,
+          "BoxColor": 2,
           "BlockedNodes": [],
           "InitCards": [
-            0,
-            0,
             1,
             1,
             2,
-            2
+            2,
+            3,
+            3
           ],
           "IsHidden": false,
           "LockedTurn": 0,
-          "IsCardsHidden": false
+          "IsPaperBox": false,
+          "IsRainbowBox": false
         },
         {
           "Id": "0_-1.10_-1.05",
           "TypeId": 2,
-          "BoxColor": 2,
+          "BoxColor": 3,
           "BlockedNodes": [],
           "InitCards": [
-            0,
+            1,
+            1,
+            1,
+            3,
+            3,
+            3
+          ],
+          "IsHidden": false,
+          "LockedTurn": 0,
+          "IsPaperBox": false,
+          "IsRainbowBox": false
+        },
+        {
+          "Id": "0_1.10_-1.05",
+          "TypeId": 2,
+          "BoxColor": 1,
+          "BlockedNodes": [],
+          "InitCards": [
+            1,
             1,
             1,
             1,
@@ -824,69 +871,55 @@ export const SAMPLE_LEVELS: SampleLevelPreset[] = [
           ],
           "IsHidden": false,
           "LockedTurn": 0,
-          "IsCardsHidden": false
-        },
-        {
-          "Id": "0_1.10_-1.05",
-          "TypeId": 2,
-          "BoxColor": 0,
-          "BlockedNodes": [],
-          "InitCards": [
-            0,
-            1,
-            1,
-            1,
-            2,
-            2
-          ],
-          "IsHidden": true,
-          "LockedTurn": 0,
-          "IsCardsHidden": false
+          "IsPaperBox": false,
+          "IsRainbowBox": true
         },
         {
           "Id": "1_-1.10_0.0",
           "TypeId": 2,
-          "BoxColor": 1,
+          "BoxColor": 2,
           "BlockedNodes": [
             "0_-1.10_1.05",
             "0_-1.10_-1.05"
           ],
           "InitCards": [
-            0,
             1,
-            2,
-            2,
-            2,
-            2
+            1,
+            1,
+            1,
+            3,
+            3
           ],
           "IsHidden": false,
           "LockedTurn": 0,
-          "IsCardsHidden": false
+          "IsPaperBox": false,
+          "IsRainbowBox": false
         },
         {
           "Id": "1_1.10_0.0",
           "TypeId": 2,
-          "BoxColor": 2,
+          "BoxColor": 3,
           "BlockedNodes": [
             "0_1.10_1.05",
             "0_1.10_-1.05"
           ],
           "InitCards": [
-            0,
-            0,
-            0,
-            0,
-            0,
-            1
+            1,
+            2,
+            2,
+            2,
+            2,
+            3
           ],
           "IsHidden": false,
           "LockedTurn": 0,
-          "IsCardsHidden": false
+          "IsPaperBox": false,
+          "IsRainbowBox": false
         },
         {
           "Id": "2_0.0_0.0",
           "TypeId": 2,
-          "BoxColor": 0,
+          "BoxColor": 1,
           "BlockedNodes": [
             "0_-1.10_1.05",
             "0_1.10_1.05",
@@ -896,20 +929,19 @@ export const SAMPLE_LEVELS: SampleLevelPreset[] = [
             "1_1.10_0.0"
           ],
           "InitCards": [
-            0,
-            0,
-            0,
-            0,
-            0,
-            2
+            1,
+            2,
+            2,
+            2,
+            3,
+            3
           ],
           "IsHidden": false,
           "LockedTurn": 0,
-          "IsCardsHidden": false
+          "IsPaperBox": false,
+          "IsRainbowBox": false
         }
       ],
-      "BoardOffsetX": 0,
-      "BoardOffsetZ": 0,
       "SpawnerNodes": [],
       "TurnSpawnerNodes": [],
       "LinkedBoxes": [],
@@ -924,6 +956,8 @@ export const SAMPLE_LEVELS: SampleLevelPreset[] = [
     "description": "Winged H-matrix foundation with 2 symmetrically concealed Mystery Boxes on Layer 0 supporting 3 upper crossbars.",
     "data": {
       "Id": 6,
+      "BoardOffsetX": 0,
+      "BoardOffsetZ": 0,
       "BoardNodes": [
         {
           "Id": "0_-1.95_1.15",
@@ -986,150 +1020,156 @@ export const SAMPLE_LEVELS: SampleLevelPreset[] = [
         {
           "Id": "0_-1.95_1.15",
           "TypeId": 2,
-          "BoxColor": 0,
+          "BoxColor": 1,
           "BlockedNodes": [],
           "InitCards": [
-            0,
-            0,
-            1,
-            1,
             2,
-            2
+            2,
+            3,
+            4,
+            4,
+            4
           ],
-          "IsHidden": true,
+          "IsHidden": false,
           "LockedTurn": 0,
-          "IsCardsHidden": false
+          "IsPaperBox": false,
+          "IsRainbowBox": true
         },
         {
           "Id": "0_1.95_1.15",
           "TypeId": 2,
-          "BoxColor": 1,
-          "BlockedNodes": [],
-          "InitCards": [
-            0,
-            0,
-            1,
-            2,
-            2,
-            3
-          ],
-          "IsHidden": false,
-          "LockedTurn": 0,
-          "IsCardsHidden": false
-        },
-        {
-          "Id": "0_-1.95_-1.15",
-          "TypeId": 2,
           "BoxColor": 2,
           "BlockedNodes": [],
           "InitCards": [
-            0,
-            2,
-            2,
+            1,
+            1,
             2,
             3,
-            3
+            3,
+            4
           ],
           "IsHidden": false,
           "LockedTurn": 0,
-          "IsCardsHidden": false
+          "IsPaperBox": false,
+          "IsRainbowBox": false
         },
         {
-          "Id": "0_1.95_-1.15",
+          "Id": "0_-1.95_-1.15",
           "TypeId": 2,
           "BoxColor": 3,
           "BlockedNodes": [],
           "InitCards": [
             1,
             2,
-            2,
-            2,
             3,
-            3
+            4,
+            4,
+            4
           ],
-          "IsHidden": true,
+          "IsHidden": false,
           "LockedTurn": 0,
-          "IsCardsHidden": false
+          "IsPaperBox": false,
+          "IsRainbowBox": false
         },
         {
-          "Id": "0_0.0_0.0",
+          "Id": "0_1.95_-1.15",
           "TypeId": 2,
-          "BoxColor": 0,
+          "BoxColor": 4,
           "BlockedNodes": [],
           "InitCards": [
-            0,
             1,
             1,
-            1,
+            2,
+            2,
             3,
             3
           ],
           "IsHidden": false,
           "LockedTurn": 0,
-          "IsCardsHidden": false
+          "IsPaperBox": false,
+          "IsRainbowBox": true
+        },
+        {
+          "Id": "0_0.0_0.0",
+          "TypeId": 2,
+          "BoxColor": 1,
+          "BlockedNodes": [],
+          "InitCards": [
+            1,
+            1,
+            1,
+            3,
+            4,
+            4
+          ],
+          "IsHidden": false,
+          "LockedTurn": 0,
+          "IsPaperBox": false,
+          "IsRainbowBox": false
         },
         {
           "Id": "1_-1.95_0.0",
           "TypeId": 2,
-          "BoxColor": 1,
+          "BoxColor": 2,
           "BlockedNodes": [
             "0_-1.95_1.15",
             "0_-1.95_-1.15"
           ],
           "InitCards": [
-            0,
-            1,
-            1,
+            2,
+            2,
+            2,
             3,
-            3,
-            3
+            4,
+            4
           ],
           "IsHidden": false,
           "LockedTurn": 0,
-          "IsCardsHidden": false
+          "IsPaperBox": false,
+          "IsRainbowBox": false
         },
         {
           "Id": "1_1.95_0.0",
           "TypeId": 2,
-          "BoxColor": 2,
+          "BoxColor": 3,
           "BlockedNodes": [
             "0_1.95_1.15",
             "0_1.95_-1.15"
           ],
           "InitCards": [
-            0,
-            0,
-            0,
+            1,
+            1,
+            1,
             2,
-            2,
+            3,
             3
           ],
           "IsHidden": false,
           "LockedTurn": 0,
-          "IsCardsHidden": false
+          "IsPaperBox": false,
+          "IsRainbowBox": false
         },
         {
           "Id": "1_0.0_0.0",
           "TypeId": 2,
-          "BoxColor": 3,
+          "BoxColor": 4,
           "BlockedNodes": [
             "0_0.0_0.0"
           ],
           "InitCards": [
-            0,
-            0,
             1,
-            1,
-            1,
-            3
+            2,
+            2,
+            3,
+            3,
+            4
           ],
           "IsHidden": false,
           "LockedTurn": 0,
-          "IsCardsHidden": false
+          "IsPaperBox": false,
+          "IsRainbowBox": false
         }
       ],
-      "BoardOffsetX": 0,
-      "BoardOffsetZ": 0,
       "SpawnerNodes": [],
       "TurnSpawnerNodes": [],
       "LinkedBoxes": [],
@@ -1144,6 +1184,8 @@ export const SAMPLE_LEVELS: SampleLevelPreset[] = [
     "description": "Six-box base supporting twin elevated feeder stations on Layer 1.",
     "data": {
       "Id": 7,
+      "BoardOffsetX": 0,
+      "BoardOffsetZ": 0,
       "BoardNodes": [
         {
           "Id": "0_-1.95_1.05",
@@ -1206,58 +1248,93 @@ export const SAMPLE_LEVELS: SampleLevelPreset[] = [
         {
           "Id": "0_-1.95_1.05",
           "TypeId": 2,
-          "BoxColor": 0,
+          "BoxColor": 1,
           "BlockedNodes": [],
           "InitCards": [
-            0,
-            0,
             1,
-            2,
-            3
+            1,
+            1,
+            1,
+            2
           ],
           "IsHidden": false,
           "LockedTurn": 0,
-          "IsCardsHidden": false
+          "IsPaperBox": false,
+          "IsRainbowBox": false
         },
         {
           "Id": "0_0.0_1.05",
           "TypeId": 2,
-          "BoxColor": 1,
+          "BoxColor": 2,
           "BlockedNodes": [],
           "InitCards": [
-            0,
             1,
             1,
             2,
-            3
+            3,
+            4
           ],
           "IsHidden": false,
           "LockedTurn": 0,
-          "IsCardsHidden": false
+          "IsPaperBox": false,
+          "IsRainbowBox": false
         },
         {
           "Id": "0_1.95_1.05",
           "TypeId": 2,
-          "BoxColor": 2,
+          "BoxColor": 3,
           "BlockedNodes": [],
           "InitCards": [
-            0,
-            0,
             1,
             2,
-            3
+            3,
+            4,
+            4
           ],
           "IsHidden": false,
           "LockedTurn": 0,
-          "IsCardsHidden": false
+          "IsPaperBox": false,
+          "IsRainbowBox": false
         },
         {
           "Id": "0_-1.95_-1.05",
           "TypeId": 2,
-          "BoxColor": 3,
+          "BoxColor": 4,
           "BlockedNodes": [],
           "InitCards": [
-            0,
+            1,
+            2,
+            2,
+            3,
+            4
+          ],
+          "IsHidden": false,
+          "LockedTurn": 0,
+          "IsPaperBox": false,
+          "IsRainbowBox": false
+        },
+        {
+          "Id": "0_0.0_-1.05",
+          "TypeId": 2,
+          "BoxColor": 1,
+          "BlockedNodes": [],
+          "InitCards": [
+            2,
+            2,
+            2,
+            3
+          ],
+          "IsHidden": false,
+          "LockedTurn": 0,
+          "IsPaperBox": false,
+          "IsRainbowBox": false
+        },
+        {
+          "Id": "0_1.95_-1.05",
+          "TypeId": 2,
+          "BoxColor": 2,
+          "BlockedNodes": [],
+          "InitCards": [
             1,
             1,
             2,
@@ -1265,42 +1342,13 @@ export const SAMPLE_LEVELS: SampleLevelPreset[] = [
           ],
           "IsHidden": false,
           "LockedTurn": 0,
-          "IsCardsHidden": false
-        },
-        {
-          "Id": "0_0.0_-1.05",
-          "TypeId": 2,
-          "BoxColor": 0,
-          "BlockedNodes": [],
-          "InitCards": [
-            0,
-            0,
-            1,
-            1
-          ],
-          "IsHidden": false,
-          "LockedTurn": 0,
-          "IsCardsHidden": false
-        },
-        {
-          "Id": "0_1.95_-1.05",
-          "TypeId": 2,
-          "BoxColor": 1,
-          "BlockedNodes": [],
-          "InitCards": [
-            0,
-            0,
-            1,
-            1
-          ],
-          "IsHidden": false,
-          "LockedTurn": 0,
-          "IsCardsHidden": false
+          "IsPaperBox": false,
+          "IsRainbowBox": false
         },
         {
           "Id": "1_-1.0_0.0",
           "TypeId": 1,
-          "BoxColor": 5,
+          "BoxColor": 1,
           "BlockedNodes": [
             "0_-1.95_1.05",
             "0_0.0_1.05",
@@ -1308,19 +1356,20 @@ export const SAMPLE_LEVELS: SampleLevelPreset[] = [
             "0_0.0_-1.05"
           ],
           "InitCards": [
-            0,
-            0,
             1,
-            2
+            2,
+            3,
+            4
           ],
           "IsHidden": false,
           "LockedTurn": 0,
-          "IsCardsHidden": false
+          "IsPaperBox": true,
+          "IsRainbowBox": false
         },
         {
           "Id": "1_1.0_0.0",
           "TypeId": 1,
-          "BoxColor": 5,
+          "BoxColor": 1,
           "BlockedNodes": [
             "0_0.0_1.05",
             "0_1.95_1.05",
@@ -1330,16 +1379,15 @@ export const SAMPLE_LEVELS: SampleLevelPreset[] = [
           "InitCards": [
             1,
             2,
-            3,
-            3
+            2,
+            4
           ],
           "IsHidden": false,
           "LockedTurn": 0,
-          "IsCardsHidden": false
+          "IsPaperBox": true,
+          "IsRainbowBox": false
         }
       ],
-      "BoardOffsetX": 0,
-      "BoardOffsetZ": 0,
       "SpawnerNodes": [],
       "TurnSpawnerNodes": [],
       "LinkedBoxes": [],
@@ -1354,6 +1402,8 @@ export const SAMPLE_LEVELS: SampleLevelPreset[] = [
     "description": "Castle battlements in a square arena with turn-locked base boxes and 2 symmetrically concealed Mystery Boxes on Layer 0.",
     "data": {
       "Id": 8,
+      "BoardOffsetX": 0,
+      "BoardOffsetZ": 0,
       "BoardNodes": [
         {
           "Id": "0_-1.55_1.15",
@@ -1423,129 +1473,136 @@ export const SAMPLE_LEVELS: SampleLevelPreset[] = [
         {
           "Id": "0_-1.55_1.15",
           "TypeId": 2,
-          "BoxColor": 0,
-          "BlockedNodes": [],
-          "InitCards": [
-            0,
-            0,
-            1,
-            1,
-            2,
-            3
-          ],
-          "IsHidden": true,
-          "LockedTurn": 0,
-          "IsCardsHidden": false
-        },
-        {
-          "Id": "0_1.55_1.15",
-          "TypeId": 2,
           "BoxColor": 1,
           "BlockedNodes": [],
           "InitCards": [
-            0,
-            0,
-            2,
-            2,
-            2,
-            3
+            1,
+            1,
+            4,
+            4,
+            4,
+            4
           ],
           "IsHidden": false,
-          "LockedTurn": 2,
-          "IsCardsHidden": false
+          "LockedTurn": 0,
+          "IsPaperBox": false,
+          "IsRainbowBox": false
         },
         {
-          "Id": "0_-1.55_-1.15",
+          "Id": "0_1.55_1.15",
           "TypeId": 2,
           "BoxColor": 2,
           "BlockedNodes": [],
           "InitCards": [
             1,
-            2,
-            2,
+            1,
             2,
             3,
-            3
+            3,
+            4
           ],
           "IsHidden": false,
           "LockedTurn": 2,
-          "IsCardsHidden": false
+          "IsPaperBox": false,
+          "IsRainbowBox": false
         },
         {
-          "Id": "0_1.55_-1.15",
+          "Id": "0_-1.55_-1.15",
           "TypeId": 2,
           "BoxColor": 3,
           "BlockedNodes": [],
           "InitCards": [
             1,
+            3,
+            3,
+            3,
+            4,
+            4
+          ],
+          "IsHidden": false,
+          "LockedTurn": 2,
+          "IsPaperBox": false,
+          "IsRainbowBox": false
+        },
+        {
+          "Id": "0_1.55_-1.15",
+          "TypeId": 2,
+          "BoxColor": 4,
+          "BlockedNodes": [],
+          "InitCards": [
             1,
             2,
+            2,
             3,
-            3,
-            3
+            4,
+            4
           ],
-          "IsHidden": true,
+          "IsHidden": false,
           "LockedTurn": 0,
-          "IsCardsHidden": false
+          "IsPaperBox": false,
+          "IsRainbowBox": false
         },
         {
           "Id": "0_0.0_0.0",
           "TypeId": 2,
-          "BoxColor": 0,
+          "BoxColor": 1,
           "BlockedNodes": [],
           "InitCards": [
-            0,
             1,
             1,
             1,
+            3,
             3
           ],
           "IsHidden": false,
           "LockedTurn": 0,
-          "IsCardsHidden": false
+          "IsPaperBox": false,
+          "IsRainbowBox": false
         },
         {
           "Id": "1_-1.55_0.0",
           "TypeId": 2,
-          "BoxColor": 1,
+          "BoxColor": 2,
           "BlockedNodes": [
             "0_-1.55_1.15",
             "0_-1.55_-1.15"
           ],
           "InitCards": [
-            0,
+            1,
+            2,
             2,
             3,
-            3,
-            3
+            4
           ],
           "IsHidden": false,
           "LockedTurn": 0,
-          "IsCardsHidden": false
+          "IsPaperBox": false,
+          "IsRainbowBox": false
         },
         {
           "Id": "1_1.55_0.0",
           "TypeId": 2,
-          "BoxColor": 2,
+          "BoxColor": 3,
           "BlockedNodes": [
             "0_1.55_1.15",
             "0_1.55_-1.15"
           ],
           "InitCards": [
-            0,
-            0,
-            0,
             1,
-            2
+            2,
+            2,
+            3,
+            3
           ],
           "IsHidden": false,
           "LockedTurn": 0,
-          "IsCardsHidden": false
+          "IsPaperBox": false,
+          "IsRainbowBox": false
         },
         {
           "Id": "1_0.0_0.0",
           "TypeId": 2,
-          "BoxColor": 3,
+          "BoxColor": 4,
           "BlockedNodes": [
             "0_-1.55_1.15",
             "0_1.55_1.15",
@@ -1554,37 +1611,37 @@ export const SAMPLE_LEVELS: SampleLevelPreset[] = [
             "0_0.0_0.0"
           ],
           "InitCards": [
-            0,
-            0,
-            1,
-            1,
-            3
+            2,
+            2,
+            2,
+            3,
+            4
           ],
           "IsHidden": false,
           "LockedTurn": 0,
-          "IsCardsHidden": false
+          "IsPaperBox": false,
+          "IsRainbowBox": false
         },
         {
           "Id": "2_0.0_0.0",
           "TypeId": 1,
-          "BoxColor": 5,
+          "BoxColor": 1,
           "BlockedNodes": [
             "0_0.0_0.0",
             "1_0.0_0.0"
           ],
           "InitCards": [
-            0,
             1,
             2,
-            2
+            2,
+            4
           ],
           "IsHidden": false,
           "LockedTurn": 0,
-          "IsCardsHidden": false
+          "IsPaperBox": true,
+          "IsRainbowBox": false
         }
       ],
-      "BoardOffsetX": 0,
-      "BoardOffsetZ": 0,
       "SpawnerNodes": [],
       "TurnSpawnerNodes": [],
       "LinkedBoxes": [],
@@ -1599,6 +1656,8 @@ export const SAMPLE_LEVELS: SampleLevelPreset[] = [
     "description": "Staggered 3-2 honeycomb foundation with 2 symmetrically concealed Mystery Boxes on Layer 0 supporting 3 mid struts and an apex feeder station.",
     "data": {
       "Id": 9,
+      "BoardOffsetX": 0,
+      "BoardOffsetZ": 0,
       "BoardNodes": [
         {
           "Id": "0_-1.95_1.15",
@@ -1668,149 +1727,157 @@ export const SAMPLE_LEVELS: SampleLevelPreset[] = [
         {
           "Id": "0_-1.95_1.15",
           "TypeId": 2,
-          "BoxColor": 0,
-          "BlockedNodes": [],
-          "InitCards": [
-            0,
-            0,
-            1,
-            1,
-            2,
-            3
-          ],
-          "IsHidden": true,
-          "LockedTurn": 0,
-          "IsCardsHidden": false
-        },
-        {
-          "Id": "0_0.0_1.15",
-          "TypeId": 2,
           "BoxColor": 1,
           "BlockedNodes": [],
           "InitCards": [
-            0,
-            0,
+            1,
             2,
             2,
             2,
-            3
+            4,
+            4
           ],
           "IsHidden": false,
           "LockedTurn": 0,
-          "IsCardsHidden": false
+          "IsPaperBox": false,
+          "IsRainbowBox": true
         },
         {
-          "Id": "0_1.95_1.15",
+          "Id": "0_0.0_1.15",
           "TypeId": 2,
           "BoxColor": 2,
           "BlockedNodes": [],
           "InitCards": [
             1,
-            2,
-            2,
-            2,
+            1,
+            1,
             3,
-            3
+            4,
+            4
           ],
-          "IsHidden": true,
+          "IsHidden": false,
           "LockedTurn": 0,
-          "IsCardsHidden": false
+          "IsPaperBox": false,
+          "IsRainbowBox": false
         },
         {
-          "Id": "0_-1.0_-1.15",
+          "Id": "0_1.95_1.15",
           "TypeId": 2,
           "BoxColor": 3,
           "BlockedNodes": [],
           "InitCards": [
             1,
             1,
+            1,
             2,
+            4,
+            4
+          ],
+          "IsHidden": false,
+          "LockedTurn": 0,
+          "IsPaperBox": false,
+          "IsRainbowBox": true
+        },
+        {
+          "Id": "0_-1.0_-1.15",
+          "TypeId": 2,
+          "BoxColor": 4,
+          "BlockedNodes": [],
+          "InitCards": [
+            1,
+            1,
+            1,
             3,
             3,
             3
           ],
           "IsHidden": false,
           "LockedTurn": 0,
-          "IsCardsHidden": false
+          "IsPaperBox": false,
+          "IsRainbowBox": false
         },
         {
           "Id": "0_1.0_-1.15",
           "TypeId": 2,
-          "BoxColor": 0,
+          "BoxColor": 1,
           "BlockedNodes": [],
           "InitCards": [
-            0,
             1,
-            1,
-            1,
+            2,
+            2,
+            2,
             3
           ],
           "IsHidden": false,
           "LockedTurn": 0,
-          "IsCardsHidden": false
+          "IsPaperBox": false,
+          "IsRainbowBox": false
         },
         {
           "Id": "1_-1.45_0.0",
           "TypeId": 2,
-          "BoxColor": 1,
+          "BoxColor": 2,
           "BlockedNodes": [
             "0_-1.95_1.15",
             "0_-1.0_-1.15"
           ],
           "InitCards": [
-            0,
+            2,
             2,
             3,
             3,
-            3
+            4
           ],
           "IsHidden": false,
           "LockedTurn": 0,
-          "IsCardsHidden": false
+          "IsPaperBox": false,
+          "IsRainbowBox": false
         },
         {
           "Id": "1_0.0_0.0",
           "TypeId": 2,
-          "BoxColor": 2,
+          "BoxColor": 3,
           "BlockedNodes": [
             "0_0.0_1.15",
             "0_-1.0_-1.15",
             "0_1.0_-1.15"
           ],
           "InitCards": [
-            0,
-            0,
-            0,
-            1,
-            2
+            2,
+            2,
+            3,
+            4,
+            4
           ],
           "IsHidden": false,
           "LockedTurn": 0,
-          "IsCardsHidden": false
+          "IsPaperBox": false,
+          "IsRainbowBox": false
         },
         {
           "Id": "1_1.45_0.0",
           "TypeId": 2,
-          "BoxColor": 3,
+          "BoxColor": 4,
           "BlockedNodes": [
             "0_1.95_1.15",
             "0_1.0_-1.15"
           ],
           "InitCards": [
-            0,
-            0,
             1,
-            1,
-            3
+            2,
+            3,
+            3,
+            4
           ],
           "IsHidden": false,
           "LockedTurn": 0,
-          "IsCardsHidden": false
+          "IsPaperBox": false,
+          "IsRainbowBox": false
         },
         {
           "Id": "2_0.0_0.0",
           "TypeId": 1,
-          "BoxColor": 5,
+          "BoxColor": 1,
           "BlockedNodes": [
             "0_0.0_1.15",
             "0_-1.0_-1.15",
@@ -1818,18 +1885,17 @@ export const SAMPLE_LEVELS: SampleLevelPreset[] = [
             "1_0.0_0.0"
           ],
           "InitCards": [
-            0,
-            1,
-            2,
-            2
+            3,
+            3,
+            4,
+            4
           ],
           "IsHidden": false,
           "LockedTurn": 0,
-          "IsCardsHidden": false
+          "IsPaperBox": true,
+          "IsRainbowBox": false
         }
       ],
-      "BoardOffsetX": 0,
-      "BoardOffsetZ": 0,
       "SpawnerNodes": [],
       "TurnSpawnerNodes": [],
       "LinkedBoxes": [],
@@ -1844,6 +1910,8 @@ export const SAMPLE_LEVELS: SampleLevelPreset[] = [
     "description": "Massive 16-box 4-tier grand cascade with 2 symmetrically concealed Mystery Boxes on Layer 0.",
     "data": {
       "Id": 10,
+      "BoardOffsetX": 0,
+      "BoardOffsetZ": 0,
       "BoardNodes": [
         {
           "Id": "0_-2.0_1.85",
@@ -1962,164 +2030,174 @@ export const SAMPLE_LEVELS: SampleLevelPreset[] = [
         {
           "Id": "0_-2.0_1.85",
           "TypeId": 2,
-          "BoxColor": 0,
+          "BoxColor": 1,
           "BlockedNodes": [],
           "InitCards": [
-            0,
-            0,
             1,
             1,
+            2,
+            4,
             4,
             4
           ],
-          "IsHidden": true,
+          "IsHidden": false,
           "LockedTurn": 0,
-          "IsCardsHidden": false
+          "IsPaperBox": false,
+          "IsRainbowBox": true
         },
         {
           "Id": "0_0.0_1.85",
           "TypeId": 2,
-          "BoxColor": 1,
+          "BoxColor": 2,
           "BlockedNodes": [],
           "InitCards": [
-            0,
+            2,
             3,
             3,
             3,
-            4,
-            4
+            3,
+            5
           ],
           "IsHidden": false,
           "LockedTurn": 0,
-          "IsCardsHidden": false
+          "IsPaperBox": false,
+          "IsRainbowBox": false
         },
         {
           "Id": "0_2.0_1.85",
           "TypeId": 2,
-          "BoxColor": 2,
-          "BlockedNodes": [],
-          "InitCards": [
-            0,
-            1,
-            2,
-            2,
-            2,
-            4
-          ],
-          "IsHidden": true,
-          "LockedTurn": 0,
-          "IsCardsHidden": false
-        },
-        {
-          "Id": "0_-1.0_0.0",
-          "TypeId": 2,
           "BoxColor": 3,
           "BlockedNodes": [],
           "InitCards": [
-            0,
-            0,
-            1,
             1,
             2,
-            3
+            2,
+            3,
+            3,
+            4
           ],
           "IsHidden": false,
           "LockedTurn": 0,
-          "IsCardsHidden": false
+          "IsPaperBox": false,
+          "IsRainbowBox": true
         },
         {
-          "Id": "0_1.0_0.0",
+          "Id": "0_-1.0_0.0",
           "TypeId": 2,
           "BoxColor": 4,
           "BlockedNodes": [],
           "InitCards": [
             1,
             1,
-            1,
             2,
-            2,
-            2
-          ],
-          "IsHidden": false,
-          "LockedTurn": 0,
-          "IsCardsHidden": false
-        },
-        {
-          "Id": "0_-2.0_-1.85",
-          "TypeId": 2,
-          "BoxColor": 0,
-          "BlockedNodes": [],
-          "InitCards": [
-            1,
-            2,
-            2,
-            2,
-            3,
-            4
-          ],
-          "IsHidden": false,
-          "LockedTurn": 0,
-          "IsCardsHidden": false
-        },
-        {
-          "Id": "0_0.0_-1.85",
-          "TypeId": 2,
-          "BoxColor": 1,
-          "BlockedNodes": [],
-          "InitCards": [
-            0,
-            0,
-            0,
-            2,
-            3,
-            4
-          ],
-          "IsHidden": false,
-          "LockedTurn": 0,
-          "IsCardsHidden": false
-        },
-        {
-          "Id": "0_2.0_-1.85",
-          "TypeId": 2,
-          "BoxColor": 2,
-          "BlockedNodes": [],
-          "InitCards": [
-            0,
-            1,
-            1,
-            3,
+            4,
             4,
             4
           ],
           "IsHidden": false,
           "LockedTurn": 0,
-          "IsCardsHidden": false
+          "IsPaperBox": false,
+          "IsRainbowBox": false
+        },
+        {
+          "Id": "0_1.0_0.0",
+          "TypeId": 2,
+          "BoxColor": 5,
+          "BlockedNodes": [],
+          "InitCards": [
+            1,
+            1,
+            2,
+            3,
+            3,
+            4
+          ],
+          "IsHidden": false,
+          "LockedTurn": 0,
+          "IsPaperBox": false,
+          "IsRainbowBox": false
+        },
+        {
+          "Id": "0_-2.0_-1.85",
+          "TypeId": 2,
+          "BoxColor": 1,
+          "BlockedNodes": [],
+          "InitCards": [
+            2,
+            2,
+            3,
+            3,
+            3,
+            4
+          ],
+          "IsHidden": false,
+          "LockedTurn": 0,
+          "IsPaperBox": false,
+          "IsRainbowBox": false
+        },
+        {
+          "Id": "0_0.0_-1.85",
+          "TypeId": 2,
+          "BoxColor": 2,
+          "BlockedNodes": [],
+          "InitCards": [
+            1,
+            2,
+            2,
+            3,
+            5,
+            5
+          ],
+          "IsHidden": false,
+          "LockedTurn": 0,
+          "IsPaperBox": false,
+          "IsRainbowBox": false
+        },
+        {
+          "Id": "0_2.0_-1.85",
+          "TypeId": 2,
+          "BoxColor": 3,
+          "BlockedNodes": [],
+          "InitCards": [
+            2,
+            3,
+            4,
+            4,
+            5,
+            5
+          ],
+          "IsHidden": false,
+          "LockedTurn": 0,
+          "IsPaperBox": false,
+          "IsRainbowBox": false
         },
         {
           "Id": "1_-1.45_0.95",
           "TypeId": 2,
-          "BoxColor": 3,
+          "BoxColor": 4,
           "BlockedNodes": [
             "0_-2.0_1.85",
             "0_-1.0_0.0"
           ],
           "InitCards": [
-            0,
-            0,
-            0,
-            2,
+            1,
             3,
-            4
+            5,
+            5,
+            5,
+            5
           ],
           "IsHidden": false,
           "LockedTurn": 0,
-          "IsCardsHidden": false
+          "IsPaperBox": false,
+          "IsRainbowBox": false
         },
         {
           "Id": "1_1.45_0.95",
           "TypeId": 2,
-          "BoxColor": 4,
+          "BoxColor": 5,
           "BlockedNodes": [
+            "0_0.0_1.85",
             "0_2.0_1.85",
             "0_1.0_0.0"
           ],
@@ -2127,76 +2205,80 @@ export const SAMPLE_LEVELS: SampleLevelPreset[] = [
             1,
             1,
             2,
-            2,
-            2,
-            3
+            3,
+            3,
+            5
           ],
           "IsHidden": false,
           "LockedTurn": 0,
-          "IsCardsHidden": false
+          "IsPaperBox": false,
+          "IsRainbowBox": false
         },
         {
           "Id": "1_-1.45_-0.95",
           "TypeId": 2,
-          "BoxColor": 0,
+          "BoxColor": 1,
           "BlockedNodes": [
             "0_-1.0_0.0",
             "0_-2.0_-1.85"
           ],
           "InitCards": [
-            0,
+            1,
             3,
             3,
             4,
-            4,
-            4
+            5,
+            5
           ],
           "IsHidden": false,
           "LockedTurn": 0,
-          "IsCardsHidden": false
+          "IsPaperBox": false,
+          "IsRainbowBox": false
         },
         {
           "Id": "1_1.45_-0.95",
           "TypeId": 2,
-          "BoxColor": 1,
+          "BoxColor": 2,
           "BlockedNodes": [
             "0_1.0_0.0",
             "0_2.0_-1.85"
           ],
           "InitCards": [
             1,
-            2,
-            2,
-            3,
-            3
+            4,
+            5,
+            5,
+            5
           ],
           "IsHidden": false,
           "LockedTurn": 0,
-          "IsCardsHidden": false
+          "IsPaperBox": false,
+          "IsRainbowBox": false
         },
         {
           "Id": "1_0.0_0.0",
           "TypeId": 2,
-          "BoxColor": 2,
+          "BoxColor": 3,
           "BlockedNodes": [
             "0_-1.0_0.0",
             "0_1.0_0.0"
           ],
           "InitCards": [
             1,
-            3,
-            3,
+            1,
+            2,
             4,
-            4
+            5
           ],
           "IsHidden": false,
           "LockedTurn": 0,
-          "IsCardsHidden": false
+          "IsPaperBox": false,
+          "IsRainbowBox": false
         },
         {
           "Id": "2_-1.0_0.0",
           "TypeId": 2,
-          "BoxColor": 3,
+          "BoxColor": 4,
           "BlockedNodes": [
             "0_-1.0_0.0",
             "1_-1.45_0.95",
@@ -2204,20 +2286,21 @@ export const SAMPLE_LEVELS: SampleLevelPreset[] = [
             "1_0.0_0.0"
           ],
           "InitCards": [
-            1,
-            1,
-            3,
-            3,
-            4
+            2,
+            2,
+            4,
+            5,
+            5
           ],
           "IsHidden": false,
           "LockedTurn": 0,
-          "IsCardsHidden": false
+          "IsPaperBox": false,
+          "IsRainbowBox": false
         },
         {
           "Id": "2_1.0_0.0",
           "TypeId": 2,
-          "BoxColor": 4,
+          "BoxColor": 5,
           "BlockedNodes": [
             "0_1.0_0.0",
             "1_1.45_0.95",
@@ -2225,20 +2308,21 @@ export const SAMPLE_LEVELS: SampleLevelPreset[] = [
             "1_0.0_0.0"
           ],
           "InitCards": [
-            0,
+            1,
             2,
-            3,
-            4,
+            2,
+            2,
             4
           ],
           "IsHidden": false,
           "LockedTurn": 0,
-          "IsCardsHidden": false
+          "IsPaperBox": false,
+          "IsRainbowBox": false
         },
         {
           "Id": "3_0.0_0.0",
           "TypeId": 1,
-          "BoxColor": 5,
+          "BoxColor": 1,
           "BlockedNodes": [
             "0_-1.0_0.0",
             "0_1.0_0.0",
@@ -2247,18 +2331,17 @@ export const SAMPLE_LEVELS: SampleLevelPreset[] = [
             "2_1.0_0.0"
           ],
           "InitCards": [
-            0,
-            0,
-            0,
-            1
+            1,
+            1,
+            4,
+            4
           ],
           "IsHidden": false,
           "LockedTurn": 0,
-          "IsCardsHidden": false
+          "IsPaperBox": true,
+          "IsRainbowBox": false
         }
       ],
-      "BoardOffsetX": 0,
-      "BoardOffsetZ": 0,
       "SpawnerNodes": [],
       "TurnSpawnerNodes": [],
       "LinkedBoxes": [],
@@ -2273,6 +2356,8 @@ export const SAMPLE_LEVELS: SampleLevelPreset[] = [
     "description": "Four foundation boxes supporting two interlocking top crossbars in a balanced footprint.",
     "data": {
       "Id": 11,
+      "BoardOffsetX": 0,
+      "BoardOffsetZ": 0,
       "BoardNodes": [
         {
           "Id": "0_-1.15_1.05",
@@ -2321,114 +2406,118 @@ export const SAMPLE_LEVELS: SampleLevelPreset[] = [
         {
           "Id": "0_-1.15_1.05",
           "TypeId": 2,
-          "BoxColor": 0,
+          "BoxColor": 1,
           "BlockedNodes": [],
           "InitCards": [
-            0,
-            0,
-            1,
             1,
             2,
-            2
+            2,
+            2,
+            2,
+            3
           ],
           "IsHidden": false,
           "LockedTurn": 0,
-          "IsCardsHidden": false
+          "IsPaperBox": false,
+          "IsRainbowBox": false
         },
         {
           "Id": "0_1.15_1.05",
           "TypeId": 2,
-          "BoxColor": 1,
+          "BoxColor": 2,
           "BlockedNodes": [],
           "InitCards": [
-            0,
+            1,
             1,
             2,
             2,
             2,
-            2
+            3
           ],
           "IsHidden": false,
           "LockedTurn": 0,
-          "IsCardsHidden": false
+          "IsPaperBox": false,
+          "IsRainbowBox": false
         },
         {
           "Id": "0_-1.15_-1.05",
           "TypeId": 2,
-          "BoxColor": 2,
+          "BoxColor": 3,
           "BlockedNodes": [],
           "InitCards": [
-            0,
-            0,
+            1,
             1,
             1,
             2,
-            2
+            3,
+            3
           ],
           "IsHidden": false,
           "LockedTurn": 0,
-          "IsCardsHidden": false
+          "IsPaperBox": false,
+          "IsRainbowBox": false
         },
         {
           "Id": "0_1.15_-1.05",
           "TypeId": 2,
-          "BoxColor": 0,
+          "BoxColor": 1,
           "BlockedNodes": [],
           "InitCards": [
-            0,
-            0,
             1,
             1,
             2,
-            2
+            3,
+            3,
+            3
           ],
           "IsHidden": false,
           "LockedTurn": 0,
-          "IsCardsHidden": false
+          "IsPaperBox": false,
+          "IsRainbowBox": false
         },
         {
           "Id": "1_-1.15_0.0",
           "TypeId": 2,
-          "BoxColor": 1,
+          "BoxColor": 2,
           "BlockedNodes": [
             "0_-1.15_1.05",
             "0_-1.15_-1.05"
           ],
           "InitCards": [
-            0,
-            0,
+            1,
+            1,
             1,
             1,
             2,
-            2
+            3
           ],
           "IsHidden": false,
           "LockedTurn": 0,
-          "IsCardsHidden": false
+          "IsPaperBox": false,
+          "IsRainbowBox": false
         },
         {
           "Id": "1_1.15_0.0",
           "TypeId": 2,
-          "BoxColor": 2,
+          "BoxColor": 3,
           "BlockedNodes": [
             "0_1.15_1.05",
             "0_1.15_-1.05"
           ],
           "InitCards": [
-            0,
-            0,
-            0,
-            1,
-            1,
-            1
+            2,
+            2,
+            3,
+            3,
+            3,
+            3
           ],
           "IsHidden": false,
           "LockedTurn": 0,
-          "IsCardsHidden": false
+          "IsPaperBox": false,
+          "IsRainbowBox": false
         }
       ],
-      "BoardOffsetX": 0,
-      "BoardOffsetZ": 0,
       "SpawnerNodes": [],
       "TurnSpawnerNodes": [],
       "LinkedBoxes": [],
@@ -2443,6 +2532,8 @@ export const SAMPLE_LEVELS: SampleLevelPreset[] = [
     "description": "Greek cross foundation supporting 2 horizontal wing bridges and a central vertical column.",
     "data": {
       "Id": 12,
+      "BoardOffsetX": 0,
+      "BoardOffsetZ": 0,
       "BoardNodes": [
         {
           "Id": "0_0.0_0.0",
@@ -2505,150 +2596,156 @@ export const SAMPLE_LEVELS: SampleLevelPreset[] = [
         {
           "Id": "0_0.0_0.0",
           "TypeId": 2,
-          "BoxColor": 0,
-          "BlockedNodes": [],
-          "InitCards": [
-            0,
-            0,
-            1,
-            1,
-            2,
-            2
-          ],
-          "IsHidden": false,
-          "LockedTurn": 0,
-          "IsCardsHidden": false
-        },
-        {
-          "Id": "0_0.0_1.85",
-          "TypeId": 2,
           "BoxColor": 1,
           "BlockedNodes": [],
           "InitCards": [
-            0,
-            0,
             1,
-            2,
-            2,
-            3
-          ],
-          "IsHidden": false,
-          "LockedTurn": 0,
-          "IsCardsHidden": false
-        },
-        {
-          "Id": "0_0.0_-1.85",
-          "TypeId": 2,
-          "BoxColor": 2,
-          "BlockedNodes": [],
-          "InitCards": [
-            0,
-            2,
-            2,
+            1,
+            1,
             2,
             3,
             3
           ],
           "IsHidden": false,
           "LockedTurn": 0,
-          "IsCardsHidden": false
+          "IsPaperBox": false,
+          "IsRainbowBox": false
         },
         {
-          "Id": "0_-1.85_0.0",
+          "Id": "0_0.0_1.85",
+          "TypeId": 2,
+          "BoxColor": 2,
+          "BlockedNodes": [],
+          "InitCards": [
+            2,
+            2,
+            2,
+            3,
+            4,
+            4
+          ],
+          "IsHidden": false,
+          "LockedTurn": 0,
+          "IsPaperBox": false,
+          "IsRainbowBox": false
+        },
+        {
+          "Id": "0_0.0_-1.85",
           "TypeId": 2,
           "BoxColor": 3,
           "BlockedNodes": [],
           "InitCards": [
             1,
-            2,
-            2,
-            2,
+            1,
+            1,
             3,
-            3
+            3,
+            4
           ],
           "IsHidden": false,
           "LockedTurn": 0,
-          "IsCardsHidden": false
+          "IsPaperBox": false,
+          "IsRainbowBox": false
+        },
+        {
+          "Id": "0_-1.85_0.0",
+          "TypeId": 2,
+          "BoxColor": 4,
+          "BlockedNodes": [],
+          "InitCards": [
+            1,
+            2,
+            3,
+            3,
+            4,
+            4
+          ],
+          "IsHidden": false,
+          "LockedTurn": 0,
+          "IsPaperBox": false,
+          "IsRainbowBox": false
         },
         {
           "Id": "0_1.85_0.0",
           "TypeId": 2,
-          "BoxColor": 0,
+          "BoxColor": 1,
           "BlockedNodes": [],
           "InitCards": [
-            0,
             1,
             1,
             1,
-            3,
-            3
+            2,
+            2,
+            4
           ],
           "IsHidden": false,
           "LockedTurn": 0,
-          "IsCardsHidden": false
+          "IsPaperBox": false,
+          "IsRainbowBox": false
         },
         {
           "Id": "1_-1.65_0.0",
           "TypeId": 2,
-          "BoxColor": 1,
+          "BoxColor": 2,
           "BlockedNodes": [
             "0_0.0_0.0",
             "0_-1.85_0.0"
           ],
           "InitCards": [
-            0,
             1,
-            1,
-            3,
-            3,
-            3
+            2,
+            2,
+            4,
+            4,
+            4
           ],
           "IsHidden": false,
           "LockedTurn": 0,
-          "IsCardsHidden": false
+          "IsPaperBox": false,
+          "IsRainbowBox": false
         },
         {
           "Id": "1_1.65_0.0",
           "TypeId": 2,
-          "BoxColor": 2,
+          "BoxColor": 3,
           "BlockedNodes": [
             "0_0.0_0.0",
             "0_1.85_0.0"
           ],
           "InitCards": [
-            0,
-            0,
-            0,
             2,
             2,
-            3
+            3,
+            4,
+            4,
+            4
           ],
           "IsHidden": false,
           "LockedTurn": 0,
-          "IsCardsHidden": false
+          "IsPaperBox": false,
+          "IsRainbowBox": false
         },
         {
           "Id": "1_0.0_0.0",
           "TypeId": 2,
-          "BoxColor": 3,
+          "BoxColor": 4,
           "BlockedNodes": [
             "0_0.0_0.0"
           ],
           "InitCards": [
-            0,
-            0,
             1,
-            1,
-            1,
+            2,
+            3,
+            3,
+            3,
             3
           ],
           "IsHidden": false,
           "LockedTurn": 0,
-          "IsCardsHidden": false
+          "IsPaperBox": false,
+          "IsRainbowBox": false
         }
       ],
-      "BoardOffsetX": 0,
-      "BoardOffsetZ": 0,
       "SpawnerNodes": [],
       "TurnSpawnerNodes": [],
       "LinkedBoxes": [],
@@ -2663,6 +2760,8 @@ export const SAMPLE_LEVELS: SampleLevelPreset[] = [
     "description": "Staggered 3-2 honeycomb foundation supporting 3 vertical bridging struts and an apex feeder station.",
     "data": {
       "Id": 13,
+      "BoardOffsetX": 0,
+      "BoardOffsetZ": 0,
       "BoardNodes": [
         {
           "Id": "0_-1.95_1.25",
@@ -2732,149 +2831,157 @@ export const SAMPLE_LEVELS: SampleLevelPreset[] = [
         {
           "Id": "0_-1.95_1.25",
           "TypeId": 2,
-          "BoxColor": 0,
-          "BlockedNodes": [],
-          "InitCards": [
-            0,
-            0,
-            1,
-            1,
-            2,
-            3
-          ],
-          "IsHidden": false,
-          "LockedTurn": 0,
-          "IsCardsHidden": false
-        },
-        {
-          "Id": "0_0.0_1.25",
-          "TypeId": 2,
           "BoxColor": 1,
           "BlockedNodes": [],
           "InitCards": [
-            0,
-            0,
+            1,
+            1,
             2,
             2,
-            2,
-            3
+            4,
+            4
           ],
           "IsHidden": false,
           "LockedTurn": 0,
-          "IsCardsHidden": false
+          "IsPaperBox": false,
+          "IsRainbowBox": false
         },
         {
-          "Id": "0_1.95_1.25",
+          "Id": "0_0.0_1.25",
           "TypeId": 2,
           "BoxColor": 2,
           "BlockedNodes": [],
           "InitCards": [
             1,
-            2,
-            2,
-            2,
+            1,
             3,
-            3
+            3,
+            4,
+            4
           ],
           "IsHidden": false,
           "LockedTurn": 0,
-          "IsCardsHidden": false
+          "IsPaperBox": false,
+          "IsRainbowBox": false
         },
         {
-          "Id": "0_-1.0_-1.25",
+          "Id": "0_1.95_1.25",
           "TypeId": 2,
           "BoxColor": 3,
           "BlockedNodes": [],
           "InitCards": [
             1,
-            1,
+            2,
+            2,
             2,
             3,
+            4
+          ],
+          "IsHidden": false,
+          "LockedTurn": 0,
+          "IsPaperBox": false,
+          "IsRainbowBox": false
+        },
+        {
+          "Id": "0_-1.0_-1.25",
+          "TypeId": 2,
+          "BoxColor": 4,
+          "BlockedNodes": [],
+          "InitCards": [
+            1,
+            1,
+            1,
+            2,
             3,
             3
           ],
           "IsHidden": false,
           "LockedTurn": 0,
-          "IsCardsHidden": false
+          "IsPaperBox": false,
+          "IsRainbowBox": false
         },
         {
           "Id": "0_1.0_-1.25",
           "TypeId": 2,
-          "BoxColor": 0,
+          "BoxColor": 1,
           "BlockedNodes": [],
           "InitCards": [
-            0,
-            1,
-            1,
-            1,
-            3
+            2,
+            2,
+            3,
+            3,
+            4
           ],
           "IsHidden": false,
           "LockedTurn": 0,
-          "IsCardsHidden": false
+          "IsPaperBox": false,
+          "IsRainbowBox": false
         },
         {
           "Id": "1_-1.45_0.0",
           "TypeId": 2,
-          "BoxColor": 1,
+          "BoxColor": 2,
           "BlockedNodes": [
             "0_-1.95_1.25",
             "0_-1.0_-1.25"
           ],
           "InitCards": [
-            0,
-            2,
             3,
             3,
-            3
+            3,
+            3,
+            4
           ],
           "IsHidden": false,
           "LockedTurn": 0,
-          "IsCardsHidden": false
+          "IsPaperBox": false,
+          "IsRainbowBox": false
         },
         {
           "Id": "1_0.0_0.0",
           "TypeId": 2,
-          "BoxColor": 2,
+          "BoxColor": 3,
           "BlockedNodes": [
             "0_0.0_1.25",
             "0_-1.0_-1.25",
             "0_1.0_-1.25"
           ],
           "InitCards": [
-            0,
-            0,
-            0,
             1,
-            2
+            2,
+            3,
+            4,
+            4
           ],
           "IsHidden": false,
           "LockedTurn": 0,
-          "IsCardsHidden": false
+          "IsPaperBox": false,
+          "IsRainbowBox": false
         },
         {
           "Id": "1_1.45_0.0",
           "TypeId": 2,
-          "BoxColor": 3,
+          "BoxColor": 4,
           "BlockedNodes": [
             "0_1.95_1.25",
             "0_1.0_-1.25"
           ],
           "InitCards": [
-            0,
-            0,
             1,
             1,
-            3
+            2,
+            2,
+            4
           ],
           "IsHidden": false,
           "LockedTurn": 0,
-          "IsCardsHidden": false
+          "IsPaperBox": false,
+          "IsRainbowBox": false
         },
         {
           "Id": "2_0.0_0.0",
           "TypeId": 1,
-          "BoxColor": 5,
+          "BoxColor": 1,
           "BlockedNodes": [
             "0_0.0_1.25",
             "0_-1.0_-1.25",
@@ -2882,18 +2989,17 @@ export const SAMPLE_LEVELS: SampleLevelPreset[] = [
             "1_0.0_0.0"
           ],
           "InitCards": [
-            0,
             1,
             2,
-            2
+            4,
+            4
           ],
           "IsHidden": false,
           "LockedTurn": 0,
-          "IsCardsHidden": false
+          "IsPaperBox": true,
+          "IsRainbowBox": false
         }
       ],
-      "BoardOffsetX": 0,
-      "BoardOffsetZ": 0,
       "SpawnerNodes": [],
       "TurnSpawnerNodes": [],
       "LinkedBoxes": [],
@@ -2908,6 +3014,8 @@ export const SAMPLE_LEVELS: SampleLevelPreset[] = [
     "description": "Six-column foundation supporting 4 mid struts and 2 feeder trays in a balanced conveyor layout.",
     "data": {
       "Id": 14,
+      "BoardOffsetX": 0,
+      "BoardOffsetZ": 0,
       "BoardNodes": [
         {
           "Id": "0_-1.15_1.95",
@@ -2998,73 +3106,77 @@ export const SAMPLE_LEVELS: SampleLevelPreset[] = [
         {
           "Id": "0_-1.15_1.95",
           "TypeId": 2,
-          "BoxColor": 0,
+          "BoxColor": 1,
           "BlockedNodes": [],
           "InitCards": [
-            0,
-            1,
-            1,
             1,
             2,
-            2
+            3,
+            3,
+            4,
+            4
           ],
           "IsHidden": false,
           "LockedTurn": 0,
-          "IsCardsHidden": false
+          "IsPaperBox": false,
+          "IsRainbowBox": false
         },
         {
           "Id": "0_1.15_1.95",
           "TypeId": 2,
-          "BoxColor": 1,
+          "BoxColor": 2,
           "BlockedNodes": [],
           "InitCards": [
-            0,
-            0,
             1,
-            1,
+            2,
+            2,
             3,
-            3
+            4,
+            4
           ],
           "IsHidden": false,
           "LockedTurn": 0,
-          "IsCardsHidden": false
+          "IsPaperBox": false,
+          "IsRainbowBox": false
         },
         {
           "Id": "0_-1.15_0.0",
           "TypeId": 2,
-          "BoxColor": 2,
+          "BoxColor": 3,
           "BlockedNodes": [],
           "InitCards": [
-            0,
-            1,
             1,
             2,
-            3
+            3,
+            4,
+            4
           ],
           "IsHidden": false,
           "LockedTurn": 0,
-          "IsCardsHidden": false
+          "IsPaperBox": false,
+          "IsRainbowBox": false
         },
         {
           "Id": "0_1.15_0.0",
           "TypeId": 2,
-          "BoxColor": 3,
+          "BoxColor": 4,
           "BlockedNodes": [],
           "InitCards": [
-            0,
             1,
             1,
             2,
-            3
+            4,
+            4
           ],
           "IsHidden": false,
           "LockedTurn": 0,
-          "IsCardsHidden": false
+          "IsPaperBox": false,
+          "IsRainbowBox": false
         },
         {
           "Id": "0_-1.15_-1.95",
           "TypeId": 2,
-          "BoxColor": 0,
+          "BoxColor": 1,
           "BlockedNodes": [],
           "InitCards": [
             1,
@@ -3075,104 +3187,110 @@ export const SAMPLE_LEVELS: SampleLevelPreset[] = [
           ],
           "IsHidden": false,
           "LockedTurn": 0,
-          "IsCardsHidden": false
+          "IsPaperBox": false,
+          "IsRainbowBox": false
         },
         {
           "Id": "0_1.15_-1.95",
           "TypeId": 2,
-          "BoxColor": 1,
+          "BoxColor": 2,
           "BlockedNodes": [],
           "InitCards": [
-            0,
             1,
             1,
-            2,
-            3
+            1,
+            3,
+            4
           ],
           "IsHidden": false,
           "LockedTurn": 0,
-          "IsCardsHidden": false
+          "IsPaperBox": false,
+          "IsRainbowBox": false
         },
         {
           "Id": "1_-1.15_1.0",
           "TypeId": 2,
-          "BoxColor": 2,
+          "BoxColor": 3,
           "BlockedNodes": [
             "0_-1.15_1.95",
             "0_-1.15_0.0"
           ],
           "InitCards": [
-            0,
-            0,
+            1,
             1,
             2,
-            3
+            3,
+            4
           ],
           "IsHidden": false,
           "LockedTurn": 0,
-          "IsCardsHidden": false
+          "IsPaperBox": false,
+          "IsRainbowBox": false
         },
         {
           "Id": "1_1.15_1.0",
           "TypeId": 2,
-          "BoxColor": 3,
+          "BoxColor": 4,
           "BlockedNodes": [
             "0_1.15_1.95",
             "0_1.15_0.0"
           ],
           "InitCards": [
-            0,
+            1,
             1,
             2,
-            2,
+            3,
             3
           ],
           "IsHidden": false,
           "LockedTurn": 0,
-          "IsCardsHidden": false
+          "IsPaperBox": false,
+          "IsRainbowBox": false
         },
         {
           "Id": "1_-1.15_-1.0",
           "TypeId": 2,
-          "BoxColor": 0,
+          "BoxColor": 1,
           "BlockedNodes": [
             "0_-1.15_0.0",
             "0_-1.15_-1.95"
           ],
           "InitCards": [
-            0,
-            0,
-            0,
-            0,
-            3
+            2,
+            2,
+            2,
+            2,
+            4
           ],
           "IsHidden": false,
           "LockedTurn": 0,
-          "IsCardsHidden": false
+          "IsPaperBox": false,
+          "IsRainbowBox": false
         },
         {
           "Id": "1_1.15_-1.0",
           "TypeId": 2,
-          "BoxColor": 1,
+          "BoxColor": 2,
           "BlockedNodes": [
             "0_1.15_0.0",
             "0_1.15_-1.95"
           ],
           "InitCards": [
-            0,
-            0,
-            0,
+            1,
             2,
-            2
+            2,
+            3,
+            4
           ],
           "IsHidden": false,
           "LockedTurn": 0,
-          "IsCardsHidden": false
+          "IsPaperBox": false,
+          "IsRainbowBox": false
         },
         {
           "Id": "2_0.0_1.0",
           "TypeId": 1,
-          "BoxColor": 5,
+          "BoxColor": 1,
           "BlockedNodes": [
             "0_-1.15_1.95",
             "0_1.15_1.95",
@@ -3182,19 +3300,20 @@ export const SAMPLE_LEVELS: SampleLevelPreset[] = [
             "1_1.15_1.0"
           ],
           "InitCards": [
-            0,
-            1,
             2,
+            2,
+            3,
             3
           ],
           "IsHidden": false,
           "LockedTurn": 0,
-          "IsCardsHidden": false
+          "IsPaperBox": true,
+          "IsRainbowBox": false
         },
         {
           "Id": "2_0.0_-1.0",
           "TypeId": 1,
-          "BoxColor": 5,
+          "BoxColor": 1,
           "BlockedNodes": [
             "0_-1.15_0.0",
             "0_1.15_0.0",
@@ -3204,18 +3323,17 @@ export const SAMPLE_LEVELS: SampleLevelPreset[] = [
             "1_1.15_-1.0"
           ],
           "InitCards": [
-            0,
             1,
-            3,
-            3
+            1,
+            2,
+            2
           ],
           "IsHidden": false,
           "LockedTurn": 0,
-          "IsCardsHidden": false
+          "IsPaperBox": true,
+          "IsRainbowBox": false
         }
       ],
-      "BoardOffsetX": 0,
-      "BoardOffsetZ": 0,
       "SpawnerNodes": [],
       "TurnSpawnerNodes": [],
       "LinkedBoxes": [],
@@ -3230,6 +3348,8 @@ export const SAMPLE_LEVELS: SampleLevelPreset[] = [
     "description": "True 4-tier step pyramid with 2 symmetrically placed Mystery Boxes on Layer 0 tapering gracefully to an apex.",
     "data": {
       "Id": 15,
+      "BoardOffsetX": 0,
+      "BoardOffsetZ": 0,
       "BoardNodes": [
         {
           "Id": "0_-1.95_1.05",
@@ -3320,169 +3440,178 @@ export const SAMPLE_LEVELS: SampleLevelPreset[] = [
         {
           "Id": "0_-1.95_1.05",
           "TypeId": 2,
-          "BoxColor": 0,
+          "BoxColor": 1,
           "BlockedNodes": [],
           "InitCards": [
-            0,
-            1,
             1,
             1,
             2,
-            2
+            4,
+            4,
+            4
           ],
-          "IsHidden": true,
+          "IsHidden": false,
           "LockedTurn": 0,
-          "IsCardsHidden": false
+          "IsPaperBox": false,
+          "IsRainbowBox": true
         },
         {
           "Id": "0_0.0_1.05",
           "TypeId": 2,
-          "BoxColor": 1,
+          "BoxColor": 2,
           "BlockedNodes": [],
           "InitCards": [
-            0,
-            0,
-            1,
             2,
             2,
-            2
+            3,
+            3,
+            4,
+            4
           ],
           "IsHidden": false,
           "LockedTurn": 0,
-          "IsCardsHidden": false
+          "IsPaperBox": false,
+          "IsRainbowBox": false
         },
         {
           "Id": "0_1.95_1.05",
           "TypeId": 2,
-          "BoxColor": 2,
+          "BoxColor": 3,
           "BlockedNodes": [],
           "InitCards": [
-            0,
+            1,
+            1,
             1,
             2,
-            2,
             3,
-            3
+            4
           ],
-          "IsHidden": true,
+          "IsHidden": false,
           "LockedTurn": 0,
-          "IsCardsHidden": false
+          "IsPaperBox": false,
+          "IsRainbowBox": true
         },
         {
           "Id": "0_-1.95_-1.05",
           "TypeId": 2,
-          "BoxColor": 3,
+          "BoxColor": 4,
           "BlockedNodes": [],
           "InitCards": [
-            2,
+            1,
+            1,
             2,
             2,
             3,
-            3,
-            3
+            4
           ],
           "IsHidden": false,
           "LockedTurn": 0,
-          "IsCardsHidden": false
+          "IsPaperBox": false,
+          "IsRainbowBox": false
         },
         {
           "Id": "0_0.0_-1.05",
           "TypeId": 2,
-          "BoxColor": 0,
-          "BlockedNodes": [],
-          "InitCards": [
-            0,
-            1,
-            1,
-            1,
-            3,
-            3
-          ],
-          "IsHidden": false,
-          "LockedTurn": 0,
-          "IsCardsHidden": false
-        },
-        {
-          "Id": "0_1.95_-1.05",
-          "TypeId": 2,
           "BoxColor": 1,
           "BlockedNodes": [],
           "InitCards": [
-            0,
             1,
             1,
+            2,
             2,
             3,
             3
           ],
           "IsHidden": false,
           "LockedTurn": 0,
-          "IsCardsHidden": false
+          "IsPaperBox": false,
+          "IsRainbowBox": false
+        },
+        {
+          "Id": "0_1.95_-1.05",
+          "TypeId": 2,
+          "BoxColor": 2,
+          "BlockedNodes": [],
+          "InitCards": [
+            1,
+            2,
+            2,
+            2,
+            3,
+            4
+          ],
+          "IsHidden": false,
+          "LockedTurn": 0,
+          "IsPaperBox": false,
+          "IsRainbowBox": false
         },
         {
           "Id": "1_-1.45_0.0",
           "TypeId": 2,
-          "BoxColor": 2,
+          "BoxColor": 3,
           "BlockedNodes": [
             "0_-1.95_1.05",
             "0_-1.95_-1.05"
           ],
           "InitCards": [
-            0,
             1,
             1,
-            2,
-            2,
-            3
+            3,
+            3,
+            3,
+            4
           ],
           "IsHidden": false,
           "LockedTurn": 0,
-          "IsCardsHidden": false
+          "IsPaperBox": false,
+          "IsRainbowBox": false
         },
         {
           "Id": "1_0.0_0.0",
           "TypeId": 2,
-          "BoxColor": 3,
+          "BoxColor": 4,
           "BlockedNodes": [
             "0_0.0_1.05",
             "0_0.0_-1.05"
           ],
           "InitCards": [
-            0,
-            0,
+            1,
+            2,
             2,
             3,
             3,
-            3
+            4
           ],
           "IsHidden": false,
           "LockedTurn": 0,
-          "IsCardsHidden": false
+          "IsPaperBox": false,
+          "IsRainbowBox": false
         },
         {
           "Id": "1_1.45_0.0",
           "TypeId": 2,
-          "BoxColor": 0,
+          "BoxColor": 1,
           "BlockedNodes": [
             "0_1.95_1.05",
             "0_1.95_-1.05"
           ],
           "InitCards": [
-            0,
-            1,
             1,
             2,
             2,
-            2
+            3,
+            4,
+            4
           ],
           "IsHidden": false,
           "LockedTurn": 0,
-          "IsCardsHidden": false
+          "IsPaperBox": false,
+          "IsRainbowBox": false
         },
         {
           "Id": "2_-0.95_0.0",
           "TypeId": 2,
-          "BoxColor": 1,
+          "BoxColor": 2,
           "BlockedNodes": [
             "0_-1.95_1.05",
             "0_0.0_1.05",
@@ -3493,20 +3622,21 @@ export const SAMPLE_LEVELS: SampleLevelPreset[] = [
           ],
           "InitCards": [
             1,
+            1,
             2,
-            3,
-            3,
-            3,
-            3
+            2,
+            4,
+            4
           ],
           "IsHidden": false,
           "LockedTurn": 0,
-          "IsCardsHidden": false
+          "IsPaperBox": false,
+          "IsRainbowBox": false
         },
         {
           "Id": "2_0.95_0.0",
           "TypeId": 2,
-          "BoxColor": 2,
+          "BoxColor": 3,
           "BlockedNodes": [
             "0_0.0_1.05",
             "0_1.95_1.05",
@@ -3516,21 +3646,22 @@ export const SAMPLE_LEVELS: SampleLevelPreset[] = [
             "1_1.45_0.0"
           ],
           "InitCards": [
-            0,
-            0,
-            0,
-            0,
-            0,
-            3
+            3,
+            3,
+            3,
+            4,
+            4,
+            4
           ],
           "IsHidden": false,
           "LockedTurn": 0,
-          "IsCardsHidden": false
+          "IsPaperBox": false,
+          "IsRainbowBox": false
         },
         {
           "Id": "3_0.0_0.0",
           "TypeId": 2,
-          "BoxColor": 3,
+          "BoxColor": 4,
           "BlockedNodes": [
             "0_0.0_1.05",
             "0_0.0_-1.05",
@@ -3539,20 +3670,19 @@ export const SAMPLE_LEVELS: SampleLevelPreset[] = [
             "2_0.95_0.0"
           ],
           "InitCards": [
-            0,
-            0,
-            0,
             1,
             1,
-            1
+            2,
+            3,
+            3,
+            4
           ],
           "IsHidden": false,
           "LockedTurn": 0,
-          "IsCardsHidden": false
+          "IsPaperBox": false,
+          "IsRainbowBox": false
         }
       ],
-      "BoardOffsetX": 0,
-      "BoardOffsetZ": 0,
       "SpawnerNodes": [],
       "TurnSpawnerNodes": [],
       "LinkedBoxes": [],
@@ -3567,6 +3697,8 @@ export const SAMPLE_LEVELS: SampleLevelPreset[] = [
     "description": "Concentric pinwheel layout with 2 symmetrically placed Mystery Boxes on Layer 0 supporting 4 mid bridges and 2 upper feeder trays.",
     "data": {
       "Id": 16,
+      "BoardOffsetX": 0,
+      "BoardOffsetZ": 0,
       "BoardNodes": [
         {
           "Id": "0_-1.0_2.05",
@@ -3657,181 +3789,191 @@ export const SAMPLE_LEVELS: SampleLevelPreset[] = [
         {
           "Id": "0_-1.0_2.05",
           "TypeId": 2,
-          "BoxColor": 0,
+          "BoxColor": 1,
           "BlockedNodes": [],
           "InitCards": [
-            0,
-            1,
-            1,
             1,
             2,
-            2
+            2,
+            3,
+            3,
+            4
           ],
-          "IsHidden": true,
+          "IsHidden": false,
           "LockedTurn": 0,
-          "IsCardsHidden": false
+          "IsPaperBox": false,
+          "IsRainbowBox": true
         },
         {
           "Id": "0_1.0_2.05",
           "TypeId": 2,
-          "BoxColor": 1,
+          "BoxColor": 2,
           "BlockedNodes": [],
           "InitCards": [
-            0,
-            0,
             1,
-            1,
+            2,
+            2,
             3,
-            3
+            3,
+            4
           ],
           "IsHidden": false,
           "LockedTurn": 0,
-          "IsCardsHidden": false
+          "IsPaperBox": false,
+          "IsRainbowBox": false
         },
         {
           "Id": "0_-1.0_-2.05",
           "TypeId": 2,
-          "BoxColor": 2,
+          "BoxColor": 3,
           "BlockedNodes": [],
           "InitCards": [
-            0,
             1,
-            1,
+            2,
+            2,
             2,
             3
           ],
           "IsHidden": false,
           "LockedTurn": 0,
-          "IsCardsHidden": false
+          "IsPaperBox": false,
+          "IsRainbowBox": false
         },
         {
           "Id": "0_1.0_-2.05",
           "TypeId": 2,
-          "BoxColor": 3,
+          "BoxColor": 4,
           "BlockedNodes": [],
           "InitCards": [
-            0,
             1,
             1,
             2,
+            2,
             3
           ],
-          "IsHidden": true,
+          "IsHidden": false,
           "LockedTurn": 0,
-          "IsCardsHidden": false
+          "IsPaperBox": false,
+          "IsRainbowBox": true
         },
         {
           "Id": "0_-1.95_0.0",
           "TypeId": 2,
-          "BoxColor": 0,
+          "BoxColor": 1,
           "BlockedNodes": [],
           "InitCards": [
             1,
-            1,
-            1,
             2,
-            3
+            2,
+            4,
+            4
           ],
           "IsHidden": false,
           "LockedTurn": 0,
-          "IsCardsHidden": false
+          "IsPaperBox": false,
+          "IsRainbowBox": false
         },
         {
           "Id": "0_1.95_0.0",
           "TypeId": 2,
-          "BoxColor": 1,
+          "BoxColor": 2,
           "BlockedNodes": [],
           "InitCards": [
-            0,
-            1,
             1,
             2,
-            3
+            2,
+            3,
+            4
           ],
           "IsHidden": false,
           "LockedTurn": 0,
-          "IsCardsHidden": false
+          "IsPaperBox": false,
+          "IsRainbowBox": false
         },
         {
           "Id": "1_-1.15_1.05",
           "TypeId": 2,
-          "BoxColor": 2,
+          "BoxColor": 3,
           "BlockedNodes": [
             "0_-1.0_2.05",
             "0_-1.95_0.0"
           ],
           "InitCards": [
-            0,
-            0,
+            1,
             1,
             2,
-            3
+            4,
+            4
           ],
           "IsHidden": false,
           "LockedTurn": 0,
-          "IsCardsHidden": false
+          "IsPaperBox": false,
+          "IsRainbowBox": false
         },
         {
           "Id": "1_1.15_1.05",
           "TypeId": 2,
-          "BoxColor": 3,
+          "BoxColor": 4,
           "BlockedNodes": [
             "0_1.0_2.05",
             "0_1.95_0.0"
           ],
           "InitCards": [
-            0,
             1,
             2,
             2,
-            3
+            3,
+            4
           ],
           "IsHidden": false,
           "LockedTurn": 0,
-          "IsCardsHidden": false
+          "IsPaperBox": false,
+          "IsRainbowBox": false
         },
         {
           "Id": "1_-1.15_-1.05",
           "TypeId": 2,
-          "BoxColor": 0,
+          "BoxColor": 1,
           "BlockedNodes": [
             "0_-1.0_-2.05",
             "0_-1.95_0.0"
           ],
           "InitCards": [
-            0,
-            0,
-            0,
-            0,
-            3
+            1,
+            2,
+            2,
+            4,
+            4
           ],
           "IsHidden": false,
           "LockedTurn": 0,
-          "IsCardsHidden": false
+          "IsPaperBox": false,
+          "IsRainbowBox": false
         },
         {
           "Id": "1_1.15_-1.05",
           "TypeId": 2,
-          "BoxColor": 1,
+          "BoxColor": 2,
           "BlockedNodes": [
             "0_1.0_-2.05",
             "0_1.95_0.0"
           ],
           "InitCards": [
-            0,
-            0,
-            0,
-            2,
-            2
+            1,
+            1,
+            3,
+            3,
+            3
           ],
           "IsHidden": false,
           "LockedTurn": 0,
-          "IsCardsHidden": false
+          "IsPaperBox": false,
+          "IsRainbowBox": false
         },
         {
           "Id": "2_0.0_1.05",
           "TypeId": 1,
-          "BoxColor": 5,
+          "BoxColor": 1,
           "BlockedNodes": [
             "0_-1.0_2.05",
             "0_1.0_2.05",
@@ -3839,19 +3981,20 @@ export const SAMPLE_LEVELS: SampleLevelPreset[] = [
             "1_1.15_1.05"
           ],
           "InitCards": [
-            0,
             1,
-            2,
+            1,
+            1,
             3
           ],
           "IsHidden": false,
           "LockedTurn": 0,
-          "IsCardsHidden": false
+          "IsPaperBox": true,
+          "IsRainbowBox": false
         },
         {
           "Id": "2_0.0_-1.05",
           "TypeId": 1,
-          "BoxColor": 5,
+          "BoxColor": 1,
           "BlockedNodes": [
             "0_-1.0_-2.05",
             "0_1.0_-2.05",
@@ -3859,18 +4002,17 @@ export const SAMPLE_LEVELS: SampleLevelPreset[] = [
             "1_1.15_-1.05"
           ],
           "InitCards": [
-            0,
             1,
-            3,
-            3
+            1,
+            4,
+            4
           ],
           "IsHidden": false,
           "LockedTurn": 0,
-          "IsCardsHidden": false
+          "IsPaperBox": true,
+          "IsRainbowBox": false
         }
       ],
-      "BoardOffsetX": 0,
-      "BoardOffsetZ": 0,
       "SpawnerNodes": [],
       "TurnSpawnerNodes": [],
       "LinkedBoxes": [],
@@ -3885,6 +4027,8 @@ export const SAMPLE_LEVELS: SampleLevelPreset[] = [
     "description": "Hex-flank bastion arena guarded by turn-locks with 4 vertical bridges and dual elevated feeder trays.",
     "data": {
       "Id": 17,
+      "BoardOffsetX": 0,
+      "BoardOffsetZ": 0,
       "BoardNodes": [
         {
           "Id": "0_-1.0_2.05",
@@ -3975,10 +4119,96 @@ export const SAMPLE_LEVELS: SampleLevelPreset[] = [
         {
           "Id": "0_-1.0_2.05",
           "TypeId": 2,
-          "BoxColor": 0,
+          "BoxColor": 1,
           "BlockedNodes": [],
           "InitCards": [
-            0,
+            1,
+            1,
+            2,
+            2,
+            2,
+            4
+          ],
+          "IsHidden": false,
+          "LockedTurn": 2,
+          "IsPaperBox": false,
+          "IsRainbowBox": false
+        },
+        {
+          "Id": "0_1.0_2.05",
+          "TypeId": 2,
+          "BoxColor": 2,
+          "BlockedNodes": [],
+          "InitCards": [
+            1,
+            1,
+            1,
+            2,
+            3,
+            4
+          ],
+          "IsHidden": false,
+          "LockedTurn": 0,
+          "IsPaperBox": false,
+          "IsRainbowBox": false
+        },
+        {
+          "Id": "0_-1.0_-2.05",
+          "TypeId": 2,
+          "BoxColor": 3,
+          "BlockedNodes": [],
+          "InitCards": [
+            1,
+            2,
+            2,
+            3,
+            4
+          ],
+          "IsHidden": false,
+          "LockedTurn": 0,
+          "IsPaperBox": false,
+          "IsRainbowBox": false
+        },
+        {
+          "Id": "0_1.0_-2.05",
+          "TypeId": 2,
+          "BoxColor": 4,
+          "BlockedNodes": [],
+          "InitCards": [
+            2,
+            2,
+            2,
+            3,
+            3
+          ],
+          "IsHidden": false,
+          "LockedTurn": 2,
+          "IsPaperBox": false,
+          "IsRainbowBox": false
+        },
+        {
+          "Id": "0_-1.95_0.0",
+          "TypeId": 2,
+          "BoxColor": 1,
+          "BlockedNodes": [],
+          "InitCards": [
+            1,
+            2,
+            4,
+            4,
+            4
+          ],
+          "IsHidden": false,
+          "LockedTurn": 0,
+          "IsPaperBox": false,
+          "IsRainbowBox": false
+        },
+        {
+          "Id": "0_1.95_0.0",
+          "TypeId": 2,
+          "BoxColor": 2,
+          "BlockedNodes": [],
+          "InitCards": [
             1,
             1,
             1,
@@ -3986,170 +4216,94 @@ export const SAMPLE_LEVELS: SampleLevelPreset[] = [
             2
           ],
           "IsHidden": false,
-          "LockedTurn": 2,
-          "IsCardsHidden": false
-        },
-        {
-          "Id": "0_1.0_2.05",
-          "TypeId": 2,
-          "BoxColor": 1,
-          "BlockedNodes": [],
-          "InitCards": [
-            0,
-            0,
-            1,
-            1,
-            3,
-            3
-          ],
-          "IsHidden": false,
           "LockedTurn": 0,
-          "IsCardsHidden": false
-        },
-        {
-          "Id": "0_-1.0_-2.05",
-          "TypeId": 2,
-          "BoxColor": 2,
-          "BlockedNodes": [],
-          "InitCards": [
-            0,
-            1,
-            1,
-            2,
-            3
-          ],
-          "IsHidden": false,
-          "LockedTurn": 0,
-          "IsCardsHidden": false
-        },
-        {
-          "Id": "0_1.0_-2.05",
-          "TypeId": 2,
-          "BoxColor": 3,
-          "BlockedNodes": [],
-          "InitCards": [
-            0,
-            1,
-            1,
-            2,
-            3
-          ],
-          "IsHidden": false,
-          "LockedTurn": 2,
-          "IsCardsHidden": false
-        },
-        {
-          "Id": "0_-1.95_0.0",
-          "TypeId": 2,
-          "BoxColor": 0,
-          "BlockedNodes": [],
-          "InitCards": [
-            1,
-            1,
-            1,
-            2,
-            3
-          ],
-          "IsHidden": false,
-          "LockedTurn": 0,
-          "IsCardsHidden": false
-        },
-        {
-          "Id": "0_1.95_0.0",
-          "TypeId": 2,
-          "BoxColor": 1,
-          "BlockedNodes": [],
-          "InitCards": [
-            0,
-            1,
-            1,
-            2,
-            3
-          ],
-          "IsHidden": false,
-          "LockedTurn": 0,
-          "IsCardsHidden": false
+          "IsPaperBox": false,
+          "IsRainbowBox": false
         },
         {
           "Id": "1_-1.15_1.05",
           "TypeId": 2,
-          "BoxColor": 2,
+          "BoxColor": 3,
           "BlockedNodes": [
             "0_-1.0_2.05",
             "0_-1.95_0.0"
           ],
           "InitCards": [
-            0,
-            0,
             1,
             2,
-            3
+            2,
+            3,
+            4
           ],
           "IsHidden": false,
           "LockedTurn": 0,
-          "IsCardsHidden": false
+          "IsPaperBox": false,
+          "IsRainbowBox": false
         },
         {
           "Id": "1_1.15_1.05",
           "TypeId": 2,
-          "BoxColor": 3,
+          "BoxColor": 4,
           "BlockedNodes": [
             "0_1.0_2.05",
             "0_1.95_0.0"
           ],
           "InitCards": [
-            0,
             1,
             2,
             2,
+            3,
             3
           ],
           "IsHidden": false,
           "LockedTurn": 0,
-          "IsCardsHidden": false
+          "IsPaperBox": false,
+          "IsRainbowBox": false
         },
         {
           "Id": "1_-1.15_-1.05",
           "TypeId": 2,
-          "BoxColor": 0,
+          "BoxColor": 1,
           "BlockedNodes": [
             "0_-1.0_-2.05",
             "0_-1.95_0.0"
           ],
           "InitCards": [
-            0,
-            0,
-            0,
-            0,
-            3
+            1,
+            2,
+            3,
+            3,
+            4
           ],
           "IsHidden": false,
           "LockedTurn": 0,
-          "IsCardsHidden": false
+          "IsPaperBox": false,
+          "IsRainbowBox": false
         },
         {
           "Id": "1_1.15_-1.05",
           "TypeId": 2,
-          "BoxColor": 1,
+          "BoxColor": 2,
           "BlockedNodes": [
             "0_1.0_-2.05",
             "0_1.95_0.0"
           ],
           "InitCards": [
-            0,
-            0,
-            0,
+            1,
+            1,
+            1,
             2,
-            2
+            3
           ],
           "IsHidden": false,
           "LockedTurn": 0,
-          "IsCardsHidden": false
+          "IsPaperBox": false,
+          "IsRainbowBox": false
         },
         {
           "Id": "2_0.0_1.05",
           "TypeId": 1,
-          "BoxColor": 5,
+          "BoxColor": 1,
           "BlockedNodes": [
             "0_-1.0_2.05",
             "0_1.0_2.05",
@@ -4157,19 +4311,20 @@ export const SAMPLE_LEVELS: SampleLevelPreset[] = [
             "1_1.15_1.05"
           ],
           "InitCards": [
-            0,
             1,
-            2,
-            3
+            4,
+            4,
+            4
           ],
           "IsHidden": false,
           "LockedTurn": 0,
-          "IsCardsHidden": false
+          "IsPaperBox": true,
+          "IsRainbowBox": false
         },
         {
           "Id": "2_0.0_-1.05",
           "TypeId": 1,
-          "BoxColor": 5,
+          "BoxColor": 1,
           "BlockedNodes": [
             "0_-1.0_-2.05",
             "0_1.0_-2.05",
@@ -4177,18 +4332,17 @@ export const SAMPLE_LEVELS: SampleLevelPreset[] = [
             "1_1.15_-1.05"
           ],
           "InitCards": [
-            0,
             1,
             3,
-            3
+            3,
+            4
           ],
           "IsHidden": false,
           "LockedTurn": 0,
-          "IsCardsHidden": false
+          "IsPaperBox": true,
+          "IsRainbowBox": false
         }
       ],
-      "BoardOffsetX": 0,
-      "BoardOffsetZ": 0,
       "SpawnerNodes": [],
       "TurnSpawnerNodes": [],
       "LinkedBoxes": [],
@@ -4203,6 +4357,8 @@ export const SAMPLE_LEVELS: SampleLevelPreset[] = [
     "description": "High-capacity 8-slot megabox foundry featuring 2 symmetrically placed Mystery Megaboxes on Layer 0 and dual feeder trays.",
     "data": {
       "Id": 18,
+      "BoardOffsetX": 0,
+      "BoardOffsetZ": 0,
       "BoardNodes": [
         {
           "Id": "0_-1.45_1.85",
@@ -4286,98 +4442,103 @@ export const SAMPLE_LEVELS: SampleLevelPreset[] = [
         {
           "Id": "0_-1.45_1.85",
           "TypeId": 3,
-          "BoxColor": 0,
+          "BoxColor": 1,
           "BlockedNodes": [],
           "InitCards": [
-            0,
-            0,
-            1,
             1,
             1,
             2,
             2,
-            2
+            3,
+            3,
+            3,
+            3
           ],
-          "IsHidden": true,
+          "IsHidden": false,
           "LockedTurn": 0,
-          "IsCardsHidden": false
+          "IsPaperBox": false,
+          "IsRainbowBox": false
         },
         {
           "Id": "0_1.45_1.85",
           "TypeId": 3,
-          "BoxColor": 1,
+          "BoxColor": 2,
           "BlockedNodes": [],
           "InitCards": [
             1,
             1,
+            1,
+            1,
             2,
-            2,
-            2,
-            2,
-            2
+            3,
+            3
           ],
-          "IsHidden": true,
+          "IsHidden": false,
           "LockedTurn": 0,
-          "IsCardsHidden": false
+          "IsPaperBox": false,
+          "IsRainbowBox": false
         },
         {
           "Id": "0_-1.45_-1.85",
           "TypeId": 3,
-          "BoxColor": 2,
+          "BoxColor": 3,
           "BlockedNodes": [],
           "InitCards": [
-            0,
-            0,
-            0,
+            1,
             1,
             1,
             2,
-            2
+            2,
+            2,
+            3
           ],
           "IsHidden": false,
           "LockedTurn": 0,
-          "IsCardsHidden": false
+          "IsPaperBox": false,
+          "IsRainbowBox": false
         },
         {
           "Id": "0_1.45_-1.85",
           "TypeId": 3,
-          "BoxColor": 0,
+          "BoxColor": 1,
           "BlockedNodes": [],
           "InitCards": [
-            0,
-            0,
+            1,
+            1,
             1,
             1,
             2,
             2,
-            2
+            3
           ],
           "IsHidden": false,
           "LockedTurn": 0,
-          "IsCardsHidden": false
+          "IsPaperBox": false,
+          "IsRainbowBox": false
         },
         {
           "Id": "0_0.0_0.0",
           "TypeId": 3,
-          "BoxColor": 1,
+          "BoxColor": 2,
           "BlockedNodes": [],
           "InitCards": [
-            0,
-            0,
-            0,
-            0,
-            1,
             2,
-            2
+            2,
+            2,
+            2,
+            3,
+            3,
+            3
           ],
           "IsHidden": false,
           "LockedTurn": 0,
-          "IsCardsHidden": false
+          "IsPaperBox": false,
+          "IsRainbowBox": false
         },
         {
           "Id": "1_-1.15_0.95",
           "TypeId": 3,
-          "BoxColor": 2,
+          "BoxColor": 3,
           "BlockedNodes": [
             "0_-1.45_1.85",
             "0_0.0_0.0"
@@ -4386,119 +4547,123 @@ export const SAMPLE_LEVELS: SampleLevelPreset[] = [
             1,
             1,
             1,
-            1,
             2,
             2,
-            2
+            3,
+            3
           ],
           "IsHidden": false,
           "LockedTurn": 0,
-          "IsCardsHidden": false
+          "IsPaperBox": false,
+          "IsRainbowBox": false
         },
         {
           "Id": "1_1.15_0.95",
           "TypeId": 3,
-          "BoxColor": 0,
+          "BoxColor": 1,
           "BlockedNodes": [
             "0_1.45_1.85",
             "0_0.0_0.0"
           ],
           "InitCards": [
-            0,
             1,
             1,
             1,
             1,
             2,
-            2
+            2,
+            3
           ],
           "IsHidden": false,
           "LockedTurn": 0,
-          "IsCardsHidden": false
+          "IsPaperBox": false,
+          "IsRainbowBox": false
         },
         {
           "Id": "1_-1.15_-0.95",
           "TypeId": 3,
-          "BoxColor": 1,
+          "BoxColor": 2,
           "BlockedNodes": [
             "0_-1.45_-1.85",
             "0_0.0_0.0"
           ],
           "InitCards": [
-            0,
-            0,
-            0,
-            0,
+            1,
             2,
-            2,
-            2
+            3,
+            3,
+            3,
+            3,
+            3
           ],
           "IsHidden": false,
           "LockedTurn": 0,
-          "IsCardsHidden": false
+          "IsPaperBox": false,
+          "IsRainbowBox": false
         },
         {
           "Id": "1_1.15_-0.95",
           "TypeId": 3,
-          "BoxColor": 2,
+          "BoxColor": 3,
           "BlockedNodes": [
             "0_1.45_-1.85",
             "0_0.0_0.0"
           ],
           "InitCards": [
-            0,
-            0,
-            0,
-            0,
             1,
-            1,
-            1
+            2,
+            2,
+            2,
+            2,
+            3,
+            3
           ],
           "IsHidden": false,
           "LockedTurn": 0,
-          "IsCardsHidden": false
+          "IsPaperBox": false,
+          "IsRainbowBox": false
         },
         {
           "Id": "2_0.0_0.95",
           "TypeId": 1,
-          "BoxColor": 5,
+          "BoxColor": 1,
           "BlockedNodes": [
             "0_0.0_0.0",
             "1_-1.15_0.95",
             "1_1.15_0.95"
           ],
           "InitCards": [
-            0,
-            1,
-            1,
-            2
+            2,
+            2,
+            2,
+            3
           ],
           "IsHidden": false,
           "LockedTurn": 0,
-          "IsCardsHidden": false
+          "IsPaperBox": true,
+          "IsRainbowBox": false
         },
         {
           "Id": "2_0.0_-0.95",
           "TypeId": 1,
-          "BoxColor": 5,
+          "BoxColor": 1,
           "BlockedNodes": [
             "0_0.0_0.0",
             "1_-1.15_-0.95",
             "1_1.15_-0.95"
           ],
           "InitCards": [
-            0,
-            0,
-            0,
-            1
+            1,
+            1,
+            3,
+            3
           ],
           "IsHidden": false,
           "LockedTurn": 0,
-          "IsCardsHidden": false
+          "IsPaperBox": true,
+          "IsRainbowBox": false
         }
       ],
-      "BoardOffsetX": 0,
-      "BoardOffsetZ": 0,
       "SpawnerNodes": [],
       "TurnSpawnerNodes": [],
       "LinkedBoxes": [],
@@ -4513,6 +4678,8 @@ export const SAMPLE_LEVELS: SampleLevelPreset[] = [
     "description": "Multi-tier diamond star citadel with 2 symmetrically placed Mystery Boxes on Layer 0 stepping through 4 tiers to an apex feeder station.",
     "data": {
       "Id": 19,
+      "BoardOffsetX": 0,
+      "BoardOffsetZ": 0,
       "BoardNodes": [
         {
           "Id": "0_0.0_0.0",
@@ -4617,22 +4784,95 @@ export const SAMPLE_LEVELS: SampleLevelPreset[] = [
         {
           "Id": "0_0.0_0.0",
           "TypeId": 2,
-          "BoxColor": 0,
+          "BoxColor": 1,
           "BlockedNodes": [],
           "InitCards": [
-            0,
-            0,
+            3,
+            3,
+            3,
+            4,
+            5,
+            5
+          ],
+          "IsHidden": false,
+          "LockedTurn": 0,
+          "IsPaperBox": false,
+          "IsRainbowBox": false
+        },
+        {
+          "Id": "0_0.0_1.95",
+          "TypeId": 2,
+          "BoxColor": 2,
+          "BlockedNodes": [],
+          "InitCards": [
+            1,
+            2,
+            2,
+            2,
+            3,
+            3
+          ],
+          "IsHidden": false,
+          "LockedTurn": 0,
+          "IsPaperBox": false,
+          "IsRainbowBox": false
+        },
+        {
+          "Id": "0_0.0_-1.95",
+          "TypeId": 2,
+          "BoxColor": 3,
+          "BlockedNodes": [],
+          "InitCards": [
+            1,
+            2,
+            2,
+            4,
+            5,
+            5
+          ],
+          "IsHidden": false,
+          "LockedTurn": 0,
+          "IsPaperBox": false,
+          "IsRainbowBox": false
+        },
+        {
+          "Id": "0_-1.95_0.0",
+          "TypeId": 2,
+          "BoxColor": 4,
+          "BlockedNodes": [],
+          "InitCards": [
             1,
             1,
+            1,
+            2,
             3,
             4
           ],
           "IsHidden": false,
           "LockedTurn": 0,
-          "IsCardsHidden": false
+          "IsPaperBox": false,
+          "IsRainbowBox": false
         },
         {
-          "Id": "0_0.0_1.95",
+          "Id": "0_1.95_0.0",
+          "TypeId": 2,
+          "BoxColor": 5,
+          "BlockedNodes": [],
+          "InitCards": [
+            1,
+            1,
+            2,
+            3,
+            3,
+            5
+          ],
+          "IsHidden": false,
+          "LockedTurn": 0,
+          "IsPaperBox": false,
+          "IsRainbowBox": false
+        },
+        {
+          "Id": "0_-1.95_1.95",
           "TypeId": 2,
           "BoxColor": 1,
           "BlockedNodes": [],
@@ -4640,103 +4880,37 @@ export const SAMPLE_LEVELS: SampleLevelPreset[] = [
             1,
             2,
             2,
-            2,
             3,
-            4
+            3,
+            5
           ],
           "IsHidden": false,
           "LockedTurn": 0,
-          "IsCardsHidden": false
+          "IsPaperBox": false,
+          "IsRainbowBox": true
         },
         {
-          "Id": "0_0.0_-1.95",
+          "Id": "0_1.95_-1.95",
           "TypeId": 2,
           "BoxColor": 2,
           "BlockedNodes": [],
           "InitCards": [
-            0,
-            0,
-            1,
             2,
             2,
-            2
-          ],
-          "IsHidden": false,
-          "LockedTurn": 0,
-          "IsCardsHidden": false
-        },
-        {
-          "Id": "0_-1.95_0.0",
-          "TypeId": 2,
-          "BoxColor": 3,
-          "BlockedNodes": [],
-          "InitCards": [
-            0,
-            0,
-            1,
             2,
-            2,
-            3
-          ],
-          "IsHidden": false,
-          "LockedTurn": 0,
-          "IsCardsHidden": false
-        },
-        {
-          "Id": "0_1.95_0.0",
-          "TypeId": 2,
-          "BoxColor": 4,
-          "BlockedNodes": [],
-          "InitCards": [
-            0,
-            0,
-            1,
             2,
             4,
             4
           ],
           "IsHidden": false,
           "LockedTurn": 0,
-          "IsCardsHidden": false
-        },
-        {
-          "Id": "0_-1.95_1.95",
-          "TypeId": 2,
-          "BoxColor": 0,
-          "BlockedNodes": [],
-          "InitCards": [
-            0,
-            1,
-            1,
-            2,
-            3,
-            3
-          ],
-          "IsHidden": true,
-          "LockedTurn": 0,
-          "IsCardsHidden": false
-        },
-        {
-          "Id": "0_1.95_-1.95",
-          "TypeId": 2,
-          "BoxColor": 1,
-          "BlockedNodes": [],
-          "InitCards": [
-            0,
-            1,
-            1,
-            1,
-            3,
-            4
-          ],
-          "IsHidden": true,
-          "LockedTurn": 0,
-          "IsCardsHidden": false
+          "IsPaperBox": false,
+          "IsRainbowBox": true
         },
         {
           "Id": "1_-1.0_1.0",
           "TypeId": 2,
-          "BoxColor": 2,
+          "BoxColor": 3,
           "BlockedNodes": [
             "0_0.0_0.0",
             "0_0.0_1.95",
@@ -4746,19 +4920,20 @@ export const SAMPLE_LEVELS: SampleLevelPreset[] = [
           "InitCards": [
             1,
             1,
-            2,
-            2,
             3,
-            4
+            4,
+            5,
+            5
           ],
           "IsHidden": false,
           "LockedTurn": 0,
-          "IsCardsHidden": false
+          "IsPaperBox": false,
+          "IsRainbowBox": false
         },
         {
           "Id": "1_1.0_-1.0",
           "TypeId": 2,
-          "BoxColor": 3,
+          "BoxColor": 4,
           "BlockedNodes": [
             "0_0.0_0.0",
             "0_0.0_-1.95",
@@ -4766,61 +4941,64 @@ export const SAMPLE_LEVELS: SampleLevelPreset[] = [
             "0_1.95_-1.95"
           ],
           "InitCards": [
-            0,
-            1,
             1,
             1,
             2,
-            3
+            3,
+            4,
+            4
           ],
           "IsHidden": false,
           "LockedTurn": 0,
-          "IsCardsHidden": false
+          "IsPaperBox": false,
+          "IsRainbowBox": false
         },
         {
           "Id": "1_1.0_1.0",
           "TypeId": 2,
-          "BoxColor": 4,
+          "BoxColor": 5,
           "BlockedNodes": [
             "0_0.0_0.0",
             "0_0.0_1.95",
             "0_1.95_0.0"
           ],
           "InitCards": [
-            0,
-            0,
+            1,
+            1,
             2,
-            4,
-            4
+            3,
+            5
           ],
           "IsHidden": false,
           "LockedTurn": 0,
-          "IsCardsHidden": false
+          "IsPaperBox": false,
+          "IsRainbowBox": false
         },
         {
           "Id": "1_-1.0_-1.0",
           "TypeId": 2,
-          "BoxColor": 0,
+          "BoxColor": 1,
           "BlockedNodes": [
             "0_0.0_0.0",
             "0_0.0_-1.95",
             "0_-1.95_0.0"
           ],
           "InitCards": [
-            0,
-            2,
-            2,
+            1,
+            3,
+            3,
             4,
-            4
+            5
           ],
           "IsHidden": false,
           "LockedTurn": 0,
-          "IsCardsHidden": false
+          "IsPaperBox": false,
+          "IsRainbowBox": false
         },
         {
           "Id": "2_0.0_0.8",
           "TypeId": 2,
-          "BoxColor": 1,
+          "BoxColor": 2,
           "BlockedNodes": [
             "0_0.0_0.0",
             "0_0.0_1.95",
@@ -4828,20 +5006,21 @@ export const SAMPLE_LEVELS: SampleLevelPreset[] = [
             "1_1.0_1.0"
           ],
           "InitCards": [
-            0,
+            1,
             3,
             3,
             4,
-            4
+            5
           ],
           "IsHidden": false,
           "LockedTurn": 0,
-          "IsCardsHidden": false
+          "IsPaperBox": false,
+          "IsRainbowBox": false
         },
         {
           "Id": "2_0.0_-0.8",
           "TypeId": 2,
-          "BoxColor": 2,
+          "BoxColor": 3,
           "BlockedNodes": [
             "0_0.0_0.0",
             "0_0.0_-1.95",
@@ -4849,20 +5028,21 @@ export const SAMPLE_LEVELS: SampleLevelPreset[] = [
             "1_-1.0_-1.0"
           ],
           "InitCards": [
-            0,
-            1,
+            2,
             2,
             3,
-            3
+            4,
+            5
           ],
           "IsHidden": false,
           "LockedTurn": 0,
-          "IsCardsHidden": false
+          "IsPaperBox": false,
+          "IsRainbowBox": false
         },
         {
           "Id": "3_0.0_0.0",
           "TypeId": 1,
-          "BoxColor": 5,
+          "BoxColor": 1,
           "BlockedNodes": [
             "0_0.0_0.0",
             "1_-1.0_1.0",
@@ -4873,18 +5053,17 @@ export const SAMPLE_LEVELS: SampleLevelPreset[] = [
             "2_0.0_-0.8"
           ],
           "InitCards": [
-            0,
-            0,
             1,
-            2
+            1,
+            2,
+            4
           ],
           "IsHidden": false,
           "LockedTurn": 0,
-          "IsCardsHidden": false
+          "IsPaperBox": true,
+          "IsRainbowBox": false
         }
       ],
-      "BoardOffsetX": 0,
-      "BoardOffsetZ": 0,
       "SpawnerNodes": [],
       "TurnSpawnerNodes": [],
       "LinkedBoxes": [],
@@ -4899,6 +5078,8 @@ export const SAMPLE_LEVELS: SampleLevelPreset[] = [
     "description": "Epic 21-box 4-tier grand colosseum with 2 symmetrically placed Mystery Boxes on Layer 0 supporting 6 mid struts, 3 upper bridges, and twin feeder stations.",
     "data": {
       "Id": 20,
+      "BoardOffsetX": 0,
+      "BoardOffsetZ": 0,
       "BoardNodes": [
         {
           "Id": "0_-2.85_1.85",
@@ -5052,337 +5233,314 @@ export const SAMPLE_LEVELS: SampleLevelPreset[] = [
         {
           "Id": "0_-2.85_1.85",
           "TypeId": 2,
-          "BoxColor": 0,
+          "BoxColor": 1,
           "BlockedNodes": [],
           "InitCards": [
-            0,
-            0,
+            1,
             2,
-            3,
+            2,
             4,
-            4
+            4,
+            5
           ],
-          "IsHidden": true,
+          "IsHidden": false,
           "LockedTurn": 0,
-          "IsCardsHidden": false
+          "IsPaperBox": false,
+          "IsRainbowBox": true
         },
         {
           "Id": "0_-0.95_1.85",
           "TypeId": 2,
-          "BoxColor": 1,
+          "BoxColor": 2,
           "BlockedNodes": [],
           "InitCards": [
-            0,
-            0,
+            1,
             2,
-            3,
-            3,
-            3
+            4,
+            4,
+            4,
+            5
           ],
           "IsHidden": false,
           "LockedTurn": 0,
-          "IsCardsHidden": false
+          "IsPaperBox": false,
+          "IsRainbowBox": false
         },
         {
           "Id": "0_0.95_1.85",
           "TypeId": 2,
-          "BoxColor": 2,
+          "BoxColor": 3,
           "BlockedNodes": [],
           "InitCards": [
-            0,
-            0,
-            0,
-            1,
             2,
+            3,
+            3,
+            3,
+            3,
             3
           ],
           "IsHidden": false,
           "LockedTurn": 0,
-          "IsCardsHidden": false
+          "IsPaperBox": false,
+          "IsRainbowBox": false
         },
         {
           "Id": "0_2.85_1.85",
           "TypeId": 2,
-          "BoxColor": 3,
+          "BoxColor": 4,
           "BlockedNodes": [],
           "InitCards": [
-            0,
-            0,
-            0,
-            2,
-            2,
-            2
+            1,
+            1,
+            1,
+            4,
+            4,
+            5
           ],
-          "IsHidden": true,
+          "IsHidden": false,
           "LockedTurn": 0,
-          "IsCardsHidden": false
+          "IsPaperBox": false,
+          "IsRainbowBox": true
         },
         {
           "Id": "0_-1.9_0.0",
           "TypeId": 2,
-          "BoxColor": 4,
+          "BoxColor": 5,
           "BlockedNodes": [],
           "InitCards": [
-            0,
+            1,
+            1,
             2,
-            2,
-            2,
-            4,
+            3,
+            3,
             4
           ],
           "IsHidden": false,
           "LockedTurn": 0,
-          "IsCardsHidden": false
+          "IsPaperBox": false,
+          "IsRainbowBox": false
         },
         {
           "Id": "0_1.9_0.0",
-          "TypeId": 2,
-          "BoxColor": 0,
-          "BlockedNodes": [],
-          "InitCards": [
-            0,
-            1,
-            1,
-            1,
-            2,
-            2
-          ],
-          "IsHidden": false,
-          "LockedTurn": 0,
-          "IsCardsHidden": false
-        },
-        {
-          "Id": "0_-2.85_-1.85",
           "TypeId": 2,
           "BoxColor": 1,
           "BlockedNodes": [],
           "InitCards": [
             1,
             1,
-            1,
             2,
             3,
-            3
+            5,
+            5
           ],
           "IsHidden": false,
           "LockedTurn": 0,
-          "IsCardsHidden": false
+          "IsPaperBox": false,
+          "IsRainbowBox": false
         },
         {
-          "Id": "0_-0.95_-1.85",
+          "Id": "0_-2.85_-1.85",
           "TypeId": 2,
           "BoxColor": 2,
           "BlockedNodes": [],
           "InitCards": [
-            0,
-            1,
-            1,
+            2,
             3,
             4,
-            4
+            4,
+            5,
+            5
           ],
           "IsHidden": false,
           "LockedTurn": 0,
-          "IsCardsHidden": false
+          "IsPaperBox": false,
+          "IsRainbowBox": false
         },
         {
-          "Id": "0_0.95_-1.85",
+          "Id": "0_-0.95_-1.85",
           "TypeId": 2,
           "BoxColor": 3,
           "BlockedNodes": [],
           "InitCards": [
-            0,
-            0,
             1,
+            1,
+            1,
+            2,
             3,
-            3,
-            4
+            5
           ],
           "IsHidden": false,
           "LockedTurn": 0,
-          "IsCardsHidden": false
+          "IsPaperBox": false,
+          "IsRainbowBox": false
+        },
+        {
+          "Id": "0_0.95_-1.85",
+          "TypeId": 2,
+          "BoxColor": 4,
+          "BlockedNodes": [],
+          "InitCards": [
+            2,
+            3,
+            3,
+            4,
+            4,
+            5
+          ],
+          "IsHidden": false,
+          "LockedTurn": 0,
+          "IsPaperBox": false,
+          "IsRainbowBox": false
         },
         {
           "Id": "0_2.85_-1.85",
           "TypeId": 2,
-          "BoxColor": 4,
+          "BoxColor": 5,
           "BlockedNodes": [],
           "InitCards": [
             1,
             2,
             2,
-            3,
+            2,
             3,
             4
           ],
           "IsHidden": false,
           "LockedTurn": 0,
-          "IsCardsHidden": false
+          "IsPaperBox": false,
+          "IsRainbowBox": false
         },
         {
           "Id": "1_-2.85_0.95",
           "TypeId": 2,
-          "BoxColor": 0,
+          "BoxColor": 1,
           "BlockedNodes": [
             "0_-2.85_1.85",
             "0_-1.9_0.0"
           ],
           "InitCards": [
-            1,
-            1,
             2,
             2,
-            2,
-            3
+            3,
+            4,
+            5,
+            5
           ],
           "IsHidden": false,
           "LockedTurn": 0,
-          "IsCardsHidden": false
+          "IsPaperBox": false,
+          "IsRainbowBox": false
         },
         {
           "Id": "1_0.0_0.95",
           "TypeId": 2,
-          "BoxColor": 1,
+          "BoxColor": 2,
           "BlockedNodes": [
             "0_-0.95_1.85",
             "0_0.95_1.85"
           ],
           "InitCards": [
-            0,
-            0,
-            1,
-            3,
-            3
-          ],
-          "IsHidden": false,
-          "LockedTurn": 0,
-          "IsCardsHidden": false
-        },
-        {
-          "Id": "1_2.85_0.95",
-          "TypeId": 2,
-          "BoxColor": 2,
-          "BlockedNodes": [
-            "0_2.85_1.85",
-            "0_1.9_0.0"
-          ],
-          "InitCards": [
-            1,
             1,
             2,
-            2,
-            3
-          ],
-          "IsHidden": false,
-          "LockedTurn": 0,
-          "IsCardsHidden": false
-        },
-        {
-          "Id": "1_-2.85_-0.95",
-          "TypeId": 2,
-          "BoxColor": 3,
-          "BlockedNodes": [
-            "0_-1.9_0.0",
-            "0_-2.85_-1.85"
-          ],
-          "InitCards": [
-            0,
-            2,
-            2,
-            3,
-            4
-          ],
-          "IsHidden": false,
-          "LockedTurn": 0,
-          "IsCardsHidden": false
-        },
-        {
-          "Id": "1_0.0_-0.95",
-          "TypeId": 2,
-          "BoxColor": 4,
-          "BlockedNodes": [
-            "0_-0.95_-1.85",
-            "0_0.95_-1.85"
-          ],
-          "InitCards": [
-            0,
-            0,
-            3,
-            3,
-            4
-          ],
-          "IsHidden": false,
-          "LockedTurn": 0,
-          "IsCardsHidden": false
-        },
-        {
-          "Id": "1_2.85_-0.95",
-          "TypeId": 2,
-          "BoxColor": 0,
-          "BlockedNodes": [
-            "0_1.9_0.0",
-            "0_2.85_-1.85"
-          ],
-          "InitCards": [
-            1,
-            1,
-            3,
+            4,
             4,
             4
           ],
           "IsHidden": false,
           "LockedTurn": 0,
-          "IsCardsHidden": false
+          "IsPaperBox": false,
+          "IsRainbowBox": false
+        },
+        {
+          "Id": "1_2.85_0.95",
+          "TypeId": 2,
+          "BoxColor": 3,
+          "BlockedNodes": [
+            "0_2.85_1.85",
+            "0_1.9_0.0"
+          ],
+          "InitCards": [
+            2,
+            2,
+            3,
+            3,
+            4
+          ],
+          "IsHidden": false,
+          "LockedTurn": 0,
+          "IsPaperBox": false,
+          "IsRainbowBox": false
+        },
+        {
+          "Id": "1_-2.85_-0.95",
+          "TypeId": 2,
+          "BoxColor": 4,
+          "BlockedNodes": [
+            "0_-1.9_0.0",
+            "0_-2.85_-1.85"
+          ],
+          "InitCards": [
+            2,
+            4,
+            4,
+            5,
+            5
+          ],
+          "IsHidden": false,
+          "LockedTurn": 0,
+          "IsPaperBox": false,
+          "IsRainbowBox": false
+        },
+        {
+          "Id": "1_0.0_-0.95",
+          "TypeId": 2,
+          "BoxColor": 5,
+          "BlockedNodes": [
+            "0_-0.95_-1.85",
+            "0_0.95_-1.85"
+          ],
+          "InitCards": [
+            1,
+            1,
+            1,
+            2,
+            4
+          ],
+          "IsHidden": false,
+          "LockedTurn": 0,
+          "IsPaperBox": false,
+          "IsRainbowBox": false
+        },
+        {
+          "Id": "1_2.85_-0.95",
+          "TypeId": 2,
+          "BoxColor": 1,
+          "BlockedNodes": [
+            "0_1.9_0.0",
+            "0_2.85_-1.85"
+          ],
+          "InitCards": [
+            3,
+            3,
+            3,
+            4,
+            5
+          ],
+          "IsHidden": false,
+          "LockedTurn": 0,
+          "IsPaperBox": false,
+          "IsRainbowBox": false
         },
         {
           "Id": "2_-1.9_0.0",
           "TypeId": 2,
-          "BoxColor": 1,
+          "BoxColor": 2,
           "BlockedNodes": [
             "0_-1.9_0.0",
             "1_-2.85_0.95",
             "1_-2.85_-0.95"
           ],
           "InitCards": [
-            0,
-            0,
-            0,
-            3,
-            4
-          ],
-          "IsHidden": false,
-          "LockedTurn": 0,
-          "IsCardsHidden": false
-        },
-        {
-          "Id": "2_0.0_0.0",
-          "TypeId": 2,
-          "BoxColor": 2,
-          "BlockedNodes": [
-            "1_0.0_0.95",
-            "1_0.0_-0.95"
-          ],
-          "InitCards": [
-            0,
-            1,
-            1,
-            4,
-            4
-          ],
-          "IsHidden": false,
-          "LockedTurn": 0,
-          "IsCardsHidden": false
-        },
-        {
-          "Id": "2_1.9_0.0",
-          "TypeId": 2,
-          "BoxColor": 3,
-          "BlockedNodes": [
-            "0_1.9_0.0",
-            "1_2.85_0.95",
-            "1_2.85_-0.95"
-          ],
-          "InitCards": [
             1,
             1,
             2,
@@ -5391,12 +5549,54 @@ export const SAMPLE_LEVELS: SampleLevelPreset[] = [
           ],
           "IsHidden": false,
           "LockedTurn": 0,
-          "IsCardsHidden": false
+          "IsPaperBox": false,
+          "IsRainbowBox": false
+        },
+        {
+          "Id": "2_0.0_0.0",
+          "TypeId": 2,
+          "BoxColor": 3,
+          "BlockedNodes": [
+            "1_0.0_0.95",
+            "1_0.0_-0.95"
+          ],
+          "InitCards": [
+            1,
+            1,
+            1,
+            4,
+            5
+          ],
+          "IsHidden": false,
+          "LockedTurn": 0,
+          "IsPaperBox": false,
+          "IsRainbowBox": false
+        },
+        {
+          "Id": "2_1.9_0.0",
+          "TypeId": 2,
+          "BoxColor": 4,
+          "BlockedNodes": [
+            "0_1.9_0.0",
+            "1_2.85_0.95",
+            "1_2.85_-0.95"
+          ],
+          "InitCards": [
+            2,
+            2,
+            3,
+            3,
+            5
+          ],
+          "IsHidden": false,
+          "LockedTurn": 0,
+          "IsPaperBox": false,
+          "IsRainbowBox": false
         },
         {
           "Id": "3_-1.0_0.0",
           "TypeId": 1,
-          "BoxColor": 5,
+          "BoxColor": 1,
           "BlockedNodes": [
             "0_-1.9_0.0",
             "1_0.0_0.95",
@@ -5405,19 +5605,20 @@ export const SAMPLE_LEVELS: SampleLevelPreset[] = [
             "2_0.0_0.0"
           ],
           "InitCards": [
-            1,
-            1,
             2,
-            3
+            3,
+            3,
+            5
           ],
           "IsHidden": false,
           "LockedTurn": 0,
-          "IsCardsHidden": false
+          "IsPaperBox": true,
+          "IsRainbowBox": false
         },
         {
           "Id": "3_1.0_0.0",
           "TypeId": 1,
-          "BoxColor": 5,
+          "BoxColor": 1,
           "BlockedNodes": [
             "0_1.9_0.0",
             "1_0.0_0.95",
@@ -5426,18 +5627,17 @@ export const SAMPLE_LEVELS: SampleLevelPreset[] = [
             "2_1.9_0.0"
           ],
           "InitCards": [
+            1,
+            1,
             2,
-            3,
-            4,
-            4
+            5
           ],
           "IsHidden": false,
           "LockedTurn": 0,
-          "IsCardsHidden": false
+          "IsPaperBox": true,
+          "IsRainbowBox": false
         }
       ],
-      "BoardOffsetX": 0,
-      "BoardOffsetZ": 0,
       "SpawnerNodes": [],
       "TurnSpawnerNodes": [],
       "LinkedBoxes": [],
@@ -5452,6 +5652,8 @@ export const SAMPLE_LEVELS: SampleLevelPreset[] = [
     "description": "Clean foundation columns supporting twin locking crossbars in an expanded format.",
     "data": {
       "Id": 21,
+      "BoardOffsetX": 0,
+      "BoardOffsetZ": 0,
       "BoardNodes": [
         {
           "Id": "0_-1.15_1.05",
@@ -5500,114 +5702,118 @@ export const SAMPLE_LEVELS: SampleLevelPreset[] = [
         {
           "Id": "0_-1.15_1.05",
           "TypeId": 2,
-          "BoxColor": 0,
+          "BoxColor": 1,
           "BlockedNodes": [],
           "InitCards": [
-            0,
-            0,
             1,
             1,
             2,
-            2
+            2,
+            3,
+            3
           ],
           "IsHidden": false,
           "LockedTurn": 0,
-          "IsCardsHidden": false
+          "IsPaperBox": false,
+          "IsRainbowBox": false
         },
         {
           "Id": "0_1.15_1.05",
           "TypeId": 2,
-          "BoxColor": 1,
+          "BoxColor": 2,
           "BlockedNodes": [],
           "InitCards": [
-            0,
+            1,
             1,
             2,
             2,
-            2,
-            2
+            3,
+            3
           ],
           "IsHidden": false,
           "LockedTurn": 0,
-          "IsCardsHidden": false
+          "IsPaperBox": false,
+          "IsRainbowBox": false
         },
         {
           "Id": "0_-1.15_-1.05",
           "TypeId": 2,
-          "BoxColor": 2,
+          "BoxColor": 3,
           "BlockedNodes": [],
           "InitCards": [
-            0,
-            0,
+            1,
+            1,
             1,
             1,
             2,
-            2
+            3
           ],
           "IsHidden": false,
           "LockedTurn": 0,
-          "IsCardsHidden": false
+          "IsPaperBox": false,
+          "IsRainbowBox": false
         },
         {
           "Id": "0_1.15_-1.05",
           "TypeId": 2,
-          "BoxColor": 0,
+          "BoxColor": 1,
           "BlockedNodes": [],
           "InitCards": [
-            0,
-            0,
+            1,
             1,
             1,
             2,
-            2
+            2,
+            3
           ],
           "IsHidden": false,
           "LockedTurn": 0,
-          "IsCardsHidden": false
+          "IsPaperBox": false,
+          "IsRainbowBox": false
         },
         {
           "Id": "1_-1.15_0.0",
           "TypeId": 2,
-          "BoxColor": 1,
+          "BoxColor": 2,
           "BlockedNodes": [
             "0_-1.15_1.05",
             "0_-1.15_-1.05"
           ],
           "InitCards": [
-            0,
-            0,
-            1,
             1,
             2,
-            2
+            2,
+            3,
+            3,
+            3
           ],
           "IsHidden": false,
           "LockedTurn": 0,
-          "IsCardsHidden": false
+          "IsPaperBox": false,
+          "IsRainbowBox": false
         },
         {
           "Id": "1_1.15_0.0",
           "TypeId": 2,
-          "BoxColor": 2,
+          "BoxColor": 3,
           "BlockedNodes": [
             "0_1.15_1.05",
             "0_1.15_-1.05"
           ],
           "InitCards": [
-            0,
-            0,
-            0,
-            1,
-            1,
-            1
+            2,
+            2,
+            2,
+            3,
+            3,
+            3
           ],
           "IsHidden": false,
           "LockedTurn": 0,
-          "IsCardsHidden": false
+          "IsPaperBox": false,
+          "IsRainbowBox": false
         }
       ],
-      "BoardOffsetX": 0,
-      "BoardOffsetZ": 0,
       "SpawnerNodes": [],
       "TurnSpawnerNodes": [],
       "LinkedBoxes": [],
@@ -5622,6 +5828,8 @@ export const SAMPLE_LEVELS: SampleLevelPreset[] = [
     "description": "Greek cross foundation supporting 2 horizontal wing bridges and a central vertical column.",
     "data": {
       "Id": 22,
+      "BoardOffsetX": 0,
+      "BoardOffsetZ": 0,
       "BoardNodes": [
         {
           "Id": "0_0.0_0.0",
@@ -5684,56 +5892,41 @@ export const SAMPLE_LEVELS: SampleLevelPreset[] = [
         {
           "Id": "0_0.0_0.0",
           "TypeId": 2,
-          "BoxColor": 0,
+          "BoxColor": 1,
           "BlockedNodes": [],
           "InitCards": [
-            0,
-            0,
-            1,
             1,
             2,
-            2
+            2,
+            2,
+            4,
+            4
           ],
           "IsHidden": false,
           "LockedTurn": 0,
-          "IsCardsHidden": false
+          "IsPaperBox": false,
+          "IsRainbowBox": false
         },
         {
           "Id": "0_0.0_1.85",
           "TypeId": 2,
-          "BoxColor": 1,
-          "BlockedNodes": [],
-          "InitCards": [
-            0,
-            0,
-            1,
-            2,
-            2,
-            3
-          ],
-          "IsHidden": false,
-          "LockedTurn": 0,
-          "IsCardsHidden": false
-        },
-        {
-          "Id": "0_0.0_-1.85",
-          "TypeId": 2,
           "BoxColor": 2,
           "BlockedNodes": [],
           "InitCards": [
-            0,
-            2,
+            1,
             2,
             2,
             3,
-            3
+            3,
+            4
           ],
           "IsHidden": false,
           "LockedTurn": 0,
-          "IsCardsHidden": false
+          "IsPaperBox": false,
+          "IsRainbowBox": false
         },
         {
-          "Id": "0_-1.85_0.0",
+          "Id": "0_0.0_-1.85",
           "TypeId": 2,
           "BoxColor": 3,
           "BlockedNodes": [],
@@ -5741,93 +5934,114 @@ export const SAMPLE_LEVELS: SampleLevelPreset[] = [
             1,
             2,
             2,
-            2,
             3,
-            3
+            4,
+            4
           ],
           "IsHidden": false,
           "LockedTurn": 0,
-          "IsCardsHidden": false
+          "IsPaperBox": false,
+          "IsRainbowBox": false
+        },
+        {
+          "Id": "0_-1.85_0.0",
+          "TypeId": 2,
+          "BoxColor": 4,
+          "BlockedNodes": [],
+          "InitCards": [
+            1,
+            1,
+            3,
+            3,
+            4,
+            4
+          ],
+          "IsHidden": false,
+          "LockedTurn": 0,
+          "IsPaperBox": false,
+          "IsRainbowBox": false
         },
         {
           "Id": "0_1.85_0.0",
           "TypeId": 2,
-          "BoxColor": 0,
+          "BoxColor": 1,
           "BlockedNodes": [],
           "InitCards": [
-            0,
             1,
             1,
             1,
-            3,
+            2,
+            2,
             3
           ],
           "IsHidden": false,
           "LockedTurn": 0,
-          "IsCardsHidden": false
+          "IsPaperBox": false,
+          "IsRainbowBox": false
         },
         {
           "Id": "1_-1.65_0.0",
           "TypeId": 2,
-          "BoxColor": 1,
+          "BoxColor": 2,
           "BlockedNodes": [
             "0_0.0_0.0",
             "0_-1.85_0.0"
           ],
           "InitCards": [
-            0,
-            1,
-            1,
             3,
             3,
-            3
+            3,
+            4,
+            4,
+            4
           ],
           "IsHidden": false,
           "LockedTurn": 0,
-          "IsCardsHidden": false
+          "IsPaperBox": false,
+          "IsRainbowBox": false
         },
         {
           "Id": "1_1.65_0.0",
           "TypeId": 2,
-          "BoxColor": 2,
+          "BoxColor": 3,
           "BlockedNodes": [
             "0_0.0_0.0",
             "0_1.85_0.0"
           ],
           "InitCards": [
-            0,
-            0,
-            0,
+            1,
+            1,
+            1,
             2,
             2,
-            3
+            2
           ],
           "IsHidden": false,
           "LockedTurn": 0,
-          "IsCardsHidden": false
+          "IsPaperBox": false,
+          "IsRainbowBox": false
         },
         {
           "Id": "1_0.0_0.0",
           "TypeId": 2,
-          "BoxColor": 3,
+          "BoxColor": 4,
           "BlockedNodes": [
             "0_0.0_0.0"
           ],
           "InitCards": [
-            0,
-            0,
             1,
-            1,
-            1,
-            3
+            3,
+            3,
+            3,
+            4,
+            4
           ],
           "IsHidden": false,
           "LockedTurn": 0,
-          "IsCardsHidden": false
+          "IsPaperBox": false,
+          "IsRainbowBox": false
         }
       ],
-      "BoardOffsetX": 0,
-      "BoardOffsetZ": 0,
       "SpawnerNodes": [],
       "TurnSpawnerNodes": [],
       "LinkedBoxes": [],
@@ -5842,6 +6056,8 @@ export const SAMPLE_LEVELS: SampleLevelPreset[] = [
     "description": "Six-column foundation supporting 4 mid struts and 2 feeder trays in a balanced obelisk formation.",
     "data": {
       "Id": 23,
+      "BoardOffsetX": 0,
+      "BoardOffsetZ": 0,
       "BoardNodes": [
         {
           "Id": "0_-1.15_1.95",
@@ -5932,60 +6148,46 @@ export const SAMPLE_LEVELS: SampleLevelPreset[] = [
         {
           "Id": "0_-1.15_1.95",
           "TypeId": 2,
-          "BoxColor": 0,
+          "BoxColor": 1,
           "BlockedNodes": [],
           "InitCards": [
-            0,
-            0,
             1,
             1,
-            1,
-            3
+            3,
+            3,
+            4,
+            4
           ],
           "IsHidden": false,
           "LockedTurn": 0,
-          "IsCardsHidden": false
+          "IsPaperBox": false,
+          "IsRainbowBox": false
         },
         {
           "Id": "0_1.15_1.95",
           "TypeId": 2,
-          "BoxColor": 1,
+          "BoxColor": 2,
           "BlockedNodes": [],
           "InitCards": [
-            0,
-            0,
             2,
             2,
             3,
-            3
+            3,
+            3,
+            4
           ],
           "IsHidden": false,
           "LockedTurn": 0,
-          "IsCardsHidden": false
+          "IsPaperBox": false,
+          "IsRainbowBox": false
         },
         {
           "Id": "0_-1.15_0.0",
           "TypeId": 2,
-          "BoxColor": 2,
-          "BlockedNodes": [],
-          "InitCards": [
-            0,
-            1,
-            3,
-            4,
-            4
-          ],
-          "IsHidden": false,
-          "LockedTurn": 0,
-          "IsCardsHidden": false
-        },
-        {
-          "Id": "0_1.15_0.0",
-          "TypeId": 2,
           "BoxColor": 3,
           "BlockedNodes": [],
           "InitCards": [
-            0,
+            2,
             2,
             2,
             2,
@@ -5993,63 +6195,84 @@ export const SAMPLE_LEVELS: SampleLevelPreset[] = [
           ],
           "IsHidden": false,
           "LockedTurn": 0,
-          "IsCardsHidden": false
+          "IsPaperBox": false,
+          "IsRainbowBox": false
         },
         {
-          "Id": "0_-1.15_-1.95",
+          "Id": "0_1.15_0.0",
           "TypeId": 2,
           "BoxColor": 4,
           "BlockedNodes": [],
           "InitCards": [
-            0,
-            2,
-            3,
+            1,
             4,
-            4
+            4,
+            5,
+            5
           ],
           "IsHidden": false,
           "LockedTurn": 0,
-          "IsCardsHidden": false
+          "IsPaperBox": false,
+          "IsRainbowBox": false
+        },
+        {
+          "Id": "0_-1.15_-1.95",
+          "TypeId": 2,
+          "BoxColor": 5,
+          "BlockedNodes": [],
+          "InitCards": [
+            1,
+            1,
+            2,
+            2,
+            3
+          ],
+          "IsHidden": false,
+          "LockedTurn": 0,
+          "IsPaperBox": false,
+          "IsRainbowBox": false
         },
         {
           "Id": "0_1.15_-1.95",
           "TypeId": 2,
-          "BoxColor": 0,
+          "BoxColor": 1,
           "BlockedNodes": [],
           "InitCards": [
-            0,
-            0,
-            1,
+            2,
             3,
-            4
+            5,
+            5,
+            5
           ],
           "IsHidden": false,
           "LockedTurn": 0,
-          "IsCardsHidden": false
+          "IsPaperBox": false,
+          "IsRainbowBox": false
         },
         {
           "Id": "1_-1.15_1.0",
           "TypeId": 2,
-          "BoxColor": 1,
+          "BoxColor": 2,
           "BlockedNodes": [
             "0_-1.15_1.95",
             "0_-1.15_0.0"
           ],
           "InitCards": [
             1,
-            2,
-            3,
+            1,
+            1,
             4,
-            4
+            5
           ],
           "IsHidden": false,
           "LockedTurn": 0,
-          "IsCardsHidden": false
+          "IsPaperBox": false,
+          "IsRainbowBox": false
         },
         {
           "Id": "1_1.15_1.0",
           "TypeId": 2,
-          "BoxColor": 2,
+          "BoxColor": 3,
           "BlockedNodes": [
             "0_1.15_1.95",
             "0_1.15_0.0"
@@ -6057,56 +6280,59 @@ export const SAMPLE_LEVELS: SampleLevelPreset[] = [
           "InitCards": [
             1,
             2,
-            4,
+            2,
             4,
             4
           ],
           "IsHidden": false,
           "LockedTurn": 0,
-          "IsCardsHidden": false
+          "IsPaperBox": false,
+          "IsRainbowBox": false
         },
         {
           "Id": "1_-1.15_-1.0",
           "TypeId": 2,
-          "BoxColor": 3,
+          "BoxColor": 4,
           "BlockedNodes": [
             "0_-1.15_0.0",
             "0_-1.15_-1.95"
           ],
           "InitCards": [
-            1,
-            1,
             2,
-            2,
-            3
+            4,
+            5,
+            5,
+            5
           ],
           "IsHidden": false,
           "LockedTurn": 0,
-          "IsCardsHidden": false
+          "IsPaperBox": false,
+          "IsRainbowBox": false
         },
         {
           "Id": "1_1.15_-1.0",
           "TypeId": 2,
-          "BoxColor": 4,
+          "BoxColor": 5,
           "BlockedNodes": [
             "0_1.15_0.0",
             "0_1.15_-1.95"
           ],
           "InitCards": [
             1,
-            1,
-            1,
+            3,
+            3,
             3,
             4
           ],
           "IsHidden": false,
           "LockedTurn": 0,
-          "IsCardsHidden": false
+          "IsPaperBox": false,
+          "IsRainbowBox": false
         },
         {
           "Id": "2_0.0_1.0",
           "TypeId": 1,
-          "BoxColor": 5,
+          "BoxColor": 1,
           "BlockedNodes": [
             "0_-1.15_1.95",
             "0_1.15_1.95",
@@ -6116,19 +6342,20 @@ export const SAMPLE_LEVELS: SampleLevelPreset[] = [
             "1_1.15_1.0"
           ],
           "InitCards": [
-            2,
-            2,
-            3,
-            3
+            1,
+            4,
+            5,
+            5
           ],
           "IsHidden": false,
           "LockedTurn": 0,
-          "IsCardsHidden": false
+          "IsPaperBox": true,
+          "IsRainbowBox": false
         },
         {
           "Id": "2_0.0_-1.0",
           "TypeId": 1,
-          "BoxColor": 5,
+          "BoxColor": 1,
           "BlockedNodes": [
             "0_-1.15_0.0",
             "0_1.15_0.0",
@@ -6138,18 +6365,17 @@ export const SAMPLE_LEVELS: SampleLevelPreset[] = [
             "1_1.15_-1.0"
           ],
           "InitCards": [
-            0,
-            0,
-            0,
-            4
+            1,
+            3,
+            4,
+            5
           ],
           "IsHidden": false,
           "LockedTurn": 0,
-          "IsCardsHidden": false
+          "IsPaperBox": true,
+          "IsRainbowBox": false
         }
       ],
-      "BoardOffsetX": 0,
-      "BoardOffsetZ": 0,
       "SpawnerNodes": [],
       "TurnSpawnerNodes": [],
       "LinkedBoxes": [],
@@ -6164,6 +6390,8 @@ export const SAMPLE_LEVELS: SampleLevelPreset[] = [
     "description": "Multi-tier diamond star monolith with 4 tiers stepping up to an apex station.",
     "data": {
       "Id": 24,
+      "BoardOffsetX": 0,
+      "BoardOffsetZ": 0,
       "BoardNodes": [
         {
           "Id": "0_0.0_0.0",
@@ -6268,126 +6496,133 @@ export const SAMPLE_LEVELS: SampleLevelPreset[] = [
         {
           "Id": "0_0.0_0.0",
           "TypeId": 2,
-          "BoxColor": 0,
+          "BoxColor": 1,
           "BlockedNodes": [],
           "InitCards": [
-            0,
-            0,
-            1,
-            1,
+            2,
             3,
-            4
+            3,
+            3,
+            4,
+            5
           ],
           "IsHidden": false,
           "LockedTurn": 0,
-          "IsCardsHidden": false
+          "IsPaperBox": false,
+          "IsRainbowBox": false
         },
         {
           "Id": "0_0.0_1.95",
           "TypeId": 2,
-          "BoxColor": 1,
+          "BoxColor": 2,
           "BlockedNodes": [],
           "InitCards": [
             1,
-            2,
-            2,
+            1,
             2,
             3,
-            4
+            3,
+            3
           ],
           "IsHidden": false,
           "LockedTurn": 0,
-          "IsCardsHidden": false
+          "IsPaperBox": false,
+          "IsRainbowBox": false
         },
         {
           "Id": "0_0.0_-1.95",
           "TypeId": 2,
-          "BoxColor": 2,
+          "BoxColor": 3,
           "BlockedNodes": [],
           "InitCards": [
-            0,
-            0,
-            1,
-            2,
-            2,
-            2
+            3,
+            3,
+            4,
+            4,
+            4,
+            5
           ],
           "IsHidden": false,
           "LockedTurn": 0,
-          "IsCardsHidden": false
+          "IsPaperBox": false,
+          "IsRainbowBox": false
         },
         {
           "Id": "0_-1.95_0.0",
           "TypeId": 2,
-          "BoxColor": 3,
+          "BoxColor": 4,
           "BlockedNodes": [],
           "InitCards": [
-            0,
-            0,
+            1,
+            1,
             1,
             2,
-            2,
-            3
+            3,
+            5
           ],
           "IsHidden": false,
           "LockedTurn": 0,
-          "IsCardsHidden": false
+          "IsPaperBox": false,
+          "IsRainbowBox": false
         },
         {
           "Id": "0_1.95_0.0",
           "TypeId": 2,
-          "BoxColor": 4,
+          "BoxColor": 5,
           "BlockedNodes": [],
           "InitCards": [
-            0,
-            0,
+            1,
             1,
             2,
-            4,
+            2,
+            2,
             4
           ],
           "IsHidden": false,
           "LockedTurn": 0,
-          "IsCardsHidden": false
+          "IsPaperBox": false,
+          "IsRainbowBox": false
         },
         {
           "Id": "0_-1.95_1.95",
           "TypeId": 2,
-          "BoxColor": 0,
+          "BoxColor": 1,
           "BlockedNodes": [],
           "InitCards": [
-            0,
+            1,
             1,
             1,
             2,
-            3,
-            3
+            4,
+            5
           ],
           "IsHidden": false,
           "LockedTurn": 0,
-          "IsCardsHidden": false
+          "IsPaperBox": false,
+          "IsRainbowBox": false
         },
         {
           "Id": "0_1.95_-1.95",
           "TypeId": 2,
-          "BoxColor": 1,
+          "BoxColor": 2,
           "BlockedNodes": [],
           "InitCards": [
-            0,
-            1,
-            1,
-            1,
+            2,
             3,
-            4
+            3,
+            3,
+            4,
+            5
           ],
           "IsHidden": false,
           "LockedTurn": 0,
-          "IsCardsHidden": false
+          "IsPaperBox": false,
+          "IsRainbowBox": false
         },
         {
           "Id": "1_-1.0_1.0",
           "TypeId": 2,
-          "BoxColor": 2,
+          "BoxColor": 3,
           "BlockedNodes": [
             "0_0.0_0.0",
             "0_0.0_1.95",
@@ -6396,20 +6631,21 @@ export const SAMPLE_LEVELS: SampleLevelPreset[] = [
           ],
           "InitCards": [
             1,
-            1,
             2,
             2,
             3,
-            4
+            5,
+            5
           ],
           "IsHidden": false,
           "LockedTurn": 0,
-          "IsCardsHidden": false
+          "IsPaperBox": false,
+          "IsRainbowBox": false
         },
         {
           "Id": "1_1.0_-1.0",
           "TypeId": 2,
-          "BoxColor": 3,
+          "BoxColor": 4,
           "BlockedNodes": [
             "0_0.0_0.0",
             "0_0.0_-1.95",
@@ -6417,61 +6653,64 @@ export const SAMPLE_LEVELS: SampleLevelPreset[] = [
             "0_1.95_-1.95"
           ],
           "InitCards": [
-            0,
-            1,
             1,
             1,
             2,
+            2,
+            3,
             3
           ],
           "IsHidden": false,
           "LockedTurn": 0,
-          "IsCardsHidden": false
+          "IsPaperBox": false,
+          "IsRainbowBox": false
         },
         {
           "Id": "1_1.0_1.0",
           "TypeId": 2,
-          "BoxColor": 4,
+          "BoxColor": 5,
           "BlockedNodes": [
             "0_0.0_0.0",
             "0_0.0_1.95",
             "0_1.95_0.0"
           ],
           "InitCards": [
-            0,
-            0,
+            2,
             2,
             4,
-            4
+            5,
+            5
           ],
           "IsHidden": false,
           "LockedTurn": 0,
-          "IsCardsHidden": false
+          "IsPaperBox": false,
+          "IsRainbowBox": false
         },
         {
           "Id": "1_-1.0_-1.0",
           "TypeId": 2,
-          "BoxColor": 0,
+          "BoxColor": 1,
           "BlockedNodes": [
             "0_0.0_0.0",
             "0_0.0_-1.95",
             "0_-1.95_0.0"
           ],
           "InitCards": [
-            0,
-            2,
-            2,
-            4,
+            1,
+            1,
+            1,
+            3,
             4
           ],
           "IsHidden": false,
           "LockedTurn": 0,
-          "IsCardsHidden": false
+          "IsPaperBox": false,
+          "IsRainbowBox": false
         },
         {
           "Id": "2_0.0_0.8",
           "TypeId": 2,
-          "BoxColor": 1,
+          "BoxColor": 2,
           "BlockedNodes": [
             "0_0.0_0.0",
             "0_0.0_1.95",
@@ -6479,20 +6718,21 @@ export const SAMPLE_LEVELS: SampleLevelPreset[] = [
             "1_1.0_1.0"
           ],
           "InitCards": [
-            0,
+            2,
+            2,
+            2,
             3,
-            3,
-            4,
             4
           ],
           "IsHidden": false,
           "LockedTurn": 0,
-          "IsCardsHidden": false
+          "IsPaperBox": false,
+          "IsRainbowBox": false
         },
         {
           "Id": "2_0.0_-0.8",
           "TypeId": 2,
-          "BoxColor": 2,
+          "BoxColor": 3,
           "BlockedNodes": [
             "0_0.0_0.0",
             "0_0.0_-1.95",
@@ -6500,20 +6740,21 @@ export const SAMPLE_LEVELS: SampleLevelPreset[] = [
             "1_-1.0_-1.0"
           ],
           "InitCards": [
-            0,
             1,
-            2,
-            3,
-            3
+            1,
+            4,
+            5,
+            5
           ],
           "IsHidden": false,
           "LockedTurn": 0,
-          "IsCardsHidden": false
+          "IsPaperBox": false,
+          "IsRainbowBox": false
         },
         {
           "Id": "3_0.0_0.0",
           "TypeId": 1,
-          "BoxColor": 5,
+          "BoxColor": 1,
           "BlockedNodes": [
             "0_0.0_0.0",
             "1_-1.0_1.0",
@@ -6524,18 +6765,17 @@ export const SAMPLE_LEVELS: SampleLevelPreset[] = [
             "2_0.0_-0.8"
           ],
           "InitCards": [
-            0,
-            0,
-            1,
-            2
+            2,
+            3,
+            4,
+            5
           ],
           "IsHidden": false,
           "LockedTurn": 0,
-          "IsCardsHidden": false
+          "IsPaperBox": true,
+          "IsRainbowBox": false
         }
       ],
-      "BoardOffsetX": 0,
-      "BoardOffsetZ": 0,
       "SpawnerNodes": [],
       "TurnSpawnerNodes": [],
       "LinkedBoxes": [],
@@ -6550,6 +6790,8 @@ export const SAMPLE_LEVELS: SampleLevelPreset[] = [
     "description": "Octagonal matrix foundation with 2 symmetrically placed Mystery Boxes on Layer 0 supporting 4 mid struts and a 2-tier apex.",
     "data": {
       "Id": 25,
+      "BoardOffsetX": 0,
+      "BoardOffsetZ": 0,
       "BoardNodes": [
         {
           "Id": "0_-1.45_1.75",
@@ -6654,28 +6896,29 @@ export const SAMPLE_LEVELS: SampleLevelPreset[] = [
         {
           "Id": "0_-1.45_1.75",
           "TypeId": 2,
-          "BoxColor": 0,
-          "BlockedNodes": [],
-          "InitCards": [
-            0,
-            0,
-            1,
-            1,
-            3,
-            4
-          ],
-          "IsHidden": true,
-          "LockedTurn": 0,
-          "IsCardsHidden": false
-        },
-        {
-          "Id": "0_1.45_1.75",
-          "TypeId": 2,
           "BoxColor": 1,
           "BlockedNodes": [],
           "InitCards": [
             1,
-            2,
+            1,
+            1,
+            3,
+            4,
+            5
+          ],
+          "IsHidden": false,
+          "LockedTurn": 0,
+          "IsPaperBox": false,
+          "IsRainbowBox": true
+        },
+        {
+          "Id": "0_1.45_1.75",
+          "TypeId": 2,
+          "BoxColor": 2,
+          "BlockedNodes": [],
+          "InitCards": [
+            1,
+            1,
             2,
             2,
             3,
@@ -6683,97 +6926,103 @@ export const SAMPLE_LEVELS: SampleLevelPreset[] = [
           ],
           "IsHidden": false,
           "LockedTurn": 0,
-          "IsCardsHidden": false
+          "IsPaperBox": false,
+          "IsRainbowBox": false
         },
         {
           "Id": "0_-1.45_-1.75",
           "TypeId": 2,
-          "BoxColor": 2,
+          "BoxColor": 3,
           "BlockedNodes": [],
           "InitCards": [
-            0,
-            0,
             1,
-            2,
-            2,
-            2
+            1,
+            3,
+            4,
+            5,
+            5
           ],
           "IsHidden": false,
           "LockedTurn": 0,
-          "IsCardsHidden": false
+          "IsPaperBox": false,
+          "IsRainbowBox": false
         },
         {
           "Id": "0_1.45_-1.75",
           "TypeId": 2,
-          "BoxColor": 3,
+          "BoxColor": 4,
           "BlockedNodes": [],
           "InitCards": [
-            0,
-            0,
-            1,
             2,
             2,
-            3
+            2,
+            4,
+            5,
+            5
           ],
-          "IsHidden": true,
+          "IsHidden": false,
           "LockedTurn": 0,
-          "IsCardsHidden": false
+          "IsPaperBox": false,
+          "IsRainbowBox": true
         },
         {
           "Id": "0_-1.95_0.0",
           "TypeId": 2,
-          "BoxColor": 4,
+          "BoxColor": 5,
           "BlockedNodes": [],
           "InitCards": [
-            0,
-            0,
-            1,
-            2,
+            3,
+            3,
+            3,
+            4,
             4,
             4
           ],
           "IsHidden": false,
           "LockedTurn": 0,
-          "IsCardsHidden": false
+          "IsPaperBox": false,
+          "IsRainbowBox": false
         },
         {
           "Id": "0_1.95_0.0",
           "TypeId": 2,
-          "BoxColor": 0,
+          "BoxColor": 1,
           "BlockedNodes": [],
           "InitCards": [
-            0,
-            1,
             1,
             2,
-            3,
-            3
+            2,
+            5,
+            5,
+            5
           ],
           "IsHidden": false,
           "LockedTurn": 0,
-          "IsCardsHidden": false
+          "IsPaperBox": false,
+          "IsRainbowBox": false
         },
         {
           "Id": "0_0.0_0.0",
           "TypeId": 2,
-          "BoxColor": 1,
+          "BoxColor": 2,
           "BlockedNodes": [],
           "InitCards": [
-            0,
             1,
-            1,
-            1,
+            2,
             3,
-            4
+            3,
+            5,
+            5
           ],
           "IsHidden": false,
           "LockedTurn": 0,
-          "IsCardsHidden": false
+          "IsPaperBox": false,
+          "IsRainbowBox": false
         },
         {
           "Id": "1_-1.15_0.95",
           "TypeId": 2,
-          "BoxColor": 2,
+          "BoxColor": 3,
           "BlockedNodes": [
             "0_-1.45_1.75",
             "0_-1.95_0.0",
@@ -6781,27 +7030,49 @@ export const SAMPLE_LEVELS: SampleLevelPreset[] = [
           ],
           "InitCards": [
             1,
-            1,
-            2,
             2,
             3,
-            4
+            3,
+            3,
+            5
           ],
           "IsHidden": false,
           "LockedTurn": 0,
-          "IsCardsHidden": false
+          "IsPaperBox": false,
+          "IsRainbowBox": false
         },
         {
           "Id": "1_1.15_0.95",
           "TypeId": 2,
-          "BoxColor": 3,
+          "BoxColor": 4,
           "BlockedNodes": [
             "0_1.45_1.75",
             "0_1.95_0.0",
             "0_0.0_0.0"
           ],
           "InitCards": [
-            0,
+            1,
+            2,
+            2,
+            2,
+            3,
+            3
+          ],
+          "IsHidden": false,
+          "LockedTurn": 0,
+          "IsPaperBox": false,
+          "IsRainbowBox": false
+        },
+        {
+          "Id": "1_-1.15_-0.95",
+          "TypeId": 2,
+          "BoxColor": 5,
+          "BlockedNodes": [
+            "0_-1.45_-1.75",
+            "0_-1.95_0.0",
+            "0_0.0_0.0"
+          ],
+          "InitCards": [
             1,
             1,
             1,
@@ -6810,52 +7081,34 @@ export const SAMPLE_LEVELS: SampleLevelPreset[] = [
           ],
           "IsHidden": false,
           "LockedTurn": 0,
-          "IsCardsHidden": false
-        },
-        {
-          "Id": "1_-1.15_-0.95",
-          "TypeId": 2,
-          "BoxColor": 4,
-          "BlockedNodes": [
-            "0_-1.45_-1.75",
-            "0_-1.95_0.0",
-            "0_0.0_0.0"
-          ],
-          "InitCards": [
-            0,
-            0,
-            2,
-            4,
-            4
-          ],
-          "IsHidden": false,
-          "LockedTurn": 0,
-          "IsCardsHidden": false
+          "IsPaperBox": false,
+          "IsRainbowBox": false
         },
         {
           "Id": "1_1.15_-0.95",
           "TypeId": 2,
-          "BoxColor": 0,
+          "BoxColor": 1,
           "BlockedNodes": [
             "0_1.45_-1.75",
             "0_1.95_0.0",
             "0_0.0_0.0"
           ],
           "InitCards": [
-            0,
+            1,
+            1,
             2,
             2,
-            4,
-            4
+            3
           ],
           "IsHidden": false,
           "LockedTurn": 0,
-          "IsCardsHidden": false
+          "IsPaperBox": false,
+          "IsRainbowBox": false
         },
         {
           "Id": "2_0.0_0.8",
           "TypeId": 2,
-          "BoxColor": 1,
+          "BoxColor": 2,
           "BlockedNodes": [
             "0_-1.45_1.75",
             "0_1.45_1.75",
@@ -6864,20 +7117,21 @@ export const SAMPLE_LEVELS: SampleLevelPreset[] = [
             "1_1.15_0.95"
           ],
           "InitCards": [
-            0,
-            3,
-            3,
+            2,
+            2,
+            2,
             4,
             4
           ],
           "IsHidden": false,
           "LockedTurn": 0,
-          "IsCardsHidden": false
+          "IsPaperBox": false,
+          "IsRainbowBox": false
         },
         {
           "Id": "2_0.0_-0.8",
           "TypeId": 2,
-          "BoxColor": 2,
+          "BoxColor": 3,
           "BlockedNodes": [
             "0_-1.45_-1.75",
             "0_1.45_-1.75",
@@ -6886,20 +7140,21 @@ export const SAMPLE_LEVELS: SampleLevelPreset[] = [
             "1_1.15_-0.95"
           ],
           "InitCards": [
-            0,
             1,
-            2,
+            1,
             3,
-            3
+            3,
+            4
           ],
           "IsHidden": false,
           "LockedTurn": 0,
-          "IsCardsHidden": false
+          "IsPaperBox": false,
+          "IsRainbowBox": false
         },
         {
           "Id": "3_0.0_0.0",
           "TypeId": 1,
-          "BoxColor": 5,
+          "BoxColor": 1,
           "BlockedNodes": [
             "0_0.0_0.0",
             "1_-1.15_0.95",
@@ -6910,18 +7165,17 @@ export const SAMPLE_LEVELS: SampleLevelPreset[] = [
             "2_0.0_-0.8"
           ],
           "InitCards": [
-            0,
-            0,
-            1,
-            2
+            3,
+            4,
+            4,
+            5
           ],
           "IsHidden": false,
           "LockedTurn": 0,
-          "IsCardsHidden": false
+          "IsPaperBox": true,
+          "IsRainbowBox": false
         }
       ],
-      "BoardOffsetX": 0,
-      "BoardOffsetZ": 0,
       "SpawnerNodes": [],
       "TurnSpawnerNodes": [],
       "LinkedBoxes": [],
@@ -6936,6 +7190,8 @@ export const SAMPLE_LEVELS: SampleLevelPreset[] = [
     "description": "Greek cross citadel with 8 perimeter base boxes and 2 symmetrically placed Mystery Boxes on Layer 0 supporting 4 mid struts and an apex station.",
     "data": {
       "Id": 26,
+      "BoardOffsetX": 0,
+      "BoardOffsetZ": 0,
       "BoardNodes": [
         {
           "Id": "0_-1.05_2.45",
@@ -7047,247 +7303,261 @@ export const SAMPLE_LEVELS: SampleLevelPreset[] = [
         {
           "Id": "0_-1.05_2.45",
           "TypeId": 2,
-          "BoxColor": 0,
+          "BoxColor": 1,
           "BlockedNodes": [],
           "InitCards": [
             1,
-            3,
-            3,
+            1,
+            2,
             4,
-            4
+            5
           ],
           "IsHidden": false,
           "LockedTurn": 0,
-          "IsCardsHidden": false
+          "IsPaperBox": false,
+          "IsRainbowBox": false
         },
         {
           "Id": "0_1.05_2.45",
           "TypeId": 2,
-          "BoxColor": 1,
+          "BoxColor": 2,
           "BlockedNodes": [],
           "InitCards": [
             1,
-            2,
-            2,
-            3,
-            4
+            1,
+            1,
+            4,
+            5
           ],
           "IsHidden": false,
           "LockedTurn": 0,
-          "IsCardsHidden": false
+          "IsPaperBox": false,
+          "IsRainbowBox": false
         },
         {
           "Id": "0_-1.05_-2.45",
           "TypeId": 2,
-          "BoxColor": 2,
+          "BoxColor": 3,
           "BlockedNodes": [],
           "InitCards": [
-            0,
             1,
             1,
+            2,
             3,
-            4
+            5
           ],
           "IsHidden": false,
           "LockedTurn": 0,
-          "IsCardsHidden": false
+          "IsPaperBox": false,
+          "IsRainbowBox": false
         },
         {
           "Id": "0_1.05_-2.45",
           "TypeId": 2,
-          "BoxColor": 3,
+          "BoxColor": 4,
           "BlockedNodes": [],
           "InitCards": [
-            0,
             1,
             1,
+            1,
+            2,
+            2
+          ],
+          "IsHidden": false,
+          "LockedTurn": 0,
+          "IsPaperBox": false,
+          "IsRainbowBox": false
+        },
+        {
+          "Id": "0_-1.95_0.95",
+          "TypeId": 2,
+          "BoxColor": 5,
+          "BlockedNodes": [],
+          "InitCards": [
+            1,
+            1,
+            2,
+            3,
+            3
+          ],
+          "IsHidden": false,
+          "LockedTurn": 0,
+          "IsPaperBox": false,
+          "IsRainbowBox": true
+        },
+        {
+          "Id": "0_-1.95_-0.95",
+          "TypeId": 2,
+          "BoxColor": 1,
+          "BlockedNodes": [],
+          "InitCards": [
+            2,
+            4,
+            4,
+            4,
+            5,
+            5
+          ],
+          "IsHidden": false,
+          "LockedTurn": 0,
+          "IsPaperBox": true,
+          "IsRainbowBox": false
+        },
+        {
+          "Id": "0_1.95_0.95",
+          "TypeId": 2,
+          "BoxColor": 1,
+          "BlockedNodes": [],
+          "InitCards": [
+            2,
+            2,
+            3,
             4,
             4
           ],
           "IsHidden": false,
           "LockedTurn": 0,
-          "IsCardsHidden": false
-        },
-        {
-          "Id": "0_-1.95_0.95",
-          "TypeId": 2,
-          "BoxColor": 4,
-          "BlockedNodes": [],
-          "InitCards": [
-            0,
-            1,
-            2,
-            3,
-            3
-          ],
-          "IsHidden": true,
-          "LockedTurn": 0,
-          "IsCardsHidden": false
-        },
-        {
-          "Id": "0_-1.95_-0.95",
-          "TypeId": 2,
-          "BoxColor": 5,
-          "BlockedNodes": [],
-          "InitCards": [
-            0,
-            1,
-            1,
-            1,
-            2,
-            3
-          ],
-          "IsHidden": false,
-          "LockedTurn": 0,
-          "IsCardsHidden": false
-        },
-        {
-          "Id": "0_1.95_0.95",
-          "TypeId": 2,
-          "BoxColor": 0,
-          "BlockedNodes": [],
-          "InitCards": [
-            0,
-            0,
-            1,
-            2,
-            4
-          ],
-          "IsHidden": true,
-          "LockedTurn": 0,
-          "IsCardsHidden": false
+          "IsPaperBox": false,
+          "IsRainbowBox": true
         },
         {
           "Id": "0_1.95_-0.95",
           "TypeId": 2,
-          "BoxColor": 1,
+          "BoxColor": 2,
           "BlockedNodes": [],
           "InitCards": [
-            1,
-            1,
             2,
             3,
+            4,
+            4,
             4
           ],
           "IsHidden": false,
           "LockedTurn": 0,
-          "IsCardsHidden": false
+          "IsPaperBox": false,
+          "IsRainbowBox": false
         },
         {
           "Id": "1_-1.15_1.30",
           "TypeId": 2,
-          "BoxColor": 2,
+          "BoxColor": 3,
           "BlockedNodes": [
             "0_-1.05_2.45",
             "0_-1.95_0.95"
           ],
           "InitCards": [
-            0,
+            1,
             2,
             2,
-            4,
-            4
+            2,
+            5
           ],
           "IsHidden": false,
           "LockedTurn": 0,
-          "IsCardsHidden": false
+          "IsPaperBox": false,
+          "IsRainbowBox": false
         },
         {
           "Id": "1_1.15_1.30",
           "TypeId": 2,
-          "BoxColor": 3,
+          "BoxColor": 4,
           "BlockedNodes": [
             "0_1.05_2.45",
             "0_1.95_0.95"
           ],
           "InitCards": [
             1,
-            2,
-            4,
-            4
+            3,
+            3,
+            5
           ],
           "IsHidden": false,
           "LockedTurn": 0,
-          "IsCardsHidden": false
+          "IsPaperBox": false,
+          "IsRainbowBox": false
         },
         {
           "Id": "1_-1.15_-1.30",
           "TypeId": 2,
-          "BoxColor": 4,
+          "BoxColor": 5,
           "BlockedNodes": [
             "0_-1.05_-2.45",
             "0_-1.95_-0.95"
           ],
           "InitCards": [
-            0,
-            0,
-            0,
-            3
+            1,
+            1,
+            3,
+            5
           ],
           "IsHidden": false,
           "LockedTurn": 0,
-          "IsCardsHidden": false
+          "IsPaperBox": false,
+          "IsRainbowBox": false
         },
         {
           "Id": "1_1.15_-1.30",
           "TypeId": 2,
-          "BoxColor": 5,
+          "BoxColor": 1,
           "BlockedNodes": [
             "0_1.05_-2.45",
             "0_1.95_-0.95"
           ],
           "InitCards": [
-            0,
-            0,
-            1,
             2,
             2,
-            3
+            2,
+            3,
+            4,
+            5
           ],
           "IsHidden": false,
           "LockedTurn": 0,
-          "IsCardsHidden": false
+          "IsPaperBox": true,
+          "IsRainbowBox": false
         },
         {
           "Id": "2_0.0_1.15",
           "TypeId": 2,
-          "BoxColor": 0,
+          "BoxColor": 1,
           "BlockedNodes": [
             "1_-1.15_1.30",
             "1_1.15_1.30"
           ],
           "InitCards": [
-            0,
-            0,
-            0,
-            1
+            1,
+            1,
+            2,
+            5
           ],
           "IsHidden": false,
           "LockedTurn": 0,
-          "IsCardsHidden": false
+          "IsPaperBox": false,
+          "IsRainbowBox": false
         },
         {
           "Id": "2_0.0_-1.15",
           "TypeId": 2,
-          "BoxColor": 1,
+          "BoxColor": 2,
           "BlockedNodes": [
             "1_-1.15_-1.30",
             "1_1.15_-1.30"
           ],
           "InitCards": [
-            0,
-            0,
-            1,
-            1
+            2,
+            3,
+            3,
+            4
           ],
           "IsHidden": false,
           "LockedTurn": 0,
-          "IsCardsHidden": false
+          "IsPaperBox": false,
+          "IsRainbowBox": false
         },
         {
           "Id": "3_0.0_0.0",
           "TypeId": 1,
-          "BoxColor": 5,
+          "BoxColor": 1,
           "BlockedNodes": [
             "1_-1.15_1.30",
             "1_1.15_1.30",
@@ -7297,18 +7567,17 @@ export const SAMPLE_LEVELS: SampleLevelPreset[] = [
             "2_0.0_-1.15"
           ],
           "InitCards": [
-            0,
             2,
             3,
-            3
+            5,
+            5
           ],
           "IsHidden": false,
           "LockedTurn": 0,
-          "IsCardsHidden": false
+          "IsPaperBox": true,
+          "IsRainbowBox": false
         }
       ],
-      "BoardOffsetX": 0,
-      "BoardOffsetZ": 0,
       "SpawnerNodes": [],
       "TurnSpawnerNodes": [],
       "LinkedBoxes": [],
@@ -7323,6 +7592,8 @@ export const SAMPLE_LEVELS: SampleLevelPreset[] = [
     "description": "Staggered 3-2-3 honeycomb matrix foundation supporting 5 mid struts, 2 upper crossbars, and an apex feeder station.",
     "data": {
       "Id": 27,
+      "BoardOffsetX": 0,
+      "BoardOffsetZ": 0,
       "BoardNodes": [
         {
           "Id": "0_-2.0_1.95",
@@ -7441,163 +7712,172 @@ export const SAMPLE_LEVELS: SampleLevelPreset[] = [
         {
           "Id": "0_-2.0_1.95",
           "TypeId": 2,
-          "BoxColor": 0,
+          "BoxColor": 1,
           "BlockedNodes": [],
           "InitCards": [
-            0,
-            0,
-            1,
-            1,
-            4,
+            2,
+            2,
+            2,
+            3,
+            3,
             4
           ],
           "IsHidden": false,
           "LockedTurn": 0,
-          "IsCardsHidden": false
+          "IsPaperBox": false,
+          "IsRainbowBox": false
         },
         {
           "Id": "0_0.0_1.95",
           "TypeId": 2,
-          "BoxColor": 1,
+          "BoxColor": 2,
           "BlockedNodes": [],
           "InitCards": [
-            0,
-            3,
-            3,
-            3,
+            1,
+            2,
+            2,
             4,
-            4
+            5,
+            5
           ],
           "IsHidden": false,
           "LockedTurn": 0,
-          "IsCardsHidden": false
+          "IsPaperBox": false,
+          "IsRainbowBox": false
         },
         {
           "Id": "0_2.0_1.95",
           "TypeId": 2,
-          "BoxColor": 2,
-          "BlockedNodes": [],
-          "InitCards": [
-            0,
-            1,
-            2,
-            2,
-            2,
-            4
-          ],
-          "IsHidden": false,
-          "LockedTurn": 0,
-          "IsCardsHidden": false
-        },
-        {
-          "Id": "0_-1.25_0.0",
-          "TypeId": 2,
           "BoxColor": 3,
           "BlockedNodes": [],
           "InitCards": [
-            0,
-            0,
-            1,
-            1,
-            2,
-            3
+            3,
+            4,
+            4,
+            4,
+            5,
+            5
           ],
           "IsHidden": false,
           "LockedTurn": 0,
-          "IsCardsHidden": false
+          "IsPaperBox": false,
+          "IsRainbowBox": false
         },
         {
-          "Id": "0_1.25_0.0",
+          "Id": "0_-1.25_0.0",
           "TypeId": 2,
           "BoxColor": 4,
           "BlockedNodes": [],
           "InitCards": [
             1,
-            1,
-            1,
             2,
             2,
-            2
-          ],
-          "IsHidden": false,
-          "LockedTurn": 0,
-          "IsCardsHidden": false
-        },
-        {
-          "Id": "0_-2.0_-1.95",
-          "TypeId": 2,
-          "BoxColor": 0,
-          "BlockedNodes": [],
-          "InitCards": [
-            1,
-            2,
-            2,
-            2,
-            3,
-            4
-          ],
-          "IsHidden": false,
-          "LockedTurn": 0,
-          "IsCardsHidden": false
-        },
-        {
-          "Id": "0_0.0_-1.95",
-          "TypeId": 2,
-          "BoxColor": 1,
-          "BlockedNodes": [],
-          "InitCards": [
-            0,
-            0,
-            0,
-            2,
-            3,
-            4
-          ],
-          "IsHidden": false,
-          "LockedTurn": 0,
-          "IsCardsHidden": false
-        },
-        {
-          "Id": "0_2.0_-1.95",
-          "TypeId": 2,
-          "BoxColor": 2,
-          "BlockedNodes": [],
-          "InitCards": [
-            0,
-            1,
-            1,
             3,
             4,
             4
           ],
           "IsHidden": false,
           "LockedTurn": 0,
-          "IsCardsHidden": false
+          "IsPaperBox": false,
+          "IsRainbowBox": false
+        },
+        {
+          "Id": "0_1.25_0.0",
+          "TypeId": 2,
+          "BoxColor": 5,
+          "BlockedNodes": [],
+          "InitCards": [
+            1,
+            1,
+            1,
+            5,
+            5,
+            5
+          ],
+          "IsHidden": false,
+          "LockedTurn": 0,
+          "IsPaperBox": false,
+          "IsRainbowBox": false
+        },
+        {
+          "Id": "0_-2.0_-1.95",
+          "TypeId": 2,
+          "BoxColor": 1,
+          "BlockedNodes": [],
+          "InitCards": [
+            1,
+            1,
+            2,
+            2,
+            4,
+            4
+          ],
+          "IsHidden": false,
+          "LockedTurn": 0,
+          "IsPaperBox": false,
+          "IsRainbowBox": false
+        },
+        {
+          "Id": "0_0.0_-1.95",
+          "TypeId": 2,
+          "BoxColor": 2,
+          "BlockedNodes": [],
+          "InitCards": [
+            1,
+            1,
+            2,
+            3,
+            3,
+            4
+          ],
+          "IsHidden": false,
+          "LockedTurn": 0,
+          "IsPaperBox": false,
+          "IsRainbowBox": false
+        },
+        {
+          "Id": "0_2.0_-1.95",
+          "TypeId": 2,
+          "BoxColor": 3,
+          "BlockedNodes": [],
+          "InitCards": [
+            2,
+            3,
+            4,
+            4,
+            4,
+            5
+          ],
+          "IsHidden": false,
+          "LockedTurn": 0,
+          "IsPaperBox": false,
+          "IsRainbowBox": false
         },
         {
           "Id": "1_-1.55_1.0",
           "TypeId": 2,
-          "BoxColor": 3,
+          "BoxColor": 4,
           "BlockedNodes": [
             "0_-2.0_1.95",
             "0_-1.25_0.0"
           ],
           "InitCards": [
-            0,
-            0,
-            0,
-            2,
+            1,
+            1,
             3,
-            4
+            3,
+            4,
+            5
           ],
           "IsHidden": false,
           "LockedTurn": 0,
-          "IsCardsHidden": false
+          "IsPaperBox": false,
+          "IsRainbowBox": false
         },
         {
           "Id": "1_1.55_1.0",
           "TypeId": 2,
-          "BoxColor": 4,
+          "BoxColor": 5,
           "BlockedNodes": [
             "0_2.0_1.95",
             "0_1.25_0.0"
@@ -7605,26 +7885,6 @@ export const SAMPLE_LEVELS: SampleLevelPreset[] = [
           "InitCards": [
             1,
             1,
-            2,
-            2,
-            2,
-            3
-          ],
-          "IsHidden": false,
-          "LockedTurn": 0,
-          "IsCardsHidden": false
-        },
-        {
-          "Id": "1_-1.55_-1.0",
-          "TypeId": 2,
-          "BoxColor": 0,
-          "BlockedNodes": [
-            "0_-1.25_0.0",
-            "0_-2.0_-1.95"
-          ],
-          "InitCards": [
-            0,
-            3,
             3,
             4,
             4,
@@ -7632,12 +7892,34 @@ export const SAMPLE_LEVELS: SampleLevelPreset[] = [
           ],
           "IsHidden": false,
           "LockedTurn": 0,
-          "IsCardsHidden": false
+          "IsPaperBox": false,
+          "IsRainbowBox": false
+        },
+        {
+          "Id": "1_-1.55_-1.0",
+          "TypeId": 2,
+          "BoxColor": 1,
+          "BlockedNodes": [
+            "0_-1.25_0.0",
+            "0_-2.0_-1.95"
+          ],
+          "InitCards": [
+            1,
+            2,
+            2,
+            3,
+            3,
+            3
+          ],
+          "IsHidden": false,
+          "LockedTurn": 0,
+          "IsPaperBox": false,
+          "IsRainbowBox": false
         },
         {
           "Id": "1_1.55_-1.0",
           "TypeId": 2,
-          "BoxColor": 1,
+          "BoxColor": 2,
           "BlockedNodes": [
             "0_1.25_0.0",
             "0_2.0_-1.95"
@@ -7647,35 +7929,37 @@ export const SAMPLE_LEVELS: SampleLevelPreset[] = [
             2,
             2,
             3,
-            3
+            5
           ],
           "IsHidden": false,
           "LockedTurn": 0,
-          "IsCardsHidden": false
+          "IsPaperBox": false,
+          "IsRainbowBox": false
         },
         {
           "Id": "1_0.0_0.0",
           "TypeId": 2,
-          "BoxColor": 2,
+          "BoxColor": 3,
           "BlockedNodes": [
             "0_-1.25_0.0",
             "0_1.25_0.0"
           ],
           "InitCards": [
             1,
+            2,
             3,
-            3,
-            4,
-            4
+            5,
+            5
           ],
           "IsHidden": false,
           "LockedTurn": 0,
-          "IsCardsHidden": false
+          "IsPaperBox": false,
+          "IsRainbowBox": false
         },
         {
           "Id": "2_-1.0_0.0",
           "TypeId": 2,
-          "BoxColor": 3,
+          "BoxColor": 4,
           "BlockedNodes": [
             "0_-1.25_0.0",
             "1_-1.55_1.0",
@@ -7684,19 +7968,20 @@ export const SAMPLE_LEVELS: SampleLevelPreset[] = [
           ],
           "InitCards": [
             1,
-            1,
             3,
             3,
-            4
+            5,
+            5
           ],
           "IsHidden": false,
           "LockedTurn": 0,
-          "IsCardsHidden": false
+          "IsPaperBox": false,
+          "IsRainbowBox": false
         },
         {
           "Id": "2_1.0_0.0",
           "TypeId": 2,
-          "BoxColor": 4,
+          "BoxColor": 5,
           "BlockedNodes": [
             "0_1.25_0.0",
             "1_1.55_1.0",
@@ -7704,20 +7989,21 @@ export const SAMPLE_LEVELS: SampleLevelPreset[] = [
             "1_0.0_0.0"
           ],
           "InitCards": [
-            0,
+            2,
             2,
             3,
             4,
-            4
+            5
           ],
           "IsHidden": false,
           "LockedTurn": 0,
-          "IsCardsHidden": false
+          "IsPaperBox": false,
+          "IsRainbowBox": false
         },
         {
           "Id": "3_0.0_0.0",
           "TypeId": 1,
-          "BoxColor": 5,
+          "BoxColor": 1,
           "BlockedNodes": [
             "0_-1.25_0.0",
             "0_1.25_0.0",
@@ -7726,18 +8012,17 @@ export const SAMPLE_LEVELS: SampleLevelPreset[] = [
             "2_1.0_0.0"
           ],
           "InitCards": [
-            0,
-            0,
-            0,
-            1
+            1,
+            5,
+            5,
+            5
           ],
           "IsHidden": false,
           "LockedTurn": 0,
-          "IsCardsHidden": false
+          "IsPaperBox": true,
+          "IsRainbowBox": false
         }
       ],
-      "BoardOffsetX": 0,
-      "BoardOffsetZ": 0,
       "SpawnerNodes": [],
       "TurnSpawnerNodes": [],
       "LinkedBoxes": [],
@@ -7752,6 +8037,8 @@ export const SAMPLE_LEVELS: SampleLevelPreset[] = [
     "description": "Massive 10-slot megabox bastion with dual feeder trays and 2 symmetrically placed Mystery Megaboxes on Layer 0.",
     "data": {
       "Id": 28,
+      "BoardOffsetX": 0,
+      "BoardOffsetZ": 0,
       "BoardNodes": [
         {
           "Id": "0_-2.4_1.45",
@@ -7856,203 +8143,213 @@ export const SAMPLE_LEVELS: SampleLevelPreset[] = [
         {
           "Id": "0_-2.4_1.45",
           "TypeId": 3,
-          "BoxColor": 0,
+          "BoxColor": 1,
           "BlockedNodes": [],
           "InitCards": [
-            0,
-            0,
+            1,
+            1,
+            1,
+            1,
             2,
-            2,
-            2,
-            2,
-            3,
-            3
+            4,
+            4,
+            4
           ],
-          "IsHidden": true,
+          "IsHidden": false,
           "LockedTurn": 0,
-          "IsCardsHidden": false
+          "IsPaperBox": false,
+          "IsRainbowBox": false
         },
         {
           "Id": "0_0.0_1.45",
           "TypeId": 3,
-          "BoxColor": 1,
+          "BoxColor": 2,
           "BlockedNodes": [],
           "InitCards": [
-            1,
-            1,
-            1,
-            1,
             2,
             2,
-            2,
-            3
+            3,
+            3,
+            3,
+            3,
+            4,
+            4
           ],
           "IsHidden": false,
           "LockedTurn": 0,
-          "IsCardsHidden": false
+          "IsPaperBox": false,
+          "IsRainbowBox": false
         },
         {
           "Id": "0_2.4_1.45",
           "TypeId": 3,
-          "BoxColor": 2,
+          "BoxColor": 3,
           "BlockedNodes": [],
           "InitCards": [
-            0,
             1,
-            1,
+            2,
             2,
             3,
             3,
             3,
-            3
+            4,
+            4
           ],
-          "IsHidden": true,
+          "IsHidden": false,
           "LockedTurn": 0,
-          "IsCardsHidden": false
+          "IsPaperBox": false,
+          "IsRainbowBox": false
         },
         {
           "Id": "0_-2.4_-1.45",
           "TypeId": 3,
-          "BoxColor": 3,
+          "BoxColor": 4,
           "BlockedNodes": [],
           "InitCards": [
-            0,
-            0,
             1,
             1,
+            2,
+            2,
+            3,
+            3,
+            3,
+            4
+          ],
+          "IsHidden": false,
+          "LockedTurn": 0,
+          "IsPaperBox": false,
+          "IsRainbowBox": false
+        },
+        {
+          "Id": "0_0.0_-1.45",
+          "TypeId": 3,
+          "BoxColor": 1,
+          "BlockedNodes": [],
+          "InitCards": [
             1,
+            1,
+            2,
+            3,
+            4,
+            4,
+            4
+          ],
+          "IsHidden": false,
+          "LockedTurn": 0,
+          "IsPaperBox": false,
+          "IsRainbowBox": false
+        },
+        {
+          "Id": "0_2.4_-1.45",
+          "TypeId": 3,
+          "BoxColor": 2,
+          "BlockedNodes": [],
+          "InitCards": [
+            1,
+            1,
+            2,
+            2,
             2,
             3,
             3
           ],
           "IsHidden": false,
           "LockedTurn": 0,
-          "IsCardsHidden": false
-        },
-        {
-          "Id": "0_0.0_-1.45",
-          "TypeId": 3,
-          "BoxColor": 0,
-          "BlockedNodes": [],
-          "InitCards": [
-            0,
-            0,
-            1,
-            1,
-            2,
-            2,
-            3
-          ],
-          "IsHidden": false,
-          "LockedTurn": 0,
-          "IsCardsHidden": false
-        },
-        {
-          "Id": "0_2.4_-1.45",
-          "TypeId": 3,
-          "BoxColor": 1,
-          "BlockedNodes": [],
-          "InitCards": [
-            0,
-            0,
-            1,
-            1,
-            1,
-            2,
-            3
-          ],
-          "IsHidden": false,
-          "LockedTurn": 0,
-          "IsCardsHidden": false
+          "IsPaperBox": false,
+          "IsRainbowBox": false
         },
         {
           "Id": "1_-1.2_1.45",
           "TypeId": 3,
-          "BoxColor": 2,
+          "BoxColor": 3,
           "BlockedNodes": [
             "0_-2.4_1.45",
             "0_0.0_1.45"
           ],
           "InitCards": [
-            0,
-            0,
-            0,
-            0,
+            1,
             1,
             2,
-            2
+            3,
+            3,
+            3,
+            4
           ],
           "IsHidden": false,
           "LockedTurn": 0,
-          "IsCardsHidden": false
+          "IsPaperBox": false,
+          "IsRainbowBox": false
         },
         {
           "Id": "1_1.2_1.45",
           "TypeId": 3,
-          "BoxColor": 3,
+          "BoxColor": 4,
           "BlockedNodes": [
             "0_0.0_1.45",
             "0_2.4_1.45"
           ],
           "InitCards": [
-            0,
-            0,
             1,
             2,
-            3,
-            3,
-            3
+            2,
+            4,
+            4,
+            4,
+            4
           ],
           "IsHidden": false,
           "LockedTurn": 0,
-          "IsCardsHidden": false
+          "IsPaperBox": false,
+          "IsRainbowBox": false
         },
         {
           "Id": "1_-1.2_-1.45",
           "TypeId": 3,
-          "BoxColor": 0,
+          "BoxColor": 1,
           "BlockedNodes": [
             "0_-2.4_-1.45",
             "0_0.0_-1.45"
           ],
           "InitCards": [
-            0,
+            1,
+            1,
             1,
             2,
             2,
             3,
-            3,
-            3
+            4
           ],
           "IsHidden": false,
           "LockedTurn": 0,
-          "IsCardsHidden": false
+          "IsPaperBox": false,
+          "IsRainbowBox": false
         },
         {
           "Id": "1_1.2_-1.45",
           "TypeId": 3,
-          "BoxColor": 1,
+          "BoxColor": 2,
           "BlockedNodes": [
             "0_0.0_-1.45",
             "0_2.4_-1.45"
           ],
           "InitCards": [
             1,
-            1,
+            2,
             2,
             2,
             3,
             3,
-            3
+            4
           ],
           "IsHidden": false,
           "LockedTurn": 0,
-          "IsCardsHidden": false
+          "IsPaperBox": false,
+          "IsRainbowBox": false
         },
         {
           "Id": "2_-1.2_0.0",
           "TypeId": 3,
-          "BoxColor": 2,
+          "BoxColor": 3,
           "BlockedNodes": [
             "0_-2.4_1.45",
             "0_0.0_1.45",
@@ -8062,22 +8359,23 @@ export const SAMPLE_LEVELS: SampleLevelPreset[] = [
             "1_-1.2_-1.45"
           ],
           "InitCards": [
-            0,
-            0,
-            0,
-            2,
+            1,
+            1,
             2,
             3,
-            3
+            3,
+            4,
+            4
           ],
           "IsHidden": false,
           "LockedTurn": 0,
-          "IsCardsHidden": false
+          "IsPaperBox": false,
+          "IsRainbowBox": false
         },
         {
           "Id": "2_1.2_0.0",
           "TypeId": 3,
-          "BoxColor": 3,
+          "BoxColor": 4,
           "BlockedNodes": [
             "0_0.0_1.45",
             "0_2.4_1.45",
@@ -8087,22 +8385,23 @@ export const SAMPLE_LEVELS: SampleLevelPreset[] = [
             "1_1.2_-1.45"
           ],
           "InitCards": [
-            0,
-            0,
-            0,
             1,
             1,
-            1,
-            3
+            2,
+            2,
+            3,
+            3,
+            4
           ],
           "IsHidden": false,
           "LockedTurn": 0,
-          "IsCardsHidden": false
+          "IsPaperBox": false,
+          "IsRainbowBox": false
         },
         {
           "Id": "3_0.0_0.85",
           "TypeId": 1,
-          "BoxColor": 5,
+          "BoxColor": 1,
           "BlockedNodes": [
             "0_0.0_1.45",
             "1_-1.2_1.45",
@@ -8111,19 +8410,20 @@ export const SAMPLE_LEVELS: SampleLevelPreset[] = [
             "2_1.2_0.0"
           ],
           "InitCards": [
-            0,
+            1,
+            1,
             2,
-            2,
-            3
+            4
           ],
           "IsHidden": false,
           "LockedTurn": 0,
-          "IsCardsHidden": false
+          "IsPaperBox": true,
+          "IsRainbowBox": false
         },
         {
           "Id": "3_0.0_-0.85",
           "TypeId": 1,
-          "BoxColor": 5,
+          "BoxColor": 1,
           "BlockedNodes": [
             "0_0.0_-1.45",
             "1_-1.2_-1.45",
@@ -8132,18 +8432,17 @@ export const SAMPLE_LEVELS: SampleLevelPreset[] = [
             "2_1.2_0.0"
           ],
           "InitCards": [
-            0,
-            1,
-            1,
-            2
+            2,
+            3,
+            4,
+            4
           ],
           "IsHidden": false,
           "LockedTurn": 0,
-          "IsCardsHidden": false
+          "IsPaperBox": true,
+          "IsRainbowBox": false
         }
       ],
-      "BoardOffsetX": 0,
-      "BoardOffsetZ": 0,
       "SpawnerNodes": [],
       "TurnSpawnerNodes": [],
       "LinkedBoxes": [],
@@ -8158,6 +8457,8 @@ export const SAMPLE_LEVELS: SampleLevelPreset[] = [
     "description": "Four-corner bastion citadel guarded by turn locks with 2 symmetrically concealed Mystery Boxes on Layer 0.",
     "data": {
       "Id": 29,
+      "BoardOffsetX": 0,
+      "BoardOffsetZ": 0,
       "BoardNodes": [
         {
           "Id": "0_-2.1_1.55",
@@ -8283,157 +8584,166 @@ export const SAMPLE_LEVELS: SampleLevelPreset[] = [
         {
           "Id": "0_-2.1_1.55",
           "TypeId": 2,
-          "BoxColor": 0,
+          "BoxColor": 1,
           "BlockedNodes": [],
           "InitCards": [
-            0,
-            0,
             1,
             1,
-            1,
-            3
+            2,
+            3,
+            4,
+            4
           ],
-          "IsHidden": true,
+          "IsHidden": false,
           "LockedTurn": 3,
-          "IsCardsHidden": false
+          "IsPaperBox": false,
+          "IsRainbowBox": true
         },
         {
           "Id": "0_0.0_1.55",
           "TypeId": 2,
-          "BoxColor": 1,
+          "BoxColor": 2,
           "BlockedNodes": [],
           "InitCards": [
-            0,
+            1,
             2,
-            3,
-            3,
-            3,
-            4
+            2,
+            4,
+            5,
+            5
           ],
           "IsHidden": false,
           "LockedTurn": 0,
-          "IsCardsHidden": false
+          "IsPaperBox": false,
+          "IsRainbowBox": false
         },
         {
           "Id": "0_2.1_1.55",
           "TypeId": 2,
-          "BoxColor": 2,
+          "BoxColor": 3,
           "BlockedNodes": [],
           "InitCards": [
+            1,
+            1,
             2,
-            2,
-            2,
-            2,
+            3,
             3,
             3
           ],
-          "IsHidden": true,
+          "IsHidden": false,
           "LockedTurn": 3,
-          "IsCardsHidden": false
+          "IsPaperBox": false,
+          "IsRainbowBox": true
         },
         {
           "Id": "0_-2.1_0.0",
           "TypeId": 2,
-          "BoxColor": 3,
+          "BoxColor": 4,
           "BlockedNodes": [],
           "InitCards": [
-            0,
+            1,
+            1,
             2,
-            2,
-            2,
-            4,
-            4
+            3,
+            5,
+            5
           ],
           "IsHidden": false,
           "LockedTurn": 0,
-          "IsCardsHidden": false
+          "IsPaperBox": false,
+          "IsRainbowBox": false
         },
         {
           "Id": "0_2.1_0.0",
           "TypeId": 2,
-          "BoxColor": 4,
+          "BoxColor": 5,
           "BlockedNodes": [],
           "InitCards": [
-            0,
             1,
-            4,
-            4,
-            4,
+            1,
+            2,
+            2,
+            2,
             4
           ],
           "IsHidden": false,
           "LockedTurn": 0,
-          "IsCardsHidden": false
+          "IsPaperBox": false,
+          "IsRainbowBox": false
         },
         {
           "Id": "0_0.0_0.0",
           "TypeId": 2,
-          "BoxColor": 5,
+          "BoxColor": 1,
           "BlockedNodes": [],
           "InitCards": [
-            0,
-            0,
+            2,
+            2,
             2,
             3,
             3,
-            4
+            5
           ],
           "IsHidden": false,
           "LockedTurn": 0,
-          "IsCardsHidden": false
+          "IsPaperBox": true,
+          "IsRainbowBox": false
         },
         {
           "Id": "0_-2.1_-1.55",
           "TypeId": 2,
-          "BoxColor": 0,
+          "BoxColor": 1,
           "BlockedNodes": [],
           "InitCards": [
-            0,
-            1,
-            1,
-            3,
-            4
+            2,
+            2,
+            4,
+            4,
+            5
           ],
           "IsHidden": false,
           "LockedTurn": 2,
-          "IsCardsHidden": false
+          "IsPaperBox": false,
+          "IsRainbowBox": false
         },
         {
           "Id": "0_0.0_-1.55",
           "TypeId": 2,
-          "BoxColor": 1,
+          "BoxColor": 2,
           "BlockedNodes": [],
           "InitCards": [
-            0,
-            1,
-            3,
-            3,
-            4
+            2,
+            4,
+            4,
+            5,
+            5
           ],
           "IsHidden": false,
           "LockedTurn": 0,
-          "IsCardsHidden": false
+          "IsPaperBox": false,
+          "IsRainbowBox": false
         },
         {
           "Id": "0_2.1_-1.55",
           "TypeId": 2,
-          "BoxColor": 2,
+          "BoxColor": 3,
           "BlockedNodes": [],
           "InitCards": [
-            1,
-            1,
-            1,
-            2,
-            2
+            3,
+            3,
+            4,
+            5,
+            5
           ],
           "IsHidden": false,
           "LockedTurn": 2,
-          "IsCardsHidden": false
+          "IsPaperBox": false,
+          "IsRainbowBox": false
         },
         {
           "Id": "1_-1.3_0.95",
           "TypeId": 2,
-          "BoxColor": 3,
+          "BoxColor": 4,
           "BlockedNodes": [
             "0_-2.1_1.55",
             "0_0.0_1.55",
@@ -8441,88 +8751,7 @@ export const SAMPLE_LEVELS: SampleLevelPreset[] = [
             "0_0.0_0.0"
           ],
           "InitCards": [
-            0,
-            0,
             1,
-            3,
-            4
-          ],
-          "IsHidden": false,
-          "LockedTurn": 0,
-          "IsCardsHidden": false
-        },
-        {
-          "Id": "1_1.3_0.95",
-          "TypeId": 2,
-          "BoxColor": 4,
-          "BlockedNodes": [
-            "0_0.0_1.55",
-            "0_2.1_1.55",
-            "0_2.1_0.0",
-            "0_0.0_0.0"
-          ],
-          "InitCards": [
-            0,
-            1,
-            1,
-            2,
-            3
-          ],
-          "IsHidden": false,
-          "LockedTurn": 2,
-          "IsCardsHidden": false
-        },
-        {
-          "Id": "1_-1.3_-0.95",
-          "TypeId": 2,
-          "BoxColor": 0,
-          "BlockedNodes": [
-            "0_-2.1_0.0",
-            "0_0.0_0.0",
-            "0_-2.1_-1.55",
-            "0_0.0_-1.55"
-          ],
-          "InitCards": [
-            0,
-            0,
-            1,
-            2,
-            4
-          ],
-          "IsHidden": false,
-          "LockedTurn": 0,
-          "IsCardsHidden": false
-        },
-        {
-          "Id": "1_1.3_-0.95",
-          "TypeId": 2,
-          "BoxColor": 1,
-          "BlockedNodes": [
-            "0_2.1_0.0",
-            "0_0.0_0.0",
-            "0_0.0_-1.55",
-            "0_2.1_-1.55"
-          ],
-          "InitCards": [
-            0,
-            0,
-            2,
-            3,
-            4
-          ],
-          "IsHidden": false,
-          "LockedTurn": 3,
-          "IsCardsHidden": false
-        },
-        {
-          "Id": "1_0.0_0.0",
-          "TypeId": 2,
-          "BoxColor": 2,
-          "BlockedNodes": [
-            "0_0.0_0.0"
-          ],
-          "InitCards": [
-            2,
             2,
             3,
             4,
@@ -8530,12 +8759,98 @@ export const SAMPLE_LEVELS: SampleLevelPreset[] = [
           ],
           "IsHidden": false,
           "LockedTurn": 0,
-          "IsCardsHidden": false
+          "IsPaperBox": false,
+          "IsRainbowBox": false
+        },
+        {
+          "Id": "1_1.3_0.95",
+          "TypeId": 2,
+          "BoxColor": 5,
+          "BlockedNodes": [
+            "0_0.0_1.55",
+            "0_2.1_1.55",
+            "0_2.1_0.0",
+            "0_0.0_0.0"
+          ],
+          "InitCards": [
+            4,
+            4,
+            4,
+            5,
+            5
+          ],
+          "IsHidden": false,
+          "LockedTurn": 2,
+          "IsPaperBox": false,
+          "IsRainbowBox": false
+        },
+        {
+          "Id": "1_-1.3_-0.95",
+          "TypeId": 2,
+          "BoxColor": 1,
+          "BlockedNodes": [
+            "0_-2.1_0.0",
+            "0_0.0_0.0",
+            "0_-2.1_-1.55",
+            "0_0.0_-1.55"
+          ],
+          "InitCards": [
+            1,
+            3,
+            3,
+            4,
+            5
+          ],
+          "IsHidden": false,
+          "LockedTurn": 0,
+          "IsPaperBox": false,
+          "IsRainbowBox": false
+        },
+        {
+          "Id": "1_1.3_-0.95",
+          "TypeId": 2,
+          "BoxColor": 2,
+          "BlockedNodes": [
+            "0_2.1_0.0",
+            "0_0.0_0.0",
+            "0_0.0_-1.55",
+            "0_2.1_-1.55"
+          ],
+          "InitCards": [
+            1,
+            2,
+            3,
+            3,
+            4
+          ],
+          "IsHidden": false,
+          "LockedTurn": 3,
+          "IsPaperBox": false,
+          "IsRainbowBox": false
+        },
+        {
+          "Id": "1_0.0_0.0",
+          "TypeId": 2,
+          "BoxColor": 3,
+          "BlockedNodes": [
+            "0_0.0_0.0"
+          ],
+          "InitCards": [
+            1,
+            2,
+            2,
+            3,
+            5
+          ],
+          "IsHidden": false,
+          "LockedTurn": 0,
+          "IsPaperBox": false,
+          "IsRainbowBox": false
         },
         {
           "Id": "2_0.0_0.95",
           "TypeId": 2,
-          "BoxColor": 3,
+          "BoxColor": 4,
           "BlockedNodes": [
             "0_0.0_1.55",
             "0_0.0_0.0",
@@ -8544,20 +8859,21 @@ export const SAMPLE_LEVELS: SampleLevelPreset[] = [
             "1_0.0_0.0"
           ],
           "InitCards": [
-            0,
             1,
-            1,
-            1,
-            3
+            3,
+            3,
+            4,
+            5
           ],
           "IsHidden": false,
           "LockedTurn": 0,
-          "IsCardsHidden": false
+          "IsPaperBox": false,
+          "IsRainbowBox": false
         },
         {
           "Id": "2_0.0_-0.95",
           "TypeId": 2,
-          "BoxColor": 4,
+          "BoxColor": 5,
           "BlockedNodes": [
             "0_0.0_0.0",
             "0_0.0_-1.55",
@@ -8566,39 +8882,40 @@ export const SAMPLE_LEVELS: SampleLevelPreset[] = [
             "1_0.0_0.0"
           ],
           "InitCards": [
-            2,
-            2,
-            3,
+            1,
+            1,
+            1,
             3,
             4
           ],
           "IsHidden": false,
           "LockedTurn": 0,
-          "IsCardsHidden": false
+          "IsPaperBox": false,
+          "IsRainbowBox": false
         },
         {
           "Id": "3_0.0_0.0",
           "TypeId": 1,
-          "BoxColor": 5,
+          "BoxColor": 1,
           "BlockedNodes": [
             "0_0.0_0.0",
+            "1_1.3_0.95",
             "1_0.0_0.0",
             "2_0.0_0.95",
             "2_0.0_-0.95"
           ],
           "InitCards": [
-            0,
             1,
-            4,
-            4
+            5,
+            5,
+            5
           ],
           "IsHidden": false,
           "LockedTurn": 0,
-          "IsCardsHidden": false
+          "IsPaperBox": true,
+          "IsRainbowBox": false
         }
       ],
-      "BoardOffsetX": 0,
-      "BoardOffsetZ": 0,
       "SpawnerNodes": [],
       "TurnSpawnerNodes": [],
       "LinkedBoxes": [],
@@ -8613,6 +8930,8 @@ export const SAMPLE_LEVELS: SampleLevelPreset[] = [
     "description": "The ultimate 27-box 5-tier master step ziggurat spanning 3 expansive rows with 2 symmetrically placed Mystery Boxes on Layer 0.",
     "data": {
       "Id": 30,
+      "BoardOffsetX": 0,
+      "BoardOffsetZ": 0,
       "BoardNodes": [
         {
           "Id": "0_-3.0_2.05",
@@ -8808,201 +9127,213 @@ export const SAMPLE_LEVELS: SampleLevelPreset[] = [
         {
           "Id": "0_-3.0_2.05",
           "TypeId": 2,
-          "BoxColor": 0,
+          "BoxColor": 1,
           "BlockedNodes": [],
           "InitCards": [
             1,
-            1,
             2,
-            4,
-            4
+            3,
+            5,
+            5
           ],
-          "IsHidden": true,
+          "IsHidden": false,
           "LockedTurn": 0,
-          "IsCardsHidden": false
+          "IsPaperBox": false,
+          "IsRainbowBox": true
         },
         {
           "Id": "0_-1.0_2.05",
           "TypeId": 2,
-          "BoxColor": 1,
+          "BoxColor": 2,
           "BlockedNodes": [],
           "InitCards": [
             1,
             1,
+            1,
             3,
-            3,
-            4
+            3
           ],
           "IsHidden": false,
           "LockedTurn": 0,
-          "IsCardsHidden": false
+          "IsPaperBox": false,
+          "IsRainbowBox": false
         },
         {
           "Id": "0_1.0_2.05",
           "TypeId": 2,
-          "BoxColor": 2,
+          "BoxColor": 3,
           "BlockedNodes": [],
           "InitCards": [
             1,
-            2,
-            3,
+            1,
+            1,
             3,
             4
           ],
           "IsHidden": false,
           "LockedTurn": 0,
-          "IsCardsHidden": false
+          "IsPaperBox": false,
+          "IsRainbowBox": false
         },
         {
           "Id": "0_3.0_2.05",
           "TypeId": 2,
-          "BoxColor": 3,
+          "BoxColor": 4,
           "BlockedNodes": [],
           "InitCards": [
+            1,
             2,
             3,
             3,
-            4,
             4
           ],
-          "IsHidden": true,
+          "IsHidden": false,
           "LockedTurn": 0,
-          "IsCardsHidden": false
+          "IsPaperBox": false,
+          "IsRainbowBox": true
         },
         {
           "Id": "0_-3.0_0.0",
           "TypeId": 2,
-          "BoxColor": 4,
+          "BoxColor": 5,
           "BlockedNodes": [],
           "InitCards": [
-            0,
-            1,
             1,
             2,
-            2
+            2,
+            3,
+            5
           ],
           "IsHidden": false,
           "LockedTurn": 0,
-          "IsCardsHidden": false
+          "IsPaperBox": false,
+          "IsRainbowBox": false
         },
         {
           "Id": "0_-1.0_0.0",
           "TypeId": 2,
-          "BoxColor": 5,
+          "BoxColor": 1,
           "BlockedNodes": [],
           "InitCards": [
-            0,
-            0,
+            1,
             2,
-            3,
-            3,
-            4
+            4,
+            4,
+            4,
+            5
           ],
           "IsHidden": false,
           "LockedTurn": 0,
-          "IsCardsHidden": false
+          "IsPaperBox": true,
+          "IsRainbowBox": false
         },
         {
           "Id": "0_1.0_0.0",
           "TypeId": 2,
-          "BoxColor": 0,
+          "BoxColor": 1,
           "BlockedNodes": [],
           "InitCards": [
-            0,
-            0,
-            1,
             2,
-            3
+            3,
+            5,
+            5,
+            5
           ],
           "IsHidden": false,
           "LockedTurn": 0,
-          "IsCardsHidden": false
+          "IsPaperBox": false,
+          "IsRainbowBox": false
         },
         {
           "Id": "0_3.0_0.0",
           "TypeId": 2,
-          "BoxColor": 1,
+          "BoxColor": 2,
           "BlockedNodes": [],
           "InitCards": [
-            0,
             1,
-            2,
             3,
-            3
+            3,
+            4,
+            5
           ],
           "IsHidden": false,
           "LockedTurn": 0,
-          "IsCardsHidden": false
+          "IsPaperBox": false,
+          "IsRainbowBox": false
         },
         {
           "Id": "0_-3.0_-2.05",
           "TypeId": 2,
-          "BoxColor": 2,
+          "BoxColor": 3,
           "BlockedNodes": [],
           "InitCards": [
-            0,
-            0,
-            1,
-            1,
-            4
+            2,
+            2,
+            3,
+            3,
+            5
           ],
           "IsHidden": false,
           "LockedTurn": 0,
-          "IsCardsHidden": false
+          "IsPaperBox": false,
+          "IsRainbowBox": false
         },
         {
           "Id": "0_-1.0_-2.05",
           "TypeId": 2,
-          "BoxColor": 3,
-          "BlockedNodes": [],
-          "InitCards": [
-            0,
-            1,
-            1,
-            4,
-            4
-          ],
-          "IsHidden": false,
-          "LockedTurn": 0,
-          "IsCardsHidden": false
-        },
-        {
-          "Id": "0_1.0_-2.05",
-          "TypeId": 2,
           "BoxColor": 4,
           "BlockedNodes": [],
           "InitCards": [
-            2,
-            3,
+            1,
             3,
             4,
-            4
+            5,
+            5
           ],
           "IsHidden": false,
           "LockedTurn": 0,
-          "IsCardsHidden": false
+          "IsPaperBox": false,
+          "IsRainbowBox": false
         },
         {
-          "Id": "0_3.0_-2.05",
+          "Id": "0_1.0_-2.05",
           "TypeId": 2,
           "BoxColor": 5,
           "BlockedNodes": [],
           "InitCards": [
             1,
             1,
+            4,
+            4,
+            5
+          ],
+          "IsHidden": false,
+          "LockedTurn": 0,
+          "IsPaperBox": false,
+          "IsRainbowBox": false
+        },
+        {
+          "Id": "0_3.0_-2.05",
+          "TypeId": 2,
+          "BoxColor": 1,
+          "BlockedNodes": [],
+          "InitCards": [
+            1,
             2,
             2,
-            3,
+            4,
+            4,
             4
           ],
           "IsHidden": false,
           "LockedTurn": 0,
-          "IsCardsHidden": false
+          "IsPaperBox": true,
+          "IsRainbowBox": false
         },
         {
           "Id": "1_-3.0_1.05",
           "TypeId": 2,
-          "BoxColor": 0,
+          "BoxColor": 1,
           "BlockedNodes": [
             "0_-3.0_2.05",
             "0_-3.0_0.0"
@@ -9011,150 +9342,158 @@ export const SAMPLE_LEVELS: SampleLevelPreset[] = [
             1,
             1,
             2,
-            2,
-            4
+            3,
+            5
           ],
           "IsHidden": false,
           "LockedTurn": 0,
-          "IsCardsHidden": false
+          "IsPaperBox": false,
+          "IsRainbowBox": false
         },
         {
           "Id": "1_-1.0_1.05",
           "TypeId": 2,
-          "BoxColor": 1,
+          "BoxColor": 2,
           "BlockedNodes": [
             "0_-1.0_2.05",
             "0_-1.0_0.0"
           ],
           "InitCards": [
-            0,
-            1,
             1,
             2,
-            4
+            2,
+            3,
+            3
           ],
           "IsHidden": false,
           "LockedTurn": 0,
-          "IsCardsHidden": false
+          "IsPaperBox": false,
+          "IsRainbowBox": false
         },
         {
           "Id": "1_1.0_1.05",
           "TypeId": 2,
-          "BoxColor": 2,
+          "BoxColor": 3,
           "BlockedNodes": [
             "0_1.0_2.05",
             "0_1.0_0.0"
           ],
           "InitCards": [
-            0,
-            0,
-            1,
-            1,
-            2
+            2,
+            3,
+            5,
+            5,
+            5
           ],
           "IsHidden": false,
           "LockedTurn": 0,
-          "IsCardsHidden": false
+          "IsPaperBox": false,
+          "IsRainbowBox": false
         },
         {
           "Id": "1_3.0_1.05",
           "TypeId": 2,
-          "BoxColor": 3,
+          "BoxColor": 4,
           "BlockedNodes": [
             "0_3.0_2.05",
             "0_3.0_0.0"
           ],
           "InitCards": [
-            0,
-            0,
             2,
-            4,
-            4
+            2,
+            2,
+            5,
+            5
           ],
           "IsHidden": false,
           "LockedTurn": 0,
-          "IsCardsHidden": false
+          "IsPaperBox": false,
+          "IsRainbowBox": false
         },
         {
           "Id": "1_-3.0_-1.05",
           "TypeId": 2,
-          "BoxColor": 4,
+          "BoxColor": 5,
           "BlockedNodes": [
             "0_-3.0_0.0",
             "0_-3.0_-2.05"
           ],
           "InitCards": [
-            0,
-            0,
-            0,
-            1,
-            3
-          ],
-          "IsHidden": false,
-          "LockedTurn": 0,
-          "IsCardsHidden": false
-        },
-        {
-          "Id": "1_-1.0_-1.05",
-          "TypeId": 2,
-          "BoxColor": 5,
-          "BlockedNodes": [
-            "0_-1.0_0.0",
-            "0_-1.0_-2.05"
-          ],
-          "InitCards": [
-            0,
-            0,
-            1,
             1,
             2,
-            3
-          ],
-          "IsHidden": false,
-          "LockedTurn": 0,
-          "IsCardsHidden": false
-        },
-        {
-          "Id": "1_1.0_-1.05",
-          "TypeId": 2,
-          "BoxColor": 0,
-          "BlockedNodes": [
-            "0_1.0_0.0",
-            "0_1.0_-2.05"
-          ],
-          "InitCards": [
-            0,
-            0,
-            0,
+            2,
             3,
             4
           ],
           "IsHidden": false,
           "LockedTurn": 0,
-          "IsCardsHidden": false
+          "IsPaperBox": false,
+          "IsRainbowBox": false
+        },
+        {
+          "Id": "1_-1.0_-1.05",
+          "TypeId": 2,
+          "BoxColor": 1,
+          "BlockedNodes": [
+            "0_-1.0_0.0",
+            "0_-1.0_-2.05"
+          ],
+          "InitCards": [
+            1,
+            2,
+            2,
+            2,
+            4,
+            5
+          ],
+          "IsHidden": false,
+          "LockedTurn": 0,
+          "IsPaperBox": true,
+          "IsRainbowBox": false
+        },
+        {
+          "Id": "1_1.0_-1.05",
+          "TypeId": 2,
+          "BoxColor": 1,
+          "BlockedNodes": [
+            "0_1.0_0.0",
+            "0_1.0_-2.05"
+          ],
+          "InitCards": [
+            1,
+            1,
+            2,
+            2,
+            4
+          ],
+          "IsHidden": false,
+          "LockedTurn": 0,
+          "IsPaperBox": false,
+          "IsRainbowBox": false
         },
         {
           "Id": "1_3.0_-1.05",
           "TypeId": 2,
-          "BoxColor": 1,
+          "BoxColor": 2,
           "BlockedNodes": [
             "0_3.0_0.0",
             "0_3.0_-2.05"
           ],
           "InitCards": [
+            1,
+            1,
             2,
-            2,
-            3,
-            3
+            5
           ],
           "IsHidden": false,
           "LockedTurn": 0,
-          "IsCardsHidden": false
+          "IsPaperBox": false,
+          "IsRainbowBox": false
         },
         {
           "Id": "2_-1.8_0.7",
           "TypeId": 2,
-          "BoxColor": 2,
+          "BoxColor": 3,
           "BlockedNodes": [
             "0_-3.0_0.0",
             "0_-1.0_0.0",
@@ -9162,19 +9501,20 @@ export const SAMPLE_LEVELS: SampleLevelPreset[] = [
             "1_-1.0_1.05"
           ],
           "InitCards": [
-            0,
-            0,
-            0,
-            1
+            1,
+            3,
+            4,
+            5
           ],
           "IsHidden": false,
           "LockedTurn": 0,
-          "IsCardsHidden": false
+          "IsPaperBox": false,
+          "IsRainbowBox": false
         },
         {
           "Id": "2_1.8_0.7",
           "TypeId": 2,
-          "BoxColor": 3,
+          "BoxColor": 4,
           "BlockedNodes": [
             "0_1.0_0.0",
             "0_3.0_0.0",
@@ -9182,19 +9522,20 @@ export const SAMPLE_LEVELS: SampleLevelPreset[] = [
             "1_3.0_1.05"
           ],
           "InitCards": [
-            0,
-            3,
-            4,
-            4
+            1,
+            2,
+            2,
+            5
           ],
           "IsHidden": false,
           "LockedTurn": 0,
-          "IsCardsHidden": false
+          "IsPaperBox": false,
+          "IsRainbowBox": false
         },
         {
           "Id": "2_-1.8_-0.7",
           "TypeId": 2,
-          "BoxColor": 4,
+          "BoxColor": 5,
           "BlockedNodes": [
             "0_-3.0_0.0",
             "0_-1.0_0.0",
@@ -9203,18 +9544,19 @@ export const SAMPLE_LEVELS: SampleLevelPreset[] = [
           ],
           "InitCards": [
             1,
-            2,
             3,
-            3
+            4,
+            5
           ],
           "IsHidden": false,
           "LockedTurn": 0,
-          "IsCardsHidden": false
+          "IsPaperBox": false,
+          "IsRainbowBox": false
         },
         {
           "Id": "2_1.8_-0.7",
           "TypeId": 2,
-          "BoxColor": 5,
+          "BoxColor": 1,
           "BlockedNodes": [
             "0_1.0_0.0",
             "0_3.0_0.0",
@@ -9224,19 +9566,20 @@ export const SAMPLE_LEVELS: SampleLevelPreset[] = [
           "InitCards": [
             1,
             1,
-            1,
-            2,
             3,
-            4
+            3,
+            4,
+            5
           ],
           "IsHidden": false,
           "LockedTurn": 0,
-          "IsCardsHidden": false
+          "IsPaperBox": true,
+          "IsRainbowBox": false
         },
         {
           "Id": "3_-1.0_0.0",
           "TypeId": 2,
-          "BoxColor": 0,
+          "BoxColor": 1,
           "BlockedNodes": [
             "0_-1.0_0.0",
             "1_-1.0_1.05",
@@ -9245,19 +9588,20 @@ export const SAMPLE_LEVELS: SampleLevelPreset[] = [
             "2_-1.8_-0.7"
           ],
           "InitCards": [
-            2,
-            2,
             3,
+            4,
+            4,
             4
           ],
           "IsHidden": false,
           "LockedTurn": 0,
-          "IsCardsHidden": false
+          "IsPaperBox": false,
+          "IsRainbowBox": false
         },
         {
           "Id": "3_1.0_0.0",
           "TypeId": 2,
-          "BoxColor": 1,
+          "BoxColor": 2,
           "BlockedNodes": [
             "0_1.0_0.0",
             "1_1.0_1.05",
@@ -9266,19 +9610,20 @@ export const SAMPLE_LEVELS: SampleLevelPreset[] = [
             "2_1.8_-0.7"
           ],
           "InitCards": [
-            0,
-            0,
             1,
+            2,
+            4,
             4
           ],
           "IsHidden": false,
           "LockedTurn": 0,
-          "IsCardsHidden": false
+          "IsPaperBox": false,
+          "IsRainbowBox": false
         },
         {
           "Id": "4_0.0_0.0",
           "TypeId": 1,
-          "BoxColor": 5,
+          "BoxColor": 1,
           "BlockedNodes": [
             "0_-1.0_0.0",
             "0_1.0_0.0",
@@ -9290,18 +9635,17 @@ export const SAMPLE_LEVELS: SampleLevelPreset[] = [
             "3_1.0_0.0"
           ],
           "InitCards": [
-            0,
-            0,
             2,
+            2,
+            3,
             4
           ],
           "IsHidden": false,
           "LockedTurn": 0,
-          "IsCardsHidden": false
+          "IsPaperBox": true,
+          "IsRainbowBox": false
         }
       ],
-      "BoardOffsetX": 0,
-      "BoardOffsetZ": 0,
       "SpawnerNodes": [],
       "TurnSpawnerNodes": [],
       "LinkedBoxes": [],

@@ -21,6 +21,8 @@ export interface BoxNode {
   InitCards: number[];
   IsHidden: boolean;
   LockedTurn?: number;
+  IsPaperBox?: boolean;
+  IsRainbowBox?: boolean;
   IsCardsHidden?: boolean;
 }
 
@@ -32,6 +34,8 @@ export interface SpawnBox {
   InitCards: number[];
   IsHidden: boolean;
   LockedTurn?: number;
+  IsPaperBox?: boolean;
+  IsRainbowBox?: boolean;
   IsCardsHidden?: boolean;
 }
 
