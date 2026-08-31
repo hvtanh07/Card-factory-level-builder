@@ -6,8 +6,8 @@ export const BOX_TYPES: Record<number, BoxTypeDef> = {
     name: 'Small Box (4 Slots)',
     capacity: 4,
     defaultSlots: 4,
-    width: 78,
-    height: 68,
+    width: 108,
+    height: 94,
     isTray: false,
   },
   2: {
@@ -15,8 +15,8 @@ export const BOX_TYPES: Record<number, BoxTypeDef> = {
     name: 'Medium Box (6 Slots)',
     capacity: 6,
     defaultSlots: 6,
-    width: 96,
-    height: 68,
+    width: 132,
+    height: 94,
     isTray: false,
   },
   3: {
@@ -24,8 +24,8 @@ export const BOX_TYPES: Record<number, BoxTypeDef> = {
     name: 'Large Box (8 Slots)',
     capacity: 8,
     defaultSlots: 8,
-    width: 118,
-    height: 68,
+    width: 163,
+    height: 94,
     isTray: false,
   },
   4: {
@@ -33,8 +33,8 @@ export const BOX_TYPES: Record<number, BoxTypeDef> = {
     name: 'Small Tray (4 Slots)',
     capacity: 4,
     defaultSlots: 4,
-    width: 84,
-    height: 76,
+    width: 116,
+    height: 105,
     isTray: true,
   },
   5: {
@@ -42,8 +42,8 @@ export const BOX_TYPES: Record<number, BoxTypeDef> = {
     name: 'Medium Tray (6 Slots)',
     capacity: 6,
     defaultSlots: 6,
-    width: 116,
-    height: 76,
+    width: 160,
+    height: 105,
     isTray: true,
   },
   6: {
@@ -51,8 +51,8 @@ export const BOX_TYPES: Record<number, BoxTypeDef> = {
     name: 'Large Tray (8 Slots)',
     capacity: 8,
     defaultSlots: 8,
-    width: 148,
-    height: 76,
+    width: 205,
+    height: 105,
     isTray: true,
   },
   7: {
@@ -60,8 +60,8 @@ export const BOX_TYPES: Record<number, BoxTypeDef> = {
     name: 'XL Box (10 Slots)',
     capacity: 10,
     defaultSlots: 10,
-    width: 142,
-    height: 68,
+    width: 196,
+    height: 94,
     isTray: false,
   },
   8: {
@@ -69,8 +69,8 @@ export const BOX_TYPES: Record<number, BoxTypeDef> = {
     name: 'XL Tray (10 Slots)',
     capacity: 10,
     defaultSlots: 10,
-    width: 178,
-    height: 76,
+    width: 246,
+    height: 105,
     isTray: true,
   },
 };
@@ -84,9 +84,10 @@ export const getBoxType = (id: number): BoxTypeDef => {
       name: `Custom Type ${id}`,
       capacity: 8,
       defaultSlots: 6,
-      width: 70,
-      height: 100,
+      width: 97,
+      height: 138,
       isTray: false,
     }
   );
 };
+
