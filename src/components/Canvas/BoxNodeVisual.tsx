@@ -166,32 +166,32 @@ export const BoxNodeVisual: React.FC<BoxNodeVisualProps> = ({
       <g>
         {cardCount > 0 ? (
           (() => {
-            const availableHeight = h - 16 * scaleMultiplier;
-            const cardSpacing = availableHeight / Math.max(cardCount, 1);
+            const availableWidth = w - 16 * scaleMultiplier;
+            const cardSpacing = availableWidth / Math.max(cardCount, 1);
             const cardThickness = Math.min(cardSpacing - 2 * scaleMultiplier, 14 * scaleMultiplier);
 
             return activeBox.InitCards.map((cardColorId, idx) => {
               const cardColor = getColor(cardColorId);
-              const cardY = -halfH + 8 * scaleMultiplier + idx * cardSpacing;
-              const cardW = w - 12 * scaleMultiplier;
+              const cardX = -halfW + 8 * scaleMultiplier + idx * cardSpacing;
+              const cardH = h - 12 * scaleMultiplier;
 
               return (
                 <g key={`card-${idx}`}>
                   {/* Card Drop Shadow */}
                   <rect
-                    x={-cardW / 2 + 1}
-                    y={cardY + 1}
-                    width={cardW}
-                    height={cardThickness}
+                    x={cardX + 1}
+                    y={-cardH / 2 + 1}
+                    width={cardThickness}
+                    height={cardH}
                     rx={cardThickness / 2}
                     fill="rgba(0, 0, 0, 0.25)"
                   />
                   {/* Card Base */}
                   <rect
-                    x={-cardW / 2}
-                    y={cardY}
-                    width={cardW}
-                    height={cardThickness}
+                    x={cardX}
+                    y={-cardH / 2}
+                    width={cardThickness}
+                    height={cardH}
                     rx={cardThickness / 2}
                     fill={isCardsHidden ? '#334155' : cardColor.hex}
                     stroke={isCardsHidden ? '#64748b' : cardColor.borderHex}
@@ -200,8 +200,8 @@ export const BoxNodeVisual: React.FC<BoxNodeVisualProps> = ({
                   {/* Card Gloss / Question Mark if hidden */}
                   {isCardsHidden ? (
                     <text
-                      x="0"
-                      y={cardY + cardThickness / 2 + 3}
+                      x={cardX + cardThickness / 2}
+                      y="3.5"
                       textAnchor="middle"
                       fill="#94a3b8"
                       fontSize="9"
@@ -211,10 +211,10 @@ export const BoxNodeVisual: React.FC<BoxNodeVisualProps> = ({
                     </text>
                   ) : (
                     <rect
-                      x={-cardW / 2 + 2 * scaleMultiplier}
-                      y={cardY + 1}
-                      width={cardW - 4 * scaleMultiplier}
-                      height={Math.max(cardThickness / 2 - 1, 1)}
+                      x={cardX + 1}
+                      y={-cardH / 2 + 2 * scaleMultiplier}
+                      width={Math.max(cardThickness / 2 - 1, 1)}
+                      height={cardH - 4 * scaleMultiplier}
                       rx={cardThickness / 4}
                       fill="rgba(255, 255, 255, 0.4)"
                     />
@@ -226,15 +226,15 @@ export const BoxNodeVisual: React.FC<BoxNodeVisualProps> = ({
         ) : (
           (() => {
             const lines: React.ReactNode[] = [];
-            const step = (h - 16 * scaleMultiplier) / slotCount;
+            const step = (w - 16 * scaleMultiplier) / slotCount;
             for (let i = 1; i < slotCount; i++) {
               lines.push(
                 <line
                   key={`slot-${i}`}
-                  x1={-halfW + 8 * scaleMultiplier}
-                  y1={-halfH + 8 * scaleMultiplier + i * step}
-                  x2={halfW - 8 * scaleMultiplier}
-                  y2={-halfH + 8 * scaleMultiplier + i * step}
+                  x1={-halfW + 8 * scaleMultiplier + i * step}
+                  y1={-halfH + 8 * scaleMultiplier}
+                  x2={-halfW + 8 * scaleMultiplier + i * step}
+                  y2={halfH - 8 * scaleMultiplier}
                   stroke="rgba(255, 255, 255, 0.2)"
                   strokeDasharray="2,2"
                 />

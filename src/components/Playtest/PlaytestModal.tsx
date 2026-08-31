@@ -1017,18 +1017,19 @@ export const PlaytestModal: React.FC<PlaytestModalProps> = ({ levelData, onClose
 
                           {/* Cards Stack inside Box / Tray (only if not full mystery box) */}
                           {!isHidden && activeBox.InitCards.map((cCol, cIdx) => {
-                            const spacing = (h - 16) / Math.max(activeBox.InitCards.length, 1);
-                            const cardY = -h / 2 + 8 + cIdx * spacing;
-                            const cardW = w - 12;
+                            const spacing = (w - 16) / Math.max(activeBox.InitCards.length, 1);
+                            const cardX = -w / 2 + 8 + cIdx * spacing;
+                            const cardH = h - 12;
+                            const cardThickness = Math.min(spacing - 2, 14);
                             const cColorDef = getColor(cCol);
 
                             return (
                               <g key={`play-box-card-${cIdx}`}>
                                 <rect
-                                  x={-cardW / 2}
-                                  y={cardY}
-                                  width={cardW}
-                                  height={Math.min(spacing - 2, 14)}
+                                  x={cardX}
+                                  y={-cardH / 2}
+                                  width={cardThickness}
+                                  height={cardH}
                                   rx={3}
                                   fill={areCardsHidden ? '#334155' : cColorDef.hex}
                                   stroke={areCardsHidden ? '#64748b' : cColorDef.borderHex}
@@ -1036,8 +1037,8 @@ export const PlaytestModal: React.FC<PlaytestModalProps> = ({ levelData, onClose
                                 />
                                 {areCardsHidden ? (
                                   <text
-                                    x="0"
-                                    y={cardY + Math.min(spacing - 2, 14) / 2 + 3}
+                                    x={cardX + cardThickness / 2}
+                                    y="3.5"
                                     textAnchor="middle"
                                     fill="#94a3b8"
                                     fontSize="8"
@@ -1047,10 +1048,10 @@ export const PlaytestModal: React.FC<PlaytestModalProps> = ({ levelData, onClose
                                   </text>
                                 ) : (
                                   <rect
-                                    x={-cardW / 2 + 2}
-                                    y={cardY + 1}
-                                    width={cardW - 4}
-                                    height={3}
+                                    x={cardX + 1}
+                                    y={-cardH / 2 + 2}
+                                    width={Math.max(cardThickness - 2, 1)}
+                                    height={cardH - 4}
                                     rx={1.5}
                                     fill="rgba(255, 255, 255, 0.4)"
                                   />

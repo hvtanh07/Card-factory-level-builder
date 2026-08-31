@@ -6,51 +6,51 @@ export const LEVEL_EASY_1_DATA: LevelData = {
   "BoardOffsetZ": 0,
   "BoardNodes": [
     {
-      "Id": "0_-0.8_0.5",
+      "Id": "0_-1.2_0.75",
       "LayerId": 0,
       "YRotation": 0.0,
-      "XPosition": -0.8,
-      "ZPosition": 0.5
+      "XPosition": -1.2,
+      "ZPosition": 0.75
     },
     {
-      "Id": "0_-0.8_-0.5",
+      "Id": "0_-1.2_-0.75",
       "LayerId": 0,
       "YRotation": 0.0,
-      "XPosition": -0.8,
-      "ZPosition": -0.5
+      "XPosition": -1.2,
+      "ZPosition": -0.75
     },
     {
-      "Id": "0_0.8_0.5",
+      "Id": "0_1.2_0.75",
       "LayerId": 0,
       "YRotation": 0.0,
-      "XPosition": 0.8,
-      "ZPosition": 0.5
+      "XPosition": 1.2,
+      "ZPosition": 0.75
     },
     {
-      "Id": "0_0.8_-0.5",
+      "Id": "0_1.2_-0.75",
       "LayerId": 0,
       "YRotation": 0.0,
-      "XPosition": 0.8,
-      "ZPosition": -0.5
+      "XPosition": 1.2,
+      "ZPosition": -0.75
     },
     {
-      "Id": "1_-0.8_0.0",
+      "Id": "1_-1.2_0.0",
       "LayerId": 1,
       "YRotation": 90.0,
-      "XPosition": -0.8,
+      "XPosition": -1.2,
       "ZPosition": 0.0
     },
     {
-      "Id": "1_0.8_0.0",
+      "Id": "1_1.2_0.0",
       "LayerId": 1,
       "YRotation": 90.0,
-      "XPosition": 0.8,
+      "XPosition": 1.2,
       "ZPosition": 0.0
     }
   ],
   "BoxNodes": [
     {
-      "Id": "0_-0.8_0.5",
+      "Id": "0_-1.2_0.75",
       "TypeId": 2,
       "BoxColor": 0,
       "BlockedNodes": [],
@@ -67,7 +67,7 @@ export const LEVEL_EASY_1_DATA: LevelData = {
       "IsCardsHidden": false
     },
     {
-      "Id": "0_-0.8_-0.5",
+      "Id": "0_-1.2_-0.75",
       "TypeId": 2,
       "BoxColor": 1,
       "BlockedNodes": [],
@@ -84,7 +84,7 @@ export const LEVEL_EASY_1_DATA: LevelData = {
       "IsCardsHidden": false
     },
     {
-      "Id": "0_0.8_0.5",
+      "Id": "0_1.2_0.75",
       "TypeId": 2,
       "BoxColor": 0,
       "BlockedNodes": [],
@@ -101,7 +101,7 @@ export const LEVEL_EASY_1_DATA: LevelData = {
       "IsCardsHidden": false
     },
     {
-      "Id": "0_0.8_-0.5",
+      "Id": "0_1.2_-0.75",
       "TypeId": 2,
       "BoxColor": 1,
       "BlockedNodes": [],
@@ -118,12 +118,12 @@ export const LEVEL_EASY_1_DATA: LevelData = {
       "IsCardsHidden": false
     },
     {
-      "Id": "1_-0.8_0.0",
+      "Id": "1_-1.2_0.0",
       "TypeId": 2,
       "BoxColor": 0,
       "BlockedNodes": [
-        "0_-0.8_0.5",
-        "0_-0.8_-0.5"
+        "0_-1.2_0.75",
+        "0_-1.2_-0.75"
       ],
       "InitCards": [
         0,
@@ -138,12 +138,12 @@ export const LEVEL_EASY_1_DATA: LevelData = {
       "IsCardsHidden": false
     },
     {
-      "Id": "1_0.8_0.0",
+      "Id": "1_1.2_0.0",
       "TypeId": 2,
       "BoxColor": 1,
       "BlockedNodes": [
-        "0_0.8_0.5",
-        "0_0.8_-0.5"
+        "0_1.2_0.75",
+        "0_1.2_-0.75"
       ],
       "InitCards": [
         0,
@@ -171,51 +171,51 @@ export const LEVEL_EASY_2_DATA: LevelData = {
   "BoardOffsetZ": 0,
   "BoardNodes": [
     {
-      "Id": "0_-0.5_0.5",
+      "Id": "0_-0.7_0.8",
       "LayerId": 0,
-      "YRotation": 0.0,
-      "XPosition": -0.5,
-      "ZPosition": 0.5
-    },
-    {
-      "Id": "0_0.5_0.5",
-      "LayerId": 0,
-      "YRotation": 0.0,
-      "XPosition": 0.5,
-      "ZPosition": 0.5
-    },
-    {
-      "Id": "0_-0.5_-0.5",
-      "LayerId": 0,
-      "YRotation": 0.0,
-      "XPosition": -0.5,
-      "ZPosition": -0.5
-    },
-    {
-      "Id": "0_0.5_-0.5",
-      "LayerId": 0,
-      "YRotation": 0.0,
-      "XPosition": 0.5,
-      "ZPosition": -0.5
-    },
-    {
-      "Id": "1_0.0_0.5",
-      "LayerId": 1,
       "YRotation": 90.0,
-      "XPosition": 0.0,
-      "ZPosition": 0.5
+      "XPosition": -0.7,
+      "ZPosition": 0.8
     },
     {
-      "Id": "1_0.0_-0.5",
-      "LayerId": 1,
+      "Id": "0_0.7_0.8",
+      "LayerId": 0,
       "YRotation": 90.0,
+      "XPosition": 0.7,
+      "ZPosition": 0.8
+    },
+    {
+      "Id": "0_-0.7_-0.8",
+      "LayerId": 0,
+      "YRotation": 90.0,
+      "XPosition": -0.7,
+      "ZPosition": -0.8
+    },
+    {
+      "Id": "0_0.7_-0.8",
+      "LayerId": 0,
+      "YRotation": 90.0,
+      "XPosition": 0.7,
+      "ZPosition": -0.8
+    },
+    {
+      "Id": "1_0.0_0.8",
+      "LayerId": 1,
+      "YRotation": 0.0,
       "XPosition": 0.0,
-      "ZPosition": -0.5
+      "ZPosition": 0.8
+    },
+    {
+      "Id": "1_0.0_-0.8",
+      "LayerId": 1,
+      "YRotation": 0.0,
+      "XPosition": 0.0,
+      "ZPosition": -0.8
     }
   ],
   "BoxNodes": [
     {
-      "Id": "0_-0.5_0.5",
+      "Id": "0_-0.7_0.8",
       "TypeId": 2,
       "BoxColor": 0,
       "BlockedNodes": [],
@@ -232,7 +232,7 @@ export const LEVEL_EASY_2_DATA: LevelData = {
       "IsCardsHidden": false
     },
     {
-      "Id": "0_0.5_0.5",
+      "Id": "0_0.7_0.8",
       "TypeId": 2,
       "BoxColor": 1,
       "BlockedNodes": [],
@@ -249,7 +249,7 @@ export const LEVEL_EASY_2_DATA: LevelData = {
       "IsCardsHidden": false
     },
     {
-      "Id": "0_-0.5_-0.5",
+      "Id": "0_-0.7_-0.8",
       "TypeId": 2,
       "BoxColor": 2,
       "BlockedNodes": [],
@@ -266,7 +266,7 @@ export const LEVEL_EASY_2_DATA: LevelData = {
       "IsCardsHidden": false
     },
     {
-      "Id": "0_0.5_-0.5",
+      "Id": "0_0.7_-0.8",
       "TypeId": 2,
       "BoxColor": 0,
       "BlockedNodes": [],
@@ -283,12 +283,12 @@ export const LEVEL_EASY_2_DATA: LevelData = {
       "IsCardsHidden": false
     },
     {
-      "Id": "1_0.0_0.5",
+      "Id": "1_0.0_0.8",
       "TypeId": 2,
       "BoxColor": 1,
       "BlockedNodes": [
-        "0_-0.5_0.5",
-        "0_0.5_0.5"
+        "0_-0.7_0.8",
+        "0_0.7_0.8"
       ],
       "InitCards": [
         0,
@@ -303,12 +303,12 @@ export const LEVEL_EASY_2_DATA: LevelData = {
       "IsCardsHidden": false
     },
     {
-      "Id": "1_0.0_-0.5",
+      "Id": "1_0.0_-0.8",
       "TypeId": 2,
       "BoxColor": 2,
       "BlockedNodes": [
-        "0_-0.5_-0.5",
-        "0_0.5_-0.5"
+        "0_-0.7_-0.8",
+        "0_0.7_-0.8"
       ],
       "InitCards": [
         0,
@@ -336,46 +336,46 @@ export const LEVEL_EASY_3_DATA: LevelData = {
   "BoardOffsetZ": 0,
   "BoardNodes": [
     {
-      "Id": "0_-0.5_0.5",
+      "Id": "0_-0.8_0.75",
       "LayerId": 0,
       "YRotation": 0.0,
-      "XPosition": -0.5,
-      "ZPosition": 0.5
+      "XPosition": -0.8,
+      "ZPosition": 0.75
     },
     {
-      "Id": "0_0.5_0.5",
+      "Id": "0_0.8_0.75",
       "LayerId": 0,
       "YRotation": 0.0,
-      "XPosition": 0.5,
-      "ZPosition": 0.5
+      "XPosition": 0.8,
+      "ZPosition": 0.75
     },
     {
-      "Id": "0_-0.5_-0.5",
+      "Id": "0_-0.8_-0.75",
       "LayerId": 0,
       "YRotation": 0.0,
-      "XPosition": -0.5,
-      "ZPosition": -0.5
+      "XPosition": -0.8,
+      "ZPosition": -0.75
     },
     {
-      "Id": "0_0.5_-0.5",
+      "Id": "0_0.8_-0.75",
       "LayerId": 0,
       "YRotation": 0.0,
-      "XPosition": 0.5,
-      "ZPosition": -0.5
+      "XPosition": 0.8,
+      "ZPosition": -0.75
     },
     {
-      "Id": "1_0.0_0.5",
+      "Id": "1_-0.8_0.0",
       "LayerId": 1,
       "YRotation": 90.0,
-      "XPosition": 0.0,
-      "ZPosition": 0.5
+      "XPosition": -0.8,
+      "ZPosition": 0.0
     },
     {
-      "Id": "1_0.0_-0.5",
+      "Id": "1_0.8_0.0",
       "LayerId": 1,
       "YRotation": 90.0,
-      "XPosition": 0.0,
-      "ZPosition": -0.5
+      "XPosition": 0.8,
+      "ZPosition": 0.0
     },
     {
       "Id": "2_0.0_0.0",
@@ -387,7 +387,7 @@ export const LEVEL_EASY_3_DATA: LevelData = {
   ],
   "BoxNodes": [
     {
-      "Id": "0_-0.5_0.5",
+      "Id": "0_-0.8_0.75",
       "TypeId": 2,
       "BoxColor": 0,
       "BlockedNodes": [],
@@ -404,7 +404,7 @@ export const LEVEL_EASY_3_DATA: LevelData = {
       "IsCardsHidden": false
     },
     {
-      "Id": "0_0.5_0.5",
+      "Id": "0_0.8_0.75",
       "TypeId": 2,
       "BoxColor": 1,
       "BlockedNodes": [],
@@ -421,7 +421,7 @@ export const LEVEL_EASY_3_DATA: LevelData = {
       "IsCardsHidden": false
     },
     {
-      "Id": "0_-0.5_-0.5",
+      "Id": "0_-0.8_-0.75",
       "TypeId": 2,
       "BoxColor": 2,
       "BlockedNodes": [],
@@ -438,7 +438,7 @@ export const LEVEL_EASY_3_DATA: LevelData = {
       "IsCardsHidden": false
     },
     {
-      "Id": "0_0.5_-0.5",
+      "Id": "0_0.8_-0.75",
       "TypeId": 2,
       "BoxColor": 0,
       "BlockedNodes": [],
@@ -455,12 +455,12 @@ export const LEVEL_EASY_3_DATA: LevelData = {
       "IsCardsHidden": false
     },
     {
-      "Id": "1_0.0_0.5",
+      "Id": "1_-0.8_0.0",
       "TypeId": 2,
       "BoxColor": 1,
       "BlockedNodes": [
-        "0_-0.5_0.5",
-        "0_0.5_0.5"
+        "0_-0.8_0.75",
+        "0_-0.8_-0.75"
       ],
       "InitCards": [
         0,
@@ -475,12 +475,12 @@ export const LEVEL_EASY_3_DATA: LevelData = {
       "IsCardsHidden": false
     },
     {
-      "Id": "1_0.0_-0.5",
+      "Id": "1_0.8_0.0",
       "TypeId": 2,
       "BoxColor": 2,
       "BlockedNodes": [
-        "0_-0.5_-0.5",
-        "0_0.5_-0.5"
+        "0_0.8_0.75",
+        "0_0.8_-0.75"
       ],
       "InitCards": [
         0,
@@ -499,12 +499,12 @@ export const LEVEL_EASY_3_DATA: LevelData = {
       "TypeId": 2,
       "BoxColor": 0,
       "BlockedNodes": [
-        "0_-0.5_0.5",
-        "0_0.5_0.5",
-        "0_-0.5_-0.5",
-        "0_0.5_-0.5",
-        "1_0.0_0.5",
-        "1_0.0_-0.5"
+        "0_-0.8_0.75",
+        "0_0.8_0.75",
+        "0_-0.8_-0.75",
+        "0_0.8_-0.75",
+        "1_-0.8_0.0",
+        "1_0.8_0.0"
       ],
       "InitCards": [
         0,
@@ -532,51 +532,51 @@ export const LEVEL_EASY_4_DATA: LevelData = {
   "BoardOffsetZ": 0,
   "BoardNodes": [
     {
-      "Id": "0_-0.8_0.5",
+      "Id": "0_-0.8_0.75",
       "LayerId": 0,
       "YRotation": 0.0,
       "XPosition": -0.8,
-      "ZPosition": 0.5
+      "ZPosition": 0.75
     },
     {
-      "Id": "0_0.0_0.5",
-      "LayerId": 0,
-      "YRotation": 0.0,
-      "XPosition": 0.0,
-      "ZPosition": 0.5
-    },
-    {
-      "Id": "0_0.8_0.5",
+      "Id": "0_0.8_0.75",
       "LayerId": 0,
       "YRotation": 0.0,
       "XPosition": 0.8,
-      "ZPosition": 0.5
+      "ZPosition": 0.75
     },
     {
-      "Id": "0_0.0_-0.5",
+      "Id": "0_-0.8_-0.75",
       "LayerId": 0,
       "YRotation": 0.0,
-      "XPosition": 0.0,
-      "ZPosition": -0.5
+      "XPosition": -0.8,
+      "ZPosition": -0.75
     },
     {
-      "Id": "1_-0.4_0.5",
-      "LayerId": 1,
-      "YRotation": 90.0,
-      "XPosition": -0.4,
-      "ZPosition": 0.5
+      "Id": "0_0.8_-0.75",
+      "LayerId": 0,
+      "YRotation": 0.0,
+      "XPosition": 0.8,
+      "ZPosition": -0.75
     },
     {
-      "Id": "1_0.4_0.5",
+      "Id": "1_-0.8_0.0",
       "LayerId": 1,
       "YRotation": 90.0,
-      "XPosition": 0.4,
-      "ZPosition": 0.5
+      "XPosition": -0.8,
+      "ZPosition": 0.0
+    },
+    {
+      "Id": "1_0.8_0.0",
+      "LayerId": 1,
+      "YRotation": 90.0,
+      "XPosition": 0.8,
+      "ZPosition": 0.0
     }
   ],
   "BoxNodes": [
     {
-      "Id": "0_-0.8_0.5",
+      "Id": "0_-0.8_0.75",
       "TypeId": 2,
       "BoxColor": 0,
       "BlockedNodes": [],
@@ -593,7 +593,7 @@ export const LEVEL_EASY_4_DATA: LevelData = {
       "IsCardsHidden": false
     },
     {
-      "Id": "0_0.0_0.5",
+      "Id": "0_0.8_0.75",
       "TypeId": 2,
       "BoxColor": 1,
       "BlockedNodes": [],
@@ -609,7 +609,7 @@ export const LEVEL_EASY_4_DATA: LevelData = {
       "IsCardsHidden": false
     },
     {
-      "Id": "0_0.8_0.5",
+      "Id": "0_-0.8_-0.75",
       "TypeId": 2,
       "BoxColor": 2,
       "BlockedNodes": [],
@@ -625,7 +625,7 @@ export const LEVEL_EASY_4_DATA: LevelData = {
       "IsCardsHidden": false
     },
     {
-      "Id": "0_0.0_-0.5",
+      "Id": "0_0.8_-0.75",
       "TypeId": 2,
       "BoxColor": 0,
       "BlockedNodes": [],
@@ -641,12 +641,12 @@ export const LEVEL_EASY_4_DATA: LevelData = {
       "IsCardsHidden": false
     },
     {
-      "Id": "1_-0.4_0.5",
+      "Id": "1_-0.8_0.0",
       "TypeId": 2,
       "BoxColor": 1,
       "BlockedNodes": [
-        "0_-0.8_0.5",
-        "0_0.0_0.5"
+        "0_-0.8_0.75",
+        "0_-0.8_-0.75"
       ],
       "InitCards": [
         0,
@@ -660,12 +660,12 @@ export const LEVEL_EASY_4_DATA: LevelData = {
       "IsCardsHidden": false
     },
     {
-      "Id": "1_0.4_0.5",
+      "Id": "1_0.8_0.0",
       "TypeId": 1,
       "BoxColor": 5,
       "BlockedNodes": [
-        "0_0.0_0.5",
-        "0_0.8_0.5"
+        "0_0.8_0.75",
+        "0_0.8_-0.75"
       ],
       "InitCards": [
         0,
@@ -691,46 +691,46 @@ export const LEVEL_EASY_5_DATA: LevelData = {
   "BoardOffsetZ": 0,
   "BoardNodes": [
     {
-      "Id": "0_-0.5_0.5",
+      "Id": "0_-0.8_0.75",
       "LayerId": 0,
       "YRotation": 0.0,
-      "XPosition": -0.5,
-      "ZPosition": 0.5
+      "XPosition": -0.8,
+      "ZPosition": 0.75
     },
     {
-      "Id": "0_0.5_0.5",
+      "Id": "0_0.8_0.75",
       "LayerId": 0,
       "YRotation": 0.0,
-      "XPosition": 0.5,
-      "ZPosition": 0.5
+      "XPosition": 0.8,
+      "ZPosition": 0.75
     },
     {
-      "Id": "0_-0.5_-0.5",
+      "Id": "0_-0.8_-0.75",
       "LayerId": 0,
       "YRotation": 0.0,
-      "XPosition": -0.5,
-      "ZPosition": -0.5
+      "XPosition": -0.8,
+      "ZPosition": -0.75
     },
     {
-      "Id": "0_0.5_-0.5",
+      "Id": "0_0.8_-0.75",
       "LayerId": 0,
       "YRotation": 0.0,
-      "XPosition": 0.5,
-      "ZPosition": -0.5
+      "XPosition": 0.8,
+      "ZPosition": -0.75
     },
     {
-      "Id": "1_0.0_0.5",
+      "Id": "1_-0.8_0.0",
       "LayerId": 1,
       "YRotation": 90.0,
-      "XPosition": 0.0,
-      "ZPosition": 0.5
+      "XPosition": -0.8,
+      "ZPosition": 0.0
     },
     {
-      "Id": "1_0.0_-0.5",
+      "Id": "1_0.8_0.0",
       "LayerId": 1,
       "YRotation": 90.0,
-      "XPosition": 0.0,
-      "ZPosition": -0.5
+      "XPosition": 0.8,
+      "ZPosition": 0.0
     },
     {
       "Id": "2_0.0_0.0",
@@ -742,16 +742,16 @@ export const LEVEL_EASY_5_DATA: LevelData = {
   ],
   "BoxNodes": [
     {
-      "Id": "0_-0.5_0.5",
+      "Id": "0_-0.8_0.75",
       "TypeId": 2,
       "BoxColor": 0,
       "BlockedNodes": [],
       "InitCards": [
         0,
+        0,
         1,
         1,
         1,
-        2,
         2
       ],
       "IsHidden": true,
@@ -759,24 +759,24 @@ export const LEVEL_EASY_5_DATA: LevelData = {
       "IsCardsHidden": false
     },
     {
-      "Id": "0_0.5_0.5",
+      "Id": "0_0.8_0.75",
       "TypeId": 2,
       "BoxColor": 1,
       "BlockedNodes": [],
       "InitCards": [
         0,
+        0,
         1,
         2,
         2,
-        3,
-        3
+        2
       ],
       "IsHidden": false,
       "LockedTurn": 0,
       "IsCardsHidden": false
     },
     {
-      "Id": "0_-0.5_-0.5",
+      "Id": "0_-0.8_-0.75",
       "TypeId": 2,
       "BoxColor": 2,
       "BlockedNodes": [],
@@ -784,6 +784,23 @@ export const LEVEL_EASY_5_DATA: LevelData = {
         0,
         0,
         0,
+        0,
+        1,
+        2
+      ],
+      "IsHidden": false,
+      "LockedTurn": 0,
+      "IsCardsHidden": false
+    },
+    {
+      "Id": "0_0.8_-0.75",
+      "TypeId": 2,
+      "BoxColor": 0,
+      "BlockedNodes": [],
+      "InitCards": [
+        0,
+        0,
+        0,
         1,
         2,
         2
@@ -793,36 +810,19 @@ export const LEVEL_EASY_5_DATA: LevelData = {
       "IsCardsHidden": false
     },
     {
-      "Id": "0_0.5_-0.5",
+      "Id": "1_-0.8_0.0",
       "TypeId": 2,
-      "BoxColor": 3,
-      "BlockedNodes": [],
-      "InitCards": [
-        0,
-        1,
-        1,
-        2,
-        2,
-        3
-      ],
-      "IsHidden": false,
-      "LockedTurn": 0,
-      "IsCardsHidden": false
-    },
-    {
-      "Id": "1_0.0_0.5",
-      "TypeId": 2,
-      "BoxColor": 0,
+      "BoxColor": 1,
       "BlockedNodes": [
-        "0_-0.5_0.5",
-        "0_0.5_0.5"
+        "0_-0.8_0.75",
+        "0_-0.8_-0.75"
       ],
       "InitCards": [
         0,
         0,
+        0,
         1,
-        2,
-        2,
+        1,
         2
       ],
       "IsHidden": false,
@@ -830,12 +830,12 @@ export const LEVEL_EASY_5_DATA: LevelData = {
       "IsCardsHidden": false
     },
     {
-      "Id": "1_0.0_-0.5",
+      "Id": "1_0.8_0.0",
       "TypeId": 2,
-      "BoxColor": 1,
+      "BoxColor": 2,
       "BlockedNodes": [
-        "0_-0.5_-0.5",
-        "0_0.5_-0.5"
+        "0_0.8_0.75",
+        "0_0.8_-0.75"
       ],
       "InitCards": [
         0,
@@ -843,7 +843,7 @@ export const LEVEL_EASY_5_DATA: LevelData = {
         1,
         1,
         2,
-        3
+        2
       ],
       "IsHidden": false,
       "LockedTurn": 0,
@@ -852,22 +852,22 @@ export const LEVEL_EASY_5_DATA: LevelData = {
     {
       "Id": "2_0.0_0.0",
       "TypeId": 2,
-      "BoxColor": 2,
+      "BoxColor": 0,
       "BlockedNodes": [
-        "0_-0.5_0.5",
-        "0_0.5_0.5",
-        "0_-0.5_-0.5",
-        "0_0.5_-0.5",
-        "1_0.0_0.5",
-        "1_0.0_-0.5"
+        "0_-0.8_0.75",
+        "0_0.8_0.75",
+        "0_-0.8_-0.75",
+        "0_0.8_-0.75",
+        "1_-0.8_0.0",
+        "1_0.8_0.0"
       ],
       "InitCards": [
         0,
         0,
         1,
         1,
-        3,
-        3
+        2,
+        2
       ],
       "IsHidden": false,
       "LockedTurn": 0,
@@ -887,133 +887,65 @@ export const LEVEL_EASY_6_DATA: LevelData = {
   "BoardOffsetZ": 0,
   "BoardNodes": [
     {
-      "Id": "0_-1.0_0.6",
+      "Id": "0_-1.4_0.8",
       "LayerId": 0,
-      "YRotation": 0.0,
-      "XPosition": -1.0,
-      "ZPosition": 0.6
+      "YRotation": 90.0,
+      "XPosition": -1.4,
+      "ZPosition": 0.8
     },
     {
-      "Id": "0_0.0_0.6",
+      "Id": "0_1.4_0.8",
+      "LayerId": 0,
+      "YRotation": 90.0,
+      "XPosition": 1.4,
+      "ZPosition": 0.8
+    },
+    {
+      "Id": "0_-1.4_-0.8",
+      "LayerId": 0,
+      "YRotation": 90.0,
+      "XPosition": -1.4,
+      "ZPosition": -0.8
+    },
+    {
+      "Id": "0_1.4_-0.8",
+      "LayerId": 0,
+      "YRotation": 90.0,
+      "XPosition": 1.4,
+      "ZPosition": -0.8
+    },
+    {
+      "Id": "0_0.0_0.0",
       "LayerId": 0,
       "YRotation": 0.0,
       "XPosition": 0.0,
-      "ZPosition": 0.6
+      "ZPosition": 0.0
     },
     {
-      "Id": "0_1.0_0.6",
-      "LayerId": 0,
-      "YRotation": 0.0,
-      "XPosition": 1.0,
-      "ZPosition": 0.6
-    },
-    {
-      "Id": "0_-0.5_-0.6",
-      "LayerId": 0,
-      "YRotation": 0.0,
-      "XPosition": -0.5,
-      "ZPosition": -0.6
-    },
-    {
-      "Id": "0_0.5_-0.6",
-      "LayerId": 0,
-      "YRotation": 0.0,
-      "XPosition": 0.5,
-      "ZPosition": -0.6
-    },
-    {
-      "Id": "1_-0.5_0.6",
+      "Id": "1_-1.4_0.0",
       "LayerId": 1,
-      "YRotation": 90.0,
-      "XPosition": -0.5,
-      "ZPosition": 0.6
+      "YRotation": 0.0,
+      "XPosition": -1.4,
+      "ZPosition": 0.0
     },
     {
-      "Id": "1_0.5_0.6",
+      "Id": "1_1.4_0.0",
       "LayerId": 1,
-      "YRotation": 90.0,
-      "XPosition": 0.5,
-      "ZPosition": 0.6
+      "YRotation": 0.0,
+      "XPosition": 1.4,
+      "ZPosition": 0.0
     },
     {
-      "Id": "1_0.0_-0.6",
+      "Id": "1_0.0_0.0",
       "LayerId": 1,
       "YRotation": 90.0,
       "XPosition": 0.0,
-      "ZPosition": -0.6
+      "ZPosition": 0.0
     }
   ],
   "BoxNodes": [
     {
-      "Id": "0_-1.0_0.6",
-      "TypeId": 2,
-      "BoxColor": 0,
-      "BlockedNodes": [],
-      "InitCards": [
-        0,
-        1,
-        2,
-        2,
-        3,
-        3
-      ],
-      "IsHidden": false,
-      "LockedTurn": 0,
-      "IsCardsHidden": false
-    },
-    {
-      "Id": "0_0.0_0.6",
-      "TypeId": 2,
-      "BoxColor": 1,
-      "BlockedNodes": [],
-      "InitCards": [
-        1,
-        1,
-        3,
-        3,
-        3,
-        3
-      ],
-      "IsHidden": false,
-      "LockedTurn": 0,
-      "IsCardsHidden": false
-    },
-    {
-      "Id": "0_1.0_0.6",
-      "TypeId": 2,
-      "BoxColor": 2,
-      "BlockedNodes": [],
-      "InitCards": [
-        0,
-        0,
-        0,
-        2,
-        2,
-        3
-      ],
-      "IsHidden": false,
-      "LockedTurn": 0,
-      "IsCardsHidden": false
-    },
-    {
-      "Id": "0_-0.5_-0.6",
-      "TypeId": 2,
-      "BoxColor": 3,
-      "BlockedNodes": [],
-      "InitCards": [
-        0,
-        0,
-        0,
-        1,
-        2,
-        3
-      ],
-      "IsHidden": false,
-      "LockedTurn": 0,
-      "IsCardsHidden": false
-    },
-    {
-      "Id": "0_0.5_-0.6",
+      "Id": "0_-1.4_0.8",
       "TypeId": 2,
       "BoxColor": 0,
       "BlockedNodes": [],
@@ -1022,45 +954,39 @@ export const LEVEL_EASY_6_DATA: LevelData = {
         1,
         1,
         1,
-        3,
-        3
+        2,
+        2
       ],
-      "IsHidden": false,
+      "IsHidden": true,
       "LockedTurn": 0,
       "IsCardsHidden": false
     },
     {
-      "Id": "1_-0.5_0.6",
+      "Id": "0_1.4_0.8",
       "TypeId": 2,
       "BoxColor": 1,
-      "BlockedNodes": [
-        "0_-1.0_0.6",
-        "0_0.0_0.6"
-      ],
+      "BlockedNodes": [],
       "InitCards": [
         0,
-        1,
-        1,
+        0,
+        2,
         2,
         2,
         2
       ],
-      "IsHidden": false,
+      "IsHidden": true,
       "LockedTurn": 0,
       "IsCardsHidden": false
     },
     {
-      "Id": "1_0.5_0.6",
+      "Id": "0_-1.4_-0.8",
       "TypeId": 2,
       "BoxColor": 2,
-      "BlockedNodes": [
-        "0_0.0_0.6",
-        "0_1.0_0.6"
-      ],
+      "BlockedNodes": [],
       "InitCards": [
         0,
         0,
-        1,
+        0,
         1,
         1,
         2
@@ -1070,20 +996,93 @@ export const LEVEL_EASY_6_DATA: LevelData = {
       "IsCardsHidden": false
     },
     {
-      "Id": "1_0.0_-0.6",
+      "Id": "0_1.4_-0.8",
       "TypeId": 2,
-      "BoxColor": 3,
+      "BoxColor": 0,
+      "BlockedNodes": [],
+      "InitCards": [
+        0,
+        0,
+        0,
+        1,
+        1,
+        2
+      ],
+      "IsHidden": false,
+      "LockedTurn": 0,
+      "IsCardsHidden": false
+    },
+    {
+      "Id": "0_0.0_0.0",
+      "TypeId": 2,
+      "BoxColor": 1,
+      "BlockedNodes": [],
+      "InitCards": [
+        0,
+        0,
+        1,
+        1,
+        2,
+        2
+      ],
+      "IsHidden": false,
+      "LockedTurn": 0,
+      "IsCardsHidden": false
+    },
+    {
+      "Id": "1_-1.4_0.0",
+      "TypeId": 2,
+      "BoxColor": 2,
       "BlockedNodes": [
-        "0_-0.5_-0.6",
-        "0_0.5_-0.6"
+        "0_-1.4_0.8",
+        "0_-1.4_-0.8"
       ],
       "InitCards": [
         0,
+        0,
+        1,
+        1,
+        1,
+        1
+      ],
+      "IsHidden": false,
+      "LockedTurn": 0,
+      "IsCardsHidden": false
+    },
+    {
+      "Id": "1_1.4_0.0",
+      "TypeId": 2,
+      "BoxColor": 0,
+      "BlockedNodes": [
+        "0_1.4_0.8",
+        "0_1.4_-0.8"
+      ],
+      "InitCards": [
+        0,
+        0,
+        0,
+        0,
+        1,
+        1
+      ],
+      "IsHidden": false,
+      "LockedTurn": 0,
+      "IsCardsHidden": false
+    },
+    {
+      "Id": "1_0.0_0.0",
+      "TypeId": 2,
+      "BoxColor": 1,
+      "BlockedNodes": [
+        "0_0.0_0.0"
+      ],
+      "InitCards": [
+        0,
+        1,
+        1,
+        1,
         2,
-        2,
-        2,
-        3,
-        3
+        2
       ],
       "IsHidden": false,
       "LockedTurn": 0,
@@ -1103,65 +1102,65 @@ export const LEVEL_EASY_7_DATA: LevelData = {
   "BoardOffsetZ": 0,
   "BoardNodes": [
     {
-      "Id": "0_-1.0_0.6",
+      "Id": "0_-1.4_0.75",
       "LayerId": 0,
       "YRotation": 0.0,
-      "XPosition": -1.0,
-      "ZPosition": 0.6
+      "XPosition": -1.4,
+      "ZPosition": 0.75
     },
     {
-      "Id": "0_0.0_0.6",
-      "LayerId": 0,
-      "YRotation": 0.0,
-      "XPosition": 0.0,
-      "ZPosition": 0.6
-    },
-    {
-      "Id": "0_1.0_0.6",
-      "LayerId": 0,
-      "YRotation": 0.0,
-      "XPosition": 1.0,
-      "ZPosition": 0.6
-    },
-    {
-      "Id": "0_-1.0_-0.6",
-      "LayerId": 0,
-      "YRotation": 0.0,
-      "XPosition": -1.0,
-      "ZPosition": -0.6
-    },
-    {
-      "Id": "0_0.0_-0.6",
+      "Id": "0_0.0_0.75",
       "LayerId": 0,
       "YRotation": 0.0,
       "XPosition": 0.0,
-      "ZPosition": -0.6
+      "ZPosition": 0.75
     },
     {
-      "Id": "0_1.0_-0.6",
+      "Id": "0_1.4_0.75",
       "LayerId": 0,
       "YRotation": 0.0,
-      "XPosition": 1.0,
-      "ZPosition": -0.6
+      "XPosition": 1.4,
+      "ZPosition": 0.75
     },
     {
-      "Id": "1_-0.5_0.0",
+      "Id": "0_-1.4_-0.75",
+      "LayerId": 0,
+      "YRotation": 0.0,
+      "XPosition": -1.4,
+      "ZPosition": -0.75
+    },
+    {
+      "Id": "0_0.0_-0.75",
+      "LayerId": 0,
+      "YRotation": 0.0,
+      "XPosition": 0.0,
+      "ZPosition": -0.75
+    },
+    {
+      "Id": "0_1.4_-0.75",
+      "LayerId": 0,
+      "YRotation": 0.0,
+      "XPosition": 1.4,
+      "ZPosition": -0.75
+    },
+    {
+      "Id": "1_-0.7_0.0",
       "LayerId": 1,
       "YRotation": 90.0,
-      "XPosition": -0.5,
+      "XPosition": -0.7,
       "ZPosition": 0.0
     },
     {
-      "Id": "1_0.5_0.0",
+      "Id": "1_0.7_0.0",
       "LayerId": 1,
       "YRotation": 90.0,
-      "XPosition": 0.5,
+      "XPosition": 0.7,
       "ZPosition": 0.0
     }
   ],
   "BoxNodes": [
     {
-      "Id": "0_-1.0_0.6",
+      "Id": "0_-1.4_0.75",
       "TypeId": 2,
       "BoxColor": 0,
       "BlockedNodes": [],
@@ -1177,7 +1176,7 @@ export const LEVEL_EASY_7_DATA: LevelData = {
       "IsCardsHidden": false
     },
     {
-      "Id": "0_0.0_0.6",
+      "Id": "0_0.0_0.75",
       "TypeId": 2,
       "BoxColor": 1,
       "BlockedNodes": [],
@@ -1193,7 +1192,7 @@ export const LEVEL_EASY_7_DATA: LevelData = {
       "IsCardsHidden": false
     },
     {
-      "Id": "0_1.0_0.6",
+      "Id": "0_1.4_0.75",
       "TypeId": 2,
       "BoxColor": 2,
       "BlockedNodes": [],
@@ -1209,7 +1208,7 @@ export const LEVEL_EASY_7_DATA: LevelData = {
       "IsCardsHidden": false
     },
     {
-      "Id": "0_-1.0_-0.6",
+      "Id": "0_-1.4_-0.75",
       "TypeId": 2,
       "BoxColor": 3,
       "BlockedNodes": [],
@@ -1225,7 +1224,7 @@ export const LEVEL_EASY_7_DATA: LevelData = {
       "IsCardsHidden": false
     },
     {
-      "Id": "0_0.0_-0.6",
+      "Id": "0_0.0_-0.75",
       "TypeId": 2,
       "BoxColor": 0,
       "BlockedNodes": [],
@@ -1240,7 +1239,7 @@ export const LEVEL_EASY_7_DATA: LevelData = {
       "IsCardsHidden": false
     },
     {
-      "Id": "0_1.0_-0.6",
+      "Id": "0_1.4_-0.75",
       "TypeId": 2,
       "BoxColor": 1,
       "BlockedNodes": [],
@@ -1255,14 +1254,14 @@ export const LEVEL_EASY_7_DATA: LevelData = {
       "IsCardsHidden": false
     },
     {
-      "Id": "1_-0.5_0.0",
+      "Id": "1_-0.7_0.0",
       "TypeId": 1,
       "BoxColor": 5,
       "BlockedNodes": [
-        "0_-1.0_0.6",
-        "0_0.0_0.6",
-        "0_-1.0_-0.6",
-        "0_0.0_-0.6"
+        "0_-1.4_0.75",
+        "0_0.0_0.75",
+        "0_-1.4_-0.75",
+        "0_0.0_-0.75"
       ],
       "InitCards": [
         0,
@@ -1275,14 +1274,14 @@ export const LEVEL_EASY_7_DATA: LevelData = {
       "IsCardsHidden": false
     },
     {
-      "Id": "1_0.5_0.0",
+      "Id": "1_0.7_0.0",
       "TypeId": 1,
       "BoxColor": 5,
       "BlockedNodes": [
-        "0_0.0_0.6",
-        "0_1.0_0.6",
-        "0_0.0_-0.6",
-        "0_1.0_-0.6"
+        "0_0.0_0.75",
+        "0_1.4_0.75",
+        "0_0.0_-0.75",
+        "0_1.4_-0.75"
       ],
       "InitCards": [
         0,
@@ -1308,90 +1307,97 @@ export const LEVEL_EASY_8_DATA: LevelData = {
   "BoardOffsetZ": 0,
   "BoardNodes": [
     {
-      "Id": "0_-1.0_0.6",
+      "Id": "0_-1.1_0.9",
       "LayerId": 0,
       "YRotation": 0.0,
-      "XPosition": -1.0,
-      "ZPosition": 0.6
+      "XPosition": -1.1,
+      "ZPosition": 0.9
     },
     {
-      "Id": "0_0.0_0.6",
+      "Id": "0_1.1_0.9",
       "LayerId": 0,
+      "YRotation": 0.0,
+      "XPosition": 1.1,
+      "ZPosition": 0.9
+    },
+    {
+      "Id": "0_-1.1_-0.9",
+      "LayerId": 0,
+      "YRotation": 0.0,
+      "XPosition": -1.1,
+      "ZPosition": -0.9
+    },
+    {
+      "Id": "0_1.1_-0.9",
+      "LayerId": 0,
+      "YRotation": 0.0,
+      "XPosition": 1.1,
+      "ZPosition": -0.9
+    },
+    {
+      "Id": "0_0.0_0.0",
+      "LayerId": 0,
+      "YRotation": 90.0,
+      "XPosition": 0.0,
+      "ZPosition": 0.0
+    },
+    {
+      "Id": "1_-1.1_0.0",
+      "LayerId": 1,
+      "YRotation": 90.0,
+      "XPosition": -1.1,
+      "ZPosition": 0.0
+    },
+    {
+      "Id": "1_1.1_0.0",
+      "LayerId": 1,
+      "YRotation": 90.0,
+      "XPosition": 1.1,
+      "ZPosition": 0.0
+    },
+    {
+      "Id": "1_0.0_0.0",
+      "LayerId": 1,
       "YRotation": 0.0,
       "XPosition": 0.0,
-      "ZPosition": 0.6
-    },
-    {
-      "Id": "0_1.0_0.6",
-      "LayerId": 0,
-      "YRotation": 0.0,
-      "XPosition": 1.0,
-      "ZPosition": 0.6
-    },
-    {
-      "Id": "0_-0.5_-0.6",
-      "LayerId": 0,
-      "YRotation": 0.0,
-      "XPosition": -0.5,
-      "ZPosition": -0.6
-    },
-    {
-      "Id": "0_0.5_-0.6",
-      "LayerId": 0,
-      "YRotation": 0.0,
-      "XPosition": 0.5,
-      "ZPosition": -0.6
-    },
-    {
-      "Id": "1_-0.5_0.6",
-      "LayerId": 1,
-      "YRotation": 90.0,
-      "XPosition": -0.5,
-      "ZPosition": 0.6
-    },
-    {
-      "Id": "1_0.5_0.6",
-      "LayerId": 1,
-      "YRotation": 90.0,
-      "XPosition": 0.5,
-      "ZPosition": 0.6
+      "ZPosition": 0.0
     },
     {
       "Id": "2_0.0_0.0",
       "LayerId": 2,
-      "YRotation": 0.0,
+      "YRotation": 90.0,
       "XPosition": 0.0,
       "ZPosition": 0.0
     }
   ],
   "BoxNodes": [
     {
-      "Id": "0_-1.0_0.6",
+      "Id": "0_-1.1_0.9",
       "TypeId": 2,
       "BoxColor": 0,
       "BlockedNodes": [],
       "InitCards": [
         0,
-        0,
-        0,
         1,
         2,
-        2
+        2,
+        2,
+        3
       ],
       "IsHidden": true,
       "LockedTurn": 0,
       "IsCardsHidden": false
     },
     {
-      "Id": "0_0.0_0.6",
+      "Id": "0_1.1_0.9",
       "TypeId": 2,
       "BoxColor": 1,
       "BlockedNodes": [],
       "InitCards": [
         1,
+        1,
         2,
-        2,
-        2,
+        3,
         3,
         3
       ],
@@ -1400,24 +1406,24 @@ export const LEVEL_EASY_8_DATA: LevelData = {
       "IsCardsHidden": false
     },
     {
-      "Id": "0_1.0_0.6",
+      "Id": "0_-1.1_-0.9",
       "TypeId": 2,
       "BoxColor": 2,
       "BlockedNodes": [],
       "InitCards": [
+        0,
+        0,
         1,
         1,
-        1,
-        1,
-        3,
+        2,
         3
       ],
       "IsHidden": false,
-      "LockedTurn": 0,
+      "LockedTurn": 2,
       "IsCardsHidden": false
     },
     {
-      "Id": "0_-0.5_-0.6",
+      "Id": "0_1.1_-0.9",
       "TypeId": 2,
       "BoxColor": 3,
       "BlockedNodes": [],
@@ -1429,12 +1435,12 @@ export const LEVEL_EASY_8_DATA: LevelData = {
         2,
         3
       ],
-      "IsHidden": false,
-      "LockedTurn": 3,
+      "IsHidden": true,
+      "LockedTurn": 0,
       "IsCardsHidden": false
     },
     {
-      "Id": "0_0.5_-0.6",
+      "Id": "0_0.0_0.0",
       "TypeId": 2,
       "BoxColor": 0,
       "BlockedNodes": [],
@@ -1443,6 +1449,43 @@ export const LEVEL_EASY_8_DATA: LevelData = {
         0,
         2,
         2,
+        3
+      ],
+      "IsHidden": false,
+      "LockedTurn": 0,
+      "IsCardsHidden": false
+    },
+    {
+      "Id": "1_-1.1_0.0",
+      "TypeId": 2,
+      "BoxColor": 1,
+      "BlockedNodes": [
+        "0_-1.1_0.9",
+        "0_-1.1_-0.9"
+      ],
+      "InitCards": [
+        0,
+        1,
+        1,
+        2,
+        3
+      ],
+      "IsHidden": false,
+      "LockedTurn": 0,
+      "IsCardsHidden": false
+    },
+    {
+      "Id": "1_1.1_0.0",
+      "TypeId": 2,
+      "BoxColor": 2,
+      "BlockedNodes": [
+        "0_1.1_0.9",
+        "0_1.1_-0.9"
+      ],
+      "InitCards": [
+        1,
+        1,
+        1,
         3,
         3
       ],
@@ -1451,38 +1494,16 @@ export const LEVEL_EASY_8_DATA: LevelData = {
       "IsCardsHidden": false
     },
     {
-      "Id": "1_-0.5_0.6",
+      "Id": "1_0.0_0.0",
       "TypeId": 2,
-      "BoxColor": 1,
+      "BoxColor": 3,
       "BlockedNodes": [
-        "0_-1.0_0.6",
-        "0_0.0_0.6"
+        "0_0.0_0.0"
       ],
       "InitCards": [
         0,
         0,
-        1,
         2,
-        2,
-        3
-      ],
-      "IsHidden": false,
-      "LockedTurn": 0,
-      "IsCardsHidden": false
-    },
-    {
-      "Id": "1_0.5_0.6",
-      "TypeId": 2,
-      "BoxColor": 2,
-      "BlockedNodes": [
-        "0_0.0_0.6",
-        "0_1.0_0.6"
-      ],
-      "InitCards": [
-        0,
-        1,
-        1,
-        1,
         3,
         3
       ],
@@ -1492,22 +1513,17 @@ export const LEVEL_EASY_8_DATA: LevelData = {
     },
     {
       "Id": "2_0.0_0.0",
-      "TypeId": 2,
-      "BoxColor": 3,
+      "TypeId": 1,
+      "BoxColor": 5,
       "BlockedNodes": [
-        "0_0.0_0.6",
-        "0_-0.5_-0.6",
-        "0_0.5_-0.6",
-        "1_-0.5_0.6",
-        "1_0.5_0.6"
+        "0_0.0_0.0",
+        "1_0.0_0.0"
       ],
       "InitCards": [
         0,
         0,
         1,
-        2,
-        3,
-        3
+        2
       ],
       "IsHidden": false,
       "LockedTurn": 0,
@@ -1527,72 +1543,72 @@ export const LEVEL_EASY_9_DATA: LevelData = {
   "BoardOffsetZ": 0,
   "BoardNodes": [
     {
-      "Id": "0_-1.0_0.6",
+      "Id": "0_-1.4_0.8",
       "LayerId": 0,
       "YRotation": 0.0,
-      "XPosition": -1.0,
-      "ZPosition": 0.6
+      "XPosition": -1.4,
+      "ZPosition": 0.8
     },
     {
-      "Id": "0_1.0_0.6",
+      "Id": "0_0.0_0.8",
       "LayerId": 0,
       "YRotation": 0.0,
-      "XPosition": 1.0,
-      "ZPosition": 0.6
+      "XPosition": 0.0,
+      "ZPosition": 0.8
     },
     {
-      "Id": "0_-1.0_-0.6",
+      "Id": "0_1.4_0.8",
       "LayerId": 0,
       "YRotation": 0.0,
-      "XPosition": -1.0,
-      "ZPosition": -0.6
+      "XPosition": 1.4,
+      "ZPosition": 0.8
     },
     {
-      "Id": "0_1.0_-0.6",
+      "Id": "0_-0.7_-0.8",
       "LayerId": 0,
       "YRotation": 0.0,
-      "XPosition": 1.0,
-      "ZPosition": -0.6
+      "XPosition": -0.7,
+      "ZPosition": -0.8
     },
     {
-      "Id": "0_0.0_0.0",
+      "Id": "0_0.7_-0.8",
       "LayerId": 0,
       "YRotation": 0.0,
+      "XPosition": 0.7,
+      "ZPosition": -0.8
+    },
+    {
+      "Id": "1_-1.05_0.0",
+      "LayerId": 1,
+      "YRotation": 90.0,
+      "XPosition": -1.05,
+      "ZPosition": 0.0
+    },
+    {
+      "Id": "1_0.0_0.0",
+      "LayerId": 1,
+      "YRotation": 90.0,
       "XPosition": 0.0,
       "ZPosition": 0.0
     },
     {
-      "Id": "1_-1.0_0.0",
+      "Id": "1_1.05_0.0",
       "LayerId": 1,
       "YRotation": 90.0,
-      "XPosition": -1.0,
+      "XPosition": 1.05,
       "ZPosition": 0.0
     },
     {
-      "Id": "1_1.0_0.0",
-      "LayerId": 1,
-      "YRotation": 90.0,
-      "XPosition": 1.0,
-      "ZPosition": 0.0
-    },
-    {
-      "Id": "1_0.0_0.6",
-      "LayerId": 1,
-      "YRotation": 90.0,
-      "XPosition": 0.0,
-      "ZPosition": 0.6
-    },
-    {
-      "Id": "2_0.0_0.3",
+      "Id": "2_0.0_0.0",
       "LayerId": 2,
       "YRotation": 0.0,
       "XPosition": 0.0,
-      "ZPosition": 0.3
+      "ZPosition": 0.0
     }
   ],
   "BoxNodes": [
     {
-      "Id": "0_-1.0_0.6",
+      "Id": "0_-1.4_0.8",
       "TypeId": 2,
       "BoxColor": 0,
       "BlockedNodes": [],
@@ -1604,12 +1620,12 @@ export const LEVEL_EASY_9_DATA: LevelData = {
         2,
         3
       ],
-      "IsHidden": false,
+      "IsHidden": true,
       "LockedTurn": 0,
       "IsCardsHidden": false
     },
     {
-      "Id": "0_1.0_0.6",
+      "Id": "0_0.0_0.8",
       "TypeId": 2,
       "BoxColor": 1,
       "BlockedNodes": [],
@@ -1626,7 +1642,7 @@ export const LEVEL_EASY_9_DATA: LevelData = {
       "IsCardsHidden": false
     },
     {
-      "Id": "0_-1.0_-0.6",
+      "Id": "0_1.4_0.8",
       "TypeId": 2,
       "BoxColor": 2,
       "BlockedNodes": [],
@@ -1638,12 +1654,12 @@ export const LEVEL_EASY_9_DATA: LevelData = {
         2,
         3
       ],
-      "IsHidden": false,
+      "IsHidden": true,
       "LockedTurn": 0,
       "IsCardsHidden": false
     },
     {
-      "Id": "0_1.0_-0.6",
+      "Id": "0_-0.7_-0.8",
       "TypeId": 2,
       "BoxColor": 3,
       "BlockedNodes": [],
@@ -1660,7 +1676,7 @@ export const LEVEL_EASY_9_DATA: LevelData = {
       "IsCardsHidden": false
     },
     {
-      "Id": "0_0.0_0.0",
+      "Id": "0_0.7_-0.8",
       "TypeId": 2,
       "BoxColor": 0,
       "BlockedNodes": [],
@@ -1676,12 +1692,13 @@ export const LEVEL_EASY_9_DATA: LevelData = {
       "IsCardsHidden": false
     },
     {
-      "Id": "1_-1.0_0.0",
+      "Id": "1_-1.05_0.0",
       "TypeId": 2,
       "BoxColor": 1,
       "BlockedNodes": [
-        "0_-1.0_0.6",
-        "0_-1.0_-0.6"
+        "0_-1.4_0.8",
+        "0_0.0_0.8",
+        "0_-0.7_-0.8"
       ],
       "InitCards": [
         0,
@@ -1695,12 +1712,13 @@ export const LEVEL_EASY_9_DATA: LevelData = {
       "IsCardsHidden": false
     },
     {
-      "Id": "1_1.0_0.0",
+      "Id": "1_0.0_0.0",
       "TypeId": 2,
       "BoxColor": 2,
       "BlockedNodes": [
-        "0_1.0_0.6",
-        "0_1.0_-0.6"
+        "0_0.0_0.8",
+        "0_-0.7_-0.8",
+        "0_0.7_-0.8"
       ],
       "InitCards": [
         0,
@@ -1714,11 +1732,13 @@ export const LEVEL_EASY_9_DATA: LevelData = {
       "IsCardsHidden": false
     },
     {
-      "Id": "1_0.0_0.6",
+      "Id": "1_1.05_0.0",
       "TypeId": 2,
       "BoxColor": 3,
       "BlockedNodes": [
-        "0_0.0_0.0"
+        "0_0.0_0.8",
+        "0_1.4_0.8",
+        "0_0.7_-0.8"
       ],
       "InitCards": [
         1,
@@ -1732,12 +1752,14 @@ export const LEVEL_EASY_9_DATA: LevelData = {
       "IsCardsHidden": false
     },
     {
-      "Id": "2_0.0_0.3",
+      "Id": "2_0.0_0.0",
       "TypeId": 1,
       "BoxColor": 5,
       "BlockedNodes": [
-        "0_0.0_0.0",
-        "1_0.0_0.6"
+        "0_0.0_0.8",
+        "0_-0.7_-0.8",
+        "0_0.7_-0.8",
+        "1_0.0_0.0"
       ],
       "InitCards": [
         1,
@@ -1763,108 +1785,108 @@ export const LEVEL_EASY_10_DATA: LevelData = {
   "BoardOffsetZ": 0,
   "BoardNodes": [
     {
-      "Id": "0_-1.5_0.8",
+      "Id": "0_-1.4_1.3",
       "LayerId": 0,
       "YRotation": 0.0,
-      "XPosition": -1.5,
-      "ZPosition": 0.8
+      "XPosition": -1.4,
+      "ZPosition": 1.3
     },
     {
-      "Id": "0_-0.5_0.8",
+      "Id": "0_0.0_1.3",
       "LayerId": 0,
       "YRotation": 0.0,
-      "XPosition": -0.5,
-      "ZPosition": 0.8
-    },
-    {
-      "Id": "0_0.5_0.8",
-      "LayerId": 0,
-      "YRotation": 0.0,
-      "XPosition": 0.5,
-      "ZPosition": 0.8
-    },
-    {
-      "Id": "0_1.5_0.8",
-      "LayerId": 0,
-      "YRotation": 0.0,
-      "XPosition": 1.5,
-      "ZPosition": 0.8
-    },
-    {
-      "Id": "0_-1.5_-0.8",
-      "LayerId": 0,
-      "YRotation": 0.0,
-      "XPosition": -1.5,
-      "ZPosition": -0.8
-    },
-    {
-      "Id": "0_-0.5_-0.8",
-      "LayerId": 0,
-      "YRotation": 0.0,
-      "XPosition": -0.5,
-      "ZPosition": -0.8
-    },
-    {
-      "Id": "0_0.5_-0.8",
-      "LayerId": 0,
-      "YRotation": 0.0,
-      "XPosition": 0.5,
-      "ZPosition": -0.8
-    },
-    {
-      "Id": "0_1.5_-0.8",
-      "LayerId": 0,
-      "YRotation": 0.0,
-      "XPosition": 1.5,
-      "ZPosition": -0.8
-    },
-    {
-      "Id": "1_-1.0_0.8",
-      "LayerId": 1,
-      "YRotation": 90.0,
-      "XPosition": -1.0,
-      "ZPosition": 0.8
-    },
-    {
-      "Id": "1_0.0_0.8",
-      "LayerId": 1,
-      "YRotation": 90.0,
       "XPosition": 0.0,
-      "ZPosition": 0.8
+      "ZPosition": 1.3
     },
     {
-      "Id": "1_1.0_0.8",
-      "LayerId": 1,
-      "YRotation": 90.0,
-      "XPosition": 1.0,
-      "ZPosition": 0.8
-    },
-    {
-      "Id": "1_-0.5_-0.8",
-      "LayerId": 1,
-      "YRotation": 90.0,
-      "XPosition": -0.5,
-      "ZPosition": -0.8
-    },
-    {
-      "Id": "1_0.5_-0.8",
-      "LayerId": 1,
-      "YRotation": 90.0,
-      "XPosition": 0.5,
-      "ZPosition": -0.8
-    },
-    {
-      "Id": "2_-0.5_0.0",
-      "LayerId": 2,
+      "Id": "0_1.4_1.3",
+      "LayerId": 0,
       "YRotation": 0.0,
-      "XPosition": -0.5,
+      "XPosition": 1.4,
+      "ZPosition": 1.3
+    },
+    {
+      "Id": "0_-0.9_0.0",
+      "LayerId": 0,
+      "YRotation": 0.0,
+      "XPosition": -0.9,
       "ZPosition": 0.0
     },
     {
-      "Id": "2_0.5_0.0",
+      "Id": "0_0.9_0.0",
+      "LayerId": 0,
+      "YRotation": 0.0,
+      "XPosition": 0.9,
+      "ZPosition": 0.0
+    },
+    {
+      "Id": "0_-1.4_-1.3",
+      "LayerId": 0,
+      "YRotation": 0.0,
+      "XPosition": -1.4,
+      "ZPosition": -1.3
+    },
+    {
+      "Id": "0_0.0_-1.3",
+      "LayerId": 0,
+      "YRotation": 0.0,
+      "XPosition": 0.0,
+      "ZPosition": -1.3
+    },
+    {
+      "Id": "0_1.4_-1.3",
+      "LayerId": 0,
+      "YRotation": 0.0,
+      "XPosition": 1.4,
+      "ZPosition": -1.3
+    },
+    {
+      "Id": "1_-1.2_0.65",
+      "LayerId": 1,
+      "YRotation": 90.0,
+      "XPosition": -1.2,
+      "ZPosition": 0.65
+    },
+    {
+      "Id": "1_1.2_0.65",
+      "LayerId": 1,
+      "YRotation": 90.0,
+      "XPosition": 1.2,
+      "ZPosition": 0.65
+    },
+    {
+      "Id": "1_-1.2_-0.65",
+      "LayerId": 1,
+      "YRotation": 90.0,
+      "XPosition": -1.2,
+      "ZPosition": -0.65
+    },
+    {
+      "Id": "1_1.2_-0.65",
+      "LayerId": 1,
+      "YRotation": 90.0,
+      "XPosition": 1.2,
+      "ZPosition": -0.65
+    },
+    {
+      "Id": "1_0.0_0.0",
+      "LayerId": 1,
+      "YRotation": 90.0,
+      "XPosition": 0.0,
+      "ZPosition": 0.0
+    },
+    {
+      "Id": "2_-0.7_0.0",
       "LayerId": 2,
       "YRotation": 0.0,
-      "XPosition": 0.5,
+      "XPosition": -0.7,
+      "ZPosition": 0.0
+    },
+    {
+      "Id": "2_0.7_0.0",
+      "LayerId": 2,
+      "YRotation": 0.0,
+      "XPosition": 0.7,
       "ZPosition": 0.0
     },
     {
@@ -1877,7 +1899,7 @@ export const LEVEL_EASY_10_DATA: LevelData = {
   ],
   "BoxNodes": [
     {
-      "Id": "0_-1.5_0.8",
+      "Id": "0_-1.4_1.3",
       "TypeId": 2,
       "BoxColor": 0,
       "BlockedNodes": [],
@@ -1894,7 +1916,7 @@ export const LEVEL_EASY_10_DATA: LevelData = {
       "IsCardsHidden": false
     },
     {
-      "Id": "0_-0.5_0.8",
+      "Id": "0_0.0_1.3",
       "TypeId": 2,
       "BoxColor": 1,
       "BlockedNodes": [],
@@ -1911,7 +1933,7 @@ export const LEVEL_EASY_10_DATA: LevelData = {
       "IsCardsHidden": false
     },
     {
-      "Id": "0_0.5_0.8",
+      "Id": "0_1.4_1.3",
       "TypeId": 2,
       "BoxColor": 2,
       "BlockedNodes": [],
@@ -1923,12 +1945,12 @@ export const LEVEL_EASY_10_DATA: LevelData = {
         2,
         3
       ],
-      "IsHidden": false,
+      "IsHidden": true,
       "LockedTurn": 0,
       "IsCardsHidden": false
     },
     {
-      "Id": "0_1.5_0.8",
+      "Id": "0_-0.9_0.0",
       "TypeId": 2,
       "BoxColor": 3,
       "BlockedNodes": [],
@@ -1945,7 +1967,7 @@ export const LEVEL_EASY_10_DATA: LevelData = {
       "IsCardsHidden": false
     },
     {
-      "Id": "0_-1.5_-0.8",
+      "Id": "0_0.9_0.0",
       "TypeId": 2,
       "BoxColor": 4,
       "BlockedNodes": [],
@@ -1962,7 +1984,7 @@ export const LEVEL_EASY_10_DATA: LevelData = {
       "IsCardsHidden": false
     },
     {
-      "Id": "0_-0.5_-0.8",
+      "Id": "0_-1.4_-1.3",
       "TypeId": 2,
       "BoxColor": 0,
       "BlockedNodes": [],
@@ -1979,7 +2001,7 @@ export const LEVEL_EASY_10_DATA: LevelData = {
       "IsCardsHidden": false
     },
     {
-      "Id": "0_0.5_-0.8",
+      "Id": "0_0.0_-1.3",
       "TypeId": 2,
       "BoxColor": 1,
       "BlockedNodes": [],
@@ -1996,7 +2018,7 @@ export const LEVEL_EASY_10_DATA: LevelData = {
       "IsCardsHidden": false
     },
     {
-      "Id": "0_1.5_-0.8",
+      "Id": "0_1.4_-1.3",
       "TypeId": 2,
       "BoxColor": 2,
       "BlockedNodes": [],
@@ -2013,12 +2035,12 @@ export const LEVEL_EASY_10_DATA: LevelData = {
       "IsCardsHidden": false
     },
     {
-      "Id": "1_-1.0_0.8",
+      "Id": "1_-1.2_0.65",
       "TypeId": 2,
       "BoxColor": 3,
       "BlockedNodes": [
-        "0_-1.5_0.8",
-        "0_-0.5_0.8"
+        "0_-1.4_1.3",
+        "0_-0.9_0.0"
       ],
       "InitCards": [
         0,
@@ -2033,12 +2055,12 @@ export const LEVEL_EASY_10_DATA: LevelData = {
       "IsCardsHidden": false
     },
     {
-      "Id": "1_0.0_0.8",
+      "Id": "1_1.2_0.65",
       "TypeId": 2,
       "BoxColor": 4,
       "BlockedNodes": [
-        "0_-0.5_0.8",
-        "0_0.5_0.8"
+        "0_1.4_1.3",
+        "0_0.9_0.0"
       ],
       "InitCards": [
         0,
@@ -2053,12 +2075,12 @@ export const LEVEL_EASY_10_DATA: LevelData = {
       "IsCardsHidden": false
     },
     {
-      "Id": "1_1.0_0.8",
+      "Id": "1_-1.2_-0.65",
       "TypeId": 2,
       "BoxColor": 0,
       "BlockedNodes": [
-        "0_0.5_0.8",
-        "0_1.5_0.8"
+        "0_-0.9_0.0",
+        "0_-1.4_-1.3"
       ],
       "InitCards": [
         1,
@@ -2073,11 +2095,12 @@ export const LEVEL_EASY_10_DATA: LevelData = {
       "IsCardsHidden": false
     },
     {
-      "Id": "1_-0.5_-0.8",
+      "Id": "1_1.2_-0.65",
       "TypeId": 2,
       "BoxColor": 1,
       "BlockedNodes": [
-        "0_-0.5_-0.8"
+        "0_0.9_0.0",
+        "0_1.4_-1.3"
       ],
       "InitCards": [
         0,
@@ -2091,11 +2114,12 @@ export const LEVEL_EASY_10_DATA: LevelData = {
       "IsCardsHidden": false
     },
     {
-      "Id": "1_0.5_-0.8",
+      "Id": "1_0.0_0.0",
       "TypeId": 2,
       "BoxColor": 2,
       "BlockedNodes": [
-        "0_0.5_-0.8"
+        "0_-0.9_0.0",
+        "0_0.9_0.0"
       ],
       "InitCards": [
         0,
@@ -2109,15 +2133,14 @@ export const LEVEL_EASY_10_DATA: LevelData = {
       "IsCardsHidden": false
     },
     {
-      "Id": "2_-0.5_0.0",
+      "Id": "2_-0.7_0.0",
       "TypeId": 2,
       "BoxColor": 3,
       "BlockedNodes": [
-        "0_-0.5_0.8",
-        "0_-0.5_-0.8",
-        "1_-1.0_0.8",
-        "1_0.0_0.8",
-        "1_-0.5_-0.8"
+        "0_-0.9_0.0",
+        "1_-1.2_0.65",
+        "1_-1.2_-0.65",
+        "1_0.0_0.0"
       ],
       "InitCards": [
         0,
@@ -2131,15 +2154,14 @@ export const LEVEL_EASY_10_DATA: LevelData = {
       "IsCardsHidden": false
     },
     {
-      "Id": "2_0.5_0.0",
+      "Id": "2_0.7_0.0",
       "TypeId": 2,
       "BoxColor": 4,
       "BlockedNodes": [
-        "0_0.5_0.8",
-        "0_0.5_-0.8",
-        "1_0.0_0.8",
-        "1_1.0_0.8",
-        "1_0.5_-0.8"
+        "0_0.9_0.0",
+        "1_1.2_0.65",
+        "1_1.2_-0.65",
+        "1_0.0_0.0"
       ],
       "InitCards": [
         1,
@@ -2157,15 +2179,11 @@ export const LEVEL_EASY_10_DATA: LevelData = {
       "TypeId": 1,
       "BoxColor": 5,
       "BlockedNodes": [
-        "0_-0.5_0.8",
-        "0_0.5_0.8",
-        "0_-0.5_-0.8",
-        "0_0.5_-0.8",
-        "1_0.0_0.8",
-        "1_-0.5_-0.8",
-        "1_0.5_-0.8",
-        "2_-0.5_0.0",
-        "2_0.5_0.0"
+        "0_-0.9_0.0",
+        "0_0.9_0.0",
+        "1_0.0_0.0",
+        "2_-0.7_0.0",
+        "2_0.7_0.0"
       ],
       "InitCards": [
         0,
@@ -2191,51 +2209,51 @@ export const LEVEL_MEDIUM_1_DATA: LevelData = {
   "BoardOffsetZ": 0,
   "BoardNodes": [
     {
-      "Id": "0_-0.5_0.5",
+      "Id": "0_-0.8_0.75",
       "LayerId": 0,
       "YRotation": 0.0,
-      "XPosition": -0.5,
-      "ZPosition": 0.5
+      "XPosition": -0.8,
+      "ZPosition": 0.75
     },
     {
-      "Id": "0_0.5_0.5",
+      "Id": "0_0.8_0.75",
       "LayerId": 0,
       "YRotation": 0.0,
-      "XPosition": 0.5,
-      "ZPosition": 0.5
+      "XPosition": 0.8,
+      "ZPosition": 0.75
     },
     {
-      "Id": "0_-0.5_-0.5",
+      "Id": "0_-0.8_-0.75",
       "LayerId": 0,
       "YRotation": 0.0,
-      "XPosition": -0.5,
-      "ZPosition": -0.5
+      "XPosition": -0.8,
+      "ZPosition": -0.75
     },
     {
-      "Id": "0_0.5_-0.5",
+      "Id": "0_0.8_-0.75",
       "LayerId": 0,
       "YRotation": 0.0,
-      "XPosition": 0.5,
-      "ZPosition": -0.5
+      "XPosition": 0.8,
+      "ZPosition": -0.75
     },
     {
-      "Id": "1_0.0_0.5",
+      "Id": "1_-0.8_0.0",
       "LayerId": 1,
       "YRotation": 90.0,
-      "XPosition": 0.0,
-      "ZPosition": 0.5
+      "XPosition": -0.8,
+      "ZPosition": 0.0
     },
     {
-      "Id": "1_0.0_-0.5",
+      "Id": "1_0.8_0.0",
       "LayerId": 1,
       "YRotation": 90.0,
-      "XPosition": 0.0,
-      "ZPosition": -0.5
+      "XPosition": 0.8,
+      "ZPosition": 0.0
     }
   ],
   "BoxNodes": [
     {
-      "Id": "0_-0.5_0.5",
+      "Id": "0_-0.8_0.75",
       "TypeId": 2,
       "BoxColor": 0,
       "BlockedNodes": [],
@@ -2252,7 +2270,7 @@ export const LEVEL_MEDIUM_1_DATA: LevelData = {
       "IsCardsHidden": false
     },
     {
-      "Id": "0_0.5_0.5",
+      "Id": "0_0.8_0.75",
       "TypeId": 2,
       "BoxColor": 1,
       "BlockedNodes": [],
@@ -2269,7 +2287,7 @@ export const LEVEL_MEDIUM_1_DATA: LevelData = {
       "IsCardsHidden": false
     },
     {
-      "Id": "0_-0.5_-0.5",
+      "Id": "0_-0.8_-0.75",
       "TypeId": 2,
       "BoxColor": 2,
       "BlockedNodes": [],
@@ -2286,7 +2304,7 @@ export const LEVEL_MEDIUM_1_DATA: LevelData = {
       "IsCardsHidden": false
     },
     {
-      "Id": "0_0.5_-0.5",
+      "Id": "0_0.8_-0.75",
       "TypeId": 2,
       "BoxColor": 0,
       "BlockedNodes": [],
@@ -2303,12 +2321,12 @@ export const LEVEL_MEDIUM_1_DATA: LevelData = {
       "IsCardsHidden": false
     },
     {
-      "Id": "1_0.0_0.5",
+      "Id": "1_-0.8_0.0",
       "TypeId": 2,
       "BoxColor": 1,
       "BlockedNodes": [
-        "0_-0.5_0.5",
-        "0_0.5_0.5"
+        "0_-0.8_0.75",
+        "0_-0.8_-0.75"
       ],
       "InitCards": [
         1,
@@ -2323,12 +2341,12 @@ export const LEVEL_MEDIUM_1_DATA: LevelData = {
       "IsCardsHidden": false
     },
     {
-      "Id": "1_0.0_-0.5",
+      "Id": "1_0.8_0.0",
       "TypeId": 2,
       "BoxColor": 2,
       "BlockedNodes": [
-        "0_-0.5_-0.5",
-        "0_0.5_-0.5"
+        "0_0.8_0.75",
+        "0_0.8_-0.75"
       ],
       "InitCards": [
         0,
@@ -2356,17 +2374,31 @@ export const LEVEL_MEDIUM_2_DATA: LevelData = {
   "BoardOffsetZ": 0,
   "BoardNodes": [
     {
-      "Id": "0_-0.8_0.0",
+      "Id": "0_0.0_1.4",
       "LayerId": 0,
       "YRotation": 0.0,
-      "XPosition": -0.8,
+      "XPosition": 0.0,
+      "ZPosition": 1.4
+    },
+    {
+      "Id": "0_0.0_-1.4",
+      "LayerId": 0,
+      "YRotation": 0.0,
+      "XPosition": 0.0,
+      "ZPosition": -1.4
+    },
+    {
+      "Id": "0_-1.4_0.0",
+      "LayerId": 0,
+      "YRotation": 90.0,
+      "XPosition": -1.4,
       "ZPosition": 0.0
     },
     {
-      "Id": "0_0.8_0.0",
+      "Id": "0_1.4_0.0",
       "LayerId": 0,
-      "YRotation": 0.0,
-      "XPosition": 0.8,
+      "YRotation": 90.0,
+      "XPosition": 1.4,
       "ZPosition": 0.0
     },
     {
@@ -2377,44 +2409,30 @@ export const LEVEL_MEDIUM_2_DATA: LevelData = {
       "ZPosition": 0.0
     },
     {
-      "Id": "0_0.0_0.9",
-      "LayerId": 0,
-      "YRotation": 90.0,
-      "XPosition": 0.0,
-      "ZPosition": 0.9
-    },
-    {
-      "Id": "0_0.0_-0.9",
-      "LayerId": 0,
-      "YRotation": 90.0,
-      "XPosition": 0.0,
-      "ZPosition": -0.9
-    },
-    {
-      "Id": "1_-0.4_0.0",
-      "LayerId": 1,
-      "YRotation": 90.0,
-      "XPosition": -0.4,
-      "ZPosition": 0.0
-    },
-    {
-      "Id": "1_0.4_0.0",
-      "LayerId": 1,
-      "YRotation": 90.0,
-      "XPosition": 0.4,
-      "ZPosition": 0.0
-    },
-    {
-      "Id": "1_0.0_0.45",
+      "Id": "1_-1.2_0.0",
       "LayerId": 1,
       "YRotation": 0.0,
+      "XPosition": -1.2,
+      "ZPosition": 0.0
+    },
+    {
+      "Id": "1_1.2_0.0",
+      "LayerId": 1,
+      "YRotation": 0.0,
+      "XPosition": 1.2,
+      "ZPosition": 0.0
+    },
+    {
+      "Id": "1_0.0_0.0",
+      "LayerId": 1,
+      "YRotation": 90.0,
       "XPosition": 0.0,
-      "ZPosition": 0.45
+      "ZPosition": 0.0
     }
   ],
   "BoxNodes": [
     {
-      "Id": "0_-0.8_0.0",
+      "Id": "0_0.0_1.4",
       "TypeId": 2,
       "BoxColor": 0,
       "BlockedNodes": [],
@@ -2431,7 +2449,7 @@ export const LEVEL_MEDIUM_2_DATA: LevelData = {
       "IsCardsHidden": false
     },
     {
-      "Id": "0_0.8_0.0",
+      "Id": "0_0.0_-1.4",
       "TypeId": 2,
       "BoxColor": 1,
       "BlockedNodes": [],
@@ -2448,7 +2466,7 @@ export const LEVEL_MEDIUM_2_DATA: LevelData = {
       "IsCardsHidden": false
     },
     {
-      "Id": "0_0.0_0.0",
+      "Id": "0_-1.4_0.0",
       "TypeId": 2,
       "BoxColor": 2,
       "BlockedNodes": [],
@@ -2465,7 +2483,7 @@ export const LEVEL_MEDIUM_2_DATA: LevelData = {
       "IsCardsHidden": false
     },
     {
-      "Id": "0_0.0_0.9",
+      "Id": "0_1.4_0.0",
       "TypeId": 2,
       "BoxColor": 0,
       "BlockedNodes": [],
@@ -2482,7 +2500,7 @@ export const LEVEL_MEDIUM_2_DATA: LevelData = {
       "IsCardsHidden": false
     },
     {
-      "Id": "0_0.0_-0.9",
+      "Id": "0_0.0_0.0",
       "TypeId": 2,
       "BoxColor": 1,
       "BlockedNodes": [],
@@ -2499,11 +2517,11 @@ export const LEVEL_MEDIUM_2_DATA: LevelData = {
       "IsCardsHidden": false
     },
     {
-      "Id": "1_-0.4_0.0",
+      "Id": "1_-1.2_0.0",
       "TypeId": 2,
       "BoxColor": 2,
       "BlockedNodes": [
-        "0_-0.8_0.0",
+        "0_-1.4_0.0",
         "0_0.0_0.0"
       ],
       "InitCards": [
@@ -2519,11 +2537,11 @@ export const LEVEL_MEDIUM_2_DATA: LevelData = {
       "IsCardsHidden": false
     },
     {
-      "Id": "1_0.4_0.0",
+      "Id": "1_1.2_0.0",
       "TypeId": 2,
       "BoxColor": 0,
       "BlockedNodes": [
-        "0_0.8_0.0",
+        "0_1.4_0.0",
         "0_0.0_0.0"
       ],
       "InitCards": [
@@ -2539,14 +2557,11 @@ export const LEVEL_MEDIUM_2_DATA: LevelData = {
       "IsCardsHidden": false
     },
     {
-      "Id": "1_0.0_0.45",
+      "Id": "1_0.0_0.0",
       "TypeId": 2,
       "BoxColor": 1,
       "BlockedNodes": [
-        "0_-0.8_0.0",
-        "0_0.8_0.0",
-        "0_0.0_0.0",
-        "0_0.0_0.9"
+        "0_0.0_0.0"
       ],
       "InitCards": [
         0,
@@ -2574,72 +2589,72 @@ export const LEVEL_MEDIUM_3_DATA: LevelData = {
   "BoardOffsetZ": 0,
   "BoardNodes": [
     {
-      "Id": "0_-1.0_0.6",
+      "Id": "0_-1.4_0.8",
       "LayerId": 0,
       "YRotation": 0.0,
-      "XPosition": -1.0,
-      "ZPosition": 0.6
+      "XPosition": -1.4,
+      "ZPosition": 0.8
     },
     {
-      "Id": "0_0.0_0.6",
+      "Id": "0_0.0_0.8",
       "LayerId": 0,
       "YRotation": 0.0,
       "XPosition": 0.0,
-      "ZPosition": 0.6
+      "ZPosition": 0.8
     },
     {
-      "Id": "0_1.0_0.6",
+      "Id": "0_1.4_0.8",
       "LayerId": 0,
       "YRotation": 0.0,
-      "XPosition": 1.0,
-      "ZPosition": 0.6
+      "XPosition": 1.4,
+      "ZPosition": 0.8
     },
     {
-      "Id": "0_-0.5_-0.6",
+      "Id": "0_-0.7_-0.8",
       "LayerId": 0,
       "YRotation": 0.0,
-      "XPosition": -0.5,
-      "ZPosition": -0.6
+      "XPosition": -0.7,
+      "ZPosition": -0.8
     },
     {
-      "Id": "0_0.5_-0.6",
+      "Id": "0_0.7_-0.8",
       "LayerId": 0,
       "YRotation": 0.0,
-      "XPosition": 0.5,
-      "ZPosition": -0.6
+      "XPosition": 0.7,
+      "ZPosition": -0.8
     },
     {
-      "Id": "1_-0.5_0.6",
+      "Id": "1_-1.05_0.0",
       "LayerId": 1,
       "YRotation": 90.0,
-      "XPosition": -0.5,
-      "ZPosition": 0.6
+      "XPosition": -1.05,
+      "ZPosition": 0.0
     },
     {
-      "Id": "1_0.5_0.6",
-      "LayerId": 1,
-      "YRotation": 90.0,
-      "XPosition": 0.5,
-      "ZPosition": 0.6
-    },
-    {
-      "Id": "1_0.0_-0.6",
+      "Id": "1_0.0_0.0",
       "LayerId": 1,
       "YRotation": 90.0,
       "XPosition": 0.0,
-      "ZPosition": -0.6
+      "ZPosition": 0.0
+    },
+    {
+      "Id": "1_1.05_0.0",
+      "LayerId": 1,
+      "YRotation": 90.0,
+      "XPosition": 1.05,
+      "ZPosition": 0.0
     },
     {
       "Id": "2_0.0_0.0",
       "LayerId": 2,
-      "YRotation": 0.0,
+      "YRotation": 90.0,
       "XPosition": 0.0,
       "ZPosition": 0.0
     }
   ],
   "BoxNodes": [
     {
-      "Id": "0_-1.0_0.6",
+      "Id": "0_-1.4_0.8",
       "TypeId": 2,
       "BoxColor": 0,
       "BlockedNodes": [],
@@ -2647,21 +2662,8 @@ export const LEVEL_MEDIUM_3_DATA: LevelData = {
         0,
         1,
         1,
-        1
-      ],
-      "IsHidden": false,
-      "LockedTurn": 0,
-      "IsCardsHidden": false
-    },
-    {
-      "Id": "0_0.0_0.6",
-      "TypeId": 2,
-      "BoxColor": 1,
-      "BlockedNodes": [],
-      "InitCards": [
-        0,
-        0,
-        1,
+        2,
+        2,
         2
       ],
       "IsHidden": false,
@@ -2669,43 +2671,32 @@ export const LEVEL_MEDIUM_3_DATA: LevelData = {
       "IsCardsHidden": false
     },
     {
-      "Id": "0_1.0_0.6",
+      "Id": "0_0.0_0.8",
+      "TypeId": 2,
+      "BoxColor": 1,
+      "BlockedNodes": [],
+      "InitCards": [
+        0,
+        0,
+        2,
+        2,
+        3,
+        3
+      ],
+      "IsHidden": false,
+      "LockedTurn": 0,
+      "IsCardsHidden": false
+    },
+    {
+      "Id": "0_1.4_0.8",
       "TypeId": 2,
       "BoxColor": 2,
       "BlockedNodes": [],
       "InitCards": [
         0,
         0,
-        1,
-        2
-      ],
-      "IsHidden": false,
-      "LockedTurn": 0,
-      "IsCardsHidden": false
-    },
-    {
-      "Id": "0_-0.5_-0.6",
-      "TypeId": 1,
-      "BoxColor": 5,
-      "BlockedNodes": [],
-      "InitCards": [
-        1,
         2,
         3,
-        3
-      ],
-      "IsHidden": false,
-      "LockedTurn": 0,
-      "IsCardsHidden": false
-    },
-    {
-      "Id": "0_0.5_-0.6",
-      "TypeId": 1,
-      "BoxColor": 5,
-      "BlockedNodes": [],
-      "InitCards": [
-        1,
-        3,
         3,
         3
       ],
@@ -2714,33 +2705,14 @@ export const LEVEL_MEDIUM_3_DATA: LevelData = {
       "IsCardsHidden": false
     },
     {
-      "Id": "1_-0.5_0.6",
+      "Id": "0_-0.7_-0.8",
       "TypeId": 2,
       "BoxColor": 3,
-      "BlockedNodes": [
-        "0_-1.0_0.6",
-        "0_0.0_0.6"
-      ],
+      "BlockedNodes": [],
       "InitCards": [
-        0,
         0,
         1,
-        2
-      ],
-      "IsHidden": false,
-      "LockedTurn": 0,
-      "IsCardsHidden": false
-    },
-    {
-      "Id": "1_0.5_0.6",
-      "TypeId": 2,
-      "BoxColor": 0,
-      "BlockedNodes": [
-        "0_0.0_0.6",
-        "0_1.0_0.6"
-      ],
-      "InitCards": [
-        0,
+        1,
         1,
         2,
         2
@@ -2750,17 +2722,75 @@ export const LEVEL_MEDIUM_3_DATA: LevelData = {
       "IsCardsHidden": false
     },
     {
-      "Id": "1_0.0_-0.6",
+      "Id": "0_0.7_-0.8",
+      "TypeId": 2,
+      "BoxColor": 0,
+      "BlockedNodes": [],
+      "InitCards": [
+        0,
+        1,
+        1,
+        2,
+        2
+      ],
+      "IsHidden": false,
+      "LockedTurn": 0,
+      "IsCardsHidden": false
+    },
+    {
+      "Id": "1_-1.05_0.0",
       "TypeId": 2,
       "BoxColor": 1,
       "BlockedNodes": [
-        "0_-0.5_-0.6",
-        "0_0.5_-0.6"
+        "0_-1.4_0.8",
+        "0_0.0_0.8",
+        "0_-0.7_-0.8"
       ],
       "InitCards": [
         0,
         0,
         1,
+        3,
+        3
+      ],
+      "IsHidden": false,
+      "LockedTurn": 0,
+      "IsCardsHidden": false
+    },
+    {
+      "Id": "1_0.0_0.0",
+      "TypeId": 2,
+      "BoxColor": 2,
+      "BlockedNodes": [
+        "0_0.0_0.8",
+        "0_-0.7_-0.8",
+        "0_0.7_-0.8"
+      ],
+      "InitCards": [
+        0,
+        1,
+        1,
+        3,
+        3
+      ],
+      "IsHidden": false,
+      "LockedTurn": 0,
+      "IsCardsHidden": false
+    },
+    {
+      "Id": "1_1.05_0.0",
+      "TypeId": 2,
+      "BoxColor": 3,
+      "BlockedNodes": [
+        "0_0.0_0.8",
+        "0_1.4_0.8",
+        "0_0.7_-0.8"
+      ],
+      "InitCards": [
+        0,
+        0,
+        1,
+        2,
         3
       ],
       "IsHidden": false,
@@ -2772,18 +2802,16 @@ export const LEVEL_MEDIUM_3_DATA: LevelData = {
       "TypeId": 1,
       "BoxColor": 5,
       "BlockedNodes": [
-        "0_0.0_0.6",
-        "0_-0.5_-0.6",
-        "0_0.5_-0.6",
-        "1_-0.5_0.6",
-        "1_0.5_0.6",
-        "1_0.0_-0.6"
+        "0_0.0_0.8",
+        "0_-0.7_-0.8",
+        "0_0.7_-0.8",
+        "1_0.0_0.0"
       ],
       "InitCards": [
-        0,
-        0,
         1,
-        1
+        2,
+        3,
+        3
       ],
       "IsHidden": false,
       "LockedTurn": 0,
@@ -2803,93 +2831,93 @@ export const LEVEL_MEDIUM_4_DATA: LevelData = {
   "BoardOffsetZ": 0,
   "BoardNodes": [
     {
-      "Id": "0_-1.0_0.6",
+      "Id": "0_-0.8_1.4",
       "LayerId": 0,
-      "YRotation": 0.0,
-      "XPosition": -1.0,
-      "ZPosition": 0.6
-    },
-    {
-      "Id": "0_0.0_0.6",
-      "LayerId": 0,
-      "YRotation": 0.0,
-      "XPosition": 0.0,
-      "ZPosition": 0.6
-    },
-    {
-      "Id": "0_1.0_0.6",
-      "LayerId": 0,
-      "YRotation": 0.0,
-      "XPosition": 1.0,
-      "ZPosition": 0.6
-    },
-    {
-      "Id": "0_-1.0_-0.6",
-      "LayerId": 0,
-      "YRotation": 0.0,
-      "XPosition": -1.0,
-      "ZPosition": -0.6
-    },
-    {
-      "Id": "0_0.0_-0.6",
-      "LayerId": 0,
-      "YRotation": 0.0,
-      "XPosition": 0.0,
-      "ZPosition": -0.6
-    },
-    {
-      "Id": "0_1.0_-0.6",
-      "LayerId": 0,
-      "YRotation": 0.0,
-      "XPosition": 1.0,
-      "ZPosition": -0.6
-    },
-    {
-      "Id": "1_-0.5_0.6",
-      "LayerId": 1,
       "YRotation": 90.0,
-      "XPosition": -0.5,
-      "ZPosition": 0.6
+      "XPosition": -0.8,
+      "ZPosition": 1.4
     },
     {
-      "Id": "1_0.5_0.6",
-      "LayerId": 1,
+      "Id": "0_-0.8_0.0",
+      "LayerId": 0,
       "YRotation": 90.0,
-      "XPosition": 0.5,
-      "ZPosition": 0.6
+      "XPosition": -0.8,
+      "ZPosition": 0.0
     },
     {
-      "Id": "1_-0.5_-0.6",
-      "LayerId": 1,
+      "Id": "0_-0.8_-1.4",
+      "LayerId": 0,
       "YRotation": 90.0,
-      "XPosition": -0.5,
-      "ZPosition": -0.6
+      "XPosition": -0.8,
+      "ZPosition": -1.4
     },
     {
-      "Id": "1_0.5_-0.6",
-      "LayerId": 1,
+      "Id": "0_0.8_1.4",
+      "LayerId": 0,
       "YRotation": 90.0,
-      "XPosition": 0.5,
-      "ZPosition": -0.6
+      "XPosition": 0.8,
+      "ZPosition": 1.4
     },
     {
-      "Id": "2_0.0_0.6",
+      "Id": "0_0.8_0.0",
+      "LayerId": 0,
+      "YRotation": 90.0,
+      "XPosition": 0.8,
+      "ZPosition": 0.0
+    },
+    {
+      "Id": "0_0.8_-1.4",
+      "LayerId": 0,
+      "YRotation": 90.0,
+      "XPosition": 0.8,
+      "ZPosition": -1.4
+    },
+    {
+      "Id": "1_-0.8_0.7",
+      "LayerId": 1,
+      "YRotation": 0.0,
+      "XPosition": -0.8,
+      "ZPosition": 0.7
+    },
+    {
+      "Id": "1_-0.8_-0.7",
+      "LayerId": 1,
+      "YRotation": 0.0,
+      "XPosition": -0.8,
+      "ZPosition": -0.7
+    },
+    {
+      "Id": "1_0.8_0.7",
+      "LayerId": 1,
+      "YRotation": 0.0,
+      "XPosition": 0.8,
+      "ZPosition": 0.7
+    },
+    {
+      "Id": "1_0.8_-0.7",
+      "LayerId": 1,
+      "YRotation": 0.0,
+      "XPosition": 0.8,
+      "ZPosition": -0.7
+    },
+    {
+      "Id": "2_0.0_0.7",
       "LayerId": 2,
       "YRotation": 0.0,
       "XPosition": 0.0,
-      "ZPosition": 0.6
+      "ZPosition": 0.7
     },
     {
-      "Id": "2_0.0_-0.6",
+      "Id": "2_0.0_-0.7",
       "LayerId": 2,
       "YRotation": 0.0,
       "XPosition": 0.0,
-      "ZPosition": -0.6
+      "ZPosition": -0.7
     }
   ],
   "BoxNodes": [
     {
-      "Id": "0_-1.0_0.6",
+      "Id": "0_-0.8_1.4",
       "TypeId": 2,
       "BoxColor": 0,
       "BlockedNodes": [],
@@ -2906,7 +2934,7 @@ export const LEVEL_MEDIUM_4_DATA: LevelData = {
       "IsCardsHidden": false
     },
     {
-      "Id": "0_0.0_0.6",
+      "Id": "0_-0.8_0.0",
       "TypeId": 2,
       "BoxColor": 1,
       "BlockedNodes": [],
@@ -2923,7 +2951,7 @@ export const LEVEL_MEDIUM_4_DATA: LevelData = {
       "IsCardsHidden": false
     },
     {
-      "Id": "0_1.0_0.6",
+      "Id": "0_-0.8_-1.4",
       "TypeId": 2,
       "BoxColor": 2,
       "BlockedNodes": [],
@@ -2939,7 +2967,7 @@ export const LEVEL_MEDIUM_4_DATA: LevelData = {
       "IsCardsHidden": false
     },
     {
-      "Id": "0_-1.0_-0.6",
+      "Id": "0_0.8_1.4",
       "TypeId": 2,
       "BoxColor": 3,
       "BlockedNodes": [],
@@ -2955,7 +2983,7 @@ export const LEVEL_MEDIUM_4_DATA: LevelData = {
       "IsCardsHidden": false
     },
     {
-      "Id": "0_0.0_-0.6",
+      "Id": "0_0.8_0.0",
       "TypeId": 2,
       "BoxColor": 0,
       "BlockedNodes": [],
@@ -2971,7 +2999,7 @@ export const LEVEL_MEDIUM_4_DATA: LevelData = {
       "IsCardsHidden": false
     },
     {
-      "Id": "0_1.0_-0.6",
+      "Id": "0_0.8_-1.4",
       "TypeId": 2,
       "BoxColor": 1,
       "BlockedNodes": [],
@@ -2987,12 +3015,12 @@ export const LEVEL_MEDIUM_4_DATA: LevelData = {
       "IsCardsHidden": false
     },
     {
-      "Id": "1_-0.5_0.6",
+      "Id": "1_-0.8_0.7",
       "TypeId": 2,
       "BoxColor": 2,
       "BlockedNodes": [
-        "0_-1.0_0.6",
-        "0_0.0_0.6"
+        "0_-0.8_1.4",
+        "0_-0.8_0.0"
       ],
       "InitCards": [
         0,
@@ -3006,12 +3034,12 @@ export const LEVEL_MEDIUM_4_DATA: LevelData = {
       "IsCardsHidden": false
     },
     {
-      "Id": "1_0.5_0.6",
+      "Id": "1_-0.8_-0.7",
       "TypeId": 2,
       "BoxColor": 3,
       "BlockedNodes": [
-        "0_0.0_0.6",
-        "0_1.0_0.6"
+        "0_-0.8_0.0",
+        "0_-0.8_-1.4"
       ],
       "InitCards": [
         0,
@@ -3025,12 +3053,12 @@ export const LEVEL_MEDIUM_4_DATA: LevelData = {
       "IsCardsHidden": false
     },
     {
-      "Id": "1_-0.5_-0.6",
+      "Id": "1_0.8_0.7",
       "TypeId": 2,
       "BoxColor": 0,
       "BlockedNodes": [
-        "0_-1.0_-0.6",
-        "0_0.0_-0.6"
+        "0_0.8_1.4",
+        "0_0.8_0.0"
       ],
       "InitCards": [
         0,
@@ -3044,12 +3072,12 @@ export const LEVEL_MEDIUM_4_DATA: LevelData = {
       "IsCardsHidden": false
     },
     {
-      "Id": "1_0.5_-0.6",
+      "Id": "1_0.8_-0.7",
       "TypeId": 2,
       "BoxColor": 1,
       "BlockedNodes": [
-        "0_0.0_-0.6",
-        "0_1.0_-0.6"
+        "0_0.8_0.0",
+        "0_0.8_-1.4"
       ],
       "InitCards": [
         0,
@@ -3063,13 +3091,16 @@ export const LEVEL_MEDIUM_4_DATA: LevelData = {
       "IsCardsHidden": false
     },
     {
-      "Id": "2_0.0_0.6",
+      "Id": "2_0.0_0.7",
       "TypeId": 1,
       "BoxColor": 5,
       "BlockedNodes": [
-        "0_0.0_0.6",
-        "1_-0.5_0.6",
-        "1_0.5_0.6"
+        "0_-0.8_1.4",
+        "0_-0.8_0.0",
+        "0_0.8_1.4",
+        "0_0.8_0.0",
+        "1_-0.8_0.7",
+        "1_0.8_0.7"
       ],
       "InitCards": [
         0,
@@ -3082,13 +3113,16 @@ export const LEVEL_MEDIUM_4_DATA: LevelData = {
       "IsCardsHidden": false
     },
     {
-      "Id": "2_0.0_-0.6",
+      "Id": "2_0.0_-0.7",
       "TypeId": 1,
       "BoxColor": 5,
       "BlockedNodes": [
-        "0_0.0_-0.6",
-        "1_-0.5_-0.6",
-        "1_0.5_-0.6"
+        "0_-0.8_0.0",
+        "0_-0.8_-1.4",
+        "0_0.8_0.0",
+        "0_0.8_-1.4",
+        "1_-0.8_-0.7",
+        "1_0.8_-0.7"
       ],
       "InitCards": [
         0,
@@ -3114,80 +3148,80 @@ export const LEVEL_MEDIUM_5_DATA: LevelData = {
   "BoardOffsetZ": 0,
   "BoardNodes": [
     {
-      "Id": "0_-1.0_0.6",
+      "Id": "0_-1.4_0.75",
       "LayerId": 0,
       "YRotation": 0.0,
-      "XPosition": -1.0,
-      "ZPosition": 0.6
+      "XPosition": -1.4,
+      "ZPosition": 0.75
     },
     {
-      "Id": "0_0.0_0.6",
-      "LayerId": 0,
-      "YRotation": 0.0,
-      "XPosition": 0.0,
-      "ZPosition": 0.6
-    },
-    {
-      "Id": "0_1.0_0.6",
-      "LayerId": 0,
-      "YRotation": 0.0,
-      "XPosition": 1.0,
-      "ZPosition": 0.6
-    },
-    {
-      "Id": "0_-1.0_-0.6",
-      "LayerId": 0,
-      "YRotation": 0.0,
-      "XPosition": -1.0,
-      "ZPosition": -0.6
-    },
-    {
-      "Id": "0_0.0_-0.6",
+      "Id": "0_0.0_0.75",
       "LayerId": 0,
       "YRotation": 0.0,
       "XPosition": 0.0,
-      "ZPosition": -0.6
+      "ZPosition": 0.75
     },
     {
-      "Id": "0_1.0_-0.6",
+      "Id": "0_1.4_0.75",
       "LayerId": 0,
       "YRotation": 0.0,
-      "XPosition": 1.0,
-      "ZPosition": -0.6
+      "XPosition": 1.4,
+      "ZPosition": 0.75
     },
     {
-      "Id": "1_-0.5_0.6",
-      "LayerId": 1,
-      "YRotation": 90.0,
-      "XPosition": -0.5,
-      "ZPosition": 0.6
-    },
-    {
-      "Id": "1_0.5_0.6",
-      "LayerId": 1,
-      "YRotation": 90.0,
-      "XPosition": 0.5,
-      "ZPosition": 0.6
-    },
-    {
-      "Id": "1_0.0_-0.6",
-      "LayerId": 1,
-      "YRotation": 90.0,
-      "XPosition": 0.0,
-      "ZPosition": -0.6
-    },
-    {
-      "Id": "2_-0.5_0.0",
-      "LayerId": 2,
+      "Id": "0_-1.4_-0.75",
+      "LayerId": 0,
       "YRotation": 0.0,
-      "XPosition": -0.5,
+      "XPosition": -1.4,
+      "ZPosition": -0.75
+    },
+    {
+      "Id": "0_0.0_-0.75",
+      "LayerId": 0,
+      "YRotation": 0.0,
+      "XPosition": 0.0,
+      "ZPosition": -0.75
+    },
+    {
+      "Id": "0_1.4_-0.75",
+      "LayerId": 0,
+      "YRotation": 0.0,
+      "XPosition": 1.4,
+      "ZPosition": -0.75
+    },
+    {
+      "Id": "1_-1.4_0.0",
+      "LayerId": 1,
+      "YRotation": 90.0,
+      "XPosition": -1.4,
       "ZPosition": 0.0
     },
     {
-      "Id": "2_0.5_0.0",
+      "Id": "1_0.0_0.0",
+      "LayerId": 1,
+      "YRotation": 90.0,
+      "XPosition": 0.0,
+      "ZPosition": 0.0
+    },
+    {
+      "Id": "1_1.4_0.0",
+      "LayerId": 1,
+      "YRotation": 90.0,
+      "XPosition": 1.4,
+      "ZPosition": 0.0
+    },
+    {
+      "Id": "2_-0.7_0.0",
       "LayerId": 2,
       "YRotation": 0.0,
-      "XPosition": 0.5,
+      "XPosition": -0.7,
+      "ZPosition": 0.0
+    },
+    {
+      "Id": "2_0.7_0.0",
+      "LayerId": 2,
+      "YRotation": 0.0,
+      "XPosition": 0.7,
       "ZPosition": 0.0
     },
     {
@@ -3200,24 +3234,24 @@ export const LEVEL_MEDIUM_5_DATA: LevelData = {
   ],
   "BoxNodes": [
     {
-      "Id": "0_-1.0_0.6",
+      "Id": "0_-1.4_0.75",
       "TypeId": 2,
       "BoxColor": 0,
       "BlockedNodes": [],
       "InitCards": [
         0,
         1,
+        1,
         2,
-        2,
-        4,
-        4
+        3,
+        3
       ],
       "IsHidden": true,
       "LockedTurn": 0,
       "IsCardsHidden": false
     },
     {
-      "Id": "0_0.0_0.6",
+      "Id": "0_0.0_0.75",
       "TypeId": 2,
       "BoxColor": 1,
       "BlockedNodes": [],
@@ -3225,16 +3259,16 @@ export const LEVEL_MEDIUM_5_DATA: LevelData = {
         0,
         0,
         0,
-        2,
-        4,
-        4
+        1,
+        3,
+        3
       ],
       "IsHidden": false,
       "LockedTurn": 0,
       "IsCardsHidden": false
     },
     {
-      "Id": "0_1.0_0.6",
+      "Id": "0_1.4_0.75",
       "TypeId": 2,
       "BoxColor": 2,
       "BlockedNodes": [],
@@ -3244,14 +3278,14 @@ export const LEVEL_MEDIUM_5_DATA: LevelData = {
         0,
         1,
         1,
-        4
+        3
       ],
-      "IsHidden": false,
+      "IsHidden": true,
       "LockedTurn": 0,
       "IsCardsHidden": false
     },
     {
-      "Id": "0_-1.0_-0.6",
+      "Id": "0_-1.4_-0.75",
       "TypeId": 2,
       "BoxColor": 3,
       "BlockedNodes": [],
@@ -3260,23 +3294,6 @@ export const LEVEL_MEDIUM_5_DATA: LevelData = {
         0,
         1,
         1,
-        4,
-        4
-      ],
-      "IsHidden": false,
-      "LockedTurn": 0,
-      "IsCardsHidden": false
-    },
-    {
-      "Id": "0_0.0_-0.6",
-      "TypeId": 2,
-      "BoxColor": 4,
-      "BlockedNodes": [],
-      "InitCards": [
-        1,
-        2,
-        3,
-        3,
         3,
         3
       ],
@@ -3285,96 +3302,72 @@ export const LEVEL_MEDIUM_5_DATA: LevelData = {
       "IsCardsHidden": false
     },
     {
-      "Id": "0_1.0_-0.6",
+      "Id": "0_0.0_-0.75",
       "TypeId": 2,
       "BoxColor": 0,
       "BlockedNodes": [],
       "InitCards": [
-        0,
-        0,
         1,
         2,
-        3,
-        3
+        2,
+        2,
+        2,
+        2
       ],
       "IsHidden": false,
       "LockedTurn": 0,
       "IsCardsHidden": false
     },
     {
-      "Id": "1_-0.5_0.6",
+      "Id": "0_1.4_-0.75",
       "TypeId": 2,
       "BoxColor": 1,
-      "BlockedNodes": [
-        "0_-1.0_0.6",
-        "0_0.0_0.6"
-      ],
+      "BlockedNodes": [],
       "InitCards": [
         0,
-        1,
+        0,
         1,
         2,
         2,
-        3
+        2
       ],
       "IsHidden": false,
       "LockedTurn": 0,
       "IsCardsHidden": false
     },
     {
-      "Id": "1_0.5_0.6",
+      "Id": "1_-1.4_0.0",
       "TypeId": 2,
       "BoxColor": 2,
       "BlockedNodes": [
-        "0_0.0_0.6",
-        "0_1.0_0.6"
-      ],
-      "InitCards": [
-        0,
-        2,
-        3,
-        3,
-        4
-      ],
-      "IsHidden": false,
-      "LockedTurn": 0,
-      "IsCardsHidden": false
-    },
-    {
-      "Id": "1_0.0_-0.6",
-      "TypeId": 2,
-      "BoxColor": 3,
-      "BlockedNodes": [
-        "0_0.0_-0.6"
-      ],
-      "InitCards": [
-        0,
-        0,
-        2,
-        3,
-        4
-      ],
-      "IsHidden": false,
-      "LockedTurn": 0,
-      "IsCardsHidden": false
-    },
-    {
-      "Id": "2_-0.5_0.0",
-      "TypeId": 2,
-      "BoxColor": 4,
-      "BlockedNodes": [
-        "0_-1.0_0.6",
-        "0_0.0_0.6",
-        "0_-1.0_-0.6",
-        "0_0.0_-0.6",
-        "1_-0.5_0.6",
-        "1_0.0_-0.6"
+        "0_-1.4_0.75",
+        "0_-1.4_-0.75"
       ],
       "InitCards": [
         0,
         1,
+        1,
+        1,
         2,
-        3,
+        2
+      ],
+      "IsHidden": false,
+      "LockedTurn": 0,
+      "IsCardsHidden": false
+    },
+    {
+      "Id": "1_0.0_0.0",
+      "TypeId": 2,
+      "BoxColor": 3,
+      "BlockedNodes": [
+        "0_0.0_0.75",
+        "0_0.0_-0.75"
+      ],
+      "InitCards": [
+        0,
+        2,
+        2,
+        2,
         3
       ],
       "IsHidden": false,
@@ -3382,23 +3375,65 @@ export const LEVEL_MEDIUM_5_DATA: LevelData = {
       "IsCardsHidden": false
     },
     {
-      "Id": "2_0.5_0.0",
+      "Id": "1_1.4_0.0",
       "TypeId": 2,
       "BoxColor": 0,
       "BlockedNodes": [
-        "0_0.0_0.6",
-        "0_1.0_0.6",
-        "0_0.0_-0.6",
-        "0_1.0_-0.6",
-        "1_0.5_0.6",
-        "1_0.0_-0.6"
+        "0_1.4_0.75",
+        "0_1.4_-0.75"
       ],
       "InitCards": [
         0,
+        0,
+        1,
         2,
-        4,
-        4,
-        4
+        3
+      ],
+      "IsHidden": false,
+      "LockedTurn": 0,
+      "IsCardsHidden": false
+    },
+    {
+      "Id": "2_-0.7_0.0",
+      "TypeId": 2,
+      "BoxColor": 1,
+      "BlockedNodes": [
+        "0_-1.4_0.75",
+        "0_0.0_0.75",
+        "0_-1.4_-0.75",
+        "0_0.0_-0.75",
+        "1_-1.4_0.0",
+        "1_0.0_0.0"
+      ],
+      "InitCards": [
+        0,
+        1,
+        1,
+        2,
+        2
+      ],
+      "IsHidden": false,
+      "LockedTurn": 0,
+      "IsCardsHidden": false
+    },
+    {
+      "Id": "2_0.7_0.0",
+      "TypeId": 2,
+      "BoxColor": 2,
+      "BlockedNodes": [
+        "0_0.0_0.75",
+        "0_1.4_0.75",
+        "0_0.0_-0.75",
+        "0_1.4_-0.75",
+        "1_0.0_0.0",
+        "1_1.4_0.0"
+      ],
+      "InitCards": [
+        0,
+        1,
+        3,
+        3,
+        3
       ],
       "IsHidden": false,
       "LockedTurn": 0,
@@ -3409,13 +3444,11 @@ export const LEVEL_MEDIUM_5_DATA: LevelData = {
       "TypeId": 1,
       "BoxColor": 5,
       "BlockedNodes": [
-        "0_0.0_0.6",
-        "0_0.0_-0.6",
-        "1_-0.5_0.6",
-        "1_0.5_0.6",
-        "1_0.0_-0.6",
-        "2_-0.5_0.0",
-        "2_0.5_0.0"
+        "0_0.0_0.75",
+        "0_0.0_-0.75",
+        "1_0.0_0.0",
+        "2_-0.7_0.0",
+        "2_0.7_0.0"
       ],
       "InitCards": [
         0,
@@ -3441,119 +3474,119 @@ export const LEVEL_MEDIUM_6_DATA: LevelData = {
   "BoardOffsetZ": 0,
   "BoardNodes": [
     {
-      "Id": "0_-1.0_0.6",
-      "LayerId": 0,
-      "YRotation": 0.0,
-      "XPosition": -1.0,
-      "ZPosition": 0.6
-    },
-    {
-      "Id": "0_0.0_0.6",
+      "Id": "0_0.0_1.4",
       "LayerId": 0,
       "YRotation": 0.0,
       "XPosition": 0.0,
-      "ZPosition": 0.6
+      "ZPosition": 1.4
     },
     {
-      "Id": "0_1.0_0.6",
-      "LayerId": 0,
-      "YRotation": 0.0,
-      "XPosition": 1.0,
-      "ZPosition": 0.6
-    },
-    {
-      "Id": "0_-1.0_-0.6",
-      "LayerId": 0,
-      "YRotation": 0.0,
-      "XPosition": -1.0,
-      "ZPosition": -0.6
-    },
-    {
-      "Id": "0_0.0_-0.6",
+      "Id": "0_0.0_-1.4",
       "LayerId": 0,
       "YRotation": 0.0,
       "XPosition": 0.0,
-      "ZPosition": -0.6
+      "ZPosition": -1.4
     },
     {
-      "Id": "0_1.0_-0.6",
+      "Id": "0_-1.4_0.7",
       "LayerId": 0,
-      "YRotation": 0.0,
-      "XPosition": 1.0,
-      "ZPosition": -0.6
+      "YRotation": 90.0,
+      "XPosition": -1.4,
+      "ZPosition": 0.7
     },
     {
-      "Id": "1_-0.5_0.6",
+      "Id": "0_-1.4_-0.7",
+      "LayerId": 0,
+      "YRotation": 90.0,
+      "XPosition": -1.4,
+      "ZPosition": -0.7
+    },
+    {
+      "Id": "0_1.4_0.7",
+      "LayerId": 0,
+      "YRotation": 90.0,
+      "XPosition": 1.4,
+      "ZPosition": 0.7
+    },
+    {
+      "Id": "0_1.4_-0.7",
+      "LayerId": 0,
+      "YRotation": 90.0,
+      "XPosition": 1.4,
+      "ZPosition": -0.7
+    },
+    {
+      "Id": "1_-0.7_0.7",
       "LayerId": 1,
       "YRotation": 90.0,
-      "XPosition": -0.5,
-      "ZPosition": 0.6
+      "XPosition": -0.7,
+      "ZPosition": 0.7
     },
     {
-      "Id": "1_0.5_0.6",
+      "Id": "1_0.7_0.7",
       "LayerId": 1,
       "YRotation": 90.0,
-      "XPosition": 0.5,
-      "ZPosition": 0.6
+      "XPosition": 0.7,
+      "ZPosition": 0.7
     },
     {
-      "Id": "1_-0.5_-0.6",
+      "Id": "1_-0.7_-0.7",
       "LayerId": 1,
       "YRotation": 90.0,
-      "XPosition": -0.5,
-      "ZPosition": -0.6
+      "XPosition": -0.7,
+      "ZPosition": -0.7
     },
     {
-      "Id": "1_0.5_-0.6",
+      "Id": "1_0.7_-0.7",
       "LayerId": 1,
       "YRotation": 90.0,
-      "XPosition": 0.5,
-      "ZPosition": -0.6
+      "XPosition": 0.7,
+      "ZPosition": -0.7
     },
     {
-      "Id": "2_0.0_0.6",
+      "Id": "2_0.0_0.7",
       "LayerId": 2,
       "YRotation": 0.0,
       "XPosition": 0.0,
-      "ZPosition": 0.6
+      "ZPosition": 0.7
     },
     {
-      "Id": "2_0.0_-0.6",
+      "Id": "2_0.0_-0.7",
       "LayerId": 2,
       "YRotation": 0.0,
       "XPosition": 0.0,
-      "ZPosition": -0.6
+      "ZPosition": -0.7
     }
   ],
   "BoxNodes": [
     {
-      "Id": "0_-1.0_0.6",
+      "Id": "0_0.0_1.4",
       "TypeId": 2,
       "BoxColor": 0,
       "BlockedNodes": [],
       "InitCards": [
         0,
         0,
-        3,
-        3,
-        4,
-        4
+        0,
+        0,
+        1,
+        3
       ],
       "IsHidden": false,
       "LockedTurn": 0,
       "IsCardsHidden": false
     },
     {
-      "Id": "0_0.0_0.6",
+      "Id": "0_0.0_-1.4",
       "TypeId": 2,
       "BoxColor": 1,
       "BlockedNodes": [],
       "InitCards": [
-        0,
-        0,
         1,
         1,
         1,
+        2,
+        2,
         3
       ],
       "IsHidden": false,
@@ -3561,50 +3594,31 @@ export const LEVEL_MEDIUM_6_DATA: LevelData = {
       "IsCardsHidden": false
     },
     {
-      "Id": "0_1.0_0.6",
+      "Id": "0_-1.4_0.7",
       "TypeId": 2,
       "BoxColor": 2,
       "BlockedNodes": [],
       "InitCards": [
+        0,
         1,
-        1,
-        1,
-        1,
+        2,
         3,
         3
       ],
-      "IsHidden": false,
+      "IsHidden": true,
       "LockedTurn": 0,
       "IsCardsHidden": false
     },
     {
-      "Id": "0_-1.0_-0.6",
+      "Id": "0_-1.4_-0.7",
       "TypeId": 2,
       "BoxColor": 3,
       "BlockedNodes": [],
       "InitCards": [
         0,
-        2,
-        2,
-        3,
-        4,
-        4
-      ],
-      "IsHidden": false,
-      "LockedTurn": 0,
-      "IsCardsHidden": false
-    },
-    {
-      "Id": "0_0.0_-0.6",
-      "TypeId": 2,
-      "BoxColor": 4,
-      "BlockedNodes": [],
-      "InitCards": [
-        0,
-        0,
-        0,
-        0,
         1,
+        2,
+        2,
         3
       ],
       "IsHidden": false,
@@ -3612,75 +3626,87 @@ export const LEVEL_MEDIUM_6_DATA: LevelData = {
       "IsCardsHidden": false
     },
     {
-      "Id": "0_1.0_-0.6",
+      "Id": "0_1.4_0.7",
       "TypeId": 2,
       "BoxColor": 0,
       "BlockedNodes": [],
       "InitCards": [
+        0,
+        0,
         1,
-        2,
-        2,
-        3,
-        3,
-        4
+        1,
+        2
       ],
-      "IsHidden": false,
+      "IsHidden": true,
       "LockedTurn": 0,
       "IsCardsHidden": false
     },
     {
-      "Id": "1_-0.5_0.6",
+      "Id": "0_1.4_-0.7",
       "TypeId": 2,
       "BoxColor": 1,
-      "BlockedNodes": [
-        "0_-1.0_0.6",
-        "0_0.0_0.6"
-      ],
+      "BlockedNodes": [],
       "InitCards": [
         0,
-        0,
         1,
         1,
-        1,
-        4
+        2,
+        3
       ],
       "IsHidden": false,
       "LockedTurn": 0,
       "IsCardsHidden": false
     },
     {
-      "Id": "1_0.5_0.6",
+      "Id": "1_-0.7_0.7",
       "TypeId": 2,
       "BoxColor": 2,
       "BlockedNodes": [
-        "0_0.0_0.6",
-        "0_1.0_0.6"
+        "0_0.0_1.4",
+        "0_-1.4_0.7"
       ],
       "InitCards": [
         0,
+        0,
         1,
         2,
-        2,
-        4,
-        4
+        3
       ],
       "IsHidden": false,
       "LockedTurn": 0,
       "IsCardsHidden": false
     },
     {
-      "Id": "1_-0.5_-0.6",
+      "Id": "1_0.7_0.7",
       "TypeId": 2,
       "BoxColor": 3,
       "BlockedNodes": [
-        "0_-1.0_-0.6",
-        "0_0.0_-0.6"
+        "0_0.0_1.4",
+        "0_1.4_0.7"
+      ],
+      "InitCards": [
+        0,
+        1,
+        1,
+        2,
+        3
+      ],
+      "IsHidden": false,
+      "LockedTurn": 0,
+      "IsCardsHidden": false
+    },
+    {
+      "Id": "1_-0.7_-0.7",
+      "TypeId": 2,
+      "BoxColor": 0,
+      "BlockedNodes": [
+        "0_0.0_-1.4",
+        "0_-1.4_-0.7"
       ],
       "InitCards": [
         0,
         0,
-        1,
-        2,
+        0,
         3,
         3
       ],
@@ -3689,19 +3715,18 @@ export const LEVEL_MEDIUM_6_DATA: LevelData = {
       "IsCardsHidden": false
     },
     {
-      "Id": "1_0.5_-0.6",
+      "Id": "1_0.7_-0.7",
       "TypeId": 2,
-      "BoxColor": 4,
+      "BoxColor": 1,
       "BlockedNodes": [
-        "0_0.0_-0.6",
-        "0_1.0_-0.6"
+        "0_0.0_-1.4",
+        "0_1.4_-0.7"
       ],
       "InitCards": [
         0,
         0,
+        0,
         1,
-        2,
-        2,
         2
       ],
       "IsHidden": false,
@@ -3709,42 +3734,38 @@ export const LEVEL_MEDIUM_6_DATA: LevelData = {
       "IsCardsHidden": false
     },
     {
-      "Id": "2_0.0_0.6",
-      "TypeId": 2,
-      "BoxColor": 0,
+      "Id": "2_0.0_0.7",
+      "TypeId": 1,
+      "BoxColor": 5,
       "BlockedNodes": [
-        "0_0.0_0.6",
-        "1_-0.5_0.6",
-        "1_0.5_0.6"
+        "0_0.0_1.4",
+        "1_-0.7_0.7",
+        "1_0.7_0.7"
       ],
       "InitCards": [
-        0,
-        0,
+        1,
         2,
-        4,
-        4,
-        4
+        3,
+        3
       ],
       "IsHidden": false,
       "LockedTurn": 0,
       "IsCardsHidden": false
     },
     {
-      "Id": "2_0.0_-0.6",
-      "TypeId": 2,
-      "BoxColor": 1,
+      "Id": "2_0.0_-0.7",
+      "TypeId": 1,
+      "BoxColor": 5,
       "BlockedNodes": [
-        "0_0.0_-0.6",
-        "1_-0.5_-0.6",
-        "1_0.5_-0.6"
+        "0_0.0_-1.4",
+        "1_-0.7_-0.7",
+        "1_0.7_-0.7"
       ],
       "InitCards": [
         1,
         1,
         1,
-        2,
-        3,
-        4
+        2
       ],
       "IsHidden": false,
       "LockedTurn": 0,
@@ -3764,110 +3785,110 @@ export const LEVEL_MEDIUM_7_DATA: LevelData = {
   "BoardOffsetZ": 0,
   "BoardNodes": [
     {
-      "Id": "0_-1.0_0.6",
+      "Id": "0_-0.8_1.4",
       "LayerId": 0,
       "YRotation": 0.0,
-      "XPosition": -1.0,
-      "ZPosition": 0.6
+      "XPosition": -0.8,
+      "ZPosition": 1.4
     },
     {
-      "Id": "0_0.0_0.6",
+      "Id": "0_0.8_1.4",
       "LayerId": 0,
       "YRotation": 0.0,
-      "XPosition": 0.0,
-      "ZPosition": 0.6
+      "XPosition": 0.8,
+      "ZPosition": 1.4
     },
     {
-      "Id": "0_1.0_0.6",
+      "Id": "0_-1.4_0.0",
       "LayerId": 0,
-      "YRotation": 0.0,
-      "XPosition": 1.0,
-      "ZPosition": 0.6
-    },
-    {
-      "Id": "0_-1.0_-0.6",
-      "LayerId": 0,
-      "YRotation": 0.0,
-      "XPosition": -1.0,
-      "ZPosition": -0.6
-    },
-    {
-      "Id": "0_0.0_-0.6",
-      "LayerId": 0,
-      "YRotation": 0.0,
-      "XPosition": 0.0,
-      "ZPosition": -0.6
-    },
-    {
-      "Id": "0_1.0_-0.6",
-      "LayerId": 0,
-      "YRotation": 0.0,
-      "XPosition": 1.0,
-      "ZPosition": -0.6
-    },
-    {
-      "Id": "1_-0.5_0.6",
-      "LayerId": 1,
       "YRotation": 90.0,
-      "XPosition": -0.5,
-      "ZPosition": 0.6
-    },
-    {
-      "Id": "1_0.5_0.6",
-      "LayerId": 1,
-      "YRotation": 90.0,
-      "XPosition": 0.5,
-      "ZPosition": 0.6
-    },
-    {
-      "Id": "1_-0.5_-0.6",
-      "LayerId": 1,
-      "YRotation": 90.0,
-      "XPosition": -0.5,
-      "ZPosition": -0.6
-    },
-    {
-      "Id": "1_0.5_-0.6",
-      "LayerId": 1,
-      "YRotation": 90.0,
-      "XPosition": 0.5,
-      "ZPosition": -0.6
-    },
-    {
-      "Id": "2_-0.5_0.0",
-      "LayerId": 2,
-      "YRotation": 0.0,
-      "XPosition": -0.5,
+      "XPosition": -1.4,
       "ZPosition": 0.0
     },
     {
-      "Id": "2_0.5_0.0",
+      "Id": "0_1.4_0.0",
+      "LayerId": 0,
+      "YRotation": 90.0,
+      "XPosition": 1.4,
+      "ZPosition": 0.0
+    },
+    {
+      "Id": "0_-0.8_-1.4",
+      "LayerId": 0,
+      "YRotation": 0.0,
+      "XPosition": -0.8,
+      "ZPosition": -1.4
+    },
+    {
+      "Id": "0_0.8_-1.4",
+      "LayerId": 0,
+      "YRotation": 0.0,
+      "XPosition": 0.8,
+      "ZPosition": -1.4
+    },
+    {
+      "Id": "1_-0.8_0.7",
+      "LayerId": 1,
+      "YRotation": 90.0,
+      "XPosition": -0.8,
+      "ZPosition": 0.7
+    },
+    {
+      "Id": "1_0.8_0.7",
+      "LayerId": 1,
+      "YRotation": 90.0,
+      "XPosition": 0.8,
+      "ZPosition": 0.7
+    },
+    {
+      "Id": "1_-0.8_-0.7",
+      "LayerId": 1,
+      "YRotation": 90.0,
+      "XPosition": -0.8,
+      "ZPosition": -0.7
+    },
+    {
+      "Id": "1_0.8_-0.7",
+      "LayerId": 1,
+      "YRotation": 90.0,
+      "XPosition": 0.8,
+      "ZPosition": -0.7
+    },
+    {
+      "Id": "2_0.0_0.7",
       "LayerId": 2,
       "YRotation": 0.0,
-      "XPosition": 0.5,
-      "ZPosition": 0.0
+      "XPosition": 0.0,
+      "ZPosition": 0.7
+    },
+    {
+      "Id": "2_0.0_-0.7",
+      "LayerId": 2,
+      "YRotation": 0.0,
+      "XPosition": 0.0,
+      "ZPosition": -0.7
     }
   ],
   "BoxNodes": [
     {
-      "Id": "0_-1.0_0.6",
+      "Id": "0_-0.8_1.4",
       "TypeId": 2,
       "BoxColor": 0,
       "BlockedNodes": [],
       "InitCards": [
         0,
+        0,
+        1,
+        1,
         2,
-        2,
-        3,
-        4,
-        4
+        3
       ],
       "IsHidden": false,
       "LockedTurn": 2,
       "IsCardsHidden": false
     },
     {
-      "Id": "0_0.0_0.6",
+      "Id": "0_0.8_1.4",
       "TypeId": 2,
       "BoxColor": 1,
       "BlockedNodes": [],
@@ -3875,95 +3896,71 @@ export const LEVEL_MEDIUM_7_DATA: LevelData = {
         0,
         1,
         1,
-        3,
-        3,
-        4
+        2,
+        2,
+        3
       ],
       "IsHidden": false,
       "LockedTurn": 0,
       "IsCardsHidden": false
     },
     {
-      "Id": "0_1.0_0.6",
+      "Id": "0_-1.4_0.0",
       "TypeId": 2,
       "BoxColor": 2,
       "BlockedNodes": [],
       "InitCards": [
-        0,
-        0,
+        1,
         2,
         2,
-        3,
-        4
+        2,
+        3
       ],
       "IsHidden": false,
       "LockedTurn": 3,
       "IsCardsHidden": false
     },
     {
-      "Id": "0_-1.0_-0.6",
+      "Id": "0_1.4_0.0",
       "TypeId": 2,
       "BoxColor": 3,
       "BlockedNodes": [],
       "InitCards": [
         0,
         1,
-        1,
-        2,
-        2,
-        4
+        3,
+        3,
+        3
       ],
       "IsHidden": false,
       "LockedTurn": 0,
       "IsCardsHidden": false
     },
     {
-      "Id": "0_0.0_-0.6",
+      "Id": "0_-0.8_-1.4",
       "TypeId": 2,
-      "BoxColor": 4,
+      "BoxColor": 0,
       "BlockedNodes": [],
       "InitCards": [
-        0,
         1,
         1,
         1,
-        2,
-        2
+        1,
+        3
       ],
       "IsHidden": false,
       "LockedTurn": 2,
       "IsCardsHidden": false
     },
     {
-      "Id": "0_1.0_-0.6",
+      "Id": "0_0.8_-1.4",
       "TypeId": 2,
-      "BoxColor": 0,
+      "BoxColor": 1,
       "BlockedNodes": [],
       "InitCards": [
         0,
         0,
-        0,
         1,
-        1,
-        4
-      ],
-      "IsHidden": false,
-      "LockedTurn": 0,
-      "IsCardsHidden": false
-    },
-    {
-      "Id": "1_-0.5_0.6",
-      "TypeId": 2,
-      "BoxColor": 1,
-      "BlockedNodes": [
-        "0_-1.0_0.6",
-        "0_0.0_0.6"
-      ],
-      "InitCards": [
-        0,
-        0,
-        0,
-        0,
         2,
         3
       ],
@@ -3972,82 +3969,74 @@ export const LEVEL_MEDIUM_7_DATA: LevelData = {
       "IsCardsHidden": false
     },
     {
-      "Id": "1_0.5_0.6",
+      "Id": "1_-0.8_0.7",
       "TypeId": 2,
       "BoxColor": 2,
       "BlockedNodes": [
-        "0_0.0_0.6",
-        "0_1.0_0.6"
+        "0_-0.8_1.4",
+        "0_-1.4_0.0"
       ],
       "InitCards": [
         0,
+        0,
+        0,
         1,
-        1,
-        2,
-        2,
-        3
+        1
       ],
       "IsHidden": false,
       "LockedTurn": 0,
       "IsCardsHidden": false
     },
     {
-      "Id": "1_-0.5_-0.6",
+      "Id": "1_0.8_0.7",
       "TypeId": 2,
       "BoxColor": 3,
       "BlockedNodes": [
-        "0_-1.0_-0.6",
-        "0_0.0_-0.6"
+        "0_0.8_1.4",
+        "0_1.4_0.0"
       ],
       "InitCards": [
         0,
+        0,
         1,
-        4,
-        4,
-        4,
-        4
+        1,
+        2
       ],
       "IsHidden": false,
       "LockedTurn": 0,
       "IsCardsHidden": false
     },
     {
-      "Id": "1_0.5_-0.6",
-      "TypeId": 2,
-      "BoxColor": 4,
-      "BlockedNodes": [
-        "0_0.0_-0.6",
-        "0_1.0_-0.6"
-      ],
-      "InitCards": [
-        1,
-        3,
-        3,
-        3,
-        3,
-        4
-      ],
-      "IsHidden": false,
-      "LockedTurn": 0,
-      "IsCardsHidden": false
-    },
-    {
-      "Id": "2_-0.5_0.0",
+      "Id": "1_-0.8_-0.7",
       "TypeId": 2,
       "BoxColor": 0,
       "BlockedNodes": [
-        "0_-1.0_0.6",
-        "0_0.0_0.6",
-        "0_-1.0_-0.6",
-        "0_0.0_-0.6",
-        "1_-0.5_0.6",
-        "1_-0.5_-0.6"
+        "0_-1.4_0.0",
+        "0_-0.8_-1.4"
       ],
       "InitCards": [
         0,
         0,
+        0,
+        2,
+        2
+      ],
+      "IsHidden": false,
+      "LockedTurn": 0,
+      "IsCardsHidden": false
+    },
+    {
+      "Id": "1_0.8_-0.7",
+      "TypeId": 2,
+      "BoxColor": 1,
+      "BlockedNodes": [
+        "0_1.4_0.0",
+        "0_0.8_-1.4"
+      ],
+      "InitCards": [
         1,
-        1,
+        2,
+        2,
         3,
         3
       ],
@@ -4056,24 +4045,40 @@ export const LEVEL_MEDIUM_7_DATA: LevelData = {
       "IsCardsHidden": false
     },
     {
-      "Id": "2_0.5_0.0",
-      "TypeId": 2,
-      "BoxColor": 1,
+      "Id": "2_0.0_0.7",
+      "TypeId": 1,
+      "BoxColor": 5,
       "BlockedNodes": [
-        "0_0.0_0.6",
-        "0_1.0_0.6",
-        "0_0.0_-0.6",
-        "0_1.0_-0.6",
-        "1_0.5_0.6",
-        "1_0.5_-0.6"
+        "0_-0.8_1.4",
+        "0_0.8_1.4",
+        "1_-0.8_0.7",
+        "1_0.8_0.7"
+      ],
+      "InitCards": [
+        0,
+        0,
+        0,
+        1
+      ],
+      "IsHidden": false,
+      "LockedTurn": 0,
+      "IsCardsHidden": false
+    },
+    {
+      "Id": "2_0.0_-0.7",
+      "TypeId": 1,
+      "BoxColor": 5,
+      "BlockedNodes": [
+        "0_-0.8_-1.4",
+        "0_0.8_-1.4",
+        "1_-0.8_-0.7",
+        "1_0.8_-0.7"
       ],
       "InitCards": [
         0,
         1,
-        1,
-        1,
-        2,
-        4
+        3,
+        3
       ],
       "IsHidden": false,
       "LockedTurn": 0,
@@ -4093,79 +4098,79 @@ export const LEVEL_MEDIUM_8_DATA: LevelData = {
   "BoardOffsetZ": 0,
   "BoardNodes": [
     {
-      "Id": "0_-1.2_0.7",
+      "Id": "0_-1.0_1.25",
       "LayerId": 0,
-      "YRotation": 0.0,
-      "XPosition": -1.2,
-      "ZPosition": 0.7
+      "YRotation": 90.0,
+      "XPosition": -1.0,
+      "ZPosition": 1.25
     },
     {
-      "Id": "0_0.0_0.7",
+      "Id": "0_1.0_1.25",
+      "LayerId": 0,
+      "YRotation": 90.0,
+      "XPosition": 1.0,
+      "ZPosition": 1.25
+    },
+    {
+      "Id": "0_-1.0_-1.25",
+      "LayerId": 0,
+      "YRotation": 90.0,
+      "XPosition": -1.0,
+      "ZPosition": -1.25
+    },
+    {
+      "Id": "0_1.0_-1.25",
+      "LayerId": 0,
+      "YRotation": 90.0,
+      "XPosition": 1.0,
+      "ZPosition": -1.25
+    },
+    {
+      "Id": "0_0.0_0.0",
       "LayerId": 0,
       "YRotation": 0.0,
       "XPosition": 0.0,
-      "ZPosition": 0.7
+      "ZPosition": 0.0
     },
     {
-      "Id": "0_1.2_0.7",
-      "LayerId": 0,
-      "YRotation": 0.0,
-      "XPosition": 1.2,
-      "ZPosition": 0.7
-    },
-    {
-      "Id": "0_-0.6_-0.7",
-      "LayerId": 0,
-      "YRotation": 0.0,
-      "XPosition": -0.6,
-      "ZPosition": -0.7
-    },
-    {
-      "Id": "0_0.6_-0.7",
-      "LayerId": 0,
-      "YRotation": 0.0,
-      "XPosition": 0.6,
-      "ZPosition": -0.7
-    },
-    {
-      "Id": "1_-0.6_0.7",
+      "Id": "1_0.0_1.25",
       "LayerId": 1,
-      "YRotation": 90.0,
-      "XPosition": -0.6,
-      "ZPosition": 0.7
+      "YRotation": 0.0,
+      "XPosition": 0.0,
+      "ZPosition": 1.25
     },
     {
-      "Id": "1_0.6_0.7",
+      "Id": "1_0.0_-1.25",
       "LayerId": 1,
-      "YRotation": 90.0,
-      "XPosition": 0.6,
-      "ZPosition": 0.7
+      "YRotation": 0.0,
+      "XPosition": 0.0,
+      "ZPosition": -1.25
     },
     {
-      "Id": "1_0.0_-0.7",
+      "Id": "1_0.0_0.0",
       "LayerId": 1,
       "YRotation": 90.0,
       "XPosition": 0.0,
-      "ZPosition": -0.7
-    },
-    {
-      "Id": "2_-0.3_0.0",
-      "LayerId": 2,
-      "YRotation": 0.0,
-      "XPosition": -0.3,
       "ZPosition": 0.0
     },
     {
-      "Id": "2_0.3_0.0",
+      "Id": "2_0.0_0.65",
       "LayerId": 2,
-      "YRotation": 0.0,
-      "XPosition": 0.3,
-      "ZPosition": 0.0
+      "YRotation": 90.0,
+      "XPosition": 0.0,
+      "ZPosition": 0.65
+    },
+    {
+      "Id": "2_0.0_-0.65",
+      "LayerId": 2,
+      "YRotation": 90.0,
+      "XPosition": 0.0,
+      "ZPosition": -0.65
     }
   ],
   "BoxNodes": [
     {
-      "Id": "0_-1.2_0.7",
+      "Id": "0_-1.0_1.25",
       "TypeId": 3,
       "BoxColor": 0,
       "BlockedNodes": [],
@@ -4183,7 +4188,7 @@ export const LEVEL_MEDIUM_8_DATA: LevelData = {
       "IsCardsHidden": false
     },
     {
-      "Id": "0_0.0_0.7",
+      "Id": "0_1.0_1.25",
       "TypeId": 3,
       "BoxColor": 1,
       "BlockedNodes": [],
@@ -4196,12 +4201,12 @@ export const LEVEL_MEDIUM_8_DATA: LevelData = {
         1,
         1
       ],
-      "IsHidden": false,
+      "IsHidden": true,
       "LockedTurn": 0,
       "IsCardsHidden": false
     },
     {
-      "Id": "0_1.2_0.7",
+      "Id": "0_-1.0_-1.25",
       "TypeId": 3,
       "BoxColor": 2,
       "BlockedNodes": [],
@@ -4219,7 +4224,7 @@ export const LEVEL_MEDIUM_8_DATA: LevelData = {
       "IsCardsHidden": false
     },
     {
-      "Id": "0_-0.6_-0.7",
+      "Id": "0_1.0_-1.25",
       "TypeId": 3,
       "BoxColor": 3,
       "BlockedNodes": [],
@@ -4237,7 +4242,7 @@ export const LEVEL_MEDIUM_8_DATA: LevelData = {
       "IsCardsHidden": false
     },
     {
-      "Id": "0_0.6_-0.7",
+      "Id": "0_0.0_0.0",
       "TypeId": 3,
       "BoxColor": 0,
       "BlockedNodes": [],
@@ -4255,12 +4260,12 @@ export const LEVEL_MEDIUM_8_DATA: LevelData = {
       "IsCardsHidden": false
     },
     {
-      "Id": "1_-0.6_0.7",
+      "Id": "1_0.0_1.25",
       "TypeId": 3,
       "BoxColor": 1,
       "BlockedNodes": [
-        "0_-1.2_0.7",
-        "0_0.0_0.7"
+        "0_-1.0_1.25",
+        "0_1.0_1.25"
       ],
       "InitCards": [
         0,
@@ -4276,12 +4281,12 @@ export const LEVEL_MEDIUM_8_DATA: LevelData = {
       "IsCardsHidden": false
     },
     {
-      "Id": "1_0.6_0.7",
+      "Id": "1_0.0_-1.25",
       "TypeId": 3,
       "BoxColor": 2,
       "BlockedNodes": [
-        "0_0.0_0.7",
-        "0_1.2_0.7"
+        "0_-1.0_-1.25",
+        "0_1.0_-1.25"
       ],
       "InitCards": [
         1,
@@ -4297,12 +4302,11 @@ export const LEVEL_MEDIUM_8_DATA: LevelData = {
       "IsCardsHidden": false
     },
     {
-      "Id": "1_0.0_-0.7",
+      "Id": "1_0.0_0.0",
       "TypeId": 3,
       "BoxColor": 3,
       "BlockedNodes": [
-        "0_-0.6_-0.7",
-        "0_0.6_-0.7"
+        "0_0.0_0.0"
       ],
       "InitCards": [
         0,
@@ -4318,15 +4322,13 @@ export const LEVEL_MEDIUM_8_DATA: LevelData = {
       "IsCardsHidden": false
     },
     {
-      "Id": "2_-0.3_0.0",
+      "Id": "2_0.0_0.65",
       "TypeId": 1,
       "BoxColor": 5,
       "BlockedNodes": [
-        "0_0.0_0.7",
-        "0_-0.6_-0.7",
-        "1_-0.6_0.7",
-        "1_0.6_0.7",
-        "1_0.0_-0.7"
+        "0_0.0_0.0",
+        "1_0.0_1.25",
+        "1_0.0_0.0"
       ],
       "InitCards": [
         1,
@@ -4339,15 +4341,13 @@ export const LEVEL_MEDIUM_8_DATA: LevelData = {
       "IsCardsHidden": false
     },
     {
-      "Id": "2_0.3_0.0",
+      "Id": "2_0.0_-0.65",
       "TypeId": 1,
       "BoxColor": 5,
       "BlockedNodes": [
-        "0_0.0_0.7",
-        "0_0.6_-0.7",
-        "1_-0.6_0.7",
-        "1_0.6_0.7",
-        "1_0.0_-0.7"
+        "0_0.0_0.0",
+        "1_0.0_-1.25",
+        "1_0.0_0.0"
       ],
       "InitCards": [
         0,
@@ -4373,27 +4373,6 @@ export const LEVEL_MEDIUM_9_DATA: LevelData = {
   "BoardOffsetZ": 0,
   "BoardNodes": [
     {
-      "Id": "0_-1.2_0.8",
-      "LayerId": 0,
-      "YRotation": 0.0,
-      "XPosition": -1.2,
-      "ZPosition": 0.8
-    },
-    {
-      "Id": "0_0.0_0.8",
-      "LayerId": 0,
-      "YRotation": 0.0,
-      "XPosition": 0.0,
-      "ZPosition": 0.8
-    },
-    {
-      "Id": "0_1.2_0.8",
-      "LayerId": 0,
-      "YRotation": 0.0,
-      "XPosition": 1.2,
-      "ZPosition": 0.8
-    },
-    {
       "Id": "0_0.0_0.0",
       "LayerId": 0,
       "YRotation": 0.0,
@@ -4401,67 +4380,88 @@ export const LEVEL_MEDIUM_9_DATA: LevelData = {
       "ZPosition": 0.0
     },
     {
-      "Id": "0_-1.2_-0.8",
-      "LayerId": 0,
-      "YRotation": 0.0,
-      "XPosition": -1.2,
-      "ZPosition": -0.8
-    },
-    {
-      "Id": "0_0.0_-0.8",
+      "Id": "0_0.0_1.4",
       "LayerId": 0,
       "YRotation": 0.0,
       "XPosition": 0.0,
-      "ZPosition": -0.8
+      "ZPosition": 1.4
     },
     {
-      "Id": "0_1.2_-0.8",
+      "Id": "0_0.0_-1.4",
       "LayerId": 0,
       "YRotation": 0.0,
-      "XPosition": 1.2,
-      "ZPosition": -0.8
+      "XPosition": 0.0,
+      "ZPosition": -1.4
     },
     {
-      "Id": "1_-0.6_0.8",
-      "LayerId": 1,
+      "Id": "0_-1.3_0.0",
+      "LayerId": 0,
       "YRotation": 90.0,
-      "XPosition": -0.6,
-      "ZPosition": 0.8
-    },
-    {
-      "Id": "1_0.6_0.8",
-      "LayerId": 1,
-      "YRotation": 90.0,
-      "XPosition": 0.6,
-      "ZPosition": 0.8
-    },
-    {
-      "Id": "1_-0.6_-0.8",
-      "LayerId": 1,
-      "YRotation": 90.0,
-      "XPosition": -0.6,
-      "ZPosition": -0.8
-    },
-    {
-      "Id": "1_0.6_-0.8",
-      "LayerId": 1,
-      "YRotation": 90.0,
-      "XPosition": 0.6,
-      "ZPosition": -0.8
-    },
-    {
-      "Id": "2_-0.6_0.0",
-      "LayerId": 2,
-      "YRotation": 0.0,
-      "XPosition": -0.6,
+      "XPosition": -1.3,
       "ZPosition": 0.0
     },
     {
-      "Id": "2_0.6_0.0",
+      "Id": "0_1.3_0.0",
+      "LayerId": 0,
+      "YRotation": 90.0,
+      "XPosition": 1.3,
+      "ZPosition": 0.0
+    },
+    {
+      "Id": "0_-1.3_1.4",
+      "LayerId": 0,
+      "YRotation": 90.0,
+      "XPosition": -1.3,
+      "ZPosition": 1.4
+    },
+    {
+      "Id": "0_1.3_-1.4",
+      "LayerId": 0,
+      "YRotation": 90.0,
+      "XPosition": 1.3,
+      "ZPosition": -1.4
+    },
+    {
+      "Id": "1_-0.65_0.7",
+      "LayerId": 1,
+      "YRotation": 0.0,
+      "XPosition": -0.65,
+      "ZPosition": 0.7
+    },
+    {
+      "Id": "1_0.65_-0.7",
+      "LayerId": 1,
+      "YRotation": 0.0,
+      "XPosition": 0.65,
+      "ZPosition": -0.7
+    },
+    {
+      "Id": "1_0.65_0.7",
+      "LayerId": 1,
+      "YRotation": 90.0,
+      "XPosition": 0.65,
+      "ZPosition": 0.7
+    },
+    {
+      "Id": "1_-0.65_-0.7",
+      "LayerId": 1,
+      "YRotation": 90.0,
+      "XPosition": -0.65,
+      "ZPosition": -0.7
+    },
+    {
+      "Id": "2_0.0_0.5",
       "LayerId": 2,
       "YRotation": 0.0,
-      "XPosition": 0.6,
-      "ZPosition": 0.0
+      "XPosition": 0.0,
+      "ZPosition": 0.5
+    },
+    {
+      "Id": "2_0.0_-0.5",
+      "LayerId": 2,
+      "YRotation": 0.0,
+      "XPosition": 0.0,
+      "ZPosition": -0.5
     },
     {
       "Id": "3_0.0_0.0",
@@ -4473,7 +4473,7 @@ export const LEVEL_MEDIUM_9_DATA: LevelData = {
   ],
   "BoxNodes": [
     {
-      "Id": "0_-1.2_0.8",
+      "Id": "0_0.0_0.0",
       "TypeId": 2,
       "BoxColor": 0,
       "BlockedNodes": [],
@@ -4490,7 +4490,7 @@ export const LEVEL_MEDIUM_9_DATA: LevelData = {
       "IsCardsHidden": false
     },
     {
-      "Id": "0_0.0_0.8",
+      "Id": "0_0.0_1.4",
       "TypeId": 2,
       "BoxColor": 1,
       "BlockedNodes": [],
@@ -4507,7 +4507,7 @@ export const LEVEL_MEDIUM_9_DATA: LevelData = {
       "IsCardsHidden": false
     },
     {
-      "Id": "0_1.2_0.8",
+      "Id": "0_0.0_-1.4",
       "TypeId": 2,
       "BoxColor": 2,
       "BlockedNodes": [],
@@ -4524,7 +4524,7 @@ export const LEVEL_MEDIUM_9_DATA: LevelData = {
       "IsCardsHidden": false
     },
     {
-      "Id": "0_0.0_0.0",
+      "Id": "0_-1.3_0.0",
       "TypeId": 2,
       "BoxColor": 3,
       "BlockedNodes": [],
@@ -4536,12 +4536,12 @@ export const LEVEL_MEDIUM_9_DATA: LevelData = {
         0,
         1
       ],
-      "IsHidden": false,
+      "IsHidden": true,
       "LockedTurn": 0,
       "IsCardsHidden": false
     },
     {
-      "Id": "0_-1.2_-0.8",
+      "Id": "0_1.3_0.0",
       "TypeId": 2,
       "BoxColor": 4,
       "BlockedNodes": [],
@@ -4553,12 +4553,12 @@ export const LEVEL_MEDIUM_9_DATA: LevelData = {
         3,
         4
       ],
-      "IsHidden": false,
+      "IsHidden": true,
       "LockedTurn": 0,
       "IsCardsHidden": false
     },
     {
-      "Id": "0_0.0_-0.8",
+      "Id": "0_-1.3_1.4",
       "TypeId": 2,
       "BoxColor": 0,
       "BlockedNodes": [],
@@ -4575,7 +4575,7 @@ export const LEVEL_MEDIUM_9_DATA: LevelData = {
       "IsCardsHidden": false
     },
     {
-      "Id": "0_1.2_-0.8",
+      "Id": "0_1.3_-1.4",
       "TypeId": 2,
       "BoxColor": 1,
       "BlockedNodes": [],
@@ -4592,13 +4592,14 @@ export const LEVEL_MEDIUM_9_DATA: LevelData = {
       "IsCardsHidden": false
     },
     {
-      "Id": "1_-0.6_0.8",
+      "Id": "1_-0.65_0.7",
       "TypeId": 2,
       "BoxColor": 2,
       "BlockedNodes": [
-        "0_-1.2_0.8",
-        "0_0.0_0.8",
-        "0_0.0_0.0"
+        "0_0.0_0.0",
+        "0_0.0_1.4",
+        "0_-1.3_0.0",
+        "0_-1.3_1.4"
       ],
       "InitCards": [
         0,
@@ -4613,13 +4614,14 @@ export const LEVEL_MEDIUM_9_DATA: LevelData = {
       "IsCardsHidden": false
     },
     {
-      "Id": "1_0.6_0.8",
+      "Id": "1_0.65_-0.7",
       "TypeId": 2,
       "BoxColor": 3,
       "BlockedNodes": [
-        "0_0.0_0.8",
-        "0_1.2_0.8",
-        "0_0.0_0.0"
+        "0_0.0_0.0",
+        "0_0.0_-1.4",
+        "0_1.3_0.0",
+        "0_1.3_-1.4"
       ],
       "InitCards": [
         0,
@@ -4634,13 +4636,13 @@ export const LEVEL_MEDIUM_9_DATA: LevelData = {
       "IsCardsHidden": false
     },
     {
-      "Id": "1_-0.6_-0.8",
+      "Id": "1_0.65_0.7",
       "TypeId": 2,
       "BoxColor": 4,
       "BlockedNodes": [
         "0_0.0_0.0",
-        "0_-1.2_-0.8",
-        "0_0.0_-0.8"
+        "0_0.0_1.4",
+        "0_1.3_0.0"
       ],
       "InitCards": [
         0,
@@ -4654,13 +4656,13 @@ export const LEVEL_MEDIUM_9_DATA: LevelData = {
       "IsCardsHidden": false
     },
     {
-      "Id": "1_0.6_-0.8",
+      "Id": "1_-0.65_-0.7",
       "TypeId": 2,
       "BoxColor": 0,
       "BlockedNodes": [
         "0_0.0_0.0",
-        "0_0.0_-0.8",
-        "0_1.2_-0.8"
+        "0_0.0_-1.4",
+        "0_-1.3_0.0"
       ],
       "InitCards": [
         1,
@@ -4674,17 +4676,13 @@ export const LEVEL_MEDIUM_9_DATA: LevelData = {
       "IsCardsHidden": false
     },
     {
-      "Id": "2_-0.6_0.0",
+      "Id": "2_0.0_0.5",
       "TypeId": 2,
       "BoxColor": 1,
       "BlockedNodes": [
-        "0_-1.2_0.8",
-        "0_0.0_0.8",
         "0_0.0_0.0",
-        "0_-1.2_-0.8",
-        "0_0.0_-0.8",
-        "1_-0.6_0.8",
-        "1_-0.6_-0.8"
+        "1_-0.65_0.7",
+        "1_0.65_0.7"
       ],
       "InitCards": [
         0,
@@ -4698,17 +4696,13 @@ export const LEVEL_MEDIUM_9_DATA: LevelData = {
       "IsCardsHidden": false
     },
     {
-      "Id": "2_0.6_0.0",
+      "Id": "2_0.0_-0.5",
       "TypeId": 2,
       "BoxColor": 2,
       "BlockedNodes": [
-        "0_0.0_0.8",
-        "0_1.2_0.8",
         "0_0.0_0.0",
-        "0_0.0_-0.8",
-        "0_1.2_-0.8",
-        "1_0.6_0.8",
-        "1_0.6_-0.8"
+        "1_0.65_-0.7",
+        "1_-0.65_-0.7"
       ],
       "InitCards": [
         0,
@@ -4726,15 +4720,13 @@ export const LEVEL_MEDIUM_9_DATA: LevelData = {
       "TypeId": 1,
       "BoxColor": 5,
       "BlockedNodes": [
-        "0_0.0_0.8",
         "0_0.0_0.0",
-        "0_0.0_-0.8",
-        "1_-0.6_0.8",
-        "1_0.6_0.8",
-        "1_-0.6_-0.8",
-        "1_0.6_-0.8",
-        "2_-0.6_0.0",
-        "2_0.6_0.0"
+        "1_-0.65_0.7",
+        "1_0.65_-0.7",
+        "1_0.65_0.7",
+        "1_-0.65_-0.7",
+        "2_0.0_0.5",
+        "2_0.0_-0.5"
       ],
       "InitCards": [
         0,
@@ -4760,122 +4752,122 @@ export const LEVEL_MEDIUM_10_DATA: LevelData = {
   "BoardOffsetZ": 0,
   "BoardNodes": [
     {
-      "Id": "0_-2.0_0.6",
+      "Id": "0_-2.1_1.3",
       "LayerId": 0,
       "YRotation": 0.0,
-      "XPosition": -2.0,
-      "ZPosition": 0.6
+      "XPosition": -2.1,
+      "ZPosition": 1.3
     },
     {
-      "Id": "0_-1.0_0.6",
+      "Id": "0_-0.7_1.3",
       "LayerId": 0,
       "YRotation": 0.0,
-      "XPosition": -1.0,
-      "ZPosition": 0.6
+      "XPosition": -0.7,
+      "ZPosition": 1.3
     },
     {
-      "Id": "0_0.0_0.6",
+      "Id": "0_0.7_1.3",
       "LayerId": 0,
       "YRotation": 0.0,
+      "XPosition": 0.7,
+      "ZPosition": 1.3
+    },
+    {
+      "Id": "0_2.1_1.3",
+      "LayerId": 0,
+      "YRotation": 0.0,
+      "XPosition": 2.1,
+      "ZPosition": 1.3
+    },
+    {
+      "Id": "0_-1.4_0.0",
+      "LayerId": 0,
+      "YRotation": 90.0,
+      "XPosition": -1.4,
+      "ZPosition": 0.0
+    },
+    {
+      "Id": "0_1.4_0.0",
+      "LayerId": 0,
+      "YRotation": 90.0,
+      "XPosition": 1.4,
+      "ZPosition": 0.0
+    },
+    {
+      "Id": "0_-2.1_-1.3",
+      "LayerId": 0,
+      "YRotation": 0.0,
+      "XPosition": -2.1,
+      "ZPosition": -1.3
+    },
+    {
+      "Id": "0_-0.7_-1.3",
+      "LayerId": 0,
+      "YRotation": 0.0,
+      "XPosition": -0.7,
+      "ZPosition": -1.3
+    },
+    {
+      "Id": "0_0.7_-1.3",
+      "LayerId": 0,
+      "YRotation": 0.0,
+      "XPosition": 0.7,
+      "ZPosition": -1.3
+    },
+    {
+      "Id": "0_2.1_-1.3",
+      "LayerId": 0,
+      "YRotation": 0.0,
+      "XPosition": 2.1,
+      "ZPosition": -1.3
+    },
+    {
+      "Id": "1_-2.1_0.65",
+      "LayerId": 1,
+      "YRotation": 90.0,
+      "XPosition": -2.1,
+      "ZPosition": 0.65
+    },
+    {
+      "Id": "1_0.0_0.65",
+      "LayerId": 1,
+      "YRotation": 90.0,
       "XPosition": 0.0,
-      "ZPosition": 0.6
+      "ZPosition": 0.65
     },
     {
-      "Id": "0_1.0_0.6",
-      "LayerId": 0,
-      "YRotation": 0.0,
-      "XPosition": 1.0,
-      "ZPosition": 0.6
+      "Id": "1_2.1_0.65",
+      "LayerId": 1,
+      "YRotation": 90.0,
+      "XPosition": 2.1,
+      "ZPosition": 0.65
     },
     {
-      "Id": "0_2.0_0.6",
-      "LayerId": 0,
-      "YRotation": 0.0,
-      "XPosition": 2.0,
-      "ZPosition": 0.6
+      "Id": "1_-2.1_-0.65",
+      "LayerId": 1,
+      "YRotation": 90.0,
+      "XPosition": -2.1,
+      "ZPosition": -0.65
     },
     {
-      "Id": "0_-2.0_-0.6",
-      "LayerId": 0,
-      "YRotation": 0.0,
-      "XPosition": -2.0,
-      "ZPosition": -0.6
-    },
-    {
-      "Id": "0_-1.0_-0.6",
-      "LayerId": 0,
-      "YRotation": 0.0,
-      "XPosition": -1.0,
-      "ZPosition": -0.6
-    },
-    {
-      "Id": "0_0.0_-0.6",
-      "LayerId": 0,
-      "YRotation": 0.0,
+      "Id": "1_0.0_-0.65",
+      "LayerId": 1,
+      "YRotation": 90.0,
       "XPosition": 0.0,
-      "ZPosition": -0.6
+      "ZPosition": -0.65
     },
     {
-      "Id": "0_1.0_-0.6",
-      "LayerId": 0,
-      "YRotation": 0.0,
-      "XPosition": 1.0,
-      "ZPosition": -0.6
-    },
-    {
-      "Id": "0_2.0_-0.6",
-      "LayerId": 0,
-      "YRotation": 0.0,
-      "XPosition": 2.0,
-      "ZPosition": -0.6
-    },
-    {
-      "Id": "1_-1.5_0.6",
+      "Id": "1_2.1_-0.65",
       "LayerId": 1,
       "YRotation": 90.0,
-      "XPosition": -1.5,
-      "ZPosition": 0.6
+      "XPosition": 2.1,
+      "ZPosition": -0.65
     },
     {
-      "Id": "1_-0.5_0.6",
-      "LayerId": 1,
-      "YRotation": 90.0,
-      "XPosition": -0.5,
-      "ZPosition": 0.6
-    },
-    {
-      "Id": "1_0.5_0.6",
-      "LayerId": 1,
-      "YRotation": 90.0,
-      "XPosition": 0.5,
-      "ZPosition": 0.6
-    },
-    {
-      "Id": "1_1.5_0.6",
-      "LayerId": 1,
-      "YRotation": 90.0,
-      "XPosition": 1.5,
-      "ZPosition": 0.6
-    },
-    {
-      "Id": "1_-1.0_-0.6",
-      "LayerId": 1,
-      "YRotation": 90.0,
-      "XPosition": -1.0,
-      "ZPosition": -0.6
-    },
-    {
-      "Id": "1_1.0_-0.6",
-      "LayerId": 1,
-      "YRotation": 90.0,
-      "XPosition": 1.0,
-      "ZPosition": -0.6
-    },
-    {
-      "Id": "2_-1.0_0.0",
+      "Id": "2_-1.4_0.0",
       "LayerId": 2,
       "YRotation": 0.0,
-      "XPosition": -1.0,
+      "XPosition": -1.4,
       "ZPosition": 0.0
     },
     {
@@ -4886,30 +4878,30 @@ export const LEVEL_MEDIUM_10_DATA: LevelData = {
       "ZPosition": 0.0
     },
     {
-      "Id": "2_1.0_0.0",
+      "Id": "2_1.4_0.0",
       "LayerId": 2,
       "YRotation": 0.0,
-      "XPosition": 1.0,
+      "XPosition": 1.4,
       "ZPosition": 0.0
     },
     {
-      "Id": "3_-0.5_0.0",
+      "Id": "3_-0.7_0.0",
       "LayerId": 3,
       "YRotation": 90.0,
-      "XPosition": -0.5,
+      "XPosition": -0.7,
       "ZPosition": 0.0
     },
     {
-      "Id": "3_0.5_0.0",
+      "Id": "3_0.7_0.0",
       "LayerId": 3,
       "YRotation": 90.0,
-      "XPosition": 0.5,
+      "XPosition": 0.7,
       "ZPosition": 0.0
     }
   ],
   "BoxNodes": [
     {
-      "Id": "0_-2.0_0.6",
+      "Id": "0_-2.1_1.3",
       "TypeId": 2,
       "BoxColor": 0,
       "BlockedNodes": [],
@@ -4926,7 +4918,7 @@ export const LEVEL_MEDIUM_10_DATA: LevelData = {
       "IsCardsHidden": false
     },
     {
-      "Id": "0_-1.0_0.6",
+      "Id": "0_-0.7_1.3",
       "TypeId": 2,
       "BoxColor": 1,
       "BlockedNodes": [],
@@ -4943,7 +4935,7 @@ export const LEVEL_MEDIUM_10_DATA: LevelData = {
       "IsCardsHidden": false
     },
     {
-      "Id": "0_0.0_0.6",
+      "Id": "0_0.7_1.3",
       "TypeId": 2,
       "BoxColor": 2,
       "BlockedNodes": [],
@@ -4960,7 +4952,7 @@ export const LEVEL_MEDIUM_10_DATA: LevelData = {
       "IsCardsHidden": false
     },
     {
-      "Id": "0_1.0_0.6",
+      "Id": "0_2.1_1.3",
       "TypeId": 2,
       "BoxColor": 3,
       "BlockedNodes": [],
@@ -4972,12 +4964,12 @@ export const LEVEL_MEDIUM_10_DATA: LevelData = {
         2,
         3
       ],
-      "IsHidden": false,
+      "IsHidden": true,
       "LockedTurn": 0,
       "IsCardsHidden": false
     },
     {
-      "Id": "0_2.0_0.6",
+      "Id": "0_-1.4_0.0",
       "TypeId": 2,
       "BoxColor": 4,
       "BlockedNodes": [],
@@ -4994,7 +4986,7 @@ export const LEVEL_MEDIUM_10_DATA: LevelData = {
       "IsCardsHidden": false
     },
     {
-      "Id": "0_-2.0_-0.6",
+      "Id": "0_1.4_0.0",
       "TypeId": 2,
       "BoxColor": 0,
       "BlockedNodes": [],
@@ -5011,7 +5003,7 @@ export const LEVEL_MEDIUM_10_DATA: LevelData = {
       "IsCardsHidden": false
     },
     {
-      "Id": "0_-1.0_-0.6",
+      "Id": "0_-2.1_-1.3",
       "TypeId": 2,
       "BoxColor": 1,
       "BlockedNodes": [],
@@ -5028,7 +5020,7 @@ export const LEVEL_MEDIUM_10_DATA: LevelData = {
       "IsCardsHidden": false
     },
     {
-      "Id": "0_0.0_-0.6",
+      "Id": "0_-0.7_-1.3",
       "TypeId": 2,
       "BoxColor": 2,
       "BlockedNodes": [],
@@ -5045,7 +5037,7 @@ export const LEVEL_MEDIUM_10_DATA: LevelData = {
       "IsCardsHidden": false
     },
     {
-      "Id": "0_1.0_-0.6",
+      "Id": "0_0.7_-1.3",
       "TypeId": 2,
       "BoxColor": 3,
       "BlockedNodes": [],
@@ -5062,7 +5054,7 @@ export const LEVEL_MEDIUM_10_DATA: LevelData = {
       "IsCardsHidden": false
     },
     {
-      "Id": "0_2.0_-0.6",
+      "Id": "0_2.1_-1.3",
       "TypeId": 2,
       "BoxColor": 4,
       "BlockedNodes": [],
@@ -5079,12 +5071,12 @@ export const LEVEL_MEDIUM_10_DATA: LevelData = {
       "IsCardsHidden": false
     },
     {
-      "Id": "1_-1.5_0.6",
+      "Id": "1_-2.1_0.65",
       "TypeId": 2,
       "BoxColor": 0,
       "BlockedNodes": [
-        "0_-2.0_0.6",
-        "0_-1.0_0.6"
+        "0_-2.1_1.3",
+        "0_-1.4_0.0"
       ],
       "InitCards": [
         0,
@@ -5099,12 +5091,12 @@ export const LEVEL_MEDIUM_10_DATA: LevelData = {
       "IsCardsHidden": false
     },
     {
-      "Id": "1_-0.5_0.6",
+      "Id": "1_0.0_0.65",
       "TypeId": 2,
       "BoxColor": 1,
       "BlockedNodes": [
-        "0_-1.0_0.6",
-        "0_0.0_0.6"
+        "0_-0.7_1.3",
+        "0_0.7_1.3"
       ],
       "InitCards": [
         0,
@@ -5118,12 +5110,12 @@ export const LEVEL_MEDIUM_10_DATA: LevelData = {
       "IsCardsHidden": false
     },
     {
-      "Id": "1_0.5_0.6",
+      "Id": "1_2.1_0.65",
       "TypeId": 2,
       "BoxColor": 2,
       "BlockedNodes": [
-        "0_0.0_0.6",
-        "0_1.0_0.6"
+        "0_2.1_1.3",
+        "0_1.4_0.0"
       ],
       "InitCards": [
         0,
@@ -5137,12 +5129,12 @@ export const LEVEL_MEDIUM_10_DATA: LevelData = {
       "IsCardsHidden": false
     },
     {
-      "Id": "1_1.5_0.6",
+      "Id": "1_-2.1_-0.65",
       "TypeId": 2,
       "BoxColor": 3,
       "BlockedNodes": [
-        "0_1.0_0.6",
-        "0_2.0_0.6"
+        "0_-1.4_0.0",
+        "0_-2.1_-1.3"
       ],
       "InitCards": [
         0,
@@ -5156,11 +5148,12 @@ export const LEVEL_MEDIUM_10_DATA: LevelData = {
       "IsCardsHidden": false
     },
     {
-      "Id": "1_-1.0_-0.6",
+      "Id": "1_0.0_-0.65",
       "TypeId": 2,
       "BoxColor": 4,
       "BlockedNodes": [
-        "0_-1.0_-0.6"
+        "0_-0.7_-1.3",
+        "0_0.7_-1.3"
       ],
       "InitCards": [
         1,
@@ -5174,11 +5167,12 @@ export const LEVEL_MEDIUM_10_DATA: LevelData = {
       "IsCardsHidden": false
     },
     {
-      "Id": "1_1.0_-0.6",
+      "Id": "1_2.1_-0.65",
       "TypeId": 2,
       "BoxColor": 0,
       "BlockedNodes": [
-        "0_1.0_-0.6"
+        "0_1.4_0.0",
+        "0_2.1_-1.3"
       ],
       "InitCards": [
         0,
@@ -5192,15 +5186,13 @@ export const LEVEL_MEDIUM_10_DATA: LevelData = {
       "IsCardsHidden": false
     },
     {
-      "Id": "2_-1.0_0.0",
+      "Id": "2_-1.4_0.0",
       "TypeId": 2,
       "BoxColor": 1,
       "BlockedNodes": [
-        "0_-1.0_0.6",
-        "0_-1.0_-0.6",
-        "1_-1.5_0.6",
-        "1_-0.5_0.6",
-        "1_-1.0_-0.6"
+        "0_-1.4_0.0",
+        "1_-2.1_0.65",
+        "1_-2.1_-0.65"
       ],
       "InitCards": [
         1,
@@ -5218,10 +5210,8 @@ export const LEVEL_MEDIUM_10_DATA: LevelData = {
       "TypeId": 2,
       "BoxColor": 2,
       "BlockedNodes": [
-        "0_0.0_0.6",
-        "0_0.0_-0.6",
-        "1_-0.5_0.6",
-        "1_0.5_0.6"
+        "1_0.0_0.65",
+        "1_0.0_-0.65"
       ],
       "InitCards": [
         0,
@@ -5235,15 +5225,13 @@ export const LEVEL_MEDIUM_10_DATA: LevelData = {
       "IsCardsHidden": false
     },
     {
-      "Id": "2_1.0_0.0",
+      "Id": "2_1.4_0.0",
       "TypeId": 2,
       "BoxColor": 3,
       "BlockedNodes": [
-        "0_1.0_0.6",
-        "0_1.0_-0.6",
-        "1_0.5_0.6",
-        "1_1.5_0.6",
-        "1_1.0_-0.6"
+        "0_1.4_0.0",
+        "1_2.1_0.65",
+        "1_2.1_-0.65"
       ],
       "InitCards": [
         0,
@@ -5257,17 +5245,14 @@ export const LEVEL_MEDIUM_10_DATA: LevelData = {
       "IsCardsHidden": false
     },
     {
-      "Id": "3_-0.5_0.0",
+      "Id": "3_-0.7_0.0",
       "TypeId": 1,
       "BoxColor": 5,
       "BlockedNodes": [
-        "0_-1.0_0.6",
-        "0_0.0_0.6",
-        "0_-1.0_-0.6",
-        "0_0.0_-0.6",
-        "1_-0.5_0.6",
-        "1_-1.0_-0.6",
-        "2_-1.0_0.0",
+        "0_-1.4_0.0",
+        "1_0.0_0.65",
+        "1_0.0_-0.65",
+        "2_-1.4_0.0",
         "2_0.0_0.0"
       ],
       "InitCards": [
@@ -5281,18 +5266,15 @@ export const LEVEL_MEDIUM_10_DATA: LevelData = {
       "IsCardsHidden": false
     },
     {
-      "Id": "3_0.5_0.0",
+      "Id": "3_0.7_0.0",
       "TypeId": 1,
       "BoxColor": 5,
       "BlockedNodes": [
-        "0_0.0_0.6",
-        "0_1.0_0.6",
-        "0_0.0_-0.6",
-        "0_1.0_-0.6",
-        "1_0.5_0.6",
-        "1_1.0_-0.6",
+        "0_1.4_0.0",
+        "1_0.0_0.65",
+        "1_0.0_-0.65",
         "2_0.0_0.0",
-        "2_1.0_0.0"
+        "2_1.4_0.0"
       ],
       "InitCards": [
         0,
@@ -5318,51 +5300,51 @@ export const LEVEL_HARD_1_DATA: LevelData = {
   "BoardOffsetZ": 0,
   "BoardNodes": [
     {
-      "Id": "0_-0.5_0.5",
+      "Id": "0_-0.8_0.75",
       "LayerId": 0,
       "YRotation": 0.0,
-      "XPosition": -0.5,
-      "ZPosition": 0.5
+      "XPosition": -0.8,
+      "ZPosition": 0.75
     },
     {
-      "Id": "0_0.5_0.5",
+      "Id": "0_0.8_0.75",
       "LayerId": 0,
       "YRotation": 0.0,
-      "XPosition": 0.5,
-      "ZPosition": 0.5
+      "XPosition": 0.8,
+      "ZPosition": 0.75
     },
     {
-      "Id": "0_-0.5_-0.5",
+      "Id": "0_-0.8_-0.75",
       "LayerId": 0,
       "YRotation": 0.0,
-      "XPosition": -0.5,
-      "ZPosition": -0.5
+      "XPosition": -0.8,
+      "ZPosition": -0.75
     },
     {
-      "Id": "0_0.5_-0.5",
+      "Id": "0_0.8_-0.75",
       "LayerId": 0,
       "YRotation": 0.0,
-      "XPosition": 0.5,
-      "ZPosition": -0.5
+      "XPosition": 0.8,
+      "ZPosition": -0.75
     },
     {
-      "Id": "1_0.0_0.5",
+      "Id": "1_-0.8_0.0",
       "LayerId": 1,
       "YRotation": 90.0,
-      "XPosition": 0.0,
-      "ZPosition": 0.5
+      "XPosition": -0.8,
+      "ZPosition": 0.0
     },
     {
-      "Id": "1_0.0_-0.5",
+      "Id": "1_0.8_0.0",
       "LayerId": 1,
       "YRotation": 90.0,
-      "XPosition": 0.0,
-      "ZPosition": -0.5
+      "XPosition": 0.8,
+      "ZPosition": 0.0
     }
   ],
   "BoxNodes": [
     {
-      "Id": "0_-0.5_0.5",
+      "Id": "0_-0.8_0.75",
       "TypeId": 2,
       "BoxColor": 0,
       "BlockedNodes": [],
@@ -5379,7 +5361,7 @@ export const LEVEL_HARD_1_DATA: LevelData = {
       "IsCardsHidden": false
     },
     {
-      "Id": "0_0.5_0.5",
+      "Id": "0_0.8_0.75",
       "TypeId": 2,
       "BoxColor": 1,
       "BlockedNodes": [],
@@ -5396,7 +5378,7 @@ export const LEVEL_HARD_1_DATA: LevelData = {
       "IsCardsHidden": false
     },
     {
-      "Id": "0_-0.5_-0.5",
+      "Id": "0_-0.8_-0.75",
       "TypeId": 2,
       "BoxColor": 2,
       "BlockedNodes": [],
@@ -5413,7 +5395,7 @@ export const LEVEL_HARD_1_DATA: LevelData = {
       "IsCardsHidden": false
     },
     {
-      "Id": "0_0.5_-0.5",
+      "Id": "0_0.8_-0.75",
       "TypeId": 2,
       "BoxColor": 0,
       "BlockedNodes": [],
@@ -5430,12 +5412,12 @@ export const LEVEL_HARD_1_DATA: LevelData = {
       "IsCardsHidden": false
     },
     {
-      "Id": "1_0.0_0.5",
+      "Id": "1_-0.8_0.0",
       "TypeId": 2,
       "BoxColor": 1,
       "BlockedNodes": [
-        "0_-0.5_0.5",
-        "0_0.5_0.5"
+        "0_-0.8_0.75",
+        "0_-0.8_-0.75"
       ],
       "InitCards": [
         0,
@@ -5450,12 +5432,12 @@ export const LEVEL_HARD_1_DATA: LevelData = {
       "IsCardsHidden": false
     },
     {
-      "Id": "1_0.0_-0.5",
+      "Id": "1_0.8_0.0",
       "TypeId": 2,
       "BoxColor": 2,
       "BlockedNodes": [
-        "0_-0.5_-0.5",
-        "0_0.5_-0.5"
+        "0_0.8_0.75",
+        "0_0.8_-0.75"
       ],
       "InitCards": [
         0,
@@ -5483,17 +5465,31 @@ export const LEVEL_HARD_2_DATA: LevelData = {
   "BoardOffsetZ": 0,
   "BoardNodes": [
     {
-      "Id": "0_-0.8_0.0",
+      "Id": "0_0.0_1.4",
       "LayerId": 0,
       "YRotation": 0.0,
-      "XPosition": -0.8,
+      "XPosition": 0.0,
+      "ZPosition": 1.4
+    },
+    {
+      "Id": "0_0.0_-1.4",
+      "LayerId": 0,
+      "YRotation": 0.0,
+      "XPosition": 0.0,
+      "ZPosition": -1.4
+    },
+    {
+      "Id": "0_-1.4_0.0",
+      "LayerId": 0,
+      "YRotation": 90.0,
+      "XPosition": -1.4,
       "ZPosition": 0.0
     },
     {
-      "Id": "0_0.8_0.0",
+      "Id": "0_1.4_0.0",
       "LayerId": 0,
-      "YRotation": 0.0,
-      "XPosition": 0.8,
+      "YRotation": 90.0,
+      "XPosition": 1.4,
       "ZPosition": 0.0
     },
     {
@@ -5504,44 +5500,30 @@ export const LEVEL_HARD_2_DATA: LevelData = {
       "ZPosition": 0.0
     },
     {
-      "Id": "0_0.0_0.9",
-      "LayerId": 0,
-      "YRotation": 90.0,
-      "XPosition": 0.0,
-      "ZPosition": 0.9
-    },
-    {
-      "Id": "0_0.0_-0.9",
-      "LayerId": 0,
-      "YRotation": 90.0,
-      "XPosition": 0.0,
-      "ZPosition": -0.9
-    },
-    {
-      "Id": "1_-0.4_0.0",
-      "LayerId": 1,
-      "YRotation": 90.0,
-      "XPosition": -0.4,
-      "ZPosition": 0.0
-    },
-    {
-      "Id": "1_0.4_0.0",
-      "LayerId": 1,
-      "YRotation": 90.0,
-      "XPosition": 0.4,
-      "ZPosition": 0.0
-    },
-    {
-      "Id": "1_0.0_0.45",
+      "Id": "1_-1.2_0.0",
       "LayerId": 1,
       "YRotation": 0.0,
+      "XPosition": -1.2,
+      "ZPosition": 0.0
+    },
+    {
+      "Id": "1_1.2_0.0",
+      "LayerId": 1,
+      "YRotation": 0.0,
+      "XPosition": 1.2,
+      "ZPosition": 0.0
+    },
+    {
+      "Id": "1_0.0_0.0",
+      "LayerId": 1,
+      "YRotation": 90.0,
       "XPosition": 0.0,
-      "ZPosition": 0.45
+      "ZPosition": 0.0
     }
   ],
   "BoxNodes": [
     {
-      "Id": "0_-0.8_0.0",
+      "Id": "0_0.0_1.4",
       "TypeId": 2,
       "BoxColor": 0,
       "BlockedNodes": [],
@@ -5558,7 +5540,7 @@ export const LEVEL_HARD_2_DATA: LevelData = {
       "IsCardsHidden": false
     },
     {
-      "Id": "0_0.8_0.0",
+      "Id": "0_0.0_-1.4",
       "TypeId": 2,
       "BoxColor": 1,
       "BlockedNodes": [],
@@ -5566,6 +5548,40 @@ export const LEVEL_HARD_2_DATA: LevelData = {
         0,
         0,
         0,
+        1,
+        2,
+        2
+      ],
+      "IsHidden": false,
+      "LockedTurn": 0,
+      "IsCardsHidden": false
+    },
+    {
+      "Id": "0_-1.4_0.0",
+      "TypeId": 2,
+      "BoxColor": 2,
+      "BlockedNodes": [],
+      "InitCards": [
+        0,
+        0,
+        1,
+        1,
+        2,
+        2
+      ],
+      "IsHidden": false,
+      "LockedTurn": 0,
+      "IsCardsHidden": false
+    },
+    {
+      "Id": "0_1.4_0.0",
+      "TypeId": 2,
+      "BoxColor": 0,
+      "BlockedNodes": [],
+      "InitCards": [
+        0,
+        0,
+        1,
         1,
         2,
         2
@@ -5577,40 +5593,6 @@ export const LEVEL_HARD_2_DATA: LevelData = {
     {
       "Id": "0_0.0_0.0",
       "TypeId": 2,
-      "BoxColor": 2,
-      "BlockedNodes": [],
-      "InitCards": [
-        0,
-        0,
-        1,
-        1,
-        2,
-        2
-      ],
-      "IsHidden": false,
-      "LockedTurn": 0,
-      "IsCardsHidden": false
-    },
-    {
-      "Id": "0_0.0_0.9",
-      "TypeId": 2,
-      "BoxColor": 0,
-      "BlockedNodes": [],
-      "InitCards": [
-        0,
-        0,
-        1,
-        1,
-        2,
-        2
-      ],
-      "IsHidden": false,
-      "LockedTurn": 0,
-      "IsCardsHidden": false
-    },
-    {
-      "Id": "0_0.0_-0.9",
-      "TypeId": 2,
       "BoxColor": 1,
       "BlockedNodes": [],
       "InitCards": [
@@ -5626,11 +5608,11 @@ export const LEVEL_HARD_2_DATA: LevelData = {
       "IsCardsHidden": false
     },
     {
-      "Id": "1_-0.4_0.0",
+      "Id": "1_-1.2_0.0",
       "TypeId": 2,
       "BoxColor": 2,
       "BlockedNodes": [
-        "0_-0.8_0.0",
+        "0_-1.4_0.0",
         "0_0.0_0.0"
       ],
       "InitCards": [
@@ -5646,11 +5628,11 @@ export const LEVEL_HARD_2_DATA: LevelData = {
       "IsCardsHidden": false
     },
     {
-      "Id": "1_0.4_0.0",
+      "Id": "1_1.2_0.0",
       "TypeId": 2,
       "BoxColor": 0,
       "BlockedNodes": [
-        "0_0.8_0.0",
+        "0_1.4_0.0",
         "0_0.0_0.0"
       ],
       "InitCards": [
@@ -5666,14 +5648,11 @@ export const LEVEL_HARD_2_DATA: LevelData = {
       "IsCardsHidden": false
     },
     {
-      "Id": "1_0.0_0.45",
+      "Id": "1_0.0_0.0",
       "TypeId": 2,
       "BoxColor": 1,
       "BlockedNodes": [
-        "0_-0.8_0.0",
-        "0_0.8_0.0",
-        "0_0.0_0.0",
-        "0_0.0_0.9"
+        "0_0.0_0.0"
       ],
       "InitCards": [
         0,
@@ -5701,93 +5680,93 @@ export const LEVEL_HARD_3_DATA: LevelData = {
   "BoardOffsetZ": 0,
   "BoardNodes": [
     {
-      "Id": "0_-1.0_0.8",
+      "Id": "0_-0.8_1.4",
       "LayerId": 0,
-      "YRotation": 0.0,
-      "XPosition": -1.0,
-      "ZPosition": 0.8
+      "YRotation": 90.0,
+      "XPosition": -0.8,
+      "ZPosition": 1.4
     },
     {
-      "Id": "0_-1.0_0.0",
+      "Id": "0_-0.8_0.0",
       "LayerId": 0,
-      "YRotation": 0.0,
-      "XPosition": -1.0,
+      "YRotation": 90.0,
+      "XPosition": -0.8,
       "ZPosition": 0.0
     },
     {
-      "Id": "0_-1.0_-0.8",
+      "Id": "0_-0.8_-1.4",
       "LayerId": 0,
-      "YRotation": 0.0,
-      "XPosition": -1.0,
-      "ZPosition": -0.8
+      "YRotation": 90.0,
+      "XPosition": -0.8,
+      "ZPosition": -1.4
     },
     {
-      "Id": "0_1.0_0.8",
+      "Id": "0_0.8_1.4",
       "LayerId": 0,
-      "YRotation": 0.0,
-      "XPosition": 1.0,
-      "ZPosition": 0.8
+      "YRotation": 90.0,
+      "XPosition": 0.8,
+      "ZPosition": 1.4
     },
     {
-      "Id": "0_1.0_0.0",
+      "Id": "0_0.8_0.0",
       "LayerId": 0,
-      "YRotation": 0.0,
-      "XPosition": 1.0,
+      "YRotation": 90.0,
+      "XPosition": 0.8,
       "ZPosition": 0.0
     },
     {
-      "Id": "0_1.0_-0.8",
+      "Id": "0_0.8_-1.4",
       "LayerId": 0,
+      "YRotation": 90.0,
+      "XPosition": 0.8,
+      "ZPosition": -1.4
+    },
+    {
+      "Id": "1_-0.8_0.7",
+      "LayerId": 1,
       "YRotation": 0.0,
-      "XPosition": 1.0,
-      "ZPosition": -0.8
+      "XPosition": -0.8,
+      "ZPosition": 0.7
     },
     {
-      "Id": "1_-1.0_0.4",
+      "Id": "1_-0.8_-0.7",
       "LayerId": 1,
-      "YRotation": 90.0,
-      "XPosition": -1.0,
-      "ZPosition": 0.4
+      "YRotation": 0.0,
+      "XPosition": -0.8,
+      "ZPosition": -0.7
     },
     {
-      "Id": "1_-1.0_-0.4",
+      "Id": "1_0.8_0.7",
       "LayerId": 1,
-      "YRotation": 90.0,
-      "XPosition": -1.0,
-      "ZPosition": -0.4
+      "YRotation": 0.0,
+      "XPosition": 0.8,
+      "ZPosition": 0.7
     },
     {
-      "Id": "1_1.0_0.4",
+      "Id": "1_0.8_-0.7",
       "LayerId": 1,
-      "YRotation": 90.0,
-      "XPosition": 1.0,
-      "ZPosition": 0.4
+      "YRotation": 0.0,
+      "XPosition": 0.8,
+      "ZPosition": -0.7
     },
     {
-      "Id": "1_1.0_-0.4",
-      "LayerId": 1,
-      "YRotation": 90.0,
-      "XPosition": 1.0,
-      "ZPosition": -0.4
-    },
-    {
-      "Id": "2_0.0_0.4",
+      "Id": "2_0.0_0.7",
       "LayerId": 2,
-      "YRotation": 90.0,
+      "YRotation": 0.0,
       "XPosition": 0.0,
-      "ZPosition": 0.4
+      "ZPosition": 0.7
     },
     {
-      "Id": "2_0.0_-0.4",
+      "Id": "2_0.0_-0.7",
       "LayerId": 2,
-      "YRotation": 90.0,
+      "YRotation": 0.0,
       "XPosition": 0.0,
-      "ZPosition": -0.4
+      "ZPosition": -0.7
     }
   ],
   "BoxNodes": [
     {
-      "Id": "0_-1.0_0.8",
+      "Id": "0_-0.8_1.4",
       "TypeId": 2,
       "BoxColor": 0,
       "BlockedNodes": [],
@@ -5804,7 +5783,7 @@ export const LEVEL_HARD_3_DATA: LevelData = {
       "IsCardsHidden": false
     },
     {
-      "Id": "0_-1.0_0.0",
+      "Id": "0_-0.8_0.0",
       "TypeId": 2,
       "BoxColor": 1,
       "BlockedNodes": [],
@@ -5821,7 +5800,7 @@ export const LEVEL_HARD_3_DATA: LevelData = {
       "IsCardsHidden": false
     },
     {
-      "Id": "0_-1.0_-0.8",
+      "Id": "0_-0.8_-1.4",
       "TypeId": 2,
       "BoxColor": 2,
       "BlockedNodes": [],
@@ -5838,7 +5817,7 @@ export const LEVEL_HARD_3_DATA: LevelData = {
       "IsCardsHidden": false
     },
     {
-      "Id": "0_1.0_0.8",
+      "Id": "0_0.8_1.4",
       "TypeId": 2,
       "BoxColor": 3,
       "BlockedNodes": [],
@@ -5855,7 +5834,7 @@ export const LEVEL_HARD_3_DATA: LevelData = {
       "IsCardsHidden": false
     },
     {
-      "Id": "0_1.0_0.0",
+      "Id": "0_0.8_0.0",
       "TypeId": 2,
       "BoxColor": 4,
       "BlockedNodes": [],
@@ -5872,7 +5851,7 @@ export const LEVEL_HARD_3_DATA: LevelData = {
       "IsCardsHidden": false
     },
     {
-      "Id": "0_1.0_-0.8",
+      "Id": "0_0.8_-1.4",
       "TypeId": 2,
       "BoxColor": 0,
       "BlockedNodes": [],
@@ -5889,12 +5868,12 @@ export const LEVEL_HARD_3_DATA: LevelData = {
       "IsCardsHidden": false
     },
     {
-      "Id": "1_-1.0_0.4",
+      "Id": "1_-0.8_0.7",
       "TypeId": 2,
       "BoxColor": 1,
       "BlockedNodes": [
-        "0_-1.0_0.8",
-        "0_-1.0_0.0"
+        "0_-0.8_1.4",
+        "0_-0.8_0.0"
       ],
       "InitCards": [
         0,
@@ -5909,12 +5888,12 @@ export const LEVEL_HARD_3_DATA: LevelData = {
       "IsCardsHidden": false
     },
     {
-      "Id": "1_-1.0_-0.4",
+      "Id": "1_-0.8_-0.7",
       "TypeId": 2,
       "BoxColor": 2,
       "BlockedNodes": [
-        "0_-1.0_0.0",
-        "0_-1.0_-0.8"
+        "0_-0.8_0.0",
+        "0_-0.8_-1.4"
       ],
       "InitCards": [
         0,
@@ -5929,12 +5908,12 @@ export const LEVEL_HARD_3_DATA: LevelData = {
       "IsCardsHidden": false
     },
     {
-      "Id": "1_1.0_0.4",
+      "Id": "1_0.8_0.7",
       "TypeId": 2,
       "BoxColor": 3,
       "BlockedNodes": [
-        "0_1.0_0.8",
-        "0_1.0_0.0"
+        "0_0.8_1.4",
+        "0_0.8_0.0"
       ],
       "InitCards": [
         0,
@@ -5949,12 +5928,12 @@ export const LEVEL_HARD_3_DATA: LevelData = {
       "IsCardsHidden": false
     },
     {
-      "Id": "1_1.0_-0.4",
+      "Id": "1_0.8_-0.7",
       "TypeId": 2,
       "BoxColor": 4,
       "BlockedNodes": [
-        "0_1.0_0.0",
-        "0_1.0_-0.8"
+        "0_0.8_0.0",
+        "0_0.8_-1.4"
       ],
       "InitCards": [
         2,
@@ -5969,14 +5948,16 @@ export const LEVEL_HARD_3_DATA: LevelData = {
       "IsCardsHidden": false
     },
     {
-      "Id": "2_0.0_0.4",
+      "Id": "2_0.0_0.7",
       "TypeId": 2,
       "BoxColor": 0,
       "BlockedNodes": [
-        "1_-1.0_0.4",
-        "1_-1.0_-0.4",
-        "1_1.0_0.4",
-        "1_1.0_-0.4"
+        "0_-0.8_1.4",
+        "0_-0.8_0.0",
+        "0_0.8_1.4",
+        "0_0.8_0.0",
+        "1_-0.8_0.7",
+        "1_0.8_0.7"
       ],
       "InitCards": [
         0,
@@ -5991,14 +5972,16 @@ export const LEVEL_HARD_3_DATA: LevelData = {
       "IsCardsHidden": false
     },
     {
-      "Id": "2_0.0_-0.4",
+      "Id": "2_0.0_-0.7",
       "TypeId": 2,
       "BoxColor": 1,
       "BlockedNodes": [
-        "1_-1.0_0.4",
-        "1_-1.0_-0.4",
-        "1_1.0_0.4",
-        "1_1.0_-0.4"
+        "0_-0.8_0.0",
+        "0_-0.8_-1.4",
+        "0_0.8_0.0",
+        "0_0.8_-1.4",
+        "1_-0.8_-0.7",
+        "1_0.8_-0.7"
       ],
       "InitCards": [
         0,
@@ -6026,27 +6009,6 @@ export const LEVEL_HARD_4_DATA: LevelData = {
   "BoardOffsetZ": 0,
   "BoardNodes": [
     {
-      "Id": "0_-1.0_0.8",
-      "LayerId": 0,
-      "YRotation": 0.0,
-      "XPosition": -1.0,
-      "ZPosition": 0.8
-    },
-    {
-      "Id": "0_0.0_0.8",
-      "LayerId": 0,
-      "YRotation": 0.0,
-      "XPosition": 0.0,
-      "ZPosition": 0.8
-    },
-    {
-      "Id": "0_1.0_0.8",
-      "LayerId": 0,
-      "YRotation": 0.0,
-      "XPosition": 1.0,
-      "ZPosition": 0.8
-    },
-    {
       "Id": "0_0.0_0.0",
       "LayerId": 0,
       "YRotation": 0.0,
@@ -6054,67 +6016,88 @@ export const LEVEL_HARD_4_DATA: LevelData = {
       "ZPosition": 0.0
     },
     {
-      "Id": "0_-1.0_-0.8",
-      "LayerId": 0,
-      "YRotation": 0.0,
-      "XPosition": -1.0,
-      "ZPosition": -0.8
-    },
-    {
-      "Id": "0_0.0_-0.8",
+      "Id": "0_0.0_1.4",
       "LayerId": 0,
       "YRotation": 0.0,
       "XPosition": 0.0,
-      "ZPosition": -0.8
+      "ZPosition": 1.4
     },
     {
-      "Id": "0_1.0_-0.8",
+      "Id": "0_0.0_-1.4",
       "LayerId": 0,
       "YRotation": 0.0,
-      "XPosition": 1.0,
-      "ZPosition": -0.8
+      "XPosition": 0.0,
+      "ZPosition": -1.4
     },
     {
-      "Id": "1_-0.5_0.8",
-      "LayerId": 1,
+      "Id": "0_-1.3_0.0",
+      "LayerId": 0,
       "YRotation": 90.0,
-      "XPosition": -0.5,
-      "ZPosition": 0.8
-    },
-    {
-      "Id": "1_0.5_0.8",
-      "LayerId": 1,
-      "YRotation": 90.0,
-      "XPosition": 0.5,
-      "ZPosition": 0.8
-    },
-    {
-      "Id": "1_-0.5_-0.8",
-      "LayerId": 1,
-      "YRotation": 90.0,
-      "XPosition": -0.5,
-      "ZPosition": -0.8
-    },
-    {
-      "Id": "1_0.5_-0.8",
-      "LayerId": 1,
-      "YRotation": 90.0,
-      "XPosition": 0.5,
-      "ZPosition": -0.8
-    },
-    {
-      "Id": "2_-0.5_0.0",
-      "LayerId": 2,
-      "YRotation": 0.0,
-      "XPosition": -0.5,
+      "XPosition": -1.3,
       "ZPosition": 0.0
     },
     {
-      "Id": "2_0.5_0.0",
+      "Id": "0_1.3_0.0",
+      "LayerId": 0,
+      "YRotation": 90.0,
+      "XPosition": 1.3,
+      "ZPosition": 0.0
+    },
+    {
+      "Id": "0_-1.3_1.4",
+      "LayerId": 0,
+      "YRotation": 90.0,
+      "XPosition": -1.3,
+      "ZPosition": 1.4
+    },
+    {
+      "Id": "0_1.3_-1.4",
+      "LayerId": 0,
+      "YRotation": 90.0,
+      "XPosition": 1.3,
+      "ZPosition": -1.4
+    },
+    {
+      "Id": "1_-0.65_0.7",
+      "LayerId": 1,
+      "YRotation": 0.0,
+      "XPosition": -0.65,
+      "ZPosition": 0.7
+    },
+    {
+      "Id": "1_0.65_-0.7",
+      "LayerId": 1,
+      "YRotation": 0.0,
+      "XPosition": 0.65,
+      "ZPosition": -0.7
+    },
+    {
+      "Id": "1_0.65_0.7",
+      "LayerId": 1,
+      "YRotation": 90.0,
+      "XPosition": 0.65,
+      "ZPosition": 0.7
+    },
+    {
+      "Id": "1_-0.65_-0.7",
+      "LayerId": 1,
+      "YRotation": 90.0,
+      "XPosition": -0.65,
+      "ZPosition": -0.7
+    },
+    {
+      "Id": "2_0.0_0.5",
       "LayerId": 2,
       "YRotation": 0.0,
-      "XPosition": 0.5,
-      "ZPosition": 0.0
+      "XPosition": 0.0,
+      "ZPosition": 0.5
+    },
+    {
+      "Id": "2_0.0_-0.5",
+      "LayerId": 2,
+      "YRotation": 0.0,
+      "XPosition": 0.0,
+      "ZPosition": -0.5
     },
     {
       "Id": "3_0.0_0.0",
@@ -6126,7 +6109,7 @@ export const LEVEL_HARD_4_DATA: LevelData = {
   ],
   "BoxNodes": [
     {
-      "Id": "0_-1.0_0.8",
+      "Id": "0_0.0_0.0",
       "TypeId": 2,
       "BoxColor": 0,
       "BlockedNodes": [],
@@ -6143,7 +6126,7 @@ export const LEVEL_HARD_4_DATA: LevelData = {
       "IsCardsHidden": false
     },
     {
-      "Id": "0_0.0_0.8",
+      "Id": "0_0.0_1.4",
       "TypeId": 2,
       "BoxColor": 1,
       "BlockedNodes": [],
@@ -6160,7 +6143,7 @@ export const LEVEL_HARD_4_DATA: LevelData = {
       "IsCardsHidden": false
     },
     {
-      "Id": "0_1.0_0.8",
+      "Id": "0_0.0_-1.4",
       "TypeId": 2,
       "BoxColor": 2,
       "BlockedNodes": [],
@@ -6177,7 +6160,7 @@ export const LEVEL_HARD_4_DATA: LevelData = {
       "IsCardsHidden": false
     },
     {
-      "Id": "0_0.0_0.0",
+      "Id": "0_-1.3_0.0",
       "TypeId": 2,
       "BoxColor": 3,
       "BlockedNodes": [],
@@ -6194,7 +6177,7 @@ export const LEVEL_HARD_4_DATA: LevelData = {
       "IsCardsHidden": false
     },
     {
-      "Id": "0_-1.0_-0.8",
+      "Id": "0_1.3_0.0",
       "TypeId": 2,
       "BoxColor": 4,
       "BlockedNodes": [],
@@ -6211,7 +6194,7 @@ export const LEVEL_HARD_4_DATA: LevelData = {
       "IsCardsHidden": false
     },
     {
-      "Id": "0_0.0_-0.8",
+      "Id": "0_-1.3_1.4",
       "TypeId": 2,
       "BoxColor": 0,
       "BlockedNodes": [],
@@ -6228,7 +6211,7 @@ export const LEVEL_HARD_4_DATA: LevelData = {
       "IsCardsHidden": false
     },
     {
-      "Id": "0_1.0_-0.8",
+      "Id": "0_1.3_-1.4",
       "TypeId": 2,
       "BoxColor": 1,
       "BlockedNodes": [],
@@ -6245,13 +6228,14 @@ export const LEVEL_HARD_4_DATA: LevelData = {
       "IsCardsHidden": false
     },
     {
-      "Id": "1_-0.5_0.8",
+      "Id": "1_-0.65_0.7",
       "TypeId": 2,
       "BoxColor": 2,
       "BlockedNodes": [
-        "0_-1.0_0.8",
-        "0_0.0_0.8",
-        "0_0.0_0.0"
+        "0_0.0_0.0",
+        "0_0.0_1.4",
+        "0_-1.3_0.0",
+        "0_-1.3_1.4"
       ],
       "InitCards": [
         0,
@@ -6266,13 +6250,14 @@ export const LEVEL_HARD_4_DATA: LevelData = {
       "IsCardsHidden": false
     },
     {
-      "Id": "1_0.5_0.8",
+      "Id": "1_0.65_-0.7",
       "TypeId": 2,
       "BoxColor": 3,
       "BlockedNodes": [
-        "0_0.0_0.8",
-        "0_1.0_0.8",
-        "0_0.0_0.0"
+        "0_0.0_0.0",
+        "0_0.0_-1.4",
+        "0_1.3_0.0",
+        "0_1.3_-1.4"
       ],
       "InitCards": [
         2,
@@ -6287,13 +6272,13 @@ export const LEVEL_HARD_4_DATA: LevelData = {
       "IsCardsHidden": false
     },
     {
-      "Id": "1_-0.5_-0.8",
+      "Id": "1_0.65_0.7",
       "TypeId": 2,
       "BoxColor": 4,
       "BlockedNodes": [
         "0_0.0_0.0",
-        "0_-1.0_-0.8",
-        "0_0.0_-0.8"
+        "0_0.0_1.4",
+        "0_1.3_0.0"
       ],
       "InitCards": [
         1,
@@ -6307,13 +6292,13 @@ export const LEVEL_HARD_4_DATA: LevelData = {
       "IsCardsHidden": false
     },
     {
-      "Id": "1_0.5_-0.8",
+      "Id": "1_-0.65_-0.7",
       "TypeId": 2,
       "BoxColor": 0,
       "BlockedNodes": [
         "0_0.0_0.0",
-        "0_0.0_-0.8",
-        "0_1.0_-0.8"
+        "0_0.0_-1.4",
+        "0_-1.3_0.0"
       ],
       "InitCards": [
         0,
@@ -6327,17 +6312,13 @@ export const LEVEL_HARD_4_DATA: LevelData = {
       "IsCardsHidden": false
     },
     {
-      "Id": "2_-0.5_0.0",
+      "Id": "2_0.0_0.5",
       "TypeId": 2,
       "BoxColor": 1,
       "BlockedNodes": [
-        "0_-1.0_0.8",
-        "0_0.0_0.8",
         "0_0.0_0.0",
-        "0_-1.0_-0.8",
-        "0_0.0_-0.8",
-        "1_-0.5_0.8",
-        "1_-0.5_-0.8"
+        "1_-0.65_0.7",
+        "1_0.65_0.7"
       ],
       "InitCards": [
         0,
@@ -6351,17 +6332,13 @@ export const LEVEL_HARD_4_DATA: LevelData = {
       "IsCardsHidden": false
     },
     {
-      "Id": "2_0.5_0.0",
+      "Id": "2_0.0_-0.5",
       "TypeId": 2,
       "BoxColor": 2,
       "BlockedNodes": [
-        "0_0.0_0.8",
-        "0_1.0_0.8",
         "0_0.0_0.0",
-        "0_0.0_-0.8",
-        "0_1.0_-0.8",
-        "1_0.5_0.8",
-        "1_0.5_-0.8"
+        "1_0.65_-0.7",
+        "1_-0.65_-0.7"
       ],
       "InitCards": [
         0,
@@ -6379,15 +6356,13 @@ export const LEVEL_HARD_4_DATA: LevelData = {
       "TypeId": 1,
       "BoxColor": 5,
       "BlockedNodes": [
-        "0_0.0_0.8",
         "0_0.0_0.0",
-        "0_0.0_-0.8",
-        "1_-0.5_0.8",
-        "1_0.5_0.8",
-        "1_-0.5_-0.8",
-        "1_0.5_-0.8",
-        "2_-0.5_0.0",
-        "2_0.5_0.0"
+        "1_-0.65_0.7",
+        "1_0.65_-0.7",
+        "1_0.65_0.7",
+        "1_-0.65_-0.7",
+        "2_0.0_0.5",
+        "2_0.0_-0.5"
       ],
       "InitCards": [
         0,
@@ -6413,25 +6388,46 @@ export const LEVEL_HARD_5_DATA: LevelData = {
   "BoardOffsetZ": 0,
   "BoardNodes": [
     {
-      "Id": "0_-1.2_0.8",
+      "Id": "0_-1.0_1.2",
       "LayerId": 0,
       "YRotation": 0.0,
-      "XPosition": -1.2,
-      "ZPosition": 0.8
+      "XPosition": -1.0,
+      "ZPosition": 1.2
     },
     {
-      "Id": "0_0.0_0.8",
+      "Id": "0_1.0_1.2",
       "LayerId": 0,
       "YRotation": 0.0,
-      "XPosition": 0.0,
-      "ZPosition": 0.8
+      "XPosition": 1.0,
+      "ZPosition": 1.2
     },
     {
-      "Id": "0_1.2_0.8",
+      "Id": "0_-1.0_-1.2",
       "LayerId": 0,
       "YRotation": 0.0,
-      "XPosition": 1.2,
-      "ZPosition": 0.8
+      "XPosition": -1.0,
+      "ZPosition": -1.2
+    },
+    {
+      "Id": "0_1.0_-1.2",
+      "LayerId": 0,
+      "YRotation": 0.0,
+      "XPosition": 1.0,
+      "ZPosition": -1.2
+    },
+    {
+      "Id": "0_-1.5_0.0",
+      "LayerId": 0,
+      "YRotation": 90.0,
+      "XPosition": -1.5,
+      "ZPosition": 0.0
+    },
+    {
+      "Id": "0_1.5_0.0",
+      "LayerId": 0,
+      "YRotation": 90.0,
+      "XPosition": 1.5,
+      "ZPosition": 0.0
     },
     {
       "Id": "0_0.0_0.0",
@@ -6441,67 +6437,46 @@ export const LEVEL_HARD_5_DATA: LevelData = {
       "ZPosition": 0.0
     },
     {
-      "Id": "0_-1.2_-0.8",
-      "LayerId": 0,
-      "YRotation": 0.0,
-      "XPosition": -1.2,
-      "ZPosition": -0.8
+      "Id": "1_-1.0_0.65",
+      "LayerId": 1,
+      "YRotation": 90.0,
+      "XPosition": -1.0,
+      "ZPosition": 0.65
     },
     {
-      "Id": "0_0.0_-0.8",
-      "LayerId": 0,
+      "Id": "1_1.0_0.65",
+      "LayerId": 1,
+      "YRotation": 90.0,
+      "XPosition": 1.0,
+      "ZPosition": 0.65
+    },
+    {
+      "Id": "1_-1.0_-0.65",
+      "LayerId": 1,
+      "YRotation": 90.0,
+      "XPosition": -1.0,
+      "ZPosition": -0.65
+    },
+    {
+      "Id": "1_1.0_-0.65",
+      "LayerId": 1,
+      "YRotation": 90.0,
+      "XPosition": 1.0,
+      "ZPosition": -0.65
+    },
+    {
+      "Id": "2_0.0_0.65",
+      "LayerId": 2,
       "YRotation": 0.0,
       "XPosition": 0.0,
-      "ZPosition": -0.8
+      "ZPosition": 0.65
     },
     {
-      "Id": "0_1.2_-0.8",
-      "LayerId": 0,
-      "YRotation": 0.0,
-      "XPosition": 1.2,
-      "ZPosition": -0.8
-    },
-    {
-      "Id": "1_-0.6_0.8",
-      "LayerId": 1,
-      "YRotation": 90.0,
-      "XPosition": -0.6,
-      "ZPosition": 0.8
-    },
-    {
-      "Id": "1_0.6_0.8",
-      "LayerId": 1,
-      "YRotation": 90.0,
-      "XPosition": 0.6,
-      "ZPosition": 0.8
-    },
-    {
-      "Id": "1_-0.6_-0.8",
-      "LayerId": 1,
-      "YRotation": 90.0,
-      "XPosition": -0.6,
-      "ZPosition": -0.8
-    },
-    {
-      "Id": "1_0.6_-0.8",
-      "LayerId": 1,
-      "YRotation": 90.0,
-      "XPosition": 0.6,
-      "ZPosition": -0.8
-    },
-    {
-      "Id": "2_-0.6_0.0",
+      "Id": "2_0.0_-0.65",
       "LayerId": 2,
       "YRotation": 0.0,
-      "XPosition": -0.6,
-      "ZPosition": 0.0
-    },
-    {
-      "Id": "2_0.6_0.0",
-      "LayerId": 2,
-      "YRotation": 0.0,
-      "XPosition": 0.6,
-      "ZPosition": 0.0
+      "XPosition": 0.0,
+      "ZPosition": -0.65
     },
     {
       "Id": "3_0.0_0.0",
@@ -6513,7 +6488,7 @@ export const LEVEL_HARD_5_DATA: LevelData = {
   ],
   "BoxNodes": [
     {
-      "Id": "0_-1.2_0.8",
+      "Id": "0_-1.0_1.2",
       "TypeId": 2,
       "BoxColor": 0,
       "BlockedNodes": [],
@@ -6530,7 +6505,7 @@ export const LEVEL_HARD_5_DATA: LevelData = {
       "IsCardsHidden": false
     },
     {
-      "Id": "0_0.0_0.8",
+      "Id": "0_1.0_1.2",
       "TypeId": 2,
       "BoxColor": 1,
       "BlockedNodes": [],
@@ -6542,12 +6517,12 @@ export const LEVEL_HARD_5_DATA: LevelData = {
         2,
         3
       ],
-      "IsHidden": false,
+      "IsHidden": true,
       "LockedTurn": 0,
       "IsCardsHidden": false
     },
     {
-      "Id": "0_1.2_0.8",
+      "Id": "0_-1.0_-1.2",
       "TypeId": 2,
       "BoxColor": 2,
       "BlockedNodes": [],
@@ -6558,6 +6533,57 @@ export const LEVEL_HARD_5_DATA: LevelData = {
         2,
         3,
         3
+      ],
+      "IsHidden": false,
+      "LockedTurn": 0,
+      "IsCardsHidden": false
+    },
+    {
+      "Id": "0_1.0_-1.2",
+      "TypeId": 2,
+      "BoxColor": 3,
+      "BlockedNodes": [],
+      "InitCards": [
+        0,
+        2,
+        2,
+        2,
+        4,
+        4
+      ],
+      "IsHidden": false,
+      "LockedTurn": 0,
+      "IsCardsHidden": false
+    },
+    {
+      "Id": "0_-1.5_0.0",
+      "TypeId": 2,
+      "BoxColor": 4,
+      "BlockedNodes": [],
+      "InitCards": [
+        0,
+        0,
+        0,
+        1,
+        4,
+        4
+      ],
+      "IsHidden": false,
+      "LockedTurn": 0,
+      "IsCardsHidden": false
+    },
+    {
+      "Id": "0_1.5_0.0",
+      "TypeId": 2,
+      "BoxColor": 0,
+      "BlockedNodes": [],
+      "InitCards": [
+        1,
+        2,
+        2,
+        3,
+        3,
+        4
       ],
       "IsHidden": false,
       "LockedTurn": 0,
@@ -6566,57 +6592,6 @@ export const LEVEL_HARD_5_DATA: LevelData = {
     {
       "Id": "0_0.0_0.0",
       "TypeId": 2,
-      "BoxColor": 3,
-      "BlockedNodes": [],
-      "InitCards": [
-        0,
-        2,
-        2,
-        2,
-        4,
-        4
-      ],
-      "IsHidden": false,
-      "LockedTurn": 0,
-      "IsCardsHidden": false
-    },
-    {
-      "Id": "0_-1.2_-0.8",
-      "TypeId": 2,
-      "BoxColor": 4,
-      "BlockedNodes": [],
-      "InitCards": [
-        0,
-        0,
-        0,
-        1,
-        4,
-        4
-      ],
-      "IsHidden": false,
-      "LockedTurn": 0,
-      "IsCardsHidden": false
-    },
-    {
-      "Id": "0_0.0_-0.8",
-      "TypeId": 2,
-      "BoxColor": 0,
-      "BlockedNodes": [],
-      "InitCards": [
-        1,
-        2,
-        2,
-        3,
-        3,
-        4
-      ],
-      "IsHidden": false,
-      "LockedTurn": 0,
-      "IsCardsHidden": false
-    },
-    {
-      "Id": "0_1.2_-0.8",
-      "TypeId": 2,
       "BoxColor": 1,
       "BlockedNodes": [],
       "InitCards": [
@@ -6632,12 +6607,12 @@ export const LEVEL_HARD_5_DATA: LevelData = {
       "IsCardsHidden": false
     },
     {
-      "Id": "1_-0.6_0.8",
+      "Id": "1_-1.0_0.65",
       "TypeId": 2,
       "BoxColor": 2,
       "BlockedNodes": [
-        "0_-1.2_0.8",
-        "0_0.0_0.8",
+        "0_-1.0_1.2",
+        "0_-1.5_0.0",
         "0_0.0_0.0"
       ],
       "InitCards": [
@@ -6653,12 +6628,12 @@ export const LEVEL_HARD_5_DATA: LevelData = {
       "IsCardsHidden": false
     },
     {
-      "Id": "1_0.6_0.8",
+      "Id": "1_1.0_0.65",
       "TypeId": 2,
       "BoxColor": 3,
       "BlockedNodes": [
-        "0_0.0_0.8",
-        "0_1.2_0.8",
+        "0_1.0_1.2",
+        "0_1.5_0.0",
         "0_0.0_0.0"
       ],
       "InitCards": [
@@ -6674,13 +6649,13 @@ export const LEVEL_HARD_5_DATA: LevelData = {
       "IsCardsHidden": false
     },
     {
-      "Id": "1_-0.6_-0.8",
+      "Id": "1_-1.0_-0.65",
       "TypeId": 2,
       "BoxColor": 4,
       "BlockedNodes": [
-        "0_0.0_0.0",
-        "0_-1.2_-0.8",
-        "0_0.0_-0.8"
+        "0_-1.0_-1.2",
+        "0_-1.5_0.0",
+        "0_0.0_0.0"
       ],
       "InitCards": [
         0,
@@ -6694,13 +6669,13 @@ export const LEVEL_HARD_5_DATA: LevelData = {
       "IsCardsHidden": false
     },
     {
-      "Id": "1_0.6_-0.8",
+      "Id": "1_1.0_-0.65",
       "TypeId": 2,
       "BoxColor": 0,
       "BlockedNodes": [
-        "0_0.0_0.0",
-        "0_0.0_-0.8",
-        "0_1.2_-0.8"
+        "0_1.0_-1.2",
+        "0_1.5_0.0",
+        "0_0.0_0.0"
       ],
       "InitCards": [
         0,
@@ -6714,17 +6689,15 @@ export const LEVEL_HARD_5_DATA: LevelData = {
       "IsCardsHidden": false
     },
     {
-      "Id": "2_-0.6_0.0",
+      "Id": "2_0.0_0.65",
       "TypeId": 2,
       "BoxColor": 1,
       "BlockedNodes": [
-        "0_-1.2_0.8",
-        "0_0.0_0.8",
+        "0_-1.0_1.2",
+        "0_1.0_1.2",
         "0_0.0_0.0",
-        "0_-1.2_-0.8",
-        "0_0.0_-0.8",
-        "1_-0.6_0.8",
-        "1_-0.6_-0.8"
+        "1_-1.0_0.65",
+        "1_1.0_0.65"
       ],
       "InitCards": [
         1,
@@ -6738,17 +6711,15 @@ export const LEVEL_HARD_5_DATA: LevelData = {
       "IsCardsHidden": false
     },
     {
-      "Id": "2_0.6_0.0",
+      "Id": "2_0.0_-0.65",
       "TypeId": 2,
       "BoxColor": 2,
       "BlockedNodes": [
-        "0_0.0_0.8",
-        "0_1.2_0.8",
+        "0_-1.0_-1.2",
+        "0_1.0_-1.2",
         "0_0.0_0.0",
-        "0_0.0_-0.8",
-        "0_1.2_-0.8",
-        "1_0.6_0.8",
-        "1_0.6_-0.8"
+        "1_-1.0_-0.65",
+        "1_1.0_-0.65"
       ],
       "InitCards": [
         0,
@@ -6766,15 +6737,9 @@ export const LEVEL_HARD_5_DATA: LevelData = {
       "TypeId": 1,
       "BoxColor": 5,
       "BlockedNodes": [
-        "0_0.0_0.8",
         "0_0.0_0.0",
-        "0_0.0_-0.8",
-        "1_-0.6_0.8",
-        "1_0.6_0.8",
-        "1_-0.6_-0.8",
-        "1_0.6_-0.8",
-        "2_-0.6_0.0",
-        "2_0.6_0.0"
+        "2_0.0_0.65",
+        "2_0.0_-0.65"
       ],
       "InitCards": [
         0,
@@ -6800,102 +6765,102 @@ export const LEVEL_HARD_6_DATA: LevelData = {
   "BoardOffsetZ": 0,
   "BoardNodes": [
     {
-      "Id": "0_-1.5_0.8",
+      "Id": "0_-0.7_1.5",
       "LayerId": 0,
       "YRotation": 0.0,
-      "XPosition": -1.5,
-      "ZPosition": 0.8
+      "XPosition": -0.7,
+      "ZPosition": 1.5
     },
     {
-      "Id": "0_-0.5_0.8",
+      "Id": "0_0.7_1.5",
       "LayerId": 0,
       "YRotation": 0.0,
-      "XPosition": -0.5,
-      "ZPosition": 0.8
+      "XPosition": 0.7,
+      "ZPosition": 1.5
     },
     {
-      "Id": "0_0.5_0.8",
+      "Id": "0_-0.7_-1.5",
       "LayerId": 0,
       "YRotation": 0.0,
-      "XPosition": 0.5,
-      "ZPosition": 0.8
+      "XPosition": -0.7,
+      "ZPosition": -1.5
     },
     {
-      "Id": "0_1.5_0.8",
+      "Id": "0_0.7_-1.5",
       "LayerId": 0,
       "YRotation": 0.0,
-      "XPosition": 1.5,
-      "ZPosition": 0.8
+      "XPosition": 0.7,
+      "ZPosition": -1.5
     },
     {
-      "Id": "0_-1.5_-0.8",
+      "Id": "0_-1.8_0.7",
       "LayerId": 0,
-      "YRotation": 0.0,
-      "XPosition": -1.5,
-      "ZPosition": -0.8
+      "YRotation": 90.0,
+      "XPosition": -1.8,
+      "ZPosition": 0.7
     },
     {
-      "Id": "0_-0.5_-0.8",
+      "Id": "0_-1.8_-0.7",
       "LayerId": 0,
-      "YRotation": 0.0,
-      "XPosition": -0.5,
-      "ZPosition": -0.8
+      "YRotation": 90.0,
+      "XPosition": -1.8,
+      "ZPosition": -0.7
     },
     {
-      "Id": "0_0.5_-0.8",
+      "Id": "0_1.8_0.7",
       "LayerId": 0,
-      "YRotation": 0.0,
-      "XPosition": 0.5,
-      "ZPosition": -0.8
+      "YRotation": 90.0,
+      "XPosition": 1.8,
+      "ZPosition": 0.7
     },
     {
-      "Id": "0_1.5_-0.8",
+      "Id": "0_1.8_-0.7",
       "LayerId": 0,
-      "YRotation": 0.0,
-      "XPosition": 1.5,
-      "ZPosition": -0.8
+      "YRotation": 90.0,
+      "XPosition": 1.8,
+      "ZPosition": -0.7
     },
     {
-      "Id": "1_-1.0_0.8",
+      "Id": "1_-1.05_0.85",
       "LayerId": 1,
       "YRotation": 90.0,
-      "XPosition": -1.0,
-      "ZPosition": 0.8
+      "XPosition": -1.05,
+      "ZPosition": 0.85
     },
     {
-      "Id": "1_1.0_0.8",
+      "Id": "1_1.05_0.85",
       "LayerId": 1,
       "YRotation": 90.0,
-      "XPosition": 1.0,
-      "ZPosition": 0.8
+      "XPosition": 1.05,
+      "ZPosition": 0.85
     },
     {
-      "Id": "1_-1.0_-0.8",
+      "Id": "1_-1.05_-0.85",
       "LayerId": 1,
       "YRotation": 90.0,
-      "XPosition": -1.0,
-      "ZPosition": -0.8
+      "XPosition": -1.05,
+      "ZPosition": -0.85
     },
     {
-      "Id": "1_1.0_-0.8",
+      "Id": "1_1.05_-0.85",
       "LayerId": 1,
       "YRotation": 90.0,
-      "XPosition": 1.0,
-      "ZPosition": -0.8
+      "XPosition": 1.05,
+      "ZPosition": -0.85
     },
     {
-      "Id": "2_-0.5_0.0",
+      "Id": "2_0.0_0.85",
       "LayerId": 2,
       "YRotation": 0.0,
-      "XPosition": -0.5,
-      "ZPosition": 0.0
+      "XPosition": 0.0,
+      "ZPosition": 0.85
     },
     {
-      "Id": "2_0.5_0.0",
+      "Id": "2_0.0_-0.85",
       "LayerId": 2,
       "YRotation": 0.0,
-      "XPosition": 0.5,
-      "ZPosition": 0.0
+      "XPosition": 0.0,
+      "ZPosition": -0.85
     },
     {
       "Id": "3_0.0_0.0",
@@ -6907,16 +6872,15 @@ export const LEVEL_HARD_6_DATA: LevelData = {
   ],
   "BoxNodes": [
     {
-      "Id": "0_-1.5_0.8",
+      "Id": "0_-0.7_1.5",
       "TypeId": 2,
       "BoxColor": 0,
       "BlockedNodes": [],
       "InitCards": [
         0,
-        0,
+        1,
+        1,
         2,
-        3,
-        3,
         3
       ],
       "IsHidden": false,
@@ -6924,7 +6888,104 @@ export const LEVEL_HARD_6_DATA: LevelData = {
       "IsCardsHidden": false
     },
     {
-      "Id": "0_-0.5_0.8",
+      "Id": "0_0.7_1.5",
+      "TypeId": 2,
+      "BoxColor": 1,
+      "BlockedNodes": [],
+      "InitCards": [
+        1,
+        1,
+        1,
+        2,
+        4
+      ],
+      "IsHidden": false,
+      "LockedTurn": 0,
+      "IsCardsHidden": false
+    },
+    {
+      "Id": "0_-0.7_-1.5",
+      "TypeId": 2,
+      "BoxColor": 2,
+      "BlockedNodes": [],
+      "InitCards": [
+        1,
+        3,
+        3,
+        4,
+        4
+      ],
+      "IsHidden": false,
+      "LockedTurn": 0,
+      "IsCardsHidden": false
+    },
+    {
+      "Id": "0_0.7_-1.5",
+      "TypeId": 2,
+      "BoxColor": 3,
+      "BlockedNodes": [],
+      "InitCards": [
+        0,
+        1,
+        1,
+        2,
+        4
+      ],
+      "IsHidden": false,
+      "LockedTurn": 0,
+      "IsCardsHidden": false
+    },
+    {
+      "Id": "0_-1.8_0.7",
+      "TypeId": 2,
+      "BoxColor": 4,
+      "BlockedNodes": [],
+      "InitCards": [
+        0,
+        0,
+        1,
+        3,
+        4
+      ],
+      "IsHidden": true,
+      "LockedTurn": 0,
+      "IsCardsHidden": false
+    },
+    {
+      "Id": "0_-1.8_-0.7",
+      "TypeId": 2,
+      "BoxColor": 5,
+      "BlockedNodes": [],
+      "InitCards": [
+        0,
+        0,
+        2,
+        2,
+        3,
+        4
+      ],
+      "IsHidden": false,
+      "LockedTurn": 0,
+      "IsCardsHidden": false
+    },
+    {
+      "Id": "0_1.8_0.7",
+      "TypeId": 2,
+      "BoxColor": 0,
+      "BlockedNodes": [],
+      "InitCards": [
+        0,
+        1,
+        2,
+        3,
+        3
+      ],
+      "IsHidden": true,
+      "LockedTurn": 0,
+      "IsCardsHidden": false
+    },
+    {
+      "Id": "0_1.8_-0.7",
       "TypeId": 2,
       "BoxColor": 1,
       "BlockedNodes": [],
@@ -6932,7 +6993,6 @@ export const LEVEL_HARD_6_DATA: LevelData = {
         0,
         0,
         0,
-        2,
         2,
         2
       ],
@@ -6941,32 +7001,17 @@ export const LEVEL_HARD_6_DATA: LevelData = {
       "IsCardsHidden": false
     },
     {
-      "Id": "0_0.5_0.8",
+      "Id": "1_-1.05_0.85",
       "TypeId": 2,
       "BoxColor": 2,
-      "BlockedNodes": [],
-      "InitCards": [
-        0,
-        1,
-        1,
-        1,
-        1,
-        3
+      "BlockedNodes": [
+        "0_-0.7_1.5",
+        "0_-1.8_0.7"
       ],
-      "IsHidden": false,
-      "LockedTurn": 0,
-      "IsCardsHidden": false
-    },
-    {
-      "Id": "0_1.5_0.8",
-      "TypeId": 2,
-      "BoxColor": 3,
-      "BlockedNodes": [],
       "InitCards": [
         0,
-        1,
-        1,
-        1,
+        0,
+        2,
         3,
         4
       ],
@@ -6975,104 +7020,52 @@ export const LEVEL_HARD_6_DATA: LevelData = {
       "IsCardsHidden": false
     },
     {
-      "Id": "0_-1.5_-0.8",
-      "TypeId": 2,
-      "BoxColor": 4,
-      "BlockedNodes": [],
-      "InitCards": [
-        0,
-        0,
-        1,
-        1,
-        2,
-        3
-      ],
-      "IsHidden": false,
-      "LockedTurn": 0,
-      "IsCardsHidden": false
-    },
-    {
-      "Id": "0_-0.5_-0.8",
-      "TypeId": 2,
-      "BoxColor": 0,
-      "BlockedNodes": [],
-      "InitCards": [
-        1,
-        2,
-        2,
-        2,
-        2,
-        3
-      ],
-      "IsHidden": false,
-      "LockedTurn": 0,
-      "IsCardsHidden": false
-    },
-    {
-      "Id": "0_0.5_-0.8",
-      "TypeId": 2,
-      "BoxColor": 1,
-      "BlockedNodes": [],
-      "InitCards": [
-        1,
-        1,
-        2,
-        4,
-        4,
-        4
-      ],
-      "IsHidden": false,
-      "LockedTurn": 0,
-      "IsCardsHidden": false
-    },
-    {
-      "Id": "0_1.5_-0.8",
-      "TypeId": 2,
-      "BoxColor": 2,
-      "BlockedNodes": [],
-      "InitCards": [
-        0,
-        2,
-        2,
-        3,
-        4,
-        4
-      ],
-      "IsHidden": false,
-      "LockedTurn": 0,
-      "IsCardsHidden": false
-    },
-    {
-      "Id": "1_-1.0_0.8",
+      "Id": "1_1.05_0.85",
       "TypeId": 2,
       "BoxColor": 3,
       "BlockedNodes": [
-        "0_-1.5_0.8",
-        "0_-0.5_0.8"
+        "0_0.7_1.5",
+        "0_1.8_0.7"
       ],
       "InitCards": [
         0,
-        3,
-        3,
-        3,
-        3,
-        3
+        1,
+        2,
+        4
       ],
       "IsHidden": false,
       "LockedTurn": 0,
       "IsCardsHidden": false
     },
     {
-      "Id": "1_1.0_0.8",
+      "Id": "1_-1.05_-0.85",
       "TypeId": 2,
       "BoxColor": 4,
       "BlockedNodes": [
-        "0_0.5_0.8",
-        "0_1.5_0.8"
+        "0_-0.7_-1.5",
+        "0_-1.8_-0.7"
       ],
       "InitCards": [
         1,
+        1,
         2,
+        4
+      ],
+      "IsHidden": false,
+      "LockedTurn": 0,
+      "IsCardsHidden": false
+    },
+    {
+      "Id": "1_1.05_-0.85",
+      "TypeId": 2,
+      "BoxColor": 5,
+      "BlockedNodes": [
+        "0_0.7_-1.5",
+        "0_1.8_-0.7"
+      ],
+      "InitCards": [
+        1,
+        1,
         2,
         3,
         3,
@@ -7083,80 +7076,40 @@ export const LEVEL_HARD_6_DATA: LevelData = {
       "IsCardsHidden": false
     },
     {
-      "Id": "1_-1.0_-0.8",
+      "Id": "2_0.0_0.85",
       "TypeId": 2,
       "BoxColor": 0,
       "BlockedNodes": [
-        "0_-1.5_-0.8",
-        "0_-0.5_-0.8"
+        "0_-0.7_1.5",
+        "0_0.7_1.5",
+        "1_-1.05_0.85",
+        "1_1.05_0.85"
       ],
       "InitCards": [
         0,
+        0,
         1,
-        1,
-        1,
-        2
+        4
       ],
       "IsHidden": false,
       "LockedTurn": 0,
       "IsCardsHidden": false
     },
     {
-      "Id": "1_1.0_-0.8",
+      "Id": "2_0.0_-0.85",
       "TypeId": 2,
       "BoxColor": 1,
       "BlockedNodes": [
-        "0_0.5_-0.8",
-        "0_1.5_-0.8"
+        "0_-0.7_-1.5",
+        "0_0.7_-1.5",
+        "1_-1.05_-0.85",
+        "1_1.05_-0.85"
       ],
       "InitCards": [
         0,
         0,
         1,
-        3,
         3
-      ],
-      "IsHidden": false,
-      "LockedTurn": 0,
-      "IsCardsHidden": false
-    },
-    {
-      "Id": "2_-0.5_0.0",
-      "TypeId": 2,
-      "BoxColor": 2,
-      "BlockedNodes": [
-        "0_-0.5_0.8",
-        "0_-0.5_-0.8",
-        "1_-1.0_0.8",
-        "1_-1.0_-0.8"
-      ],
-      "InitCards": [
-        0,
-        1,
-        2,
-        4,
-        4
-      ],
-      "IsHidden": false,
-      "LockedTurn": 0,
-      "IsCardsHidden": false
-    },
-    {
-      "Id": "2_0.5_0.0",
-      "TypeId": 2,
-      "BoxColor": 3,
-      "BlockedNodes": [
-        "0_0.5_0.8",
-        "0_0.5_-0.8",
-        "1_1.0_0.8",
-        "1_1.0_-0.8"
-      ],
-      "InitCards": [
-        0,
-        2,
-        4,
-        4,
-        4
       ],
       "IsHidden": false,
       "LockedTurn": 0,
@@ -7167,18 +7120,14 @@ export const LEVEL_HARD_6_DATA: LevelData = {
       "TypeId": 1,
       "BoxColor": 5,
       "BlockedNodes": [
-        "0_-0.5_0.8",
-        "0_0.5_0.8",
-        "0_-0.5_-0.8",
-        "0_0.5_-0.8",
-        "2_-0.5_0.0",
-        "2_0.5_0.0"
+        "2_0.0_0.85",
+        "2_0.0_-0.85"
       ],
       "InitCards": [
         0,
-        0,
-        2,
-        3
+        1,
+        3,
+        4
       ],
       "IsHidden": false,
       "LockedTurn": 0,
@@ -7198,108 +7147,108 @@ export const LEVEL_HARD_7_DATA: LevelData = {
   "BoardOffsetZ": 0,
   "BoardNodes": [
     {
-      "Id": "0_-1.5_0.8",
+      "Id": "0_-1.4_1.3",
       "LayerId": 0,
       "YRotation": 0.0,
-      "XPosition": -1.5,
-      "ZPosition": 0.8
+      "XPosition": -1.4,
+      "ZPosition": 1.3
     },
     {
-      "Id": "0_-0.5_0.8",
+      "Id": "0_0.0_1.3",
       "LayerId": 0,
       "YRotation": 0.0,
-      "XPosition": -0.5,
-      "ZPosition": 0.8
-    },
-    {
-      "Id": "0_0.5_0.8",
-      "LayerId": 0,
-      "YRotation": 0.0,
-      "XPosition": 0.5,
-      "ZPosition": 0.8
-    },
-    {
-      "Id": "0_1.5_0.8",
-      "LayerId": 0,
-      "YRotation": 0.0,
-      "XPosition": 1.5,
-      "ZPosition": 0.8
-    },
-    {
-      "Id": "0_-1.5_-0.8",
-      "LayerId": 0,
-      "YRotation": 0.0,
-      "XPosition": -1.5,
-      "ZPosition": -0.8
-    },
-    {
-      "Id": "0_-0.5_-0.8",
-      "LayerId": 0,
-      "YRotation": 0.0,
-      "XPosition": -0.5,
-      "ZPosition": -0.8
-    },
-    {
-      "Id": "0_0.5_-0.8",
-      "LayerId": 0,
-      "YRotation": 0.0,
-      "XPosition": 0.5,
-      "ZPosition": -0.8
-    },
-    {
-      "Id": "0_1.5_-0.8",
-      "LayerId": 0,
-      "YRotation": 0.0,
-      "XPosition": 1.5,
-      "ZPosition": -0.8
-    },
-    {
-      "Id": "1_-1.0_0.8",
-      "LayerId": 1,
-      "YRotation": 90.0,
-      "XPosition": -1.0,
-      "ZPosition": 0.8
-    },
-    {
-      "Id": "1_0.0_0.8",
-      "LayerId": 1,
-      "YRotation": 90.0,
       "XPosition": 0.0,
-      "ZPosition": 0.8
+      "ZPosition": 1.3
     },
     {
-      "Id": "1_1.0_0.8",
-      "LayerId": 1,
-      "YRotation": 90.0,
-      "XPosition": 1.0,
-      "ZPosition": 0.8
-    },
-    {
-      "Id": "1_-0.5_-0.8",
-      "LayerId": 1,
-      "YRotation": 90.0,
-      "XPosition": -0.5,
-      "ZPosition": -0.8
-    },
-    {
-      "Id": "1_0.5_-0.8",
-      "LayerId": 1,
-      "YRotation": 90.0,
-      "XPosition": 0.5,
-      "ZPosition": -0.8
-    },
-    {
-      "Id": "2_-0.5_0.0",
-      "LayerId": 2,
+      "Id": "0_1.4_1.3",
+      "LayerId": 0,
       "YRotation": 0.0,
-      "XPosition": -0.5,
+      "XPosition": 1.4,
+      "ZPosition": 1.3
+    },
+    {
+      "Id": "0_-0.9_0.0",
+      "LayerId": 0,
+      "YRotation": 0.0,
+      "XPosition": -0.9,
       "ZPosition": 0.0
     },
     {
-      "Id": "2_0.5_0.0",
+      "Id": "0_0.9_0.0",
+      "LayerId": 0,
+      "YRotation": 0.0,
+      "XPosition": 0.9,
+      "ZPosition": 0.0
+    },
+    {
+      "Id": "0_-1.4_-1.3",
+      "LayerId": 0,
+      "YRotation": 0.0,
+      "XPosition": -1.4,
+      "ZPosition": -1.3
+    },
+    {
+      "Id": "0_0.0_-1.3",
+      "LayerId": 0,
+      "YRotation": 0.0,
+      "XPosition": 0.0,
+      "ZPosition": -1.3
+    },
+    {
+      "Id": "0_1.4_-1.4",
+      "LayerId": 0,
+      "YRotation": 0.0,
+      "XPosition": 1.4,
+      "ZPosition": -1.3
+    },
+    {
+      "Id": "1_-1.2_0.65",
+      "LayerId": 1,
+      "YRotation": 90.0,
+      "XPosition": -1.2,
+      "ZPosition": 0.65
+    },
+    {
+      "Id": "1_1.2_0.65",
+      "LayerId": 1,
+      "YRotation": 90.0,
+      "XPosition": 1.2,
+      "ZPosition": 0.65
+    },
+    {
+      "Id": "1_-1.2_-0.65",
+      "LayerId": 1,
+      "YRotation": 90.0,
+      "XPosition": -1.2,
+      "ZPosition": -0.65
+    },
+    {
+      "Id": "1_1.2_-0.65",
+      "LayerId": 1,
+      "YRotation": 90.0,
+      "XPosition": 1.2,
+      "ZPosition": -0.65
+    },
+    {
+      "Id": "1_0.0_0.0",
+      "LayerId": 1,
+      "YRotation": 90.0,
+      "XPosition": 0.0,
+      "ZPosition": 0.0
+    },
+    {
+      "Id": "2_-0.7_0.0",
       "LayerId": 2,
       "YRotation": 0.0,
-      "XPosition": 0.5,
+      "XPosition": -0.7,
+      "ZPosition": 0.0
+    },
+    {
+      "Id": "2_0.7_0.0",
+      "LayerId": 2,
+      "YRotation": 0.0,
+      "XPosition": 0.7,
       "ZPosition": 0.0
     },
     {
@@ -7312,7 +7261,7 @@ export const LEVEL_HARD_7_DATA: LevelData = {
   ],
   "BoxNodes": [
     {
-      "Id": "0_-1.5_0.8",
+      "Id": "0_-1.4_1.3",
       "TypeId": 2,
       "BoxColor": 0,
       "BlockedNodes": [],
@@ -7329,7 +7278,7 @@ export const LEVEL_HARD_7_DATA: LevelData = {
       "IsCardsHidden": false
     },
     {
-      "Id": "0_-0.5_0.8",
+      "Id": "0_0.0_1.3",
       "TypeId": 2,
       "BoxColor": 1,
       "BlockedNodes": [],
@@ -7346,7 +7295,7 @@ export const LEVEL_HARD_7_DATA: LevelData = {
       "IsCardsHidden": false
     },
     {
-      "Id": "0_0.5_0.8",
+      "Id": "0_1.4_1.3",
       "TypeId": 2,
       "BoxColor": 2,
       "BlockedNodes": [],
@@ -7363,7 +7312,7 @@ export const LEVEL_HARD_7_DATA: LevelData = {
       "IsCardsHidden": false
     },
     {
-      "Id": "0_1.5_0.8",
+      "Id": "0_-0.9_0.0",
       "TypeId": 2,
       "BoxColor": 3,
       "BlockedNodes": [],
@@ -7380,7 +7329,7 @@ export const LEVEL_HARD_7_DATA: LevelData = {
       "IsCardsHidden": false
     },
     {
-      "Id": "0_-1.5_-0.8",
+      "Id": "0_0.9_0.0",
       "TypeId": 2,
       "BoxColor": 4,
       "BlockedNodes": [],
@@ -7397,7 +7346,7 @@ export const LEVEL_HARD_7_DATA: LevelData = {
       "IsCardsHidden": false
     },
     {
-      "Id": "0_-0.5_-0.8",
+      "Id": "0_-1.4_-1.3",
       "TypeId": 2,
       "BoxColor": 0,
       "BlockedNodes": [],
@@ -7414,7 +7363,7 @@ export const LEVEL_HARD_7_DATA: LevelData = {
       "IsCardsHidden": false
     },
     {
-      "Id": "0_0.5_-0.8",
+      "Id": "0_0.0_-1.3",
       "TypeId": 2,
       "BoxColor": 1,
       "BlockedNodes": [],
@@ -7431,7 +7380,7 @@ export const LEVEL_HARD_7_DATA: LevelData = {
       "IsCardsHidden": false
     },
     {
-      "Id": "0_1.5_-0.8",
+      "Id": "0_1.4_-1.4",
       "TypeId": 2,
       "BoxColor": 2,
       "BlockedNodes": [],
@@ -7448,12 +7397,12 @@ export const LEVEL_HARD_7_DATA: LevelData = {
       "IsCardsHidden": false
     },
     {
-      "Id": "1_-1.0_0.8",
+      "Id": "1_-1.2_0.65",
       "TypeId": 2,
       "BoxColor": 3,
       "BlockedNodes": [
-        "0_-1.5_0.8",
-        "0_-0.5_0.8"
+        "0_-1.4_1.3",
+        "0_-0.9_0.0"
       ],
       "InitCards": [
         0,
@@ -7468,12 +7417,12 @@ export const LEVEL_HARD_7_DATA: LevelData = {
       "IsCardsHidden": false
     },
     {
-      "Id": "1_0.0_0.8",
+      "Id": "1_1.2_0.65",
       "TypeId": 2,
       "BoxColor": 4,
       "BlockedNodes": [
-        "0_-0.5_0.8",
-        "0_0.5_0.8"
+        "0_1.4_1.3",
+        "0_0.9_0.0"
       ],
       "InitCards": [
         0,
@@ -7488,12 +7437,12 @@ export const LEVEL_HARD_7_DATA: LevelData = {
       "IsCardsHidden": false
     },
     {
-      "Id": "1_1.0_0.8",
+      "Id": "1_-1.2_-0.65",
       "TypeId": 2,
       "BoxColor": 0,
       "BlockedNodes": [
-        "0_0.5_0.8",
-        "0_1.5_0.8"
+        "0_-0.9_0.0",
+        "0_-1.4_-1.3"
       ],
       "InitCards": [
         0,
@@ -7508,11 +7457,12 @@ export const LEVEL_HARD_7_DATA: LevelData = {
       "IsCardsHidden": false
     },
     {
-      "Id": "1_-0.5_-0.8",
+      "Id": "1_1.2_-0.65",
       "TypeId": 2,
       "BoxColor": 1,
       "BlockedNodes": [
-        "0_-0.5_-0.8"
+        "0_0.9_0.0",
+        "0_1.4_-1.4"
       ],
       "InitCards": [
         1,
@@ -7526,11 +7476,12 @@ export const LEVEL_HARD_7_DATA: LevelData = {
       "IsCardsHidden": false
     },
     {
-      "Id": "1_0.5_-0.8",
+      "Id": "1_0.0_0.0",
       "TypeId": 2,
       "BoxColor": 2,
       "BlockedNodes": [
-        "0_0.5_-0.8"
+        "0_-0.9_0.0",
+        "0_0.9_0.0"
       ],
       "InitCards": [
         0,
@@ -7544,15 +7495,14 @@ export const LEVEL_HARD_7_DATA: LevelData = {
       "IsCardsHidden": false
     },
     {
-      "Id": "2_-0.5_0.0",
+      "Id": "2_-0.7_0.0",
       "TypeId": 2,
       "BoxColor": 3,
       "BlockedNodes": [
-        "0_-0.5_0.8",
-        "0_-0.5_-0.8",
-        "1_-1.0_0.8",
-        "1_0.0_0.8",
-        "1_-0.5_-0.8"
+        "0_-0.9_0.0",
+        "1_-1.2_0.65",
+        "1_-1.2_-0.65",
+        "1_0.0_0.0"
       ],
       "InitCards": [
         1,
@@ -7566,15 +7516,14 @@ export const LEVEL_HARD_7_DATA: LevelData = {
       "IsCardsHidden": false
     },
     {
-      "Id": "2_0.5_0.0",
+      "Id": "2_0.7_0.0",
       "TypeId": 2,
       "BoxColor": 4,
       "BlockedNodes": [
-        "0_0.5_0.8",
-        "0_0.5_-0.8",
-        "1_0.0_0.8",
-        "1_1.0_0.8",
-        "1_0.5_-0.8"
+        "0_0.9_0.0",
+        "1_1.2_0.65",
+        "1_1.2_-0.65",
+        "1_0.0_0.0"
       ],
       "InitCards": [
         0,
@@ -7592,15 +7541,11 @@ export const LEVEL_HARD_7_DATA: LevelData = {
       "TypeId": 1,
       "BoxColor": 5,
       "BlockedNodes": [
-        "0_-0.5_0.8",
-        "0_0.5_0.8",
-        "0_-0.5_-0.8",
-        "0_0.5_-0.8",
-        "1_0.0_0.8",
-        "1_-0.5_-0.8",
-        "1_0.5_-0.8",
-        "2_-0.5_0.0",
-        "2_0.5_0.0"
+        "0_-0.9_0.0",
+        "0_0.9_0.0",
+        "1_0.0_0.0",
+        "2_-0.7_0.0",
+        "2_0.7_0.0"
       ],
       "InitCards": [
         1,
@@ -7626,101 +7571,105 @@ export const LEVEL_HARD_8_DATA: LevelData = {
   "BoardOffsetZ": 0,
   "BoardNodes": [
     {
-      "Id": "0_-1.2_0.8",
+      "Id": "0_-2.0_0.8",
       "LayerId": 0,
-      "YRotation": 0.0,
-      "XPosition": -1.2,
+      "YRotation": 90.0,
+      "XPosition": -2.0,
       "ZPosition": 0.8
     },
     {
       "Id": "0_0.0_0.8",
       "LayerId": 0,
-      "YRotation": 0.0,
+      "YRotation": 90.0,
       "XPosition": 0.0,
       "ZPosition": 0.8
     },
     {
-      "Id": "0_1.2_0.8",
+      "Id": "0_2.0_0.8",
       "LayerId": 0,
-      "YRotation": 0.0,
-      "XPosition": 1.2,
+      "YRotation": 90.0,
+      "XPosition": 2.0,
       "ZPosition": 0.8
     },
     {
-      "Id": "0_-1.2_-0.8",
+      "Id": "0_-2.0_-0.8",
       "LayerId": 0,
-      "YRotation": 0.0,
-      "XPosition": -1.2,
+      "YRotation": 90.0,
+      "XPosition": -2.0,
       "ZPosition": -0.8
     },
     {
       "Id": "0_0.0_-0.8",
       "LayerId": 0,
-      "YRotation": 0.0,
+      "YRotation": 90.0,
       "XPosition": 0.0,
       "ZPosition": -0.8
     },
     {
-      "Id": "0_1.2_-0.8",
+      "Id": "0_2.0_-0.8",
       "LayerId": 0,
+      "YRotation": 90.0,
+      "XPosition": 2.0,
+      "ZPosition": -0.8
+    },
+    {
+      "Id": "1_-1.0_0.8",
+      "LayerId": 1,
       "YRotation": 0.0,
-      "XPosition": 1.2,
-      "ZPosition": -0.8
-    },
-    {
-      "Id": "1_-0.6_0.8",
-      "LayerId": 1,
-      "YRotation": 90.0,
-      "XPosition": -0.6,
+      "XPosition": -1.0,
       "ZPosition": 0.8
     },
     {
-      "Id": "1_0.6_0.8",
+      "Id": "1_1.0_0.8",
       "LayerId": 1,
-      "YRotation": 90.0,
-      "XPosition": 0.6,
+      "YRotation": 0.0,
+      "XPosition": 1.0,
       "ZPosition": 0.8
     },
     {
-      "Id": "1_-0.6_-0.8",
+      "Id": "1_-1.0_-0.8",
       "LayerId": 1,
-      "YRotation": 90.0,
-      "XPosition": -0.6,
+      "YRotation": 0.0,
+      "XPosition": -1.0,
       "ZPosition": -0.8
     },
     {
-      "Id": "1_0.6_-0.8",
+      "Id": "1_1.0_-0.8",
       "LayerId": 1,
-      "YRotation": 90.0,
-      "XPosition": 0.6,
+      "YRotation": 0.0,
+      "XPosition": 1.0,
       "ZPosition": -0.8
     },
     {
-      "Id": "2_-0.5_0.0",
+      "Id": "2_-1.0_0.0",
       "LayerId": 2,
-      "YRotation": 0.0,
-      "XPosition": -0.5,
+      "YRotation": 90.0,
+      "XPosition": -1.0,
       "ZPosition": 0.0
     },
     {
-      "Id": "2_0.5_0.0",
+      "Id": "2_1.0_0.0",
       "LayerId": 2,
-      "YRotation": 0.0,
-      "XPosition": 0.5,
+      "YRotation": 90.0,
+      "XPosition": 1.0,
       "ZPosition": 0.0
     }
   ],
   "BoxNodes": [
     {
-      "Id": "0_-1.2_0.8",
-      "TypeId": 4,
+      "Id": "0_-2.0_0.8",
+      "TypeId": 3,
       "BoxColor": 0,
       "BlockedNodes": [],
       "InitCards": [
         0,
+        0,
         1,
-        1,
-        4
+        2,
+        2,
+        3,
+        3,
+        3
       ],
       "IsHidden": true,
       "LockedTurn": 0,
@@ -7728,12 +7677,70 @@ export const LEVEL_HARD_8_DATA: LevelData = {
     },
     {
       "Id": "0_0.0_0.8",
-      "TypeId": 4,
+      "TypeId": 3,
       "BoxColor": 1,
       "BlockedNodes": [],
       "InitCards": [
         0,
+        1,
         2,
+        2,
+        2,
+        2,
+        2,
+        4
+      ],
+      "IsHidden": false,
+      "LockedTurn": 0,
+      "IsCardsHidden": false
+    },
+    {
+      "Id": "0_2.0_0.8",
+      "TypeId": 3,
+      "BoxColor": 2,
+      "BlockedNodes": [],
+      "InitCards": [
+        1,
+        1,
+        2,
+        2,
+        3,
+        3,
+        4
+      ],
+      "IsHidden": true,
+      "LockedTurn": 0,
+      "IsCardsHidden": false
+    },
+    {
+      "Id": "0_-2.0_-0.8",
+      "TypeId": 3,
+      "BoxColor": 3,
+      "BlockedNodes": [],
+      "InitCards": [
+        1,
+        2,
+        2,
+        4,
+        4,
+        4,
+        4
+      ],
+      "IsHidden": false,
+      "LockedTurn": 0,
+      "IsCardsHidden": false
+    },
+    {
+      "Id": "0_0.0_-0.8",
+      "TypeId": 3,
+      "BoxColor": 4,
+      "BlockedNodes": [],
+      "InitCards": [
+        1,
+        1,
+        2,
+        3,
+        3,
         3,
         4
       ],
@@ -7742,70 +7749,15 @@ export const LEVEL_HARD_8_DATA: LevelData = {
       "IsCardsHidden": false
     },
     {
-      "Id": "0_1.2_0.8",
-      "TypeId": 4,
-      "BoxColor": 2,
-      "BlockedNodes": [],
-      "InitCards": [
-        0,
-        0,
-        1
-      ],
-      "IsHidden": false,
-      "LockedTurn": 0,
-      "IsCardsHidden": false
-    },
-    {
-      "Id": "0_-1.2_-0.8",
-      "TypeId": 4,
-      "BoxColor": 3,
-      "BlockedNodes": [],
-      "InitCards": [
-        0,
-        2,
-        4
-      ],
-      "IsHidden": false,
-      "LockedTurn": 0,
-      "IsCardsHidden": false
-    },
-    {
-      "Id": "0_0.0_-0.8",
-      "TypeId": 4,
-      "BoxColor": 4,
-      "BlockedNodes": [],
-      "InitCards": [
-        0,
-        1,
-        3
-      ],
-      "IsHidden": false,
-      "LockedTurn": 0,
-      "IsCardsHidden": false
-    },
-    {
-      "Id": "0_1.2_-0.8",
-      "TypeId": 4,
+      "Id": "0_2.0_-0.8",
+      "TypeId": 3,
       "BoxColor": 0,
       "BlockedNodes": [],
       "InitCards": [
+        0,
+        0,
         1,
-        2,
-        3
-      ],
-      "IsHidden": false,
-      "LockedTurn": 0,
-      "IsCardsHidden": false
-    },
-    {
-      "Id": "1_-0.6_0.8",
-      "TypeId": 4,
-      "BoxColor": 1,
-      "BlockedNodes": [
-        "0_-1.2_0.8",
-        "0_0.0_0.8"
-      ],
-      "InitCards": [
+        1,
         3,
         4,
         4
@@ -7815,50 +7767,62 @@ export const LEVEL_HARD_8_DATA: LevelData = {
       "IsCardsHidden": false
     },
     {
-      "Id": "1_0.6_0.8",
-      "TypeId": 4,
+      "Id": "1_-1.0_0.8",
+      "TypeId": 3,
+      "BoxColor": 1,
+      "BlockedNodes": [
+        "0_-2.0_0.8",
+        "0_0.0_0.8"
+      ],
+      "InitCards": [
+        0,
+        0,
+        0,
+        1,
+        3,
+        3,
+        4
+      ],
+      "IsHidden": false,
+      "LockedTurn": 0,
+      "IsCardsHidden": false
+    },
+    {
+      "Id": "1_1.0_0.8",
+      "TypeId": 3,
       "BoxColor": 2,
       "BlockedNodes": [
         "0_0.0_0.8",
-        "0_1.2_0.8"
+        "0_2.0_0.8"
       ],
       "InitCards": [
-        2,
+        0,
+        0,
+        0,
+        0,
+        1,
         3,
-        4
+        3
       ],
       "IsHidden": false,
       "LockedTurn": 0,
       "IsCardsHidden": false
     },
     {
-      "Id": "1_-0.6_-0.8",
-      "TypeId": 4,
+      "Id": "1_-1.0_-0.8",
+      "TypeId": 3,
       "BoxColor": 3,
       "BlockedNodes": [
-        "0_-1.2_-0.8",
+        "0_-2.0_-0.8",
         "0_0.0_-0.8"
       ],
       "InitCards": [
-        2,
-        2,
-        4
-      ],
-      "IsHidden": false,
-      "LockedTurn": 0,
-      "IsCardsHidden": false
-    },
-    {
-      "Id": "1_0.6_-0.8",
-      "TypeId": 4,
-      "BoxColor": 4,
-      "BlockedNodes": [
-        "0_0.0_-0.8",
-        "0_1.2_-0.8"
-      ],
-      "InitCards": [
+        0,
         1,
         1,
+        1,
+        2,
+        2,
         3
       ],
       "IsHidden": false,
@@ -7866,17 +7830,20 @@ export const LEVEL_HARD_8_DATA: LevelData = {
       "IsCardsHidden": false
     },
     {
-      "Id": "2_-0.5_0.0",
-      "TypeId": 1,
-      "BoxColor": 5,
+      "Id": "1_1.0_-0.8",
+      "TypeId": 3,
+      "BoxColor": 4,
       "BlockedNodes": [
-        "1_-0.6_0.8",
-        "1_-0.6_-0.8"
+        "0_0.0_-0.8",
+        "0_2.0_-0.8"
       ],
       "InitCards": [
         1,
         2,
         3,
+        4,
+        4,
+        4,
         4
       ],
       "IsHidden": false,
@@ -7884,18 +7851,36 @@ export const LEVEL_HARD_8_DATA: LevelData = {
       "IsCardsHidden": false
     },
     {
-      "Id": "2_0.5_0.0",
+      "Id": "2_-1.0_0.0",
       "TypeId": 1,
       "BoxColor": 5,
       "BlockedNodes": [
-        "1_0.6_0.8",
-        "1_0.6_-0.8"
+        "1_-1.0_0.8",
+        "1_-1.0_-0.8"
+      ],
+      "InitCards": [
+        0,
+        1,
+        2,
+        4
+      ],
+      "IsHidden": false,
+      "LockedTurn": 0,
+      "IsCardsHidden": false
+    },
+    {
+      "Id": "2_1.0_0.0",
+      "TypeId": 1,
+      "BoxColor": 5,
+      "BlockedNodes": [
+        "1_1.0_0.8",
+        "1_1.0_-0.8"
       ],
       "InitCards": [
         0,
         0,
-        2,
-        3
+        3,
+        4
       ],
       "IsHidden": false,
       "LockedTurn": 0,
@@ -7915,121 +7900,121 @@ export const LEVEL_HARD_9_DATA: LevelData = {
   "BoardOffsetZ": 0,
   "BoardNodes": [
     {
-      "Id": "0_-1.5_0.8",
+      "Id": "0_-1.7_1.1",
       "LayerId": 0,
       "YRotation": 0.0,
-      "XPosition": -1.5,
-      "ZPosition": 0.8
+      "XPosition": -1.7,
+      "ZPosition": 1.1
     },
     {
-      "Id": "0_-0.5_0.8",
+      "Id": "0_-0.5_1.1",
       "LayerId": 0,
-      "YRotation": 0.0,
-      "XPosition": -0.5,
-      "ZPosition": 0.8
-    },
-    {
-      "Id": "0_0.5_0.8",
-      "LayerId": 0,
-      "YRotation": 0.0,
-      "XPosition": 0.5,
-      "ZPosition": 0.8
-    },
-    {
-      "Id": "0_1.5_0.8",
-      "LayerId": 0,
-      "YRotation": 0.0,
-      "XPosition": 1.5,
-      "ZPosition": 0.8
-    },
-    {
-      "Id": "0_-1.5_-0.8",
-      "LayerId": 0,
-      "YRotation": 0.0,
-      "XPosition": -1.5,
-      "ZPosition": -0.8
-    },
-    {
-      "Id": "0_-0.5_-0.8",
-      "LayerId": 0,
-      "YRotation": 0.0,
-      "XPosition": -0.5,
-      "ZPosition": -0.8
-    },
-    {
-      "Id": "0_0.5_-0.8",
-      "LayerId": 0,
-      "YRotation": 0.0,
-      "XPosition": 0.5,
-      "ZPosition": -0.8
-    },
-    {
-      "Id": "0_1.5_-0.8",
-      "LayerId": 0,
-      "YRotation": 0.0,
-      "XPosition": 1.5,
-      "ZPosition": -0.8
-    },
-    {
-      "Id": "1_-1.0_0.8",
-      "LayerId": 1,
       "YRotation": 90.0,
-      "XPosition": -1.0,
-      "ZPosition": 0.8
+      "XPosition": -0.5,
+      "ZPosition": 1.1
     },
     {
-      "Id": "1_0.0_0.8",
+      "Id": "0_0.5_1.1",
+      "LayerId": 0,
+      "YRotation": 90.0,
+      "XPosition": 0.5,
+      "ZPosition": 1.1
+    },
+    {
+      "Id": "0_1.7_1.1",
+      "LayerId": 0,
+      "YRotation": 0.0,
+      "XPosition": 1.7,
+      "ZPosition": 1.1
+    },
+    {
+      "Id": "0_-1.7_-1.1",
+      "LayerId": 0,
+      "YRotation": 0.0,
+      "XPosition": -1.7,
+      "ZPosition": -1.1
+    },
+    {
+      "Id": "0_-0.5_-1.1",
+      "LayerId": 0,
+      "YRotation": 90.0,
+      "XPosition": -0.5,
+      "ZPosition": -1.1
+    },
+    {
+      "Id": "0_0.5_-1.1",
+      "LayerId": 0,
+      "YRotation": 90.0,
+      "XPosition": 0.5,
+      "ZPosition": -1.1
+    },
+    {
+      "Id": "0_1.7_-1.1",
+      "LayerId": 0,
+      "YRotation": 0.0,
+      "XPosition": 1.7,
+      "ZPosition": -1.1
+    },
+    {
+      "Id": "1_-1.1_1.1",
+      "LayerId": 1,
+      "YRotation": 0.0,
+      "XPosition": -1.1,
+      "ZPosition": 1.1
+    },
+    {
+      "Id": "1_1.1_1.1",
+      "LayerId": 1,
+      "YRotation": 0.0,
+      "XPosition": 1.1,
+      "ZPosition": 1.1
+    },
+    {
+      "Id": "1_-1.1_-1.1",
+      "LayerId": 1,
+      "YRotation": 0.0,
+      "XPosition": -1.1,
+      "ZPosition": -1.1
+    },
+    {
+      "Id": "1_1.1_-1.1",
+      "LayerId": 1,
+      "YRotation": 0.0,
+      "XPosition": 1.1,
+      "ZPosition": -1.1
+    },
+    {
+      "Id": "1_0.0_0.0",
       "LayerId": 1,
       "YRotation": 90.0,
       "XPosition": 0.0,
-      "ZPosition": 0.8
-    },
-    {
-      "Id": "1_1.0_0.8",
-      "LayerId": 1,
-      "YRotation": 90.0,
-      "XPosition": 1.0,
-      "ZPosition": 0.8
-    },
-    {
-      "Id": "1_-0.5_-0.8",
-      "LayerId": 1,
-      "YRotation": 90.0,
-      "XPosition": -0.5,
-      "ZPosition": -0.8
-    },
-    {
-      "Id": "1_0.5_-0.8",
-      "LayerId": 1,
-      "YRotation": 90.0,
-      "XPosition": 0.5,
-      "ZPosition": -0.8
-    },
-    {
-      "Id": "2_-0.5_0.0",
-      "LayerId": 2,
-      "YRotation": 0.0,
-      "XPosition": -0.5,
       "ZPosition": 0.0
     },
     {
-      "Id": "2_0.5_0.0",
+      "Id": "2_-0.6_0.0",
       "LayerId": 2,
-      "YRotation": 0.0,
-      "XPosition": 0.5,
+      "YRotation": 90.0,
+      "XPosition": -0.6,
+      "ZPosition": 0.0
+    },
+    {
+      "Id": "2_0.6_0.0",
+      "LayerId": 2,
+      "YRotation": 90.0,
+      "XPosition": 0.6,
       "ZPosition": 0.0
     },
     {
       "Id": "3_0.0_0.0",
       "LayerId": 3,
-      "YRotation": 90.0,
+      "YRotation": 0.0,
       "XPosition": 0.0,
       "ZPosition": 0.0
     }
   ],
   "BoxNodes": [
     {
-      "Id": "0_-1.5_0.8",
+      "Id": "0_-1.7_1.1",
       "TypeId": 2,
       "BoxColor": 0,
       "BlockedNodes": [],
@@ -8041,12 +8026,12 @@ export const LEVEL_HARD_9_DATA: LevelData = {
         2,
         3
       ],
-      "IsHidden": false,
+      "IsHidden": true,
       "LockedTurn": 3,
       "IsCardsHidden": false
     },
     {
-      "Id": "0_-0.5_0.8",
+      "Id": "0_-0.5_1.1",
       "TypeId": 2,
       "BoxColor": 1,
       "BlockedNodes": [],
@@ -8063,7 +8048,7 @@ export const LEVEL_HARD_9_DATA: LevelData = {
       "IsCardsHidden": false
     },
     {
-      "Id": "0_0.5_0.8",
+      "Id": "0_0.5_1.1",
       "TypeId": 2,
       "BoxColor": 2,
       "BlockedNodes": [],
@@ -8080,7 +8065,7 @@ export const LEVEL_HARD_9_DATA: LevelData = {
       "IsCardsHidden": false
     },
     {
-      "Id": "0_1.5_0.8",
+      "Id": "0_1.7_1.1",
       "TypeId": 2,
       "BoxColor": 3,
       "BlockedNodes": [],
@@ -8092,12 +8077,12 @@ export const LEVEL_HARD_9_DATA: LevelData = {
         4,
         4
       ],
-      "IsHidden": false,
-      "LockedTurn": 0,
+      "IsHidden": true,
+      "LockedTurn": 3,
       "IsCardsHidden": false
     },
     {
-      "Id": "0_-1.5_-0.8",
+      "Id": "0_-1.7_-1.1",
       "TypeId": 2,
       "BoxColor": 4,
       "BlockedNodes": [],
@@ -8114,7 +8099,7 @@ export const LEVEL_HARD_9_DATA: LevelData = {
       "IsCardsHidden": false
     },
     {
-      "Id": "0_-0.5_-0.8",
+      "Id": "0_-0.5_-1.1",
       "TypeId": 2,
       "BoxColor": 0,
       "BlockedNodes": [],
@@ -8131,7 +8116,7 @@ export const LEVEL_HARD_9_DATA: LevelData = {
       "IsCardsHidden": false
     },
     {
-      "Id": "0_0.5_-0.8",
+      "Id": "0_0.5_-1.1",
       "TypeId": 2,
       "BoxColor": 1,
       "BlockedNodes": [],
@@ -8148,7 +8133,7 @@ export const LEVEL_HARD_9_DATA: LevelData = {
       "IsCardsHidden": false
     },
     {
-      "Id": "0_1.5_-0.8",
+      "Id": "0_1.7_-1.1",
       "TypeId": 2,
       "BoxColor": 2,
       "BlockedNodes": [],
@@ -8161,16 +8146,16 @@ export const LEVEL_HARD_9_DATA: LevelData = {
         4
       ],
       "IsHidden": false,
-      "LockedTurn": 3,
+      "LockedTurn": 0,
       "IsCardsHidden": false
     },
     {
-      "Id": "1_-1.0_0.8",
+      "Id": "1_-1.1_1.1",
       "TypeId": 2,
       "BoxColor": 3,
       "BlockedNodes": [
-        "0_-1.5_0.8",
-        "0_-0.5_0.8"
+        "0_-1.7_1.1",
+        "0_-0.5_1.1"
       ],
       "InitCards": [
         0,
@@ -8185,12 +8170,12 @@ export const LEVEL_HARD_9_DATA: LevelData = {
       "IsCardsHidden": false
     },
     {
-      "Id": "1_0.0_0.8",
+      "Id": "1_1.1_1.1",
       "TypeId": 2,
       "BoxColor": 4,
       "BlockedNodes": [
-        "0_-0.5_0.8",
-        "0_0.5_0.8"
+        "0_0.5_1.1",
+        "0_1.7_1.1"
       ],
       "InitCards": [
         0,
@@ -8205,12 +8190,12 @@ export const LEVEL_HARD_9_DATA: LevelData = {
       "IsCardsHidden": false
     },
     {
-      "Id": "1_1.0_0.8",
+      "Id": "1_-1.1_-1.1",
       "TypeId": 2,
       "BoxColor": 0,
       "BlockedNodes": [
-        "0_0.5_0.8",
-        "0_1.5_0.8"
+        "0_-1.7_-1.1",
+        "0_-0.5_-1.1"
       ],
       "InitCards": [
         1,
@@ -8225,11 +8210,12 @@ export const LEVEL_HARD_9_DATA: LevelData = {
       "IsCardsHidden": false
     },
     {
-      "Id": "1_-0.5_-0.8",
+      "Id": "1_1.1_-1.1",
       "TypeId": 2,
       "BoxColor": 1,
       "BlockedNodes": [
-        "0_-0.5_-0.8"
+        "0_0.5_-1.1",
+        "0_1.7_-1.1"
       ],
       "InitCards": [
         0,
@@ -8243,11 +8229,14 @@ export const LEVEL_HARD_9_DATA: LevelData = {
       "IsCardsHidden": false
     },
     {
-      "Id": "1_0.5_-0.8",
+      "Id": "1_0.0_0.0",
       "TypeId": 2,
       "BoxColor": 2,
       "BlockedNodes": [
-        "0_0.5_-0.8"
+        "0_-0.5_1.1",
+        "0_0.5_1.1",
+        "0_-0.5_-1.1",
+        "0_0.5_-1.1"
       ],
       "InitCards": [
         3,
@@ -8261,15 +8250,13 @@ export const LEVEL_HARD_9_DATA: LevelData = {
       "IsCardsHidden": false
     },
     {
-      "Id": "2_-0.5_0.0",
+      "Id": "2_-0.6_0.0",
       "TypeId": 2,
       "BoxColor": 3,
       "BlockedNodes": [
-        "0_-0.5_0.8",
-        "0_-0.5_-0.8",
-        "1_-1.0_0.8",
-        "1_0.0_0.8",
-        "1_-0.5_-0.8"
+        "0_-0.5_1.1",
+        "0_-0.5_-1.1",
+        "1_0.0_0.0"
       ],
       "InitCards": [
         1,
@@ -8283,15 +8270,13 @@ export const LEVEL_HARD_9_DATA: LevelData = {
       "IsCardsHidden": false
     },
     {
-      "Id": "2_0.5_0.0",
+      "Id": "2_0.6_0.0",
       "TypeId": 2,
       "BoxColor": 4,
       "BlockedNodes": [
-        "0_0.5_0.8",
-        "0_0.5_-0.8",
-        "1_0.0_0.8",
-        "1_1.0_0.8",
-        "1_0.5_-0.8"
+        "0_0.5_1.1",
+        "0_0.5_-1.1",
+        "1_0.0_0.0"
       ],
       "InitCards": [
         0,
@@ -8309,15 +8294,9 @@ export const LEVEL_HARD_9_DATA: LevelData = {
       "TypeId": 1,
       "BoxColor": 5,
       "BlockedNodes": [
-        "0_-0.5_0.8",
-        "0_0.5_0.8",
-        "0_-0.5_-0.8",
-        "0_0.5_-0.8",
-        "1_0.0_0.8",
-        "1_-0.5_-0.8",
-        "1_0.5_-0.8",
-        "2_-0.5_0.0",
-        "2_0.5_0.0"
+        "1_0.0_0.0",
+        "2_-0.6_0.0",
+        "2_0.6_0.0"
       ],
       "InitCards": [
         0,
@@ -8343,309 +8322,319 @@ export const LEVEL_HARD_10_DATA: LevelData = {
   "BoardOffsetZ": 0,
   "BoardNodes": [
     {
-      "Id": "0_-2.5_0.6",
+      "Id": "0_-2.1_1.3",
       "LayerId": 0,
       "YRotation": 0.0,
-      "XPosition": -2.5,
-      "ZPosition": 0.6
+      "XPosition": -2.1,
+      "ZPosition": 1.3
     },
     {
-      "Id": "0_-1.5_0.6",
+      "Id": "0_-0.7_1.3",
       "LayerId": 0,
       "YRotation": 0.0,
-      "XPosition": -1.5,
-      "ZPosition": 0.6
+      "XPosition": -0.7,
+      "ZPosition": 1.3
     },
     {
-      "Id": "0_-0.5_0.6",
+      "Id": "0_0.7_1.3",
       "LayerId": 0,
       "YRotation": 0.0,
-      "XPosition": -0.5,
-      "ZPosition": 0.6
+      "XPosition": 0.7,
+      "ZPosition": 1.3
     },
     {
-      "Id": "0_0.5_0.6",
+      "Id": "0_2.1_1.3",
       "LayerId": 0,
       "YRotation": 0.0,
-      "XPosition": 0.5,
-      "ZPosition": 0.6
+      "XPosition": 2.1,
+      "ZPosition": 1.3
     },
     {
-      "Id": "0_1.5_0.6",
+      "Id": "0_-2.1_0.0",
       "LayerId": 0,
-      "YRotation": 0.0,
-      "XPosition": 1.5,
-      "ZPosition": 0.6
-    },
-    {
-      "Id": "0_2.5_0.6",
-      "LayerId": 0,
-      "YRotation": 0.0,
-      "XPosition": 2.5,
-      "ZPosition": 0.6
-    },
-    {
-      "Id": "0_-2.5_-0.6",
-      "LayerId": 0,
-      "YRotation": 0.0,
-      "XPosition": -2.5,
-      "ZPosition": -0.6
-    },
-    {
-      "Id": "0_-1.5_-0.6",
-      "LayerId": 0,
-      "YRotation": 0.0,
-      "XPosition": -1.5,
-      "ZPosition": -0.6
-    },
-    {
-      "Id": "0_-0.5_-0.6",
-      "LayerId": 0,
-      "YRotation": 0.0,
-      "XPosition": -0.5,
-      "ZPosition": -0.6
-    },
-    {
-      "Id": "0_0.5_-0.6",
-      "LayerId": 0,
-      "YRotation": 0.0,
-      "XPosition": 0.5,
-      "ZPosition": -0.6
-    },
-    {
-      "Id": "0_1.5_-0.6",
-      "LayerId": 0,
-      "YRotation": 0.0,
-      "XPosition": 1.5,
-      "ZPosition": -0.6
-    },
-    {
-      "Id": "0_2.5_-0.6",
-      "LayerId": 0,
-      "YRotation": 0.0,
-      "XPosition": 2.5,
-      "ZPosition": -0.6
-    },
-    {
-      "Id": "1_-2.0_0.6",
-      "LayerId": 1,
       "YRotation": 90.0,
-      "XPosition": -2.0,
-      "ZPosition": 0.6
-    },
-    {
-      "Id": "1_-1.0_0.6",
-      "LayerId": 1,
-      "YRotation": 90.0,
-      "XPosition": -1.0,
-      "ZPosition": 0.6
-    },
-    {
-      "Id": "1_0.0_0.6",
-      "LayerId": 1,
-      "YRotation": 90.0,
-      "XPosition": 0.0,
-      "ZPosition": 0.6
-    },
-    {
-      "Id": "1_1.0_0.6",
-      "LayerId": 1,
-      "YRotation": 90.0,
-      "XPosition": 1.0,
-      "ZPosition": 0.6
-    },
-    {
-      "Id": "1_2.0_0.6",
-      "LayerId": 1,
-      "YRotation": 90.0,
-      "XPosition": 2.0,
-      "ZPosition": 0.6
-    },
-    {
-      "Id": "1_-1.5_-0.6",
-      "LayerId": 1,
-      "YRotation": 90.0,
-      "XPosition": -1.5,
-      "ZPosition": -0.6
-    },
-    {
-      "Id": "1_0.0_-0.6",
-      "LayerId": 1,
-      "YRotation": 90.0,
-      "XPosition": 0.0,
-      "ZPosition": -0.6
-    },
-    {
-      "Id": "1_1.5_-0.6",
-      "LayerId": 1,
-      "YRotation": 90.0,
-      "XPosition": 1.5,
-      "ZPosition": -0.6
-    },
-    {
-      "Id": "2_-1.5_0.0",
-      "LayerId": 2,
-      "YRotation": 0.0,
-      "XPosition": -1.5,
+      "XPosition": -2.1,
       "ZPosition": 0.0
     },
     {
-      "Id": "2_-0.5_0.0",
-      "LayerId": 2,
-      "YRotation": 0.0,
-      "XPosition": -0.5,
+      "Id": "0_-0.7_0.0",
+      "LayerId": 0,
+      "YRotation": 90.0,
+      "XPosition": -0.7,
       "ZPosition": 0.0
     },
     {
-      "Id": "2_0.5_0.0",
-      "LayerId": 2,
-      "YRotation": 0.0,
-      "XPosition": 0.5,
+      "Id": "0_0.7_0.0",
+      "LayerId": 0,
+      "YRotation": 90.0,
+      "XPosition": 0.7,
       "ZPosition": 0.0
     },
     {
-      "Id": "2_1.5_0.0",
-      "LayerId": 2,
-      "YRotation": 0.0,
-      "XPosition": 1.5,
+      "Id": "0_2.1_0.0",
+      "LayerId": 0,
+      "YRotation": 90.0,
+      "XPosition": 2.1,
       "ZPosition": 0.0
     },
     {
-      "Id": "3_-0.5_0.0",
+      "Id": "0_-2.1_-1.3",
+      "LayerId": 0,
+      "YRotation": 0.0,
+      "XPosition": -2.1,
+      "ZPosition": -1.3
+    },
+    {
+      "Id": "0_-0.7_-1.3",
+      "LayerId": 0,
+      "YRotation": 0.0,
+      "XPosition": -0.7,
+      "ZPosition": -1.3
+    },
+    {
+      "Id": "0_0.7_-1.3",
+      "LayerId": 0,
+      "YRotation": 0.0,
+      "XPosition": 0.7,
+      "ZPosition": -1.3
+    },
+    {
+      "Id": "0_2.1_-1.3",
+      "LayerId": 0,
+      "YRotation": 0.0,
+      "XPosition": 2.1,
+      "ZPosition": -1.3
+    },
+    {
+      "Id": "1_-2.1_0.65",
+      "LayerId": 1,
+      "YRotation": 90.0,
+      "XPosition": -2.1,
+      "ZPosition": 0.65
+    },
+    {
+      "Id": "1_-0.7_0.65",
+      "LayerId": 1,
+      "YRotation": 90.0,
+      "XPosition": -0.7,
+      "ZPosition": 0.65
+    },
+    {
+      "Id": "1_0.7_0.65",
+      "LayerId": 1,
+      "YRotation": 90.0,
+      "XPosition": 0.7,
+      "ZPosition": 0.65
+    },
+    {
+      "Id": "1_2.1_0.65",
+      "LayerId": 1,
+      "YRotation": 90.0,
+      "XPosition": 2.1,
+      "ZPosition": 0.65
+    },
+    {
+      "Id": "1_-2.1_-0.65",
+      "LayerId": 1,
+      "YRotation": 90.0,
+      "XPosition": -2.1,
+      "ZPosition": -0.65
+    },
+    {
+      "Id": "1_-0.7_-0.65",
+      "LayerId": 1,
+      "YRotation": 90.0,
+      "XPosition": -0.7,
+      "ZPosition": -0.65
+    },
+    {
+      "Id": "1_0.7_-0.65",
+      "LayerId": 1,
+      "YRotation": 90.0,
+      "XPosition": 0.7,
+      "ZPosition": -0.65
+    },
+    {
+      "Id": "1_2.1_-0.65",
+      "LayerId": 1,
+      "YRotation": 90.0,
+      "XPosition": 2.1,
+      "ZPosition": -0.65
+    },
+    {
+      "Id": "2_-1.4_0.65",
+      "LayerId": 2,
+      "YRotation": 0.0,
+      "XPosition": -1.4,
+      "ZPosition": 0.65
+    },
+    {
+      "Id": "2_1.4_0.65",
+      "LayerId": 2,
+      "YRotation": 0.0,
+      "XPosition": 1.4,
+      "ZPosition": 0.65
+    },
+    {
+      "Id": "2_-1.4_-0.65",
+      "LayerId": 2,
+      "YRotation": 0.0,
+      "XPosition": -1.4,
+      "ZPosition": -0.65
+    },
+    {
+      "Id": "2_1.4_-0.65",
+      "LayerId": 2,
+      "YRotation": 0.0,
+      "XPosition": 1.4,
+      "ZPosition": -0.65
+    },
+    {
+      "Id": "3_-0.7_0.0",
       "LayerId": 3,
       "YRotation": 90.0,
-      "XPosition": -0.5,
+      "XPosition": -0.7,
       "ZPosition": 0.0
     },
     {
-      "Id": "3_0.5_0.0",
+      "Id": "3_0.7_0.0",
       "LayerId": 3,
       "YRotation": 90.0,
-      "XPosition": 0.5,
+      "XPosition": 0.7,
       "ZPosition": 0.0
     },
     {
       "Id": "4_0.0_0.0",
       "LayerId": 4,
-      "YRotation": 90.0,
+      "YRotation": 0.0,
       "XPosition": 0.0,
       "ZPosition": 0.0
     }
   ],
   "BoxNodes": [
     {
-      "Id": "0_-2.5_0.6",
+      "Id": "0_-2.1_1.3",
       "TypeId": 2,
       "BoxColor": 0,
       "BlockedNodes": [],
       "InitCards": [
-        0,
         1,
-        3,
-        4,
-        4,
-        4
+        1,
+        2,
+        2,
+        3
       ],
       "IsHidden": true,
       "LockedTurn": 0,
       "IsCardsHidden": false
     },
     {
-      "Id": "0_-1.5_0.6",
+      "Id": "0_-0.7_1.3",
       "TypeId": 2,
       "BoxColor": 1,
       "BlockedNodes": [],
       "InitCards": [
         0,
-        0,
-        0,
-        0,
+        1,
+        2,
         3,
-        4
+        3
       ],
       "IsHidden": false,
       "LockedTurn": 0,
       "IsCardsHidden": false
     },
     {
-      "Id": "0_-0.5_0.6",
+      "Id": "0_0.7_1.3",
       "TypeId": 2,
       "BoxColor": 2,
       "BlockedNodes": [],
       "InitCards": [
-        1,
+        0,
+        0,
+        0,
         2,
-        3,
-        3,
-        3,
-        4
+        3
       ],
       "IsHidden": false,
       "LockedTurn": 0,
       "IsCardsHidden": false
     },
     {
-      "Id": "0_0.5_0.6",
+      "Id": "0_2.1_1.3",
       "TypeId": 2,
       "BoxColor": 3,
       "BlockedNodes": [],
       "InitCards": [
-        0,
-        0,
         1,
+        1,
+        2,
         3,
-        4,
-        4
+        3
       ],
-      "IsHidden": false,
+      "IsHidden": true,
       "LockedTurn": 0,
       "IsCardsHidden": false
     },
     {
-      "Id": "0_1.5_0.6",
+      "Id": "0_-2.1_0.0",
       "TypeId": 2,
       "BoxColor": 4,
       "BlockedNodes": [],
       "InitCards": [
         0,
         1,
-        2,
-        2,
         3,
-        3
+        4,
+        4
       ],
       "IsHidden": false,
       "LockedTurn": 0,
       "IsCardsHidden": false
     },
     {
-      "Id": "0_2.5_0.6",
+      "Id": "0_-0.7_0.0",
+      "TypeId": 2,
+      "BoxColor": 5,
+      "BlockedNodes": [],
+      "InitCards": [
+        0,
+        0,
+        0,
+        2,
+        3,
+        4
+      ],
+      "IsHidden": false,
+      "LockedTurn": 0,
+      "IsCardsHidden": false
+    },
+    {
+      "Id": "0_0.7_0.0",
       "TypeId": 2,
       "BoxColor": 0,
       "BlockedNodes": [],
       "InitCards": [
-        0,
         1,
         1,
-        1,
-        1,
-        3
+        2,
+        2,
+        4
       ],
       "IsHidden": false,
       "LockedTurn": 0,
       "IsCardsHidden": false
     },
     {
-      "Id": "0_-2.5_-0.6",
+      "Id": "0_2.1_0.0",
       "TypeId": 2,
       "BoxColor": 1,
       "BlockedNodes": [],
       "InitCards": [
-        0,
+        1,
+        2,
         2,
         3,
-        3,
-        4,
         4
       ],
       "IsHidden": false,
@@ -8653,14 +8642,13 @@ export const LEVEL_HARD_10_DATA: LevelData = {
       "IsCardsHidden": false
     },
     {
-      "Id": "0_-1.5_-0.6",
+      "Id": "0_-2.1_-1.3",
       "TypeId": 2,
       "BoxColor": 2,
       "BlockedNodes": [],
       "InitCards": [
-        2,
-        2,
-        3,
+        0,
+        0,
         3,
         4,
         4
@@ -8670,16 +8658,15 @@ export const LEVEL_HARD_10_DATA: LevelData = {
       "IsCardsHidden": false
     },
     {
-      "Id": "0_-0.5_-0.6",
+      "Id": "0_-0.7_-1.3",
       "TypeId": 2,
       "BoxColor": 3,
       "BlockedNodes": [],
       "InitCards": [
         0,
         0,
+        0,
         1,
-        1,
-        4,
         4
       ],
       "IsHidden": false,
@@ -8687,15 +8674,50 @@ export const LEVEL_HARD_10_DATA: LevelData = {
       "IsCardsHidden": false
     },
     {
-      "Id": "0_0.5_-0.6",
+      "Id": "0_0.7_-1.3",
       "TypeId": 2,
       "BoxColor": 4,
       "BlockedNodes": [],
       "InitCards": [
-        0,
-        0,
+        1,
         1,
         2,
+        3,
+        3
+      ],
+      "IsHidden": false,
+      "LockedTurn": 0,
+      "IsCardsHidden": false
+    },
+    {
+      "Id": "0_2.1_-1.3",
+      "TypeId": 2,
+      "BoxColor": 5,
+      "BlockedNodes": [],
+      "InitCards": [
+        0,
+        0,
+        0,
+        3,
+        3,
+        4
+      ],
+      "IsHidden": false,
+      "LockedTurn": 0,
+      "IsCardsHidden": false
+    },
+    {
+      "Id": "1_-2.1_0.65",
+      "TypeId": 2,
+      "BoxColor": 0,
+      "BlockedNodes": [
+        "0_-2.1_1.3",
+        "0_-2.1_0.0"
+      ],
+      "InitCards": [
+        1,
+        1,
+        1,
         2,
         3
       ],
@@ -8704,33 +8726,18 @@ export const LEVEL_HARD_10_DATA: LevelData = {
       "IsCardsHidden": false
     },
     {
-      "Id": "0_1.5_-0.6",
-      "TypeId": 2,
-      "BoxColor": 0,
-      "BlockedNodes": [],
-      "InitCards": [
-        0,
-        0,
-        2,
-        2,
-        3,
-        4
-      ],
-      "IsHidden": false,
-      "LockedTurn": 0,
-      "IsCardsHidden": false
-    },
-    {
-      "Id": "0_2.5_-0.6",
+      "Id": "1_-0.7_0.65",
       "TypeId": 2,
       "BoxColor": 1,
-      "BlockedNodes": [],
+      "BlockedNodes": [
+        "0_-0.7_1.3",
+        "0_-0.7_0.0"
+      ],
       "InitCards": [
-        2,
-        2,
-        2,
+        0,
+        0,
+        1,
         3,
-        4,
         4
       ],
       "IsHidden": false,
@@ -8738,19 +8745,203 @@ export const LEVEL_HARD_10_DATA: LevelData = {
       "IsCardsHidden": false
     },
     {
-      "Id": "1_-2.0_0.6",
+      "Id": "1_0.7_0.65",
       "TypeId": 2,
       "BoxColor": 2,
       "BlockedNodes": [
-        "0_-2.5_0.6",
-        "0_-1.5_0.6"
+        "0_0.7_1.3",
+        "0_0.7_0.0"
+      ],
+      "InitCards": [
+        1,
+        2,
+        3,
+        3,
+        4
+      ],
+      "IsHidden": false,
+      "LockedTurn": 0,
+      "IsCardsHidden": false
+    },
+    {
+      "Id": "1_2.1_0.65",
+      "TypeId": 2,
+      "BoxColor": 3,
+      "BlockedNodes": [
+        "0_2.1_1.3",
+        "0_2.1_0.0"
+      ],
+      "InitCards": [
+        0,
+        1,
+        1,
+        2,
+        3
+      ],
+      "IsHidden": false,
+      "LockedTurn": 0,
+      "IsCardsHidden": false
+    },
+    {
+      "Id": "1_-2.1_-0.65",
+      "TypeId": 2,
+      "BoxColor": 4,
+      "BlockedNodes": [
+        "0_-2.1_0.0",
+        "0_-2.1_-1.3"
+      ],
+      "InitCards": [
+        1,
+        2,
+        3,
+        4,
+        4
+      ],
+      "IsHidden": false,
+      "LockedTurn": 0,
+      "IsCardsHidden": false
+    },
+    {
+      "Id": "1_-0.7_-0.65",
+      "TypeId": 2,
+      "BoxColor": 5,
+      "BlockedNodes": [
+        "0_-0.7_0.0",
+        "0_-0.7_-1.3"
+      ],
+      "InitCards": [
+        0,
+        0,
+        0,
+        2,
+        2,
+        4
+      ],
+      "IsHidden": false,
+      "LockedTurn": 0,
+      "IsCardsHidden": false
+    },
+    {
+      "Id": "1_0.7_-0.65",
+      "TypeId": 2,
+      "BoxColor": 0,
+      "BlockedNodes": [
+        "0_0.7_0.0",
+        "0_0.7_-1.3"
+      ],
+      "InitCards": [
+        0,
+        0,
+        2,
+        4,
+        4
+      ],
+      "IsHidden": false,
+      "LockedTurn": 0,
+      "IsCardsHidden": false
+    },
+    {
+      "Id": "1_2.1_-0.65",
+      "TypeId": 2,
+      "BoxColor": 1,
+      "BlockedNodes": [
+        "0_2.1_0.0",
+        "0_2.1_-1.3"
+      ],
+      "InitCards": [
+        0,
+        1,
+        3,
+        4
+      ],
+      "IsHidden": false,
+      "LockedTurn": 0,
+      "IsCardsHidden": false
+    },
+    {
+      "Id": "2_-1.4_0.65",
+      "TypeId": 2,
+      "BoxColor": 2,
+      "BlockedNodes": [
+        "0_-2.1_1.3",
+        "0_-0.7_1.3",
+        "0_-2.1_0.0",
+        "0_-0.7_0.0",
+        "1_-2.1_0.65",
+        "1_-0.7_0.65"
+      ],
+      "InitCards": [
+        0,
+        1,
+        3,
+        4
+      ],
+      "IsHidden": false,
+      "LockedTurn": 0,
+      "IsCardsHidden": false
+    },
+    {
+      "Id": "2_1.4_0.65",
+      "TypeId": 2,
+      "BoxColor": 3,
+      "BlockedNodes": [
+        "0_0.7_1.3",
+        "0_2.1_1.3",
+        "0_0.7_0.0",
+        "0_2.1_0.0",
+        "1_0.7_0.65",
+        "1_2.1_0.65"
+      ],
+      "InitCards": [
+        1,
+        1,
+        2,
+        3
+      ],
+      "IsHidden": false,
+      "LockedTurn": 0,
+      "IsCardsHidden": false
+    },
+    {
+      "Id": "2_-1.4_-0.65",
+      "TypeId": 2,
+      "BoxColor": 4,
+      "BlockedNodes": [
+        "0_-2.1_0.0",
+        "0_-0.7_0.0",
+        "0_-2.1_-1.3",
+        "0_-0.7_-1.3",
+        "1_-2.1_-0.65",
+        "1_-0.7_-0.65"
+      ],
+      "InitCards": [
+        2,
+        4,
+        4,
+        4
+      ],
+      "IsHidden": false,
+      "LockedTurn": 0,
+      "IsCardsHidden": false
+    },
+    {
+      "Id": "2_1.4_-0.65",
+      "TypeId": 2,
+      "BoxColor": 5,
+      "BlockedNodes": [
+        "0_0.7_0.0",
+        "0_2.1_0.0",
+        "0_0.7_-1.3",
+        "0_2.1_-1.3",
+        "1_0.7_-0.65",
+        "1_2.1_-0.65"
       ],
       "InitCards": [
         0,
         0,
         0,
         1,
-        2,
+        1,
         2
       ],
       "IsHidden": false,
@@ -8758,59 +8949,20 @@ export const LEVEL_HARD_10_DATA: LevelData = {
       "IsCardsHidden": false
     },
     {
-      "Id": "1_-1.0_0.6",
-      "TypeId": 2,
-      "BoxColor": 3,
-      "BlockedNodes": [
-        "0_-1.5_0.6",
-        "0_-0.5_0.6"
-      ],
-      "InitCards": [
-        0,
-        1,
-        1,
-        4,
-        4,
-        4
-      ],
-      "IsHidden": false,
-      "LockedTurn": 0,
-      "IsCardsHidden": false
-    },
-    {
-      "Id": "1_0.0_0.6",
-      "TypeId": 2,
-      "BoxColor": 4,
-      "BlockedNodes": [
-        "0_-0.5_0.6",
-        "0_0.5_0.6"
-      ],
-      "InitCards": [
-        1,
-        1,
-        1,
-        2,
-        3,
-        4
-      ],
-      "IsHidden": false,
-      "LockedTurn": 0,
-      "IsCardsHidden": false
-    },
-    {
-      "Id": "1_1.0_0.6",
+      "Id": "3_-0.7_0.0",
       "TypeId": 2,
       "BoxColor": 0,
       "BlockedNodes": [
-        "0_0.5_0.6",
-        "0_1.5_0.6"
+        "0_-0.7_0.0",
+        "1_-0.7_0.65",
+        "1_-0.7_-0.65",
+        "2_-1.4_0.65",
+        "2_-1.4_-0.65"
       ],
       "InitCards": [
-        1,
-        1,
         2,
         2,
-        3,
+        4,
         4
       ],
       "IsHidden": false,
@@ -8818,216 +8970,21 @@ export const LEVEL_HARD_10_DATA: LevelData = {
       "IsCardsHidden": false
     },
     {
-      "Id": "1_2.0_0.6",
+      "Id": "3_0.7_0.0",
       "TypeId": 2,
       "BoxColor": 1,
       "BlockedNodes": [
-        "0_1.5_0.6",
-        "0_2.5_0.6"
-      ],
-      "InitCards": [
-        0,
-        0,
-        1,
-        2,
-        4,
-        4
-      ],
-      "IsHidden": false,
-      "LockedTurn": 0,
-      "IsCardsHidden": false
-    },
-    {
-      "Id": "1_-1.5_-0.6",
-      "TypeId": 2,
-      "BoxColor": 2,
-      "BlockedNodes": [
-        "0_-1.5_-0.6"
-      ],
-      "InitCards": [
-        1,
-        2,
-        3,
-        3,
-        3,
-        4
-      ],
-      "IsHidden": false,
-      "LockedTurn": 0,
-      "IsCardsHidden": false
-    },
-    {
-      "Id": "1_0.0_-0.6",
-      "TypeId": 2,
-      "BoxColor": 3,
-      "BlockedNodes": [
-        "0_-0.5_-0.6",
-        "0_0.5_-0.6"
-      ],
-      "InitCards": [
-        0,
-        0,
-        1,
-        3,
-        3,
-        4
-      ],
-      "IsHidden": false,
-      "LockedTurn": 0,
-      "IsCardsHidden": false
-    },
-    {
-      "Id": "1_1.5_-0.6",
-      "TypeId": 2,
-      "BoxColor": 4,
-      "BlockedNodes": [
-        "0_1.5_-0.6"
+        "0_0.7_0.0",
+        "1_0.7_0.65",
+        "1_0.7_-0.65",
+        "2_1.4_0.65",
+        "2_1.4_-0.65"
       ],
       "InitCards": [
         0,
         1,
         1,
-        2,
-        3,
-        3
-      ],
-      "IsHidden": false,
-      "LockedTurn": 0,
-      "IsCardsHidden": false
-    },
-    {
-      "Id": "2_-1.5_0.0",
-      "TypeId": 2,
-      "BoxColor": 0,
-      "BlockedNodes": [
-        "0_-1.5_0.6",
-        "0_-1.5_-0.6",
-        "1_-2.0_0.6",
-        "1_-1.0_0.6",
-        "1_-1.5_-0.6"
-      ],
-      "InitCards": [
-        0,
-        0,
-        2,
-        2,
-        2,
         2
-      ],
-      "IsHidden": false,
-      "LockedTurn": 0,
-      "IsCardsHidden": false
-    },
-    {
-      "Id": "2_-0.5_0.0",
-      "TypeId": 2,
-      "BoxColor": 1,
-      "BlockedNodes": [
-        "0_-0.5_0.6",
-        "0_-0.5_-0.6",
-        "1_-1.0_0.6",
-        "1_0.0_0.6",
-        "1_0.0_-0.6"
-      ],
-      "InitCards": [
-        0,
-        0,
-        1,
-        3,
-        4,
-        4
-      ],
-      "IsHidden": false,
-      "LockedTurn": 0,
-      "IsCardsHidden": false
-    },
-    {
-      "Id": "2_0.5_0.0",
-      "TypeId": 2,
-      "BoxColor": 2,
-      "BlockedNodes": [
-        "0_0.5_0.6",
-        "0_0.5_-0.6",
-        "1_0.0_0.6",
-        "1_1.0_0.6",
-        "1_0.0_-0.6"
-      ],
-      "InitCards": [
-        0,
-        0,
-        1,
-        1,
-        1
-      ],
-      "IsHidden": false,
-      "LockedTurn": 0,
-      "IsCardsHidden": false
-    },
-    {
-      "Id": "2_1.5_0.0",
-      "TypeId": 2,
-      "BoxColor": 3,
-      "BlockedNodes": [
-        "0_1.5_0.6",
-        "0_1.5_-0.6",
-        "1_1.0_0.6",
-        "1_2.0_0.6",
-        "1_1.5_-0.6"
-      ],
-      "InitCards": [
-        0,
-        0,
-        1,
-        2,
-        4
-      ],
-      "IsHidden": false,
-      "LockedTurn": 0,
-      "IsCardsHidden": false
-    },
-    {
-      "Id": "3_-0.5_0.0",
-      "TypeId": 2,
-      "BoxColor": 4,
-      "BlockedNodes": [
-        "0_-0.5_0.6",
-        "0_-0.5_-0.6",
-        "1_-1.0_0.6",
-        "1_0.0_0.6",
-        "1_-1.5_-0.6",
-        "1_0.0_-0.6",
-        "2_-0.5_0.0"
-      ],
-      "InitCards": [
-        0,
-        0,
-        1,
-        2,
-        3
-      ],
-      "IsHidden": false,
-      "LockedTurn": 0,
-      "IsCardsHidden": false
-    },
-    {
-      "Id": "3_0.5_0.0",
-      "TypeId": 2,
-      "BoxColor": 0,
-      "BlockedNodes": [
-        "0_0.5_0.6",
-        "0_0.5_-0.6",
-        "1_0.0_0.6",
-        "1_1.0_0.6",
-        "1_0.0_-0.6",
-        "1_1.5_-0.6",
-        "2_0.5_0.0"
-      ],
-      "InitCards": [
-        0,
-        2,
-        3,
-        3,
-        4
       ],
       "IsHidden": false,
       "LockedTurn": 0,
@@ -9038,20 +8995,18 @@ export const LEVEL_HARD_10_DATA: LevelData = {
       "TypeId": 1,
       "BoxColor": 5,
       "BlockedNodes": [
-        "0_-0.5_0.6",
-        "0_0.5_0.6",
-        "0_-0.5_-0.6",
-        "0_0.5_-0.6",
-        "1_0.0_0.6",
-        "1_0.0_-0.6",
-        "2_-0.5_0.0",
-        "2_0.5_0.0",
-        "3_-0.5_0.0",
-        "3_0.5_0.0"
+        "0_-0.7_0.0",
+        "0_0.7_0.0",
+        "1_-0.7_0.65",
+        "1_0.7_0.65",
+        "1_-0.7_-0.65",
+        "1_0.7_-0.65",
+        "3_-0.7_0.0",
+        "3_0.7_0.0"
       ],
       "InitCards": [
-        2,
-        2,
+        1,
+        1,
         3,
         4
       ],
@@ -9087,7 +9042,7 @@ export const PRESET_LEVELS: PresetLevel[] = [
     id: "easy_2",
     name: "Easy 2: The Cross",
     difficulty: "easy",
-    description: "Four foundation boxes arranged in a quad-block supporting dual horizontal bridging bars.",
+    description: "Four vertical foundation boxes arranged in a quad-block supporting dual horizontal bridging bars.",
     data: LEVEL_EASY_2_DATA
   },
   {
@@ -9101,119 +9056,119 @@ export const PRESET_LEVELS: PresetLevel[] = [
     id: "easy_4",
     name: "Easy 4: Feeder Intro",
     difficulty: "easy",
-    description: "Introduction to Feeder Trays with a solid foundation supporting an upper dispatch station.",
+    description: "Introduction to Feeder Trays resting directly atop a sturdy multi-box foundation.",
     data: LEVEL_EASY_4_DATA
   },
   {
     id: "easy_5",
     name: "Easy 5: Diamond Gate",
     difficulty: "easy",
-    description: "Layer 0 has 4 boxes (with 2 Mystery Boxes), supported by 2 mid-tier boxes and 1 apex capstone.",
+    description: "Two symmetrically placed Mystery Boxes concealed on the ground layer, supporting mid-tier struts and a capstone.",
     data: LEVEL_EASY_5_DATA
   },
   {
     id: "easy_6",
-    name: "Easy 6: Six-Pack Grid",
+    name: "Easy 6: Winged Citadel",
     difficulty: "easy",
-    description: "A stable 5-box foundation supporting an interlocking 3-box upper brick tier.",
+    description: "Winged H-matrix foundation with 2 symmetrically concealed Mystery Boxes on Layer 0 supporting 3 upper crossbars.",
     data: LEVEL_EASY_6_DATA
   },
   {
     id: "easy_7",
     name: "Easy 7: Twin Feeder Trays",
     difficulty: "easy",
-    description: "Dual side trays resting on an expanded 6-box foundation grid.",
+    description: "Six wide foundation boxes supporting dual feeder trays across the columns.",
     data: LEVEL_EASY_7_DATA
   },
   {
     id: "easy_8",
     name: "Easy 8: Castle Battlement",
     difficulty: "easy",
-    description: "Fortress battlements with turn-locked gates and a hidden Mystery Box on Layer 0.",
+    description: "Castle battlements in a square arena with turn-locked base boxes and 2 symmetrically concealed Mystery Boxes on Layer 0.",
     data: LEVEL_EASY_8_DATA
   },
   {
     id: "easy_9",
-    name: "Easy 9: Twin Fortress",
+    name: "Easy 9: Honeycomb Fortress",
     difficulty: "easy",
-    description: "Dual rampart columns supporting mid-tier bridges and an apex feeder station.",
+    description: "Staggered 3-2 honeycomb foundation with 2 symmetrically concealed Mystery Boxes on Layer 0 supporting 3 mid struts and an apex feeder station.",
     data: LEVEL_EASY_9_DATA
   },
   {
     id: "easy_10",
     name: "Easy 10: Grand Cascade",
     difficulty: "easy",
-    description: "Grand 16-box 4-tier step pyramid with full physical support underneath every box and a hidden Mystery Box.",
+    description: "Grand 16-box 4-tier step honeycomb ziggurat finale with 2 symmetrically placed Mystery Boxes on Layer 0.",
     data: LEVEL_EASY_10_DATA
   },
   {
     id: "medium_1",
     name: "Medium 1: Level 1 (Tutorial - Warmup)",
     difficulty: "medium",
-    description: "Four foundation boxes supporting two interlocking top crossbars.",
+    description: "Four foundation boxes supporting two interlocking top crossbars in a balanced square footprint.",
     data: LEVEL_MEDIUM_1_DATA
   },
   {
     id: "medium_2",
     name: "Medium 2: Level 2 (Cross Block)",
     difficulty: "medium",
-    description: "A 5-box foundation cross directly supporting 3 interlocking upper crossbars.",
+    description: "Greek cross foundation supporting 3 interlocking upper crossbars.",
     data: LEVEL_MEDIUM_2_DATA
   },
   {
     id: "medium_3",
     name: "Medium 3: Level 3 (Tray Delivery)",
     difficulty: "medium",
-    description: "5 foundation boxes supporting 3 mid-tier boxes and an apex feeder station.",
+    description: "Staggered 3-2 honeycomb foundation supporting 3 mid struts and an apex feeder station in a balanced footprint.",
     data: LEVEL_MEDIUM_3_DATA
   },
   {
     id: "medium_4",
     name: "Medium 4: Classic Conveyor",
     difficulty: "medium",
-    description: "Six base boxes supporting 4 mid-tier crossbars and dual top-tier feeder stations.",
+    description: "Dual 3-box vertical columns bridged by mid-tier struts and dual upper feeder stations.",
     data: LEVEL_MEDIUM_4_DATA
   },
   {
     id: "medium_5",
     name: "Medium 5: Level 5 (Pyramid Multi-Tier)",
     difficulty: "medium",
-    description: "Authentic 4-tier step pyramid with 6 foundation boxes, 3 mid-tier boxes, 2 upper supports, and an apex feeder.",
+    description: "True 4-tier step pyramid with 2 symmetrically placed Mystery Boxes on Layer 0 supporting 3 mid-tier bars, 2 upper struts, and an apex feeder station.",
     data: LEVEL_MEDIUM_5_DATA
   },
   {
     id: "medium_6",
     name: "Medium 6: Level 6 (Spiral Shuffle)",
     difficulty: "medium",
-    description: "Six-box spiral foundation supporting 4 interlocking cross struts and dual apex boxes.",
+    description: "Greek cross foundation supporting 4 mid-tier spiral bars and dual upper feeder stations across 4 colors with 2 symmetric Mystery Boxes on Layer 0.",
     data: LEVEL_MEDIUM_6_DATA
   },
   {
     id: "medium_7",
     name: "Medium 7: Level 7 (Turn Locks Challenge)",
     difficulty: "medium",
-    description: "Multi-tier fortified lock structure requiring turn-based unlocking.",
+    description: "Hex-flank bastion arena guarded by turn locks requiring careful coordination to free underlying color boxes.",
     data: LEVEL_MEDIUM_7_DATA
   },
   {
     id: "medium_8",
     name: "Medium 8: Level 8 (8-Slot Factory)",
     difficulty: "medium",
-    description: "High-capacity 8-slot megabox foundry with dual feeder trays and a hidden Mystery Box.",
+    description: "High-capacity 8-slot megabox foundry featuring 2 symmetrically placed Mystery Megaboxes on Layer 0 and dual feeder trays.",
     data: LEVEL_MEDIUM_8_DATA
   },
   {
     id: "medium_9",
     name: "Medium 9: Double Cross Citadel",
     difficulty: "medium",
-    description: "Multi-tier citadel with 7 foundation boxes, 4 intermediate supports, 2 high bastions, and an apex feeder station.",
+    description: "Multi-tier diamond star citadel with 2 symmetrically placed Mystery Boxes on Layer 0 stepping through 4 tiers to an apex feeder station.",
     data: LEVEL_MEDIUM_9_DATA
   },
   {
     id: "medium_10",
     name: "Medium 10: Grand Colosseum Finale",
     difficulty: "medium",
-    description: "Grand 21-box amphitheater with 10 base foundation boxes, 6 tier-1 supports, 3 tier-2 bastions, and dual crown feeder trays.",
+    description: "Epic 21-box 4-tier colosseum finale spanning 3 expansive rows with 2 symmetrically concealed Mystery Boxes on Layer 0.",
     data: LEVEL_MEDIUM_10_DATA
   },
   {
@@ -9227,63 +9182,63 @@ export const PRESET_LEVELS: PresetLevel[] = [
     id: "hard_2",
     name: "Hard 2: Cross Interlock",
     difficulty: "hard",
-    description: "A 5-box foundation cross directly supporting 3 interlocking upper crossbars.",
+    description: "A 5-box foundation arranged in a square cross supporting 3 interlocking upper bars.",
     data: LEVEL_HARD_2_DATA
   },
   {
     id: "hard_3",
     name: "Hard 3: Double Obelisk",
     difficulty: "hard",
-    description: "Two 3-box obelisk columns bridged by mid-tier struts and dual apex crossbars.",
+    description: "Two 3-box vertical columns bridged by mid-tier struts and dual apex crossbars.",
     data: LEVEL_HARD_3_DATA
   },
   {
     id: "hard_4",
     name: "Hard 4: Hex Core Monolith",
     difficulty: "hard",
-    description: "Seven-box foundation supporting 4 mid-tier bastions, 2 upper struts, and an apex feeder station.",
+    description: "Seven-box diamond compass foundation supporting 4 mid-tier bastions, 2 upper struts, and an apex feeder station.",
     data: LEVEL_HARD_4_DATA
   },
   {
     id: "hard_5",
     name: "Hard 5: Octagon Matrix",
     difficulty: "hard",
-    description: "Octagonal matrix base with a hidden Mystery Box on Layer 0 supporting 4 mid-tier bars and an apex feeder station.",
+    description: "Concentric square courtyard matrix with 2 symmetrically concealed Mystery Boxes on Layer 0 supporting 4 mid-tier bars and an apex feeder station.",
     data: LEVEL_HARD_5_DATA
   },
   {
     id: "hard_6",
     name: "Hard 6: Hexa-Color Citadel",
     difficulty: "hard",
-    description: "Eight-box foundation supporting 4 mid-tier struts, 2 upper bastions, and an apex feeder station across 6 full colors.",
+    description: "Greek cross citadel with 8 perimeter base boxes and 2 symmetrically placed Mystery Boxes on Layer 0 supporting 4 mid struts and an apex station.",
     data: LEVEL_HARD_6_DATA
   },
   {
     id: "hard_7",
     name: "Hard 7: Dual Ziggurat Labyrinth",
     difficulty: "hard",
-    description: "Eight-box foundation supporting 5 mid-tier struts, 2 high towers, and an apex feeder station.",
+    description: "Staggered 3-2-3 honeycomb matrix foundation supporting 5 mid struts, 2 upper crossbars, and an apex feeder station.",
     data: LEVEL_HARD_7_DATA
   },
   {
     id: "hard_8",
     name: "Hard 8: Ten-Slot Megaboxes",
     difficulty: "hard",
-    description: "Massive 10-slot megabox bastion with dual feeder trays and a hidden Mystery Box on Layer 0.",
+    description: "Massive 10-slot megabox bastion with dual feeder trays and 2 symmetrically placed Mystery Megaboxes on Layer 0.",
     data: LEVEL_HARD_8_DATA
   },
   {
     id: "hard_9",
     name: "Hard 9: Turnlock Gauntlet Fortress",
     difficulty: "hard",
-    description: "Multi-tier fortified fortress guarded by turn-locked gates, requiring careful unblocking routes.",
+    description: "Four-corner bastion citadel guarded by turn locks with 2 symmetrically concealed Mystery Boxes on Layer 0.",
     data: LEVEL_HARD_9_DATA
   },
   {
     id: "hard_10",
     name: "Hard 10: Cosmic Crucible Grand Master",
     difficulty: "hard",
-    description: "The ultimate 27-box 5-tier master step pyramid with dense nested geometry, full structural support, and a hidden Mystery Box.",
+    description: "The ultimate 27-box 5-tier master step ziggurat spanning 3 expansive rows with 2 symmetrically placed Mystery Boxes on Layer 0.",
     data: LEVEL_HARD_10_DATA
   },
 ];
