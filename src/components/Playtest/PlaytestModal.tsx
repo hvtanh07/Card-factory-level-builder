@@ -256,8 +256,8 @@ export const PlaytestModal: React.FC<PlaytestModalProps> = ({ levelData, onClose
         if (card.dist <= L_STRAIGHT + 25.0) {
           for (let slotIdx = 0; slotIdx < MAX_BOX_SLOTS; slotIdx++) {
             const box = currentSlots[slotIdx];
-            // STRICT CHECK: Box must exist, NOT be neutral tray (5), NOT be clearing, and MUST MATCH CARD COLOR
-            if (!box || box.boxColor === 5 || box.isClearing || box.boxColor !== card.color) {
+            // STRICT CHECK: Box must exist, NOT be clearing, and MUST MATCH CARD COLOR
+            if (!box || box.isClearing || box.boxColor !== card.color) {
               continue;
             }
 

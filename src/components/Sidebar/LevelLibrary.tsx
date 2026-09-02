@@ -222,7 +222,7 @@ export const LevelLibrary: React.FC<LevelLibraryProps> = ({
           {filteredPresets.map((preset, idx) => {
             let totalCards = preset.data.BoxNodes.reduce((a: number, b: BoxNode) => a + b.InitCards.length, 0);
             const spawnerCount = (preset.data.SpawnerNodes || []).length;
-            const trayCount = preset.data.BoxNodes.filter(b => b.BoxColor === 5).length;
+            const trayCount = preset.data.BoxNodes.filter(b => b.IsPaperBox).length;
 
             for (const sn of (preset.data.SpawnerNodes || [])) {
               for (const sb of sn.SpawnBoxes) {
