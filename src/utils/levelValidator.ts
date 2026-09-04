@@ -135,6 +135,22 @@ export function validateLevel(data: LevelData): ValidationIssue[] {
     }
   }
 
+  // 6. Check for fully pre-completed monocolor boxes (no puzzle challenge / feed cards)
+  const allColoredBoxColors = new Set(data.BoxNodes.filter(b => !b.IsPaperBox && !getBoxType(b.TypeId).isTray).map(b => b.BoxColor));
+  if (allColoredBoxColors.size > 1) {
+    for (const bx of data.BoxNodes) {
+      if (bx.IsPaperBox || getBoxType(bx.TypeId).isTray) continue;
+      const boxType = getBoxType(bx.TypeId);
+      if (bx.InitCards.length >= boxType.capacity && bx.InitCards.every(c => c === bx.BoxColor)) {
+        issues.push({
+          type: 'warning',
+          nodeId: bx.Id,
+          message: `Box "${bx.Id}" contains only matching cards (${bx.InitCards.length}/${boxType.capacity}) and is already filled up. It should contain other card colors or be incomplete.`,
+        });
+      }
+    }
+  }
+
   return issues;
 }
 
@@ -379,26 +395,41 @@ export function balanceLevelCardDeckResult(data: LevelData, maxSlots = 4): Balan
       }
 
       const boxCards: number[] = [];
+      // If there are multiple colors in the level, non-tray boxes must NOT be filled only with their matching color
+      const maxMyColorCards = (!isTray && colors.length > 1) ? Math.max(0, cap - 2) : cap;
+      let myColorPlaced = 0;
 
       for (let cIdx = 0; cIdx < chunkSizes.length; cIdx++) {
         const sz = chunkSizes[cIdx];
         let chosenColor = myColor;
 
-        if (cIdx === 0 && !isTray && (remainingQuota[myColor] || 0) >= sz && Math.random() < 0.8) {
+        // Can we pick myColor?
+        const canPickMyColor = !isTray &&
+          (myColorPlaced + sz <= maxMyColorCards) &&
+          ((remainingQuota[myColor] || 0) >= sz);
+
+        if (canPickMyColor && Math.random() < 0.55) {
           chosenColor = myColor;
+          myColorPlaced += sz;
         } else {
-          const availableColors = colors.filter(c => (remainingQuota[c] || 0) >= sz);
-          if (availableColors.length > 0) {
-            availableColors.sort((a, b) => (remainingQuota[b] || 0) - (remainingQuota[a] || 0));
-            const pickIdx = Math.floor(Math.random() * Math.min(2, availableColors.length));
-            chosenColor = availableColors[pickIdx];
+          // Pick other color with highest quota
+          const otherColors = colors.filter(c => c !== myColor && (remainingQuota[c] || 0) >= sz);
+          if (otherColors.length > 0) {
+            otherColors.sort((a, b) => (remainingQuota[b] || 0) - (remainingQuota[a] || 0));
+            const pickIdx = Math.floor(Math.random() * Math.min(2, otherColors.length));
+            chosenColor = otherColors[pickIdx];
           } else {
-            const anyAvailable = colors.filter(c => (remainingQuota[c] || 0) > 0);
-            if (anyAvailable.length > 0) {
-              anyAvailable.sort((a, b) => (remainingQuota[b] || 0) - (remainingQuota[a] || 0));
-              chosenColor = anyAvailable[0];
-            } else {
+            const anyOther = colors.filter(c => c !== myColor && (remainingQuota[c] || 0) > 0);
+            if (anyOther.length > 0) {
+              anyOther.sort((a, b) => (remainingQuota[b] || 0) - (remainingQuota[a] || 0));
+              chosenColor = anyOther[0];
+            } else if (canPickMyColor) {
               chosenColor = myColor;
+              myColorPlaced += sz;
+            } else {
+              const anyCol = colors.filter(c => (remainingQuota[c] || 0) > 0);
+              chosenColor = anyCol.length > 0 ? anyCol[0] : myColor;
+              if (chosenColor === myColor) myColorPlaced += sz;
             }
           }
         }
@@ -411,10 +442,17 @@ export function balanceLevelCardDeckResult(data: LevelData, maxSlots = 4): Balan
       }
 
       while (boxCards.length < cap) {
-        const anyLeft = colors.find(c => (remainingQuota[c] || 0) > 0);
-        if (!anyLeft) break;
-        boxCards.push(anyLeft);
-        remainingQuota[anyLeft]--;
+        // Try other colors first
+        const otherLeft = colors.find(c => c !== myColor && (remainingQuota[c] || 0) > 0);
+        if (otherLeft) {
+          boxCards.push(otherLeft);
+          remainingQuota[otherLeft]--;
+        } else {
+          const anyLeft = colors.find(c => (remainingQuota[c] || 0) > 0);
+          if (!anyLeft) break;
+          boxCards.push(anyLeft);
+          remainingQuota[anyLeft]--;
+        }
       }
 
       boxCardsMap.set(bx.Id, boxCards);
@@ -424,10 +462,20 @@ export function balanceLevelCardDeckResult(data: LevelData, maxSlots = 4): Balan
     for (const col of colors) {
       while ((remainingQuota[col] || 0) > 0) {
         let placed = false;
-        for (const bx of data.BoxNodes) {
+        // Prefer placing `col` into boxes of a DIFFERENT color first
+        const candidateBoxes = [...data.BoxNodes].sort((a, b) => {
+          const aDiff = a.BoxColor !== col ? 0 : 1;
+          const bDiff = b.BoxColor !== col ? 0 : 1;
+          return aDiff - bDiff;
+        });
+
+        for (const bx of candidateBoxes) {
           const bCards = boxCardsMap.get(bx.Id) || [];
           const bType = getBoxType(bx.TypeId);
           if (bCards.length < bType.capacity) {
+            if (bx.BoxColor === col && bCards.length + 1 >= bType.capacity && bCards.every(c => c === col) && colors.length > 1) {
+              continue;
+            }
             bCards.push(col);
             remainingQuota[col]--;
             placed = true;
@@ -482,6 +530,29 @@ export function balanceLevelCardDeckResult(data: LevelData, maxSlots = 4): Balan
     const hasCapacityWarning = issues.some(i => i.message.includes('does not match total box capacity'));
     if (hasCapacityWarning) {
       continue;
+    }
+
+    // Rule: No colored box may contain only matching cards when completed
+    if (colors.length > 1) {
+      const hasMonocolorFilledBox = candidateLevel.BoxNodes.some(bx => {
+        if (bx.IsPaperBox || getBoxType(bx.TypeId).isTray) return false;
+        const bType = getBoxType(bx.TypeId);
+        return bx.InitCards.length >= bType.capacity && bx.InitCards.every(c => c === bx.BoxColor);
+      });
+      if (hasMonocolorFilledBox) {
+        continue;
+      }
+
+      const hasMonocolorFilledSpawner = (candidateLevel.SpawnerNodes || []).some(sn =>
+        sn.SpawnBoxes.some(sb => {
+          if (sb.IsPaperBox || getBoxType(sb.TypeId).isTray) return false;
+          const bType = getBoxType(sb.TypeId);
+          return sb.InitCards.length >= bType.capacity && sb.InitCards.every(c => c === sb.BoxColor);
+        })
+      );
+      if (hasMonocolorFilledSpawner) {
+        continue;
+      }
     }
 
     // Verify solvability with maxSlots
