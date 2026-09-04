@@ -193,10 +193,14 @@ export function App() {
 
   // Auto-Balance Card Deck
   const handleAutoBalanceDeck = () => {
-    const result = balanceLevelCardDeckResult(levelData, 4);
+    const maxColors = levelData.BoxNodes.length <= 10 ? 2 : 3;
+    let result = balanceLevelCardDeckResult(levelData, 4, maxColors);
+    if (!result.solvable && maxColors === 2) {
+      result = balanceLevelCardDeckResult(levelData, 4, 3);
+    }
     setLevelData(result.level);
     if (result.solvable) {
-      showToast('Card deck balanced by color groups & verified solvable with 4 slots!');
+      showToast('Card deck balanced (max 3 colors/box) & verified solvable with 4 slots!');
     } else {
       showToast('Deck balanced by color groups, but 4-slot path is currently locked. Adjust blockers or box order.', 'warning');
     }

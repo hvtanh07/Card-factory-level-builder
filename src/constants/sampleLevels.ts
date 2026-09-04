@@ -1,6 +1,6 @@
 import { LevelData } from '../types/level';
 
-export interface SampleLevelPreset {
+export interface SampleLevel {
   id: string;
   name: string;
   difficulty: 'easy' | 'medium' | 'hard';
@@ -8,7 +8,7 @@ export interface SampleLevelPreset {
   data: LevelData;
 }
 
-export const SAMPLE_LEVELS: SampleLevelPreset[] = [
+export const SAMPLE_LEVELS: SampleLevel[] = [
   {
     "id": "easy_1",
     "name": "Easy 1: Dual Pillars",
@@ -22,44 +22,44 @@ export const SAMPLE_LEVELS: SampleLevelPreset[] = [
         {
           "Id": "0_-1.75_1.05",
           "LayerId": 0,
-          "YRotation": 0.0,
+          "YRotation": 0,
           "XPosition": -1.75,
           "ZPosition": 1.05
         },
         {
           "Id": "0_1.75_1.05",
           "LayerId": 0,
-          "YRotation": 0.0,
+          "YRotation": 0,
           "XPosition": 1.75,
           "ZPosition": 1.05
         },
         {
           "Id": "0_-1.75_-1.05",
           "LayerId": 0,
-          "YRotation": 0.0,
+          "YRotation": 0,
           "XPosition": -1.75,
           "ZPosition": -1.05
         },
         {
           "Id": "0_1.75_-1.05",
           "LayerId": 0,
-          "YRotation": 0.0,
+          "YRotation": 0,
           "XPosition": 1.75,
           "ZPosition": -1.05
         },
         {
           "Id": "1_-1.75_0.0",
           "LayerId": 1,
-          "YRotation": 90.0,
+          "YRotation": 90,
           "XPosition": -1.75,
-          "ZPosition": 0.0
+          "ZPosition": 0
         },
         {
           "Id": "1_1.75_0.0",
           "LayerId": 1,
-          "YRotation": 90.0,
+          "YRotation": 90,
           "XPosition": 1.75,
-          "ZPosition": 0.0
+          "ZPosition": 0
         }
       ],
       "BoxNodes": [
@@ -72,9 +72,9 @@ export const SAMPLE_LEVELS: SampleLevelPreset[] = [
             1,
             1,
             1,
-            1,
-            3,
-            3
+            2,
+            2,
+            2
           ],
           "IsHidden": false,
           "LockedTurn": 0,
@@ -89,7 +89,7 @@ export const SAMPLE_LEVELS: SampleLevelPreset[] = [
           "InitCards": [
             1,
             1,
-            3,
+            1,
             3,
             3,
             3
@@ -105,12 +105,12 @@ export const SAMPLE_LEVELS: SampleLevelPreset[] = [
           "BoxColor": 3,
           "BlockedNodes": [],
           "InitCards": [
-            1,
-            2,
-            2,
-            2,
             3,
-            3
+            3,
+            3,
+            2,
+            2,
+            2
           ],
           "IsHidden": false,
           "LockedTurn": 0,
@@ -123,10 +123,10 @@ export const SAMPLE_LEVELS: SampleLevelPreset[] = [
           "BoxColor": 1,
           "BlockedNodes": [],
           "InitCards": [
-            1,
-            1,
-            2,
-            2,
+            3,
+            3,
+            3,
+            3,
             3,
             3
           ],
@@ -144,12 +144,12 @@ export const SAMPLE_LEVELS: SampleLevelPreset[] = [
             "0_-1.75_-1.05"
           ],
           "InitCards": [
+            2,
+            2,
+            2,
             1,
-            2,
-            2,
-            2,
-            2,
-            3
+            1,
+            1
           ],
           "IsHidden": false,
           "LockedTurn": 0,
@@ -167,10 +167,10 @@ export const SAMPLE_LEVELS: SampleLevelPreset[] = [
           "InitCards": [
             1,
             1,
+            1,
             2,
             2,
-            2,
-            3
+            2
           ],
           "IsHidden": false,
           "LockedTurn": 0,
@@ -198,44 +198,44 @@ export const SAMPLE_LEVELS: SampleLevelPreset[] = [
         {
           "Id": "0_0.0_1.55",
           "LayerId": 0,
-          "YRotation": 90.0,
-          "XPosition": 0.0,
+          "YRotation": 90,
+          "XPosition": 0,
           "ZPosition": 1.55
         },
         {
           "Id": "0_0.0_-1.55",
           "LayerId": 0,
-          "YRotation": 90.0,
-          "XPosition": 0.0,
+          "YRotation": 90,
+          "XPosition": 0,
           "ZPosition": -1.55
         },
         {
           "Id": "0_-1.55_0.0",
           "LayerId": 0,
-          "YRotation": 0.0,
+          "YRotation": 0,
           "XPosition": -1.55,
-          "ZPosition": 0.0
+          "ZPosition": 0
         },
         {
           "Id": "0_1.55_0.0",
           "LayerId": 0,
-          "YRotation": 0.0,
+          "YRotation": 0,
           "XPosition": 1.55,
-          "ZPosition": 0.0
+          "ZPosition": 0
         },
         {
           "Id": "1_-0.8_0.0",
           "LayerId": 1,
-          "YRotation": 90.0,
+          "YRotation": 90,
           "XPosition": -0.8,
-          "ZPosition": 0.0
+          "ZPosition": 0
         },
         {
           "Id": "1_0.8_0.0",
           "LayerId": 1,
-          "YRotation": 90.0,
+          "YRotation": 90,
           "XPosition": 0.8,
-          "ZPosition": 0.0
+          "ZPosition": 0
         }
       ],
       "BoxNodes": [
@@ -245,12 +245,12 @@ export const SAMPLE_LEVELS: SampleLevelPreset[] = [
           "BoxColor": 1,
           "BlockedNodes": [],
           "InitCards": [
-            1,
-            2,
-            2,
-            2,
             3,
-            3
+            3,
+            3,
+            2,
+            2,
+            2
           ],
           "IsHidden": false,
           "LockedTurn": 0,
@@ -263,12 +263,12 @@ export const SAMPLE_LEVELS: SampleLevelPreset[] = [
           "BoxColor": 2,
           "BlockedNodes": [],
           "InitCards": [
+            3,
+            3,
+            3,
             1,
             1,
-            2,
-            2,
-            2,
-            2
+            1
           ],
           "IsHidden": false,
           "LockedTurn": 0,
@@ -286,7 +286,7 @@ export const SAMPLE_LEVELS: SampleLevelPreset[] = [
             1,
             2,
             2,
-            3
+            2
           ],
           "IsHidden": false,
           "LockedTurn": 0,
@@ -300,8 +300,8 @@ export const SAMPLE_LEVELS: SampleLevelPreset[] = [
           "BlockedNodes": [],
           "InitCards": [
             1,
-            2,
-            2,
+            1,
+            1,
             3,
             3,
             3
@@ -321,12 +321,12 @@ export const SAMPLE_LEVELS: SampleLevelPreset[] = [
             "0_-1.55_0.0"
           ],
           "InitCards": [
-            1,
-            1,
-            1,
             2,
-            3,
-            3
+            2,
+            2,
+            1,
+            1,
+            1
           ],
           "IsHidden": false,
           "LockedTurn": 0,
@@ -343,12 +343,12 @@ export const SAMPLE_LEVELS: SampleLevelPreset[] = [
             "0_1.55_0.0"
           ],
           "InitCards": [
-            1,
-            1,
             3,
             3,
             3,
-            3
+            2,
+            2,
+            2
           ],
           "IsHidden": false,
           "LockedTurn": 0,
@@ -376,51 +376,51 @@ export const SAMPLE_LEVELS: SampleLevelPreset[] = [
         {
           "Id": "0_-1.05_1.05",
           "LayerId": 0,
-          "YRotation": 0.0,
+          "YRotation": 0,
           "XPosition": -1.05,
           "ZPosition": 1.05
         },
         {
           "Id": "0_1.05_1.05",
           "LayerId": 0,
-          "YRotation": 0.0,
+          "YRotation": 0,
           "XPosition": 1.05,
           "ZPosition": 1.05
         },
         {
           "Id": "0_-1.05_-1.05",
           "LayerId": 0,
-          "YRotation": 0.0,
+          "YRotation": 0,
           "XPosition": -1.05,
           "ZPosition": -1.05
         },
         {
           "Id": "0_1.05_-1.05",
           "LayerId": 0,
-          "YRotation": 0.0,
+          "YRotation": 0,
           "XPosition": 1.05,
           "ZPosition": -1.05
         },
         {
           "Id": "1_-1.05_0.0",
           "LayerId": 1,
-          "YRotation": 90.0,
+          "YRotation": 90,
           "XPosition": -1.05,
-          "ZPosition": 0.0
+          "ZPosition": 0
         },
         {
           "Id": "1_1.05_0.0",
           "LayerId": 1,
-          "YRotation": 90.0,
+          "YRotation": 90,
           "XPosition": 1.05,
-          "ZPosition": 0.0
+          "ZPosition": 0
         },
         {
           "Id": "2_0.0_0.0",
           "LayerId": 2,
-          "YRotation": 0.0,
-          "XPosition": 0.0,
-          "ZPosition": 0.0
+          "YRotation": 0,
+          "XPosition": 0,
+          "ZPosition": 0
         }
       ],
       "BoxNodes": [
@@ -432,10 +432,10 @@ export const SAMPLE_LEVELS: SampleLevelPreset[] = [
           "InitCards": [
             1,
             1,
+            1,
             2,
             2,
-            2,
-            3
+            2
           ],
           "IsHidden": false,
           "LockedTurn": 0,
@@ -448,12 +448,12 @@ export const SAMPLE_LEVELS: SampleLevelPreset[] = [
           "BoxColor": 2,
           "BlockedNodes": [],
           "InitCards": [
-            1,
-            1,
-            1,
-            2,
             3,
-            3
+            3,
+            1,
+            1,
+            1,
+            1
           ],
           "IsHidden": false,
           "LockedTurn": 0,
@@ -466,12 +466,12 @@ export const SAMPLE_LEVELS: SampleLevelPreset[] = [
           "BoxColor": 3,
           "BlockedNodes": [],
           "InitCards": [
-            1,
-            1,
-            1,
             3,
             3,
-            3
+            3,
+            1,
+            1,
+            1
           ],
           "IsHidden": false,
           "LockedTurn": 0,
@@ -486,9 +486,9 @@ export const SAMPLE_LEVELS: SampleLevelPreset[] = [
           "InitCards": [
             1,
             1,
-            2,
-            3,
-            3,
+            1,
+            1,
+            1,
             3
           ],
           "IsHidden": false,
@@ -505,11 +505,11 @@ export const SAMPLE_LEVELS: SampleLevelPreset[] = [
             "0_-1.05_-1.05"
           ],
           "InitCards": [
-            1,
             2,
             2,
             2,
-            2,
+            3,
+            3,
             3
           ],
           "IsHidden": false,
@@ -526,12 +526,12 @@ export const SAMPLE_LEVELS: SampleLevelPreset[] = [
             "0_1.05_-1.05"
           ],
           "InitCards": [
-            1,
-            1,
-            1,
-            1,
+            3,
+            3,
+            3,
             2,
-            3
+            2,
+            2
           ],
           "IsHidden": false,
           "LockedTurn": 0,
@@ -556,7 +556,7 @@ export const SAMPLE_LEVELS: SampleLevelPreset[] = [
             1,
             2,
             2,
-            3
+            2
           ],
           "IsHidden": false,
           "LockedTurn": 0,
@@ -584,44 +584,44 @@ export const SAMPLE_LEVELS: SampleLevelPreset[] = [
         {
           "Id": "0_-1.15_1.05",
           "LayerId": 0,
-          "YRotation": 0.0,
+          "YRotation": 0,
           "XPosition": -1.15,
           "ZPosition": 1.05
         },
         {
           "Id": "0_1.15_1.05",
           "LayerId": 0,
-          "YRotation": 0.0,
+          "YRotation": 0,
           "XPosition": 1.15,
           "ZPosition": 1.05
         },
         {
           "Id": "0_-1.15_-1.05",
           "LayerId": 0,
-          "YRotation": 0.0,
+          "YRotation": 0,
           "XPosition": -1.15,
           "ZPosition": -1.05
         },
         {
           "Id": "0_1.15_-1.05",
           "LayerId": 0,
-          "YRotation": 0.0,
+          "YRotation": 0,
           "XPosition": 1.15,
           "ZPosition": -1.05
         },
         {
           "Id": "1_-1.15_0.0",
           "LayerId": 1,
-          "YRotation": 90.0,
+          "YRotation": 90,
           "XPosition": -1.15,
-          "ZPosition": 0.0
+          "ZPosition": 0
         },
         {
           "Id": "1_1.15_0.0",
           "LayerId": 1,
-          "YRotation": 90.0,
+          "YRotation": 90,
           "XPosition": 1.15,
-          "ZPosition": 0.0
+          "ZPosition": 0
         }
       ],
       "BoxNodes": [
@@ -633,8 +633,8 @@ export const SAMPLE_LEVELS: SampleLevelPreset[] = [
           "InitCards": [
             1,
             1,
-            2,
-            2,
+            1,
+            1,
             2,
             2
           ],
@@ -649,11 +649,8 @@ export const SAMPLE_LEVELS: SampleLevelPreset[] = [
           "BoxColor": 2,
           "BlockedNodes": [],
           "InitCards": [
-            1,
-            1,
-            1,
             2,
-            3
+            2
           ],
           "IsHidden": false,
           "LockedTurn": 0,
@@ -666,9 +663,10 @@ export const SAMPLE_LEVELS: SampleLevelPreset[] = [
           "BoxColor": 3,
           "BlockedNodes": [],
           "InitCards": [
-            1,
             2,
-            3,
+            2,
+            2,
+            2,
             3,
             3
           ],
@@ -683,10 +681,11 @@ export const SAMPLE_LEVELS: SampleLevelPreset[] = [
           "BoxColor": 1,
           "BlockedNodes": [],
           "InitCards": [
-            1,
-            1,
             2,
             2,
+            2,
+            2,
+            3,
             3
           ],
           "IsHidden": false,
@@ -705,8 +704,9 @@ export const SAMPLE_LEVELS: SampleLevelPreset[] = [
           "InitCards": [
             1,
             1,
-            2,
-            2,
+            1,
+            1,
+            3,
             3
           ],
           "IsHidden": false,
@@ -725,8 +725,8 @@ export const SAMPLE_LEVELS: SampleLevelPreset[] = [
           "InitCards": [
             1,
             1,
-            2,
-            2
+            1,
+            1
           ],
           "IsHidden": false,
           "LockedTurn": 0,
@@ -754,72 +754,72 @@ export const SAMPLE_LEVELS: SampleLevelPreset[] = [
         {
           "Id": "0_0.0_1.90",
           "LayerId": 0,
-          "YRotation": 0.0,
-          "XPosition": 0.0,
+          "YRotation": 0,
+          "XPosition": 0,
           "ZPosition": 1.9
         },
         {
           "Id": "0_0.0_-1.90",
           "LayerId": 0,
-          "YRotation": 0.0,
-          "XPosition": 0.0,
+          "YRotation": 0,
+          "XPosition": 0,
           "ZPosition": -1.9
         },
         {
           "Id": "0_-1.90_0.0",
           "LayerId": 0,
-          "YRotation": 90.0,
+          "YRotation": 90,
           "XPosition": -1.9,
-          "ZPosition": 0.0
+          "ZPosition": 0
         },
         {
           "Id": "0_1.90_0.0",
           "LayerId": 0,
-          "YRotation": 90.0,
+          "YRotation": 90,
           "XPosition": 1.9,
-          "ZPosition": 0.0
+          "ZPosition": 0
         },
         {
           "Id": "0_0.0_0.0",
           "LayerId": 0,
-          "YRotation": 45.0,
-          "XPosition": 0.0,
-          "ZPosition": 0.0
+          "YRotation": 45,
+          "XPosition": 0,
+          "ZPosition": 0
         },
         {
           "Id": "1_-1.10_1.10",
           "LayerId": 1,
-          "YRotation": 45.0,
+          "YRotation": 45,
           "XPosition": -1.1,
           "ZPosition": 1.1
         },
         {
           "Id": "1_1.10_1.10",
           "LayerId": 1,
-          "YRotation": 315.0,
+          "YRotation": 315,
           "XPosition": 1.1,
           "ZPosition": 1.1
         },
         {
           "Id": "1_-1.10_-1.10",
           "LayerId": 1,
-          "YRotation": 315.0,
+          "YRotation": 315,
           "XPosition": -1.1,
           "ZPosition": -1.1
         },
         {
           "Id": "1_1.10_-1.10",
           "LayerId": 1,
-          "YRotation": 45.0,
+          "YRotation": 45,
           "XPosition": 1.1,
           "ZPosition": -1.1
         },
         {
           "Id": "2_0.0_0.0",
           "LayerId": 2,
-          "YRotation": 90.0,
-          "XPosition": 0.0,
-          "ZPosition": 0.0
+          "YRotation": 90,
+          "XPosition": 0,
+          "ZPosition": 0
         }
       ],
       "BoxNodes": [
@@ -831,8 +831,8 @@ export const SAMPLE_LEVELS: SampleLevelPreset[] = [
           "InitCards": [
             1,
             1,
-            1,
-            1
+            3,
+            3
           ],
           "IsHidden": false,
           "LockedTurn": 0,
@@ -845,10 +845,10 @@ export const SAMPLE_LEVELS: SampleLevelPreset[] = [
           "BoxColor": 2,
           "BlockedNodes": [],
           "InitCards": [
-            2,
-            2,
-            2,
-            2
+            3,
+            3,
+            1,
+            1
           ],
           "IsHidden": false,
           "LockedTurn": 0,
@@ -863,8 +863,8 @@ export const SAMPLE_LEVELS: SampleLevelPreset[] = [
           "InitCards": [
             3,
             3,
-            3,
-            3
+            1,
+            1
           ],
           "IsHidden": false,
           "LockedTurn": 0,
@@ -879,8 +879,8 @@ export const SAMPLE_LEVELS: SampleLevelPreset[] = [
           "InitCards": [
             1,
             1,
-            1,
-            1
+            2,
+            2
           ],
           "IsHidden": false,
           "LockedTurn": 0,
@@ -894,11 +894,11 @@ export const SAMPLE_LEVELS: SampleLevelPreset[] = [
           "BlockedNodes": [],
           "InitCards": [
             2,
-            2,
-            2,
-            2,
             3,
-            3
+            3,
+            3,
+            1,
+            1
           ],
           "IsHidden": false,
           "LockedTurn": 0,
@@ -914,10 +914,10 @@ export const SAMPLE_LEVELS: SampleLevelPreset[] = [
             "0_-1.90_0.0"
           ],
           "InitCards": [
-            3,
-            3,
-            3,
-            3,
+            2,
+            2,
+            2,
+            1,
             1,
             1
           ],
@@ -937,8 +937,8 @@ export const SAMPLE_LEVELS: SampleLevelPreset[] = [
           "InitCards": [
             1,
             1,
-            1,
-            1,
+            3,
+            3,
             2,
             2
           ],
@@ -959,7 +959,7 @@ export const SAMPLE_LEVELS: SampleLevelPreset[] = [
             2,
             2,
             2,
-            2,
+            3,
             3,
             3
           ],
@@ -977,12 +977,12 @@ export const SAMPLE_LEVELS: SampleLevelPreset[] = [
             "0_1.90_0.0"
           ],
           "InitCards": [
-            3,
-            3,
-            3,
-            3,
             1,
-            1
+            1,
+            1,
+            2,
+            2,
+            2
           ],
           "IsHidden": false,
           "LockedTurn": 0,
@@ -1003,8 +1003,8 @@ export const SAMPLE_LEVELS: SampleLevelPreset[] = [
           "InitCards": [
             1,
             1,
-            1,
-            1,
+            3,
+            3,
             2,
             2
           ],
@@ -1034,58 +1034,58 @@ export const SAMPLE_LEVELS: SampleLevelPreset[] = [
         {
           "Id": "0_-1.95_1.15",
           "LayerId": 0,
-          "YRotation": 90.0,
+          "YRotation": 90,
           "XPosition": -1.95,
           "ZPosition": 1.15
         },
         {
           "Id": "0_1.95_1.15",
           "LayerId": 0,
-          "YRotation": 90.0,
+          "YRotation": 90,
           "XPosition": 1.95,
           "ZPosition": 1.15
         },
         {
           "Id": "0_-1.95_-1.15",
           "LayerId": 0,
-          "YRotation": 90.0,
+          "YRotation": 90,
           "XPosition": -1.95,
           "ZPosition": -1.15
         },
         {
           "Id": "0_1.95_-1.15",
           "LayerId": 0,
-          "YRotation": 90.0,
+          "YRotation": 90,
           "XPosition": 1.95,
           "ZPosition": -1.15
         },
         {
           "Id": "0_0.0_0.0",
           "LayerId": 0,
-          "YRotation": 0.0,
-          "XPosition": 0.0,
-          "ZPosition": 0.0
+          "YRotation": 0,
+          "XPosition": 0,
+          "ZPosition": 0
         },
         {
           "Id": "1_-1.95_0.0",
           "LayerId": 1,
-          "YRotation": 0.0,
+          "YRotation": 0,
           "XPosition": -1.95,
-          "ZPosition": 0.0
+          "ZPosition": 0
         },
         {
           "Id": "1_1.95_0.0",
           "LayerId": 1,
-          "YRotation": 0.0,
+          "YRotation": 0,
           "XPosition": 1.95,
-          "ZPosition": 0.0
+          "ZPosition": 0
         },
         {
           "Id": "1_0.0_0.0",
           "LayerId": 1,
-          "YRotation": 90.0,
-          "XPosition": 0.0,
-          "ZPosition": 0.0
+          "YRotation": 90,
+          "XPosition": 0,
+          "ZPosition": 0
         }
       ],
       "BoxNodes": [
@@ -1095,12 +1095,12 @@ export const SAMPLE_LEVELS: SampleLevelPreset[] = [
           "BoxColor": 1,
           "BlockedNodes": [],
           "InitCards": [
-            2,
-            2,
+            4,
+            4,
+            4,
             3,
-            4,
-            4,
-            4
+            3,
+            3
           ],
           "IsHidden": false,
           "LockedTurn": 0,
@@ -1115,10 +1115,10 @@ export const SAMPLE_LEVELS: SampleLevelPreset[] = [
           "InitCards": [
             1,
             1,
-            2,
+            1,
             3,
             3,
-            4
+            3
           ],
           "IsHidden": false,
           "LockedTurn": 0,
@@ -1131,9 +1131,9 @@ export const SAMPLE_LEVELS: SampleLevelPreset[] = [
           "BoxColor": 3,
           "BlockedNodes": [],
           "InitCards": [
-            1,
             2,
-            3,
+            2,
+            2,
             4,
             4,
             4
@@ -1149,12 +1149,12 @@ export const SAMPLE_LEVELS: SampleLevelPreset[] = [
           "BoxColor": 4,
           "BlockedNodes": [],
           "InitCards": [
+            4,
+            4,
             1,
             1,
             2,
-            2,
-            3,
-            3
+            2
           ],
           "IsHidden": false,
           "LockedTurn": 0,
@@ -1167,12 +1167,12 @@ export const SAMPLE_LEVELS: SampleLevelPreset[] = [
           "BoxColor": 1,
           "BlockedNodes": [],
           "InitCards": [
-            1,
-            1,
-            1,
-            3,
+            2,
+            2,
+            2,
             4,
-            4
+            4,
+            3
           ],
           "IsHidden": false,
           "LockedTurn": 0,
@@ -1188,12 +1188,12 @@ export const SAMPLE_LEVELS: SampleLevelPreset[] = [
             "0_-1.95_-1.15"
           ],
           "InitCards": [
-            2,
-            2,
-            2,
             3,
-            4,
-            4
+            3,
+            3,
+            1,
+            1,
+            1
           ],
           "IsHidden": false,
           "LockedTurn": 0,
@@ -1209,12 +1209,12 @@ export const SAMPLE_LEVELS: SampleLevelPreset[] = [
             "0_1.95_-1.15"
           ],
           "InitCards": [
-            1,
-            1,
-            1,
             2,
-            3,
-            3
+            2,
+            1,
+            1,
+            4,
+            4
           ],
           "IsHidden": false,
           "LockedTurn": 0,
@@ -1229,12 +1229,12 @@ export const SAMPLE_LEVELS: SampleLevelPreset[] = [
             "0_0.0_0.0"
           ],
           "InitCards": [
+            3,
+            3,
+            2,
+            2,
             1,
-            2,
-            2,
-            3,
-            3,
-            4
+            1
           ],
           "IsHidden": false,
           "LockedTurn": 0,
@@ -1262,58 +1262,58 @@ export const SAMPLE_LEVELS: SampleLevelPreset[] = [
         {
           "Id": "0_-1.95_1.05",
           "LayerId": 0,
-          "YRotation": 0.0,
+          "YRotation": 0,
           "XPosition": -1.95,
           "ZPosition": 1.05
         },
         {
           "Id": "0_0.0_1.05",
           "LayerId": 0,
-          "YRotation": 0.0,
-          "XPosition": 0.0,
+          "YRotation": 0,
+          "XPosition": 0,
           "ZPosition": 1.05
         },
         {
           "Id": "0_1.95_1.05",
           "LayerId": 0,
-          "YRotation": 0.0,
+          "YRotation": 0,
           "XPosition": 1.95,
           "ZPosition": 1.05
         },
         {
           "Id": "0_-1.95_-1.05",
           "LayerId": 0,
-          "YRotation": 0.0,
+          "YRotation": 0,
           "XPosition": -1.95,
           "ZPosition": -1.05
         },
         {
           "Id": "0_0.0_-1.05",
           "LayerId": 0,
-          "YRotation": 0.0,
-          "XPosition": 0.0,
+          "YRotation": 0,
+          "XPosition": 0,
           "ZPosition": -1.05
         },
         {
           "Id": "0_1.95_-1.05",
           "LayerId": 0,
-          "YRotation": 0.0,
+          "YRotation": 0,
           "XPosition": 1.95,
           "ZPosition": -1.05
         },
         {
           "Id": "1_-1.0_0.0",
           "LayerId": 1,
-          "YRotation": 90.0,
-          "XPosition": -1.0,
-          "ZPosition": 0.0
+          "YRotation": 90,
+          "XPosition": -1,
+          "ZPosition": 0
         },
         {
           "Id": "1_1.0_0.0",
           "LayerId": 1,
-          "YRotation": 90.0,
-          "XPosition": 1.0,
-          "ZPosition": 0.0
+          "YRotation": 90,
+          "XPosition": 1,
+          "ZPosition": 0
         }
       ],
       "BoxNodes": [
@@ -1323,11 +1323,12 @@ export const SAMPLE_LEVELS: SampleLevelPreset[] = [
           "BoxColor": 1,
           "BlockedNodes": [],
           "InitCards": [
-            1,
-            1,
-            1,
-            1,
-            2
+            2,
+            2,
+            2,
+            4,
+            4,
+            4
           ],
           "IsHidden": false,
           "LockedTurn": 0,
@@ -1340,11 +1341,12 @@ export const SAMPLE_LEVELS: SampleLevelPreset[] = [
           "BoxColor": 2,
           "BlockedNodes": [],
           "InitCards": [
-            1,
-            1,
             2,
-            3,
-            4
+            2,
+            2,
+            1,
+            1,
+            1
           ],
           "IsHidden": false,
           "LockedTurn": 0,
@@ -1357,11 +1359,12 @@ export const SAMPLE_LEVELS: SampleLevelPreset[] = [
           "BoxColor": 3,
           "BlockedNodes": [],
           "InitCards": [
-            1,
             2,
-            3,
-            4,
-            4
+            2,
+            2,
+            1,
+            1,
+            1
           ],
           "IsHidden": false,
           "LockedTurn": 0,
@@ -1375,10 +1378,11 @@ export const SAMPLE_LEVELS: SampleLevelPreset[] = [
           "BlockedNodes": [],
           "InitCards": [
             1,
-            2,
-            2,
-            3,
-            4
+            1,
+            1,
+            1,
+            1,
+            1
           ],
           "IsHidden": false,
           "LockedTurn": 0,
@@ -1391,10 +1395,10 @@ export const SAMPLE_LEVELS: SampleLevelPreset[] = [
           "BoxColor": 1,
           "BlockedNodes": [],
           "InitCards": [
+            3,
+            3,
             2,
-            2,
-            2,
-            3
+            4
           ],
           "IsHidden": false,
           "LockedTurn": 0,
@@ -1406,12 +1410,7 @@ export const SAMPLE_LEVELS: SampleLevelPreset[] = [
           "TypeId": 2,
           "BoxColor": 2,
           "BlockedNodes": [],
-          "InitCards": [
-            1,
-            1,
-            2,
-            3
-          ],
+          "InitCards": [],
           "IsHidden": false,
           "LockedTurn": 0,
           "IsPaperBox": false,
@@ -1428,10 +1427,10 @@ export const SAMPLE_LEVELS: SampleLevelPreset[] = [
             "0_0.0_-1.05"
           ],
           "InitCards": [
-            1,
-            2,
             3,
-            4
+            3,
+            2,
+            2
           ],
           "IsHidden": false,
           "LockedTurn": 0,
@@ -1449,10 +1448,10 @@ export const SAMPLE_LEVELS: SampleLevelPreset[] = [
             "0_1.95_-1.05"
           ],
           "InitCards": [
-            1,
-            2,
-            2,
-            4
+            4,
+            4,
+            3,
+            3
           ],
           "IsHidden": false,
           "LockedTurn": 0,
@@ -1480,65 +1479,65 @@ export const SAMPLE_LEVELS: SampleLevelPreset[] = [
         {
           "Id": "0_-1.55_1.15",
           "LayerId": 0,
-          "YRotation": 0.0,
+          "YRotation": 0,
           "XPosition": -1.55,
           "ZPosition": 1.15
         },
         {
           "Id": "0_1.55_1.15",
           "LayerId": 0,
-          "YRotation": 0.0,
+          "YRotation": 0,
           "XPosition": 1.55,
           "ZPosition": 1.15
         },
         {
           "Id": "0_-1.55_-1.15",
           "LayerId": 0,
-          "YRotation": 0.0,
+          "YRotation": 0,
           "XPosition": -1.55,
           "ZPosition": -1.15
         },
         {
           "Id": "0_1.55_-1.15",
           "LayerId": 0,
-          "YRotation": 0.0,
+          "YRotation": 0,
           "XPosition": 1.55,
           "ZPosition": -1.15
         },
         {
           "Id": "0_0.0_0.0",
           "LayerId": 0,
-          "YRotation": 90.0,
-          "XPosition": 0.0,
-          "ZPosition": 0.0
+          "YRotation": 90,
+          "XPosition": 0,
+          "ZPosition": 0
         },
         {
           "Id": "1_-1.55_0.0",
           "LayerId": 1,
-          "YRotation": 90.0,
+          "YRotation": 90,
           "XPosition": -1.55,
-          "ZPosition": 0.0
+          "ZPosition": 0
         },
         {
           "Id": "1_1.55_0.0",
           "LayerId": 1,
-          "YRotation": 90.0,
+          "YRotation": 90,
           "XPosition": 1.55,
-          "ZPosition": 0.0
+          "ZPosition": 0
         },
         {
           "Id": "1_0.0_0.0",
           "LayerId": 1,
-          "YRotation": 0.0,
-          "XPosition": 0.0,
-          "ZPosition": 0.0
+          "YRotation": 0,
+          "XPosition": 0,
+          "ZPosition": 0
         },
         {
           "Id": "2_0.0_0.0",
           "LayerId": 2,
-          "YRotation": 90.0,
-          "XPosition": 0.0,
-          "ZPosition": 0.0
+          "YRotation": 90,
+          "XPosition": 0,
+          "ZPosition": 0
         }
       ],
       "BoxNodes": [
@@ -1552,8 +1551,8 @@ export const SAMPLE_LEVELS: SampleLevelPreset[] = [
             1,
             4,
             4,
-            4,
-            4
+            2,
+            2
           ],
           "IsHidden": false,
           "LockedTurn": 0,
@@ -1566,12 +1565,12 @@ export const SAMPLE_LEVELS: SampleLevelPreset[] = [
           "BoxColor": 2,
           "BlockedNodes": [],
           "InitCards": [
-            1,
-            1,
+            2,
+            2,
             2,
             3,
             3,
-            4
+            3
           ],
           "IsHidden": false,
           "LockedTurn": 2,
@@ -1584,10 +1583,10 @@ export const SAMPLE_LEVELS: SampleLevelPreset[] = [
           "BoxColor": 3,
           "BlockedNodes": [],
           "InitCards": [
-            1,
             3,
             3,
             3,
+            4,
             4,
             4
           ],
@@ -1602,12 +1601,12 @@ export const SAMPLE_LEVELS: SampleLevelPreset[] = [
           "BoxColor": 4,
           "BlockedNodes": [],
           "InitCards": [
-            1,
-            2,
-            2,
-            3,
             4,
-            4
+            4,
+            4,
+            4,
+            2,
+            2
           ],
           "IsHidden": false,
           "LockedTurn": 0,
@@ -1621,9 +1620,6 @@ export const SAMPLE_LEVELS: SampleLevelPreset[] = [
           "BlockedNodes": [],
           "InitCards": [
             1,
-            1,
-            1,
-            3,
             3
           ],
           "IsHidden": false,
@@ -1641,9 +1637,10 @@ export const SAMPLE_LEVELS: SampleLevelPreset[] = [
           ],
           "InitCards": [
             1,
-            2,
-            2,
-            3,
+            1,
+            1,
+            4,
+            4,
             4
           ],
           "IsHidden": false,
@@ -1660,11 +1657,12 @@ export const SAMPLE_LEVELS: SampleLevelPreset[] = [
             "0_1.55_-1.15"
           ],
           "InitCards": [
+            2,
+            2,
+            2,
             1,
-            2,
-            2,
-            3,
-            3
+            1,
+            1
           ],
           "IsHidden": false,
           "LockedTurn": 0,
@@ -1683,11 +1681,12 @@ export const SAMPLE_LEVELS: SampleLevelPreset[] = [
             "0_0.0_0.0"
           ],
           "InitCards": [
-            2,
-            2,
-            2,
             3,
-            4
+            3,
+            3,
+            1,
+            1,
+            1
           ],
           "IsHidden": false,
           "LockedTurn": 0,
@@ -1703,10 +1702,10 @@ export const SAMPLE_LEVELS: SampleLevelPreset[] = [
             "1_0.0_0.0"
           ],
           "InitCards": [
-            1,
             2,
             2,
-            4
+            3,
+            3
           ],
           "IsHidden": false,
           "LockedTurn": 0,
@@ -1734,65 +1733,65 @@ export const SAMPLE_LEVELS: SampleLevelPreset[] = [
         {
           "Id": "0_-1.95_1.15",
           "LayerId": 0,
-          "YRotation": 0.0,
+          "YRotation": 0,
           "XPosition": -1.95,
           "ZPosition": 1.15
         },
         {
           "Id": "0_0.0_1.15",
           "LayerId": 0,
-          "YRotation": 0.0,
-          "XPosition": 0.0,
+          "YRotation": 0,
+          "XPosition": 0,
           "ZPosition": 1.15
         },
         {
           "Id": "0_1.95_1.15",
           "LayerId": 0,
-          "YRotation": 0.0,
+          "YRotation": 0,
           "XPosition": 1.95,
           "ZPosition": 1.15
         },
         {
           "Id": "0_-1.0_-1.15",
           "LayerId": 0,
-          "YRotation": 0.0,
-          "XPosition": -1.0,
+          "YRotation": 0,
+          "XPosition": -1,
           "ZPosition": -1.15
         },
         {
           "Id": "0_1.0_-1.15",
           "LayerId": 0,
-          "YRotation": 0.0,
-          "XPosition": 1.0,
+          "YRotation": 0,
+          "XPosition": 1,
           "ZPosition": -1.15
         },
         {
           "Id": "1_-1.45_0.0",
           "LayerId": 1,
-          "YRotation": 90.0,
+          "YRotation": 90,
           "XPosition": -1.45,
-          "ZPosition": 0.0
+          "ZPosition": 0
         },
         {
           "Id": "1_0.0_0.0",
           "LayerId": 1,
-          "YRotation": 90.0,
-          "XPosition": 0.0,
-          "ZPosition": 0.0
+          "YRotation": 90,
+          "XPosition": 0,
+          "ZPosition": 0
         },
         {
           "Id": "1_1.45_0.0",
           "LayerId": 1,
-          "YRotation": 90.0,
+          "YRotation": 90,
           "XPosition": 1.45,
-          "ZPosition": 0.0
+          "ZPosition": 0
         },
         {
           "Id": "2_0.0_0.0",
           "LayerId": 2,
-          "YRotation": 0.0,
-          "XPosition": 0.0,
-          "ZPosition": 0.0
+          "YRotation": 0,
+          "XPosition": 0,
+          "ZPosition": 0
         }
       ],
       "BoxNodes": [
@@ -1802,12 +1801,12 @@ export const SAMPLE_LEVELS: SampleLevelPreset[] = [
           "BoxColor": 1,
           "BlockedNodes": [],
           "InitCards": [
-            1,
-            2,
-            2,
-            2,
             4,
-            4
+            4,
+            4,
+            2,
+            2,
+            2
           ],
           "IsHidden": false,
           "LockedTurn": 0,
@@ -1823,7 +1822,7 @@ export const SAMPLE_LEVELS: SampleLevelPreset[] = [
             1,
             1,
             1,
-            3,
+            4,
             4,
             4
           ],
@@ -1838,12 +1837,12 @@ export const SAMPLE_LEVELS: SampleLevelPreset[] = [
           "BoxColor": 3,
           "BlockedNodes": [],
           "InitCards": [
-            1,
-            1,
-            1,
+            3,
+            3,
             2,
-            4,
-            4
+            2,
+            1,
+            1
           ],
           "IsHidden": false,
           "LockedTurn": 0,
@@ -1856,12 +1855,12 @@ export const SAMPLE_LEVELS: SampleLevelPreset[] = [
           "BoxColor": 4,
           "BlockedNodes": [],
           "InitCards": [
-            1,
-            1,
-            1,
             3,
             3,
-            3
+            3,
+            3,
+            2,
+            2
           ],
           "IsHidden": false,
           "LockedTurn": 0,
@@ -1874,11 +1873,8 @@ export const SAMPLE_LEVELS: SampleLevelPreset[] = [
           "BoxColor": 1,
           "BlockedNodes": [],
           "InitCards": [
-            1,
             2,
-            2,
-            2,
-            3
+            4
           ],
           "IsHidden": false,
           "LockedTurn": 0,
@@ -1894,11 +1890,12 @@ export const SAMPLE_LEVELS: SampleLevelPreset[] = [
             "0_-1.0_-1.15"
           ],
           "InitCards": [
-            2,
-            2,
-            3,
-            3,
-            4
+            4,
+            4,
+            4,
+            1,
+            1,
+            1
           ],
           "IsHidden": false,
           "LockedTurn": 0,
@@ -1915,9 +1912,10 @@ export const SAMPLE_LEVELS: SampleLevelPreset[] = [
             "0_1.0_-1.15"
           ],
           "InitCards": [
-            2,
-            2,
             3,
+            3,
+            1,
+            1,
             4,
             4
           ],
@@ -1935,11 +1933,12 @@ export const SAMPLE_LEVELS: SampleLevelPreset[] = [
             "0_1.0_-1.15"
           ],
           "InitCards": [
-            1,
+            3,
+            3,
             2,
-            3,
-            3,
-            4
+            2,
+            1,
+            1
           ],
           "IsHidden": false,
           "LockedTurn": 0,
@@ -1957,10 +1956,10 @@ export const SAMPLE_LEVELS: SampleLevelPreset[] = [
             "1_0.0_0.0"
           ],
           "InitCards": [
+            2,
+            2,
             3,
-            3,
-            4,
-            4
+            3
           ],
           "IsHidden": false,
           "LockedTurn": 0,
@@ -1988,114 +1987,114 @@ export const SAMPLE_LEVELS: SampleLevelPreset[] = [
         {
           "Id": "0_-2.0_1.85",
           "LayerId": 0,
-          "YRotation": 0.0,
-          "XPosition": -2.0,
+          "YRotation": 0,
+          "XPosition": -2,
           "ZPosition": 1.85
         },
         {
           "Id": "0_0.0_1.85",
           "LayerId": 0,
-          "YRotation": 0.0,
-          "XPosition": 0.0,
+          "YRotation": 0,
+          "XPosition": 0,
           "ZPosition": 1.85
         },
         {
           "Id": "0_2.0_1.85",
           "LayerId": 0,
-          "YRotation": 0.0,
-          "XPosition": 2.0,
+          "YRotation": 0,
+          "XPosition": 2,
           "ZPosition": 1.85
         },
         {
           "Id": "0_-1.0_0.0",
           "LayerId": 0,
-          "YRotation": 0.0,
-          "XPosition": -1.0,
-          "ZPosition": 0.0
+          "YRotation": 0,
+          "XPosition": -1,
+          "ZPosition": 0
         },
         {
           "Id": "0_1.0_0.0",
           "LayerId": 0,
-          "YRotation": 0.0,
-          "XPosition": 1.0,
-          "ZPosition": 0.0
+          "YRotation": 0,
+          "XPosition": 1,
+          "ZPosition": 0
         },
         {
           "Id": "0_-2.0_-1.85",
           "LayerId": 0,
-          "YRotation": 0.0,
-          "XPosition": -2.0,
+          "YRotation": 0,
+          "XPosition": -2,
           "ZPosition": -1.85
         },
         {
           "Id": "0_0.0_-1.85",
           "LayerId": 0,
-          "YRotation": 0.0,
-          "XPosition": 0.0,
+          "YRotation": 0,
+          "XPosition": 0,
           "ZPosition": -1.85
         },
         {
           "Id": "0_2.0_-1.85",
           "LayerId": 0,
-          "YRotation": 0.0,
-          "XPosition": 2.0,
+          "YRotation": 0,
+          "XPosition": 2,
           "ZPosition": -1.85
         },
         {
           "Id": "1_-1.45_0.95",
           "LayerId": 1,
-          "YRotation": 90.0,
+          "YRotation": 90,
           "XPosition": -1.45,
           "ZPosition": 0.95
         },
         {
           "Id": "1_1.45_0.95",
           "LayerId": 1,
-          "YRotation": 90.0,
+          "YRotation": 90,
           "XPosition": 1.45,
           "ZPosition": 0.95
         },
         {
           "Id": "1_-1.45_-0.95",
           "LayerId": 1,
-          "YRotation": 90.0,
+          "YRotation": 90,
           "XPosition": -1.45,
           "ZPosition": -0.95
         },
         {
           "Id": "1_1.45_-0.95",
           "LayerId": 1,
-          "YRotation": 90.0,
+          "YRotation": 90,
           "XPosition": 1.45,
           "ZPosition": -0.95
         },
         {
           "Id": "1_0.0_0.0",
           "LayerId": 1,
-          "YRotation": 90.0,
-          "XPosition": 0.0,
-          "ZPosition": 0.0
+          "YRotation": 90,
+          "XPosition": 0,
+          "ZPosition": 0
         },
         {
           "Id": "2_-1.0_0.0",
           "LayerId": 2,
-          "YRotation": 0.0,
-          "XPosition": -1.0,
-          "ZPosition": 0.0
+          "YRotation": 0,
+          "XPosition": -1,
+          "ZPosition": 0
         },
         {
           "Id": "2_1.0_0.0",
           "LayerId": 2,
-          "YRotation": 0.0,
-          "XPosition": 1.0,
-          "ZPosition": 0.0
+          "YRotation": 0,
+          "XPosition": 1,
+          "ZPosition": 0
         },
         {
           "Id": "3_0.0_0.0",
           "LayerId": 3,
-          "YRotation": 90.0,
-          "XPosition": 0.0,
-          "ZPosition": 0.0
+          "YRotation": 90,
+          "XPosition": 0,
+          "ZPosition": 0
         }
       ],
       "BoxNodes": [
@@ -2105,12 +2104,12 @@ export const SAMPLE_LEVELS: SampleLevelPreset[] = [
           "BoxColor": 1,
           "BlockedNodes": [],
           "InitCards": [
-            1,
-            1,
-            2,
-            4,
-            4,
-            4
+            3,
+            3,
+            3,
+            5,
+            5,
+            5
           ],
           "IsHidden": false,
           "LockedTurn": 0,
@@ -2123,12 +2122,12 @@ export const SAMPLE_LEVELS: SampleLevelPreset[] = [
           "BoxColor": 2,
           "BlockedNodes": [],
           "InitCards": [
-            2,
+            4,
+            4,
+            4,
             3,
             3,
-            3,
-            3,
-            5
+            3
           ],
           "IsHidden": false,
           "LockedTurn": 0,
@@ -2141,12 +2140,12 @@ export const SAMPLE_LEVELS: SampleLevelPreset[] = [
           "BoxColor": 3,
           "BlockedNodes": [],
           "InitCards": [
+            5,
+            5,
+            5,
             1,
-            2,
-            2,
-            3,
-            3,
-            4
+            1,
+            1
           ],
           "IsHidden": false,
           "LockedTurn": 0,
@@ -2159,12 +2158,12 @@ export const SAMPLE_LEVELS: SampleLevelPreset[] = [
           "BoxColor": 4,
           "BlockedNodes": [],
           "InitCards": [
-            1,
-            1,
             2,
-            4,
-            4,
-            4
+            2,
+            2,
+            5,
+            5,
+            5
           ],
           "IsHidden": false,
           "LockedTurn": 0,
@@ -2177,12 +2176,12 @@ export const SAMPLE_LEVELS: SampleLevelPreset[] = [
           "BoxColor": 5,
           "BlockedNodes": [],
           "InitCards": [
-            1,
-            1,
+            4,
+            4,
             2,
-            3,
-            3,
-            4
+            2,
+            1,
+            1
           ],
           "IsHidden": false,
           "LockedTurn": 0,
@@ -2195,12 +2194,12 @@ export const SAMPLE_LEVELS: SampleLevelPreset[] = [
           "BoxColor": 1,
           "BlockedNodes": [],
           "InitCards": [
+            3,
+            3,
+            3,
             2,
             2,
-            3,
-            3,
-            3,
-            4
+            2
           ],
           "IsHidden": false,
           "LockedTurn": 0,
@@ -2213,12 +2212,12 @@ export const SAMPLE_LEVELS: SampleLevelPreset[] = [
           "BoxColor": 2,
           "BlockedNodes": [],
           "InitCards": [
-            1,
             2,
-            2,
-            3,
-            5,
-            5
+            4,
+            4,
+            4,
+            4,
+            1
           ],
           "IsHidden": false,
           "LockedTurn": 0,
@@ -2231,11 +2230,7 @@ export const SAMPLE_LEVELS: SampleLevelPreset[] = [
           "BoxColor": 3,
           "BlockedNodes": [],
           "InitCards": [
-            2,
             3,
-            4,
-            4,
-            5,
             5
           ],
           "IsHidden": false,
@@ -2253,11 +2248,11 @@ export const SAMPLE_LEVELS: SampleLevelPreset[] = [
           ],
           "InitCards": [
             1,
-            3,
+            1,
             5,
             5,
-            5,
-            5
+            2,
+            3
           ],
           "IsHidden": false,
           "LockedTurn": 0,
@@ -2274,12 +2269,12 @@ export const SAMPLE_LEVELS: SampleLevelPreset[] = [
             "0_1.0_0.0"
           ],
           "InitCards": [
+            4,
+            4,
             1,
             1,
-            2,
             3,
-            3,
-            5
+            2
           ],
           "IsHidden": false,
           "LockedTurn": 0,
@@ -2295,11 +2290,11 @@ export const SAMPLE_LEVELS: SampleLevelPreset[] = [
             "0_-2.0_-1.85"
           ],
           "InitCards": [
-            1,
-            3,
-            3,
             4,
-            5,
+            4,
+            2,
+            2,
+            3,
             5
           ],
           "IsHidden": false,
@@ -2316,11 +2311,12 @@ export const SAMPLE_LEVELS: SampleLevelPreset[] = [
             "0_2.0_-1.85"
           ],
           "InitCards": [
+            5,
+            5,
+            5,
             1,
-            4,
-            5,
-            5,
-            5
+            1,
+            1
           ],
           "IsHidden": false,
           "LockedTurn": 0,
@@ -2336,11 +2332,12 @@ export const SAMPLE_LEVELS: SampleLevelPreset[] = [
             "0_1.0_0.0"
           ],
           "InitCards": [
-            1,
-            1,
-            2,
             4,
-            5
+            4,
+            5,
+            5,
+            1,
+            1
           ],
           "IsHidden": false,
           "LockedTurn": 0,
@@ -2358,11 +2355,12 @@ export const SAMPLE_LEVELS: SampleLevelPreset[] = [
             "1_0.0_0.0"
           ],
           "InitCards": [
+            1,
+            1,
+            1,
             2,
             2,
-            4,
-            5,
-            5
+            2
           ],
           "IsHidden": false,
           "LockedTurn": 0,
@@ -2380,10 +2378,11 @@ export const SAMPLE_LEVELS: SampleLevelPreset[] = [
             "1_0.0_0.0"
           ],
           "InitCards": [
-            1,
-            2,
-            2,
-            2,
+            3,
+            3,
+            3,
+            4,
+            4,
             4
           ],
           "IsHidden": false,
@@ -2403,10 +2402,10 @@ export const SAMPLE_LEVELS: SampleLevelPreset[] = [
             "2_1.0_0.0"
           ],
           "InitCards": [
-            1,
-            1,
-            4,
-            4
+            2,
+            2,
+            3,
+            3
           ],
           "IsHidden": false,
           "LockedTurn": 0,
@@ -2434,44 +2433,44 @@ export const SAMPLE_LEVELS: SampleLevelPreset[] = [
         {
           "Id": "0_-1.15_1.05",
           "LayerId": 0,
-          "YRotation": 0.0,
+          "YRotation": 0,
           "XPosition": -1.15,
           "ZPosition": 1.05
         },
         {
           "Id": "0_1.15_1.05",
           "LayerId": 0,
-          "YRotation": 0.0,
+          "YRotation": 0,
           "XPosition": 1.15,
           "ZPosition": 1.05
         },
         {
           "Id": "0_-1.15_-1.05",
           "LayerId": 0,
-          "YRotation": 0.0,
+          "YRotation": 0,
           "XPosition": -1.15,
           "ZPosition": -1.05
         },
         {
           "Id": "0_1.15_-1.05",
           "LayerId": 0,
-          "YRotation": 0.0,
+          "YRotation": 0,
           "XPosition": 1.15,
           "ZPosition": -1.05
         },
         {
           "Id": "1_-1.15_0.0",
           "LayerId": 1,
-          "YRotation": 90.0,
+          "YRotation": 90,
           "XPosition": -1.15,
-          "ZPosition": 0.0
+          "ZPosition": 0
         },
         {
           "Id": "1_1.15_0.0",
           "LayerId": 1,
-          "YRotation": 90.0,
+          "YRotation": 90,
           "XPosition": 1.15,
-          "ZPosition": 0.0
+          "ZPosition": 0
         }
       ],
       "BoxNodes": [
@@ -2482,10 +2481,10 @@ export const SAMPLE_LEVELS: SampleLevelPreset[] = [
           "BlockedNodes": [],
           "InitCards": [
             1,
-            2,
-            2,
-            2,
-            2,
+            1,
+            1,
+            3,
+            3,
             3
           ],
           "IsHidden": false,
@@ -2501,9 +2500,9 @@ export const SAMPLE_LEVELS: SampleLevelPreset[] = [
           "InitCards": [
             1,
             1,
-            2,
-            2,
-            2,
+            1,
+            3,
+            3,
             3
           ],
           "IsHidden": false,
@@ -2521,8 +2520,8 @@ export const SAMPLE_LEVELS: SampleLevelPreset[] = [
             1,
             1,
             2,
-            3,
-            3
+            2,
+            2
           ],
           "IsHidden": false,
           "LockedTurn": 0,
@@ -2535,12 +2534,12 @@ export const SAMPLE_LEVELS: SampleLevelPreset[] = [
           "BoxColor": 1,
           "BlockedNodes": [],
           "InitCards": [
-            1,
-            1,
             2,
-            3,
-            3,
-            3
+            2,
+            2,
+            2,
+            2,
+            2
           ],
           "IsHidden": false,
           "LockedTurn": 0,
@@ -2556,11 +2555,11 @@ export const SAMPLE_LEVELS: SampleLevelPreset[] = [
             "0_-1.15_-1.05"
           ],
           "InitCards": [
-            1,
-            1,
-            1,
-            1,
             2,
+            2,
+            2,
+            3,
+            3,
             3
           ],
           "IsHidden": false,
@@ -2577,12 +2576,12 @@ export const SAMPLE_LEVELS: SampleLevelPreset[] = [
             "0_1.15_-1.05"
           ],
           "InitCards": [
-            2,
-            2,
             3,
             3,
             3,
-            3
+            1,
+            1,
+            1
           ],
           "IsHidden": false,
           "LockedTurn": 0,
@@ -2610,58 +2609,58 @@ export const SAMPLE_LEVELS: SampleLevelPreset[] = [
         {
           "Id": "0_0.0_0.0",
           "LayerId": 0,
-          "YRotation": 0.0,
-          "XPosition": 0.0,
-          "ZPosition": 0.0
+          "YRotation": 0,
+          "XPosition": 0,
+          "ZPosition": 0
         },
         {
           "Id": "0_0.0_1.85",
           "LayerId": 0,
-          "YRotation": 0.0,
-          "XPosition": 0.0,
+          "YRotation": 0,
+          "XPosition": 0,
           "ZPosition": 1.85
         },
         {
           "Id": "0_0.0_-1.85",
           "LayerId": 0,
-          "YRotation": 0.0,
-          "XPosition": 0.0,
+          "YRotation": 0,
+          "XPosition": 0,
           "ZPosition": -1.85
         },
         {
           "Id": "0_-1.85_0.0",
           "LayerId": 0,
-          "YRotation": 90.0,
+          "YRotation": 90,
           "XPosition": -1.85,
-          "ZPosition": 0.0
+          "ZPosition": 0
         },
         {
           "Id": "0_1.85_0.0",
           "LayerId": 0,
-          "YRotation": 90.0,
+          "YRotation": 90,
           "XPosition": 1.85,
-          "ZPosition": 0.0
+          "ZPosition": 0
         },
         {
           "Id": "1_-1.65_0.0",
           "LayerId": 1,
-          "YRotation": 0.0,
+          "YRotation": 0,
           "XPosition": -1.65,
-          "ZPosition": 0.0
+          "ZPosition": 0
         },
         {
           "Id": "1_1.65_0.0",
           "LayerId": 1,
-          "YRotation": 0.0,
+          "YRotation": 0,
           "XPosition": 1.65,
-          "ZPosition": 0.0
+          "ZPosition": 0
         },
         {
           "Id": "1_0.0_0.0",
           "LayerId": 1,
-          "YRotation": 90.0,
-          "XPosition": 0.0,
-          "ZPosition": 0.0
+          "YRotation": 90,
+          "XPosition": 0,
+          "ZPosition": 0
         }
       ],
       "BoxNodes": [
@@ -2671,12 +2670,12 @@ export const SAMPLE_LEVELS: SampleLevelPreset[] = [
           "BoxColor": 1,
           "BlockedNodes": [],
           "InitCards": [
-            1,
-            1,
-            1,
             2,
-            3,
-            3
+            2,
+            2,
+            4,
+            4,
+            4
           ],
           "IsHidden": false,
           "LockedTurn": 0,
@@ -2689,12 +2688,12 @@ export const SAMPLE_LEVELS: SampleLevelPreset[] = [
           "BoxColor": 2,
           "BlockedNodes": [],
           "InitCards": [
-            2,
-            2,
-            2,
             3,
-            4,
-            4
+            3,
+            3,
+            1,
+            1,
+            1
           ],
           "IsHidden": false,
           "LockedTurn": 0,
@@ -2710,8 +2709,8 @@ export const SAMPLE_LEVELS: SampleLevelPreset[] = [
             1,
             1,
             1,
-            3,
-            3,
+            4,
+            4,
             4
           ],
           "IsHidden": false,
@@ -2725,12 +2724,12 @@ export const SAMPLE_LEVELS: SampleLevelPreset[] = [
           "BoxColor": 4,
           "BlockedNodes": [],
           "InitCards": [
-            1,
+            3,
+            3,
+            3,
             2,
-            3,
-            3,
-            4,
-            4
+            2,
+            2
           ],
           "IsHidden": false,
           "LockedTurn": 0,
@@ -2743,12 +2742,12 @@ export const SAMPLE_LEVELS: SampleLevelPreset[] = [
           "BoxColor": 1,
           "BlockedNodes": [],
           "InitCards": [
-            1,
-            1,
-            1,
+            3,
+            3,
+            3,
             2,
             2,
-            4
+            2
           ],
           "IsHidden": false,
           "LockedTurn": 0,
@@ -2764,9 +2763,9 @@ export const SAMPLE_LEVELS: SampleLevelPreset[] = [
             "0_-1.85_0.0"
           ],
           "InitCards": [
-            1,
-            2,
-            2,
+            3,
+            3,
+            3,
             4,
             4,
             4
@@ -2785,9 +2784,9 @@ export const SAMPLE_LEVELS: SampleLevelPreset[] = [
             "0_1.85_0.0"
           ],
           "InitCards": [
-            2,
-            2,
-            3,
+            1,
+            1,
+            1,
             4,
             4,
             4
@@ -2805,12 +2804,12 @@ export const SAMPLE_LEVELS: SampleLevelPreset[] = [
             "0_0.0_0.0"
           ],
           "InitCards": [
-            1,
             2,
-            3,
-            3,
-            3,
-            3
+            2,
+            2,
+            1,
+            1,
+            1
           ],
           "IsHidden": false,
           "LockedTurn": 0,
@@ -2838,65 +2837,65 @@ export const SAMPLE_LEVELS: SampleLevelPreset[] = [
         {
           "Id": "0_-1.95_1.25",
           "LayerId": 0,
-          "YRotation": 0.0,
+          "YRotation": 0,
           "XPosition": -1.95,
           "ZPosition": 1.25
         },
         {
           "Id": "0_0.0_1.25",
           "LayerId": 0,
-          "YRotation": 0.0,
-          "XPosition": 0.0,
+          "YRotation": 0,
+          "XPosition": 0,
           "ZPosition": 1.25
         },
         {
           "Id": "0_1.95_1.25",
           "LayerId": 0,
-          "YRotation": 0.0,
+          "YRotation": 0,
           "XPosition": 1.95,
           "ZPosition": 1.25
         },
         {
           "Id": "0_-1.0_-1.25",
           "LayerId": 0,
-          "YRotation": 0.0,
-          "XPosition": -1.0,
+          "YRotation": 0,
+          "XPosition": -1,
           "ZPosition": -1.25
         },
         {
           "Id": "0_1.0_-1.25",
           "LayerId": 0,
-          "YRotation": 0.0,
-          "XPosition": 1.0,
+          "YRotation": 0,
+          "XPosition": 1,
           "ZPosition": -1.25
         },
         {
           "Id": "1_-1.45_0.0",
           "LayerId": 1,
-          "YRotation": 90.0,
+          "YRotation": 90,
           "XPosition": -1.45,
-          "ZPosition": 0.0
+          "ZPosition": 0
         },
         {
           "Id": "1_0.0_0.0",
           "LayerId": 1,
-          "YRotation": 90.0,
-          "XPosition": 0.0,
-          "ZPosition": 0.0
+          "YRotation": 90,
+          "XPosition": 0,
+          "ZPosition": 0
         },
         {
           "Id": "1_1.45_0.0",
           "LayerId": 1,
-          "YRotation": 90.0,
+          "YRotation": 90,
           "XPosition": 1.45,
-          "ZPosition": 0.0
+          "ZPosition": 0
         },
         {
           "Id": "2_0.0_0.0",
           "LayerId": 2,
-          "YRotation": 90.0,
-          "XPosition": 0.0,
-          "ZPosition": 0.0
+          "YRotation": 90,
+          "XPosition": 0,
+          "ZPosition": 0
         }
       ],
       "BoxNodes": [
@@ -2906,12 +2905,12 @@ export const SAMPLE_LEVELS: SampleLevelPreset[] = [
           "BoxColor": 1,
           "BlockedNodes": [],
           "InitCards": [
-            1,
-            1,
             2,
             2,
-            4,
-            4
+            2,
+            3,
+            3,
+            3
           ],
           "IsHidden": false,
           "LockedTurn": 0,
@@ -2924,12 +2923,12 @@ export const SAMPLE_LEVELS: SampleLevelPreset[] = [
           "BoxColor": 2,
           "BlockedNodes": [],
           "InitCards": [
+            2,
+            2,
+            2,
             1,
             1,
-            3,
-            3,
-            4,
-            4
+            1
           ],
           "IsHidden": false,
           "LockedTurn": 0,
@@ -2943,11 +2942,11 @@ export const SAMPLE_LEVELS: SampleLevelPreset[] = [
           "BlockedNodes": [],
           "InitCards": [
             1,
+            1,
+            1,
             2,
             2,
-            2,
-            3,
-            4
+            2
           ],
           "IsHidden": false,
           "LockedTurn": 0,
@@ -2960,11 +2959,11 @@ export const SAMPLE_LEVELS: SampleLevelPreset[] = [
           "BoxColor": 4,
           "BlockedNodes": [],
           "InitCards": [
-            1,
-            1,
-            1,
-            2,
-            3,
+            4,
+            4,
+            4,
+            4,
+            4,
             3
           ],
           "IsHidden": false,
@@ -2978,11 +2977,8 @@ export const SAMPLE_LEVELS: SampleLevelPreset[] = [
           "BoxColor": 1,
           "BlockedNodes": [],
           "InitCards": [
-            2,
-            2,
-            3,
-            3,
-            4
+            1,
+            3
           ],
           "IsHidden": false,
           "LockedTurn": 0,
@@ -3001,7 +2997,8 @@ export const SAMPLE_LEVELS: SampleLevelPreset[] = [
             3,
             3,
             3,
-            3,
+            4,
+            4,
             4
           ],
           "IsHidden": false,
@@ -3020,10 +3017,11 @@ export const SAMPLE_LEVELS: SampleLevelPreset[] = [
           ],
           "InitCards": [
             1,
+            1,
+            1,
             2,
-            3,
-            4,
-            4
+            2,
+            2
           ],
           "IsHidden": false,
           "LockedTurn": 0,
@@ -3039,11 +3037,12 @@ export const SAMPLE_LEVELS: SampleLevelPreset[] = [
             "0_1.0_-1.25"
           ],
           "InitCards": [
+            4,
+            4,
             1,
             1,
-            2,
-            2,
-            4
+            3,
+            3
           ],
           "IsHidden": false,
           "LockedTurn": 0,
@@ -3061,8 +3060,8 @@ export const SAMPLE_LEVELS: SampleLevelPreset[] = [
             "1_0.0_0.0"
           ],
           "InitCards": [
-            1,
-            2,
+            3,
+            3,
             4,
             4
           ],
@@ -3092,86 +3091,86 @@ export const SAMPLE_LEVELS: SampleLevelPreset[] = [
         {
           "Id": "0_-1.15_1.95",
           "LayerId": 0,
-          "YRotation": 90.0,
+          "YRotation": 90,
           "XPosition": -1.15,
           "ZPosition": 1.95
         },
         {
           "Id": "0_1.15_1.95",
           "LayerId": 0,
-          "YRotation": 90.0,
+          "YRotation": 90,
           "XPosition": 1.15,
           "ZPosition": 1.95
         },
         {
           "Id": "0_-1.15_0.0",
           "LayerId": 0,
-          "YRotation": 90.0,
+          "YRotation": 90,
           "XPosition": -1.15,
-          "ZPosition": 0.0
+          "ZPosition": 0
         },
         {
           "Id": "0_1.15_0.0",
           "LayerId": 0,
-          "YRotation": 90.0,
+          "YRotation": 90,
           "XPosition": 1.15,
-          "ZPosition": 0.0
+          "ZPosition": 0
         },
         {
           "Id": "0_-1.15_-1.95",
           "LayerId": 0,
-          "YRotation": 90.0,
+          "YRotation": 90,
           "XPosition": -1.15,
           "ZPosition": -1.95
         },
         {
           "Id": "0_1.15_-1.95",
           "LayerId": 0,
-          "YRotation": 90.0,
+          "YRotation": 90,
           "XPosition": 1.15,
           "ZPosition": -1.95
         },
         {
           "Id": "1_-1.15_1.0",
           "LayerId": 1,
-          "YRotation": 0.0,
+          "YRotation": 0,
           "XPosition": -1.15,
-          "ZPosition": 1.0
+          "ZPosition": 1
         },
         {
           "Id": "1_1.15_1.0",
           "LayerId": 1,
-          "YRotation": 0.0,
+          "YRotation": 0,
           "XPosition": 1.15,
-          "ZPosition": 1.0
+          "ZPosition": 1
         },
         {
           "Id": "1_-1.15_-1.0",
           "LayerId": 1,
-          "YRotation": 0.0,
+          "YRotation": 0,
           "XPosition": -1.15,
-          "ZPosition": -1.0
+          "ZPosition": -1
         },
         {
           "Id": "1_1.15_-1.0",
           "LayerId": 1,
-          "YRotation": 0.0,
+          "YRotation": 0,
           "XPosition": 1.15,
-          "ZPosition": -1.0
+          "ZPosition": -1
         },
         {
           "Id": "2_0.0_1.0",
           "LayerId": 2,
-          "YRotation": 0.0,
-          "XPosition": 0.0,
-          "ZPosition": 1.0
+          "YRotation": 0,
+          "XPosition": 0,
+          "ZPosition": 1
         },
         {
           "Id": "2_0.0_-1.0",
           "LayerId": 2,
-          "YRotation": 0.0,
-          "XPosition": 0.0,
-          "ZPosition": -1.0
+          "YRotation": 0,
+          "XPosition": 0,
+          "ZPosition": -1
         }
       ],
       "BoxNodes": [
@@ -3181,10 +3180,10 @@ export const SAMPLE_LEVELS: SampleLevelPreset[] = [
           "BoxColor": 1,
           "BlockedNodes": [],
           "InitCards": [
-            1,
             2,
-            3,
-            3,
+            2,
+            2,
+            4,
             4,
             4
           ],
@@ -3199,12 +3198,12 @@ export const SAMPLE_LEVELS: SampleLevelPreset[] = [
           "BoxColor": 2,
           "BlockedNodes": [],
           "InitCards": [
+            2,
+            2,
+            2,
             1,
-            2,
-            2,
-            3,
-            4,
-            4
+            1,
+            1
           ],
           "IsHidden": false,
           "LockedTurn": 0,
@@ -3217,11 +3216,12 @@ export const SAMPLE_LEVELS: SampleLevelPreset[] = [
           "BoxColor": 3,
           "BlockedNodes": [],
           "InitCards": [
-            1,
             2,
-            3,
+            2,
             4,
-            4
+            4,
+            1,
+            1
           ],
           "IsHidden": false,
           "LockedTurn": 0,
@@ -3236,9 +3236,10 @@ export const SAMPLE_LEVELS: SampleLevelPreset[] = [
           "InitCards": [
             1,
             1,
-            2,
-            4,
-            4
+            1,
+            3,
+            3,
+            3
           ],
           "IsHidden": false,
           "LockedTurn": 0,
@@ -3253,8 +3254,7 @@ export const SAMPLE_LEVELS: SampleLevelPreset[] = [
           "InitCards": [
             1,
             1,
-            1,
-            2,
+            3,
             3
           ],
           "IsHidden": false,
@@ -3267,13 +3267,7 @@ export const SAMPLE_LEVELS: SampleLevelPreset[] = [
           "TypeId": 2,
           "BoxColor": 2,
           "BlockedNodes": [],
-          "InitCards": [
-            1,
-            1,
-            1,
-            3,
-            4
-          ],
+          "InitCards": [],
           "IsHidden": false,
           "LockedTurn": 0,
           "IsPaperBox": false,
@@ -3290,9 +3284,10 @@ export const SAMPLE_LEVELS: SampleLevelPreset[] = [
           "InitCards": [
             1,
             1,
+            1,
             2,
-            3,
-            4
+            2,
+            2
           ],
           "IsHidden": false,
           "LockedTurn": 0,
@@ -3308,9 +3303,10 @@ export const SAMPLE_LEVELS: SampleLevelPreset[] = [
             "0_1.15_0.0"
           ],
           "InitCards": [
-            1,
-            1,
             2,
+            2,
+            2,
+            3,
             3,
             3
           ],
@@ -3328,11 +3324,12 @@ export const SAMPLE_LEVELS: SampleLevelPreset[] = [
             "0_-1.15_-1.95"
           ],
           "InitCards": [
-            2,
-            2,
-            2,
-            2,
-            4
+            1,
+            1,
+            4,
+            4,
+            3,
+            3
           ],
           "IsHidden": false,
           "LockedTurn": 0,
@@ -3348,11 +3345,12 @@ export const SAMPLE_LEVELS: SampleLevelPreset[] = [
             "0_1.15_-1.95"
           ],
           "InitCards": [
+            4,
+            4,
+            4,
             1,
-            2,
-            2,
-            3,
-            4
+            1,
+            1
           ],
           "IsHidden": false,
           "LockedTurn": 0,
@@ -3395,8 +3393,8 @@ export const SAMPLE_LEVELS: SampleLevelPreset[] = [
             "1_1.15_-1.0"
           ],
           "InitCards": [
-            1,
-            1,
+            4,
+            4,
             2,
             2
           ],
@@ -3426,86 +3424,86 @@ export const SAMPLE_LEVELS: SampleLevelPreset[] = [
         {
           "Id": "0_-1.95_1.05",
           "LayerId": 0,
-          "YRotation": 0.0,
+          "YRotation": 0,
           "XPosition": -1.95,
           "ZPosition": 1.05
         },
         {
           "Id": "0_0.0_1.05",
           "LayerId": 0,
-          "YRotation": 0.0,
-          "XPosition": 0.0,
+          "YRotation": 0,
+          "XPosition": 0,
           "ZPosition": 1.05
         },
         {
           "Id": "0_1.95_1.05",
           "LayerId": 0,
-          "YRotation": 0.0,
+          "YRotation": 0,
           "XPosition": 1.95,
           "ZPosition": 1.05
         },
         {
           "Id": "0_-1.95_-1.05",
           "LayerId": 0,
-          "YRotation": 0.0,
+          "YRotation": 0,
           "XPosition": -1.95,
           "ZPosition": -1.05
         },
         {
           "Id": "0_0.0_-1.05",
           "LayerId": 0,
-          "YRotation": 0.0,
-          "XPosition": 0.0,
+          "YRotation": 0,
+          "XPosition": 0,
           "ZPosition": -1.05
         },
         {
           "Id": "0_1.95_-1.05",
           "LayerId": 0,
-          "YRotation": 0.0,
+          "YRotation": 0,
           "XPosition": 1.95,
           "ZPosition": -1.05
         },
         {
           "Id": "1_-1.45_0.0",
           "LayerId": 1,
-          "YRotation": 90.0,
+          "YRotation": 90,
           "XPosition": -1.45,
-          "ZPosition": 0.0
+          "ZPosition": 0
         },
         {
           "Id": "1_0.0_0.0",
           "LayerId": 1,
-          "YRotation": 90.0,
-          "XPosition": 0.0,
-          "ZPosition": 0.0
+          "YRotation": 90,
+          "XPosition": 0,
+          "ZPosition": 0
         },
         {
           "Id": "1_1.45_0.0",
           "LayerId": 1,
-          "YRotation": 90.0,
+          "YRotation": 90,
           "XPosition": 1.45,
-          "ZPosition": 0.0
+          "ZPosition": 0
         },
         {
           "Id": "2_-0.95_0.0",
           "LayerId": 2,
-          "YRotation": 0.0,
+          "YRotation": 0,
           "XPosition": -0.95,
-          "ZPosition": 0.0
+          "ZPosition": 0
         },
         {
           "Id": "2_0.95_0.0",
           "LayerId": 2,
-          "YRotation": 0.0,
+          "YRotation": 0,
           "XPosition": 0.95,
-          "ZPosition": 0.0
+          "ZPosition": 0
         },
         {
           "Id": "3_0.0_0.0",
           "LayerId": 3,
-          "YRotation": 90.0,
-          "XPosition": 0.0,
-          "ZPosition": 0.0
+          "YRotation": 90,
+          "XPosition": 0,
+          "ZPosition": 0
         }
       ],
       "BoxNodes": [
@@ -3515,12 +3513,12 @@ export const SAMPLE_LEVELS: SampleLevelPreset[] = [
           "BoxColor": 1,
           "BlockedNodes": [],
           "InitCards": [
-            1,
-            1,
+            3,
+            3,
+            3,
             2,
-            4,
-            4,
-            4
+            2,
+            2
           ],
           "IsHidden": false,
           "LockedTurn": 0,
@@ -3533,12 +3531,12 @@ export const SAMPLE_LEVELS: SampleLevelPreset[] = [
           "BoxColor": 2,
           "BlockedNodes": [],
           "InitCards": [
-            2,
-            2,
-            3,
-            3,
             4,
-            4
+            4,
+            4,
+            1,
+            1,
+            1
           ],
           "IsHidden": false,
           "LockedTurn": 0,
@@ -3551,12 +3549,12 @@ export const SAMPLE_LEVELS: SampleLevelPreset[] = [
           "BoxColor": 3,
           "BlockedNodes": [],
           "InitCards": [
+            4,
+            4,
+            4,
             1,
             1,
-            1,
-            2,
-            3,
-            4
+            1
           ],
           "IsHidden": false,
           "LockedTurn": 0,
@@ -3569,12 +3567,12 @@ export const SAMPLE_LEVELS: SampleLevelPreset[] = [
           "BoxColor": 4,
           "BlockedNodes": [],
           "InitCards": [
-            1,
-            1,
-            2,
-            2,
+            4,
+            4,
+            4,
             3,
-            4
+            3,
+            3
           ],
           "IsHidden": false,
           "LockedTurn": 0,
@@ -3587,10 +3585,10 @@ export const SAMPLE_LEVELS: SampleLevelPreset[] = [
           "BoxColor": 1,
           "BlockedNodes": [],
           "InitCards": [
-            1,
-            1,
-            2,
-            2,
+            3,
+            3,
+            3,
+            3,
             3,
             3
           ],
@@ -3605,12 +3603,12 @@ export const SAMPLE_LEVELS: SampleLevelPreset[] = [
           "BoxColor": 2,
           "BlockedNodes": [],
           "InitCards": [
+            2,
+            2,
             1,
-            2,
-            2,
-            2,
+            1,
             3,
-            4
+            3
           ],
           "IsHidden": false,
           "LockedTurn": 0,
@@ -3626,12 +3624,12 @@ export const SAMPLE_LEVELS: SampleLevelPreset[] = [
             "0_-1.95_-1.05"
           ],
           "InitCards": [
-            1,
-            1,
             3,
             3,
-            3,
-            4
+            4,
+            4,
+            2,
+            2
           ],
           "IsHidden": false,
           "LockedTurn": 0,
@@ -3648,11 +3646,11 @@ export const SAMPLE_LEVELS: SampleLevelPreset[] = [
           ],
           "InitCards": [
             1,
+            1,
+            1,
             2,
             2,
-            3,
-            3,
-            4
+            2
           ],
           "IsHidden": false,
           "LockedTurn": 0,
@@ -3668,12 +3666,12 @@ export const SAMPLE_LEVELS: SampleLevelPreset[] = [
             "0_1.95_-1.05"
           ],
           "InitCards": [
-            1,
-            2,
-            2,
-            3,
             4,
-            4
+            4,
+            4,
+            2,
+            2,
+            2
           ],
           "IsHidden": false,
           "LockedTurn": 0,
@@ -3693,12 +3691,12 @@ export const SAMPLE_LEVELS: SampleLevelPreset[] = [
             "1_0.0_0.0"
           ],
           "InitCards": [
-            1,
-            1,
-            2,
-            2,
             4,
-            4
+            4,
+            3,
+            3,
+            1,
+            1
           ],
           "IsHidden": false,
           "LockedTurn": 0,
@@ -3718,12 +3716,12 @@ export const SAMPLE_LEVELS: SampleLevelPreset[] = [
             "1_1.45_0.0"
           ],
           "InitCards": [
-            3,
-            3,
-            3,
+            2,
+            2,
             4,
             4,
-            4
+            1,
+            1
           ],
           "IsHidden": false,
           "LockedTurn": 0,
@@ -3744,10 +3742,10 @@ export const SAMPLE_LEVELS: SampleLevelPreset[] = [
           "InitCards": [
             1,
             1,
+            1,
             2,
-            3,
-            3,
-            4
+            2,
+            2
           ],
           "IsHidden": false,
           "LockedTurn": 0,
@@ -3775,85 +3773,85 @@ export const SAMPLE_LEVELS: SampleLevelPreset[] = [
         {
           "Id": "0_-1.0_2.05",
           "LayerId": 0,
-          "YRotation": 0.0,
-          "XPosition": -1.0,
+          "YRotation": 0,
+          "XPosition": -1,
           "ZPosition": 2.05
         },
         {
           "Id": "0_1.0_2.05",
           "LayerId": 0,
-          "YRotation": 0.0,
-          "XPosition": 1.0,
+          "YRotation": 0,
+          "XPosition": 1,
           "ZPosition": 2.05
         },
         {
           "Id": "0_-1.0_-2.05",
           "LayerId": 0,
-          "YRotation": 0.0,
-          "XPosition": -1.0,
+          "YRotation": 0,
+          "XPosition": -1,
           "ZPosition": -2.05
         },
         {
           "Id": "0_1.0_-2.05",
           "LayerId": 0,
-          "YRotation": 0.0,
-          "XPosition": 1.0,
+          "YRotation": 0,
+          "XPosition": 1,
           "ZPosition": -2.05
         },
         {
           "Id": "0_-1.95_0.0",
           "LayerId": 0,
-          "YRotation": 90.0,
+          "YRotation": 90,
           "XPosition": -1.95,
-          "ZPosition": 0.0
+          "ZPosition": 0
         },
         {
           "Id": "0_1.95_0.0",
           "LayerId": 0,
-          "YRotation": 90.0,
+          "YRotation": 90,
           "XPosition": 1.95,
-          "ZPosition": 0.0
+          "ZPosition": 0
         },
         {
           "Id": "1_-1.15_1.05",
           "LayerId": 1,
-          "YRotation": 90.0,
+          "YRotation": 90,
           "XPosition": -1.15,
           "ZPosition": 1.05
         },
         {
           "Id": "1_1.15_1.05",
           "LayerId": 1,
-          "YRotation": 90.0,
+          "YRotation": 90,
           "XPosition": 1.15,
           "ZPosition": 1.05
         },
         {
           "Id": "1_-1.15_-1.05",
           "LayerId": 1,
-          "YRotation": 90.0,
+          "YRotation": 90,
           "XPosition": -1.15,
           "ZPosition": -1.05
         },
         {
           "Id": "1_1.15_-1.05",
           "LayerId": 1,
-          "YRotation": 90.0,
+          "YRotation": 90,
           "XPosition": 1.15,
           "ZPosition": -1.05
         },
         {
           "Id": "2_0.0_1.05",
           "LayerId": 2,
-          "YRotation": 0.0,
-          "XPosition": 0.0,
+          "YRotation": 0,
+          "XPosition": 0,
           "ZPosition": 1.05
         },
         {
           "Id": "2_0.0_-1.05",
           "LayerId": 2,
-          "YRotation": 0.0,
-          "XPosition": 0.0,
+          "YRotation": 0,
+          "XPosition": 0,
           "ZPosition": -1.05
         }
       ],
@@ -3865,11 +3863,11 @@ export const SAMPLE_LEVELS: SampleLevelPreset[] = [
           "BlockedNodes": [],
           "InitCards": [
             1,
+            1,
+            1,
             2,
             2,
-            3,
-            3,
-            4
+            2
           ],
           "IsHidden": false,
           "LockedTurn": 0,
@@ -3883,10 +3881,10 @@ export const SAMPLE_LEVELS: SampleLevelPreset[] = [
           "BlockedNodes": [],
           "InitCards": [
             1,
-            2,
-            2,
-            3,
-            3,
+            1,
+            1,
+            4,
+            4,
             4
           ],
           "IsHidden": false,
@@ -3901,10 +3899,11 @@ export const SAMPLE_LEVELS: SampleLevelPreset[] = [
           "BlockedNodes": [],
           "InitCards": [
             1,
-            2,
-            2,
-            2,
-            3
+            1,
+            1,
+            4,
+            4,
+            4
           ],
           "IsHidden": false,
           "LockedTurn": 0,
@@ -3917,11 +3916,12 @@ export const SAMPLE_LEVELS: SampleLevelPreset[] = [
           "BoxColor": 4,
           "BlockedNodes": [],
           "InitCards": [
-            1,
-            1,
             2,
             2,
-            3
+            3,
+            3,
+            1,
+            1
           ],
           "IsHidden": false,
           "LockedTurn": 0,
@@ -3935,9 +3935,8 @@ export const SAMPLE_LEVELS: SampleLevelPreset[] = [
           "BlockedNodes": [],
           "InitCards": [
             1,
+            1,
             2,
-            2,
-            4,
             4
           ],
           "IsHidden": false,
@@ -3950,13 +3949,7 @@ export const SAMPLE_LEVELS: SampleLevelPreset[] = [
           "TypeId": 2,
           "BoxColor": 2,
           "BlockedNodes": [],
-          "InitCards": [
-            1,
-            2,
-            2,
-            3,
-            4
-          ],
+          "InitCards": [],
           "IsHidden": false,
           "LockedTurn": 0,
           "IsPaperBox": false,
@@ -3971,11 +3964,12 @@ export const SAMPLE_LEVELS: SampleLevelPreset[] = [
             "0_-1.95_0.0"
           ],
           "InitCards": [
-            1,
-            1,
             2,
-            4,
-            4
+            2,
+            2,
+            1,
+            1,
+            1
           ],
           "IsHidden": false,
           "LockedTurn": 0,
@@ -3991,11 +3985,12 @@ export const SAMPLE_LEVELS: SampleLevelPreset[] = [
             "0_1.95_0.0"
           ],
           "InitCards": [
-            1,
+            2,
             2,
             2,
             3,
-            4
+            3,
+            3
           ],
           "IsHidden": false,
           "LockedTurn": 0,
@@ -4012,10 +4007,11 @@ export const SAMPLE_LEVELS: SampleLevelPreset[] = [
           ],
           "InitCards": [
             1,
+            1,
             2,
             2,
-            4,
-            4
+            3,
+            3
           ],
           "IsHidden": false,
           "LockedTurn": 0,
@@ -4031,8 +4027,9 @@ export const SAMPLE_LEVELS: SampleLevelPreset[] = [
             "0_1.95_0.0"
           ],
           "InitCards": [
-            1,
-            1,
+            4,
+            4,
+            4,
             3,
             3,
             3
@@ -4053,9 +4050,9 @@ export const SAMPLE_LEVELS: SampleLevelPreset[] = [
             "1_1.15_1.05"
           ],
           "InitCards": [
-            1,
-            1,
-            1,
+            2,
+            2,
+            3,
             3
           ],
           "IsHidden": false,
@@ -4074,8 +4071,8 @@ export const SAMPLE_LEVELS: SampleLevelPreset[] = [
             "1_1.15_-1.05"
           ],
           "InitCards": [
-            1,
-            1,
+            2,
+            2,
             4,
             4
           ],
@@ -4103,185 +4100,283 @@ export const SAMPLE_LEVELS: SampleLevelPreset[] = [
       "BoardOffsetZ": 0,
       "BoardNodes": [
         {
-          "Id": "0_-1.0_2.05",
+          "Id": "0_0.0_2.05",
           "LayerId": 0,
-          "YRotation": 0.0,
-          "XPosition": -1.0,
+          "YRotation": 0,
+          "XPosition": 0,
           "ZPosition": 2.05
         },
         {
-          "Id": "0_1.0_2.05",
+          "Id": "0_0.0_-2.05",
           "LayerId": 0,
-          "YRotation": 0.0,
-          "XPosition": 1.0,
-          "ZPosition": 2.05
-        },
-        {
-          "Id": "0_-1.0_-2.05",
-          "LayerId": 0,
-          "YRotation": 0.0,
-          "XPosition": -1.0,
+          "YRotation": 0,
+          "XPosition": 0,
           "ZPosition": -2.05
         },
         {
-          "Id": "0_1.0_-2.05",
+          "Id": "0_-1.85_1.00",
           "LayerId": 0,
-          "YRotation": 0.0,
-          "XPosition": 1.0,
-          "ZPosition": -2.05
+          "YRotation": 90,
+          "XPosition": -1.85,
+          "ZPosition": 1
         },
         {
-          "Id": "0_-1.95_0.0",
+          "Id": "0_-1.85_-1.00",
           "LayerId": 0,
-          "YRotation": 90.0,
-          "XPosition": -1.95,
-          "ZPosition": 0.0
+          "YRotation": 90,
+          "XPosition": -1.85,
+          "ZPosition": -1
         },
         {
-          "Id": "0_1.95_0.0",
+          "Id": "0_1.85_1.00",
           "LayerId": 0,
-          "YRotation": 90.0,
-          "XPosition": 1.95,
-          "ZPosition": 0.0
+          "YRotation": 90,
+          "XPosition": 1.85,
+          "ZPosition": 1
         },
         {
-          "Id": "1_-1.15_1.05",
+          "Id": "0_1.85_-1.00",
+          "LayerId": 0,
+          "YRotation": 90,
+          "XPosition": 1.85,
+          "ZPosition": -1
+        },
+        {
+          "Id": "1_-0.95_1.00",
           "LayerId": 1,
-          "YRotation": 90.0,
-          "XPosition": -1.15,
-          "ZPosition": 1.05
+          "YRotation": 0,
+          "XPosition": -0.95,
+          "ZPosition": 1
         },
         {
-          "Id": "1_1.15_1.05",
+          "Id": "1_0.95_1.00",
           "LayerId": 1,
-          "YRotation": 90.0,
-          "XPosition": 1.15,
-          "ZPosition": 1.05
+          "YRotation": 0,
+          "XPosition": 0.95,
+          "ZPosition": 1
         },
         {
-          "Id": "1_-1.15_-1.05",
+          "Id": "1_-0.95_-1.00",
           "LayerId": 1,
-          "YRotation": 90.0,
-          "XPosition": -1.15,
-          "ZPosition": -1.05
+          "YRotation": 0,
+          "XPosition": -0.95,
+          "ZPosition": -1
         },
         {
-          "Id": "1_1.15_-1.05",
+          "Id": "1_0.95_-1.00",
           "LayerId": 1,
-          "YRotation": 90.0,
-          "XPosition": 1.15,
-          "ZPosition": -1.05
+          "YRotation": 0,
+          "XPosition": 0.95,
+          "ZPosition": -1
         },
         {
-          "Id": "2_0.0_1.05",
+          "Id": "2_0.0_1.00",
           "LayerId": 2,
-          "YRotation": 0.0,
-          "XPosition": 0.0,
-          "ZPosition": 1.05
+          "YRotation": 90,
+          "XPosition": 0,
+          "ZPosition": 1
         },
         {
-          "Id": "2_0.0_-1.05",
+          "Id": "2_0.0_-1.00",
           "LayerId": 2,
-          "YRotation": 0.0,
-          "XPosition": 0.0,
-          "ZPosition": -1.05
+          "YRotation": 90,
+          "XPosition": 0,
+          "ZPosition": -1
         }
       ],
       "BoxNodes": [
         {
-          "Id": "0_-1.0_2.05",
+          "Id": "0_0.0_2.05",
           "TypeId": 2,
           "BoxColor": 1,
           "BlockedNodes": [],
           "InitCards": [
             1,
             1,
+            1,
             2,
             2,
-            2,
-            4
+            2
           ],
           "IsHidden": false,
-          "LockedTurn": 2,
-          "IsPaperBox": false,
-          "IsRainbowBox": false
+          "LockedTurn": 0
         },
         {
-          "Id": "0_1.0_2.05",
+          "Id": "0_0.0_-2.05",
           "TypeId": 2,
           "BoxColor": 2,
           "BlockedNodes": [],
           "InitCards": [
-            1,
-            1,
-            1,
             2,
-            3,
-            4
+            2,
+            2,
+            1,
+            1,
+            1
           ],
           "IsHidden": false,
-          "LockedTurn": 0,
-          "IsPaperBox": false,
-          "IsRainbowBox": false
+          "LockedTurn": 0
         },
         {
-          "Id": "0_-1.0_-2.05",
+          "Id": "0_-1.85_1.00",
           "TypeId": 2,
           "BoxColor": 3,
           "BlockedNodes": [],
           "InitCards": [
-            1,
-            2,
-            2,
             3,
-            4
+            3,
+            3,
+            1,
+            1,
+            1
           ],
           "IsHidden": false,
-          "LockedTurn": 0,
-          "IsPaperBox": false,
-          "IsRainbowBox": false
+          "LockedTurn": 2
         },
         {
-          "Id": "0_1.0_-2.05",
+          "Id": "0_-1.85_-1.00",
           "TypeId": 2,
           "BoxColor": 4,
           "BlockedNodes": [],
           "InitCards": [
+            4,
+            4,
+            3,
+            3,
             2,
+            2
+          ],
+          "IsHidden": false,
+          "LockedTurn": 0
+        },
+        {
+          "Id": "0_1.85_1.00",
+          "TypeId": 2,
+          "BoxColor": 1,
+          "BlockedNodes": [],
+          "InitCards": [
+            1,
+            1,
+            3,
+            3
+          ],
+          "IsHidden": false,
+          "LockedTurn": 0
+        },
+        {
+          "Id": "0_1.85_-1.00",
+          "TypeId": 2,
+          "BoxColor": 2,
+          "BlockedNodes": [],
+          "InitCards": [],
+          "IsHidden": false,
+          "LockedTurn": 2
+        },
+        {
+          "Id": "1_-0.95_1.00",
+          "TypeId": 2,
+          "BoxColor": 3,
+          "BlockedNodes": [
+            "0_0.0_2.05",
+            "0_-1.85_1.00"
+          ],
+          "InitCards": [
+            2,
+            2,
+            2,
+            4,
+            4,
+            4
+          ],
+          "IsHidden": false,
+          "LockedTurn": 0
+        },
+        {
+          "Id": "1_0.95_1.00",
+          "TypeId": 2,
+          "BoxColor": 4,
+          "BlockedNodes": [
+            "0_0.0_2.05",
+            "0_1.85_1.00"
+          ],
+          "InitCards": [
+            4,
+            4,
             2,
             2,
             3,
             3
           ],
           "IsHidden": false,
-          "LockedTurn": 2,
-          "IsPaperBox": false,
-          "IsRainbowBox": false
+          "LockedTurn": 0
         },
         {
-          "Id": "0_-1.95_0.0",
+          "Id": "1_-0.95_-1.00",
           "TypeId": 2,
           "BoxColor": 1,
-          "BlockedNodes": [],
+          "BlockedNodes": [
+            "0_0.0_-2.05",
+            "0_-1.85_-1.00"
+          ],
           "InitCards": [
-            1,
-            2,
+            3,
+            3,
+            3,
             4,
             4,
             4
           ],
           "IsHidden": false,
-          "LockedTurn": 0,
-          "IsPaperBox": false,
-          "IsRainbowBox": false
+          "LockedTurn": 0
         },
         {
-          "Id": "0_1.95_0.0",
+          "Id": "1_0.95_-1.00",
           "TypeId": 2,
           "BoxColor": 2,
-          "BlockedNodes": [],
+          "BlockedNodes": [
+            "0_0.0_-2.05",
+            "0_1.85_-1.00"
+          ],
+          "InitCards": [
+            2,
+            2,
+            2,
+            1,
+            1,
+            1
+          ],
+          "IsHidden": false,
+          "LockedTurn": 0
+        },
+        {
+          "Id": "2_0.0_1.00",
+          "TypeId": 4,
+          "BoxColor": 3,
+          "BlockedNodes": [
+            "0_0.0_2.05",
+            "1_-0.95_1.00",
+            "1_0.95_1.00"
+          ],
           "InitCards": [
             1,
+            1,
+            4,
+            4
+          ],
+          "IsHidden": false,
+          "LockedTurn": 0,
+          "IsPaperBox": true
+        },
+        {
+          "Id": "2_0.0_-1.00",
+          "TypeId": 4,
+          "BoxColor": 4,
+          "BlockedNodes": [
+            "0_0.0_-2.05",
+            "1_-0.95_-1.00",
+            "1_0.95_-1.00"
+          ],
+          "InitCards": [
             1,
             1,
             2,
@@ -4289,130 +4384,7 @@ export const SAMPLE_LEVELS: SampleLevelPreset[] = [
           ],
           "IsHidden": false,
           "LockedTurn": 0,
-          "IsPaperBox": false,
-          "IsRainbowBox": false
-        },
-        {
-          "Id": "1_-1.15_1.05",
-          "TypeId": 2,
-          "BoxColor": 3,
-          "BlockedNodes": [
-            "0_-1.0_2.05",
-            "0_-1.95_0.0"
-          ],
-          "InitCards": [
-            1,
-            2,
-            2,
-            3,
-            4
-          ],
-          "IsHidden": false,
-          "LockedTurn": 0,
-          "IsPaperBox": false,
-          "IsRainbowBox": false
-        },
-        {
-          "Id": "1_1.15_1.05",
-          "TypeId": 2,
-          "BoxColor": 4,
-          "BlockedNodes": [
-            "0_1.0_2.05",
-            "0_1.95_0.0"
-          ],
-          "InitCards": [
-            1,
-            2,
-            2,
-            3,
-            3
-          ],
-          "IsHidden": false,
-          "LockedTurn": 0,
-          "IsPaperBox": false,
-          "IsRainbowBox": false
-        },
-        {
-          "Id": "1_-1.15_-1.05",
-          "TypeId": 2,
-          "BoxColor": 1,
-          "BlockedNodes": [
-            "0_-1.0_-2.05",
-            "0_-1.95_0.0"
-          ],
-          "InitCards": [
-            1,
-            2,
-            3,
-            3,
-            4
-          ],
-          "IsHidden": false,
-          "LockedTurn": 0,
-          "IsPaperBox": false,
-          "IsRainbowBox": false
-        },
-        {
-          "Id": "1_1.15_-1.05",
-          "TypeId": 2,
-          "BoxColor": 2,
-          "BlockedNodes": [
-            "0_1.0_-2.05",
-            "0_1.95_0.0"
-          ],
-          "InitCards": [
-            1,
-            1,
-            1,
-            2,
-            3
-          ],
-          "IsHidden": false,
-          "LockedTurn": 0,
-          "IsPaperBox": false,
-          "IsRainbowBox": false
-        },
-        {
-          "Id": "2_0.0_1.05",
-          "TypeId": 1,
-          "BoxColor": 1,
-          "BlockedNodes": [
-            "0_-1.0_2.05",
-            "0_1.0_2.05",
-            "1_-1.15_1.05",
-            "1_1.15_1.05"
-          ],
-          "InitCards": [
-            1,
-            4,
-            4,
-            4
-          ],
-          "IsHidden": false,
-          "LockedTurn": 0,
-          "IsPaperBox": true,
-          "IsRainbowBox": false
-        },
-        {
-          "Id": "2_0.0_-1.05",
-          "TypeId": 1,
-          "BoxColor": 1,
-          "BlockedNodes": [
-            "0_-1.0_-2.05",
-            "0_1.0_-2.05",
-            "1_-1.15_-1.05",
-            "1_1.15_-1.05"
-          ],
-          "InitCards": [
-            1,
-            3,
-            3,
-            4
-          ],
-          "IsHidden": false,
-          "LockedTurn": 0,
-          "IsPaperBox": true,
-          "IsRainbowBox": false
+          "IsPaperBox": true
         }
       ],
       "SpawnerNodes": [],
@@ -4435,78 +4407,78 @@ export const SAMPLE_LEVELS: SampleLevelPreset[] = [
         {
           "Id": "0_-1.45_1.85",
           "LayerId": 0,
-          "YRotation": 90.0,
+          "YRotation": 90,
           "XPosition": -1.45,
           "ZPosition": 1.85
         },
         {
           "Id": "0_1.45_1.85",
           "LayerId": 0,
-          "YRotation": 90.0,
+          "YRotation": 90,
           "XPosition": 1.45,
           "ZPosition": 1.85
         },
         {
           "Id": "0_-1.45_-1.85",
           "LayerId": 0,
-          "YRotation": 90.0,
+          "YRotation": 90,
           "XPosition": -1.45,
           "ZPosition": -1.85
         },
         {
           "Id": "0_1.45_-1.85",
           "LayerId": 0,
-          "YRotation": 90.0,
+          "YRotation": 90,
           "XPosition": 1.45,
           "ZPosition": -1.85
         },
         {
           "Id": "0_0.0_0.0",
           "LayerId": 0,
-          "YRotation": 0.0,
-          "XPosition": 0.0,
-          "ZPosition": 0.0
+          "YRotation": 0,
+          "XPosition": 0,
+          "ZPosition": 0
         },
         {
           "Id": "1_-1.15_0.95",
           "LayerId": 1,
-          "YRotation": 0.0,
+          "YRotation": 0,
           "XPosition": -1.15,
           "ZPosition": 0.95
         },
         {
           "Id": "1_1.15_0.95",
           "LayerId": 1,
-          "YRotation": 0.0,
+          "YRotation": 0,
           "XPosition": 1.15,
           "ZPosition": 0.95
         },
         {
           "Id": "1_-1.15_-0.95",
           "LayerId": 1,
-          "YRotation": 0.0,
+          "YRotation": 0,
           "XPosition": -1.15,
           "ZPosition": -0.95
         },
         {
           "Id": "1_1.15_-0.95",
           "LayerId": 1,
-          "YRotation": 0.0,
+          "YRotation": 0,
           "XPosition": 1.15,
           "ZPosition": -0.95
         },
         {
           "Id": "2_0.0_0.95",
           "LayerId": 2,
-          "YRotation": 90.0,
-          "XPosition": 0.0,
+          "YRotation": 90,
+          "XPosition": 0,
           "ZPosition": 0.95
         },
         {
           "Id": "2_0.0_-0.95",
           "LayerId": 2,
-          "YRotation": 90.0,
-          "XPosition": 0.0,
+          "YRotation": 90,
+          "XPosition": 0,
           "ZPosition": -0.95
         }
       ],
@@ -4517,14 +4489,14 @@ export const SAMPLE_LEVELS: SampleLevelPreset[] = [
           "BoxColor": 1,
           "BlockedNodes": [],
           "InitCards": [
-            1,
-            1,
+            3,
+            3,
+            3,
+            3,
             2,
             2,
-            3,
-            3,
-            3,
-            3
+            2,
+            2
           ],
           "IsHidden": false,
           "LockedTurn": 0,
@@ -4537,13 +4509,14 @@ export const SAMPLE_LEVELS: SampleLevelPreset[] = [
           "BoxColor": 2,
           "BlockedNodes": [],
           "InitCards": [
-            1,
-            1,
-            1,
-            1,
             2,
-            3,
-            3
+            2,
+            2,
+            2,
+            1,
+            1,
+            1,
+            1
           ],
           "IsHidden": false,
           "LockedTurn": 0,
@@ -4556,13 +4529,14 @@ export const SAMPLE_LEVELS: SampleLevelPreset[] = [
           "BoxColor": 3,
           "BlockedNodes": [],
           "InitCards": [
-            1,
-            1,
-            1,
             2,
             2,
             2,
-            3
+            2,
+            1,
+            1,
+            1,
+            1
           ],
           "IsHidden": false,
           "LockedTurn": 0,
@@ -4579,8 +4553,9 @@ export const SAMPLE_LEVELS: SampleLevelPreset[] = [
             1,
             1,
             1,
-            2,
-            2,
+            1,
+            1,
+            3,
             3
           ],
           "IsHidden": false,
@@ -4593,15 +4568,7 @@ export const SAMPLE_LEVELS: SampleLevelPreset[] = [
           "TypeId": 3,
           "BoxColor": 2,
           "BlockedNodes": [],
-          "InitCards": [
-            2,
-            2,
-            2,
-            2,
-            3,
-            3,
-            3
-          ],
+          "InitCards": [],
           "IsHidden": false,
           "LockedTurn": 0,
           "IsPaperBox": false,
@@ -4616,13 +4583,14 @@ export const SAMPLE_LEVELS: SampleLevelPreset[] = [
             "0_0.0_0.0"
           ],
           "InitCards": [
-            1,
-            1,
-            1,
-            2,
-            2,
             3,
-            3
+            3,
+            3,
+            3,
+            1,
+            1,
+            1,
+            1
           ],
           "IsHidden": false,
           "LockedTurn": 0,
@@ -4638,13 +4606,14 @@ export const SAMPLE_LEVELS: SampleLevelPreset[] = [
             "0_0.0_0.0"
           ],
           "InitCards": [
-            1,
-            1,
-            1,
-            1,
+            3,
+            3,
+            3,
+            3,
             2,
             2,
-            3
+            2,
+            2
           ],
           "IsHidden": false,
           "LockedTurn": 0,
@@ -4661,8 +4630,9 @@ export const SAMPLE_LEVELS: SampleLevelPreset[] = [
           ],
           "InitCards": [
             1,
-            2,
-            3,
+            1,
+            1,
+            1,
             3,
             3,
             3,
@@ -4682,13 +4652,14 @@ export const SAMPLE_LEVELS: SampleLevelPreset[] = [
             "0_0.0_0.0"
           ],
           "InitCards": [
-            1,
-            2,
-            2,
-            2,
-            2,
             3,
-            3
+            3,
+            3,
+            3,
+            2,
+            2,
+            2,
+            2
           ],
           "IsHidden": false,
           "LockedTurn": 0,
@@ -4707,7 +4678,7 @@ export const SAMPLE_LEVELS: SampleLevelPreset[] = [
           "InitCards": [
             2,
             2,
-            2,
+            3,
             3
           ],
           "IsHidden": false,
@@ -4727,8 +4698,8 @@ export const SAMPLE_LEVELS: SampleLevelPreset[] = [
           "InitCards": [
             1,
             1,
-            3,
-            3
+            2,
+            2
           ],
           "IsHidden": false,
           "LockedTurn": 0,
@@ -4756,100 +4727,100 @@ export const SAMPLE_LEVELS: SampleLevelPreset[] = [
         {
           "Id": "0_0.0_0.0",
           "LayerId": 0,
-          "YRotation": 0.0,
-          "XPosition": 0.0,
-          "ZPosition": 0.0
+          "YRotation": 0,
+          "XPosition": 0,
+          "ZPosition": 0
         },
         {
           "Id": "0_0.0_1.95",
           "LayerId": 0,
-          "YRotation": 0.0,
-          "XPosition": 0.0,
+          "YRotation": 0,
+          "XPosition": 0,
           "ZPosition": 1.95
         },
         {
           "Id": "0_0.0_-1.95",
           "LayerId": 0,
-          "YRotation": 0.0,
-          "XPosition": 0.0,
+          "YRotation": 0,
+          "XPosition": 0,
           "ZPosition": -1.95
         },
         {
           "Id": "0_-1.95_0.0",
           "LayerId": 0,
-          "YRotation": 90.0,
+          "YRotation": 90,
           "XPosition": -1.95,
-          "ZPosition": 0.0
+          "ZPosition": 0
         },
         {
           "Id": "0_1.95_0.0",
           "LayerId": 0,
-          "YRotation": 90.0,
+          "YRotation": 90,
           "XPosition": 1.95,
-          "ZPosition": 0.0
+          "ZPosition": 0
         },
         {
           "Id": "0_-1.95_1.95",
           "LayerId": 0,
-          "YRotation": 90.0,
+          "YRotation": 90,
           "XPosition": -1.95,
           "ZPosition": 1.95
         },
         {
           "Id": "0_1.95_-1.95",
           "LayerId": 0,
-          "YRotation": 90.0,
+          "YRotation": 90,
           "XPosition": 1.95,
           "ZPosition": -1.95
         },
         {
           "Id": "1_-1.0_1.0",
           "LayerId": 1,
-          "YRotation": 0.0,
-          "XPosition": -1.0,
-          "ZPosition": 1.0
+          "YRotation": 0,
+          "XPosition": -1,
+          "ZPosition": 1
         },
         {
           "Id": "1_1.0_-1.0",
           "LayerId": 1,
-          "YRotation": 0.0,
-          "XPosition": 1.0,
-          "ZPosition": -1.0
+          "YRotation": 0,
+          "XPosition": 1,
+          "ZPosition": -1
         },
         {
           "Id": "1_1.0_1.0",
           "LayerId": 1,
-          "YRotation": 90.0,
-          "XPosition": 1.0,
-          "ZPosition": 1.0
+          "YRotation": 90,
+          "XPosition": 1,
+          "ZPosition": 1
         },
         {
           "Id": "1_-1.0_-1.0",
           "LayerId": 1,
-          "YRotation": 90.0,
-          "XPosition": -1.0,
-          "ZPosition": -1.0
+          "YRotation": 90,
+          "XPosition": -1,
+          "ZPosition": -1
         },
         {
           "Id": "2_0.0_0.8",
           "LayerId": 2,
-          "YRotation": 0.0,
-          "XPosition": 0.0,
+          "YRotation": 0,
+          "XPosition": 0,
           "ZPosition": 0.8
         },
         {
           "Id": "2_0.0_-0.8",
           "LayerId": 2,
-          "YRotation": 0.0,
-          "XPosition": 0.0,
+          "YRotation": 0,
+          "XPosition": 0,
           "ZPosition": -0.8
         },
         {
           "Id": "3_0.0_0.0",
           "LayerId": 3,
-          "YRotation": 90.0,
-          "XPosition": 0.0,
-          "ZPosition": 0.0
+          "YRotation": 90,
+          "XPosition": 0,
+          "ZPosition": 0
         }
       ],
       "BoxNodes": [
@@ -4861,8 +4832,8 @@ export const SAMPLE_LEVELS: SampleLevelPreset[] = [
           "InitCards": [
             3,
             3,
-            3,
-            4,
+            2,
+            2,
             5,
             5
           ],
@@ -4878,11 +4849,11 @@ export const SAMPLE_LEVELS: SampleLevelPreset[] = [
           "BlockedNodes": [],
           "InitCards": [
             1,
-            2,
-            2,
-            2,
+            1,
             3,
-            3
+            3,
+            4,
+            4
           ],
           "IsHidden": false,
           "LockedTurn": 0,
@@ -4895,12 +4866,12 @@ export const SAMPLE_LEVELS: SampleLevelPreset[] = [
           "BoxColor": 3,
           "BlockedNodes": [],
           "InitCards": [
-            1,
+            2,
             2,
             2,
             4,
-            5,
-            5
+            4,
+            4
           ],
           "IsHidden": false,
           "LockedTurn": 0,
@@ -4913,12 +4884,12 @@ export const SAMPLE_LEVELS: SampleLevelPreset[] = [
           "BoxColor": 4,
           "BlockedNodes": [],
           "InitCards": [
+            5,
+            5,
+            5,
             1,
             1,
-            1,
-            2,
-            3,
-            4
+            1
           ],
           "IsHidden": false,
           "LockedTurn": 0,
@@ -4931,12 +4902,12 @@ export const SAMPLE_LEVELS: SampleLevelPreset[] = [
           "BoxColor": 5,
           "BlockedNodes": [],
           "InitCards": [
-            1,
-            1,
             2,
-            3,
-            3,
-            5
+            2,
+            2,
+            4,
+            4,
+            4
           ],
           "IsHidden": false,
           "LockedTurn": 0,
@@ -4949,12 +4920,12 @@ export const SAMPLE_LEVELS: SampleLevelPreset[] = [
           "BoxColor": 1,
           "BlockedNodes": [],
           "InitCards": [
-            1,
-            2,
-            2,
+            5,
+            5,
             3,
             3,
-            5
+            3,
+            3
           ],
           "IsHidden": false,
           "LockedTurn": 0,
@@ -4967,12 +4938,8 @@ export const SAMPLE_LEVELS: SampleLevelPreset[] = [
           "BoxColor": 2,
           "BlockedNodes": [],
           "InitCards": [
-            2,
-            2,
-            2,
-            2,
-            4,
-            4
+            1,
+            5
           ],
           "IsHidden": false,
           "LockedTurn": 0,
@@ -4992,10 +4959,10 @@ export const SAMPLE_LEVELS: SampleLevelPreset[] = [
           "InitCards": [
             1,
             1,
-            3,
-            4,
-            5,
-            5
+            1,
+            2,
+            2,
+            2
           ],
           "IsHidden": false,
           "LockedTurn": 0,
@@ -5013,12 +4980,12 @@ export const SAMPLE_LEVELS: SampleLevelPreset[] = [
             "0_1.95_-1.95"
           ],
           "InitCards": [
-            1,
-            1,
-            2,
-            3,
             4,
-            4
+            3,
+            3,
+            5,
+            5,
+            1
           ],
           "IsHidden": false,
           "LockedTurn": 0,
@@ -5035,11 +5002,12 @@ export const SAMPLE_LEVELS: SampleLevelPreset[] = [
             "0_1.95_0.0"
           ],
           "InitCards": [
-            1,
-            1,
+            2,
             2,
             3,
-            5
+            3,
+            1,
+            1
           ],
           "IsHidden": false,
           "LockedTurn": 0,
@@ -5056,11 +5024,12 @@ export const SAMPLE_LEVELS: SampleLevelPreset[] = [
             "0_-1.95_0.0"
           ],
           "InitCards": [
-            1,
+            2,
+            2,
+            5,
+            5,
             3,
-            3,
-            4,
-            5
+            4
           ],
           "IsHidden": false,
           "LockedTurn": 0,
@@ -5078,11 +5047,12 @@ export const SAMPLE_LEVELS: SampleLevelPreset[] = [
             "1_1.0_1.0"
           ],
           "InitCards": [
+            3,
+            3,
+            3,
             1,
-            3,
-            3,
-            4,
-            5
+            1,
+            1
           ],
           "IsHidden": false,
           "LockedTurn": 0,
@@ -5100,11 +5070,12 @@ export const SAMPLE_LEVELS: SampleLevelPreset[] = [
             "1_-1.0_-1.0"
           ],
           "InitCards": [
+            1,
+            1,
+            1,
             2,
             2,
-            3,
-            4,
-            5
+            2
           ],
           "IsHidden": false,
           "LockedTurn": 0,
@@ -5125,9 +5096,9 @@ export const SAMPLE_LEVELS: SampleLevelPreset[] = [
             "2_0.0_-0.8"
           ],
           "InitCards": [
-            1,
-            1,
-            2,
+            3,
+            3,
+            4,
             4
           ],
           "IsHidden": false,
@@ -5156,149 +5127,149 @@ export const SAMPLE_LEVELS: SampleLevelPreset[] = [
         {
           "Id": "0_-2.85_1.85",
           "LayerId": 0,
-          "YRotation": 0.0,
+          "YRotation": 0,
           "XPosition": -2.85,
           "ZPosition": 1.85
         },
         {
           "Id": "0_-0.95_1.85",
           "LayerId": 0,
-          "YRotation": 0.0,
+          "YRotation": 0,
           "XPosition": -0.95,
           "ZPosition": 1.85
         },
         {
           "Id": "0_0.95_1.85",
           "LayerId": 0,
-          "YRotation": 0.0,
+          "YRotation": 0,
           "XPosition": 0.95,
           "ZPosition": 1.85
         },
         {
           "Id": "0_2.85_1.85",
           "LayerId": 0,
-          "YRotation": 0.0,
+          "YRotation": 0,
           "XPosition": 2.85,
           "ZPosition": 1.85
         },
         {
           "Id": "0_-1.9_0.0",
           "LayerId": 0,
-          "YRotation": 0.0,
+          "YRotation": 0,
           "XPosition": -1.9,
-          "ZPosition": 0.0
+          "ZPosition": 0
         },
         {
           "Id": "0_1.9_0.0",
           "LayerId": 0,
-          "YRotation": 0.0,
+          "YRotation": 0,
           "XPosition": 1.9,
-          "ZPosition": 0.0
+          "ZPosition": 0
         },
         {
           "Id": "0_-2.85_-1.85",
           "LayerId": 0,
-          "YRotation": 0.0,
+          "YRotation": 0,
           "XPosition": -2.85,
           "ZPosition": -1.85
         },
         {
           "Id": "0_-0.95_-1.85",
           "LayerId": 0,
-          "YRotation": 0.0,
+          "YRotation": 0,
           "XPosition": -0.95,
           "ZPosition": -1.85
         },
         {
           "Id": "0_0.95_-1.85",
           "LayerId": 0,
-          "YRotation": 0.0,
+          "YRotation": 0,
           "XPosition": 0.95,
           "ZPosition": -1.85
         },
         {
           "Id": "0_2.85_-1.85",
           "LayerId": 0,
-          "YRotation": 0.0,
+          "YRotation": 0,
           "XPosition": 2.85,
           "ZPosition": -1.85
         },
         {
           "Id": "1_-2.85_0.95",
           "LayerId": 1,
-          "YRotation": 90.0,
+          "YRotation": 90,
           "XPosition": -2.85,
           "ZPosition": 0.95
         },
         {
           "Id": "1_0.0_0.95",
           "LayerId": 1,
-          "YRotation": 90.0,
-          "XPosition": 0.0,
+          "YRotation": 90,
+          "XPosition": 0,
           "ZPosition": 0.95
         },
         {
           "Id": "1_2.85_0.95",
           "LayerId": 1,
-          "YRotation": 90.0,
+          "YRotation": 90,
           "XPosition": 2.85,
           "ZPosition": 0.95
         },
         {
           "Id": "1_-2.85_-0.95",
           "LayerId": 1,
-          "YRotation": 90.0,
+          "YRotation": 90,
           "XPosition": -2.85,
           "ZPosition": -0.95
         },
         {
           "Id": "1_0.0_-0.95",
           "LayerId": 1,
-          "YRotation": 90.0,
-          "XPosition": 0.0,
+          "YRotation": 90,
+          "XPosition": 0,
           "ZPosition": -0.95
         },
         {
           "Id": "1_2.85_-0.95",
           "LayerId": 1,
-          "YRotation": 90.0,
+          "YRotation": 90,
           "XPosition": 2.85,
           "ZPosition": -0.95
         },
         {
           "Id": "2_-1.9_0.0",
           "LayerId": 2,
-          "YRotation": 0.0,
+          "YRotation": 0,
           "XPosition": -1.9,
-          "ZPosition": 0.0
+          "ZPosition": 0
         },
         {
           "Id": "2_0.0_0.0",
           "LayerId": 2,
-          "YRotation": 0.0,
-          "XPosition": 0.0,
-          "ZPosition": 0.0
+          "YRotation": 0,
+          "XPosition": 0,
+          "ZPosition": 0
         },
         {
           "Id": "2_1.9_0.0",
           "LayerId": 2,
-          "YRotation": 0.0,
+          "YRotation": 0,
           "XPosition": 1.9,
-          "ZPosition": 0.0
+          "ZPosition": 0
         },
         {
           "Id": "3_-1.0_0.0",
           "LayerId": 3,
-          "YRotation": 90.0,
-          "XPosition": -1.0,
-          "ZPosition": 0.0
+          "YRotation": 90,
+          "XPosition": -1,
+          "ZPosition": 0
         },
         {
           "Id": "3_1.0_0.0",
           "LayerId": 3,
-          "YRotation": 90.0,
-          "XPosition": 1.0,
-          "ZPosition": 0.0
+          "YRotation": 90,
+          "XPosition": 1,
+          "ZPosition": 0
         }
       ],
       "BoxNodes": [
@@ -5308,12 +5279,12 @@ export const SAMPLE_LEVELS: SampleLevelPreset[] = [
           "BoxColor": 1,
           "BlockedNodes": [],
           "InitCards": [
-            1,
-            2,
-            2,
             4,
             4,
-            5
+            5,
+            5,
+            3,
+            3
           ],
           "IsHidden": false,
           "LockedTurn": 0,
@@ -5327,11 +5298,11 @@ export const SAMPLE_LEVELS: SampleLevelPreset[] = [
           "BlockedNodes": [],
           "InitCards": [
             1,
-            2,
+            1,
+            1,
             4,
             4,
-            4,
-            5
+            4
           ],
           "IsHidden": false,
           "LockedTurn": 0,
@@ -5344,9 +5315,81 @@ export const SAMPLE_LEVELS: SampleLevelPreset[] = [
           "BoxColor": 3,
           "BlockedNodes": [],
           "InitCards": [
+            5,
+            5,
+            1,
+            1,
             2,
+            2
+          ],
+          "IsHidden": false,
+          "LockedTurn": 0,
+          "IsPaperBox": false,
+          "IsRainbowBox": false
+        },
+        {
+          "Id": "0_2.85_1.85",
+          "TypeId": 2,
+          "BoxColor": 4,
+          "BlockedNodes": [],
+          "InitCards": [
             3,
             3,
+            3,
+            5,
+            5,
+            5
+          ],
+          "IsHidden": false,
+          "LockedTurn": 0,
+          "IsPaperBox": false,
+          "IsRainbowBox": true
+        },
+        {
+          "Id": "0_-1.9_0.0",
+          "TypeId": 2,
+          "BoxColor": 5,
+          "BlockedNodes": [],
+          "InitCards": [
+            4,
+            4,
+            1,
+            1,
+            2,
+            2
+          ],
+          "IsHidden": false,
+          "LockedTurn": 0,
+          "IsPaperBox": false,
+          "IsRainbowBox": false
+        },
+        {
+          "Id": "0_1.9_0.0",
+          "TypeId": 2,
+          "BoxColor": 1,
+          "BlockedNodes": [],
+          "InitCards": [
+            2,
+            2,
+            2,
+            4,
+            4,
+            4
+          ],
+          "IsHidden": false,
+          "LockedTurn": 0,
+          "IsPaperBox": false,
+          "IsRainbowBox": false
+        },
+        {
+          "Id": "0_-2.85_-1.85",
+          "TypeId": 2,
+          "BoxColor": 2,
+          "BlockedNodes": [],
+          "InitCards": [
+            1,
+            1,
+            1,
             3,
             3,
             3
@@ -5357,89 +5400,17 @@ export const SAMPLE_LEVELS: SampleLevelPreset[] = [
           "IsRainbowBox": false
         },
         {
-          "Id": "0_2.85_1.85",
-          "TypeId": 2,
-          "BoxColor": 4,
-          "BlockedNodes": [],
-          "InitCards": [
-            1,
-            1,
-            1,
-            4,
-            4,
-            5
-          ],
-          "IsHidden": false,
-          "LockedTurn": 0,
-          "IsPaperBox": false,
-          "IsRainbowBox": true
-        },
-        {
-          "Id": "0_-1.9_0.0",
-          "TypeId": 2,
-          "BoxColor": 5,
-          "BlockedNodes": [],
-          "InitCards": [
-            1,
-            1,
-            2,
-            3,
-            3,
-            4
-          ],
-          "IsHidden": false,
-          "LockedTurn": 0,
-          "IsPaperBox": false,
-          "IsRainbowBox": false
-        },
-        {
-          "Id": "0_1.9_0.0",
-          "TypeId": 2,
-          "BoxColor": 1,
-          "BlockedNodes": [],
-          "InitCards": [
-            1,
-            1,
-            2,
-            3,
-            5,
-            5
-          ],
-          "IsHidden": false,
-          "LockedTurn": 0,
-          "IsPaperBox": false,
-          "IsRainbowBox": false
-        },
-        {
-          "Id": "0_-2.85_-1.85",
-          "TypeId": 2,
-          "BoxColor": 2,
-          "BlockedNodes": [],
-          "InitCards": [
-            2,
-            3,
-            4,
-            4,
-            5,
-            5
-          ],
-          "IsHidden": false,
-          "LockedTurn": 0,
-          "IsPaperBox": false,
-          "IsRainbowBox": false
-        },
-        {
           "Id": "0_-0.95_-1.85",
           "TypeId": 2,
           "BoxColor": 3,
           "BlockedNodes": [],
           "InitCards": [
-            1,
-            1,
-            1,
-            2,
-            3,
-            5
+            5,
+            5,
+            5,
+            4,
+            4,
+            4
           ],
           "IsHidden": false,
           "LockedTurn": 0,
@@ -5452,12 +5423,10 @@ export const SAMPLE_LEVELS: SampleLevelPreset[] = [
           "BoxColor": 4,
           "BlockedNodes": [],
           "InitCards": [
-            2,
-            3,
-            3,
             4,
             4,
-            5
+            4,
+            4
           ],
           "IsHidden": false,
           "LockedTurn": 0,
@@ -5469,14 +5438,7 @@ export const SAMPLE_LEVELS: SampleLevelPreset[] = [
           "TypeId": 2,
           "BoxColor": 5,
           "BlockedNodes": [],
-          "InitCards": [
-            1,
-            2,
-            2,
-            2,
-            3,
-            4
-          ],
+          "InitCards": [],
           "IsHidden": false,
           "LockedTurn": 0,
           "IsPaperBox": false,
@@ -5491,12 +5453,12 @@ export const SAMPLE_LEVELS: SampleLevelPreset[] = [
             "0_-1.9_0.0"
           ],
           "InitCards": [
-            2,
-            2,
             3,
-            4,
+            3,
             5,
-            5
+            5,
+            2,
+            4
           ],
           "IsHidden": false,
           "LockedTurn": 0,
@@ -5513,10 +5475,11 @@ export const SAMPLE_LEVELS: SampleLevelPreset[] = [
           ],
           "InitCards": [
             1,
-            2,
+            1,
             4,
             4,
-            4
+            3,
+            3
           ],
           "IsHidden": false,
           "LockedTurn": 0,
@@ -5532,11 +5495,12 @@ export const SAMPLE_LEVELS: SampleLevelPreset[] = [
             "0_1.9_0.0"
           ],
           "InitCards": [
+            4,
+            4,
+            5,
+            5,
             2,
-            2,
-            3,
-            3,
-            4
+            1
           ],
           "IsHidden": false,
           "LockedTurn": 0,
@@ -5552,11 +5516,12 @@ export const SAMPLE_LEVELS: SampleLevelPreset[] = [
             "0_-2.85_-1.85"
           ],
           "InitCards": [
+            3,
+            3,
+            3,
             2,
-            4,
-            4,
-            5,
-            5
+            2,
+            2
           ],
           "IsHidden": false,
           "LockedTurn": 0,
@@ -5575,8 +5540,9 @@ export const SAMPLE_LEVELS: SampleLevelPreset[] = [
             1,
             1,
             1,
-            2,
-            4
+            3,
+            3,
+            3
           ],
           "IsHidden": false,
           "LockedTurn": 0,
@@ -5592,11 +5558,12 @@ export const SAMPLE_LEVELS: SampleLevelPreset[] = [
             "0_2.85_-1.85"
           ],
           "InitCards": [
-            3,
-            3,
-            3,
-            4,
-            5
+            5,
+            5,
+            5,
+            2,
+            2,
+            2
           ],
           "IsHidden": false,
           "LockedTurn": 0,
@@ -5613,11 +5580,12 @@ export const SAMPLE_LEVELS: SampleLevelPreset[] = [
             "1_-2.85_-0.95"
           ],
           "InitCards": [
-            1,
-            1,
             2,
+            1,
+            1,
             3,
-            4
+            3,
+            5
           ],
           "IsHidden": false,
           "LockedTurn": 0,
@@ -5636,8 +5604,9 @@ export const SAMPLE_LEVELS: SampleLevelPreset[] = [
             1,
             1,
             1,
-            4,
-            5
+            2,
+            2,
+            2
           ],
           "IsHidden": false,
           "LockedTurn": 0,
@@ -5654,11 +5623,12 @@ export const SAMPLE_LEVELS: SampleLevelPreset[] = [
             "1_2.85_-0.95"
           ],
           "InitCards": [
+            1,
+            1,
+            1,
             2,
             2,
-            3,
-            3,
-            5
+            2
           ],
           "IsHidden": false,
           "LockedTurn": 0,
@@ -5677,10 +5647,10 @@ export const SAMPLE_LEVELS: SampleLevelPreset[] = [
             "2_0.0_0.0"
           ],
           "InitCards": [
-            2,
             3,
             3,
-            5
+            4,
+            4
           ],
           "IsHidden": false,
           "LockedTurn": 0,
@@ -5699,10 +5669,10 @@ export const SAMPLE_LEVELS: SampleLevelPreset[] = [
             "2_1.9_0.0"
           ],
           "InitCards": [
-            1,
-            1,
+            3,
+            3,
             2,
-            5
+            2
           ],
           "IsHidden": false,
           "LockedTurn": 0,
@@ -5730,44 +5700,44 @@ export const SAMPLE_LEVELS: SampleLevelPreset[] = [
         {
           "Id": "0_-1.15_1.05",
           "LayerId": 0,
-          "YRotation": 0.0,
+          "YRotation": 0,
           "XPosition": -1.15,
           "ZPosition": 1.05
         },
         {
           "Id": "0_1.15_1.05",
           "LayerId": 0,
-          "YRotation": 0.0,
+          "YRotation": 0,
           "XPosition": 1.15,
           "ZPosition": 1.05
         },
         {
           "Id": "0_-1.15_-1.05",
           "LayerId": 0,
-          "YRotation": 0.0,
+          "YRotation": 0,
           "XPosition": -1.15,
           "ZPosition": -1.05
         },
         {
           "Id": "0_1.15_-1.05",
           "LayerId": 0,
-          "YRotation": 0.0,
+          "YRotation": 0,
           "XPosition": 1.15,
           "ZPosition": -1.05
         },
         {
           "Id": "1_-1.15_0.0",
           "LayerId": 1,
-          "YRotation": 90.0,
+          "YRotation": 90,
           "XPosition": -1.15,
-          "ZPosition": 0.0
+          "ZPosition": 0
         },
         {
           "Id": "1_1.15_0.0",
           "LayerId": 1,
-          "YRotation": 90.0,
+          "YRotation": 90,
           "XPosition": 1.15,
-          "ZPosition": 0.0
+          "ZPosition": 0
         }
       ],
       "BoxNodes": [
@@ -5777,10 +5747,10 @@ export const SAMPLE_LEVELS: SampleLevelPreset[] = [
           "BoxColor": 1,
           "BlockedNodes": [],
           "InitCards": [
-            1,
-            1,
             2,
             2,
+            2,
+            3,
             3,
             3
           ],
@@ -5797,8 +5767,8 @@ export const SAMPLE_LEVELS: SampleLevelPreset[] = [
           "InitCards": [
             1,
             1,
-            2,
-            2,
+            1,
+            3,
             3,
             3
           ],
@@ -5816,9 +5786,9 @@ export const SAMPLE_LEVELS: SampleLevelPreset[] = [
             1,
             1,
             1,
-            1,
             2,
-            3
+            2,
+            2
           ],
           "IsHidden": false,
           "LockedTurn": 0,
@@ -5836,7 +5806,7 @@ export const SAMPLE_LEVELS: SampleLevelPreset[] = [
             1,
             2,
             2,
-            3
+            2
           ],
           "IsHidden": false,
           "LockedTurn": 0,
@@ -5852,7 +5822,7 @@ export const SAMPLE_LEVELS: SampleLevelPreset[] = [
             "0_-1.15_-1.05"
           ],
           "InitCards": [
-            1,
+            2,
             2,
             2,
             3,
@@ -5873,12 +5843,12 @@ export const SAMPLE_LEVELS: SampleLevelPreset[] = [
             "0_1.15_-1.05"
           ],
           "InitCards": [
-            2,
-            2,
-            2,
             3,
             3,
-            3
+            3,
+            1,
+            1,
+            1
           ],
           "IsHidden": false,
           "LockedTurn": 0,
@@ -5906,58 +5876,58 @@ export const SAMPLE_LEVELS: SampleLevelPreset[] = [
         {
           "Id": "0_0.0_0.0",
           "LayerId": 0,
-          "YRotation": 0.0,
-          "XPosition": 0.0,
-          "ZPosition": 0.0
+          "YRotation": 0,
+          "XPosition": 0,
+          "ZPosition": 0
         },
         {
           "Id": "0_0.0_1.85",
           "LayerId": 0,
-          "YRotation": 0.0,
-          "XPosition": 0.0,
+          "YRotation": 0,
+          "XPosition": 0,
           "ZPosition": 1.85
         },
         {
           "Id": "0_0.0_-1.85",
           "LayerId": 0,
-          "YRotation": 0.0,
-          "XPosition": 0.0,
+          "YRotation": 0,
+          "XPosition": 0,
           "ZPosition": -1.85
         },
         {
           "Id": "0_-1.85_0.0",
           "LayerId": 0,
-          "YRotation": 90.0,
+          "YRotation": 90,
           "XPosition": -1.85,
-          "ZPosition": 0.0
+          "ZPosition": 0
         },
         {
           "Id": "0_1.85_0.0",
           "LayerId": 0,
-          "YRotation": 90.0,
+          "YRotation": 90,
           "XPosition": 1.85,
-          "ZPosition": 0.0
+          "ZPosition": 0
         },
         {
           "Id": "1_-1.65_0.0",
           "LayerId": 1,
-          "YRotation": 0.0,
+          "YRotation": 0,
           "XPosition": -1.65,
-          "ZPosition": 0.0
+          "ZPosition": 0
         },
         {
           "Id": "1_1.65_0.0",
           "LayerId": 1,
-          "YRotation": 0.0,
+          "YRotation": 0,
           "XPosition": 1.65,
-          "ZPosition": 0.0
+          "ZPosition": 0
         },
         {
           "Id": "1_0.0_0.0",
           "LayerId": 1,
-          "YRotation": 90.0,
-          "XPosition": 0.0,
-          "ZPosition": 0.0
+          "YRotation": 90,
+          "XPosition": 0,
+          "ZPosition": 0
         }
       ],
       "BoxNodes": [
@@ -5967,10 +5937,10 @@ export const SAMPLE_LEVELS: SampleLevelPreset[] = [
           "BoxColor": 1,
           "BlockedNodes": [],
           "InitCards": [
-            1,
             2,
             2,
             2,
+            4,
             4,
             4
           ],
@@ -5985,11 +5955,11 @@ export const SAMPLE_LEVELS: SampleLevelPreset[] = [
           "BoxColor": 2,
           "BlockedNodes": [],
           "InitCards": [
-            1,
-            2,
-            2,
             3,
             3,
+            3,
+            4,
+            4,
             4
           ],
           "IsHidden": false,
@@ -6003,12 +5973,12 @@ export const SAMPLE_LEVELS: SampleLevelPreset[] = [
           "BoxColor": 3,
           "BlockedNodes": [],
           "InitCards": [
-            1,
-            2,
-            2,
             3,
-            4,
-            4
+            3,
+            3,
+            2,
+            2,
+            2
           ],
           "IsHidden": false,
           "LockedTurn": 0,
@@ -6023,10 +5993,10 @@ export const SAMPLE_LEVELS: SampleLevelPreset[] = [
           "InitCards": [
             1,
             1,
+            1,
             3,
             3,
-            4,
-            4
+            3
           ],
           "IsHidden": false,
           "LockedTurn": 0,
@@ -6044,7 +6014,7 @@ export const SAMPLE_LEVELS: SampleLevelPreset[] = [
             1,
             2,
             2,
-            3
+            2
           ],
           "IsHidden": false,
           "LockedTurn": 0,
@@ -6060,9 +6030,9 @@ export const SAMPLE_LEVELS: SampleLevelPreset[] = [
             "0_-1.85_0.0"
           ],
           "InitCards": [
-            3,
-            3,
-            3,
+            1,
+            1,
+            1,
             4,
             4,
             4
@@ -6084,9 +6054,9 @@ export const SAMPLE_LEVELS: SampleLevelPreset[] = [
             1,
             1,
             1,
-            2,
-            2,
-            2
+            4,
+            4,
+            4
           ],
           "IsHidden": false,
           "LockedTurn": 0,
@@ -6101,12 +6071,12 @@ export const SAMPLE_LEVELS: SampleLevelPreset[] = [
             "0_0.0_0.0"
           ],
           "InitCards": [
-            1,
             3,
             3,
             3,
-            4,
-            4
+            2,
+            2,
+            2
           ],
           "IsHidden": false,
           "LockedTurn": 0,
@@ -6134,86 +6104,86 @@ export const SAMPLE_LEVELS: SampleLevelPreset[] = [
         {
           "Id": "0_-1.15_1.95",
           "LayerId": 0,
-          "YRotation": 90.0,
+          "YRotation": 90,
           "XPosition": -1.15,
           "ZPosition": 1.95
         },
         {
           "Id": "0_1.15_1.95",
           "LayerId": 0,
-          "YRotation": 90.0,
+          "YRotation": 90,
           "XPosition": 1.15,
           "ZPosition": 1.95
         },
         {
           "Id": "0_-1.15_0.0",
           "LayerId": 0,
-          "YRotation": 90.0,
+          "YRotation": 90,
           "XPosition": -1.15,
-          "ZPosition": 0.0
+          "ZPosition": 0
         },
         {
           "Id": "0_1.15_0.0",
           "LayerId": 0,
-          "YRotation": 90.0,
+          "YRotation": 90,
           "XPosition": 1.15,
-          "ZPosition": 0.0
+          "ZPosition": 0
         },
         {
           "Id": "0_-1.15_-1.95",
           "LayerId": 0,
-          "YRotation": 90.0,
+          "YRotation": 90,
           "XPosition": -1.15,
           "ZPosition": -1.95
         },
         {
           "Id": "0_1.15_-1.95",
           "LayerId": 0,
-          "YRotation": 90.0,
+          "YRotation": 90,
           "XPosition": 1.15,
           "ZPosition": -1.95
         },
         {
           "Id": "1_-1.15_1.0",
           "LayerId": 1,
-          "YRotation": 0.0,
+          "YRotation": 0,
           "XPosition": -1.15,
-          "ZPosition": 1.0
+          "ZPosition": 1
         },
         {
           "Id": "1_1.15_1.0",
           "LayerId": 1,
-          "YRotation": 0.0,
+          "YRotation": 0,
           "XPosition": 1.15,
-          "ZPosition": 1.0
+          "ZPosition": 1
         },
         {
           "Id": "1_-1.15_-1.0",
           "LayerId": 1,
-          "YRotation": 0.0,
+          "YRotation": 0,
           "XPosition": -1.15,
-          "ZPosition": -1.0
+          "ZPosition": -1
         },
         {
           "Id": "1_1.15_-1.0",
           "LayerId": 1,
-          "YRotation": 0.0,
+          "YRotation": 0,
           "XPosition": 1.15,
-          "ZPosition": -1.0
+          "ZPosition": -1
         },
         {
           "Id": "2_0.0_1.0",
           "LayerId": 2,
-          "YRotation": 0.0,
-          "XPosition": 0.0,
-          "ZPosition": 1.0
+          "YRotation": 0,
+          "XPosition": 0,
+          "ZPosition": 1
         },
         {
           "Id": "2_0.0_-1.0",
           "LayerId": 2,
-          "YRotation": 0.0,
-          "XPosition": 0.0,
-          "ZPosition": -1.0
+          "YRotation": 0,
+          "XPosition": 0,
+          "ZPosition": -1
         }
       ],
       "BoxNodes": [
@@ -6223,12 +6193,12 @@ export const SAMPLE_LEVELS: SampleLevelPreset[] = [
           "BoxColor": 1,
           "BlockedNodes": [],
           "InitCards": [
-            1,
-            1,
+            5,
+            5,
+            5,
             3,
             3,
-            4,
-            4
+            3
           ],
           "IsHidden": false,
           "LockedTurn": 0,
@@ -6241,12 +6211,12 @@ export const SAMPLE_LEVELS: SampleLevelPreset[] = [
           "BoxColor": 2,
           "BlockedNodes": [],
           "InitCards": [
-            2,
-            2,
+            1,
+            1,
+            1,
             3,
             3,
-            3,
-            4
+            3
           ],
           "IsHidden": false,
           "LockedTurn": 0,
@@ -6259,11 +6229,12 @@ export const SAMPLE_LEVELS: SampleLevelPreset[] = [
           "BoxColor": 3,
           "BlockedNodes": [],
           "InitCards": [
-            2,
-            2,
-            2,
-            2,
-            3
+            1,
+            1,
+            1,
+            4,
+            4,
+            4
           ],
           "IsHidden": false,
           "LockedTurn": 0,
@@ -6276,9 +6247,10 @@ export const SAMPLE_LEVELS: SampleLevelPreset[] = [
           "BoxColor": 4,
           "BlockedNodes": [],
           "InitCards": [
-            1,
             4,
             4,
+            2,
+            2,
             5,
             5
           ],
@@ -6293,10 +6265,9 @@ export const SAMPLE_LEVELS: SampleLevelPreset[] = [
           "BoxColor": 5,
           "BlockedNodes": [],
           "InitCards": [
+            5,
+            5,
             1,
-            1,
-            2,
-            2,
             3
           ],
           "IsHidden": false,
@@ -6309,13 +6280,7 @@ export const SAMPLE_LEVELS: SampleLevelPreset[] = [
           "TypeId": 2,
           "BoxColor": 1,
           "BlockedNodes": [],
-          "InitCards": [
-            2,
-            3,
-            5,
-            5,
-            5
-          ],
+          "InitCards": [],
           "IsHidden": false,
           "LockedTurn": 0,
           "IsPaperBox": false,
@@ -6334,7 +6299,8 @@ export const SAMPLE_LEVELS: SampleLevelPreset[] = [
             1,
             1,
             4,
-            5
+            4,
+            4
           ],
           "IsHidden": false,
           "LockedTurn": 0,
@@ -6350,11 +6316,12 @@ export const SAMPLE_LEVELS: SampleLevelPreset[] = [
             "0_1.15_0.0"
           ],
           "InitCards": [
-            1,
+            5,
+            5,
+            5,
             2,
             2,
-            4,
-            4
+            2
           ],
           "IsHidden": false,
           "LockedTurn": 0,
@@ -6370,11 +6337,12 @@ export const SAMPLE_LEVELS: SampleLevelPreset[] = [
             "0_-1.15_-1.95"
           ],
           "InitCards": [
+            3,
+            3,
+            3,
             2,
-            4,
-            5,
-            5,
-            5
+            2,
+            2
           ],
           "IsHidden": false,
           "LockedTurn": 0,
@@ -6391,10 +6359,11 @@ export const SAMPLE_LEVELS: SampleLevelPreset[] = [
           ],
           "InitCards": [
             1,
-            3,
-            3,
-            3,
-            4
+            1,
+            4,
+            4,
+            2,
+            2
           ],
           "IsHidden": false,
           "LockedTurn": 0,
@@ -6414,10 +6383,10 @@ export const SAMPLE_LEVELS: SampleLevelPreset[] = [
             "1_1.15_1.0"
           ],
           "InitCards": [
-            1,
-            4,
-            5,
-            5
+            2,
+            2,
+            3,
+            3
           ],
           "IsHidden": false,
           "LockedTurn": 0,
@@ -6437,10 +6406,10 @@ export const SAMPLE_LEVELS: SampleLevelPreset[] = [
             "1_1.15_-1.0"
           ],
           "InitCards": [
-            1,
-            3,
+            5,
+            5,
             4,
-            5
+            4
           ],
           "IsHidden": false,
           "LockedTurn": 0,
@@ -6468,100 +6437,100 @@ export const SAMPLE_LEVELS: SampleLevelPreset[] = [
         {
           "Id": "0_0.0_0.0",
           "LayerId": 0,
-          "YRotation": 0.0,
-          "XPosition": 0.0,
-          "ZPosition": 0.0
+          "YRotation": 0,
+          "XPosition": 0,
+          "ZPosition": 0
         },
         {
           "Id": "0_0.0_1.95",
           "LayerId": 0,
-          "YRotation": 0.0,
-          "XPosition": 0.0,
+          "YRotation": 0,
+          "XPosition": 0,
           "ZPosition": 1.95
         },
         {
           "Id": "0_0.0_-1.95",
           "LayerId": 0,
-          "YRotation": 0.0,
-          "XPosition": 0.0,
+          "YRotation": 0,
+          "XPosition": 0,
           "ZPosition": -1.95
         },
         {
           "Id": "0_-1.95_0.0",
           "LayerId": 0,
-          "YRotation": 90.0,
+          "YRotation": 90,
           "XPosition": -1.95,
-          "ZPosition": 0.0
+          "ZPosition": 0
         },
         {
           "Id": "0_1.95_0.0",
           "LayerId": 0,
-          "YRotation": 90.0,
+          "YRotation": 90,
           "XPosition": 1.95,
-          "ZPosition": 0.0
+          "ZPosition": 0
         },
         {
           "Id": "0_-1.95_1.95",
           "LayerId": 0,
-          "YRotation": 90.0,
+          "YRotation": 90,
           "XPosition": -1.95,
           "ZPosition": 1.95
         },
         {
           "Id": "0_1.95_-1.95",
           "LayerId": 0,
-          "YRotation": 90.0,
+          "YRotation": 90,
           "XPosition": 1.95,
           "ZPosition": -1.95
         },
         {
           "Id": "1_-1.0_1.0",
           "LayerId": 1,
-          "YRotation": 0.0,
-          "XPosition": -1.0,
-          "ZPosition": 1.0
+          "YRotation": 0,
+          "XPosition": -1,
+          "ZPosition": 1
         },
         {
           "Id": "1_1.0_-1.0",
           "LayerId": 1,
-          "YRotation": 0.0,
-          "XPosition": 1.0,
-          "ZPosition": -1.0
+          "YRotation": 0,
+          "XPosition": 1,
+          "ZPosition": -1
         },
         {
           "Id": "1_1.0_1.0",
           "LayerId": 1,
-          "YRotation": 90.0,
-          "XPosition": 1.0,
-          "ZPosition": 1.0
+          "YRotation": 90,
+          "XPosition": 1,
+          "ZPosition": 1
         },
         {
           "Id": "1_-1.0_-1.0",
           "LayerId": 1,
-          "YRotation": 90.0,
-          "XPosition": -1.0,
-          "ZPosition": -1.0
+          "YRotation": 90,
+          "XPosition": -1,
+          "ZPosition": -1
         },
         {
           "Id": "2_0.0_0.8",
           "LayerId": 2,
-          "YRotation": 0.0,
-          "XPosition": 0.0,
+          "YRotation": 0,
+          "XPosition": 0,
           "ZPosition": 0.8
         },
         {
           "Id": "2_0.0_-0.8",
           "LayerId": 2,
-          "YRotation": 0.0,
-          "XPosition": 0.0,
+          "YRotation": 0,
+          "XPosition": 0,
           "ZPosition": -0.8
         },
         {
           "Id": "3_0.0_0.0",
           "LayerId": 3,
-          "YRotation": 90.0,
-          "XPosition": 0.0,
-          "ZPosition": 0.0
+          "YRotation": 90,
+          "XPosition": 0,
+          "ZPosition": 0
         }
       ],
       "BoxNodes": [
@@ -6571,12 +6540,12 @@ export const SAMPLE_LEVELS: SampleLevelPreset[] = [
           "BoxColor": 1,
           "BlockedNodes": [],
           "InitCards": [
-            2,
-            3,
-            3,
-            3,
             4,
-            5
+            4,
+            4,
+            3,
+            3,
+            3
           ],
           "IsHidden": false,
           "LockedTurn": 0,
@@ -6589,12 +6558,12 @@ export const SAMPLE_LEVELS: SampleLevelPreset[] = [
           "BoxColor": 2,
           "BlockedNodes": [],
           "InitCards": [
-            1,
-            1,
-            2,
-            3,
-            3,
-            3
+            4,
+            4,
+            4,
+            5,
+            5,
+            5
           ],
           "IsHidden": false,
           "LockedTurn": 0,
@@ -6607,12 +6576,12 @@ export const SAMPLE_LEVELS: SampleLevelPreset[] = [
           "BoxColor": 3,
           "BlockedNodes": [],
           "InitCards": [
-            3,
-            3,
-            4,
-            4,
-            4,
-            5
+            1,
+            1,
+            1,
+            2,
+            2,
+            2
           ],
           "IsHidden": false,
           "LockedTurn": 0,
@@ -6625,12 +6594,12 @@ export const SAMPLE_LEVELS: SampleLevelPreset[] = [
           "BoxColor": 4,
           "BlockedNodes": [],
           "InitCards": [
-            1,
-            1,
-            1,
-            2,
             3,
-            5
+            3,
+            5,
+            5,
+            1,
+            1
           ],
           "IsHidden": false,
           "LockedTurn": 0,
@@ -6643,11 +6612,11 @@ export const SAMPLE_LEVELS: SampleLevelPreset[] = [
           "BoxColor": 5,
           "BlockedNodes": [],
           "InitCards": [
-            1,
-            1,
-            2,
-            2,
-            2,
+            4,
+            4,
+            4,
+            4,
+            4,
             4
           ],
           "IsHidden": false,
@@ -6661,12 +6630,12 @@ export const SAMPLE_LEVELS: SampleLevelPreset[] = [
           "BoxColor": 1,
           "BlockedNodes": [],
           "InitCards": [
-            1,
-            1,
-            1,
+            3,
+            3,
+            5,
+            5,
             2,
-            4,
-            5
+            2
           ],
           "IsHidden": false,
           "LockedTurn": 0,
@@ -6679,12 +6648,8 @@ export const SAMPLE_LEVELS: SampleLevelPreset[] = [
           "BoxColor": 2,
           "BlockedNodes": [],
           "InitCards": [
-            2,
-            3,
-            3,
-            3,
-            4,
-            5
+            1,
+            1
           ],
           "IsHidden": false,
           "LockedTurn": 0,
@@ -6702,10 +6667,10 @@ export const SAMPLE_LEVELS: SampleLevelPreset[] = [
             "0_-1.95_1.95"
           ],
           "InitCards": [
+            2,
+            2,
             1,
-            2,
-            2,
-            3,
+            1,
             5,
             5
           ],
@@ -6725,12 +6690,12 @@ export const SAMPLE_LEVELS: SampleLevelPreset[] = [
             "0_1.95_-1.95"
           ],
           "InitCards": [
-            1,
-            1,
-            2,
-            2,
             3,
-            3
+            3,
+            3,
+            1,
+            1,
+            1
           ],
           "IsHidden": false,
           "LockedTurn": 0,
@@ -6749,9 +6714,10 @@ export const SAMPLE_LEVELS: SampleLevelPreset[] = [
           "InitCards": [
             2,
             2,
-            4,
-            5,
-            5
+            2,
+            3,
+            3,
+            3
           ],
           "IsHidden": false,
           "LockedTurn": 0,
@@ -6768,11 +6734,12 @@ export const SAMPLE_LEVELS: SampleLevelPreset[] = [
             "0_-1.95_0.0"
           ],
           "InitCards": [
-            1,
-            1,
-            1,
-            3,
-            4
+            5,
+            5,
+            5,
+            2,
+            2,
+            2
           ],
           "IsHidden": false,
           "LockedTurn": 0,
@@ -6790,11 +6757,12 @@ export const SAMPLE_LEVELS: SampleLevelPreset[] = [
             "1_1.0_1.0"
           ],
           "InitCards": [
-            2,
-            2,
-            2,
+            1,
+            1,
+            1,
             3,
-            4
+            3,
+            3
           ],
           "IsHidden": false,
           "LockedTurn": 0,
@@ -6812,11 +6780,12 @@ export const SAMPLE_LEVELS: SampleLevelPreset[] = [
             "1_-1.0_-1.0"
           ],
           "InitCards": [
+            2,
+            2,
+            2,
             1,
             1,
-            4,
-            5,
-            5
+            1
           ],
           "IsHidden": false,
           "LockedTurn": 0,
@@ -6837,10 +6806,10 @@ export const SAMPLE_LEVELS: SampleLevelPreset[] = [
             "2_0.0_-0.8"
           ],
           "InitCards": [
-            2,
             3,
-            4,
-            5
+            3,
+            2,
+            2
           ],
           "IsHidden": false,
           "LockedTurn": 0,
@@ -6868,100 +6837,100 @@ export const SAMPLE_LEVELS: SampleLevelPreset[] = [
         {
           "Id": "0_-1.45_1.75",
           "LayerId": 0,
-          "YRotation": 0.0,
+          "YRotation": 0,
           "XPosition": -1.45,
           "ZPosition": 1.75
         },
         {
           "Id": "0_1.45_1.75",
           "LayerId": 0,
-          "YRotation": 0.0,
+          "YRotation": 0,
           "XPosition": 1.45,
           "ZPosition": 1.75
         },
         {
           "Id": "0_-1.45_-1.75",
           "LayerId": 0,
-          "YRotation": 0.0,
+          "YRotation": 0,
           "XPosition": -1.45,
           "ZPosition": -1.75
         },
         {
           "Id": "0_1.45_-1.75",
           "LayerId": 0,
-          "YRotation": 0.0,
+          "YRotation": 0,
           "XPosition": 1.45,
           "ZPosition": -1.75
         },
         {
           "Id": "0_-1.95_0.0",
           "LayerId": 0,
-          "YRotation": 90.0,
+          "YRotation": 90,
           "XPosition": -1.95,
-          "ZPosition": 0.0
+          "ZPosition": 0
         },
         {
           "Id": "0_1.95_0.0",
           "LayerId": 0,
-          "YRotation": 90.0,
+          "YRotation": 90,
           "XPosition": 1.95,
-          "ZPosition": 0.0
+          "ZPosition": 0
         },
         {
           "Id": "0_0.0_0.0",
           "LayerId": 0,
-          "YRotation": 0.0,
-          "XPosition": 0.0,
-          "ZPosition": 0.0
+          "YRotation": 0,
+          "XPosition": 0,
+          "ZPosition": 0
         },
         {
           "Id": "1_-1.15_0.95",
           "LayerId": 1,
-          "YRotation": 90.0,
+          "YRotation": 90,
           "XPosition": -1.15,
           "ZPosition": 0.95
         },
         {
           "Id": "1_1.15_0.95",
           "LayerId": 1,
-          "YRotation": 90.0,
+          "YRotation": 90,
           "XPosition": 1.15,
           "ZPosition": 0.95
         },
         {
           "Id": "1_-1.15_-0.95",
           "LayerId": 1,
-          "YRotation": 90.0,
+          "YRotation": 90,
           "XPosition": -1.15,
           "ZPosition": -0.95
         },
         {
           "Id": "1_1.15_-0.95",
           "LayerId": 1,
-          "YRotation": 90.0,
+          "YRotation": 90,
           "XPosition": 1.15,
           "ZPosition": -0.95
         },
         {
           "Id": "2_0.0_0.8",
           "LayerId": 2,
-          "YRotation": 0.0,
-          "XPosition": 0.0,
+          "YRotation": 0,
+          "XPosition": 0,
           "ZPosition": 0.8
         },
         {
           "Id": "2_0.0_-0.8",
           "LayerId": 2,
-          "YRotation": 0.0,
-          "XPosition": 0.0,
+          "YRotation": 0,
+          "XPosition": 0,
           "ZPosition": -0.8
         },
         {
           "Id": "3_0.0_0.0",
           "LayerId": 3,
-          "YRotation": 90.0,
-          "XPosition": 0.0,
-          "ZPosition": 0.0
+          "YRotation": 90,
+          "XPosition": 0,
+          "ZPosition": 0
         }
       ],
       "BoxNodes": [
@@ -6971,12 +6940,12 @@ export const SAMPLE_LEVELS: SampleLevelPreset[] = [
           "BoxColor": 1,
           "BlockedNodes": [],
           "InitCards": [
-            1,
-            1,
-            1,
-            3,
+            5,
+            5,
+            5,
             4,
-            5
+            4,
+            4
           ],
           "IsHidden": false,
           "LockedTurn": 0,
@@ -6991,10 +6960,10 @@ export const SAMPLE_LEVELS: SampleLevelPreset[] = [
           "InitCards": [
             1,
             1,
-            2,
-            2,
+            1,
             3,
-            4
+            3,
+            3
           ],
           "IsHidden": false,
           "LockedTurn": 0,
@@ -7007,12 +6976,12 @@ export const SAMPLE_LEVELS: SampleLevelPreset[] = [
           "BoxColor": 3,
           "BlockedNodes": [],
           "InitCards": [
-            1,
-            1,
-            3,
-            4,
             5,
-            5
+            5,
+            2,
+            2,
+            4,
+            4
           ],
           "IsHidden": false,
           "LockedTurn": 0,
@@ -7025,12 +6994,12 @@ export const SAMPLE_LEVELS: SampleLevelPreset[] = [
           "BoxColor": 4,
           "BlockedNodes": [],
           "InitCards": [
-            2,
-            2,
-            2,
-            4,
-            5,
-            5
+            1,
+            1,
+            1,
+            3,
+            3,
+            3
           ],
           "IsHidden": false,
           "LockedTurn": 0,
@@ -7043,12 +7012,12 @@ export const SAMPLE_LEVELS: SampleLevelPreset[] = [
           "BoxColor": 5,
           "BlockedNodes": [],
           "InitCards": [
+            1,
+            1,
             3,
             3,
-            3,
-            4,
-            4,
-            4
+            2,
+            2
           ],
           "IsHidden": false,
           "LockedTurn": 0,
@@ -7061,12 +7030,12 @@ export const SAMPLE_LEVELS: SampleLevelPreset[] = [
           "BoxColor": 1,
           "BlockedNodes": [],
           "InitCards": [
-            1,
-            2,
-            2,
             5,
             5,
-            5
+            5,
+            5,
+            3,
+            3
           ],
           "IsHidden": false,
           "LockedTurn": 0,
@@ -7080,11 +7049,7 @@ export const SAMPLE_LEVELS: SampleLevelPreset[] = [
           "BlockedNodes": [],
           "InitCards": [
             1,
-            2,
-            3,
-            3,
-            5,
-            5
+            4
           ],
           "IsHidden": false,
           "LockedTurn": 0,
@@ -7102,11 +7067,11 @@ export const SAMPLE_LEVELS: SampleLevelPreset[] = [
           ],
           "InitCards": [
             1,
-            2,
-            3,
-            3,
-            3,
-            5
+            1,
+            1,
+            4,
+            4,
+            4
           ],
           "IsHidden": false,
           "LockedTurn": 0,
@@ -7124,11 +7089,11 @@ export const SAMPLE_LEVELS: SampleLevelPreset[] = [
           ],
           "InitCards": [
             1,
+            1,
+            1,
             2,
             2,
-            2,
-            3,
-            3
+            2
           ],
           "IsHidden": false,
           "LockedTurn": 0,
@@ -7149,7 +7114,8 @@ export const SAMPLE_LEVELS: SampleLevelPreset[] = [
             1,
             1,
             2,
-            3
+            2,
+            2
           ],
           "IsHidden": false,
           "LockedTurn": 0,
@@ -7166,11 +7132,12 @@ export const SAMPLE_LEVELS: SampleLevelPreset[] = [
             "0_0.0_0.0"
           ],
           "InitCards": [
-            1,
-            1,
+            3,
+            3,
+            3,
             2,
             2,
-            3
+            2
           ],
           "IsHidden": false,
           "LockedTurn": 0,
@@ -7189,9 +7156,10 @@ export const SAMPLE_LEVELS: SampleLevelPreset[] = [
             "1_1.15_0.95"
           ],
           "InitCards": [
-            2,
-            2,
-            2,
+            3,
+            3,
+            3,
+            4,
             4,
             4
           ],
@@ -7212,11 +7180,12 @@ export const SAMPLE_LEVELS: SampleLevelPreset[] = [
             "1_1.15_-0.95"
           ],
           "InitCards": [
-            1,
-            1,
-            3,
-            3,
-            4
+            2,
+            2,
+            2,
+            5,
+            5,
+            5
           ],
           "IsHidden": false,
           "LockedTurn": 0,
@@ -7237,10 +7206,10 @@ export const SAMPLE_LEVELS: SampleLevelPreset[] = [
             "2_0.0_-0.8"
           ],
           "InitCards": [
+            2,
+            2,
             3,
-            4,
-            4,
-            5
+            3
           ],
           "IsHidden": false,
           "LockedTurn": 0,
@@ -7268,107 +7237,107 @@ export const SAMPLE_LEVELS: SampleLevelPreset[] = [
         {
           "Id": "0_-1.05_2.45",
           "LayerId": 0,
-          "YRotation": 0.0,
+          "YRotation": 0,
           "XPosition": -1.05,
           "ZPosition": 2.45
         },
         {
           "Id": "0_1.05_2.45",
           "LayerId": 0,
-          "YRotation": 0.0,
+          "YRotation": 0,
           "XPosition": 1.05,
           "ZPosition": 2.45
         },
         {
           "Id": "0_-1.05_-2.45",
           "LayerId": 0,
-          "YRotation": 0.0,
+          "YRotation": 0,
           "XPosition": -1.05,
           "ZPosition": -2.45
         },
         {
           "Id": "0_1.05_-2.45",
           "LayerId": 0,
-          "YRotation": 0.0,
+          "YRotation": 0,
           "XPosition": 1.05,
           "ZPosition": -2.45
         },
         {
           "Id": "0_-1.95_0.95",
           "LayerId": 0,
-          "YRotation": 90.0,
+          "YRotation": 90,
           "XPosition": -1.95,
           "ZPosition": 0.95
         },
         {
           "Id": "0_-1.95_-0.95",
           "LayerId": 0,
-          "YRotation": 90.0,
+          "YRotation": 90,
           "XPosition": -1.95,
           "ZPosition": -0.95
         },
         {
           "Id": "0_1.95_0.95",
           "LayerId": 0,
-          "YRotation": 90.0,
+          "YRotation": 90,
           "XPosition": 1.95,
           "ZPosition": 0.95
         },
         {
           "Id": "0_1.95_-0.95",
           "LayerId": 0,
-          "YRotation": 90.0,
+          "YRotation": 90,
           "XPosition": 1.95,
           "ZPosition": -0.95
         },
         {
           "Id": "1_-1.15_1.30",
           "LayerId": 1,
-          "YRotation": 90.0,
+          "YRotation": 90,
           "XPosition": -1.15,
           "ZPosition": 1.3
         },
         {
           "Id": "1_1.15_1.30",
           "LayerId": 1,
-          "YRotation": 90.0,
+          "YRotation": 90,
           "XPosition": 1.15,
           "ZPosition": 1.3
         },
         {
           "Id": "1_-1.15_-1.30",
           "LayerId": 1,
-          "YRotation": 90.0,
+          "YRotation": 90,
           "XPosition": -1.15,
           "ZPosition": -1.3
         },
         {
           "Id": "1_1.15_-1.30",
           "LayerId": 1,
-          "YRotation": 90.0,
+          "YRotation": 90,
           "XPosition": 1.15,
           "ZPosition": -1.3
         },
         {
           "Id": "2_0.0_1.15",
           "LayerId": 2,
-          "YRotation": 0.0,
-          "XPosition": 0.0,
+          "YRotation": 0,
+          "XPosition": 0,
           "ZPosition": 1.15
         },
         {
           "Id": "2_0.0_-1.15",
           "LayerId": 2,
-          "YRotation": 0.0,
-          "XPosition": 0.0,
+          "YRotation": 0,
+          "XPosition": 0,
           "ZPosition": -1.15
         },
         {
           "Id": "3_0.0_0.0",
           "LayerId": 3,
-          "YRotation": 90.0,
-          "XPosition": 0.0,
-          "ZPosition": 0.0
+          "YRotation": 90,
+          "XPosition": 0,
+          "ZPosition": 0
         }
       ],
       "BoxNodes": [
@@ -7378,11 +7347,12 @@ export const SAMPLE_LEVELS: SampleLevelPreset[] = [
           "BoxColor": 1,
           "BlockedNodes": [],
           "InitCards": [
-            1,
-            1,
-            2,
+            5,
+            5,
+            5,
             4,
-            5
+            4,
+            4
           ],
           "IsHidden": false,
           "LockedTurn": 0,
@@ -7395,11 +7365,12 @@ export const SAMPLE_LEVELS: SampleLevelPreset[] = [
           "BoxColor": 2,
           "BlockedNodes": [],
           "InitCards": [
+            5,
+            5,
+            5,
             1,
             1,
-            1,
-            4,
-            5
+            1
           ],
           "IsHidden": false,
           "LockedTurn": 0,
@@ -7412,11 +7383,12 @@ export const SAMPLE_LEVELS: SampleLevelPreset[] = [
           "BoxColor": 3,
           "BlockedNodes": [],
           "InitCards": [
-            1,
-            1,
             2,
-            3,
-            5
+            2,
+            2,
+            1,
+            1,
+            1
           ],
           "IsHidden": false,
           "LockedTurn": 0,
@@ -7432,8 +7404,9 @@ export const SAMPLE_LEVELS: SampleLevelPreset[] = [
             1,
             1,
             1,
-            2,
-            2
+            3,
+            3,
+            3
           ],
           "IsHidden": false,
           "LockedTurn": 0,
@@ -7446,11 +7419,12 @@ export const SAMPLE_LEVELS: SampleLevelPreset[] = [
           "BoxColor": 5,
           "BlockedNodes": [],
           "InitCards": [
-            1,
-            1,
-            2,
-            3,
-            3
+            5,
+            5,
+            5,
+            4,
+            4,
+            4
           ],
           "IsHidden": false,
           "LockedTurn": 0,
@@ -7464,11 +7438,7 @@ export const SAMPLE_LEVELS: SampleLevelPreset[] = [
           "BlockedNodes": [],
           "InitCards": [
             2,
-            4,
-            4,
-            4,
-            5,
-            5
+            3
           ],
           "IsHidden": false,
           "LockedTurn": 0,
@@ -7480,13 +7450,7 @@ export const SAMPLE_LEVELS: SampleLevelPreset[] = [
           "TypeId": 2,
           "BoxColor": 1,
           "BlockedNodes": [],
-          "InitCards": [
-            2,
-            2,
-            3,
-            4,
-            4
-          ],
+          "InitCards": [],
           "IsHidden": false,
           "LockedTurn": 0,
           "IsPaperBox": false,
@@ -7497,13 +7461,7 @@ export const SAMPLE_LEVELS: SampleLevelPreset[] = [
           "TypeId": 2,
           "BoxColor": 2,
           "BlockedNodes": [],
-          "InitCards": [
-            2,
-            3,
-            4,
-            4,
-            4
-          ],
+          "InitCards": [],
           "IsHidden": false,
           "LockedTurn": 0,
           "IsPaperBox": false,
@@ -7518,11 +7476,12 @@ export const SAMPLE_LEVELS: SampleLevelPreset[] = [
             "0_-1.95_0.95"
           ],
           "InitCards": [
+            2,
+            2,
+            2,
             1,
-            2,
-            2,
-            2,
-            5
+            1,
+            1
           ],
           "IsHidden": false,
           "LockedTurn": 0,
@@ -7539,9 +7498,11 @@ export const SAMPLE_LEVELS: SampleLevelPreset[] = [
           ],
           "InitCards": [
             1,
+            1,
+            1,
             3,
             3,
-            5
+            3
           ],
           "IsHidden": false,
           "LockedTurn": 0,
@@ -7557,10 +7518,12 @@ export const SAMPLE_LEVELS: SampleLevelPreset[] = [
             "0_-1.95_-0.95"
           ],
           "InitCards": [
-            1,
-            1,
-            3,
-            5
+            2,
+            2,
+            2,
+            4,
+            4,
+            4
           ],
           "IsHidden": false,
           "LockedTurn": 0,
@@ -7580,8 +7543,8 @@ export const SAMPLE_LEVELS: SampleLevelPreset[] = [
             2,
             2,
             3,
-            4,
-            5
+            3,
+            3
           ],
           "IsHidden": false,
           "LockedTurn": 0,
@@ -7597,10 +7560,12 @@ export const SAMPLE_LEVELS: SampleLevelPreset[] = [
             "1_1.15_1.30"
           ],
           "InitCards": [
-            1,
-            1,
             2,
-            5
+            2,
+            2,
+            4,
+            4,
+            4
           ],
           "IsHidden": false,
           "LockedTurn": 0,
@@ -7616,10 +7581,12 @@ export const SAMPLE_LEVELS: SampleLevelPreset[] = [
             "1_1.15_-1.30"
           ],
           "InitCards": [
-            2,
-            3,
-            3,
-            4
+            1,
+            1,
+            1,
+            5,
+            5,
+            5
           ],
           "IsHidden": false,
           "LockedTurn": 0,
@@ -7639,10 +7606,10 @@ export const SAMPLE_LEVELS: SampleLevelPreset[] = [
             "2_0.0_-1.15"
           ],
           "InitCards": [
-            2,
             3,
-            5,
-            5
+            3,
+            2,
+            2
           ],
           "IsHidden": false,
           "LockedTurn": 0,
@@ -7670,114 +7637,114 @@ export const SAMPLE_LEVELS: SampleLevelPreset[] = [
         {
           "Id": "0_-2.0_1.95",
           "LayerId": 0,
-          "YRotation": 0.0,
-          "XPosition": -2.0,
+          "YRotation": 0,
+          "XPosition": -2,
           "ZPosition": 1.95
         },
         {
           "Id": "0_0.0_1.95",
           "LayerId": 0,
-          "YRotation": 0.0,
-          "XPosition": 0.0,
+          "YRotation": 0,
+          "XPosition": 0,
           "ZPosition": 1.95
         },
         {
           "Id": "0_2.0_1.95",
           "LayerId": 0,
-          "YRotation": 0.0,
-          "XPosition": 2.0,
+          "YRotation": 0,
+          "XPosition": 2,
           "ZPosition": 1.95
         },
         {
           "Id": "0_-1.25_0.0",
           "LayerId": 0,
-          "YRotation": 0.0,
+          "YRotation": 0,
           "XPosition": -1.25,
-          "ZPosition": 0.0
+          "ZPosition": 0
         },
         {
           "Id": "0_1.25_0.0",
           "LayerId": 0,
-          "YRotation": 0.0,
+          "YRotation": 0,
           "XPosition": 1.25,
-          "ZPosition": 0.0
+          "ZPosition": 0
         },
         {
           "Id": "0_-2.0_-1.95",
           "LayerId": 0,
-          "YRotation": 0.0,
-          "XPosition": -2.0,
+          "YRotation": 0,
+          "XPosition": -2,
           "ZPosition": -1.95
         },
         {
           "Id": "0_0.0_-1.95",
           "LayerId": 0,
-          "YRotation": 0.0,
-          "XPosition": 0.0,
+          "YRotation": 0,
+          "XPosition": 0,
           "ZPosition": -1.95
         },
         {
           "Id": "0_2.0_-1.95",
           "LayerId": 0,
-          "YRotation": 0.0,
-          "XPosition": 2.0,
+          "YRotation": 0,
+          "XPosition": 2,
           "ZPosition": -1.95
         },
         {
           "Id": "1_-1.55_1.0",
           "LayerId": 1,
-          "YRotation": 90.0,
+          "YRotation": 90,
           "XPosition": -1.55,
-          "ZPosition": 1.0
+          "ZPosition": 1
         },
         {
           "Id": "1_1.55_1.0",
           "LayerId": 1,
-          "YRotation": 90.0,
+          "YRotation": 90,
           "XPosition": 1.55,
-          "ZPosition": 1.0
+          "ZPosition": 1
         },
         {
           "Id": "1_-1.55_-1.0",
           "LayerId": 1,
-          "YRotation": 90.0,
+          "YRotation": 90,
           "XPosition": -1.55,
-          "ZPosition": -1.0
+          "ZPosition": -1
         },
         {
           "Id": "1_1.55_-1.0",
           "LayerId": 1,
-          "YRotation": 90.0,
+          "YRotation": 90,
           "XPosition": 1.55,
-          "ZPosition": -1.0
+          "ZPosition": -1
         },
         {
           "Id": "1_0.0_0.0",
           "LayerId": 1,
-          "YRotation": 90.0,
-          "XPosition": 0.0,
-          "ZPosition": 0.0
+          "YRotation": 90,
+          "XPosition": 0,
+          "ZPosition": 0
         },
         {
           "Id": "2_-1.0_0.0",
           "LayerId": 2,
-          "YRotation": 0.0,
-          "XPosition": -1.0,
-          "ZPosition": 0.0
+          "YRotation": 0,
+          "XPosition": -1,
+          "ZPosition": 0
         },
         {
           "Id": "2_1.0_0.0",
           "LayerId": 2,
-          "YRotation": 0.0,
-          "XPosition": 1.0,
-          "ZPosition": 0.0
+          "YRotation": 0,
+          "XPosition": 1,
+          "ZPosition": 0
         },
         {
           "Id": "3_0.0_0.0",
           "LayerId": 3,
-          "YRotation": 90.0,
-          "XPosition": 0.0,
-          "ZPosition": 0.0
+          "YRotation": 90,
+          "XPosition": 0,
+          "ZPosition": 0
         }
       ],
       "BoxNodes": [
@@ -7787,11 +7754,11 @@ export const SAMPLE_LEVELS: SampleLevelPreset[] = [
           "BoxColor": 1,
           "BlockedNodes": [],
           "InitCards": [
-            2,
-            2,
-            2,
-            3,
-            3,
+            5,
+            5,
+            5,
+            4,
+            4,
             4
           ],
           "IsHidden": false,
@@ -7806,9 +7773,9 @@ export const SAMPLE_LEVELS: SampleLevelPreset[] = [
           "BlockedNodes": [],
           "InitCards": [
             1,
-            2,
-            2,
-            4,
+            1,
+            3,
+            3,
             5,
             5
           ],
@@ -7823,12 +7790,12 @@ export const SAMPLE_LEVELS: SampleLevelPreset[] = [
           "BoxColor": 3,
           "BlockedNodes": [],
           "InitCards": [
-            3,
-            4,
-            4,
-            4,
-            5,
-            5
+            2,
+            2,
+            2,
+            1,
+            1,
+            1
           ],
           "IsHidden": false,
           "LockedTurn": 0,
@@ -7841,12 +7808,12 @@ export const SAMPLE_LEVELS: SampleLevelPreset[] = [
           "BoxColor": 4,
           "BlockedNodes": [],
           "InitCards": [
-            1,
-            2,
-            2,
             3,
-            4,
-            4
+            3,
+            3,
+            5,
+            5,
+            5
           ],
           "IsHidden": false,
           "LockedTurn": 0,
@@ -7859,12 +7826,12 @@ export const SAMPLE_LEVELS: SampleLevelPreset[] = [
           "BoxColor": 5,
           "BlockedNodes": [],
           "InitCards": [
-            1,
-            1,
-            1,
-            5,
-            5,
-            5
+            4,
+            4,
+            4,
+            3,
+            3,
+            3
           ],
           "IsHidden": false,
           "LockedTurn": 0,
@@ -7877,10 +7844,10 @@ export const SAMPLE_LEVELS: SampleLevelPreset[] = [
           "BoxColor": 1,
           "BlockedNodes": [],
           "InitCards": [
-            1,
-            1,
             2,
             2,
+            2,
+            4,
             4,
             4
           ],
@@ -7895,11 +7862,11 @@ export const SAMPLE_LEVELS: SampleLevelPreset[] = [
           "BoxColor": 2,
           "BlockedNodes": [],
           "InitCards": [
-            1,
-            1,
             2,
-            3,
-            3,
+            2,
+            2,
+            1,
+            1,
             4
           ],
           "IsHidden": false,
@@ -7913,11 +7880,7 @@ export const SAMPLE_LEVELS: SampleLevelPreset[] = [
           "BoxColor": 3,
           "BlockedNodes": [],
           "InitCards": [
-            2,
-            3,
-            4,
-            4,
-            4,
+            5,
             5
           ],
           "IsHidden": false,
@@ -7936,10 +7899,10 @@ export const SAMPLE_LEVELS: SampleLevelPreset[] = [
           "InitCards": [
             1,
             1,
+            1,
             3,
             3,
-            4,
-            5
+            3
           ],
           "IsHidden": false,
           "LockedTurn": 0,
@@ -7955,12 +7918,12 @@ export const SAMPLE_LEVELS: SampleLevelPreset[] = [
             "0_1.25_0.0"
           ],
           "InitCards": [
-            1,
-            1,
+            4,
+            4,
+            2,
+            2,
             3,
-            4,
-            4,
-            4
+            3
           ],
           "IsHidden": false,
           "LockedTurn": 0,
@@ -7976,12 +7939,12 @@ export const SAMPLE_LEVELS: SampleLevelPreset[] = [
             "0_-2.0_-1.95"
           ],
           "InitCards": [
-            1,
-            2,
-            2,
-            3,
-            3,
-            3
+            4,
+            4,
+            4,
+            5,
+            5,
+            5
           ],
           "IsHidden": false,
           "LockedTurn": 0,
@@ -7998,10 +7961,11 @@ export const SAMPLE_LEVELS: SampleLevelPreset[] = [
           ],
           "InitCards": [
             1,
-            2,
-            2,
+            1,
+            1,
             3,
-            5
+            3,
+            3
           ],
           "IsHidden": false,
           "LockedTurn": 0,
@@ -8017,11 +7981,12 @@ export const SAMPLE_LEVELS: SampleLevelPreset[] = [
             "0_1.25_0.0"
           ],
           "InitCards": [
-            1,
-            2,
-            3,
             5,
-            5
+            5,
+            2,
+            2,
+            1,
+            1
           ],
           "IsHidden": false,
           "LockedTurn": 0,
@@ -8039,11 +8004,12 @@ export const SAMPLE_LEVELS: SampleLevelPreset[] = [
             "1_0.0_0.0"
           ],
           "InitCards": [
-            1,
-            3,
-            3,
             5,
-            5
+            5,
+            5,
+            1,
+            1,
+            1
           ],
           "IsHidden": false,
           "LockedTurn": 0,
@@ -8061,11 +8027,12 @@ export const SAMPLE_LEVELS: SampleLevelPreset[] = [
             "1_0.0_0.0"
           ],
           "InitCards": [
-            2,
-            2,
-            3,
             4,
-            5
+            4,
+            4,
+            2,
+            2,
+            2
           ],
           "IsHidden": false,
           "LockedTurn": 0,
@@ -8084,10 +8051,10 @@ export const SAMPLE_LEVELS: SampleLevelPreset[] = [
             "2_1.0_0.0"
           ],
           "InitCards": [
-            1,
-            5,
-            5,
-            5
+            3,
+            3,
+            2,
+            2
           ],
           "IsHidden": false,
           "LockedTurn": 0,
@@ -8115,99 +8082,99 @@ export const SAMPLE_LEVELS: SampleLevelPreset[] = [
         {
           "Id": "0_-2.4_1.45",
           "LayerId": 0,
-          "YRotation": 90.0,
+          "YRotation": 90,
           "XPosition": -2.4,
           "ZPosition": 1.45
         },
         {
           "Id": "0_0.0_1.45",
           "LayerId": 0,
-          "YRotation": 90.0,
-          "XPosition": 0.0,
+          "YRotation": 90,
+          "XPosition": 0,
           "ZPosition": 1.45
         },
         {
           "Id": "0_2.4_1.45",
           "LayerId": 0,
-          "YRotation": 90.0,
+          "YRotation": 90,
           "XPosition": 2.4,
           "ZPosition": 1.45
         },
         {
           "Id": "0_-2.4_-1.45",
           "LayerId": 0,
-          "YRotation": 90.0,
+          "YRotation": 90,
           "XPosition": -2.4,
           "ZPosition": -1.45
         },
         {
           "Id": "0_0.0_-1.45",
           "LayerId": 0,
-          "YRotation": 90.0,
-          "XPosition": 0.0,
+          "YRotation": 90,
+          "XPosition": 0,
           "ZPosition": -1.45
         },
         {
           "Id": "0_2.4_-1.45",
           "LayerId": 0,
-          "YRotation": 90.0,
+          "YRotation": 90,
           "XPosition": 2.4,
           "ZPosition": -1.45
         },
         {
           "Id": "1_-1.2_1.45",
           "LayerId": 1,
-          "YRotation": 0.0,
+          "YRotation": 0,
           "XPosition": -1.2,
           "ZPosition": 1.45
         },
         {
           "Id": "1_1.2_1.45",
           "LayerId": 1,
-          "YRotation": 0.0,
+          "YRotation": 0,
           "XPosition": 1.2,
           "ZPosition": 1.45
         },
         {
           "Id": "1_-1.2_-1.45",
           "LayerId": 1,
-          "YRotation": 0.0,
+          "YRotation": 0,
           "XPosition": -1.2,
           "ZPosition": -1.45
         },
         {
           "Id": "1_1.2_-1.45",
           "LayerId": 1,
-          "YRotation": 0.0,
+          "YRotation": 0,
           "XPosition": 1.2,
           "ZPosition": -1.45
         },
         {
           "Id": "2_-1.2_0.0",
           "LayerId": 2,
-          "YRotation": 90.0,
+          "YRotation": 90,
           "XPosition": -1.2,
-          "ZPosition": 0.0
+          "ZPosition": 0
         },
         {
           "Id": "2_1.2_0.0",
           "LayerId": 2,
-          "YRotation": 90.0,
+          "YRotation": 90,
           "XPosition": 1.2,
-          "ZPosition": 0.0
+          "ZPosition": 0
         },
         {
           "Id": "3_0.0_0.85",
           "LayerId": 3,
-          "YRotation": 0.0,
-          "XPosition": 0.0,
+          "YRotation": 0,
+          "XPosition": 0,
           "ZPosition": 0.85
         },
         {
           "Id": "3_0.0_-0.85",
           "LayerId": 3,
-          "YRotation": 0.0,
-          "XPosition": 0.0,
+          "YRotation": 0,
+          "XPosition": 0,
           "ZPosition": -0.85
         }
       ],
@@ -8218,12 +8185,12 @@ export const SAMPLE_LEVELS: SampleLevelPreset[] = [
           "BoxColor": 1,
           "BlockedNodes": [],
           "InitCards": [
-            1,
-            1,
-            1,
-            1,
             2,
-            4,
+            2,
+            2,
+            3,
+            3,
+            3,
             4,
             4
           ],
@@ -8240,10 +8207,10 @@ export const SAMPLE_LEVELS: SampleLevelPreset[] = [
           "InitCards": [
             2,
             2,
-            3,
-            3,
-            3,
-            3,
+            2,
+            2,
+            4,
+            4,
             4,
             4
           ],
@@ -8259,11 +8226,11 @@ export const SAMPLE_LEVELS: SampleLevelPreset[] = [
           "BlockedNodes": [],
           "InitCards": [
             1,
-            2,
-            2,
-            3,
-            3,
-            3,
+            1,
+            1,
+            1,
+            4,
+            4,
             4,
             4
           ],
@@ -8278,14 +8245,14 @@ export const SAMPLE_LEVELS: SampleLevelPreset[] = [
           "BoxColor": 4,
           "BlockedNodes": [],
           "InitCards": [
+            4,
+            4,
             1,
             1,
-            2,
-            2,
+            1,
             3,
             3,
-            3,
-            4
+            3
           ],
           "IsHidden": false,
           "LockedTurn": 0,
@@ -8299,10 +8266,11 @@ export const SAMPLE_LEVELS: SampleLevelPreset[] = [
           "BlockedNodes": [],
           "InitCards": [
             1,
-            1,
             2,
-            3,
-            4,
+            2,
+            2,
+            2,
+            2,
             4,
             4
           ],
@@ -8316,15 +8284,7 @@ export const SAMPLE_LEVELS: SampleLevelPreset[] = [
           "TypeId": 3,
           "BoxColor": 2,
           "BlockedNodes": [],
-          "InitCards": [
-            1,
-            1,
-            2,
-            2,
-            2,
-            3,
-            3
-          ],
+          "InitCards": [],
           "IsHidden": false,
           "LockedTurn": 0,
           "IsPaperBox": false,
@@ -8339,12 +8299,13 @@ export const SAMPLE_LEVELS: SampleLevelPreset[] = [
             "0_0.0_1.45"
           ],
           "InitCards": [
-            1,
-            1,
             2,
-            3,
-            3,
-            3,
+            2,
+            2,
+            2,
+            4,
+            4,
+            4,
             4
           ],
           "IsHidden": false,
@@ -8361,13 +8322,14 @@ export const SAMPLE_LEVELS: SampleLevelPreset[] = [
             "0_2.4_1.45"
           ],
           "InitCards": [
+            3,
+            3,
+            3,
+            3,
             1,
-            2,
-            2,
-            4,
-            4,
-            4,
-            4
+            1,
+            1,
+            1
           ],
           "IsHidden": false,
           "LockedTurn": 0,
@@ -8383,13 +8345,14 @@ export const SAMPLE_LEVELS: SampleLevelPreset[] = [
             "0_0.0_-1.45"
           ],
           "InitCards": [
-            1,
-            1,
-            1,
-            2,
-            2,
             3,
-            4
+            3,
+            3,
+            3,
+            2,
+            2,
+            2,
+            2
           ],
           "IsHidden": false,
           "LockedTurn": 0,
@@ -8406,12 +8369,13 @@ export const SAMPLE_LEVELS: SampleLevelPreset[] = [
           ],
           "InitCards": [
             1,
-            2,
-            2,
-            2,
+            1,
+            1,
+            1,
             3,
             3,
-            4
+            3,
+            3
           ],
           "IsHidden": false,
           "LockedTurn": 0,
@@ -8433,9 +8397,10 @@ export const SAMPLE_LEVELS: SampleLevelPreset[] = [
           "InitCards": [
             1,
             1,
-            2,
-            3,
-            3,
+            1,
+            1,
+            4,
+            4,
             4,
             4
           ],
@@ -8459,11 +8424,12 @@ export const SAMPLE_LEVELS: SampleLevelPreset[] = [
           "InitCards": [
             1,
             1,
-            2,
-            2,
+            1,
+            1,
             3,
             3,
-            4
+            3,
+            3
           ],
           "IsHidden": false,
           "LockedTurn": 0,
@@ -8482,10 +8448,10 @@ export const SAMPLE_LEVELS: SampleLevelPreset[] = [
             "2_1.2_0.0"
           ],
           "InitCards": [
-            1,
-            1,
             2,
-            4
+            2,
+            3,
+            3
           ],
           "IsHidden": false,
           "LockedTurn": 0,
@@ -8504,10 +8470,10 @@ export const SAMPLE_LEVELS: SampleLevelPreset[] = [
             "2_1.2_0.0"
           ],
           "InitCards": [
-            2,
-            3,
             4,
-            4
+            4,
+            2,
+            2
           ],
           "IsHidden": false,
           "LockedTurn": 0,
@@ -8535,121 +8501,121 @@ export const SAMPLE_LEVELS: SampleLevelPreset[] = [
         {
           "Id": "0_-2.1_1.55",
           "LayerId": 0,
-          "YRotation": 0.0,
+          "YRotation": 0,
           "XPosition": -2.1,
           "ZPosition": 1.55
         },
         {
           "Id": "0_0.0_1.55",
           "LayerId": 0,
-          "YRotation": 0.0,
-          "XPosition": 0.0,
+          "YRotation": 0,
+          "XPosition": 0,
           "ZPosition": 1.55
         },
         {
           "Id": "0_2.1_1.55",
           "LayerId": 0,
-          "YRotation": 0.0,
+          "YRotation": 0,
           "XPosition": 2.1,
           "ZPosition": 1.55
         },
         {
           "Id": "0_-2.1_0.0",
           "LayerId": 0,
-          "YRotation": 90.0,
+          "YRotation": 90,
           "XPosition": -2.1,
-          "ZPosition": 0.0
+          "ZPosition": 0
         },
         {
           "Id": "0_2.1_0.0",
           "LayerId": 0,
-          "YRotation": 90.0,
+          "YRotation": 90,
           "XPosition": 2.1,
-          "ZPosition": 0.0
+          "ZPosition": 0
         },
         {
           "Id": "0_0.0_0.0",
           "LayerId": 0,
-          "YRotation": 0.0,
-          "XPosition": 0.0,
-          "ZPosition": 0.0
+          "YRotation": 0,
+          "XPosition": 0,
+          "ZPosition": 0
         },
         {
           "Id": "0_-2.1_-1.55",
           "LayerId": 0,
-          "YRotation": 0.0,
+          "YRotation": 0,
           "XPosition": -2.1,
           "ZPosition": -1.55
         },
         {
           "Id": "0_0.0_-1.55",
           "LayerId": 0,
-          "YRotation": 0.0,
-          "XPosition": 0.0,
+          "YRotation": 0,
+          "XPosition": 0,
           "ZPosition": -1.55
         },
         {
           "Id": "0_2.1_-1.55",
           "LayerId": 0,
-          "YRotation": 0.0,
+          "YRotation": 0,
           "XPosition": 2.1,
           "ZPosition": -1.55
         },
         {
           "Id": "1_-1.3_0.95",
           "LayerId": 1,
-          "YRotation": 90.0,
+          "YRotation": 90,
           "XPosition": -1.3,
           "ZPosition": 0.95
         },
         {
           "Id": "1_1.3_0.95",
           "LayerId": 1,
-          "YRotation": 90.0,
+          "YRotation": 90,
           "XPosition": 1.3,
           "ZPosition": 0.95
         },
         {
           "Id": "1_-1.3_-0.95",
           "LayerId": 1,
-          "YRotation": 90.0,
+          "YRotation": 90,
           "XPosition": -1.3,
           "ZPosition": -0.95
         },
         {
           "Id": "1_1.3_-0.95",
           "LayerId": 1,
-          "YRotation": 90.0,
+          "YRotation": 90,
           "XPosition": 1.3,
           "ZPosition": -0.95
         },
         {
           "Id": "1_0.0_0.0",
           "LayerId": 1,
-          "YRotation": 90.0,
-          "XPosition": 0.0,
-          "ZPosition": 0.0
+          "YRotation": 90,
+          "XPosition": 0,
+          "ZPosition": 0
         },
         {
           "Id": "2_0.0_0.95",
           "LayerId": 2,
-          "YRotation": 0.0,
-          "XPosition": 0.0,
+          "YRotation": 0,
+          "XPosition": 0,
           "ZPosition": 0.95
         },
         {
           "Id": "2_0.0_-0.95",
           "LayerId": 2,
-          "YRotation": 0.0,
-          "XPosition": 0.0,
+          "YRotation": 0,
+          "XPosition": 0,
           "ZPosition": -0.95
         },
         {
           "Id": "3_0.0_0.0",
           "LayerId": 3,
-          "YRotation": 90.0,
-          "XPosition": 0.0,
-          "ZPosition": 0.0
+          "YRotation": 90,
+          "XPosition": 0,
+          "ZPosition": 0
         }
       ],
       "BoxNodes": [
@@ -8659,12 +8625,12 @@ export const SAMPLE_LEVELS: SampleLevelPreset[] = [
           "BoxColor": 1,
           "BlockedNodes": [],
           "InitCards": [
-            1,
-            1,
-            2,
             3,
-            4,
-            4
+            3,
+            3,
+            5,
+            5,
+            5
           ],
           "IsHidden": false,
           "LockedTurn": 3,
@@ -8677,12 +8643,12 @@ export const SAMPLE_LEVELS: SampleLevelPreset[] = [
           "BoxColor": 2,
           "BlockedNodes": [],
           "InitCards": [
-            1,
-            2,
-            2,
-            4,
             5,
-            5
+            5,
+            1,
+            1,
+            4,
+            4
           ],
           "IsHidden": false,
           "LockedTurn": 0,
@@ -8695,12 +8661,12 @@ export const SAMPLE_LEVELS: SampleLevelPreset[] = [
           "BoxColor": 3,
           "BlockedNodes": [],
           "InitCards": [
-            1,
-            1,
+            3,
             2,
-            3,
-            3,
-            3
+            2,
+            4,
+            4,
+            1
           ],
           "IsHidden": false,
           "LockedTurn": 3,
@@ -8713,10 +8679,10 @@ export const SAMPLE_LEVELS: SampleLevelPreset[] = [
           "BoxColor": 4,
           "BlockedNodes": [],
           "InitCards": [
-            1,
-            1,
-            2,
             3,
+            3,
+            3,
+            5,
             5,
             5
           ],
@@ -8731,12 +8697,12 @@ export const SAMPLE_LEVELS: SampleLevelPreset[] = [
           "BoxColor": 5,
           "BlockedNodes": [],
           "InitCards": [
+            2,
+            2,
+            2,
             1,
             1,
-            2,
-            2,
-            2,
-            4
+            1
           ],
           "IsHidden": false,
           "LockedTurn": 0,
@@ -8749,12 +8715,12 @@ export const SAMPLE_LEVELS: SampleLevelPreset[] = [
           "BoxColor": 1,
           "BlockedNodes": [],
           "InitCards": [
+            4,
+            4,
+            4,
             2,
             2,
-            2,
-            3,
-            3,
-            5
+            2
           ],
           "IsHidden": false,
           "LockedTurn": 0,
@@ -8767,10 +8733,11 @@ export const SAMPLE_LEVELS: SampleLevelPreset[] = [
           "BoxColor": 1,
           "BlockedNodes": [],
           "InitCards": [
-            2,
-            2,
-            4,
-            4,
+            3,
+            3,
+            3,
+            5,
+            5,
             5
           ],
           "IsHidden": false,
@@ -8784,11 +8751,8 @@ export const SAMPLE_LEVELS: SampleLevelPreset[] = [
           "BoxColor": 2,
           "BlockedNodes": [],
           "InitCards": [
-            2,
-            4,
-            4,
-            5,
-            5
+            1,
+            4
           ],
           "IsHidden": false,
           "LockedTurn": 0,
@@ -8800,13 +8764,7 @@ export const SAMPLE_LEVELS: SampleLevelPreset[] = [
           "TypeId": 2,
           "BoxColor": 3,
           "BlockedNodes": [],
-          "InitCards": [
-            3,
-            3,
-            4,
-            5,
-            5
-          ],
+          "InitCards": [],
           "IsHidden": false,
           "LockedTurn": 2,
           "IsPaperBox": false,
@@ -8823,11 +8781,12 @@ export const SAMPLE_LEVELS: SampleLevelPreset[] = [
             "0_0.0_0.0"
           ],
           "InitCards": [
+            5,
+            5,
+            5,
             1,
-            2,
-            3,
-            4,
-            4
+            1,
+            1
           ],
           "IsHidden": false,
           "LockedTurn": 0,
@@ -8847,9 +8806,10 @@ export const SAMPLE_LEVELS: SampleLevelPreset[] = [
           "InitCards": [
             4,
             4,
-            4,
-            5,
-            5
+            3,
+            3,
+            2,
+            2
           ],
           "IsHidden": false,
           "LockedTurn": 2,
@@ -8867,11 +8827,12 @@ export const SAMPLE_LEVELS: SampleLevelPreset[] = [
             "0_0.0_-1.55"
           ],
           "InitCards": [
-            1,
-            3,
-            3,
             4,
-            5
+            4,
+            4,
+            2,
+            2,
+            2
           ],
           "IsHidden": false,
           "LockedTurn": 0,
@@ -8889,11 +8850,12 @@ export const SAMPLE_LEVELS: SampleLevelPreset[] = [
             "0_2.1_-1.55"
           ],
           "InitCards": [
+            3,
+            3,
+            5,
+            5,
             1,
-            2,
-            3,
-            3,
-            4
+            1
           ],
           "IsHidden": false,
           "LockedTurn": 3,
@@ -8908,11 +8870,12 @@ export const SAMPLE_LEVELS: SampleLevelPreset[] = [
             "0_0.0_0.0"
           ],
           "InitCards": [
+            4,
+            4,
             1,
-            2,
-            2,
-            3,
-            5
+            1,
+            5,
+            2
           ],
           "IsHidden": false,
           "LockedTurn": 0,
@@ -8931,11 +8894,12 @@ export const SAMPLE_LEVELS: SampleLevelPreset[] = [
             "1_0.0_0.0"
           ],
           "InitCards": [
+            2,
+            2,
+            1,
             1,
             3,
-            3,
-            4,
-            5
+            3
           ],
           "IsHidden": false,
           "LockedTurn": 0,
@@ -8954,10 +8918,11 @@ export const SAMPLE_LEVELS: SampleLevelPreset[] = [
             "1_0.0_0.0"
           ],
           "InitCards": [
+            5,
             1,
             1,
-            1,
-            3,
+            2,
+            2,
             4
           ],
           "IsHidden": false,
@@ -8977,10 +8942,10 @@ export const SAMPLE_LEVELS: SampleLevelPreset[] = [
             "2_0.0_-0.95"
           ],
           "InitCards": [
-            1,
-            5,
-            5,
-            5
+            3,
+            3,
+            4,
+            4
           ],
           "IsHidden": false,
           "LockedTurn": 0,
@@ -9008,191 +8973,191 @@ export const SAMPLE_LEVELS: SampleLevelPreset[] = [
         {
           "Id": "0_-3.0_2.05",
           "LayerId": 0,
-          "YRotation": 0.0,
-          "XPosition": -3.0,
+          "YRotation": 0,
+          "XPosition": -3,
           "ZPosition": 2.05
         },
         {
           "Id": "0_-1.0_2.05",
           "LayerId": 0,
-          "YRotation": 0.0,
-          "XPosition": -1.0,
+          "YRotation": 0,
+          "XPosition": -1,
           "ZPosition": 2.05
         },
         {
           "Id": "0_1.0_2.05",
           "LayerId": 0,
-          "YRotation": 0.0,
-          "XPosition": 1.0,
+          "YRotation": 0,
+          "XPosition": 1,
           "ZPosition": 2.05
         },
         {
           "Id": "0_3.0_2.05",
           "LayerId": 0,
-          "YRotation": 0.0,
-          "XPosition": 3.0,
+          "YRotation": 0,
+          "XPosition": 3,
           "ZPosition": 2.05
         },
         {
           "Id": "0_-3.0_0.0",
           "LayerId": 0,
-          "YRotation": 0.0,
-          "XPosition": -3.0,
-          "ZPosition": 0.0
+          "YRotation": 0,
+          "XPosition": -3,
+          "ZPosition": 0
         },
         {
           "Id": "0_-1.0_0.0",
           "LayerId": 0,
-          "YRotation": 0.0,
-          "XPosition": -1.0,
-          "ZPosition": 0.0
+          "YRotation": 0,
+          "XPosition": -1,
+          "ZPosition": 0
         },
         {
           "Id": "0_1.0_0.0",
           "LayerId": 0,
-          "YRotation": 0.0,
-          "XPosition": 1.0,
-          "ZPosition": 0.0
+          "YRotation": 0,
+          "XPosition": 1,
+          "ZPosition": 0
         },
         {
           "Id": "0_3.0_0.0",
           "LayerId": 0,
-          "YRotation": 0.0,
-          "XPosition": 3.0,
-          "ZPosition": 0.0
+          "YRotation": 0,
+          "XPosition": 3,
+          "ZPosition": 0
         },
         {
           "Id": "0_-3.0_-2.05",
           "LayerId": 0,
-          "YRotation": 0.0,
-          "XPosition": -3.0,
+          "YRotation": 0,
+          "XPosition": -3,
           "ZPosition": -2.05
         },
         {
           "Id": "0_-1.0_-2.05",
           "LayerId": 0,
-          "YRotation": 0.0,
-          "XPosition": -1.0,
+          "YRotation": 0,
+          "XPosition": -1,
           "ZPosition": -2.05
         },
         {
           "Id": "0_1.0_-2.05",
           "LayerId": 0,
-          "YRotation": 0.0,
-          "XPosition": 1.0,
+          "YRotation": 0,
+          "XPosition": 1,
           "ZPosition": -2.05
         },
         {
           "Id": "0_3.0_-2.05",
           "LayerId": 0,
-          "YRotation": 0.0,
-          "XPosition": 3.0,
+          "YRotation": 0,
+          "XPosition": 3,
           "ZPosition": -2.05
         },
         {
           "Id": "1_-3.0_1.05",
           "LayerId": 1,
-          "YRotation": 90.0,
-          "XPosition": -3.0,
+          "YRotation": 90,
+          "XPosition": -3,
           "ZPosition": 1.05
         },
         {
           "Id": "1_-1.0_1.05",
           "LayerId": 1,
-          "YRotation": 90.0,
-          "XPosition": -1.0,
+          "YRotation": 90,
+          "XPosition": -1,
           "ZPosition": 1.05
         },
         {
           "Id": "1_1.0_1.05",
           "LayerId": 1,
-          "YRotation": 90.0,
-          "XPosition": 1.0,
+          "YRotation": 90,
+          "XPosition": 1,
           "ZPosition": 1.05
         },
         {
           "Id": "1_3.0_1.05",
           "LayerId": 1,
-          "YRotation": 90.0,
-          "XPosition": 3.0,
+          "YRotation": 90,
+          "XPosition": 3,
           "ZPosition": 1.05
         },
         {
           "Id": "1_-3.0_-1.05",
           "LayerId": 1,
-          "YRotation": 90.0,
-          "XPosition": -3.0,
+          "YRotation": 90,
+          "XPosition": -3,
           "ZPosition": -1.05
         },
         {
           "Id": "1_-1.0_-1.05",
           "LayerId": 1,
-          "YRotation": 90.0,
-          "XPosition": -1.0,
+          "YRotation": 90,
+          "XPosition": -1,
           "ZPosition": -1.05
         },
         {
           "Id": "1_1.0_-1.05",
           "LayerId": 1,
-          "YRotation": 90.0,
-          "XPosition": 1.0,
+          "YRotation": 90,
+          "XPosition": 1,
           "ZPosition": -1.05
         },
         {
           "Id": "1_3.0_-1.05",
           "LayerId": 1,
-          "YRotation": 90.0,
-          "XPosition": 3.0,
+          "YRotation": 90,
+          "XPosition": 3,
           "ZPosition": -1.05
         },
         {
           "Id": "2_-1.8_0.7",
           "LayerId": 2,
-          "YRotation": 0.0,
+          "YRotation": 0,
           "XPosition": -1.8,
           "ZPosition": 0.7
         },
         {
           "Id": "2_1.8_0.7",
           "LayerId": 2,
-          "YRotation": 0.0,
+          "YRotation": 0,
           "XPosition": 1.8,
           "ZPosition": 0.7
         },
         {
           "Id": "2_-1.8_-0.7",
           "LayerId": 2,
-          "YRotation": 0.0,
+          "YRotation": 0,
           "XPosition": -1.8,
           "ZPosition": -0.7
         },
         {
           "Id": "2_1.8_-0.7",
           "LayerId": 2,
-          "YRotation": 0.0,
+          "YRotation": 0,
           "XPosition": 1.8,
           "ZPosition": -0.7
         },
         {
           "Id": "3_-1.0_0.0",
           "LayerId": 3,
-          "YRotation": 90.0,
-          "XPosition": -1.0,
-          "ZPosition": 0.0
+          "YRotation": 90,
+          "XPosition": -1,
+          "ZPosition": 0
         },
         {
           "Id": "3_1.0_0.0",
           "LayerId": 3,
-          "YRotation": 90.0,
-          "XPosition": 1.0,
-          "ZPosition": 0.0
+          "YRotation": 90,
+          "XPosition": 1,
+          "ZPosition": 0
         },
         {
           "Id": "4_0.0_0.0",
           "LayerId": 4,
-          "YRotation": 0.0,
-          "XPosition": 0.0,
-          "ZPosition": 0.0
+          "YRotation": 0,
+          "XPosition": 0,
+          "ZPosition": 0
         }
       ],
       "BoxNodes": [
@@ -9202,9 +9167,10 @@ export const SAMPLE_LEVELS: SampleLevelPreset[] = [
           "BoxColor": 1,
           "BlockedNodes": [],
           "InitCards": [
-            1,
-            2,
             3,
+            3,
+            3,
+            5,
             5,
             5
           ],
@@ -9222,8 +9188,9 @@ export const SAMPLE_LEVELS: SampleLevelPreset[] = [
             1,
             1,
             1,
-            3,
-            3
+            4,
+            4,
+            4
           ],
           "IsHidden": false,
           "LockedTurn": 0,
@@ -9238,8 +9205,9 @@ export const SAMPLE_LEVELS: SampleLevelPreset[] = [
           "InitCards": [
             1,
             1,
-            1,
-            3,
+            5,
+            5,
+            4,
             4
           ],
           "IsHidden": false,
@@ -9254,10 +9222,11 @@ export const SAMPLE_LEVELS: SampleLevelPreset[] = [
           "BlockedNodes": [],
           "InitCards": [
             1,
-            2,
+            1,
+            1,
             3,
             3,
-            4
+            3
           ],
           "IsHidden": false,
           "LockedTurn": 0,
@@ -9270,11 +9239,12 @@ export const SAMPLE_LEVELS: SampleLevelPreset[] = [
           "BoxColor": 5,
           "BlockedNodes": [],
           "InitCards": [
+            2,
+            2,
             1,
-            2,
-            2,
+            1,
             3,
-            5
+            3
           ],
           "IsHidden": false,
           "LockedTurn": 0,
@@ -9287,12 +9257,12 @@ export const SAMPLE_LEVELS: SampleLevelPreset[] = [
           "BoxColor": 1,
           "BlockedNodes": [],
           "InitCards": [
-            1,
+            5,
+            5,
+            5,
             2,
-            4,
-            4,
-            4,
-            5
+            2,
+            2
           ],
           "IsHidden": false,
           "LockedTurn": 0,
@@ -9305,11 +9275,12 @@ export const SAMPLE_LEVELS: SampleLevelPreset[] = [
           "BoxColor": 1,
           "BlockedNodes": [],
           "InitCards": [
-            2,
+            1,
+            1,
             3,
-            5,
-            5,
-            5
+            3,
+            4,
+            4
           ],
           "IsHidden": false,
           "LockedTurn": 0,
@@ -9322,10 +9293,7 @@ export const SAMPLE_LEVELS: SampleLevelPreset[] = [
           "BoxColor": 2,
           "BlockedNodes": [],
           "InitCards": [
-            1,
-            3,
-            3,
-            4,
+            2,
             5
           ],
           "IsHidden": false,
@@ -9338,13 +9306,7 @@ export const SAMPLE_LEVELS: SampleLevelPreset[] = [
           "TypeId": 2,
           "BoxColor": 3,
           "BlockedNodes": [],
-          "InitCards": [
-            2,
-            2,
-            3,
-            3,
-            5
-          ],
+          "InitCards": [],
           "IsHidden": false,
           "LockedTurn": 0,
           "IsPaperBox": false,
@@ -9355,13 +9317,7 @@ export const SAMPLE_LEVELS: SampleLevelPreset[] = [
           "TypeId": 2,
           "BoxColor": 4,
           "BlockedNodes": [],
-          "InitCards": [
-            1,
-            3,
-            4,
-            5,
-            5
-          ],
+          "InitCards": [],
           "IsHidden": false,
           "LockedTurn": 0,
           "IsPaperBox": false,
@@ -9372,13 +9328,7 @@ export const SAMPLE_LEVELS: SampleLevelPreset[] = [
           "TypeId": 2,
           "BoxColor": 5,
           "BlockedNodes": [],
-          "InitCards": [
-            1,
-            1,
-            4,
-            4,
-            5
-          ],
+          "InitCards": [],
           "IsHidden": false,
           "LockedTurn": 0,
           "IsPaperBox": false,
@@ -9389,14 +9339,7 @@ export const SAMPLE_LEVELS: SampleLevelPreset[] = [
           "TypeId": 2,
           "BoxColor": 1,
           "BlockedNodes": [],
-          "InitCards": [
-            1,
-            2,
-            2,
-            4,
-            4,
-            4
-          ],
+          "InitCards": [],
           "IsHidden": false,
           "LockedTurn": 0,
           "IsPaperBox": true,
@@ -9411,11 +9354,12 @@ export const SAMPLE_LEVELS: SampleLevelPreset[] = [
             "0_-3.0_0.0"
           ],
           "InitCards": [
-            1,
-            1,
+            2,
+            2,
             2,
             3,
-            5
+            3,
+            3
           ],
           "IsHidden": false,
           "LockedTurn": 0,
@@ -9432,8 +9376,9 @@ export const SAMPLE_LEVELS: SampleLevelPreset[] = [
           ],
           "InitCards": [
             1,
-            2,
-            2,
+            1,
+            4,
+            4,
             3,
             3
           ],
@@ -9451,11 +9396,12 @@ export const SAMPLE_LEVELS: SampleLevelPreset[] = [
             "0_1.0_0.0"
           ],
           "InitCards": [
+            5,
+            5,
             2,
-            3,
-            5,
-            5,
-            5
+            2,
+            1,
+            1
           ],
           "IsHidden": false,
           "LockedTurn": 0,
@@ -9471,11 +9417,12 @@ export const SAMPLE_LEVELS: SampleLevelPreset[] = [
             "0_3.0_0.0"
           ],
           "InitCards": [
+            1,
+            1,
+            1,
             2,
             2,
-            2,
-            5,
-            5
+            2
           ],
           "IsHidden": false,
           "LockedTurn": 0,
@@ -9491,11 +9438,12 @@ export const SAMPLE_LEVELS: SampleLevelPreset[] = [
             "0_-3.0_-2.05"
           ],
           "InitCards": [
-            1,
+            4,
+            4,
+            4,
             2,
             2,
-            3,
-            4
+            2
           ],
           "IsHidden": false,
           "LockedTurn": 0,
@@ -9511,12 +9459,12 @@ export const SAMPLE_LEVELS: SampleLevelPreset[] = [
             "0_-1.0_-2.05"
           ],
           "InitCards": [
-            1,
-            2,
-            2,
-            2,
+            5,
+            5,
             4,
-            5
+            4,
+            3,
+            3
           ],
           "IsHidden": false,
           "LockedTurn": 0,
@@ -9532,11 +9480,12 @@ export const SAMPLE_LEVELS: SampleLevelPreset[] = [
             "0_1.0_-2.05"
           ],
           "InitCards": [
-            1,
-            1,
+            5,
+            5,
+            5,
             2,
             2,
-            4
+            2
           ],
           "IsHidden": false,
           "LockedTurn": 0,
@@ -9554,8 +9503,10 @@ export const SAMPLE_LEVELS: SampleLevelPreset[] = [
           "InitCards": [
             1,
             1,
-            2,
-            5
+            5,
+            5,
+            4,
+            4
           ],
           "IsHidden": false,
           "LockedTurn": 0,
@@ -9573,10 +9524,12 @@ export const SAMPLE_LEVELS: SampleLevelPreset[] = [
             "1_-1.0_1.05"
           ],
           "InitCards": [
+            2,
+            2,
+            5,
+            5,
             1,
-            3,
-            4,
-            5
+            4
           ],
           "IsHidden": false,
           "LockedTurn": 0,
@@ -9594,10 +9547,12 @@ export const SAMPLE_LEVELS: SampleLevelPreset[] = [
             "1_3.0_1.05"
           ],
           "InitCards": [
+            2,
+            2,
             1,
-            2,
-            2,
-            5
+            1,
+            3,
+            3
           ],
           "IsHidden": false,
           "LockedTurn": 0,
@@ -9615,10 +9570,12 @@ export const SAMPLE_LEVELS: SampleLevelPreset[] = [
             "1_-1.0_-1.05"
           ],
           "InitCards": [
+            2,
+            2,
             1,
-            3,
+            1,
             4,
-            5
+            3
           ],
           "IsHidden": false,
           "LockedTurn": 0,
@@ -9637,11 +9594,11 @@ export const SAMPLE_LEVELS: SampleLevelPreset[] = [
           ],
           "InitCards": [
             1,
-            1,
-            3,
-            3,
-            4,
-            5
+            5,
+            5,
+            2,
+            2,
+            4
           ],
           "IsHidden": false,
           "LockedTurn": 0,
@@ -9660,10 +9617,12 @@ export const SAMPLE_LEVELS: SampleLevelPreset[] = [
             "2_-1.8_-0.7"
           ],
           "InitCards": [
+            4,
+            4,
+            5,
+            5,
             3,
-            4,
-            4,
-            4
+            3
           ],
           "IsHidden": false,
           "LockedTurn": 0,
@@ -9683,7 +9642,9 @@ export const SAMPLE_LEVELS: SampleLevelPreset[] = [
           ],
           "InitCards": [
             1,
-            2,
+            1,
+            1,
+            4,
             4,
             4
           ],
@@ -9707,10 +9668,10 @@ export const SAMPLE_LEVELS: SampleLevelPreset[] = [
             "3_1.0_0.0"
           ],
           "InitCards": [
-            2,
-            2,
             3,
-            4
+            3,
+            2,
+            2
           ],
           "IsHidden": false,
           "LockedTurn": 0,
@@ -9724,8 +9685,8 @@ export const SAMPLE_LEVELS: SampleLevelPreset[] = [
       "IsOddSize": false,
       "Version": 2
     }
-  },
+  }
 ];
 
-export const PRESET_LEVELS: SampleLevelPreset[] = SAMPLE_LEVELS;
-export const LEVEL_1_SAMPLE: LevelData = SAMPLE_LEVELS[0].data;
+export const PRESET_LEVELS = SAMPLE_LEVELS;
+export const LEVEL_1_SAMPLE = SAMPLE_LEVELS[0].data;

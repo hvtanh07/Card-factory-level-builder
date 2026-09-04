@@ -151,6 +151,27 @@ export function validateLevel(data: LevelData): ValidationIssue[] {
     }
   }
 
+  // 7. Check for excessive color variety per box (> 4 distinct colors or too many 4-color boxes)
+  let fourColorBoxCount = 0;
+  for (const bx of data.BoxNodes) {
+    const distinctColors = new Set(bx.InitCards);
+    if (distinctColors.size > 4) {
+      issues.push({
+        type: 'warning',
+        nodeId: bx.Id,
+        message: `Box "${bx.Id}" contains ${distinctColors.size} different card colors. Maximum allowed is 4 colors per box.`,
+      });
+    } else if (distinctColors.size === 4) {
+      fourColorBoxCount++;
+    }
+  }
+  if (fourColorBoxCount > 4) {
+    issues.push({
+      type: 'warning',
+      message: `Level has ${fourColorBoxCount} boxes with 4 colors. Limit 4-color boxes to at most 3-4 boxes per level.`,
+    });
+  }
+
   return issues;
 }
 
@@ -332,13 +353,24 @@ export interface BalanceResult {
   attempts: number;
 }
 
+export function getEqualChunks(cap: number, numColors: number): number[] {
+  const base = Math.floor(cap / numColors);
+  const rem = cap % numColors;
+  const chunks: number[] = [];
+  for (let i = 0; i < numColors; i++) {
+    chunks.push(base + (i < rem ? 1 : 0));
+  }
+  return chunks;
+}
+
 /**
  * Balances the deck so that:
- * 1. Inside each box, cards are clustered into contiguous color groups (pairs/quads or monocolor).
+ * 1. Inside each box, cards are clustered into contiguous color groups with nearly equal amounts (e.g. 2-2-2, 3-3, 2-2).
  * 2. Total card counts exactly match total colored box capacities (0 validation warnings).
  * 3. The resulting level is verified solvable with `maxSlots` conveyor slots (default: 4).
+ * 4. Respects max colors per box limits with 2-color boxes being the most common for 3-color caps, and limited 4-color boxes for 4-color caps.
  */
-export function balanceLevelCardDeckResult(data: LevelData, maxSlots = 4): BalanceResult {
+export function balanceLevelCardDeckResult(data: LevelData, maxSlots = 4, maxColorsPerBox = 3): BalanceResult {
   const coloredCaps = getColoredBoxCapacities(data);
   const colors = Object.keys(coloredCaps).map(Number).filter(c => coloredCaps[c] > 0);
   if (colors.length === 0) {
@@ -354,13 +386,17 @@ export function balanceLevelCardDeckResult(data: LevelData, maxSlots = 4): Balan
 
   let bestLevel = data;
   let attempts = 0;
-  const maxAttempts = 150;
+  const maxAttempts = 300;
+
+  // Max 4-color boxes allowed when maxColorsPerBox === 4
+  const maxFourColorBoxes = maxColorsPerBox >= 4 ? Math.min(3, Math.max(1, Math.floor(data.BoxNodes.length * 0.2))) : 0;
 
   while (attempts < maxAttempts) {
     attempts++;
 
     const remainingQuota: Record<number, number> = { ...coloredCaps };
     const boxCardsMap = new Map<string, number[]>();
+    let fourColorBoxesUsed = 0;
 
     for (const bx of sortedBoxes) {
       const bType = getBoxType(bx.TypeId);
@@ -368,33 +404,36 @@ export function balanceLevelCardDeckResult(data: LevelData, maxSlots = 4): Balan
       const isTray = Boolean(bx.IsPaperBox || bType.isTray);
       const myColor = bx.BoxColor;
 
-      // Group sizes in chunks of 2 or 4
-      const chunkSizes: number[] = [];
-      let remCap = cap;
-
-      while (remCap > 0) {
-        if (remCap === 2) {
-          chunkSizes.push(2);
-          remCap -= 2;
-        } else if (remCap === 4) {
-          if (Math.random() < 0.45) {
-            chunkSizes.push(4);
-            remCap -= 4;
-          } else {
-            chunkSizes.push(2, 2);
-            remCap -= 4;
-          }
-        } else if (remCap >= 6) {
-          const chunk = Math.random() < 0.6 ? 4 : 2;
-          chunkSizes.push(chunk);
-          remCap -= chunk;
+      // Determine target color count for this box
+      let targetColors = 2;
+      if (colors.length <= 1) {
+        targetColors = 1;
+      } else if (maxColorsPerBox <= 2) {
+        targetColors = Math.min(2, colors.length);
+      } else if (maxColorsPerBox === 3) {
+        // 2-color per box is most common (~70% of boxes have 2 colors, ~30% have 3 colors)
+        if (cap >= 6 && colors.length >= 3 && Math.random() < 0.28) {
+          targetColors = 3;
         } else {
-          chunkSizes.push(remCap);
-          remCap = 0;
+          targetColors = Math.min(2, colors.length);
+        }
+      } else {
+        // maxColorsPerBox >= 4: limit number of 4-color boxes to maxFourColorBoxes
+        if (cap >= 6 && colors.length >= 4 && fourColorBoxesUsed < maxFourColorBoxes && Math.random() < 0.35) {
+          targetColors = 4;
+          fourColorBoxesUsed++;
+        } else if (cap >= 6 && colors.length >= 3 && Math.random() < 0.4) {
+          targetColors = 3;
+        } else {
+          targetColors = Math.min(2, colors.length);
         }
       }
 
+      // Generate nearly-equal chunks: e.g. (2-2-2) or (3-3) or (2-2) or (2-2-2-2)
+      const chunkSizes = getEqualChunks(cap, targetColors);
+
       const boxCards: number[] = [];
+      const boxColors = new Set<number>();
       // If there are multiple colors in the level, non-tray boxes must NOT be filled only with their matching color
       const maxMyColorCards = (!isTray && colors.length > 1) ? Math.max(0, cap - 2) : cap;
       let myColorPlaced = 0;
@@ -403,34 +442,47 @@ export function balanceLevelCardDeckResult(data: LevelData, maxSlots = 4): Balan
         const sz = chunkSizes[cIdx];
         let chosenColor = myColor;
 
-        // Can we pick myColor?
-        const canPickMyColor = !isTray &&
-          (myColorPlaced + sz <= maxMyColorCards) &&
-          ((remainingQuota[myColor] || 0) >= sz);
+        const canPickColor = (c: number) => {
+          if ((remainingQuota[c] || 0) < sz) return false;
+          if (c === myColor && !isTray && myColorPlaced + sz > maxMyColorCards) return false;
+          if (!boxColors.has(c) && boxColors.size >= targetColors) return false;
+          return true;
+        };
 
-        if (canPickMyColor && Math.random() < 0.55) {
-          chosenColor = myColor;
-          myColorPlaced += sz;
-        } else {
-          // Pick other color with highest quota
-          const otherColors = colors.filter(c => c !== myColor && (remainingQuota[c] || 0) >= sz);
-          if (otherColors.length > 0) {
-            otherColors.sort((a, b) => (remainingQuota[b] || 0) - (remainingQuota[a] || 0));
-            const pickIdx = Math.floor(Math.random() * Math.min(2, otherColors.length));
-            chosenColor = otherColors[pickIdx];
+        const available = colors.filter(canPickColor);
+
+        if (available.length > 0) {
+          // If we need another color to reach targetColors, pick a new color
+          const newColors = available.filter(c => !boxColors.has(c));
+          if (boxColors.size < targetColors && newColors.length > 0) {
+            newColors.sort((a, b) => {
+              const aDiff = a !== myColor ? 1 : 0;
+              const bDiff = b !== myColor ? 1 : 0;
+              if (aDiff !== bDiff) return bDiff - aDiff;
+              return (remainingQuota[b] || 0) - (remainingQuota[a] || 0);
+            });
+            const pickIdx = Math.floor(Math.random() * Math.min(2, newColors.length));
+            chosenColor = newColors[pickIdx];
           } else {
-            const anyOther = colors.filter(c => c !== myColor && (remainingQuota[c] || 0) > 0);
-            if (anyOther.length > 0) {
-              anyOther.sort((a, b) => (remainingQuota[b] || 0) - (remainingQuota[a] || 0));
-              chosenColor = anyOther[0];
-            } else if (canPickMyColor) {
-              chosenColor = myColor;
-              myColorPlaced += sz;
+            // Pick from existing colors in box
+            const existingAvailable = available.filter(c => boxColors.has(c));
+            if (existingAvailable.length > 0) {
+              existingAvailable.sort((a, b) => (remainingQuota[b] || 0) - (remainingQuota[a] || 0));
+              chosenColor = existingAvailable[0];
             } else {
-              const anyCol = colors.filter(c => (remainingQuota[c] || 0) > 0);
-              chosenColor = anyCol.length > 0 ? anyCol[0] : myColor;
-              if (chosenColor === myColor) myColorPlaced += sz;
+              available.sort((a, b) => (remainingQuota[b] || 0) - (remainingQuota[a] || 0));
+              chosenColor = available[0];
             }
+          }
+        } else {
+          // Fallback
+          const anyEligible = colors.filter(c => (remainingQuota[c] || 0) > 0 && (boxColors.has(c) || boxColors.size < targetColors));
+          if (anyEligible.length > 0) {
+            anyEligible.sort((a, b) => (remainingQuota[b] || 0) - (remainingQuota[a] || 0));
+            chosenColor = anyEligible[0];
+          } else {
+            const anyLeft = colors.filter(c => (remainingQuota[c] || 0) > 0);
+            chosenColor = anyLeft.length > 0 ? anyLeft[0] : myColor;
           }
         }
 
@@ -438,19 +490,31 @@ export function balanceLevelCardDeckResult(data: LevelData, maxSlots = 4): Balan
         for (let k = 0; k < actualCount; k++) {
           boxCards.push(chosenColor);
         }
-        remainingQuota[chosenColor] = Math.max(0, (remainingQuota[chosenColor] || 0) - actualCount);
+        if (actualCount > 0) {
+          boxColors.add(chosenColor);
+          if (chosenColor === myColor) myColorPlaced += actualCount;
+          remainingQuota[chosenColor] = Math.max(0, (remainingQuota[chosenColor] || 0) - actualCount);
+        }
       }
 
       while (boxCards.length < cap) {
-        // Try other colors first
-        const otherLeft = colors.find(c => c !== myColor && (remainingQuota[c] || 0) > 0);
-        if (otherLeft) {
-          boxCards.push(otherLeft);
-          remainingQuota[otherLeft]--;
+        const eligible = colors.filter(c => (remainingQuota[c] || 0) > 0 && (boxColors.has(c) || boxColors.size < maxColorsPerBox));
+        if (eligible.length > 0) {
+          eligible.sort((a, b) => {
+            const aHas = boxColors.has(a) ? 1 : 0;
+            const bHas = boxColors.has(b) ? 1 : 0;
+            if (aHas !== bHas) return bHas - aHas;
+            return (remainingQuota[b] || 0) - (remainingQuota[a] || 0);
+          });
+          const pick = eligible[0];
+          boxCards.push(pick);
+          boxColors.add(pick);
+          remainingQuota[pick]--;
         } else {
           const anyLeft = colors.find(c => (remainingQuota[c] || 0) > 0);
           if (!anyLeft) break;
           boxCards.push(anyLeft);
+          boxColors.add(anyLeft);
           remainingQuota[anyLeft]--;
         }
       }
@@ -458,21 +522,28 @@ export function balanceLevelCardDeckResult(data: LevelData, maxSlots = 4): Balan
       boxCardsMap.set(bx.Id, boxCards);
     }
 
-    // Top up any remaining quotas
+    // Top up any remaining quotas respecting maxColorsPerBox
     for (const col of colors) {
       while ((remainingQuota[col] || 0) > 0) {
         let placed = false;
-        // Prefer placing `col` into boxes of a DIFFERENT color first
+        // Prefer placing `col` into boxes that already have `col` or have room under maxColorsPerBox
         const candidateBoxes = [...data.BoxNodes].sort((a, b) => {
-          const aDiff = a.BoxColor !== col ? 0 : 1;
-          const bDiff = b.BoxColor !== col ? 0 : 1;
-          return aDiff - bDiff;
+          const aCards = boxCardsMap.get(a.Id) || [];
+          const bCards = boxCardsMap.get(b.Id) || [];
+          const aHas = aCards.includes(col) ? 1 : 0;
+          const bHas = bCards.includes(col) ? 1 : 0;
+          if (aHas !== bHas) return bHas - aHas;
+          const aDiff = a.BoxColor !== col ? 1 : 0;
+          const bDiff = b.BoxColor !== col ? 1 : 0;
+          return bDiff - aDiff;
         });
 
         for (const bx of candidateBoxes) {
           const bCards = boxCardsMap.get(bx.Id) || [];
           const bType = getBoxType(bx.TypeId);
+          const distinctCols = new Set(bCards);
           if (bCards.length < bType.capacity) {
+            if (!distinctCols.has(col) && distinctCols.size >= maxColorsPerBox) continue;
             if (bx.BoxColor === col && bCards.length + 1 >= bType.capacity && bCards.every(c => c === col) && colors.length > 1) {
               continue;
             }
@@ -482,7 +553,20 @@ export function balanceLevelCardDeckResult(data: LevelData, maxSlots = 4): Balan
             break;
           }
         }
-        if (!placed) break;
+        if (!placed) {
+          // Relaxed fallback if strictly necessary
+          for (const bx of candidateBoxes) {
+            const bCards = boxCardsMap.get(bx.Id) || [];
+            const bType = getBoxType(bx.TypeId);
+            if (bCards.length < bType.capacity) {
+              bCards.push(col);
+              remainingQuota[col]--;
+              placed = true;
+              break;
+            }
+          }
+          if (!placed) break;
+        }
       }
     }
 
@@ -555,6 +639,12 @@ export function balanceLevelCardDeckResult(data: LevelData, maxSlots = 4): Balan
       }
     }
 
+    // Rule: Limit distinct colors per box
+    const exceedsMaxColors = candidateLevel.BoxNodes.some(bx => new Set(bx.InitCards).size > maxColorsPerBox);
+    if (exceedsMaxColors) {
+      continue;
+    }
+
     // Verify solvability with maxSlots
     const solveRes = isLevelSolvable(candidateLevel, maxSlots);
     if (solveRes.solvable) {
@@ -574,6 +664,6 @@ export function balanceLevelCardDeckResult(data: LevelData, maxSlots = 4): Balan
   };
 }
 
-export function balanceLevelCardDeck(data: LevelData, maxSlots = 4): LevelData {
-  return balanceLevelCardDeckResult(data, maxSlots).level;
+export function balanceLevelCardDeck(data: LevelData, maxSlots = 4, maxColorsPerBox = 3): LevelData {
+  return balanceLevelCardDeckResult(data, maxSlots, maxColorsPerBox).level;
 }
