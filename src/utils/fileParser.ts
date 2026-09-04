@@ -50,8 +50,8 @@ export function parseLevelData(rawInput: string | ArrayBuffer | Uint8Array): Lev
       ? parsed.BoardNodes.map((n: any, idx: number): BoardNode => {
           const layerId = Number(n.LayerId ?? n.TileMapId ?? 0);
           const yRot = Number(n.YRotation ?? n.ZRotation ?? 0);
-          const xPos = Number(n.XPosition ?? ((n.MapPosX ?? 0) + (n.XPosition ?? 0)));
-          const zPos = Number(n.ZPosition ?? ((n.MapPosY ?? 0) + (n.YPosition ?? 0)));
+          const xPos = Number(n.XPosition !== undefined ? n.XPosition : (n.MapPosX ?? 0));
+          const zPos = Number(n.ZPosition !== undefined ? n.ZPosition : ((n.MapPosY ?? 0) + (n.YPosition ?? 0)));
           return {
             Id: String(n.Id ?? `node_${idx}`),
             LayerId: layerId,
@@ -62,7 +62,7 @@ export function parseLevelData(rawInput: string | ArrayBuffer | Uint8Array): Lev
             ZRotation: yRot,
             MapPosX: Math.floor(xPos),
             MapPosY: Math.floor(zPos),
-            YPosition: zPos - Math.floor(zPos),
+            YPosition: Number((zPos - Math.floor(zPos)).toFixed(3)),
           };
         })
       : [],
@@ -118,8 +118,8 @@ export function levelDataToJson(data: LevelData, pretty = true): string {
       Id: b.Id,
       LayerId: b.LayerId ?? b.TileMapId ?? 0,
       YRotation: b.YRotation ?? b.ZRotation ?? 0,
-      XPosition: b.XPosition !== undefined && b.MapPosX === undefined ? b.XPosition : Number(((b.MapPosX ?? 0) + (b.XPosition ?? 0)).toFixed(3)),
-      ZPosition: b.ZPosition !== undefined && b.MapPosY === undefined ? b.ZPosition : Number(((b.MapPosY ?? 0) + (b.YPosition ?? (b.ZPosition ?? 0))).toFixed(3)),
+      XPosition: Number(b.XPosition.toFixed(3)),
+      ZPosition: Number(b.ZPosition.toFixed(3)),
     })),
     BoxNodes: data.BoxNodes.map(b => ({
       Id: b.Id,

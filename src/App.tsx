@@ -334,12 +334,8 @@ export function App() {
     if (!sourceBoard || !sourceBox) return;
 
     const layer = sourceBoard.LayerId ?? sourceBoard.TileMapId ?? 0;
-    const x = (sourceBoard.XPosition !== undefined && sourceBoard.MapPosX === undefined)
-      ? sourceBoard.XPosition
-      : ((sourceBoard.MapPosX ?? 0) + (sourceBoard.XPosition ?? 0));
-    const z = (sourceBoard.ZPosition !== undefined && sourceBoard.MapPosY === undefined)
-      ? sourceBoard.ZPosition
-      : ((sourceBoard.MapPosY ?? 0) + (sourceBoard.YPosition ?? (sourceBoard.ZPosition ?? 0)));
+    const x = sourceBoard.XPosition !== undefined ? sourceBoard.XPosition : (sourceBoard.MapPosX ?? 0);
+    const z = sourceBoard.ZPosition !== undefined ? sourceBoard.ZPosition : ((sourceBoard.MapPosY ?? 0) + (sourceBoard.YPosition ?? 0));
 
     let index = 1;
     let newId = `${layer}_${Math.round(x + 1)}_${Math.round(z)}`;

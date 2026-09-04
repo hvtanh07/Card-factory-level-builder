@@ -28,12 +28,8 @@ export function nodeToScreenPos(
   originY: number,
   gridUnit: number = DEFAULT_GRID_UNIT
 ): Point {
-  const unityX = node.XPosition !== undefined && node.MapPosX === undefined
-    ? node.XPosition
-    : (node.MapPosX ?? 0) + (node.XPosition ?? 0);
-  const unityY = node.ZPosition !== undefined && node.MapPosY === undefined
-    ? node.ZPosition
-    : (node.MapPosY ?? 0) + (node.YPosition ?? (node.ZPosition ?? 0));
+  const unityX = node.XPosition !== undefined ? node.XPosition : (node.MapPosX ?? 0);
+  const unityY = node.ZPosition !== undefined ? node.ZPosition : ((node.MapPosY ?? 0) + (node.YPosition ?? 0));
 
   // Unity: +X is right, +Z is up (Canvas: +X is right, +Y is down).
   const screenX = originX + unityX * gridUnit;

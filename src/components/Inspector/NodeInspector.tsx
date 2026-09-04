@@ -329,7 +329,7 @@ export const NodeInspector: React.FC<NodeInspectorProps> = ({
               <input
                 type="number"
                 step="0.1"
-                value={boardNode.XPosition !== undefined && boardNode.MapPosX === undefined ? boardNode.XPosition : Number(((boardNode.MapPosX ?? 0) + (boardNode.XPosition ?? 0)).toFixed(3))}
+                value={boardNode.XPosition ?? 0}
                 onChange={(e) => {
                   const val = parseFloat(e.target.value) || 0;
                   onUpdateBoardNode({
@@ -346,13 +346,13 @@ export const NodeInspector: React.FC<NodeInspectorProps> = ({
               <input
                 type="number"
                 step="0.1"
-                value={boardNode.ZPosition !== undefined && boardNode.MapPosY === undefined ? boardNode.ZPosition : Number(((boardNode.MapPosY ?? 0) + (boardNode.YPosition ?? (boardNode.ZPosition ?? 0))).toFixed(3))}
+                value={boardNode.ZPosition ?? 0}
                 onChange={(e) => {
                   const val = parseFloat(e.target.value) || 0;
                   onUpdateBoardNode({
                     ...boardNode,
                     ZPosition: val,
-                    YPosition: val - Math.floor(val),
+                    YPosition: Number((val - Math.floor(val)).toFixed(3)),
                     MapPosY: Math.floor(val),
                   });
                 }}

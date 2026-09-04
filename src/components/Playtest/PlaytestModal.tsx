@@ -877,12 +877,8 @@ export const PlaytestModal: React.FC<PlaytestModalProps> = ({ levelData, onClose
                       const isHidden = (activeBox.IsRainbowBox || activeBox.IsHidden) && isBlocked;
                       const areCardsHidden = activeBox.IsCardsHidden;
 
-                      const unityX = bn.XPosition !== undefined && bn.MapPosX === undefined
-                        ? bn.XPosition
-                        : (bn.MapPosX ?? 0) + (bn.XPosition ?? 0);
-                      const unityZ = bn.ZPosition !== undefined && bn.MapPosY === undefined
-                        ? bn.ZPosition
-                        : (bn.MapPosY ?? 0) + (bn.YPosition ?? (bn.ZPosition ?? 0));
+                      const unityX = bn.XPosition !== undefined ? bn.XPosition : (bn.MapPosX ?? 0);
+                      const unityZ = bn.ZPosition !== undefined ? bn.ZPosition : ((bn.MapPosY ?? 0) + (bn.YPosition ?? 0));
 
                       const cx = unityX * 74;
                       const cy = -unityZ * 74;

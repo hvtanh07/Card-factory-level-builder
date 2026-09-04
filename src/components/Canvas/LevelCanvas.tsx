@@ -122,12 +122,8 @@ export const LevelCanvas: React.FC<LevelCanvasProps> = ({
 
     let minX = Infinity, maxX = -Infinity, minY = Infinity, maxY = -Infinity;
     for (const bn of levelData.BoardNodes) {
-      const ux = bn.XPosition !== undefined && bn.MapPosX === undefined
-        ? bn.XPosition
-        : (bn.MapPosX ?? 0) + (bn.XPosition ?? 0);
-      const uy = bn.ZPosition !== undefined && bn.MapPosY === undefined
-        ? bn.ZPosition
-        : (bn.MapPosY ?? 0) + (bn.YPosition ?? (bn.ZPosition ?? 0));
+      const ux = bn.XPosition !== undefined ? bn.XPosition : (bn.MapPosX ?? 0);
+      const uy = bn.ZPosition !== undefined ? bn.ZPosition : ((bn.MapPosY ?? 0) + (bn.YPosition ?? 0));
       if (ux < minX) minX = ux;
       if (ux > maxX) maxX = ux;
       if (uy < minY) minY = uy;
@@ -189,16 +185,16 @@ export const LevelCanvas: React.FC<LevelCanvasProps> = ({
     const bn = boardMap.get(id);
     if (!bn) return;
 
-    const x = bn.XPosition !== undefined && bn.MapPosX === undefined ? bn.XPosition : (bn.MapPosX ?? 0) + (bn.XPosition ?? 0);
-    const z = bn.ZPosition !== undefined && bn.MapPosY === undefined ? bn.ZPosition : (bn.MapPosY ?? 0) + (bn.YPosition ?? (bn.ZPosition ?? 0));
+    const x = bn.XPosition !== undefined ? bn.XPosition : (bn.MapPosX ?? 0);
+    const z = bn.ZPosition !== undefined ? bn.ZPosition : ((bn.MapPosY ?? 0) + (bn.YPosition ?? 0));
 
     setDraggingNodeId(id);
     setDragStartMouse({ x: e.clientX, y: e.clientY });
     setDragStartNodePos({
       mapPosX: Math.floor(x),
       mapPosY: Math.floor(z),
-      xPos: Number((x - Math.floor(x)).toFixed(3)),
-      yPos: Number((z - Math.floor(z)).toFixed(3)),
+      xPos: x,
+      yPos: z,
     });
   };
 
@@ -224,8 +220,8 @@ export const LevelCanvas: React.FC<LevelCanvasProps> = ({
       const dx = (e.clientX - dragStartMouse.x) / (DEFAULT_GRID_UNIT * viewport.zoom);
       const dy = -(e.clientY - dragStartMouse.y) / (DEFAULT_GRID_UNIT * viewport.zoom);
 
-      const newTotalX = dragStartNodePos.mapPosX + dragStartNodePos.xPos + dx;
-      const newTotalY = dragStartNodePos.mapPosY + dragStartNodePos.yPos + dy;
+      const newTotalX = dragStartNodePos.xPos + dx;
+      const newTotalY = dragStartNodePos.yPos + dy;
 
       if (snapToGrid) {
         const mapPosX = Math.round(newTotalX);
