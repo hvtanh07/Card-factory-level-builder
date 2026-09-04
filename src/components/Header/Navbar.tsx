@@ -10,7 +10,8 @@ import {
   HelpCircle, 
   Shuffle,
   Archive,
-  Scaling
+  Scaling,
+  FileJson
 } from 'lucide-react';
 
 interface NavbarProps {
@@ -21,6 +22,7 @@ interface NavbarProps {
   onExportJson: () => void;
   onExportAllZip: () => void;
   onOpenJsonModal: () => void;
+  onOpenLoadJsonModal: () => void;
   onAutoCalculateBlockers: () => void;
   onAutoBalanceDeck: () => void;
   onStartPlaytest: () => void;
@@ -43,6 +45,7 @@ export const Navbar: React.FC<NavbarProps> = ({
   onExportJson,
   onExportAllZip,
   onOpenJsonModal,
+  onOpenLoadJsonModal,
   onAutoCalculateBlockers,
   onAutoBalanceDeck,
   onStartPlaytest,
@@ -174,6 +177,16 @@ export const Navbar: React.FC<NavbarProps> = ({
         >
           <FolderOpen size={14} className="text-sky-400" />
           <span>Import .bytes</span>
+        </button>
+
+        {/* Input JSON string to load level */}
+        <button
+          onClick={onOpenLoadJsonModal}
+          className="py-1.5 px-3 rounded-lg bg-slate-900 hover:bg-slate-800 text-slate-300 hover:text-white border border-slate-700 text-xs font-medium flex items-center gap-1.5 transition active:scale-95 shadow-sm"
+          title="Paste or input a JSON string to load a level"
+        >
+          <FileJson size={14} className="text-emerald-400" />
+          <span>Input JSON</span>
         </button>
 
         {/* Auto Blockers Tool */}

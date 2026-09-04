@@ -8,7 +8,7 @@ import {
   exportAllLevelsAsZip 
 } from './utils/fileParser';
 import { calculateAutoBlockers, calculateAutoBlockersResult } from './utils/autoBlocker';
-import { validateLevel, balanceLevelCardDeck } from './utils/levelValidator';
+import { validateLevel, balanceLevelCardDeck, balanceLevelCardDeckResult } from './utils/levelValidator';
 import { Navbar } from './components/Header/Navbar';
 import { StatsBar } from './components/Header/StatsBar';
 import { LevelCanvas } from './components/Canvas/LevelCanvas';
@@ -17,6 +17,7 @@ import { LayerManager } from './components/Sidebar/LayerManager';
 import { PalettePanel } from './components/Sidebar/PalettePanel';
 import { LevelLibrary, SavedLevel } from './components/Sidebar/LevelLibrary';
 import { JsonModal } from './components/Modals/JsonModal';
+import { LoadJsonModal } from './components/Modals/LoadJsonModal';
 import { PlaytestModal } from './components/Playtest/PlaytestModal';
 import { HelpModal } from './components/Modals/HelpModal';
 import { 
@@ -68,6 +69,7 @@ export function App() {
 
   // Modals
   const [showJsonModal, setShowJsonModal] = useState(false);
+  const [showLoadJsonModal, setShowLoadJsonModal] = useState(false);
   const [showPlaytestModal, setShowPlaytestModal] = useState(false);
   const [showHelpModal, setShowHelpModal] = useState(false);
 
@@ -191,9 +193,13 @@ export function App() {
 
   // Auto-Balance Card Deck
   const handleAutoBalanceDeck = () => {
-    const balanced = balanceLevelCardDeck(levelData);
-    setLevelData(balanced);
-    showToast('Card deck balanced to match box capacities perfectly!');
+    const result = balanceLevelCardDeckResult(levelData, 4);
+    setLevelData(result.level);
+    if (result.solvable) {
+      showToast('Card deck balanced by color groups & verified solvable with 4 slots!');
+    } else {
+      showToast('Deck balanced by color groups, but 4-slot path is currently locked. Adjust blockers or box order.', 'warning');
+    }
   };
 
   // Node updates
@@ -396,6 +402,46 @@ export function App() {
     showToast(`Loaded "${name}"!`);
   };
 
+  // Load level from JSON string input
+  const handleLoadLevelFromJson = (data: LevelData, name: string, saveToLibrary?: boolean) => {
+    setLevelData(data);
+    const resolvedName = name.trim() || `Level ${data.Id || 'Imported'}`;
+    setLevelName(resolvedName);
+    setSelectedNodeId(data.BoardNodes[0]?.Id || null);
+
+    if (saveToLibrary) {
+      const newEntry: SavedLevel = {
+        id: `json_${Date.now()}_${Math.random().toString(36).substring(2, 7)}`,
+        name: resolvedName,
+        updatedAt: new Date().toLocaleDateString(),
+        data,
+      };
+      const updated = [newEntry, ...savedLevels];
+      updateSavedLevels(updated);
+      showToast(`Loaded "${resolvedName}" & saved to library!`);
+    } else {
+      showToast(`Loaded "${resolvedName}" from JSON!`);
+    }
+  };
+
+  // Batch import multiple levels from JSON array
+  const handleBatchImportFromJson = (levels: Array<{ name: string; data: LevelData }>) => {
+    const newEntries: SavedLevel[] = levels.map(l => ({
+      id: `imported_json_${Date.now()}_${Math.random().toString(36).substring(2, 7)}`,
+      name: l.name,
+      updatedAt: new Date().toLocaleDateString(),
+      data: l.data,
+    }));
+    const updated = [...newEntries, ...savedLevels];
+    updateSavedLevels(updated);
+    if (levels.length > 0) {
+      setLevelData(levels[0].data);
+      setLevelName(levels[0].name);
+      setSelectedNodeId(levels[0].data.BoardNodes[0]?.Id || null);
+    }
+    showToast(`Imported ${levels.length} levels from JSON array!`);
+  };
+
   return (
     <div className="w-screen h-screen flex flex-col bg-slate-950 text-slate-100 overflow-hidden font-sans">
       {/* Top Navigation */}
@@ -407,6 +453,7 @@ export function App() {
         onExportJson={handleExportJson}
         onExportAllZip={handleExportAllZip}
         onOpenJsonModal={() => setShowJsonModal(true)}
+        onOpenLoadJsonModal={() => setShowLoadJsonModal(true)}
         onAutoCalculateBlockers={handleAutoCalculateBlockers}
         onAutoBalanceDeck={handleAutoBalanceDeck}
         onStartPlaytest={() => setShowPlaytestModal(true)}
@@ -476,6 +523,7 @@ export function App() {
                 currentLevelData={levelData}
                 onLoadLevel={handleLoadLevel}
                 onImportFiles={handleImportFiles}
+                onOpenLoadJsonModal={() => setShowLoadJsonModal(true)}
                 savedLevels={savedLevels}
                 onSaveLevel={handleSaveLevel}
                 onDeleteSavedLevel={handleDeleteSavedLevel}
@@ -551,6 +599,18 @@ export function App() {
             setLevelData(updated);
             showToast('Applied JSON updates to level!');
           }}
+          onSwitchToLoadJson={() => {
+            setShowJsonModal(false);
+            setShowLoadJsonModal(true);
+          }}
+        />
+      )}
+
+      {showLoadJsonModal && (
+        <LoadJsonModal
+          onClose={() => setShowLoadJsonModal(false)}
+          onLoadLevel={handleLoadLevelFromJson}
+          onBatchImport={handleBatchImportFromJson}
         />
       )}
 

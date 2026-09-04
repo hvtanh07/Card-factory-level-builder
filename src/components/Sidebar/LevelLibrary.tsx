@@ -13,7 +13,8 @@ import {
   UploadCloud,
   Zap,
   ShieldAlert,
-  Smile
+  Smile,
+  FileJson
 } from 'lucide-react';
 import { downloadLevelFile, exportAllLevelsAsZip } from '../../utils/fileParser';
 
@@ -28,6 +29,7 @@ interface LevelLibraryProps {
   currentLevelData: LevelData;
   onLoadLevel: (data: LevelData, name: string) => void;
   onImportFiles: (files: FileList | File[]) => void;
+  onOpenLoadJsonModal?: () => void;
   savedLevels: SavedLevel[];
   onSaveLevel: (name: string) => void;
   onDeleteSavedLevel: (id: string) => void;
@@ -40,6 +42,7 @@ export const LevelLibrary: React.FC<LevelLibraryProps> = ({
   currentLevelData,
   onLoadLevel,
   onImportFiles,
+  onOpenLoadJsonModal,
   savedLevels,
   onSaveLevel,
   onDeleteSavedLevel,
@@ -147,20 +150,31 @@ export const LevelLibrary: React.FC<LevelLibraryProps> = ({
       <div className="flex items-center gap-1.5">
         <button
           onClick={() => fileInputRef.current?.click()}
-          className="flex-1 py-1.5 px-2 bg-slate-800 hover:bg-slate-700 text-sky-300 border border-slate-700 rounded-lg text-xs font-semibold flex items-center justify-center gap-1.5 transition active:scale-95 shadow-sm"
+          className="flex-1 py-1.5 px-2 bg-slate-800 hover:bg-slate-700 text-sky-300 border border-slate-700 rounded-lg text-xs font-semibold flex items-center justify-center gap-1 transition active:scale-95 shadow-sm"
           title="Import multiple .bytes or .zip files"
         >
           <UploadCloud size={13} />
-          <span>Import Files</span>
+          <span>Files</span>
         </button>
+
+        {onOpenLoadJsonModal && (
+          <button
+            onClick={onOpenLoadJsonModal}
+            className="flex-1 py-1.5 px-2 bg-slate-800 hover:bg-slate-700 text-emerald-300 border border-slate-700 rounded-lg text-xs font-semibold flex items-center justify-center gap-1 transition active:scale-95 shadow-sm"
+            title="Paste or input JSON string to load a level"
+          >
+            <FileJson size={13} />
+            <span>Input JSON</span>
+          </button>
+        )}
 
         <button
           onClick={handleExportAll}
-          className="py-1.5 px-2.5 bg-teal-950/80 hover:bg-teal-900 text-teal-200 border border-teal-700/60 rounded-lg text-xs font-medium flex items-center gap-1 transition active:scale-95 shadow-sm"
+          className="py-1.5 px-2 bg-teal-950/80 hover:bg-teal-900 text-teal-200 border border-teal-700/60 rounded-lg text-xs font-medium flex items-center justify-center gap-1 transition active:scale-95 shadow-sm"
           title="Export all 30 premade levels + saved levels as a .zip bundle"
         >
           <Archive size={13} className="text-teal-400" />
-          <span>Zip All ({PRESET_LEVELS.length + savedLevels.length})</span>
+          <span>Zip All</span>
         </button>
       </div>
 

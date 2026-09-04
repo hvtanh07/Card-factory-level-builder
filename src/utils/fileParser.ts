@@ -30,6 +30,14 @@ export function parseLevelData(rawInput: string | ArrayBuffer | Uint8Array): Lev
     throw new Error(`Failed to parse level data JSON: ${err.message}`);
   }
 
+  if (Array.isArray(parsed) && parsed.length > 0) {
+    parsed = parsed[0].data || parsed[0];
+  }
+
+  if (parsed && typeof parsed === 'object' && parsed.data && typeof parsed.data === 'object') {
+    parsed = parsed.data;
+  }
+
   if (!parsed || typeof parsed !== 'object') {
     throw new Error('Invalid level data format: Root must be an object.');
   }
@@ -213,3 +221,100 @@ export async function exportAllLevelsAsZip(levels: { name: string; data: LevelDa
   document.body.removeChild(a);
   URL.revokeObjectURL(url);
 }
+
+export interface ParsedJsonLevelResult {
+  levelData: LevelData;
+  name: string;
+  multipleLevels?: Array<{ name: string; data: LevelData }>;
+}
+
+export function parseJsonLevelInput(rawInput: string): ParsedJsonLevelResult {
+  let str = rawInput.trim();
+  if (!str) {
+    throw new Error('JSON input cannot be empty.');
+  }
+
+  // Handle outer stringified wrapping
+  if ((str.startsWith('"') && str.endsWith('"')) || (str.startsWith("'") && str.endsWith("'"))) {
+    try {
+      str = JSON.parse(str);
+      str = str.trim();
+    } catch {
+      // ignore
+    }
+  }
+
+  // Check if this is an array of levels
+  const firstSquare = str.indexOf('[');
+  const firstBrace = str.indexOf('{');
+
+  if (firstSquare !== -1 && (firstBrace === -1 || firstSquare < firstBrace)) {
+    let parsedArray: any;
+    try {
+      parsedArray = JSON.parse(str);
+    } catch (err: any) {
+      throw new Error(`Failed to parse JSON array: ${err.message}`);
+    }
+
+    if (!Array.isArray(parsedArray) || parsedArray.length === 0) {
+      throw new Error('JSON array is empty.');
+    }
+
+    const levels: Array<{ name: string; data: LevelData }> = [];
+    for (let i = 0; i < parsedArray.length; i++) {
+      const item = parsedArray[i];
+      const itemData = item.data || item;
+      const itemName = item.name || item.Name || `Level ${itemData.Id || (i + 1)}`;
+      try {
+        const lvl = parseLevelData(typeof itemData === 'string' ? itemData : JSON.stringify(itemData));
+        levels.push({ name: itemName, data: lvl });
+      } catch (e: any) {
+        console.warn(`Skipping invalid level in array index ${i}:`, e.message);
+      }
+    }
+
+    if (levels.length === 0) {
+      throw new Error('No valid level structures found in the JSON array.');
+    }
+
+    return {
+      levelData: levels[0].data,
+      name: levels[0].name,
+      multipleLevels: levels,
+    };
+  }
+
+  // Single JSON object
+  let parsedObj: any;
+  try {
+    parsedObj = JSON.parse(str);
+  } catch {
+    // If JSON.parse fails, try parseLevelData's brace extraction
+    const levelData = parseLevelData(str);
+    return {
+      levelData,
+      name: `Level ${levelData.Id || 1}`,
+    };
+  }
+
+  if (!parsedObj || typeof parsedObj !== 'object') {
+    throw new Error('Invalid level data format: Root must be a JSON object or array.');
+  }
+
+  if (parsedObj.data && typeof parsedObj.data === 'object') {
+    const levelData = parseLevelData(JSON.stringify(parsedObj.data));
+    const name = parsedObj.name || parsedObj.Name || `Level ${levelData.Id || 1}`;
+    return {
+      levelData,
+      name,
+    };
+  }
+
+  const levelData = parseLevelData(JSON.stringify(parsedObj));
+  const name = parsedObj.name || parsedObj.Name || `Level ${levelData.Id || 1}`;
+  return {
+    levelData,
+    name,
+  };
+}
+

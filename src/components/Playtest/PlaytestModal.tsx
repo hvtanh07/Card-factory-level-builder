@@ -22,7 +22,7 @@ interface PlaytestModalProps {
 
 interface DockedBox {
   instanceId: string; // Unique instance ID
-  slotIdx: number;     // Fixed slot index 0..4
+  slotIdx: number;     // Fixed slot index 0..3
   id: string;
   boardNode: BoardNode;
   boxColor: number;
@@ -52,7 +52,7 @@ interface FlyingCard {
   duration: number; // in seconds
 }
 
-const MAX_BOX_SLOTS = 5;
+const MAX_BOX_SLOTS = 4;
 const BELT_SPEED = 185.0; // pixels per second
 const MIN_CARD_DISTANCE = 32.0; // Fixed separation distance to prevent overlap
 
@@ -67,8 +67,8 @@ const L_STRAIGHT = RIGHT_X - LEFT_X; // 640.0
 const L_ARC = Math.PI * RADIUS;       // ~125.66
 const L_TOTAL = 2 * L_STRAIGHT + 2 * L_ARC; // ~1531.33
 
-// 5 Docked Boxes with Fixed Positions (64px width, 46px padding)
-const BOX_X_POSITIONS = [200.0, 310.0, 420.0, 530.0, 640.0];
+// 4 Docked Boxes with Fixed Positions (64px width, 66px gap) symmetrically centered
+const BOX_X_POSITIONS = [235.0, 365.0, 495.0, 625.0];
 const BOX_CHECKPOINTS = BOX_X_POSITIONS.map(bx => bx - LEFT_X);
 
 /**
@@ -145,8 +145,8 @@ export const PlaytestModal: React.FC<PlaytestModalProps> = ({ levelData, onClose
   const [isPanning, setIsPanning] = useState(false);
   const [panStart, setPanStart] = useState({ x: 0, y: 0 });
 
-  // Game state: 5 fixed slots (either a DockedBox or null)
-  const [boxSlots, setBoxSlots] = useState<(DockedBox | null)[]>([null, null, null, null, null]);
+  // Game state: 4 fixed slots (either a DockedBox or null)
+  const [boxSlots, setBoxSlots] = useState<(DockedBox | null)[]>([null, null, null, null]);
   const [clearedNodes, setClearedNodes] = useState<Set<string>>(new Set());
   const [spawnerQueues, setSpawnerQueues] = useState<Map<string, SpawnBox[]>>(new Map());
   const [deliveredCardsCount, setDeliveredCardsCount] = useState<number>(0);
@@ -157,7 +157,7 @@ export const PlaytestModal: React.FC<PlaytestModalProps> = ({ levelData, onClose
   // High-performance real-time simulation state
   const conveyorCardsRef = useRef<ConveyorCard[]>([]);
   const flyingCardsRef = useRef<FlyingCard[]>([]);
-  const boxSlotsRef = useRef<(DockedBox | null)[]>([null, null, null, null, null]);
+  const boxSlotsRef = useRef<(DockedBox | null)[]>([null, null, null, null]);
   const clearedNodesRef = useRef<Set<string>>(new Set());
   const beltBaseDistRef = useRef<number>(0);
 
@@ -184,11 +184,11 @@ export const PlaytestModal: React.FC<PlaytestModalProps> = ({ levelData, onClose
   const resetGame = useCallback(() => {
     conveyorCardsRef.current = [];
     flyingCardsRef.current = [];
-    boxSlotsRef.current = [null, null, null, null, null];
+    boxSlotsRef.current = [null, null, null, null];
     clearedNodesRef.current = new Set();
     beltBaseDistRef.current = 0;
 
-    setBoxSlots([null, null, null, null, null]);
+    setBoxSlots([null, null, null, null]);
     setClearedNodes(new Set());
     
     // Initialize spawner queues
@@ -391,7 +391,7 @@ export const PlaytestModal: React.FC<PlaytestModalProps> = ({ levelData, onClose
     // === TRAY LOGIC ===
     // Trays store spare cards. When clicked:
     // 1. Only its cards are sent to the conveyor belt.
-    // 2. The tray disappears immediately without occupying any of the 5 box slots!
+    // 2. The tray disappears immediately without occupying any of the 4 box slots!
     if (isTray) {
 
       // Inject cards onto conveyor belt with individual distance and no overlap
@@ -425,11 +425,11 @@ export const PlaytestModal: React.FC<PlaytestModalProps> = ({ levelData, onClose
     }
 
     // === NORMAL COLORED BOX LOGIC ===
-    // 1. Find first available box slot (0..4)
+    // 1. Find first available box slot (0..3)
     const currentSlots = boxSlotsRef.current;
     const availableSlotIdx = currentSlots.findIndex(s => s === null);
     if (availableSlotIdx === -1) {
-      showWarning('All 5 box slots are occupied! Clear a matching box first.');
+      showWarning('All 4 box slots are occupied! Clear a matching box first.');
       return;
     }
 
@@ -596,7 +596,7 @@ export const PlaytestModal: React.FC<PlaytestModalProps> = ({ levelData, onClose
             {/* Header info & score */}
             <div className="w-full max-w-4xl flex items-center justify-between px-2 text-[11px] font-bold text-white uppercase tracking-wider">
               <span className="drop-shadow">
-                Docked Boxes ({boxSlots.filter(b => b !== null && !b.isClearing).length}/5) • Conveyor Cards ({currentConveyorCount})
+                Docked Boxes ({boxSlots.filter(b => b !== null && !b.isClearing).length}/4) • Conveyor Cards ({currentConveyorCount})
               </span>
               <div className="bg-slate-950/80 border border-slate-700 px-3 py-1 rounded-xl text-xs font-mono text-sky-400 shadow">
                 Delivered: {deliveredCardsCount}/{totalCardsInLevel}
@@ -1134,7 +1134,7 @@ export const PlaytestModal: React.FC<PlaytestModalProps> = ({ levelData, onClose
                   Level Complete!
                 </h3>
                 <p className="text-sm text-slate-300 max-w-md mb-6">
-                  All boxes and cards have been sorted and cleared through the 5 box slots!
+                  All boxes and cards have been sorted and cleared through the 4 box slots!
                 </p>
                 <div className="flex items-center gap-3">
                   <button

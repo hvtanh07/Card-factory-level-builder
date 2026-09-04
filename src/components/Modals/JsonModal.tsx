@@ -1,15 +1,16 @@
 import React, { useState, useEffect } from 'react';
 import { LevelData } from '../../types/level';
 import { levelDataToJson, parseLevelData } from '../../utils/fileParser';
-import { X, Copy, Check, CheckCircle2, AlertTriangle, Sparkles } from 'lucide-react';
+import { X, Copy, Check, CheckCircle2, AlertTriangle, Sparkles, FileJson } from 'lucide-react';
 
 interface JsonModalProps {
   levelData: LevelData;
   onClose: () => void;
   onApply: (updatedData: LevelData) => void;
+  onSwitchToLoadJson?: () => void;
 }
 
-export const JsonModal: React.FC<JsonModalProps> = ({ levelData, onClose, onApply }) => {
+export const JsonModal: React.FC<JsonModalProps> = ({ levelData, onClose, onApply, onSwitchToLoadJson }) => {
   const [jsonText, setJsonText] = useState('');
   const [parseError, setParseError] = useState<string | null>(null);
   const [copied, setCopied] = useState(false);
@@ -75,6 +76,19 @@ export const JsonModal: React.FC<JsonModalProps> = ({ levelData, onClose, onAppl
           </div>
 
           <div className="flex items-center gap-2">
+            {onSwitchToLoadJson && (
+              <button
+                onClick={() => {
+                  onClose();
+                  onSwitchToLoadJson();
+                }}
+                className="py-1 px-2.5 bg-emerald-950/80 hover:bg-emerald-900 text-emerald-300 border border-emerald-700/60 rounded-lg text-xs font-medium flex items-center gap-1.5 transition active:scale-95 shadow-sm"
+                title="Input a new JSON string to load a level"
+              >
+                <FileJson size={13} />
+                <span>Load from JSON...</span>
+              </button>
+            )}
             <button
               onClick={handleFormat}
               className="py-1 px-2.5 bg-slate-800 hover:bg-slate-700 text-slate-300 rounded-lg text-xs font-medium flex items-center gap-1.5 transition"

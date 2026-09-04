@@ -1,5 +1,6 @@
 import { LevelData, ValidationIssue } from '../types/level';
 import { getBoxType } from '../constants/boxTypes';
+import { getBlockedByMap } from './autoBlocker';
 
 export function validateLevel(data: LevelData): ValidationIssue[] {
   const issues: ValidationIssue[] = [];
@@ -171,68 +172,337 @@ export function getColoredBoxCapacities(data: LevelData): Record<number, number>
   return capacities;
 }
 
-export function balanceLevelCardDeck(data: LevelData): LevelData {
-  const coloredCaps = getColoredBoxCapacities(data);
-  const colorPool: number[] = [];
+export interface SolverResult {
+  solvable: boolean;
+  solutionMoves?: string[];
+}
 
-  for (const [colStr, cap] of Object.entries(coloredCaps)) {
-    const col = Number(colStr);
-    for (let i = 0; i < cap; i++) {
-      colorPool.push(col);
-    }
+/**
+ * Simulates clearing the level on a conveyor with `maxSlots` capacity.
+ * Trays dump cards directly onto the conveyor without occupying a box slot.
+ * Colored boxes occupy a conveyor slot until filled with their respective color.
+ */
+export function isLevelSolvable(levelData: LevelData, maxSlots = 4): SolverResult {
+  const boxList = levelData.BoxNodes;
+  const totalBoxes = boxList.length;
+  if (totalBoxes === 0) return { solvable: true, solutionMoves: [] };
+
+  const boxIdToIndex = new Map(boxList.map((b, idx) => [b.Id, idx]));
+
+  const blockedByMap = getBlockedByMap(boxList);
+  const blockerIndicesMap = new Map<number, number[]>();
+  for (let i = 0; i < boxList.length; i++) {
+    const blockers = blockedByMap.get(boxList[i].Id) || [];
+    blockerIndicesMap.set(
+      i,
+      blockers.map(id => boxIdToIndex.get(id)!).filter(idx => idx !== undefined)
+    );
   }
 
-  for (let i = colorPool.length - 1; i > 0; i--) {
-    const j = Math.floor(Math.random() * (i + 1));
-    [colorPool[i], colorPool[j]] = [colorPool[j], colorPool[i]];
+  const memo = new Set<string>();
+  const maxStates = 5000;
+
+  function serializeState(clearedMask: number, docked: Array<{ color: number; count: number; cap: number }>, belt: number[]): string {
+    const beltCounts: number[] = [0, 0, 0, 0, 0, 0, 0, 0, 0, 0];
+    for (const c of belt) beltCounts[c] = (beltCounts[c] || 0) + 1;
+    const dockedStr = docked.map(d => `${d.color}:${d.count}/${d.cap}`).sort().join(';');
+    return `${clearedMask}|${dockedStr}|${beltCounts.join(',')}`;
   }
 
-  let poolIdx = 0;
+  function dfs(
+    clearedMask: number,
+    docked: Array<{ id: string; color: number; count: number; cap: number }>,
+    belt: number[],
+    path: string[]
+  ): string[] | null {
+    if (memo.size > maxStates) return null;
 
-  const updatedBoxes = data.BoxNodes.map(bx => {
-    const boxType = getBoxType(bx.TypeId);
-    const numCards = Math.min(bx.InitCards.length || boxType.defaultSlots, boxType.capacity);
-    const newCards: number[] = [];
+    let newDocked = docked.map(d => ({ ...d }));
+    let newBelt = [...belt];
+    let changed = true;
 
-    for (let i = 0; i < numCards; i++) {
-      if (poolIdx < colorPool.length) {
-        newCards.push(colorPool[poolIdx++]);
-      } else {
-        newCards.push(bx.IsPaperBox ? 1 : bx.BoxColor);
+    while (changed) {
+      changed = false;
+      for (let i = 0; i < newBelt.length; i++) {
+        const c = newBelt[i];
+        const target = newDocked.find(d => d.color === c && d.count < d.cap);
+        if (target) {
+          target.count++;
+          newBelt.splice(i, 1);
+          changed = true;
+          break;
+        }
+      }
+      const beforeLen = newDocked.length;
+      newDocked = newDocked.filter(d => d.count < d.cap);
+      if (newDocked.length < beforeLen) {
+        changed = true;
       }
     }
 
-    return {
-      ...bx,
-      InitCards: newCards,
-    };
+    if (clearedMask === (1 << totalBoxes) - 1 && newDocked.length === 0 && newBelt.length === 0) {
+      return path;
+    }
+
+    const stateKey = serializeState(clearedMask, newDocked, newBelt);
+    if (memo.has(stateKey)) return null;
+    memo.add(stateKey);
+
+    const availableBoxIndices: number[] = [];
+    for (let i = 0; i < totalBoxes; i++) {
+      if ((clearedMask & (1 << i)) !== 0) continue;
+      const blockers = blockerIndicesMap.get(i) || [];
+      const isUnblocked = blockers.every(bIdx => (clearedMask & (1 << bIdx)) !== 0);
+      if (isUnblocked) {
+        availableBoxIndices.push(i);
+      }
+    }
+
+    if (availableBoxIndices.length === 0) {
+      return null;
+    }
+
+    // Branch 1: Trays dump cards without occupying conveyor slots
+    for (const idx of availableBoxIndices) {
+      const box = boxList[idx];
+      const isTray = Boolean(box.IsPaperBox || getBoxType(box.TypeId).isTray);
+      if (isTray) {
+        const nextMask = clearedMask | (1 << idx);
+        const nextBelt = [...newBelt, ...box.InitCards];
+        const res = dfs(nextMask, newDocked, nextBelt, [...path, `Tray:${box.Id}`]);
+        if (res) return res;
+      }
+    }
+
+    // Branch 2: Colored boxes dock into an available conveyor slot
+    if (newDocked.length < maxSlots) {
+      const candidates = availableBoxIndices.filter(idx => !boxList[idx].IsPaperBox && !getBoxType(boxList[idx].TypeId).isTray);
+
+      for (const idx of candidates) {
+        const box = boxList[idx];
+        const bType = getBoxType(box.TypeId);
+        let inBoxCount = 0;
+        const toBelt: number[] = [];
+        for (const c of box.InitCards) {
+          if (c === box.BoxColor && inBoxCount < bType.capacity) {
+            inBoxCount++;
+          } else {
+            toBelt.push(c);
+          }
+        }
+
+        const nextMask = clearedMask | (1 << idx);
+        const nextDocked = [...newDocked, { id: box.Id, color: box.BoxColor, count: inBoxCount, cap: bType.capacity }];
+        const nextBelt = [...newBelt, ...toBelt];
+
+        const res = dfs(nextMask, nextDocked, nextBelt, [...path, `Box:${box.Id}`]);
+        if (res) return res;
+      }
+    }
+
+    return null;
+  }
+
+  const solution = dfs(0, [], [], []);
+  return {
+    solvable: solution !== null,
+    solutionMoves: solution || undefined,
+  };
+}
+
+export interface BalanceResult {
+  level: LevelData;
+  solvable: boolean;
+  attempts: number;
+}
+
+/**
+ * Balances the deck so that:
+ * 1. Inside each box, cards are clustered into contiguous color groups (pairs/quads or monocolor).
+ * 2. Total card counts exactly match total colored box capacities (0 validation warnings).
+ * 3. The resulting level is verified solvable with `maxSlots` conveyor slots (default: 4).
+ */
+export function balanceLevelCardDeckResult(data: LevelData, maxSlots = 4): BalanceResult {
+  const coloredCaps = getColoredBoxCapacities(data);
+  const colors = Object.keys(coloredCaps).map(Number).filter(c => coloredCaps[c] > 0);
+  if (colors.length === 0) {
+    return { level: data, solvable: true, attempts: 0 };
+  }
+
+  const boardMap = new Map(data.BoardNodes.map(n => [n.Id, n]));
+  const sortedBoxes = [...data.BoxNodes].sort((a, b) => {
+    const layerA = boardMap.get(a.Id)?.LayerId ?? 0;
+    const layerB = boardMap.get(b.Id)?.LayerId ?? 0;
+    return layerB - layerA;
   });
 
-  const updatedSpawners = (data.SpawnerNodes || []).map(sn => ({
-    ...sn,
-    SpawnBoxes: sn.SpawnBoxes.map(sb => {
-      const boxType = getBoxType(sb.TypeId);
-      const numCards = Math.min(sb.InitCards.length || boxType.defaultSlots, boxType.capacity);
-      const newCards: number[] = [];
+  let bestLevel = data;
+  let attempts = 0;
+  const maxAttempts = 150;
 
-      for (let i = 0; i < numCards; i++) {
-        if (poolIdx < colorPool.length) {
-          newCards.push(colorPool[poolIdx++]);
+  while (attempts < maxAttempts) {
+    attempts++;
+
+    const remainingQuota: Record<number, number> = { ...coloredCaps };
+    const boxCardsMap = new Map<string, number[]>();
+
+    for (const bx of sortedBoxes) {
+      const bType = getBoxType(bx.TypeId);
+      const cap = bType.capacity;
+      const isTray = Boolean(bx.IsPaperBox || bType.isTray);
+      const myColor = bx.BoxColor;
+
+      // Group sizes in chunks of 2 or 4
+      const chunkSizes: number[] = [];
+      let remCap = cap;
+
+      while (remCap > 0) {
+        if (remCap === 2) {
+          chunkSizes.push(2);
+          remCap -= 2;
+        } else if (remCap === 4) {
+          if (Math.random() < 0.45) {
+            chunkSizes.push(4);
+            remCap -= 4;
+          } else {
+            chunkSizes.push(2, 2);
+            remCap -= 4;
+          }
+        } else if (remCap >= 6) {
+          const chunk = Math.random() < 0.6 ? 4 : 2;
+          chunkSizes.push(chunk);
+          remCap -= chunk;
         } else {
-          newCards.push(sb.IsPaperBox ? 1 : sb.BoxColor);
+          chunkSizes.push(remCap);
+          remCap = 0;
         }
       }
 
+      const boxCards: number[] = [];
+
+      for (let cIdx = 0; cIdx < chunkSizes.length; cIdx++) {
+        const sz = chunkSizes[cIdx];
+        let chosenColor = myColor;
+
+        if (cIdx === 0 && !isTray && (remainingQuota[myColor] || 0) >= sz && Math.random() < 0.8) {
+          chosenColor = myColor;
+        } else {
+          const availableColors = colors.filter(c => (remainingQuota[c] || 0) >= sz);
+          if (availableColors.length > 0) {
+            availableColors.sort((a, b) => (remainingQuota[b] || 0) - (remainingQuota[a] || 0));
+            const pickIdx = Math.floor(Math.random() * Math.min(2, availableColors.length));
+            chosenColor = availableColors[pickIdx];
+          } else {
+            const anyAvailable = colors.filter(c => (remainingQuota[c] || 0) > 0);
+            if (anyAvailable.length > 0) {
+              anyAvailable.sort((a, b) => (remainingQuota[b] || 0) - (remainingQuota[a] || 0));
+              chosenColor = anyAvailable[0];
+            } else {
+              chosenColor = myColor;
+            }
+          }
+        }
+
+        const actualCount = Math.min(sz, remainingQuota[chosenColor] || 0);
+        for (let k = 0; k < actualCount; k++) {
+          boxCards.push(chosenColor);
+        }
+        remainingQuota[chosenColor] = Math.max(0, (remainingQuota[chosenColor] || 0) - actualCount);
+      }
+
+      while (boxCards.length < cap) {
+        const anyLeft = colors.find(c => (remainingQuota[c] || 0) > 0);
+        if (!anyLeft) break;
+        boxCards.push(anyLeft);
+        remainingQuota[anyLeft]--;
+      }
+
+      boxCardsMap.set(bx.Id, boxCards);
+    }
+
+    // Top up any remaining quotas
+    for (const col of colors) {
+      while ((remainingQuota[col] || 0) > 0) {
+        let placed = false;
+        for (const bx of data.BoxNodes) {
+          const bCards = boxCardsMap.get(bx.Id) || [];
+          const bType = getBoxType(bx.TypeId);
+          if (bCards.length < bType.capacity) {
+            bCards.push(col);
+            remainingQuota[col]--;
+            placed = true;
+            break;
+          }
+        }
+        if (!placed) break;
+      }
+    }
+
+    // Ensure all cards in each box are grouped contiguously by color
+    for (const [id, rawCards] of boxCardsMap.entries()) {
+      const bx = data.BoxNodes.find(b => b.Id === id);
+      const myColor = bx?.BoxColor ?? 1;
+      const groups = new Map<number, number>();
+      for (const c of rawCards) {
+        groups.set(c, (groups.get(c) || 0) + 1);
+      }
+      const grouped: number[] = [];
+      if (groups.has(myColor)) {
+        const count = groups.get(myColor)!;
+        for (let k = 0; k < count; k++) grouped.push(myColor);
+        groups.delete(myColor);
+      }
+      for (const [col, count] of groups.entries()) {
+        for (let k = 0; k < count; k++) grouped.push(col);
+      }
+      boxCardsMap.set(id, grouped);
+    }
+
+    // Process spawner boxes if any
+    const updatedSpawners = (data.SpawnerNodes || []).map(sn => ({
+      ...sn,
+      SpawnBoxes: sn.SpawnBoxes.map(sb => {
+        const assigned = boxCardsMap.get(sb.Id);
+        if (assigned) return { ...sb, InitCards: assigned };
+        return { ...sb };
+      }),
+    }));
+
+    const candidateLevel: LevelData = {
+      ...data,
+      BoxNodes: data.BoxNodes.map(bx => ({
+        ...bx,
+        InitCards: boxCardsMap.get(bx.Id) || bx.InitCards,
+      })),
+      SpawnerNodes: updatedSpawners,
+    };
+
+    // Verify balance matches exact capacity
+    const issues = validateLevel(candidateLevel);
+    const hasCapacityWarning = issues.some(i => i.message.includes('does not match total box capacity'));
+    if (hasCapacityWarning) {
+      continue;
+    }
+
+    // Verify solvability with maxSlots
+    const solveRes = isLevelSolvable(candidateLevel, maxSlots);
+    if (solveRes.solvable) {
       return {
-        ...sb,
-        InitCards: newCards,
+        level: candidateLevel,
+        solvable: true,
+        attempts,
       };
-    }),
-  }));
+    }
+    bestLevel = candidateLevel;
+  }
 
   return {
-    ...data,
-    BoxNodes: updatedBoxes,
-    SpawnerNodes: updatedSpawners,
+    level: bestLevel,
+    solvable: false,
+    attempts,
   };
+}
+
+export function balanceLevelCardDeck(data: LevelData, maxSlots = 4): LevelData {
+  return balanceLevelCardDeckResult(data, maxSlots).level;
 }
