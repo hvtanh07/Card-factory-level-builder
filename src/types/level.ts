@@ -1,3 +1,23 @@
+export enum ColorPallet {
+  red = 0,
+  blue = 1,
+  green = 2,
+  purple = 3,
+  Orange = 4,
+  Neutral = 5,
+  Yellow = 6,
+  Pink = 7,
+  Cyan = 8,
+  Indigo = 9,
+}
+
+export enum BoxSize {
+  SmallBox = 0,
+  MediumBox = 1,
+  LargeBox = 2,
+  XLBox = 3,
+}
+
 export interface BoardNode {
   Id: string;
   LayerId: number;

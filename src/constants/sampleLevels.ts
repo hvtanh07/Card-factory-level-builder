@@ -1,6 +1,6 @@
 import { LevelData } from '../types/level';
 
-export interface SampleLevel {
+export interface SampleLevelPreset {
   id: string;
   name: string;
   difficulty: 'easy' | 'medium' | 'hard';
@@ -8,7 +8,7 @@ export interface SampleLevel {
   data: LevelData;
 }
 
-export const SAMPLE_LEVELS: SampleLevel[] = [
+export const SAMPLE_LEVELS: SampleLevelPreset[] = [
   {
     "id": "easy_1",
     "name": "Easy 1: Dual Pillars",
@@ -22,51 +22,51 @@ export const SAMPLE_LEVELS: SampleLevel[] = [
         {
           "Id": "0_-1.75_1.05",
           "LayerId": 0,
-          "YRotation": 0,
+          "YRotation": 0.0,
           "XPosition": -1.75,
           "ZPosition": 1.05
         },
         {
           "Id": "0_1.75_1.05",
           "LayerId": 0,
-          "YRotation": 0,
+          "YRotation": 0.0,
           "XPosition": 1.75,
           "ZPosition": 1.05
         },
         {
           "Id": "0_-1.75_-1.05",
           "LayerId": 0,
-          "YRotation": 0,
+          "YRotation": 0.0,
           "XPosition": -1.75,
           "ZPosition": -1.05
         },
         {
           "Id": "0_1.75_-1.05",
           "LayerId": 0,
-          "YRotation": 0,
+          "YRotation": 0.0,
           "XPosition": 1.75,
           "ZPosition": -1.05
         },
         {
           "Id": "1_-1.75_0.0",
           "LayerId": 1,
-          "YRotation": 90,
+          "YRotation": 90.0,
           "XPosition": -1.75,
-          "ZPosition": 0
+          "ZPosition": 0.0
         },
         {
           "Id": "1_1.75_0.0",
           "LayerId": 1,
-          "YRotation": 90,
+          "YRotation": 90.0,
           "XPosition": 1.75,
-          "ZPosition": 0
+          "ZPosition": 0.0
         }
       ],
       "BoxNodes": [
         {
           "Id": "0_-1.75_1.05",
-          "TypeId": 2,
-          "BoxColor": 1,
+          "TypeId": 1,
+          "BoxColor": 0,
           "BlockedNodes": [],
           "InitCards": [
             1,
@@ -83,16 +83,16 @@ export const SAMPLE_LEVELS: SampleLevel[] = [
         },
         {
           "Id": "0_1.75_1.05",
-          "TypeId": 2,
-          "BoxColor": 2,
+          "TypeId": 1,
+          "BoxColor": 1,
           "BlockedNodes": [],
           "InitCards": [
             1,
             1,
             1,
-            3,
-            3,
-            3
+            0,
+            0,
+            0
           ],
           "IsHidden": false,
           "LockedTurn": 0,
@@ -101,52 +101,13 @@ export const SAMPLE_LEVELS: SampleLevel[] = [
         },
         {
           "Id": "0_-1.75_-1.05",
-          "TypeId": 2,
-          "BoxColor": 3,
-          "BlockedNodes": [],
-          "InitCards": [
-            3,
-            3,
-            3,
-            2,
-            2,
-            2
-          ],
-          "IsHidden": false,
-          "LockedTurn": 0,
-          "IsPaperBox": false,
-          "IsRainbowBox": false
-        },
-        {
-          "Id": "0_1.75_-1.05",
-          "TypeId": 2,
-          "BoxColor": 1,
-          "BlockedNodes": [],
-          "InitCards": [
-            3,
-            3,
-            3,
-            3,
-            3,
-            3
-          ],
-          "IsHidden": false,
-          "LockedTurn": 0,
-          "IsPaperBox": false,
-          "IsRainbowBox": false
-        },
-        {
-          "Id": "1_-1.75_0.0",
-          "TypeId": 2,
+          "TypeId": 1,
           "BoxColor": 2,
-          "BlockedNodes": [
-            "0_-1.75_1.05",
-            "0_-1.75_-1.05"
-          ],
+          "BlockedNodes": [],
           "InitCards": [
-            2,
-            2,
-            2,
+            1,
+            1,
+            1,
             1,
             1,
             1
@@ -157,20 +118,59 @@ export const SAMPLE_LEVELS: SampleLevel[] = [
           "IsRainbowBox": false
         },
         {
+          "Id": "0_1.75_-1.05",
+          "TypeId": 1,
+          "BoxColor": 0,
+          "BlockedNodes": [],
+          "InitCards": [
+            0,
+            0,
+            0,
+            2,
+            2,
+            2
+          ],
+          "IsHidden": false,
+          "LockedTurn": 0,
+          "IsPaperBox": false,
+          "IsRainbowBox": false
+        },
+        {
+          "Id": "1_-1.75_0.0",
+          "TypeId": 1,
+          "BoxColor": 1,
+          "BlockedNodes": [
+            "0_-1.75_1.05",
+            "0_-1.75_-1.05"
+          ],
+          "InitCards": [
+            0,
+            0,
+            0,
+            2,
+            2,
+            2
+          ],
+          "IsHidden": false,
+          "LockedTurn": 0,
+          "IsPaperBox": false,
+          "IsRainbowBox": false
+        },
+        {
           "Id": "1_1.75_0.0",
-          "TypeId": 2,
-          "BoxColor": 3,
+          "TypeId": 1,
+          "BoxColor": 2,
           "BlockedNodes": [
             "0_1.75_1.05",
             "0_1.75_-1.05"
           ],
           "InitCards": [
-            1,
-            1,
-            1,
             2,
             2,
-            2
+            2,
+            0,
+            0,
+            0
           ],
           "IsHidden": false,
           "LockedTurn": 0,
@@ -198,56 +198,56 @@ export const SAMPLE_LEVELS: SampleLevel[] = [
         {
           "Id": "0_0.0_1.55",
           "LayerId": 0,
-          "YRotation": 90,
-          "XPosition": 0,
+          "YRotation": 90.0,
+          "XPosition": 0.0,
           "ZPosition": 1.55
         },
         {
           "Id": "0_0.0_-1.55",
           "LayerId": 0,
-          "YRotation": 90,
-          "XPosition": 0,
+          "YRotation": 90.0,
+          "XPosition": 0.0,
           "ZPosition": -1.55
         },
         {
           "Id": "0_-1.55_0.0",
           "LayerId": 0,
-          "YRotation": 0,
+          "YRotation": 0.0,
           "XPosition": -1.55,
-          "ZPosition": 0
+          "ZPosition": 0.0
         },
         {
           "Id": "0_1.55_0.0",
           "LayerId": 0,
-          "YRotation": 0,
+          "YRotation": 0.0,
           "XPosition": 1.55,
-          "ZPosition": 0
+          "ZPosition": 0.0
         },
         {
           "Id": "1_-0.8_0.0",
           "LayerId": 1,
-          "YRotation": 90,
+          "YRotation": 90.0,
           "XPosition": -0.8,
-          "ZPosition": 0
+          "ZPosition": 0.0
         },
         {
           "Id": "1_0.8_0.0",
           "LayerId": 1,
-          "YRotation": 90,
+          "YRotation": 90.0,
           "XPosition": 0.8,
-          "ZPosition": 0
+          "ZPosition": 0.0
         }
       ],
       "BoxNodes": [
         {
           "Id": "0_0.0_1.55",
-          "TypeId": 2,
-          "BoxColor": 1,
+          "TypeId": 1,
+          "BoxColor": 0,
           "BlockedNodes": [],
           "InitCards": [
-            3,
-            3,
-            3,
+            1,
+            1,
+            1,
             2,
             2,
             2
@@ -259,13 +259,31 @@ export const SAMPLE_LEVELS: SampleLevel[] = [
         },
         {
           "Id": "0_0.0_-1.55",
-          "TypeId": 2,
+          "TypeId": 1,
+          "BoxColor": 1,
+          "BlockedNodes": [],
+          "InitCards": [
+            0,
+            0,
+            0,
+            2,
+            2,
+            2
+          ],
+          "IsHidden": false,
+          "LockedTurn": 0,
+          "IsPaperBox": false,
+          "IsRainbowBox": false
+        },
+        {
+          "Id": "0_-1.55_0.0",
+          "TypeId": 1,
           "BoxColor": 2,
           "BlockedNodes": [],
           "InitCards": [
-            3,
-            3,
-            3,
+            2,
+            2,
+            2,
             1,
             1,
             1
@@ -276,35 +294,17 @@ export const SAMPLE_LEVELS: SampleLevel[] = [
           "IsRainbowBox": false
         },
         {
-          "Id": "0_-1.55_0.0",
-          "TypeId": 2,
-          "BoxColor": 3,
-          "BlockedNodes": [],
-          "InitCards": [
-            1,
-            1,
-            1,
-            2,
-            2,
-            2
-          ],
-          "IsHidden": false,
-          "LockedTurn": 0,
-          "IsPaperBox": false,
-          "IsRainbowBox": false
-        },
-        {
           "Id": "0_1.55_0.0",
-          "TypeId": 2,
-          "BoxColor": 1,
+          "TypeId": 1,
+          "BoxColor": 0,
           "BlockedNodes": [],
           "InitCards": [
+            0,
+            0,
+            0,
             1,
             1,
-            1,
-            3,
-            3,
-            3
+            1
           ],
           "IsHidden": false,
           "LockedTurn": 0,
@@ -313,20 +313,20 @@ export const SAMPLE_LEVELS: SampleLevel[] = [
         },
         {
           "Id": "1_-0.8_0.0",
-          "TypeId": 2,
-          "BoxColor": 2,
+          "TypeId": 1,
+          "BoxColor": 1,
           "BlockedNodes": [
             "0_0.0_1.55",
             "0_0.0_-1.55",
             "0_-1.55_0.0"
           ],
           "InitCards": [
-            2,
-            2,
-            2,
             1,
             1,
-            1
+            1,
+            0,
+            0,
+            0
           ],
           "IsHidden": false,
           "LockedTurn": 0,
@@ -335,20 +335,20 @@ export const SAMPLE_LEVELS: SampleLevel[] = [
         },
         {
           "Id": "1_0.8_0.0",
-          "TypeId": 2,
-          "BoxColor": 3,
+          "TypeId": 1,
+          "BoxColor": 2,
           "BlockedNodes": [
             "0_0.0_1.55",
             "0_0.0_-1.55",
             "0_1.55_0.0"
           ],
           "InitCards": [
-            3,
-            3,
-            3,
             2,
             2,
-            2
+            2,
+            0,
+            0,
+            0
           ],
           "IsHidden": false,
           "LockedTurn": 0,
@@ -376,63 +376,63 @@ export const SAMPLE_LEVELS: SampleLevel[] = [
         {
           "Id": "0_-1.05_1.05",
           "LayerId": 0,
-          "YRotation": 0,
+          "YRotation": 0.0,
           "XPosition": -1.05,
           "ZPosition": 1.05
         },
         {
           "Id": "0_1.05_1.05",
           "LayerId": 0,
-          "YRotation": 0,
+          "YRotation": 0.0,
           "XPosition": 1.05,
           "ZPosition": 1.05
         },
         {
           "Id": "0_-1.05_-1.05",
           "LayerId": 0,
-          "YRotation": 0,
+          "YRotation": 0.0,
           "XPosition": -1.05,
           "ZPosition": -1.05
         },
         {
           "Id": "0_1.05_-1.05",
           "LayerId": 0,
-          "YRotation": 0,
+          "YRotation": 0.0,
           "XPosition": 1.05,
           "ZPosition": -1.05
         },
         {
           "Id": "1_-1.05_0.0",
           "LayerId": 1,
-          "YRotation": 90,
+          "YRotation": 90.0,
           "XPosition": -1.05,
-          "ZPosition": 0
+          "ZPosition": 0.0
         },
         {
           "Id": "1_1.05_0.0",
           "LayerId": 1,
-          "YRotation": 90,
+          "YRotation": 90.0,
           "XPosition": 1.05,
-          "ZPosition": 0
+          "ZPosition": 0.0
         },
         {
           "Id": "2_0.0_0.0",
           "LayerId": 2,
-          "YRotation": 0,
-          "XPosition": 0,
-          "ZPosition": 0
+          "YRotation": 0.0,
+          "XPosition": 0.0,
+          "ZPosition": 0.0
         }
       ],
       "BoxNodes": [
         {
           "Id": "0_-1.05_1.05",
-          "TypeId": 2,
-          "BoxColor": 1,
+          "TypeId": 1,
+          "BoxColor": 0,
           "BlockedNodes": [],
           "InitCards": [
-            1,
-            1,
-            1,
+            0,
+            0,
+            0,
             2,
             2,
             2
@@ -444,16 +444,16 @@ export const SAMPLE_LEVELS: SampleLevel[] = [
         },
         {
           "Id": "0_1.05_1.05",
-          "TypeId": 2,
-          "BoxColor": 2,
+          "TypeId": 1,
+          "BoxColor": 1,
           "BlockedNodes": [],
           "InitCards": [
-            3,
-            3,
-            1,
-            1,
-            1,
-            1
+            0,
+            0,
+            0,
+            2,
+            2,
+            2
           ],
           "IsHidden": false,
           "LockedTurn": 0,
@@ -462,13 +462,13 @@ export const SAMPLE_LEVELS: SampleLevel[] = [
         },
         {
           "Id": "0_-1.05_-1.05",
-          "TypeId": 2,
-          "BoxColor": 3,
+          "TypeId": 1,
+          "BoxColor": 2,
           "BlockedNodes": [],
           "InitCards": [
-            3,
-            3,
-            3,
+            0,
+            0,
+            0,
             1,
             1,
             1
@@ -480,16 +480,16 @@ export const SAMPLE_LEVELS: SampleLevel[] = [
         },
         {
           "Id": "0_1.05_-1.05",
-          "TypeId": 2,
-          "BoxColor": 1,
+          "TypeId": 1,
+          "BoxColor": 0,
           "BlockedNodes": [],
           "InitCards": [
+            0,
+            0,
+            0,
             1,
             1,
-            1,
-            1,
-            1,
-            3
+            1
           ],
           "IsHidden": false,
           "LockedTurn": 0,
@@ -498,37 +498,16 @@ export const SAMPLE_LEVELS: SampleLevel[] = [
         },
         {
           "Id": "1_-1.05_0.0",
-          "TypeId": 2,
-          "BoxColor": 2,
+          "TypeId": 1,
+          "BoxColor": 1,
           "BlockedNodes": [
             "0_-1.05_1.05",
             "0_-1.05_-1.05"
           ],
           "InitCards": [
-            2,
-            2,
-            2,
-            3,
-            3,
-            3
-          ],
-          "IsHidden": false,
-          "LockedTurn": 0,
-          "IsPaperBox": false,
-          "IsRainbowBox": false
-        },
-        {
-          "Id": "1_1.05_0.0",
-          "TypeId": 2,
-          "BoxColor": 3,
-          "BlockedNodes": [
-            "0_1.05_1.05",
-            "0_1.05_-1.05"
-          ],
-          "InitCards": [
-            3,
-            3,
-            3,
+            1,
+            1,
+            1,
             2,
             2,
             2
@@ -539,9 +518,30 @@ export const SAMPLE_LEVELS: SampleLevel[] = [
           "IsRainbowBox": false
         },
         {
+          "Id": "1_1.05_0.0",
+          "TypeId": 1,
+          "BoxColor": 2,
+          "BlockedNodes": [
+            "0_1.05_1.05",
+            "0_1.05_-1.05"
+          ],
+          "InitCards": [
+            0,
+            0,
+            0,
+            1,
+            1,
+            1
+          ],
+          "IsHidden": false,
+          "LockedTurn": 0,
+          "IsPaperBox": false,
+          "IsRainbowBox": false
+        },
+        {
           "Id": "2_0.0_0.0",
-          "TypeId": 2,
-          "BoxColor": 1,
+          "TypeId": 1,
+          "BoxColor": 0,
           "BlockedNodes": [
             "0_-1.05_1.05",
             "0_1.05_1.05",
@@ -551,9 +551,9 @@ export const SAMPLE_LEVELS: SampleLevel[] = [
             "1_1.05_0.0"
           ],
           "InitCards": [
-            1,
-            1,
-            1,
+            0,
+            0,
+            0,
             2,
             2,
             2
@@ -584,59 +584,59 @@ export const SAMPLE_LEVELS: SampleLevel[] = [
         {
           "Id": "0_-1.15_1.05",
           "LayerId": 0,
-          "YRotation": 0,
+          "YRotation": 0.0,
           "XPosition": -1.15,
           "ZPosition": 1.05
         },
         {
           "Id": "0_1.15_1.05",
           "LayerId": 0,
-          "YRotation": 0,
+          "YRotation": 0.0,
           "XPosition": 1.15,
           "ZPosition": 1.05
         },
         {
           "Id": "0_-1.15_-1.05",
           "LayerId": 0,
-          "YRotation": 0,
+          "YRotation": 0.0,
           "XPosition": -1.15,
           "ZPosition": -1.05
         },
         {
           "Id": "0_1.15_-1.05",
           "LayerId": 0,
-          "YRotation": 0,
+          "YRotation": 0.0,
           "XPosition": 1.15,
           "ZPosition": -1.05
         },
         {
           "Id": "1_-1.15_0.0",
           "LayerId": 1,
-          "YRotation": 90,
+          "YRotation": 90.0,
           "XPosition": -1.15,
-          "ZPosition": 0
+          "ZPosition": 0.0
         },
         {
           "Id": "1_1.15_0.0",
           "LayerId": 1,
-          "YRotation": 90,
+          "YRotation": 90.0,
           "XPosition": 1.15,
-          "ZPosition": 0
+          "ZPosition": 0.0
         }
       ],
       "BoxNodes": [
         {
           "Id": "0_-1.15_1.05",
-          "TypeId": 2,
-          "BoxColor": 1,
+          "TypeId": 1,
+          "BoxColor": 0,
           "BlockedNodes": [],
           "InitCards": [
+            0,
+            0,
+            0,
+            0,
             1,
-            1,
-            1,
-            1,
-            2,
-            2
+            1
           ],
           "IsHidden": false,
           "LockedTurn": 0,
@@ -645,10 +645,47 @@ export const SAMPLE_LEVELS: SampleLevel[] = [
         },
         {
           "Id": "0_1.15_1.05",
-          "TypeId": 2,
+          "TypeId": 1,
+          "BoxColor": 1,
+          "BlockedNodes": [],
+          "InitCards": [
+            1,
+            1,
+            1,
+            0,
+            0
+          ],
+          "IsHidden": false,
+          "LockedTurn": 0,
+          "IsPaperBox": false,
+          "IsRainbowBox": false
+        },
+        {
+          "Id": "0_-1.15_-1.05",
+          "TypeId": 1,
           "BoxColor": 2,
           "BlockedNodes": [],
           "InitCards": [
+            2,
+            2,
+            2,
+            0,
+            0
+          ],
+          "IsHidden": false,
+          "LockedTurn": 0,
+          "IsPaperBox": false,
+          "IsRainbowBox": false
+        },
+        {
+          "Id": "0_1.15_-1.05",
+          "TypeId": 1,
+          "BoxColor": 0,
+          "BlockedNodes": [],
+          "InitCards": [
+            1,
+            1,
+            2,
             2,
             2
           ],
@@ -658,45 +695,9 @@ export const SAMPLE_LEVELS: SampleLevel[] = [
           "IsRainbowBox": false
         },
         {
-          "Id": "0_-1.15_-1.05",
-          "TypeId": 2,
-          "BoxColor": 3,
-          "BlockedNodes": [],
-          "InitCards": [
-            2,
-            2,
-            2,
-            2,
-            3,
-            3
-          ],
-          "IsHidden": false,
-          "LockedTurn": 0,
-          "IsPaperBox": false,
-          "IsRainbowBox": false
-        },
-        {
-          "Id": "0_1.15_-1.05",
-          "TypeId": 2,
-          "BoxColor": 1,
-          "BlockedNodes": [],
-          "InitCards": [
-            2,
-            2,
-            2,
-            2,
-            3,
-            3
-          ],
-          "IsHidden": false,
-          "LockedTurn": 0,
-          "IsPaperBox": false,
-          "IsRainbowBox": false
-        },
-        {
           "Id": "1_-1.15_0.0",
-          "TypeId": 2,
-          "BoxColor": 2,
+          "TypeId": 1,
+          "BoxColor": 1,
           "BlockedNodes": [
             "0_-1.15_1.05",
             "0_-1.15_-1.05"
@@ -705,9 +706,8 @@ export const SAMPLE_LEVELS: SampleLevel[] = [
             1,
             1,
             1,
-            1,
-            3,
-            3
+            0,
+            0
           ],
           "IsHidden": false,
           "LockedTurn": 0,
@@ -716,15 +716,15 @@ export const SAMPLE_LEVELS: SampleLevel[] = [
         },
         {
           "Id": "1_1.15_0.0",
-          "TypeId": 1,
-          "BoxColor": 1,
+          "TypeId": 0,
+          "BoxColor": 5,
           "BlockedNodes": [
             "0_1.15_1.05",
             "0_1.15_-1.05"
           ],
           "InitCards": [
-            1,
-            1,
+            0,
+            0,
             1,
             1
           ],
@@ -745,7 +745,7 @@ export const SAMPLE_LEVELS: SampleLevel[] = [
     "id": "easy_5",
     "name": "Easy 5: Diamond Gate",
     "difficulty": "easy",
-    "description": "An intricate diamond-shaped gateway with 4 cardinal foundation pillars, 4 angled diamond cross-struts, a concealed central Mystery Box, and an interlocking crowning keystone.",
+    "description": "True 45-degree angled diamond matrix with 4 outer cardinal foundation boxes including 2 symmetrically concealed wing Mystery Boxes on Layer 0, 4 diagonal connector bridges on Layer 1, and an apex keystone on Layer 2.",
     "data": {
       "Id": 5,
       "BoardOffsetX": 0,
@@ -754,131 +754,78 @@ export const SAMPLE_LEVELS: SampleLevel[] = [
         {
           "Id": "0_0.0_1.90",
           "LayerId": 0,
-          "YRotation": 0,
-          "XPosition": 0,
+          "YRotation": 0.0,
+          "XPosition": 0.0,
           "ZPosition": 1.9
         },
         {
           "Id": "0_0.0_-1.90",
           "LayerId": 0,
-          "YRotation": 0,
-          "XPosition": 0,
+          "YRotation": 0.0,
+          "XPosition": 0.0,
           "ZPosition": -1.9
         },
         {
           "Id": "0_-1.90_0.0",
           "LayerId": 0,
-          "YRotation": 90,
+          "YRotation": 90.0,
           "XPosition": -1.9,
-          "ZPosition": 0
+          "ZPosition": 0.0
         },
         {
           "Id": "0_1.90_0.0",
           "LayerId": 0,
-          "YRotation": 90,
+          "YRotation": 90.0,
           "XPosition": 1.9,
-          "ZPosition": 0
-        },
-        {
-          "Id": "0_0.0_0.0",
-          "LayerId": 0,
-          "YRotation": 45,
-          "XPosition": 0,
-          "ZPosition": 0
+          "ZPosition": 0.0
         },
         {
           "Id": "1_-1.10_1.10",
           "LayerId": 1,
-          "YRotation": 45,
+          "YRotation": 45.0,
           "XPosition": -1.1,
           "ZPosition": 1.1
         },
         {
           "Id": "1_1.10_1.10",
           "LayerId": 1,
-          "YRotation": 315,
+          "YRotation": -45.0,
           "XPosition": 1.1,
           "ZPosition": 1.1
         },
         {
           "Id": "1_-1.10_-1.10",
           "LayerId": 1,
-          "YRotation": 315,
+          "YRotation": -45.0,
           "XPosition": -1.1,
           "ZPosition": -1.1
         },
         {
           "Id": "1_1.10_-1.10",
           "LayerId": 1,
-          "YRotation": 45,
+          "YRotation": 45.0,
           "XPosition": 1.1,
           "ZPosition": -1.1
         },
         {
           "Id": "2_0.0_0.0",
           "LayerId": 2,
-          "YRotation": 90,
-          "XPosition": 0,
-          "ZPosition": 0
+          "YRotation": 0.0,
+          "XPosition": 0.0,
+          "ZPosition": 0.0
         }
       ],
       "BoxNodes": [
         {
           "Id": "0_0.0_1.90",
           "TypeId": 1,
-          "BoxColor": 1,
+          "BoxColor": 0,
           "BlockedNodes": [],
           "InitCards": [
-            1,
-            1,
-            3,
-            3
-          ],
-          "IsHidden": false,
-          "LockedTurn": 0,
-          "IsPaperBox": false,
-          "IsRainbowBox": false
-        },
-        {
-          "Id": "0_0.0_-1.90",
-          "TypeId": 1,
-          "BoxColor": 2,
-          "BlockedNodes": [],
-          "InitCards": [
-            3,
-            3,
-            1,
-            1
-          ],
-          "IsHidden": false,
-          "LockedTurn": 0,
-          "IsPaperBox": false,
-          "IsRainbowBox": false
-        },
-        {
-          "Id": "0_-1.90_0.0",
-          "TypeId": 1,
-          "BoxColor": 3,
-          "BlockedNodes": [],
-          "InitCards": [
-            3,
-            3,
-            1,
-            1
-          ],
-          "IsHidden": false,
-          "LockedTurn": 0,
-          "IsPaperBox": false,
-          "IsRainbowBox": false
-        },
-        {
-          "Id": "0_1.90_0.0",
-          "TypeId": 1,
-          "BoxColor": 1,
-          "BlockedNodes": [],
-          "InitCards": [
-            1,
-            1,
+            0,
+            0,
+            0,
+            2,
             2,
             2
           ],
@@ -888,15 +835,51 @@ export const SAMPLE_LEVELS: SampleLevel[] = [
           "IsRainbowBox": false
         },
         {
-          "Id": "0_0.0_0.0",
-          "TypeId": 2,
+          "Id": "0_0.0_-1.90",
+          "TypeId": 1,
+          "BoxColor": 1,
+          "BlockedNodes": [],
+          "InitCards": [
+            0,
+            0,
+            0,
+            2,
+            2,
+            2
+          ],
+          "IsHidden": false,
+          "LockedTurn": 0,
+          "IsPaperBox": false,
+          "IsRainbowBox": false
+        },
+        {
+          "Id": "0_-1.90_0.0",
+          "TypeId": 1,
           "BoxColor": 2,
           "BlockedNodes": [],
           "InitCards": [
             2,
-            3,
-            3,
-            3,
+            2,
+            2,
+            0,
+            0,
+            0
+          ],
+          "IsHidden": false,
+          "LockedTurn": 0,
+          "IsPaperBox": false,
+          "IsRainbowBox": true
+        },
+        {
+          "Id": "0_1.90_0.0",
+          "TypeId": 1,
+          "BoxColor": 0,
+          "BlockedNodes": [],
+          "InitCards": [
+            0,
+            0,
+            0,
+            1,
             1,
             1
           ],
@@ -907,8 +890,8 @@ export const SAMPLE_LEVELS: SampleLevel[] = [
         },
         {
           "Id": "1_-1.10_1.10",
-          "TypeId": 2,
-          "BoxColor": 3,
+          "TypeId": 1,
+          "BoxColor": 2,
           "BlockedNodes": [
             "0_0.0_1.90",
             "0_-1.90_0.0"
@@ -928,17 +911,17 @@ export const SAMPLE_LEVELS: SampleLevel[] = [
         },
         {
           "Id": "1_1.10_1.10",
-          "TypeId": 2,
-          "BoxColor": 1,
+          "TypeId": 1,
+          "BoxColor": 0,
           "BlockedNodes": [
             "0_0.0_1.90",
             "0_1.90_0.0"
           ],
           "InitCards": [
-            1,
-            1,
-            3,
-            3,
+            0,
+            0,
+            0,
+            2,
             2,
             2
           ],
@@ -949,19 +932,19 @@ export const SAMPLE_LEVELS: SampleLevel[] = [
         },
         {
           "Id": "1_-1.10_-1.10",
-          "TypeId": 2,
-          "BoxColor": 2,
+          "TypeId": 1,
+          "BoxColor": 1,
           "BlockedNodes": [
             "0_0.0_-1.90",
             "0_-1.90_0.0"
           ],
           "InitCards": [
-            2,
-            2,
-            2,
-            3,
-            3,
-            3
+            1,
+            1,
+            1,
+            0,
+            0,
+            0
           ],
           "IsHidden": false,
           "LockedTurn": 0,
@@ -970,19 +953,19 @@ export const SAMPLE_LEVELS: SampleLevel[] = [
         },
         {
           "Id": "1_1.10_-1.10",
-          "TypeId": 2,
-          "BoxColor": 3,
+          "TypeId": 1,
+          "BoxColor": 2,
           "BlockedNodes": [
             "0_0.0_-1.90",
             "0_1.90_0.0"
           ],
           "InitCards": [
-            1,
-            1,
-            1,
             2,
             2,
-            2
+            2,
+            0,
+            0,
+            0
           ],
           "IsHidden": false,
           "LockedTurn": 0,
@@ -991,22 +974,21 @@ export const SAMPLE_LEVELS: SampleLevel[] = [
         },
         {
           "Id": "2_0.0_0.0",
-          "TypeId": 2,
-          "BoxColor": 1,
+          "TypeId": 1,
+          "BoxColor": 0,
           "BlockedNodes": [
-            "0_0.0_0.0",
             "1_-1.10_1.10",
             "1_1.10_1.10",
             "1_-1.10_-1.10",
             "1_1.10_-1.10"
           ],
           "InitCards": [
+            0,
+            0,
+            0,
             1,
             1,
-            3,
-            3,
-            2,
-            2
+            1
           ],
           "IsHidden": false,
           "LockedTurn": 0,
@@ -1034,73 +1016,73 @@ export const SAMPLE_LEVELS: SampleLevel[] = [
         {
           "Id": "0_-1.95_1.15",
           "LayerId": 0,
-          "YRotation": 90,
+          "YRotation": 90.0,
           "XPosition": -1.95,
           "ZPosition": 1.15
         },
         {
           "Id": "0_1.95_1.15",
           "LayerId": 0,
-          "YRotation": 90,
+          "YRotation": 90.0,
           "XPosition": 1.95,
           "ZPosition": 1.15
         },
         {
           "Id": "0_-1.95_-1.15",
           "LayerId": 0,
-          "YRotation": 90,
+          "YRotation": 90.0,
           "XPosition": -1.95,
           "ZPosition": -1.15
         },
         {
           "Id": "0_1.95_-1.15",
           "LayerId": 0,
-          "YRotation": 90,
+          "YRotation": 90.0,
           "XPosition": 1.95,
           "ZPosition": -1.15
         },
         {
           "Id": "0_0.0_0.0",
           "LayerId": 0,
-          "YRotation": 0,
-          "XPosition": 0,
-          "ZPosition": 0
+          "YRotation": 0.0,
+          "XPosition": 0.0,
+          "ZPosition": 0.0
         },
         {
           "Id": "1_-1.95_0.0",
           "LayerId": 1,
-          "YRotation": 0,
+          "YRotation": 0.0,
           "XPosition": -1.95,
-          "ZPosition": 0
+          "ZPosition": 0.0
         },
         {
           "Id": "1_1.95_0.0",
           "LayerId": 1,
-          "YRotation": 0,
+          "YRotation": 0.0,
           "XPosition": 1.95,
-          "ZPosition": 0
+          "ZPosition": 0.0
         },
         {
           "Id": "1_0.0_0.0",
           "LayerId": 1,
-          "YRotation": 90,
-          "XPosition": 0,
-          "ZPosition": 0
+          "YRotation": 90.0,
+          "XPosition": 0.0,
+          "ZPosition": 0.0
         }
       ],
       "BoxNodes": [
         {
           "Id": "0_-1.95_1.15",
-          "TypeId": 2,
-          "BoxColor": 1,
+          "TypeId": 1,
+          "BoxColor": 0,
           "BlockedNodes": [],
           "InitCards": [
-            4,
-            4,
-            4,
-            3,
-            3,
-            3
+            0,
+            0,
+            0,
+            6,
+            6,
+            6
           ],
           "IsHidden": false,
           "LockedTurn": 0,
@@ -1109,70 +1091,34 @@ export const SAMPLE_LEVELS: SampleLevel[] = [
         },
         {
           "Id": "0_1.95_1.15",
-          "TypeId": 2,
-          "BoxColor": 2,
+          "TypeId": 1,
+          "BoxColor": 1,
           "BlockedNodes": [],
           "InitCards": [
             1,
             1,
             1,
-            3,
-            3,
-            3
-          ],
-          "IsHidden": false,
-          "LockedTurn": 0,
-          "IsPaperBox": false,
-          "IsRainbowBox": false
-        },
-        {
-          "Id": "0_-1.95_-1.15",
-          "TypeId": 2,
-          "BoxColor": 3,
-          "BlockedNodes": [],
-          "InitCards": [
             2,
-            2,
-            2,
-            4,
-            4,
-            4
-          ],
-          "IsHidden": false,
-          "LockedTurn": 0,
-          "IsPaperBox": false,
-          "IsRainbowBox": false
-        },
-        {
-          "Id": "0_1.95_-1.15",
-          "TypeId": 2,
-          "BoxColor": 4,
-          "BlockedNodes": [],
-          "InitCards": [
-            4,
-            4,
-            1,
-            1,
             2,
             2
           ],
           "IsHidden": false,
           "LockedTurn": 0,
           "IsPaperBox": false,
-          "IsRainbowBox": true
+          "IsRainbowBox": false
         },
         {
-          "Id": "0_0.0_0.0",
-          "TypeId": 2,
-          "BoxColor": 1,
+          "Id": "0_-1.95_-1.15",
+          "TypeId": 1,
+          "BoxColor": 2,
           "BlockedNodes": [],
           "InitCards": [
             2,
             2,
             2,
-            4,
-            4,
-            3
+            0,
+            0,
+            0
           ],
           "IsHidden": false,
           "LockedTurn": 0,
@@ -1180,17 +1126,14 @@ export const SAMPLE_LEVELS: SampleLevel[] = [
           "IsRainbowBox": false
         },
         {
-          "Id": "1_-1.95_0.0",
-          "TypeId": 2,
-          "BoxColor": 2,
-          "BlockedNodes": [
-            "0_-1.95_1.15",
-            "0_-1.95_-1.15"
-          ],
+          "Id": "0_1.95_-1.15",
+          "TypeId": 1,
+          "BoxColor": 6,
+          "BlockedNodes": [],
           "InitCards": [
-            3,
-            3,
-            3,
+            6,
+            6,
+            6,
             1,
             1,
             1
@@ -1198,12 +1141,51 @@ export const SAMPLE_LEVELS: SampleLevel[] = [
           "IsHidden": false,
           "LockedTurn": 0,
           "IsPaperBox": false,
+          "IsRainbowBox": true
+        },
+        {
+          "Id": "0_0.0_0.0",
+          "TypeId": 1,
+          "BoxColor": 0,
+          "BlockedNodes": [],
+          "InitCards": [
+            1,
+            1,
+            1,
+            6,
+            6,
+            6
+          ],
+          "IsHidden": false,
+          "LockedTurn": 0,
+          "IsPaperBox": false,
+          "IsRainbowBox": false
+        },
+        {
+          "Id": "1_-1.95_0.0",
+          "TypeId": 1,
+          "BoxColor": 1,
+          "BlockedNodes": [
+            "0_-1.95_1.15",
+            "0_-1.95_-1.15"
+          ],
+          "InitCards": [
+            0,
+            0,
+            0,
+            2,
+            2,
+            2
+          ],
+          "IsHidden": false,
+          "LockedTurn": 0,
+          "IsPaperBox": false,
           "IsRainbowBox": false
         },
         {
           "Id": "1_1.95_0.0",
-          "TypeId": 2,
-          "BoxColor": 3,
+          "TypeId": 1,
+          "BoxColor": 2,
           "BlockedNodes": [
             "0_1.95_1.15",
             "0_1.95_-1.15"
@@ -1211,10 +1193,10 @@ export const SAMPLE_LEVELS: SampleLevel[] = [
           "InitCards": [
             2,
             2,
-            1,
-            1,
-            4,
-            4
+            2,
+            6,
+            6,
+            6
           ],
           "IsHidden": false,
           "LockedTurn": 0,
@@ -1223,16 +1205,16 @@ export const SAMPLE_LEVELS: SampleLevel[] = [
         },
         {
           "Id": "1_0.0_0.0",
-          "TypeId": 2,
-          "BoxColor": 4,
+          "TypeId": 1,
+          "BoxColor": 6,
           "BlockedNodes": [
             "0_0.0_0.0"
           ],
           "InitCards": [
-            3,
-            3,
-            2,
-            2,
+            0,
+            0,
+            0,
+            1,
             1,
             1
           ],
@@ -1262,73 +1244,72 @@ export const SAMPLE_LEVELS: SampleLevel[] = [
         {
           "Id": "0_-1.95_1.05",
           "LayerId": 0,
-          "YRotation": 0,
+          "YRotation": 0.0,
           "XPosition": -1.95,
           "ZPosition": 1.05
         },
         {
           "Id": "0_0.0_1.05",
           "LayerId": 0,
-          "YRotation": 0,
-          "XPosition": 0,
+          "YRotation": 0.0,
+          "XPosition": 0.0,
           "ZPosition": 1.05
         },
         {
           "Id": "0_1.95_1.05",
           "LayerId": 0,
-          "YRotation": 0,
+          "YRotation": 0.0,
           "XPosition": 1.95,
           "ZPosition": 1.05
         },
         {
           "Id": "0_-1.95_-1.05",
           "LayerId": 0,
-          "YRotation": 0,
+          "YRotation": 0.0,
           "XPosition": -1.95,
           "ZPosition": -1.05
         },
         {
           "Id": "0_0.0_-1.05",
           "LayerId": 0,
-          "YRotation": 0,
-          "XPosition": 0,
+          "YRotation": 0.0,
+          "XPosition": 0.0,
           "ZPosition": -1.05
         },
         {
           "Id": "0_1.95_-1.05",
           "LayerId": 0,
-          "YRotation": 0,
+          "YRotation": 0.0,
           "XPosition": 1.95,
           "ZPosition": -1.05
         },
         {
           "Id": "1_-1.0_0.0",
           "LayerId": 1,
-          "YRotation": 90,
-          "XPosition": -1,
-          "ZPosition": 0
+          "YRotation": 90.0,
+          "XPosition": -1.0,
+          "ZPosition": 0.0
         },
         {
           "Id": "1_1.0_0.0",
           "LayerId": 1,
-          "YRotation": 90,
-          "XPosition": 1,
-          "ZPosition": 0
+          "YRotation": 90.0,
+          "XPosition": 1.0,
+          "ZPosition": 0.0
         }
       ],
       "BoxNodes": [
         {
           "Id": "0_-1.95_1.05",
-          "TypeId": 2,
-          "BoxColor": 1,
+          "TypeId": 1,
+          "BoxColor": 0,
           "BlockedNodes": [],
           "InitCards": [
-            2,
-            2,
-            2,
-            4,
-            4,
-            4
+            0,
+            0,
+            1,
+            1,
+            1
           ],
           "IsHidden": false,
           "LockedTurn": 0,
@@ -1337,16 +1318,15 @@ export const SAMPLE_LEVELS: SampleLevel[] = [
         },
         {
           "Id": "0_0.0_1.05",
-          "TypeId": 2,
-          "BoxColor": 2,
+          "TypeId": 1,
+          "BoxColor": 1,
           "BlockedNodes": [],
           "InitCards": [
+            0,
+            0,
+            0,
             2,
-            2,
-            2,
-            1,
-            1,
-            1
+            2
           ],
           "IsHidden": false,
           "LockedTurn": 0,
@@ -1355,16 +1335,15 @@ export const SAMPLE_LEVELS: SampleLevel[] = [
         },
         {
           "Id": "0_1.95_1.05",
-          "TypeId": 2,
-          "BoxColor": 3,
+          "TypeId": 1,
+          "BoxColor": 2,
           "BlockedNodes": [],
           "InitCards": [
             2,
             2,
-            2,
-            1,
-            1,
-            1
+            6,
+            6,
+            6
           ],
           "IsHidden": false,
           "LockedTurn": 0,
@@ -1373,12 +1352,11 @@ export const SAMPLE_LEVELS: SampleLevel[] = [
         },
         {
           "Id": "0_-1.95_-1.05",
-          "TypeId": 2,
-          "BoxColor": 4,
+          "TypeId": 1,
+          "BoxColor": 6,
           "BlockedNodes": [],
           "InitCards": [
-            1,
-            1,
+            6,
             1,
             1,
             1,
@@ -1391,14 +1369,14 @@ export const SAMPLE_LEVELS: SampleLevel[] = [
         },
         {
           "Id": "0_0.0_-1.05",
-          "TypeId": 2,
-          "BoxColor": 1,
+          "TypeId": 1,
+          "BoxColor": 0,
           "BlockedNodes": [],
           "InitCards": [
-            3,
-            3,
-            2,
-            4
+            0,
+            0,
+            0,
+            1
           ],
           "IsHidden": false,
           "LockedTurn": 0,
@@ -1407,10 +1385,15 @@ export const SAMPLE_LEVELS: SampleLevel[] = [
         },
         {
           "Id": "0_1.95_-1.05",
-          "TypeId": 2,
-          "BoxColor": 2,
+          "TypeId": 1,
+          "BoxColor": 1,
           "BlockedNodes": [],
-          "InitCards": [],
+          "InitCards": [
+            1,
+            1,
+            0,
+            0
+          ],
           "IsHidden": false,
           "LockedTurn": 0,
           "IsPaperBox": false,
@@ -1418,8 +1401,8 @@ export const SAMPLE_LEVELS: SampleLevel[] = [
         },
         {
           "Id": "1_-1.0_0.0",
-          "TypeId": 1,
-          "BoxColor": 1,
+          "TypeId": 0,
+          "BoxColor": 5,
           "BlockedNodes": [
             "0_-1.95_1.05",
             "0_0.0_1.05",
@@ -1427,8 +1410,8 @@ export const SAMPLE_LEVELS: SampleLevel[] = [
             "0_0.0_-1.05"
           ],
           "InitCards": [
-            3,
-            3,
+            0,
+            0,
             2,
             2
           ],
@@ -1439,8 +1422,8 @@ export const SAMPLE_LEVELS: SampleLevel[] = [
         },
         {
           "Id": "1_1.0_0.0",
-          "TypeId": 1,
-          "BoxColor": 1,
+          "TypeId": 0,
+          "BoxColor": 5,
           "BlockedNodes": [
             "0_0.0_1.05",
             "0_1.95_1.05",
@@ -1448,10 +1431,10 @@ export const SAMPLE_LEVELS: SampleLevel[] = [
             "0_1.95_-1.05"
           ],
           "InitCards": [
-            4,
-            4,
-            3,
-            3
+            1,
+            1,
+            6,
+            6
           ],
           "IsHidden": false,
           "LockedTurn": 0,
@@ -1479,78 +1462,78 @@ export const SAMPLE_LEVELS: SampleLevel[] = [
         {
           "Id": "0_-1.55_1.15",
           "LayerId": 0,
-          "YRotation": 0,
+          "YRotation": 0.0,
           "XPosition": -1.55,
           "ZPosition": 1.15
         },
         {
           "Id": "0_1.55_1.15",
           "LayerId": 0,
-          "YRotation": 0,
+          "YRotation": 0.0,
           "XPosition": 1.55,
           "ZPosition": 1.15
         },
         {
           "Id": "0_-1.55_-1.15",
           "LayerId": 0,
-          "YRotation": 0,
+          "YRotation": 0.0,
           "XPosition": -1.55,
           "ZPosition": -1.15
         },
         {
           "Id": "0_1.55_-1.15",
           "LayerId": 0,
-          "YRotation": 0,
+          "YRotation": 0.0,
           "XPosition": 1.55,
           "ZPosition": -1.15
         },
         {
           "Id": "0_0.0_0.0",
           "LayerId": 0,
-          "YRotation": 90,
-          "XPosition": 0,
-          "ZPosition": 0
+          "YRotation": 90.0,
+          "XPosition": 0.0,
+          "ZPosition": 0.0
         },
         {
           "Id": "1_-1.55_0.0",
           "LayerId": 1,
-          "YRotation": 90,
+          "YRotation": 90.0,
           "XPosition": -1.55,
-          "ZPosition": 0
+          "ZPosition": 0.0
         },
         {
           "Id": "1_1.55_0.0",
           "LayerId": 1,
-          "YRotation": 90,
+          "YRotation": 90.0,
           "XPosition": 1.55,
-          "ZPosition": 0
+          "ZPosition": 0.0
         },
         {
           "Id": "1_0.0_0.0",
           "LayerId": 1,
-          "YRotation": 0,
-          "XPosition": 0,
-          "ZPosition": 0
+          "YRotation": 0.0,
+          "XPosition": 0.0,
+          "ZPosition": 0.0
         },
         {
           "Id": "2_0.0_0.0",
           "LayerId": 2,
-          "YRotation": 90,
-          "XPosition": 0,
-          "ZPosition": 0
+          "YRotation": 90.0,
+          "XPosition": 0.0,
+          "ZPosition": 0.0
         }
       ],
       "BoxNodes": [
         {
           "Id": "0_-1.55_1.15",
-          "TypeId": 2,
-          "BoxColor": 1,
+          "TypeId": 1,
+          "BoxColor": 0,
           "BlockedNodes": [],
           "InitCards": [
             1,
-            1,
-            4,
-            4,
+            2,
+            2,
+            2,
             2,
             2
           ],
@@ -1561,16 +1544,16 @@ export const SAMPLE_LEVELS: SampleLevel[] = [
         },
         {
           "Id": "0_1.55_1.15",
-          "TypeId": 2,
-          "BoxColor": 2,
+          "TypeId": 1,
+          "BoxColor": 1,
           "BlockedNodes": [],
           "InitCards": [
-            2,
-            2,
-            2,
-            3,
-            3,
-            3
+            1,
+            1,
+            1,
+            6,
+            6,
+            6
           ],
           "IsHidden": false,
           "LockedTurn": 2,
@@ -1579,16 +1562,16 @@ export const SAMPLE_LEVELS: SampleLevel[] = [
         },
         {
           "Id": "0_-1.55_-1.15",
-          "TypeId": 2,
-          "BoxColor": 3,
+          "TypeId": 1,
+          "BoxColor": 2,
           "BlockedNodes": [],
           "InitCards": [
-            3,
-            3,
-            3,
-            4,
-            4,
-            4
+            2,
+            2,
+            2,
+            0,
+            0,
+            0
           ],
           "IsHidden": false,
           "LockedTurn": 2,
@@ -1597,16 +1580,16 @@ export const SAMPLE_LEVELS: SampleLevel[] = [
         },
         {
           "Id": "0_1.55_-1.15",
-          "TypeId": 2,
-          "BoxColor": 4,
+          "TypeId": 1,
+          "BoxColor": 6,
           "BlockedNodes": [],
           "InitCards": [
-            4,
-            4,
-            4,
-            4,
-            2,
-            2
+            6,
+            6,
+            6,
+            0,
+            0,
+            0
           ],
           "IsHidden": false,
           "LockedTurn": 0,
@@ -1615,12 +1598,15 @@ export const SAMPLE_LEVELS: SampleLevel[] = [
         },
         {
           "Id": "0_0.0_0.0",
-          "TypeId": 2,
-          "BoxColor": 1,
+          "TypeId": 1,
+          "BoxColor": 0,
           "BlockedNodes": [],
           "InitCards": [
+            0,
+            0,
             1,
-            3
+            1,
+            1
           ],
           "IsHidden": false,
           "LockedTurn": 0,
@@ -1629,8 +1615,8 @@ export const SAMPLE_LEVELS: SampleLevel[] = [
         },
         {
           "Id": "1_-1.55_0.0",
-          "TypeId": 2,
-          "BoxColor": 2,
+          "TypeId": 1,
+          "BoxColor": 1,
           "BlockedNodes": [
             "0_-1.55_1.15",
             "0_-1.55_-1.15"
@@ -1638,10 +1624,9 @@ export const SAMPLE_LEVELS: SampleLevel[] = [
           "InitCards": [
             1,
             1,
-            1,
-            4,
-            4,
-            4
+            6,
+            6,
+            6
           ],
           "IsHidden": false,
           "LockedTurn": 0,
@@ -1650,16 +1635,15 @@ export const SAMPLE_LEVELS: SampleLevel[] = [
         },
         {
           "Id": "1_1.55_0.0",
-          "TypeId": 2,
-          "BoxColor": 3,
+          "TypeId": 1,
+          "BoxColor": 2,
           "BlockedNodes": [
             "0_1.55_1.15",
             "0_1.55_-1.15"
           ],
           "InitCards": [
-            2,
-            2,
-            2,
+            0,
+            0,
             1,
             1,
             1
@@ -1671,8 +1655,8 @@ export const SAMPLE_LEVELS: SampleLevel[] = [
         },
         {
           "Id": "1_0.0_0.0",
-          "TypeId": 2,
-          "BoxColor": 4,
+          "TypeId": 1,
+          "BoxColor": 6,
           "BlockedNodes": [
             "0_-1.55_1.15",
             "0_1.55_1.15",
@@ -1681,12 +1665,11 @@ export const SAMPLE_LEVELS: SampleLevel[] = [
             "0_0.0_0.0"
           ],
           "InitCards": [
-            3,
-            3,
-            3,
-            1,
-            1,
-            1
+            6,
+            6,
+            6,
+            2,
+            2
           ],
           "IsHidden": false,
           "LockedTurn": 0,
@@ -1695,17 +1678,17 @@ export const SAMPLE_LEVELS: SampleLevel[] = [
         },
         {
           "Id": "2_0.0_0.0",
-          "TypeId": 1,
-          "BoxColor": 1,
+          "TypeId": 0,
+          "BoxColor": 5,
           "BlockedNodes": [
             "0_0.0_0.0",
             "1_0.0_0.0"
           ],
           "InitCards": [
+            0,
+            0,
             2,
-            2,
-            3,
-            3
+            2
           ],
           "IsHidden": false,
           "LockedTurn": 0,
@@ -1733,80 +1716,80 @@ export const SAMPLE_LEVELS: SampleLevel[] = [
         {
           "Id": "0_-1.95_1.15",
           "LayerId": 0,
-          "YRotation": 0,
+          "YRotation": 0.0,
           "XPosition": -1.95,
           "ZPosition": 1.15
         },
         {
           "Id": "0_0.0_1.15",
           "LayerId": 0,
-          "YRotation": 0,
-          "XPosition": 0,
+          "YRotation": 0.0,
+          "XPosition": 0.0,
           "ZPosition": 1.15
         },
         {
           "Id": "0_1.95_1.15",
           "LayerId": 0,
-          "YRotation": 0,
+          "YRotation": 0.0,
           "XPosition": 1.95,
           "ZPosition": 1.15
         },
         {
           "Id": "0_-1.0_-1.15",
           "LayerId": 0,
-          "YRotation": 0,
-          "XPosition": -1,
+          "YRotation": 0.0,
+          "XPosition": -1.0,
           "ZPosition": -1.15
         },
         {
           "Id": "0_1.0_-1.15",
           "LayerId": 0,
-          "YRotation": 0,
-          "XPosition": 1,
+          "YRotation": 0.0,
+          "XPosition": 1.0,
           "ZPosition": -1.15
         },
         {
           "Id": "1_-1.45_0.0",
           "LayerId": 1,
-          "YRotation": 90,
+          "YRotation": 90.0,
           "XPosition": -1.45,
-          "ZPosition": 0
+          "ZPosition": 0.0
         },
         {
           "Id": "1_0.0_0.0",
           "LayerId": 1,
-          "YRotation": 90,
-          "XPosition": 0,
-          "ZPosition": 0
+          "YRotation": 90.0,
+          "XPosition": 0.0,
+          "ZPosition": 0.0
         },
         {
           "Id": "1_1.45_0.0",
           "LayerId": 1,
-          "YRotation": 90,
+          "YRotation": 90.0,
           "XPosition": 1.45,
-          "ZPosition": 0
+          "ZPosition": 0.0
         },
         {
           "Id": "2_0.0_0.0",
           "LayerId": 2,
-          "YRotation": 0,
-          "XPosition": 0,
-          "ZPosition": 0
+          "YRotation": 0.0,
+          "XPosition": 0.0,
+          "ZPosition": 0.0
         }
       ],
       "BoxNodes": [
         {
           "Id": "0_-1.95_1.15",
-          "TypeId": 2,
-          "BoxColor": 1,
+          "TypeId": 1,
+          "BoxColor": 0,
           "BlockedNodes": [],
           "InitCards": [
-            4,
-            4,
-            4,
-            2,
-            2,
-            2
+            0,
+            0,
+            0,
+            6,
+            6,
+            6
           ],
           "IsHidden": false,
           "LockedTurn": 0,
@@ -1815,16 +1798,16 @@ export const SAMPLE_LEVELS: SampleLevel[] = [
         },
         {
           "Id": "0_0.0_1.15",
-          "TypeId": 2,
-          "BoxColor": 2,
+          "TypeId": 1,
+          "BoxColor": 1,
           "BlockedNodes": [],
           "InitCards": [
-            1,
-            1,
-            1,
-            4,
-            4,
-            4
+            0,
+            0,
+            2,
+            2,
+            2,
+            2
           ],
           "IsHidden": false,
           "LockedTurn": 0,
@@ -1833,14 +1816,14 @@ export const SAMPLE_LEVELS: SampleLevel[] = [
         },
         {
           "Id": "0_1.95_1.15",
-          "TypeId": 2,
-          "BoxColor": 3,
+          "TypeId": 1,
+          "BoxColor": 2,
           "BlockedNodes": [],
           "InitCards": [
-            3,
-            3,
-            2,
-            2,
+            0,
+            0,
+            0,
+            1,
             1,
             1
           ],
@@ -1851,48 +1834,13 @@ export const SAMPLE_LEVELS: SampleLevel[] = [
         },
         {
           "Id": "0_-1.0_-1.15",
-          "TypeId": 2,
-          "BoxColor": 4,
+          "TypeId": 1,
+          "BoxColor": 6,
           "BlockedNodes": [],
           "InitCards": [
-            3,
-            3,
-            3,
-            3,
-            2,
-            2
-          ],
-          "IsHidden": false,
-          "LockedTurn": 0,
-          "IsPaperBox": false,
-          "IsRainbowBox": false
-        },
-        {
-          "Id": "0_1.0_-1.15",
-          "TypeId": 2,
-          "BoxColor": 1,
-          "BlockedNodes": [],
-          "InitCards": [
-            2,
-            4
-          ],
-          "IsHidden": false,
-          "LockedTurn": 0,
-          "IsPaperBox": false,
-          "IsRainbowBox": false
-        },
-        {
-          "Id": "1_-1.45_0.0",
-          "TypeId": 2,
-          "BoxColor": 2,
-          "BlockedNodes": [
-            "0_-1.95_1.15",
-            "0_-1.0_-1.15"
-          ],
-          "InitCards": [
-            4,
-            4,
-            4,
+            6,
+            6,
+            6,
             1,
             1,
             1
@@ -1903,21 +1851,57 @@ export const SAMPLE_LEVELS: SampleLevel[] = [
           "IsRainbowBox": false
         },
         {
+          "Id": "0_1.0_-1.15",
+          "TypeId": 1,
+          "BoxColor": 0,
+          "BlockedNodes": [],
+          "InitCards": [
+            1,
+            2,
+            2,
+            2,
+            2
+          ],
+          "IsHidden": false,
+          "LockedTurn": 0,
+          "IsPaperBox": false,
+          "IsRainbowBox": false
+        },
+        {
+          "Id": "1_-1.45_0.0",
+          "TypeId": 1,
+          "BoxColor": 1,
+          "BlockedNodes": [
+            "0_-1.95_1.15",
+            "0_-1.0_-1.15"
+          ],
+          "InitCards": [
+            2,
+            2,
+            6,
+            6,
+            6
+          ],
+          "IsHidden": false,
+          "LockedTurn": 0,
+          "IsPaperBox": false,
+          "IsRainbowBox": false
+        },
+        {
           "Id": "1_0.0_0.0",
-          "TypeId": 2,
-          "BoxColor": 3,
+          "TypeId": 1,
+          "BoxColor": 2,
           "BlockedNodes": [
             "0_0.0_1.15",
             "0_-1.0_-1.15",
             "0_1.0_-1.15"
           ],
           "InitCards": [
-            3,
-            3,
-            1,
-            1,
-            4,
-            4
+            2,
+            2,
+            6,
+            6,
+            6
           ],
           "IsHidden": false,
           "LockedTurn": 0,
@@ -1926,17 +1910,16 @@ export const SAMPLE_LEVELS: SampleLevel[] = [
         },
         {
           "Id": "1_1.45_0.0",
-          "TypeId": 2,
-          "BoxColor": 4,
+          "TypeId": 1,
+          "BoxColor": 6,
           "BlockedNodes": [
             "0_1.95_1.15",
             "0_1.0_-1.15"
           ],
           "InitCards": [
-            3,
-            3,
-            2,
-            2,
+            0,
+            0,
+            1,
             1,
             1
           ],
@@ -1947,8 +1930,8 @@ export const SAMPLE_LEVELS: SampleLevel[] = [
         },
         {
           "Id": "2_0.0_0.0",
-          "TypeId": 1,
-          "BoxColor": 1,
+          "TypeId": 0,
+          "BoxColor": 5,
           "BlockedNodes": [
             "0_0.0_1.15",
             "0_-1.0_-1.15",
@@ -1956,10 +1939,10 @@ export const SAMPLE_LEVELS: SampleLevel[] = [
             "1_0.0_0.0"
           ],
           "InitCards": [
-            2,
-            2,
-            3,
-            3
+            0,
+            0,
+            1,
+            1
           ],
           "IsHidden": false,
           "LockedTurn": 0,
@@ -1987,129 +1970,129 @@ export const SAMPLE_LEVELS: SampleLevel[] = [
         {
           "Id": "0_-2.0_1.85",
           "LayerId": 0,
-          "YRotation": 0,
-          "XPosition": -2,
+          "YRotation": 0.0,
+          "XPosition": -2.0,
           "ZPosition": 1.85
         },
         {
           "Id": "0_0.0_1.85",
           "LayerId": 0,
-          "YRotation": 0,
-          "XPosition": 0,
+          "YRotation": 0.0,
+          "XPosition": 0.0,
           "ZPosition": 1.85
         },
         {
           "Id": "0_2.0_1.85",
           "LayerId": 0,
-          "YRotation": 0,
-          "XPosition": 2,
+          "YRotation": 0.0,
+          "XPosition": 2.0,
           "ZPosition": 1.85
         },
         {
           "Id": "0_-1.0_0.0",
           "LayerId": 0,
-          "YRotation": 0,
-          "XPosition": -1,
-          "ZPosition": 0
+          "YRotation": 0.0,
+          "XPosition": -1.0,
+          "ZPosition": 0.0
         },
         {
           "Id": "0_1.0_0.0",
           "LayerId": 0,
-          "YRotation": 0,
-          "XPosition": 1,
-          "ZPosition": 0
+          "YRotation": 0.0,
+          "XPosition": 1.0,
+          "ZPosition": 0.0
         },
         {
           "Id": "0_-2.0_-1.85",
           "LayerId": 0,
-          "YRotation": 0,
-          "XPosition": -2,
+          "YRotation": 0.0,
+          "XPosition": -2.0,
           "ZPosition": -1.85
         },
         {
           "Id": "0_0.0_-1.85",
           "LayerId": 0,
-          "YRotation": 0,
-          "XPosition": 0,
+          "YRotation": 0.0,
+          "XPosition": 0.0,
           "ZPosition": -1.85
         },
         {
           "Id": "0_2.0_-1.85",
           "LayerId": 0,
-          "YRotation": 0,
-          "XPosition": 2,
+          "YRotation": 0.0,
+          "XPosition": 2.0,
           "ZPosition": -1.85
         },
         {
           "Id": "1_-1.45_0.95",
           "LayerId": 1,
-          "YRotation": 90,
+          "YRotation": 90.0,
           "XPosition": -1.45,
           "ZPosition": 0.95
         },
         {
           "Id": "1_1.45_0.95",
           "LayerId": 1,
-          "YRotation": 90,
+          "YRotation": 90.0,
           "XPosition": 1.45,
           "ZPosition": 0.95
         },
         {
           "Id": "1_-1.45_-0.95",
           "LayerId": 1,
-          "YRotation": 90,
+          "YRotation": 90.0,
           "XPosition": -1.45,
           "ZPosition": -0.95
         },
         {
           "Id": "1_1.45_-0.95",
           "LayerId": 1,
-          "YRotation": 90,
+          "YRotation": 90.0,
           "XPosition": 1.45,
           "ZPosition": -0.95
         },
         {
           "Id": "1_0.0_0.0",
           "LayerId": 1,
-          "YRotation": 90,
-          "XPosition": 0,
-          "ZPosition": 0
+          "YRotation": 90.0,
+          "XPosition": 0.0,
+          "ZPosition": 0.0
         },
         {
           "Id": "2_-1.0_0.0",
           "LayerId": 2,
-          "YRotation": 0,
-          "XPosition": -1,
-          "ZPosition": 0
+          "YRotation": 0.0,
+          "XPosition": -1.0,
+          "ZPosition": 0.0
         },
         {
           "Id": "2_1.0_0.0",
           "LayerId": 2,
-          "YRotation": 0,
-          "XPosition": 1,
-          "ZPosition": 0
+          "YRotation": 0.0,
+          "XPosition": 1.0,
+          "ZPosition": 0.0
         },
         {
           "Id": "3_0.0_0.0",
           "LayerId": 3,
-          "YRotation": 90,
-          "XPosition": 0,
-          "ZPosition": 0
+          "YRotation": 90.0,
+          "XPosition": 0.0,
+          "ZPosition": 0.0
         }
       ],
       "BoxNodes": [
         {
           "Id": "0_-2.0_1.85",
-          "TypeId": 2,
-          "BoxColor": 1,
+          "TypeId": 1,
+          "BoxColor": 0,
           "BlockedNodes": [],
           "InitCards": [
-            3,
-            3,
-            3,
-            5,
-            5,
-            5
+            0,
+            0,
+            0,
+            7,
+            7,
+            7
           ],
           "IsHidden": false,
           "LockedTurn": 0,
@@ -2118,16 +2101,16 @@ export const SAMPLE_LEVELS: SampleLevel[] = [
         },
         {
           "Id": "0_0.0_1.85",
-          "TypeId": 2,
-          "BoxColor": 2,
+          "TypeId": 1,
+          "BoxColor": 1,
           "BlockedNodes": [],
           "InitCards": [
-            4,
-            4,
-            4,
-            3,
-            3,
-            3
+            1,
+            1,
+            1,
+            6,
+            6,
+            6
           ],
           "IsHidden": false,
           "LockedTurn": 0,
@@ -2136,16 +2119,16 @@ export const SAMPLE_LEVELS: SampleLevel[] = [
         },
         {
           "Id": "0_2.0_1.85",
-          "TypeId": 2,
-          "BoxColor": 3,
+          "TypeId": 1,
+          "BoxColor": 2,
           "BlockedNodes": [],
           "InitCards": [
-            5,
-            5,
-            5,
             1,
             1,
-            1
+            6,
+            7,
+            7,
+            7
           ],
           "IsHidden": false,
           "LockedTurn": 0,
@@ -2154,49 +2137,13 @@ export const SAMPLE_LEVELS: SampleLevel[] = [
         },
         {
           "Id": "0_-1.0_0.0",
-          "TypeId": 2,
-          "BoxColor": 4,
+          "TypeId": 1,
+          "BoxColor": 6,
           "BlockedNodes": [],
           "InitCards": [
-            2,
-            2,
-            2,
-            5,
-            5,
-            5
-          ],
-          "IsHidden": false,
-          "LockedTurn": 0,
-          "IsPaperBox": false,
-          "IsRainbowBox": false
-        },
-        {
-          "Id": "0_1.0_0.0",
-          "TypeId": 2,
-          "BoxColor": 5,
-          "BlockedNodes": [],
-          "InitCards": [
-            4,
-            4,
-            2,
-            2,
-            1,
-            1
-          ],
-          "IsHidden": false,
-          "LockedTurn": 0,
-          "IsPaperBox": false,
-          "IsRainbowBox": false
-        },
-        {
-          "Id": "0_-2.0_-1.85",
-          "TypeId": 2,
-          "BoxColor": 1,
-          "BlockedNodes": [],
-          "InitCards": [
-            3,
-            3,
-            3,
+            6,
+            6,
+            6,
             2,
             2,
             2
@@ -2207,16 +2154,34 @@ export const SAMPLE_LEVELS: SampleLevel[] = [
           "IsRainbowBox": false
         },
         {
-          "Id": "0_0.0_-1.85",
-          "TypeId": 2,
-          "BoxColor": 2,
+          "Id": "0_1.0_0.0",
+          "TypeId": 1,
+          "BoxColor": 7,
           "BlockedNodes": [],
           "InitCards": [
-            2,
-            4,
-            4,
-            4,
-            4,
+            7,
+            7,
+            7,
+            0,
+            0,
+            0
+          ],
+          "IsHidden": false,
+          "LockedTurn": 0,
+          "IsPaperBox": false,
+          "IsRainbowBox": false
+        },
+        {
+          "Id": "0_-2.0_-1.85",
+          "TypeId": 1,
+          "BoxColor": 0,
+          "BlockedNodes": [],
+          "InitCards": [
+            0,
+            0,
+            0,
+            1,
+            1,
             1
           ],
           "IsHidden": false,
@@ -2225,13 +2190,35 @@ export const SAMPLE_LEVELS: SampleLevel[] = [
           "IsRainbowBox": false
         },
         {
-          "Id": "0_2.0_-1.85",
-          "TypeId": 2,
-          "BoxColor": 3,
+          "Id": "0_0.0_-1.85",
+          "TypeId": 1,
+          "BoxColor": 1,
           "BlockedNodes": [],
           "InitCards": [
-            3,
-            5
+            1,
+            1,
+            1,
+            7,
+            7,
+            7
+          ],
+          "IsHidden": false,
+          "LockedTurn": 0,
+          "IsPaperBox": false,
+          "IsRainbowBox": false
+        },
+        {
+          "Id": "0_2.0_-1.85",
+          "TypeId": 1,
+          "BoxColor": 2,
+          "BlockedNodes": [],
+          "InitCards": [
+            2,
+            2,
+            2,
+            1,
+            1,
+            1
           ],
           "IsHidden": false,
           "LockedTurn": 0,
@@ -2240,19 +2227,19 @@ export const SAMPLE_LEVELS: SampleLevel[] = [
         },
         {
           "Id": "1_-1.45_0.95",
-          "TypeId": 2,
-          "BoxColor": 4,
+          "TypeId": 1,
+          "BoxColor": 6,
           "BlockedNodes": [
             "0_-2.0_1.85",
             "0_-1.0_0.0"
           ],
           "InitCards": [
-            1,
-            1,
-            5,
-            5,
+            6,
+            6,
+            6,
             2,
-            3
+            2,
+            2
           ],
           "IsHidden": false,
           "LockedTurn": 0,
@@ -2261,19 +2248,18 @@ export const SAMPLE_LEVELS: SampleLevel[] = [
         },
         {
           "Id": "1_1.45_0.95",
-          "TypeId": 2,
-          "BoxColor": 5,
+          "TypeId": 1,
+          "BoxColor": 7,
           "BlockedNodes": [
-            "0_0.0_1.85",
             "0_2.0_1.85",
             "0_1.0_0.0"
           ],
           "InitCards": [
-            4,
-            4,
-            1,
-            1,
-            3,
+            7,
+            7,
+            7,
+            2,
+            2,
             2
           ],
           "IsHidden": false,
@@ -2283,19 +2269,19 @@ export const SAMPLE_LEVELS: SampleLevel[] = [
         },
         {
           "Id": "1_-1.45_-0.95",
-          "TypeId": 2,
-          "BoxColor": 1,
+          "TypeId": 1,
+          "BoxColor": 0,
           "BlockedNodes": [
             "0_-1.0_0.0",
             "0_-2.0_-1.85"
           ],
           "InitCards": [
-            4,
-            4,
+            0,
+            0,
+            0,
             2,
             2,
-            3,
-            5
+            2
           ],
           "IsHidden": false,
           "LockedTurn": 0,
@@ -2304,19 +2290,18 @@ export const SAMPLE_LEVELS: SampleLevel[] = [
         },
         {
           "Id": "1_1.45_-0.95",
-          "TypeId": 2,
-          "BoxColor": 2,
+          "TypeId": 1,
+          "BoxColor": 1,
           "BlockedNodes": [
             "0_1.0_0.0",
             "0_2.0_-1.85"
           ],
           "InitCards": [
-            5,
-            5,
-            5,
             1,
             1,
-            1
+            6,
+            6,
+            6
           ],
           "IsHidden": false,
           "LockedTurn": 0,
@@ -2325,19 +2310,18 @@ export const SAMPLE_LEVELS: SampleLevel[] = [
         },
         {
           "Id": "1_0.0_0.0",
-          "TypeId": 2,
-          "BoxColor": 3,
+          "TypeId": 1,
+          "BoxColor": 2,
           "BlockedNodes": [
             "0_-1.0_0.0",
             "0_1.0_0.0"
           ],
           "InitCards": [
-            4,
-            4,
-            5,
-            5,
-            1,
-            1
+            2,
+            2,
+            2,
+            0,
+            0
           ],
           "IsHidden": false,
           "LockedTurn": 0,
@@ -2346,8 +2330,8 @@ export const SAMPLE_LEVELS: SampleLevel[] = [
         },
         {
           "Id": "2_-1.0_0.0",
-          "TypeId": 2,
-          "BoxColor": 4,
+          "TypeId": 1,
+          "BoxColor": 6,
           "BlockedNodes": [
             "0_-1.0_0.0",
             "1_-1.45_0.95",
@@ -2357,10 +2341,9 @@ export const SAMPLE_LEVELS: SampleLevel[] = [
           "InitCards": [
             1,
             1,
-            1,
-            2,
-            2,
-            2
+            7,
+            7,
+            7
           ],
           "IsHidden": false,
           "LockedTurn": 0,
@@ -2369,8 +2352,8 @@ export const SAMPLE_LEVELS: SampleLevel[] = [
         },
         {
           "Id": "2_1.0_0.0",
-          "TypeId": 2,
-          "BoxColor": 5,
+          "TypeId": 1,
+          "BoxColor": 7,
           "BlockedNodes": [
             "0_1.0_0.0",
             "1_1.45_0.95",
@@ -2378,12 +2361,11 @@ export const SAMPLE_LEVELS: SampleLevel[] = [
             "1_0.0_0.0"
           ],
           "InitCards": [
-            3,
-            3,
-            3,
-            4,
-            4,
-            4
+            0,
+            0,
+            6,
+            6,
+            6
           ],
           "IsHidden": false,
           "LockedTurn": 0,
@@ -2392,8 +2374,8 @@ export const SAMPLE_LEVELS: SampleLevel[] = [
         },
         {
           "Id": "3_0.0_0.0",
-          "TypeId": 1,
-          "BoxColor": 1,
+          "TypeId": 0,
+          "BoxColor": 5,
           "BlockedNodes": [
             "0_-1.0_0.0",
             "0_1.0_0.0",
@@ -2402,10 +2384,10 @@ export const SAMPLE_LEVELS: SampleLevel[] = [
             "2_1.0_0.0"
           ],
           "InitCards": [
-            2,
-            2,
-            3,
-            3
+            0,
+            0,
+            6,
+            6
           ],
           "IsHidden": false,
           "LockedTurn": 0,
@@ -2433,59 +2415,59 @@ export const SAMPLE_LEVELS: SampleLevel[] = [
         {
           "Id": "0_-1.15_1.05",
           "LayerId": 0,
-          "YRotation": 0,
+          "YRotation": 0.0,
           "XPosition": -1.15,
           "ZPosition": 1.05
         },
         {
           "Id": "0_1.15_1.05",
           "LayerId": 0,
-          "YRotation": 0,
+          "YRotation": 0.0,
           "XPosition": 1.15,
           "ZPosition": 1.05
         },
         {
           "Id": "0_-1.15_-1.05",
           "LayerId": 0,
-          "YRotation": 0,
+          "YRotation": 0.0,
           "XPosition": -1.15,
           "ZPosition": -1.05
         },
         {
           "Id": "0_1.15_-1.05",
           "LayerId": 0,
-          "YRotation": 0,
+          "YRotation": 0.0,
           "XPosition": 1.15,
           "ZPosition": -1.05
         },
         {
           "Id": "1_-1.15_0.0",
           "LayerId": 1,
-          "YRotation": 90,
+          "YRotation": 90.0,
           "XPosition": -1.15,
-          "ZPosition": 0
+          "ZPosition": 0.0
         },
         {
           "Id": "1_1.15_0.0",
           "LayerId": 1,
-          "YRotation": 90,
+          "YRotation": 90.0,
           "XPosition": 1.15,
-          "ZPosition": 0
+          "ZPosition": 0.0
         }
       ],
       "BoxNodes": [
         {
           "Id": "0_-1.15_1.05",
-          "TypeId": 2,
-          "BoxColor": 1,
+          "TypeId": 1,
+          "BoxColor": 0,
           "BlockedNodes": [],
           "InitCards": [
+            0,
+            0,
+            0,
             1,
             1,
-            1,
-            3,
-            3,
-            3
+            1
           ],
           "IsHidden": false,
           "LockedTurn": 0,
@@ -2494,32 +2476,14 @@ export const SAMPLE_LEVELS: SampleLevel[] = [
         },
         {
           "Id": "0_1.15_1.05",
-          "TypeId": 2,
-          "BoxColor": 2,
+          "TypeId": 1,
+          "BoxColor": 1,
           "BlockedNodes": [],
           "InitCards": [
             1,
             1,
-            1,
-            3,
-            3,
-            3
-          ],
-          "IsHidden": false,
-          "LockedTurn": 0,
-          "IsPaperBox": false,
-          "IsRainbowBox": false
-        },
-        {
-          "Id": "0_-1.15_-1.05",
-          "TypeId": 2,
-          "BoxColor": 3,
-          "BlockedNodes": [],
-          "InitCards": [
-            1,
-            1,
-            1,
-            2,
+            0,
+            0,
             2,
             2
           ],
@@ -2529,15 +2493,33 @@ export const SAMPLE_LEVELS: SampleLevel[] = [
           "IsRainbowBox": false
         },
         {
-          "Id": "0_1.15_-1.05",
-          "TypeId": 2,
-          "BoxColor": 1,
+          "Id": "0_-1.15_-1.05",
+          "TypeId": 1,
+          "BoxColor": 2,
           "BlockedNodes": [],
           "InitCards": [
             2,
             2,
-            2,
-            2,
+            0,
+            0,
+            1,
+            1
+          ],
+          "IsHidden": false,
+          "LockedTurn": 0,
+          "IsPaperBox": false,
+          "IsRainbowBox": false
+        },
+        {
+          "Id": "0_1.15_-1.05",
+          "TypeId": 1,
+          "BoxColor": 0,
+          "BlockedNodes": [],
+          "InitCards": [
+            0,
+            0,
+            1,
+            1,
             2,
             2
           ],
@@ -2548,19 +2530,19 @@ export const SAMPLE_LEVELS: SampleLevel[] = [
         },
         {
           "Id": "1_-1.15_0.0",
-          "TypeId": 2,
-          "BoxColor": 2,
+          "TypeId": 1,
+          "BoxColor": 1,
           "BlockedNodes": [
             "0_-1.15_1.05",
             "0_-1.15_-1.05"
           ],
           "InitCards": [
+            0,
+            0,
+            0,
             2,
             2,
-            2,
-            3,
-            3,
-            3
+            2
           ],
           "IsHidden": false,
           "LockedTurn": 0,
@@ -2569,16 +2551,16 @@ export const SAMPLE_LEVELS: SampleLevel[] = [
         },
         {
           "Id": "1_1.15_0.0",
-          "TypeId": 2,
-          "BoxColor": 3,
+          "TypeId": 1,
+          "BoxColor": 2,
           "BlockedNodes": [
             "0_1.15_1.05",
             "0_1.15_-1.05"
           ],
           "InitCards": [
-            3,
-            3,
-            3,
+            2,
+            2,
+            2,
             1,
             1,
             1
@@ -2609,73 +2591,73 @@ export const SAMPLE_LEVELS: SampleLevel[] = [
         {
           "Id": "0_0.0_0.0",
           "LayerId": 0,
-          "YRotation": 0,
-          "XPosition": 0,
-          "ZPosition": 0
+          "YRotation": 0.0,
+          "XPosition": 0.0,
+          "ZPosition": 0.0
         },
         {
           "Id": "0_0.0_1.85",
           "LayerId": 0,
-          "YRotation": 0,
-          "XPosition": 0,
+          "YRotation": 0.0,
+          "XPosition": 0.0,
           "ZPosition": 1.85
         },
         {
           "Id": "0_0.0_-1.85",
           "LayerId": 0,
-          "YRotation": 0,
-          "XPosition": 0,
+          "YRotation": 0.0,
+          "XPosition": 0.0,
           "ZPosition": -1.85
         },
         {
           "Id": "0_-1.85_0.0",
           "LayerId": 0,
-          "YRotation": 90,
+          "YRotation": 90.0,
           "XPosition": -1.85,
-          "ZPosition": 0
+          "ZPosition": 0.0
         },
         {
           "Id": "0_1.85_0.0",
           "LayerId": 0,
-          "YRotation": 90,
+          "YRotation": 90.0,
           "XPosition": 1.85,
-          "ZPosition": 0
+          "ZPosition": 0.0
         },
         {
           "Id": "1_-1.65_0.0",
           "LayerId": 1,
-          "YRotation": 0,
+          "YRotation": 0.0,
           "XPosition": -1.65,
-          "ZPosition": 0
+          "ZPosition": 0.0
         },
         {
           "Id": "1_1.65_0.0",
           "LayerId": 1,
-          "YRotation": 0,
+          "YRotation": 0.0,
           "XPosition": 1.65,
-          "ZPosition": 0
+          "ZPosition": 0.0
         },
         {
           "Id": "1_0.0_0.0",
           "LayerId": 1,
-          "YRotation": 90,
-          "XPosition": 0,
-          "ZPosition": 0
+          "YRotation": 90.0,
+          "XPosition": 0.0,
+          "ZPosition": 0.0
         }
       ],
       "BoxNodes": [
         {
           "Id": "0_0.0_0.0",
-          "TypeId": 2,
-          "BoxColor": 1,
+          "TypeId": 1,
+          "BoxColor": 0,
           "BlockedNodes": [],
           "InitCards": [
+            0,
+            0,
             2,
             2,
-            2,
-            4,
-            4,
-            4
+            6,
+            6
           ],
           "IsHidden": false,
           "LockedTurn": 0,
@@ -2684,14 +2666,110 @@ export const SAMPLE_LEVELS: SampleLevel[] = [
         },
         {
           "Id": "0_0.0_1.85",
-          "TypeId": 2,
+          "TypeId": 1,
+          "BoxColor": 1,
+          "BlockedNodes": [],
+          "InitCards": [
+            1,
+            1,
+            1,
+            1,
+            2,
+            2
+          ],
+          "IsHidden": false,
+          "LockedTurn": 0,
+          "IsPaperBox": false,
+          "IsRainbowBox": false
+        },
+        {
+          "Id": "0_0.0_-1.85",
+          "TypeId": 1,
           "BoxColor": 2,
           "BlockedNodes": [],
           "InitCards": [
-            3,
-            3,
-            3,
+            2,
+            2,
+            2,
+            0,
+            0,
+            0
+          ],
+          "IsHidden": false,
+          "LockedTurn": 0,
+          "IsPaperBox": false,
+          "IsRainbowBox": false
+        },
+        {
+          "Id": "0_-1.85_0.0",
+          "TypeId": 1,
+          "BoxColor": 6,
+          "BlockedNodes": [],
+          "InitCards": [
+            6,
+            6,
+            6,
+            0,
+            0,
+            0
+          ],
+          "IsHidden": false,
+          "LockedTurn": 0,
+          "IsPaperBox": false,
+          "IsRainbowBox": false
+        },
+        {
+          "Id": "0_1.85_0.0",
+          "TypeId": 1,
+          "BoxColor": 0,
+          "BlockedNodes": [],
+          "InitCards": [
+            0,
+            0,
+            6,
+            6,
+            6,
+            6
+          ],
+          "IsHidden": false,
+          "LockedTurn": 0,
+          "IsPaperBox": false,
+          "IsRainbowBox": false
+        },
+        {
+          "Id": "1_-1.65_0.0",
+          "TypeId": 1,
+          "BoxColor": 1,
+          "BlockedNodes": [
+            "0_0.0_0.0",
+            "0_-1.85_0.0"
+          ],
+          "InitCards": [
             1,
+            1,
+            1,
+            2,
+            2,
+            2
+          ],
+          "IsHidden": false,
+          "LockedTurn": 0,
+          "IsPaperBox": false,
+          "IsRainbowBox": false
+        },
+        {
+          "Id": "1_1.65_0.0",
+          "TypeId": 1,
+          "BoxColor": 2,
+          "BlockedNodes": [
+            "0_0.0_0.0",
+            "0_1.85_0.0"
+          ],
+          "InitCards": [
+            2,
+            2,
+            0,
+            0,
             1,
             1
           ],
@@ -2701,112 +2779,16 @@ export const SAMPLE_LEVELS: SampleLevel[] = [
           "IsRainbowBox": false
         },
         {
-          "Id": "0_0.0_-1.85",
-          "TypeId": 2,
-          "BoxColor": 3,
-          "BlockedNodes": [],
-          "InitCards": [
-            1,
-            1,
-            1,
-            4,
-            4,
-            4
-          ],
-          "IsHidden": false,
-          "LockedTurn": 0,
-          "IsPaperBox": false,
-          "IsRainbowBox": false
-        },
-        {
-          "Id": "0_-1.85_0.0",
-          "TypeId": 2,
-          "BoxColor": 4,
-          "BlockedNodes": [],
-          "InitCards": [
-            3,
-            3,
-            3,
-            2,
-            2,
-            2
-          ],
-          "IsHidden": false,
-          "LockedTurn": 0,
-          "IsPaperBox": false,
-          "IsRainbowBox": false
-        },
-        {
-          "Id": "0_1.85_0.0",
-          "TypeId": 2,
-          "BoxColor": 1,
-          "BlockedNodes": [],
-          "InitCards": [
-            3,
-            3,
-            3,
-            2,
-            2,
-            2
-          ],
-          "IsHidden": false,
-          "LockedTurn": 0,
-          "IsPaperBox": false,
-          "IsRainbowBox": false
-        },
-        {
-          "Id": "1_-1.65_0.0",
-          "TypeId": 2,
-          "BoxColor": 2,
-          "BlockedNodes": [
-            "0_0.0_0.0",
-            "0_-1.85_0.0"
-          ],
-          "InitCards": [
-            3,
-            3,
-            3,
-            4,
-            4,
-            4
-          ],
-          "IsHidden": false,
-          "LockedTurn": 0,
-          "IsPaperBox": false,
-          "IsRainbowBox": false
-        },
-        {
-          "Id": "1_1.65_0.0",
-          "TypeId": 2,
-          "BoxColor": 3,
-          "BlockedNodes": [
-            "0_0.0_0.0",
-            "0_1.85_0.0"
-          ],
-          "InitCards": [
-            1,
-            1,
-            1,
-            4,
-            4,
-            4
-          ],
-          "IsHidden": false,
-          "LockedTurn": 0,
-          "IsPaperBox": false,
-          "IsRainbowBox": false
-        },
-        {
           "Id": "1_0.0_0.0",
-          "TypeId": 2,
-          "BoxColor": 4,
+          "TypeId": 1,
+          "BoxColor": 6,
           "BlockedNodes": [
             "0_0.0_0.0"
           ],
           "InitCards": [
-            2,
-            2,
-            2,
+            6,
+            6,
+            6,
             1,
             1,
             1
@@ -2837,80 +2819,80 @@ export const SAMPLE_LEVELS: SampleLevel[] = [
         {
           "Id": "0_-1.95_1.25",
           "LayerId": 0,
-          "YRotation": 0,
+          "YRotation": 0.0,
           "XPosition": -1.95,
           "ZPosition": 1.25
         },
         {
           "Id": "0_0.0_1.25",
           "LayerId": 0,
-          "YRotation": 0,
-          "XPosition": 0,
+          "YRotation": 0.0,
+          "XPosition": 0.0,
           "ZPosition": 1.25
         },
         {
           "Id": "0_1.95_1.25",
           "LayerId": 0,
-          "YRotation": 0,
+          "YRotation": 0.0,
           "XPosition": 1.95,
           "ZPosition": 1.25
         },
         {
           "Id": "0_-1.0_-1.25",
           "LayerId": 0,
-          "YRotation": 0,
-          "XPosition": -1,
+          "YRotation": 0.0,
+          "XPosition": -1.0,
           "ZPosition": -1.25
         },
         {
           "Id": "0_1.0_-1.25",
           "LayerId": 0,
-          "YRotation": 0,
-          "XPosition": 1,
+          "YRotation": 0.0,
+          "XPosition": 1.0,
           "ZPosition": -1.25
         },
         {
           "Id": "1_-1.45_0.0",
           "LayerId": 1,
-          "YRotation": 90,
+          "YRotation": 90.0,
           "XPosition": -1.45,
-          "ZPosition": 0
+          "ZPosition": 0.0
         },
         {
           "Id": "1_0.0_0.0",
           "LayerId": 1,
-          "YRotation": 90,
-          "XPosition": 0,
-          "ZPosition": 0
+          "YRotation": 90.0,
+          "XPosition": 0.0,
+          "ZPosition": 0.0
         },
         {
           "Id": "1_1.45_0.0",
           "LayerId": 1,
-          "YRotation": 90,
+          "YRotation": 90.0,
           "XPosition": 1.45,
-          "ZPosition": 0
+          "ZPosition": 0.0
         },
         {
           "Id": "2_0.0_0.0",
           "LayerId": 2,
-          "YRotation": 90,
-          "XPosition": 0,
-          "ZPosition": 0
+          "YRotation": 90.0,
+          "XPosition": 0.0,
+          "ZPosition": 0.0
         }
       ],
       "BoxNodes": [
         {
           "Id": "0_-1.95_1.25",
-          "TypeId": 2,
-          "BoxColor": 1,
+          "TypeId": 1,
+          "BoxColor": 0,
           "BlockedNodes": [],
           "InitCards": [
+            0,
+            0,
+            0,
             2,
             2,
-            2,
-            3,
-            3,
-            3
+            2
           ],
           "IsHidden": false,
           "LockedTurn": 0,
@@ -2919,14 +2901,32 @@ export const SAMPLE_LEVELS: SampleLevel[] = [
         },
         {
           "Id": "0_0.0_1.25",
-          "TypeId": 2,
+          "TypeId": 1,
+          "BoxColor": 1,
+          "BlockedNodes": [],
+          "InitCards": [
+            1,
+            1,
+            1,
+            2,
+            2,
+            2
+          ],
+          "IsHidden": false,
+          "LockedTurn": 0,
+          "IsPaperBox": false,
+          "IsRainbowBox": false
+        },
+        {
+          "Id": "0_1.95_1.25",
+          "TypeId": 1,
           "BoxColor": 2,
           "BlockedNodes": [],
           "InitCards": [
             2,
             2,
-            2,
-            1,
+            0,
+            0,
             1,
             1
           ],
@@ -2936,35 +2936,17 @@ export const SAMPLE_LEVELS: SampleLevel[] = [
           "IsRainbowBox": false
         },
         {
-          "Id": "0_1.95_1.25",
-          "TypeId": 2,
-          "BoxColor": 3,
+          "Id": "0_-1.0_-1.25",
+          "TypeId": 1,
+          "BoxColor": 6,
           "BlockedNodes": [],
           "InitCards": [
-            1,
-            1,
-            1,
-            2,
+            6,
+            6,
+            0,
+            0,
             2,
             2
-          ],
-          "IsHidden": false,
-          "LockedTurn": 0,
-          "IsPaperBox": false,
-          "IsRainbowBox": false
-        },
-        {
-          "Id": "0_-1.0_-1.25",
-          "TypeId": 2,
-          "BoxColor": 4,
-          "BlockedNodes": [],
-          "InitCards": [
-            4,
-            4,
-            4,
-            4,
-            4,
-            3
           ],
           "IsHidden": false,
           "LockedTurn": 0,
@@ -2973,12 +2955,15 @@ export const SAMPLE_LEVELS: SampleLevel[] = [
         },
         {
           "Id": "0_1.0_-1.25",
-          "TypeId": 2,
-          "BoxColor": 1,
+          "TypeId": 1,
+          "BoxColor": 0,
           "BlockedNodes": [],
           "InitCards": [
-            1,
-            3
+            0,
+            0,
+            0,
+            0,
+            0
           ],
           "IsHidden": false,
           "LockedTurn": 0,
@@ -2987,19 +2972,18 @@ export const SAMPLE_LEVELS: SampleLevel[] = [
         },
         {
           "Id": "1_-1.45_0.0",
-          "TypeId": 2,
-          "BoxColor": 2,
+          "TypeId": 1,
+          "BoxColor": 1,
           "BlockedNodes": [
             "0_-1.95_1.25",
             "0_-1.0_-1.25"
           ],
           "InitCards": [
-            3,
-            3,
-            3,
-            4,
-            4,
-            4
+            1,
+            1,
+            1,
+            1,
+            6
           ],
           "IsHidden": false,
           "LockedTurn": 0,
@@ -3008,20 +2992,19 @@ export const SAMPLE_LEVELS: SampleLevel[] = [
         },
         {
           "Id": "1_0.0_0.0",
-          "TypeId": 2,
-          "BoxColor": 3,
+          "TypeId": 1,
+          "BoxColor": 2,
           "BlockedNodes": [
             "0_0.0_1.25",
             "0_-1.0_-1.25",
             "0_1.0_-1.25"
           ],
           "InitCards": [
-            1,
-            1,
-            1,
             2,
-            2,
-            2
+            6,
+            6,
+            6,
+            6
           ],
           "IsHidden": false,
           "LockedTurn": 0,
@@ -3030,19 +3013,18 @@ export const SAMPLE_LEVELS: SampleLevel[] = [
         },
         {
           "Id": "1_1.45_0.0",
-          "TypeId": 2,
-          "BoxColor": 4,
+          "TypeId": 1,
+          "BoxColor": 6,
           "BlockedNodes": [
             "0_1.95_1.25",
             "0_1.0_-1.25"
           ],
           "InitCards": [
-            4,
-            4,
+            6,
+            6,
+            6,
             1,
-            1,
-            3,
-            3
+            1
           ],
           "IsHidden": false,
           "LockedTurn": 0,
@@ -3051,8 +3033,8 @@ export const SAMPLE_LEVELS: SampleLevel[] = [
         },
         {
           "Id": "2_0.0_0.0",
-          "TypeId": 1,
-          "BoxColor": 1,
+          "TypeId": 0,
+          "BoxColor": 5,
           "BlockedNodes": [
             "0_0.0_1.25",
             "0_-1.0_-1.25",
@@ -3060,10 +3042,10 @@ export const SAMPLE_LEVELS: SampleLevel[] = [
             "1_0.0_0.0"
           ],
           "InitCards": [
-            3,
-            3,
-            4,
-            4
+            1,
+            2,
+            6,
+            6
           ],
           "IsHidden": false,
           "LockedTurn": 0,
@@ -3091,101 +3073,101 @@ export const SAMPLE_LEVELS: SampleLevel[] = [
         {
           "Id": "0_-1.15_1.95",
           "LayerId": 0,
-          "YRotation": 90,
+          "YRotation": 90.0,
           "XPosition": -1.15,
           "ZPosition": 1.95
         },
         {
           "Id": "0_1.15_1.95",
           "LayerId": 0,
-          "YRotation": 90,
+          "YRotation": 90.0,
           "XPosition": 1.15,
           "ZPosition": 1.95
         },
         {
           "Id": "0_-1.15_0.0",
           "LayerId": 0,
-          "YRotation": 90,
+          "YRotation": 90.0,
           "XPosition": -1.15,
-          "ZPosition": 0
+          "ZPosition": 0.0
         },
         {
           "Id": "0_1.15_0.0",
           "LayerId": 0,
-          "YRotation": 90,
+          "YRotation": 90.0,
           "XPosition": 1.15,
-          "ZPosition": 0
+          "ZPosition": 0.0
         },
         {
           "Id": "0_-1.15_-1.95",
           "LayerId": 0,
-          "YRotation": 90,
+          "YRotation": 90.0,
           "XPosition": -1.15,
           "ZPosition": -1.95
         },
         {
           "Id": "0_1.15_-1.95",
           "LayerId": 0,
-          "YRotation": 90,
+          "YRotation": 90.0,
           "XPosition": 1.15,
           "ZPosition": -1.95
         },
         {
           "Id": "1_-1.15_1.0",
           "LayerId": 1,
-          "YRotation": 0,
+          "YRotation": 0.0,
           "XPosition": -1.15,
-          "ZPosition": 1
+          "ZPosition": 1.0
         },
         {
           "Id": "1_1.15_1.0",
           "LayerId": 1,
-          "YRotation": 0,
+          "YRotation": 0.0,
           "XPosition": 1.15,
-          "ZPosition": 1
+          "ZPosition": 1.0
         },
         {
           "Id": "1_-1.15_-1.0",
           "LayerId": 1,
-          "YRotation": 0,
+          "YRotation": 0.0,
           "XPosition": -1.15,
-          "ZPosition": -1
+          "ZPosition": -1.0
         },
         {
           "Id": "1_1.15_-1.0",
           "LayerId": 1,
-          "YRotation": 0,
+          "YRotation": 0.0,
           "XPosition": 1.15,
-          "ZPosition": -1
+          "ZPosition": -1.0
         },
         {
           "Id": "2_0.0_1.0",
           "LayerId": 2,
-          "YRotation": 0,
-          "XPosition": 0,
-          "ZPosition": 1
+          "YRotation": 0.0,
+          "XPosition": 0.0,
+          "ZPosition": 1.0
         },
         {
           "Id": "2_0.0_-1.0",
           "LayerId": 2,
-          "YRotation": 0,
-          "XPosition": 0,
-          "ZPosition": -1
+          "YRotation": 0.0,
+          "XPosition": 0.0,
+          "ZPosition": -1.0
         }
       ],
       "BoxNodes": [
         {
           "Id": "0_-1.15_1.95",
-          "TypeId": 2,
-          "BoxColor": 1,
+          "TypeId": 1,
+          "BoxColor": 0,
           "BlockedNodes": [],
           "InitCards": [
+            0,
+            0,
+            1,
+            1,
             2,
-            2,
-            2,
-            4,
-            4,
-            4
+            2
           ],
           "IsHidden": false,
           "LockedTurn": 0,
@@ -3194,16 +3176,16 @@ export const SAMPLE_LEVELS: SampleLevel[] = [
         },
         {
           "Id": "0_1.15_1.95",
-          "TypeId": 2,
-          "BoxColor": 2,
+          "TypeId": 1,
+          "BoxColor": 1,
           "BlockedNodes": [],
           "InitCards": [
-            2,
-            2,
-            2,
             1,
             1,
-            1
+            1,
+            6,
+            6,
+            6
           ],
           "IsHidden": false,
           "LockedTurn": 0,
@@ -3212,14 +3194,30 @@ export const SAMPLE_LEVELS: SampleLevel[] = [
         },
         {
           "Id": "0_-1.15_0.0",
-          "TypeId": 2,
-          "BoxColor": 3,
+          "TypeId": 1,
+          "BoxColor": 2,
           "BlockedNodes": [],
           "InitCards": [
             2,
             2,
-            4,
-            4,
+            0,
+            6,
+            6
+          ],
+          "IsHidden": false,
+          "LockedTurn": 0,
+          "IsPaperBox": false,
+          "IsRainbowBox": false
+        },
+        {
+          "Id": "0_1.15_0.0",
+          "TypeId": 1,
+          "BoxColor": 6,
+          "BlockedNodes": [],
+          "InitCards": [
+            6,
+            6,
+            0,
             1,
             1
           ],
@@ -3229,33 +3227,16 @@ export const SAMPLE_LEVELS: SampleLevel[] = [
           "IsRainbowBox": false
         },
         {
-          "Id": "0_1.15_0.0",
-          "TypeId": 2,
-          "BoxColor": 4,
-          "BlockedNodes": [],
-          "InitCards": [
-            1,
-            1,
-            1,
-            3,
-            3,
-            3
-          ],
-          "IsHidden": false,
-          "LockedTurn": 0,
-          "IsPaperBox": false,
-          "IsRainbowBox": false
-        },
-        {
           "Id": "0_-1.15_-1.95",
-          "TypeId": 2,
-          "BoxColor": 1,
+          "TypeId": 1,
+          "BoxColor": 0,
           "BlockedNodes": [],
           "InitCards": [
+            0,
             1,
             1,
-            3,
-            3
+            6,
+            6
           ],
           "IsHidden": false,
           "LockedTurn": 0,
@@ -3264,10 +3245,16 @@ export const SAMPLE_LEVELS: SampleLevel[] = [
         },
         {
           "Id": "0_1.15_-1.95",
-          "TypeId": 2,
-          "BoxColor": 2,
+          "TypeId": 1,
+          "BoxColor": 1,
           "BlockedNodes": [],
-          "InitCards": [],
+          "InitCards": [
+            1,
+            1,
+            1,
+            0,
+            0
+          ],
           "IsHidden": false,
           "LockedTurn": 0,
           "IsPaperBox": false,
@@ -3275,14 +3262,53 @@ export const SAMPLE_LEVELS: SampleLevel[] = [
         },
         {
           "Id": "1_-1.15_1.0",
-          "TypeId": 2,
-          "BoxColor": 3,
+          "TypeId": 1,
+          "BoxColor": 2,
           "BlockedNodes": [
             "0_-1.15_1.95",
             "0_-1.15_0.0"
           ],
           "InitCards": [
+            2,
+            2,
+            2,
             1,
+            1
+          ],
+          "IsHidden": false,
+          "LockedTurn": 0,
+          "IsPaperBox": false,
+          "IsRainbowBox": false
+        },
+        {
+          "Id": "1_1.15_1.0",
+          "TypeId": 1,
+          "BoxColor": 6,
+          "BlockedNodes": [
+            "0_1.15_1.95",
+            "0_1.15_0.0"
+          ],
+          "InitCards": [
+            6,
+            6,
+            6,
+            2,
+            2
+          ],
+          "IsHidden": false,
+          "LockedTurn": 0,
+          "IsPaperBox": false,
+          "IsRainbowBox": false
+        },
+        {
+          "Id": "1_-1.15_-1.0",
+          "TypeId": 1,
+          "BoxColor": 0,
+          "BlockedNodes": [
+            "0_-1.15_0.0",
+            "0_-1.15_-1.95"
+          ],
+          "InitCards": [
             1,
             1,
             2,
@@ -3295,62 +3321,19 @@ export const SAMPLE_LEVELS: SampleLevel[] = [
           "IsRainbowBox": false
         },
         {
-          "Id": "1_1.15_1.0",
-          "TypeId": 2,
-          "BoxColor": 4,
-          "BlockedNodes": [
-            "0_1.15_1.95",
-            "0_1.15_0.0"
-          ],
-          "InitCards": [
-            2,
-            2,
-            2,
-            3,
-            3,
-            3
-          ],
-          "IsHidden": false,
-          "LockedTurn": 0,
-          "IsPaperBox": false,
-          "IsRainbowBox": false
-        },
-        {
-          "Id": "1_-1.15_-1.0",
-          "TypeId": 2,
-          "BoxColor": 1,
-          "BlockedNodes": [
-            "0_-1.15_0.0",
-            "0_-1.15_-1.95"
-          ],
-          "InitCards": [
-            1,
-            1,
-            4,
-            4,
-            3,
-            3
-          ],
-          "IsHidden": false,
-          "LockedTurn": 0,
-          "IsPaperBox": false,
-          "IsRainbowBox": false
-        },
-        {
           "Id": "1_1.15_-1.0",
-          "TypeId": 2,
-          "BoxColor": 2,
+          "TypeId": 1,
+          "BoxColor": 1,
           "BlockedNodes": [
             "0_1.15_0.0",
             "0_1.15_-1.95"
           ],
           "InitCards": [
-            4,
-            4,
-            4,
             1,
             1,
-            1
+            0,
+            0,
+            0
           ],
           "IsHidden": false,
           "LockedTurn": 0,
@@ -3359,8 +3342,8 @@ export const SAMPLE_LEVELS: SampleLevel[] = [
         },
         {
           "Id": "2_0.0_1.0",
-          "TypeId": 1,
-          "BoxColor": 1,
+          "TypeId": 0,
+          "BoxColor": 5,
           "BlockedNodes": [
             "0_-1.15_1.95",
             "0_1.15_1.95",
@@ -3370,10 +3353,10 @@ export const SAMPLE_LEVELS: SampleLevel[] = [
             "1_1.15_1.0"
           ],
           "InitCards": [
-            2,
-            2,
-            3,
-            3
+            0,
+            0,
+            0,
+            0
           ],
           "IsHidden": false,
           "LockedTurn": 0,
@@ -3382,8 +3365,8 @@ export const SAMPLE_LEVELS: SampleLevel[] = [
         },
         {
           "Id": "2_0.0_-1.0",
-          "TypeId": 1,
-          "BoxColor": 1,
+          "TypeId": 0,
+          "BoxColor": 5,
           "BlockedNodes": [
             "0_-1.15_0.0",
             "0_1.15_0.0",
@@ -3393,10 +3376,10 @@ export const SAMPLE_LEVELS: SampleLevel[] = [
             "1_1.15_-1.0"
           ],
           "InitCards": [
-            4,
-            4,
-            2,
-            2
+            0,
+            0,
+            0,
+            0
           ],
           "IsHidden": false,
           "LockedTurn": 0,
@@ -3424,101 +3407,101 @@ export const SAMPLE_LEVELS: SampleLevel[] = [
         {
           "Id": "0_-1.95_1.05",
           "LayerId": 0,
-          "YRotation": 0,
+          "YRotation": 0.0,
           "XPosition": -1.95,
           "ZPosition": 1.05
         },
         {
           "Id": "0_0.0_1.05",
           "LayerId": 0,
-          "YRotation": 0,
-          "XPosition": 0,
+          "YRotation": 0.0,
+          "XPosition": 0.0,
           "ZPosition": 1.05
         },
         {
           "Id": "0_1.95_1.05",
           "LayerId": 0,
-          "YRotation": 0,
+          "YRotation": 0.0,
           "XPosition": 1.95,
           "ZPosition": 1.05
         },
         {
           "Id": "0_-1.95_-1.05",
           "LayerId": 0,
-          "YRotation": 0,
+          "YRotation": 0.0,
           "XPosition": -1.95,
           "ZPosition": -1.05
         },
         {
           "Id": "0_0.0_-1.05",
           "LayerId": 0,
-          "YRotation": 0,
-          "XPosition": 0,
+          "YRotation": 0.0,
+          "XPosition": 0.0,
           "ZPosition": -1.05
         },
         {
           "Id": "0_1.95_-1.05",
           "LayerId": 0,
-          "YRotation": 0,
+          "YRotation": 0.0,
           "XPosition": 1.95,
           "ZPosition": -1.05
         },
         {
           "Id": "1_-1.45_0.0",
           "LayerId": 1,
-          "YRotation": 90,
+          "YRotation": 90.0,
           "XPosition": -1.45,
-          "ZPosition": 0
+          "ZPosition": 0.0
         },
         {
           "Id": "1_0.0_0.0",
           "LayerId": 1,
-          "YRotation": 90,
-          "XPosition": 0,
-          "ZPosition": 0
+          "YRotation": 90.0,
+          "XPosition": 0.0,
+          "ZPosition": 0.0
         },
         {
           "Id": "1_1.45_0.0",
           "LayerId": 1,
-          "YRotation": 90,
+          "YRotation": 90.0,
           "XPosition": 1.45,
-          "ZPosition": 0
+          "ZPosition": 0.0
         },
         {
           "Id": "2_-0.95_0.0",
           "LayerId": 2,
-          "YRotation": 0,
+          "YRotation": 0.0,
           "XPosition": -0.95,
-          "ZPosition": 0
+          "ZPosition": 0.0
         },
         {
           "Id": "2_0.95_0.0",
           "LayerId": 2,
-          "YRotation": 0,
+          "YRotation": 0.0,
           "XPosition": 0.95,
-          "ZPosition": 0
+          "ZPosition": 0.0
         },
         {
           "Id": "3_0.0_0.0",
           "LayerId": 3,
-          "YRotation": 90,
-          "XPosition": 0,
-          "ZPosition": 0
+          "YRotation": 90.0,
+          "XPosition": 0.0,
+          "ZPosition": 0.0
         }
       ],
       "BoxNodes": [
         {
           "Id": "0_-1.95_1.05",
-          "TypeId": 2,
-          "BoxColor": 1,
+          "TypeId": 1,
+          "BoxColor": 0,
           "BlockedNodes": [],
           "InitCards": [
-            3,
-            3,
-            3,
-            2,
-            2,
-            2
+            6,
+            6,
+            6,
+            6,
+            6,
+            6
           ],
           "IsHidden": false,
           "LockedTurn": 0,
@@ -3527,16 +3510,16 @@ export const SAMPLE_LEVELS: SampleLevel[] = [
         },
         {
           "Id": "0_0.0_1.05",
-          "TypeId": 2,
-          "BoxColor": 2,
+          "TypeId": 1,
+          "BoxColor": 1,
           "BlockedNodes": [],
           "InitCards": [
-            4,
-            4,
-            4,
             1,
             1,
-            1
+            1,
+            2,
+            2,
+            2
           ],
           "IsHidden": false,
           "LockedTurn": 0,
@@ -3545,16 +3528,16 @@ export const SAMPLE_LEVELS: SampleLevel[] = [
         },
         {
           "Id": "0_1.95_1.05",
-          "TypeId": 2,
-          "BoxColor": 3,
+          "TypeId": 1,
+          "BoxColor": 2,
           "BlockedNodes": [],
           "InitCards": [
-            4,
-            4,
-            4,
+            0,
+            0,
             1,
             1,
-            1
+            6,
+            6
           ],
           "IsHidden": false,
           "LockedTurn": 0,
@@ -3563,16 +3546,16 @@ export const SAMPLE_LEVELS: SampleLevel[] = [
         },
         {
           "Id": "0_-1.95_-1.05",
-          "TypeId": 2,
-          "BoxColor": 4,
+          "TypeId": 1,
+          "BoxColor": 6,
           "BlockedNodes": [],
           "InitCards": [
-            4,
-            4,
-            4,
-            3,
-            3,
-            3
+            6,
+            6,
+            1,
+            1,
+            2,
+            2
           ],
           "IsHidden": false,
           "LockedTurn": 0,
@@ -3581,16 +3564,16 @@ export const SAMPLE_LEVELS: SampleLevel[] = [
         },
         {
           "Id": "0_0.0_-1.05",
-          "TypeId": 2,
-          "BoxColor": 1,
+          "TypeId": 1,
+          "BoxColor": 0,
           "BlockedNodes": [],
           "InitCards": [
-            3,
-            3,
-            3,
-            3,
-            3,
-            3
+            0,
+            0,
+            0,
+            2,
+            2,
+            2
           ],
           "IsHidden": false,
           "LockedTurn": 0,
@@ -3599,16 +3582,16 @@ export const SAMPLE_LEVELS: SampleLevel[] = [
         },
         {
           "Id": "0_1.95_-1.05",
-          "TypeId": 2,
-          "BoxColor": 2,
+          "TypeId": 1,
+          "BoxColor": 1,
           "BlockedNodes": [],
           "InitCards": [
-            2,
-            2,
             1,
             1,
-            3,
-            3
+            1,
+            0,
+            0,
+            0
           ],
           "IsHidden": false,
           "LockedTurn": 0,
@@ -3617,19 +3600,19 @@ export const SAMPLE_LEVELS: SampleLevel[] = [
         },
         {
           "Id": "1_-1.45_0.0",
-          "TypeId": 2,
-          "BoxColor": 3,
+          "TypeId": 1,
+          "BoxColor": 2,
           "BlockedNodes": [
             "0_-1.95_1.05",
             "0_-1.95_-1.05"
           ],
           "InitCards": [
-            3,
-            3,
-            4,
-            4,
             2,
-            2
+            2,
+            2,
+            6,
+            6,
+            6
           ],
           "IsHidden": false,
           "LockedTurn": 0,
@@ -3638,19 +3621,19 @@ export const SAMPLE_LEVELS: SampleLevel[] = [
         },
         {
           "Id": "1_0.0_0.0",
-          "TypeId": 2,
-          "BoxColor": 4,
+          "TypeId": 1,
+          "BoxColor": 6,
           "BlockedNodes": [
             "0_0.0_1.05",
             "0_0.0_-1.05"
           ],
           "InitCards": [
+            0,
+            0,
+            0,
             1,
             1,
-            1,
-            2,
-            2,
-            2
+            1
           ],
           "IsHidden": false,
           "LockedTurn": 0,
@@ -3659,19 +3642,19 @@ export const SAMPLE_LEVELS: SampleLevel[] = [
         },
         {
           "Id": "1_1.45_0.0",
-          "TypeId": 2,
-          "BoxColor": 1,
+          "TypeId": 1,
+          "BoxColor": 0,
           "BlockedNodes": [
             "0_1.95_1.05",
             "0_1.95_-1.05"
           ],
           "InitCards": [
-            4,
-            4,
-            4,
+            0,
+            0,
             2,
             2,
-            2
+            6,
+            6
           ],
           "IsHidden": false,
           "LockedTurn": 0,
@@ -3680,8 +3663,8 @@ export const SAMPLE_LEVELS: SampleLevel[] = [
         },
         {
           "Id": "2_-0.95_0.0",
-          "TypeId": 2,
-          "BoxColor": 2,
+          "TypeId": 1,
+          "BoxColor": 1,
           "BlockedNodes": [
             "0_-1.95_1.05",
             "0_0.0_1.05",
@@ -3691,12 +3674,12 @@ export const SAMPLE_LEVELS: SampleLevel[] = [
             "1_0.0_0.0"
           ],
           "InitCards": [
-            4,
-            4,
-            3,
-            3,
             1,
-            1
+            1,
+            0,
+            0,
+            2,
+            2
           ],
           "IsHidden": false,
           "LockedTurn": 0,
@@ -3705,8 +3688,8 @@ export const SAMPLE_LEVELS: SampleLevel[] = [
         },
         {
           "Id": "2_0.95_0.0",
-          "TypeId": 2,
-          "BoxColor": 3,
+          "TypeId": 1,
+          "BoxColor": 2,
           "BlockedNodes": [
             "0_0.0_1.05",
             "0_1.95_1.05",
@@ -3716,10 +3699,10 @@ export const SAMPLE_LEVELS: SampleLevel[] = [
             "1_1.45_0.0"
           ],
           "InitCards": [
-            2,
-            2,
-            4,
-            4,
+            0,
+            0,
+            0,
+            1,
             1,
             1
           ],
@@ -3730,8 +3713,8 @@ export const SAMPLE_LEVELS: SampleLevel[] = [
         },
         {
           "Id": "3_0.0_0.0",
-          "TypeId": 2,
-          "BoxColor": 4,
+          "TypeId": 1,
+          "BoxColor": 6,
           "BlockedNodes": [
             "0_0.0_1.05",
             "0_0.0_-1.05",
@@ -3740,9 +3723,9 @@ export const SAMPLE_LEVELS: SampleLevel[] = [
             "2_0.95_0.0"
           ],
           "InitCards": [
-            1,
-            1,
-            1,
+            6,
+            6,
+            6,
             2,
             2,
             2
@@ -3773,98 +3756,98 @@ export const SAMPLE_LEVELS: SampleLevel[] = [
         {
           "Id": "0_-1.0_2.05",
           "LayerId": 0,
-          "YRotation": 0,
-          "XPosition": -1,
+          "YRotation": 0.0,
+          "XPosition": -1.0,
           "ZPosition": 2.05
         },
         {
           "Id": "0_1.0_2.05",
           "LayerId": 0,
-          "YRotation": 0,
-          "XPosition": 1,
+          "YRotation": 0.0,
+          "XPosition": 1.0,
           "ZPosition": 2.05
         },
         {
           "Id": "0_-1.0_-2.05",
           "LayerId": 0,
-          "YRotation": 0,
-          "XPosition": -1,
+          "YRotation": 0.0,
+          "XPosition": -1.0,
           "ZPosition": -2.05
         },
         {
           "Id": "0_1.0_-2.05",
           "LayerId": 0,
-          "YRotation": 0,
-          "XPosition": 1,
+          "YRotation": 0.0,
+          "XPosition": 1.0,
           "ZPosition": -2.05
         },
         {
           "Id": "0_-1.95_0.0",
           "LayerId": 0,
-          "YRotation": 90,
+          "YRotation": 90.0,
           "XPosition": -1.95,
-          "ZPosition": 0
+          "ZPosition": 0.0
         },
         {
           "Id": "0_1.95_0.0",
           "LayerId": 0,
-          "YRotation": 90,
+          "YRotation": 90.0,
           "XPosition": 1.95,
-          "ZPosition": 0
+          "ZPosition": 0.0
         },
         {
           "Id": "1_-1.15_1.05",
           "LayerId": 1,
-          "YRotation": 90,
+          "YRotation": 90.0,
           "XPosition": -1.15,
           "ZPosition": 1.05
         },
         {
           "Id": "1_1.15_1.05",
           "LayerId": 1,
-          "YRotation": 90,
+          "YRotation": 90.0,
           "XPosition": 1.15,
           "ZPosition": 1.05
         },
         {
           "Id": "1_-1.15_-1.05",
           "LayerId": 1,
-          "YRotation": 90,
+          "YRotation": 90.0,
           "XPosition": -1.15,
           "ZPosition": -1.05
         },
         {
           "Id": "1_1.15_-1.05",
           "LayerId": 1,
-          "YRotation": 90,
+          "YRotation": 90.0,
           "XPosition": 1.15,
           "ZPosition": -1.05
         },
         {
           "Id": "2_0.0_1.05",
           "LayerId": 2,
-          "YRotation": 0,
-          "XPosition": 0,
+          "YRotation": 0.0,
+          "XPosition": 0.0,
           "ZPosition": 1.05
         },
         {
           "Id": "2_0.0_-1.05",
           "LayerId": 2,
-          "YRotation": 0,
-          "XPosition": 0,
+          "YRotation": 0.0,
+          "XPosition": 0.0,
           "ZPosition": -1.05
         }
       ],
       "BoxNodes": [
         {
           "Id": "0_-1.0_2.05",
-          "TypeId": 2,
-          "BoxColor": 1,
+          "TypeId": 1,
+          "BoxColor": 0,
           "BlockedNodes": [],
           "InitCards": [
-            1,
-            1,
-            1,
+            0,
+            0,
+            0,
             2,
             2,
             2
@@ -3876,16 +3859,16 @@ export const SAMPLE_LEVELS: SampleLevel[] = [
         },
         {
           "Id": "0_1.0_2.05",
-          "TypeId": 2,
-          "BoxColor": 2,
+          "TypeId": 1,
+          "BoxColor": 1,
           "BlockedNodes": [],
           "InitCards": [
             1,
             1,
             1,
-            4,
-            4,
-            4
+            6,
+            6,
+            6
           ],
           "IsHidden": false,
           "LockedTurn": 0,
@@ -3894,16 +3877,15 @@ export const SAMPLE_LEVELS: SampleLevel[] = [
         },
         {
           "Id": "0_-1.0_-2.05",
-          "TypeId": 2,
-          "BoxColor": 3,
+          "TypeId": 1,
+          "BoxColor": 2,
           "BlockedNodes": [],
           "InitCards": [
-            1,
-            1,
-            1,
-            4,
-            4,
-            4
+            2,
+            0,
+            0,
+            0,
+            0
           ],
           "IsHidden": false,
           "LockedTurn": 0,
@@ -3912,14 +3894,13 @@ export const SAMPLE_LEVELS: SampleLevel[] = [
         },
         {
           "Id": "0_1.0_-2.05",
-          "TypeId": 2,
-          "BoxColor": 4,
+          "TypeId": 1,
+          "BoxColor": 6,
           "BlockedNodes": [],
           "InitCards": [
-            2,
-            2,
-            3,
-            3,
+            0,
+            1,
+            1,
             1,
             1
           ],
@@ -3930,43 +3911,12 @@ export const SAMPLE_LEVELS: SampleLevel[] = [
         },
         {
           "Id": "0_-1.95_0.0",
-          "TypeId": 2,
-          "BoxColor": 1,
+          "TypeId": 1,
+          "BoxColor": 0,
           "BlockedNodes": [],
           "InitCards": [
-            1,
-            1,
-            2,
-            4
-          ],
-          "IsHidden": false,
-          "LockedTurn": 0,
-          "IsPaperBox": false,
-          "IsRainbowBox": false
-        },
-        {
-          "Id": "0_1.95_0.0",
-          "TypeId": 2,
-          "BoxColor": 2,
-          "BlockedNodes": [],
-          "InitCards": [],
-          "IsHidden": false,
-          "LockedTurn": 0,
-          "IsPaperBox": false,
-          "IsRainbowBox": false
-        },
-        {
-          "Id": "1_-1.15_1.05",
-          "TypeId": 2,
-          "BoxColor": 3,
-          "BlockedNodes": [
-            "0_-1.0_2.05",
-            "0_-1.95_0.0"
-          ],
-          "InitCards": [
-            2,
-            2,
-            2,
+            0,
+            0,
             1,
             1,
             1
@@ -3977,20 +3927,56 @@ export const SAMPLE_LEVELS: SampleLevel[] = [
           "IsRainbowBox": false
         },
         {
+          "Id": "0_1.95_0.0",
+          "TypeId": 1,
+          "BoxColor": 1,
+          "BlockedNodes": [],
+          "InitCards": [
+            1,
+            1,
+            1,
+            0,
+            0
+          ],
+          "IsHidden": false,
+          "LockedTurn": 0,
+          "IsPaperBox": false,
+          "IsRainbowBox": false
+        },
+        {
+          "Id": "1_-1.15_1.05",
+          "TypeId": 1,
+          "BoxColor": 2,
+          "BlockedNodes": [
+            "0_-1.0_2.05",
+            "0_-1.95_0.0"
+          ],
+          "InitCards": [
+            2,
+            2,
+            0,
+            1,
+            1
+          ],
+          "IsHidden": false,
+          "LockedTurn": 0,
+          "IsPaperBox": false,
+          "IsRainbowBox": false
+        },
+        {
           "Id": "1_1.15_1.05",
-          "TypeId": 2,
-          "BoxColor": 4,
+          "TypeId": 1,
+          "BoxColor": 6,
           "BlockedNodes": [
             "0_1.0_2.05",
             "0_1.95_0.0"
           ],
           "InitCards": [
-            2,
-            2,
-            2,
-            3,
-            3,
-            3
+            6,
+            6,
+            0,
+            1,
+            1
           ],
           "IsHidden": false,
           "LockedTurn": 0,
@@ -3999,19 +3985,18 @@ export const SAMPLE_LEVELS: SampleLevel[] = [
         },
         {
           "Id": "1_-1.15_-1.05",
-          "TypeId": 2,
-          "BoxColor": 1,
+          "TypeId": 1,
+          "BoxColor": 0,
           "BlockedNodes": [
             "0_-1.0_-2.05",
             "0_-1.95_0.0"
           ],
           "InitCards": [
-            1,
-            1,
+            0,
+            0,
             2,
             2,
-            3,
-            3
+            2
           ],
           "IsHidden": false,
           "LockedTurn": 0,
@@ -4020,19 +4005,18 @@ export const SAMPLE_LEVELS: SampleLevel[] = [
         },
         {
           "Id": "1_1.15_-1.05",
-          "TypeId": 2,
-          "BoxColor": 2,
+          "TypeId": 1,
+          "BoxColor": 1,
           "BlockedNodes": [
             "0_1.0_-2.05",
             "0_1.95_0.0"
           ],
           "InitCards": [
-            4,
-            4,
-            4,
-            3,
-            3,
-            3
+            0,
+            2,
+            2,
+            6,
+            6
           ],
           "IsHidden": false,
           "LockedTurn": 0,
@@ -4041,8 +4025,8 @@ export const SAMPLE_LEVELS: SampleLevel[] = [
         },
         {
           "Id": "2_0.0_1.05",
-          "TypeId": 1,
-          "BoxColor": 1,
+          "TypeId": 0,
+          "BoxColor": 5,
           "BlockedNodes": [
             "0_-1.0_2.05",
             "0_1.0_2.05",
@@ -4050,10 +4034,10 @@ export const SAMPLE_LEVELS: SampleLevel[] = [
             "1_1.15_1.05"
           ],
           "InitCards": [
-            2,
-            2,
-            3,
-            3
+            1,
+            6,
+            6,
+            6
           ],
           "IsHidden": false,
           "LockedTurn": 0,
@@ -4062,8 +4046,8 @@ export const SAMPLE_LEVELS: SampleLevel[] = [
         },
         {
           "Id": "2_0.0_-1.05",
-          "TypeId": 1,
-          "BoxColor": 1,
+          "TypeId": 0,
+          "BoxColor": 5,
           "BlockedNodes": [
             "0_-1.0_-2.05",
             "0_1.0_-2.05",
@@ -4071,10 +4055,10 @@ export const SAMPLE_LEVELS: SampleLevel[] = [
             "1_1.15_-1.05"
           ],
           "InitCards": [
+            0,
             2,
-            2,
-            4,
-            4
+            6,
+            6
           ],
           "IsHidden": false,
           "LockedTurn": 0,
@@ -4100,291 +4084,316 @@ export const SAMPLE_LEVELS: SampleLevel[] = [
       "BoardOffsetZ": 0,
       "BoardNodes": [
         {
-          "Id": "0_0.0_2.05",
+          "Id": "0_-1.0_2.05",
           "LayerId": 0,
-          "YRotation": 0,
-          "XPosition": 0,
+          "YRotation": 0.0,
+          "XPosition": -1.0,
           "ZPosition": 2.05
         },
         {
-          "Id": "0_0.0_-2.05",
+          "Id": "0_1.0_2.05",
           "LayerId": 0,
-          "YRotation": 0,
-          "XPosition": 0,
+          "YRotation": 0.0,
+          "XPosition": 1.0,
+          "ZPosition": 2.05
+        },
+        {
+          "Id": "0_-1.0_-2.05",
+          "LayerId": 0,
+          "YRotation": 0.0,
+          "XPosition": -1.0,
           "ZPosition": -2.05
         },
         {
-          "Id": "0_-1.85_1.00",
+          "Id": "0_1.0_-2.05",
           "LayerId": 0,
-          "YRotation": 90,
-          "XPosition": -1.85,
-          "ZPosition": 1
+          "YRotation": 0.0,
+          "XPosition": 1.0,
+          "ZPosition": -2.05
         },
         {
-          "Id": "0_-1.85_-1.00",
+          "Id": "0_-1.95_0.0",
           "LayerId": 0,
-          "YRotation": 90,
-          "XPosition": -1.85,
-          "ZPosition": -1
+          "YRotation": 90.0,
+          "XPosition": -1.95,
+          "ZPosition": 0.0
         },
         {
-          "Id": "0_1.85_1.00",
+          "Id": "0_1.95_0.0",
           "LayerId": 0,
-          "YRotation": 90,
-          "XPosition": 1.85,
-          "ZPosition": 1
+          "YRotation": 90.0,
+          "XPosition": 1.95,
+          "ZPosition": 0.0
         },
         {
-          "Id": "0_1.85_-1.00",
-          "LayerId": 0,
-          "YRotation": 90,
-          "XPosition": 1.85,
-          "ZPosition": -1
-        },
-        {
-          "Id": "1_-0.95_1.00",
+          "Id": "1_-1.15_1.05",
           "LayerId": 1,
-          "YRotation": 0,
-          "XPosition": -0.95,
-          "ZPosition": 1
+          "YRotation": 90.0,
+          "XPosition": -1.15,
+          "ZPosition": 1.05
         },
         {
-          "Id": "1_0.95_1.00",
+          "Id": "1_1.15_1.05",
           "LayerId": 1,
-          "YRotation": 0,
-          "XPosition": 0.95,
-          "ZPosition": 1
+          "YRotation": 90.0,
+          "XPosition": 1.15,
+          "ZPosition": 1.05
         },
         {
-          "Id": "1_-0.95_-1.00",
+          "Id": "1_-1.15_-1.05",
           "LayerId": 1,
-          "YRotation": 0,
-          "XPosition": -0.95,
-          "ZPosition": -1
+          "YRotation": 90.0,
+          "XPosition": -1.15,
+          "ZPosition": -1.05
         },
         {
-          "Id": "1_0.95_-1.00",
+          "Id": "1_1.15_-1.05",
           "LayerId": 1,
-          "YRotation": 0,
-          "XPosition": 0.95,
-          "ZPosition": -1
+          "YRotation": 90.0,
+          "XPosition": 1.15,
+          "ZPosition": -1.05
         },
         {
-          "Id": "2_0.0_1.00",
+          "Id": "2_0.0_1.05",
           "LayerId": 2,
-          "YRotation": 90,
-          "XPosition": 0,
-          "ZPosition": 1
+          "YRotation": 0.0,
+          "XPosition": 0.0,
+          "ZPosition": 1.05
         },
         {
-          "Id": "2_0.0_-1.00",
+          "Id": "2_0.0_-1.05",
           "LayerId": 2,
-          "YRotation": 90,
-          "XPosition": 0,
-          "ZPosition": -1
+          "YRotation": 0.0,
+          "XPosition": 0.0,
+          "ZPosition": -1.05
         }
       ],
       "BoxNodes": [
         {
-          "Id": "0_0.0_2.05",
-          "TypeId": 2,
+          "Id": "0_-1.0_2.05",
+          "TypeId": 1,
+          "BoxColor": 0,
+          "BlockedNodes": [],
+          "InitCards": [
+            0,
+            0,
+            0,
+            6,
+            6,
+            6
+          ],
+          "IsHidden": false,
+          "LockedTurn": 2,
+          "IsPaperBox": false,
+          "IsRainbowBox": false
+        },
+        {
+          "Id": "0_1.0_2.05",
+          "TypeId": 1,
           "BoxColor": 1,
           "BlockedNodes": [],
           "InitCards": [
             1,
             1,
             1,
-            2,
-            2,
-            2
-          ],
-          "IsHidden": false,
-          "LockedTurn": 0
-        },
-        {
-          "Id": "0_0.0_-2.05",
-          "TypeId": 2,
-          "BoxColor": 2,
-          "BlockedNodes": [],
-          "InitCards": [
-            2,
-            2,
-            2,
-            1,
-            1,
-            1
-          ],
-          "IsHidden": false,
-          "LockedTurn": 0
-        },
-        {
-          "Id": "0_-1.85_1.00",
-          "TypeId": 2,
-          "BoxColor": 3,
-          "BlockedNodes": [],
-          "InitCards": [
-            3,
-            3,
-            3,
-            1,
-            1,
-            1
-          ],
-          "IsHidden": false,
-          "LockedTurn": 2
-        },
-        {
-          "Id": "0_-1.85_-1.00",
-          "TypeId": 2,
-          "BoxColor": 4,
-          "BlockedNodes": [],
-          "InitCards": [
-            4,
-            4,
-            3,
-            3,
-            2,
-            2
-          ],
-          "IsHidden": false,
-          "LockedTurn": 0
-        },
-        {
-          "Id": "0_1.85_1.00",
-          "TypeId": 2,
-          "BoxColor": 1,
-          "BlockedNodes": [],
-          "InitCards": [
-            1,
-            1,
-            3,
-            3
-          ],
-          "IsHidden": false,
-          "LockedTurn": 0
-        },
-        {
-          "Id": "0_1.85_-1.00",
-          "TypeId": 2,
-          "BoxColor": 2,
-          "BlockedNodes": [],
-          "InitCards": [],
-          "IsHidden": false,
-          "LockedTurn": 2
-        },
-        {
-          "Id": "1_-0.95_1.00",
-          "TypeId": 2,
-          "BoxColor": 3,
-          "BlockedNodes": [
-            "0_0.0_2.05",
-            "0_-1.85_1.00"
-          ],
-          "InitCards": [
-            2,
-            2,
-            2,
-            4,
-            4,
-            4
-          ],
-          "IsHidden": false,
-          "LockedTurn": 0
-        },
-        {
-          "Id": "1_0.95_1.00",
-          "TypeId": 2,
-          "BoxColor": 4,
-          "BlockedNodes": [
-            "0_0.0_2.05",
-            "0_1.85_1.00"
-          ],
-          "InitCards": [
-            4,
-            4,
-            2,
-            2,
-            3,
-            3
-          ],
-          "IsHidden": false,
-          "LockedTurn": 0
-        },
-        {
-          "Id": "1_-0.95_-1.00",
-          "TypeId": 2,
-          "BoxColor": 1,
-          "BlockedNodes": [
-            "0_0.0_-2.05",
-            "0_-1.85_-1.00"
-          ],
-          "InitCards": [
-            3,
-            3,
-            3,
-            4,
-            4,
-            4
-          ],
-          "IsHidden": false,
-          "LockedTurn": 0
-        },
-        {
-          "Id": "1_0.95_-1.00",
-          "TypeId": 2,
-          "BoxColor": 2,
-          "BlockedNodes": [
-            "0_0.0_-2.05",
-            "0_1.85_-1.00"
-          ],
-          "InitCards": [
-            2,
-            2,
-            2,
-            1,
-            1,
-            1
-          ],
-          "IsHidden": false,
-          "LockedTurn": 0
-        },
-        {
-          "Id": "2_0.0_1.00",
-          "TypeId": 4,
-          "BoxColor": 3,
-          "BlockedNodes": [
-            "0_0.0_2.05",
-            "1_-0.95_1.00",
-            "1_0.95_1.00"
-          ],
-          "InitCards": [
-            1,
-            1,
-            4,
-            4
+            0,
+            0,
+            0
           ],
           "IsHidden": false,
           "LockedTurn": 0,
-          "IsPaperBox": true
+          "IsPaperBox": false,
+          "IsRainbowBox": false
         },
         {
-          "Id": "2_0.0_-1.00",
-          "TypeId": 4,
-          "BoxColor": 4,
-          "BlockedNodes": [
-            "0_0.0_-2.05",
-            "1_-0.95_-1.00",
-            "1_0.95_-1.00"
-          ],
+          "Id": "0_-1.0_-2.05",
+          "TypeId": 1,
+          "BoxColor": 2,
+          "BlockedNodes": [],
           "InitCards": [
+            2,
+            2,
+            1,
+            6,
+            6
+          ],
+          "IsHidden": false,
+          "LockedTurn": 0,
+          "IsPaperBox": false,
+          "IsRainbowBox": false
+        },
+        {
+          "Id": "0_1.0_-2.05",
+          "TypeId": 1,
+          "BoxColor": 6,
+          "BlockedNodes": [],
+          "InitCards": [
+            0,
+            0,
             1,
             1,
+            1
+          ],
+          "IsHidden": false,
+          "LockedTurn": 2,
+          "IsPaperBox": false,
+          "IsRainbowBox": false
+        },
+        {
+          "Id": "0_-1.95_0.0",
+          "TypeId": 1,
+          "BoxColor": 0,
+          "BlockedNodes": [],
+          "InitCards": [
+            0,
+            0,
+            2,
             2,
             2
           ],
           "IsHidden": false,
           "LockedTurn": 0,
-          "IsPaperBox": true
+          "IsPaperBox": false,
+          "IsRainbowBox": false
+        },
+        {
+          "Id": "0_1.95_0.0",
+          "TypeId": 1,
+          "BoxColor": 1,
+          "BlockedNodes": [],
+          "InitCards": [
+            1,
+            1,
+            0,
+            6,
+            6
+          ],
+          "IsHidden": false,
+          "LockedTurn": 0,
+          "IsPaperBox": false,
+          "IsRainbowBox": false
+        },
+        {
+          "Id": "1_-1.15_1.05",
+          "TypeId": 1,
+          "BoxColor": 2,
+          "BlockedNodes": [
+            "0_-1.0_2.05",
+            "0_-1.95_0.0"
+          ],
+          "InitCards": [
+            0,
+            0,
+            1,
+            1,
+            1
+          ],
+          "IsHidden": false,
+          "LockedTurn": 0,
+          "IsPaperBox": false,
+          "IsRainbowBox": false
+        },
+        {
+          "Id": "1_1.15_1.05",
+          "TypeId": 1,
+          "BoxColor": 6,
+          "BlockedNodes": [
+            "0_1.0_2.05",
+            "0_1.95_0.0"
+          ],
+          "InitCards": [
+            6,
+            6,
+            0,
+            2,
+            2
+          ],
+          "IsHidden": false,
+          "LockedTurn": 0,
+          "IsPaperBox": false,
+          "IsRainbowBox": false
+        },
+        {
+          "Id": "1_-1.15_-1.05",
+          "TypeId": 1,
+          "BoxColor": 0,
+          "BlockedNodes": [
+            "0_-1.0_-2.05",
+            "0_-1.95_0.0"
+          ],
+          "InitCards": [
+            0,
+            2,
+            2,
+            6,
+            6
+          ],
+          "IsHidden": false,
+          "LockedTurn": 0,
+          "IsPaperBox": false,
+          "IsRainbowBox": false
+        },
+        {
+          "Id": "1_1.15_-1.05",
+          "TypeId": 1,
+          "BoxColor": 1,
+          "BlockedNodes": [
+            "0_1.0_-2.05",
+            "0_1.95_0.0"
+          ],
+          "InitCards": [
+            1,
+            1,
+            1,
+            1,
+            6
+          ],
+          "IsHidden": false,
+          "LockedTurn": 0,
+          "IsPaperBox": false,
+          "IsRainbowBox": false
+        },
+        {
+          "Id": "2_0.0_1.05",
+          "TypeId": 0,
+          "BoxColor": 5,
+          "BlockedNodes": [
+            "0_-1.0_2.05",
+            "0_1.0_2.05",
+            "1_-1.15_1.05",
+            "1_1.15_1.05"
+          ],
+          "InitCards": [
+            0,
+            1,
+            1,
+            2
+          ],
+          "IsHidden": false,
+          "LockedTurn": 0,
+          "IsPaperBox": true,
+          "IsRainbowBox": false
+        },
+        {
+          "Id": "2_0.0_-1.05",
+          "TypeId": 0,
+          "BoxColor": 5,
+          "BlockedNodes": [
+            "0_-1.0_-2.05",
+            "0_1.0_-2.05",
+            "1_-1.15_-1.05",
+            "1_1.15_-1.05"
+          ],
+          "InitCards": [
+            0,
+            0,
+            2,
+            2
+          ],
+          "IsHidden": false,
+          "LockedTurn": 0,
+          "IsPaperBox": true,
+          "IsRainbowBox": false
         }
       ],
       "SpawnerNodes": [],
@@ -4407,93 +4416,93 @@ export const SAMPLE_LEVELS: SampleLevel[] = [
         {
           "Id": "0_-1.45_1.85",
           "LayerId": 0,
-          "YRotation": 90,
+          "YRotation": 90.0,
           "XPosition": -1.45,
           "ZPosition": 1.85
         },
         {
           "Id": "0_1.45_1.85",
           "LayerId": 0,
-          "YRotation": 90,
+          "YRotation": 90.0,
           "XPosition": 1.45,
           "ZPosition": 1.85
         },
         {
           "Id": "0_-1.45_-1.85",
           "LayerId": 0,
-          "YRotation": 90,
+          "YRotation": 90.0,
           "XPosition": -1.45,
           "ZPosition": -1.85
         },
         {
           "Id": "0_1.45_-1.85",
           "LayerId": 0,
-          "YRotation": 90,
+          "YRotation": 90.0,
           "XPosition": 1.45,
           "ZPosition": -1.85
         },
         {
           "Id": "0_0.0_0.0",
           "LayerId": 0,
-          "YRotation": 0,
-          "XPosition": 0,
-          "ZPosition": 0
+          "YRotation": 0.0,
+          "XPosition": 0.0,
+          "ZPosition": 0.0
         },
         {
           "Id": "1_-1.15_0.95",
           "LayerId": 1,
-          "YRotation": 0,
+          "YRotation": 0.0,
           "XPosition": -1.15,
           "ZPosition": 0.95
         },
         {
           "Id": "1_1.15_0.95",
           "LayerId": 1,
-          "YRotation": 0,
+          "YRotation": 0.0,
           "XPosition": 1.15,
           "ZPosition": 0.95
         },
         {
           "Id": "1_-1.15_-0.95",
           "LayerId": 1,
-          "YRotation": 0,
+          "YRotation": 0.0,
           "XPosition": -1.15,
           "ZPosition": -0.95
         },
         {
           "Id": "1_1.15_-0.95",
           "LayerId": 1,
-          "YRotation": 0,
+          "YRotation": 0.0,
           "XPosition": 1.15,
           "ZPosition": -0.95
         },
         {
           "Id": "2_0.0_0.95",
           "LayerId": 2,
-          "YRotation": 90,
-          "XPosition": 0,
+          "YRotation": 90.0,
+          "XPosition": 0.0,
           "ZPosition": 0.95
         },
         {
           "Id": "2_0.0_-0.95",
           "LayerId": 2,
-          "YRotation": 90,
-          "XPosition": 0,
+          "YRotation": 90.0,
+          "XPosition": 0.0,
           "ZPosition": -0.95
         }
       ],
       "BoxNodes": [
         {
           "Id": "0_-1.45_1.85",
-          "TypeId": 3,
-          "BoxColor": 1,
+          "TypeId": 2,
+          "BoxColor": 0,
           "BlockedNodes": [],
           "InitCards": [
-            3,
-            3,
-            3,
-            3,
-            2,
+            0,
+            0,
+            1,
+            1,
+            1,
             2,
             2,
             2
@@ -4505,18 +4514,17 @@ export const SAMPLE_LEVELS: SampleLevel[] = [
         },
         {
           "Id": "0_1.45_1.85",
-          "TypeId": 3,
-          "BoxColor": 2,
+          "TypeId": 2,
+          "BoxColor": 1,
           "BlockedNodes": [],
           "InitCards": [
+            0,
+            0,
+            0,
             2,
             2,
             2,
-            2,
-            1,
-            1,
-            1,
-            1
+            2
           ],
           "IsHidden": false,
           "LockedTurn": 0,
@@ -4525,14 +4533,13 @@ export const SAMPLE_LEVELS: SampleLevel[] = [
         },
         {
           "Id": "0_-1.45_-1.85",
-          "TypeId": 3,
-          "BoxColor": 3,
+          "TypeId": 2,
+          "BoxColor": 2,
           "BlockedNodes": [],
           "InitCards": [
-            2,
-            2,
-            2,
-            2,
+            0,
+            0,
+            0,
             1,
             1,
             1,
@@ -4545,18 +4552,17 @@ export const SAMPLE_LEVELS: SampleLevel[] = [
         },
         {
           "Id": "0_1.45_-1.85",
-          "TypeId": 3,
-          "BoxColor": 1,
+          "TypeId": 2,
+          "BoxColor": 0,
           "BlockedNodes": [],
           "InitCards": [
             1,
             1,
             1,
-            1,
-            1,
-            1,
-            3,
-            3
+            2,
+            2,
+            2,
+            2
           ],
           "IsHidden": false,
           "LockedTurn": 0,
@@ -4565,10 +4571,18 @@ export const SAMPLE_LEVELS: SampleLevel[] = [
         },
         {
           "Id": "0_0.0_0.0",
-          "TypeId": 3,
-          "BoxColor": 2,
+          "TypeId": 2,
+          "BoxColor": 1,
           "BlockedNodes": [],
-          "InitCards": [],
+          "InitCards": [
+            1,
+            1,
+            1,
+            2,
+            2,
+            2,
+            2
+          ],
           "IsHidden": false,
           "LockedTurn": 0,
           "IsPaperBox": false,
@@ -4576,17 +4590,16 @@ export const SAMPLE_LEVELS: SampleLevel[] = [
         },
         {
           "Id": "1_-1.15_0.95",
-          "TypeId": 3,
-          "BoxColor": 3,
+          "TypeId": 2,
+          "BoxColor": 2,
           "BlockedNodes": [
             "0_-1.45_1.85",
             "0_0.0_0.0"
           ],
           "InitCards": [
-            3,
-            3,
-            3,
-            3,
+            0,
+            0,
+            0,
             1,
             1,
             1,
@@ -4599,18 +4612,17 @@ export const SAMPLE_LEVELS: SampleLevel[] = [
         },
         {
           "Id": "1_1.15_0.95",
-          "TypeId": 3,
-          "BoxColor": 1,
+          "TypeId": 2,
+          "BoxColor": 0,
           "BlockedNodes": [
             "0_1.45_1.85",
             "0_0.0_0.0"
           ],
           "InitCards": [
-            3,
-            3,
-            3,
-            3,
-            2,
+            0,
+            0,
+            1,
+            1,
             2,
             2,
             2
@@ -4622,8 +4634,8 @@ export const SAMPLE_LEVELS: SampleLevel[] = [
         },
         {
           "Id": "1_-1.15_-0.95",
-          "TypeId": 3,
-          "BoxColor": 2,
+          "TypeId": 2,
+          "BoxColor": 1,
           "BlockedNodes": [
             "0_-1.45_-1.85",
             "0_0.0_0.0"
@@ -4631,32 +4643,8 @@ export const SAMPLE_LEVELS: SampleLevel[] = [
           "InitCards": [
             1,
             1,
-            1,
-            1,
-            3,
-            3,
-            3,
-            3
-          ],
-          "IsHidden": false,
-          "LockedTurn": 0,
-          "IsPaperBox": false,
-          "IsRainbowBox": false
-        },
-        {
-          "Id": "1_1.15_-0.95",
-          "TypeId": 3,
-          "BoxColor": 3,
-          "BlockedNodes": [
-            "0_1.45_-1.85",
-            "0_0.0_0.0"
-          ],
-          "InitCards": [
-            3,
-            3,
-            3,
-            3,
-            2,
+            0,
+            0,
             2,
             2,
             2
@@ -4667,19 +4655,41 @@ export const SAMPLE_LEVELS: SampleLevel[] = [
           "IsRainbowBox": false
         },
         {
+          "Id": "1_1.15_-0.95",
+          "TypeId": 2,
+          "BoxColor": 2,
+          "BlockedNodes": [
+            "0_1.45_-1.85",
+            "0_0.0_0.0"
+          ],
+          "InitCards": [
+            2,
+            2,
+            2,
+            0,
+            0,
+            0,
+            0
+          ],
+          "IsHidden": false,
+          "LockedTurn": 0,
+          "IsPaperBox": false,
+          "IsRainbowBox": false
+        },
+        {
           "Id": "2_0.0_0.95",
-          "TypeId": 1,
-          "BoxColor": 1,
+          "TypeId": 0,
+          "BoxColor": 5,
           "BlockedNodes": [
             "0_0.0_0.0",
             "1_-1.15_0.95",
             "1_1.15_0.95"
           ],
           "InitCards": [
-            2,
-            2,
-            3,
-            3
+            0,
+            0,
+            0,
+            1
           ],
           "IsHidden": false,
           "LockedTurn": 0,
@@ -4688,18 +4698,18 @@ export const SAMPLE_LEVELS: SampleLevel[] = [
         },
         {
           "Id": "2_0.0_-0.95",
-          "TypeId": 1,
-          "BoxColor": 1,
+          "TypeId": 0,
+          "BoxColor": 5,
           "BlockedNodes": [
             "0_0.0_0.0",
             "1_-1.15_-0.95",
             "1_1.15_-0.95"
           ],
           "InitCards": [
+            0,
+            0,
             1,
-            1,
-            2,
-            2
+            1
           ],
           "IsHidden": false,
           "LockedTurn": 0,
@@ -4727,115 +4737,115 @@ export const SAMPLE_LEVELS: SampleLevel[] = [
         {
           "Id": "0_0.0_0.0",
           "LayerId": 0,
-          "YRotation": 0,
-          "XPosition": 0,
-          "ZPosition": 0
+          "YRotation": 0.0,
+          "XPosition": 0.0,
+          "ZPosition": 0.0
         },
         {
           "Id": "0_0.0_1.95",
           "LayerId": 0,
-          "YRotation": 0,
-          "XPosition": 0,
+          "YRotation": 0.0,
+          "XPosition": 0.0,
           "ZPosition": 1.95
         },
         {
           "Id": "0_0.0_-1.95",
           "LayerId": 0,
-          "YRotation": 0,
-          "XPosition": 0,
+          "YRotation": 0.0,
+          "XPosition": 0.0,
           "ZPosition": -1.95
         },
         {
           "Id": "0_-1.95_0.0",
           "LayerId": 0,
-          "YRotation": 90,
+          "YRotation": 90.0,
           "XPosition": -1.95,
-          "ZPosition": 0
+          "ZPosition": 0.0
         },
         {
           "Id": "0_1.95_0.0",
           "LayerId": 0,
-          "YRotation": 90,
+          "YRotation": 90.0,
           "XPosition": 1.95,
-          "ZPosition": 0
+          "ZPosition": 0.0
         },
         {
           "Id": "0_-1.95_1.95",
           "LayerId": 0,
-          "YRotation": 90,
+          "YRotation": 90.0,
           "XPosition": -1.95,
           "ZPosition": 1.95
         },
         {
           "Id": "0_1.95_-1.95",
           "LayerId": 0,
-          "YRotation": 90,
+          "YRotation": 90.0,
           "XPosition": 1.95,
           "ZPosition": -1.95
         },
         {
           "Id": "1_-1.0_1.0",
           "LayerId": 1,
-          "YRotation": 0,
-          "XPosition": -1,
-          "ZPosition": 1
+          "YRotation": 0.0,
+          "XPosition": -1.0,
+          "ZPosition": 1.0
         },
         {
           "Id": "1_1.0_-1.0",
           "LayerId": 1,
-          "YRotation": 0,
-          "XPosition": 1,
-          "ZPosition": -1
+          "YRotation": 0.0,
+          "XPosition": 1.0,
+          "ZPosition": -1.0
         },
         {
           "Id": "1_1.0_1.0",
           "LayerId": 1,
-          "YRotation": 90,
-          "XPosition": 1,
-          "ZPosition": 1
+          "YRotation": 90.0,
+          "XPosition": 1.0,
+          "ZPosition": 1.0
         },
         {
           "Id": "1_-1.0_-1.0",
           "LayerId": 1,
-          "YRotation": 90,
-          "XPosition": -1,
-          "ZPosition": -1
+          "YRotation": 90.0,
+          "XPosition": -1.0,
+          "ZPosition": -1.0
         },
         {
           "Id": "2_0.0_0.8",
           "LayerId": 2,
-          "YRotation": 0,
-          "XPosition": 0,
+          "YRotation": 0.0,
+          "XPosition": 0.0,
           "ZPosition": 0.8
         },
         {
           "Id": "2_0.0_-0.8",
           "LayerId": 2,
-          "YRotation": 0,
-          "XPosition": 0,
+          "YRotation": 0.0,
+          "XPosition": 0.0,
           "ZPosition": -0.8
         },
         {
           "Id": "3_0.0_0.0",
           "LayerId": 3,
-          "YRotation": 90,
-          "XPosition": 0,
-          "ZPosition": 0
+          "YRotation": 90.0,
+          "XPosition": 0.0,
+          "ZPosition": 0.0
         }
       ],
       "BoxNodes": [
         {
           "Id": "0_0.0_0.0",
-          "TypeId": 2,
-          "BoxColor": 1,
+          "TypeId": 1,
+          "BoxColor": 0,
           "BlockedNodes": [],
           "InitCards": [
-            3,
-            3,
+            0,
+            0,
+            1,
+            1,
             2,
-            2,
-            5,
-            5
+            2
           ],
           "IsHidden": false,
           "LockedTurn": 0,
@@ -4844,118 +4854,9 @@ export const SAMPLE_LEVELS: SampleLevel[] = [
         },
         {
           "Id": "0_0.0_1.95",
-          "TypeId": 2,
-          "BoxColor": 2,
-          "BlockedNodes": [],
-          "InitCards": [
-            1,
-            1,
-            3,
-            3,
-            4,
-            4
-          ],
-          "IsHidden": false,
-          "LockedTurn": 0,
-          "IsPaperBox": false,
-          "IsRainbowBox": false
-        },
-        {
-          "Id": "0_0.0_-1.95",
-          "TypeId": 2,
-          "BoxColor": 3,
-          "BlockedNodes": [],
-          "InitCards": [
-            2,
-            2,
-            2,
-            4,
-            4,
-            4
-          ],
-          "IsHidden": false,
-          "LockedTurn": 0,
-          "IsPaperBox": false,
-          "IsRainbowBox": false
-        },
-        {
-          "Id": "0_-1.95_0.0",
-          "TypeId": 2,
-          "BoxColor": 4,
-          "BlockedNodes": [],
-          "InitCards": [
-            5,
-            5,
-            5,
-            1,
-            1,
-            1
-          ],
-          "IsHidden": false,
-          "LockedTurn": 0,
-          "IsPaperBox": false,
-          "IsRainbowBox": false
-        },
-        {
-          "Id": "0_1.95_0.0",
-          "TypeId": 2,
-          "BoxColor": 5,
-          "BlockedNodes": [],
-          "InitCards": [
-            2,
-            2,
-            2,
-            4,
-            4,
-            4
-          ],
-          "IsHidden": false,
-          "LockedTurn": 0,
-          "IsPaperBox": false,
-          "IsRainbowBox": false
-        },
-        {
-          "Id": "0_-1.95_1.95",
-          "TypeId": 2,
+          "TypeId": 1,
           "BoxColor": 1,
           "BlockedNodes": [],
-          "InitCards": [
-            5,
-            5,
-            3,
-            3,
-            3,
-            3
-          ],
-          "IsHidden": false,
-          "LockedTurn": 0,
-          "IsPaperBox": false,
-          "IsRainbowBox": true
-        },
-        {
-          "Id": "0_1.95_-1.95",
-          "TypeId": 2,
-          "BoxColor": 2,
-          "BlockedNodes": [],
-          "InitCards": [
-            1,
-            5
-          ],
-          "IsHidden": false,
-          "LockedTurn": 0,
-          "IsPaperBox": false,
-          "IsRainbowBox": true
-        },
-        {
-          "Id": "1_-1.0_1.0",
-          "TypeId": 2,
-          "BoxColor": 3,
-          "BlockedNodes": [
-            "0_0.0_0.0",
-            "0_0.0_1.95",
-            "0_-1.95_0.0",
-            "0_-1.95_1.95"
-          ],
           "InitCards": [
             1,
             1,
@@ -4970,9 +4871,122 @@ export const SAMPLE_LEVELS: SampleLevel[] = [
           "IsRainbowBox": false
         },
         {
+          "Id": "0_0.0_-1.95",
+          "TypeId": 1,
+          "BoxColor": 2,
+          "BlockedNodes": [],
+          "InitCards": [
+            2,
+            2,
+            1,
+            1,
+            6,
+            6
+          ],
+          "IsHidden": false,
+          "LockedTurn": 0,
+          "IsPaperBox": false,
+          "IsRainbowBox": false
+        },
+        {
+          "Id": "0_-1.95_0.0",
+          "TypeId": 1,
+          "BoxColor": 6,
+          "BlockedNodes": [],
+          "InitCards": [
+            6,
+            6,
+            6,
+            2,
+            2,
+            2
+          ],
+          "IsHidden": false,
+          "LockedTurn": 0,
+          "IsPaperBox": false,
+          "IsRainbowBox": false
+        },
+        {
+          "Id": "0_1.95_0.0",
+          "TypeId": 1,
+          "BoxColor": 7,
+          "BlockedNodes": [],
+          "InitCards": [
+            7,
+            7,
+            0,
+            0,
+            1,
+            1
+          ],
+          "IsHidden": false,
+          "LockedTurn": 0,
+          "IsPaperBox": false,
+          "IsRainbowBox": false
+        },
+        {
+          "Id": "0_-1.95_1.95",
+          "TypeId": 1,
+          "BoxColor": 0,
+          "BlockedNodes": [],
+          "InitCards": [
+            0,
+            0,
+            0,
+            1,
+            1,
+            1
+          ],
+          "IsHidden": false,
+          "LockedTurn": 0,
+          "IsPaperBox": false,
+          "IsRainbowBox": true
+        },
+        {
+          "Id": "0_1.95_-1.95",
+          "TypeId": 1,
+          "BoxColor": 1,
+          "BlockedNodes": [],
+          "InitCards": [
+            1,
+            1,
+            1,
+            6,
+            6,
+            6
+          ],
+          "IsHidden": false,
+          "LockedTurn": 0,
+          "IsPaperBox": false,
+          "IsRainbowBox": true
+        },
+        {
+          "Id": "1_-1.0_1.0",
+          "TypeId": 1,
+          "BoxColor": 2,
+          "BlockedNodes": [
+            "0_0.0_0.0",
+            "0_0.0_1.95",
+            "0_-1.95_0.0",
+            "0_-1.95_1.95"
+          ],
+          "InitCards": [
+            2,
+            2,
+            2,
+            0,
+            0,
+            0
+          ],
+          "IsHidden": false,
+          "LockedTurn": 0,
+          "IsPaperBox": false,
+          "IsRainbowBox": false
+        },
+        {
           "Id": "1_1.0_-1.0",
-          "TypeId": 2,
-          "BoxColor": 4,
+          "TypeId": 1,
+          "BoxColor": 6,
           "BlockedNodes": [
             "0_0.0_0.0",
             "0_0.0_-1.95",
@@ -4980,12 +4994,12 @@ export const SAMPLE_LEVELS: SampleLevel[] = [
             "0_1.95_-1.95"
           ],
           "InitCards": [
-            4,
-            3,
-            3,
-            5,
-            5,
-            1
+            6,
+            6,
+            6,
+            0,
+            0,
+            0
           ],
           "IsHidden": false,
           "LockedTurn": 0,
@@ -4994,20 +5008,19 @@ export const SAMPLE_LEVELS: SampleLevel[] = [
         },
         {
           "Id": "1_1.0_1.0",
-          "TypeId": 2,
-          "BoxColor": 5,
+          "TypeId": 1,
+          "BoxColor": 7,
           "BlockedNodes": [
             "0_0.0_0.0",
             "0_0.0_1.95",
             "0_1.95_0.0"
           ],
           "InitCards": [
-            2,
-            2,
-            3,
-            3,
-            1,
-            1
+            7,
+            7,
+            7,
+            7,
+            2
           ],
           "IsHidden": false,
           "LockedTurn": 0,
@@ -5016,20 +5029,19 @@ export const SAMPLE_LEVELS: SampleLevel[] = [
         },
         {
           "Id": "1_-1.0_-1.0",
-          "TypeId": 2,
-          "BoxColor": 1,
+          "TypeId": 1,
+          "BoxColor": 0,
           "BlockedNodes": [
             "0_0.0_0.0",
             "0_0.0_-1.95",
             "0_-1.95_0.0"
           ],
           "InitCards": [
-            2,
-            2,
-            5,
-            5,
-            3,
-            4
+            0,
+            0,
+            0,
+            0,
+            6
           ],
           "IsHidden": false,
           "LockedTurn": 0,
@@ -5038,8 +5050,8 @@ export const SAMPLE_LEVELS: SampleLevel[] = [
         },
         {
           "Id": "2_0.0_0.8",
-          "TypeId": 2,
-          "BoxColor": 2,
+          "TypeId": 1,
+          "BoxColor": 1,
           "BlockedNodes": [
             "0_0.0_0.0",
             "0_0.0_1.95",
@@ -5047,12 +5059,11 @@ export const SAMPLE_LEVELS: SampleLevel[] = [
             "1_1.0_1.0"
           ],
           "InitCards": [
-            3,
-            3,
-            3,
-            1,
-            1,
-            1
+            2,
+            2,
+            7,
+            7,
+            7
           ],
           "IsHidden": false,
           "LockedTurn": 0,
@@ -5061,8 +5072,8 @@ export const SAMPLE_LEVELS: SampleLevel[] = [
         },
         {
           "Id": "2_0.0_-0.8",
-          "TypeId": 2,
-          "BoxColor": 3,
+          "TypeId": 1,
+          "BoxColor": 2,
           "BlockedNodes": [
             "0_0.0_0.0",
             "0_0.0_-1.95",
@@ -5072,10 +5083,9 @@ export const SAMPLE_LEVELS: SampleLevel[] = [
           "InitCards": [
             1,
             1,
-            1,
-            2,
-            2,
-            2
+            7,
+            7,
+            7
           ],
           "IsHidden": false,
           "LockedTurn": 0,
@@ -5084,8 +5094,8 @@ export const SAMPLE_LEVELS: SampleLevel[] = [
         },
         {
           "Id": "3_0.0_0.0",
-          "TypeId": 1,
-          "BoxColor": 1,
+          "TypeId": 0,
+          "BoxColor": 5,
           "BlockedNodes": [
             "0_0.0_0.0",
             "1_-1.0_1.0",
@@ -5096,10 +5106,10 @@ export const SAMPLE_LEVELS: SampleLevel[] = [
             "2_0.0_-0.8"
           ],
           "InitCards": [
-            3,
-            3,
-            4,
-            4
+            0,
+            1,
+            2,
+            2
           ],
           "IsHidden": false,
           "LockedTurn": 0,
@@ -5127,164 +5137,164 @@ export const SAMPLE_LEVELS: SampleLevel[] = [
         {
           "Id": "0_-2.85_1.85",
           "LayerId": 0,
-          "YRotation": 0,
+          "YRotation": 0.0,
           "XPosition": -2.85,
           "ZPosition": 1.85
         },
         {
           "Id": "0_-0.95_1.85",
           "LayerId": 0,
-          "YRotation": 0,
+          "YRotation": 0.0,
           "XPosition": -0.95,
           "ZPosition": 1.85
         },
         {
           "Id": "0_0.95_1.85",
           "LayerId": 0,
-          "YRotation": 0,
+          "YRotation": 0.0,
           "XPosition": 0.95,
           "ZPosition": 1.85
         },
         {
           "Id": "0_2.85_1.85",
           "LayerId": 0,
-          "YRotation": 0,
+          "YRotation": 0.0,
           "XPosition": 2.85,
           "ZPosition": 1.85
         },
         {
           "Id": "0_-1.9_0.0",
           "LayerId": 0,
-          "YRotation": 0,
+          "YRotation": 0.0,
           "XPosition": -1.9,
-          "ZPosition": 0
+          "ZPosition": 0.0
         },
         {
           "Id": "0_1.9_0.0",
           "LayerId": 0,
-          "YRotation": 0,
+          "YRotation": 0.0,
           "XPosition": 1.9,
-          "ZPosition": 0
+          "ZPosition": 0.0
         },
         {
           "Id": "0_-2.85_-1.85",
           "LayerId": 0,
-          "YRotation": 0,
+          "YRotation": 0.0,
           "XPosition": -2.85,
           "ZPosition": -1.85
         },
         {
           "Id": "0_-0.95_-1.85",
           "LayerId": 0,
-          "YRotation": 0,
+          "YRotation": 0.0,
           "XPosition": -0.95,
           "ZPosition": -1.85
         },
         {
           "Id": "0_0.95_-1.85",
           "LayerId": 0,
-          "YRotation": 0,
+          "YRotation": 0.0,
           "XPosition": 0.95,
           "ZPosition": -1.85
         },
         {
           "Id": "0_2.85_-1.85",
           "LayerId": 0,
-          "YRotation": 0,
+          "YRotation": 0.0,
           "XPosition": 2.85,
           "ZPosition": -1.85
         },
         {
           "Id": "1_-2.85_0.95",
           "LayerId": 1,
-          "YRotation": 90,
+          "YRotation": 90.0,
           "XPosition": -2.85,
           "ZPosition": 0.95
         },
         {
           "Id": "1_0.0_0.95",
           "LayerId": 1,
-          "YRotation": 90,
-          "XPosition": 0,
+          "YRotation": 90.0,
+          "XPosition": 0.0,
           "ZPosition": 0.95
         },
         {
           "Id": "1_2.85_0.95",
           "LayerId": 1,
-          "YRotation": 90,
+          "YRotation": 90.0,
           "XPosition": 2.85,
           "ZPosition": 0.95
         },
         {
           "Id": "1_-2.85_-0.95",
           "LayerId": 1,
-          "YRotation": 90,
+          "YRotation": 90.0,
           "XPosition": -2.85,
           "ZPosition": -0.95
         },
         {
           "Id": "1_0.0_-0.95",
           "LayerId": 1,
-          "YRotation": 90,
-          "XPosition": 0,
+          "YRotation": 90.0,
+          "XPosition": 0.0,
           "ZPosition": -0.95
         },
         {
           "Id": "1_2.85_-0.95",
           "LayerId": 1,
-          "YRotation": 90,
+          "YRotation": 90.0,
           "XPosition": 2.85,
           "ZPosition": -0.95
         },
         {
           "Id": "2_-1.9_0.0",
           "LayerId": 2,
-          "YRotation": 0,
+          "YRotation": 0.0,
           "XPosition": -1.9,
-          "ZPosition": 0
+          "ZPosition": 0.0
         },
         {
           "Id": "2_0.0_0.0",
           "LayerId": 2,
-          "YRotation": 0,
-          "XPosition": 0,
-          "ZPosition": 0
+          "YRotation": 0.0,
+          "XPosition": 0.0,
+          "ZPosition": 0.0
         },
         {
           "Id": "2_1.9_0.0",
           "LayerId": 2,
-          "YRotation": 0,
+          "YRotation": 0.0,
           "XPosition": 1.9,
-          "ZPosition": 0
+          "ZPosition": 0.0
         },
         {
           "Id": "3_-1.0_0.0",
           "LayerId": 3,
-          "YRotation": 90,
-          "XPosition": -1,
-          "ZPosition": 0
+          "YRotation": 90.0,
+          "XPosition": -1.0,
+          "ZPosition": 0.0
         },
         {
           "Id": "3_1.0_0.0",
           "LayerId": 3,
-          "YRotation": 90,
-          "XPosition": 1,
-          "ZPosition": 0
+          "YRotation": 90.0,
+          "XPosition": 1.0,
+          "ZPosition": 0.0
         }
       ],
       "BoxNodes": [
         {
           "Id": "0_-2.85_1.85",
-          "TypeId": 2,
-          "BoxColor": 1,
+          "TypeId": 1,
+          "BoxColor": 0,
           "BlockedNodes": [],
           "InitCards": [
-            4,
-            4,
-            5,
-            5,
-            3,
-            3
+            0,
+            0,
+            0,
+            7,
+            7,
+            7
           ],
           "IsHidden": false,
           "LockedTurn": 0,
@@ -5293,16 +5303,16 @@ export const SAMPLE_LEVELS: SampleLevel[] = [
         },
         {
           "Id": "0_-0.95_1.85",
-          "TypeId": 2,
-          "BoxColor": 2,
+          "TypeId": 1,
+          "BoxColor": 1,
           "BlockedNodes": [],
           "InitCards": [
             1,
             1,
-            1,
-            4,
-            4,
-            4
+            0,
+            0,
+            2,
+            2
           ],
           "IsHidden": false,
           "LockedTurn": 0,
@@ -5311,16 +5321,16 @@ export const SAMPLE_LEVELS: SampleLevel[] = [
         },
         {
           "Id": "0_0.95_1.85",
-          "TypeId": 2,
-          "BoxColor": 3,
+          "TypeId": 1,
+          "BoxColor": 2,
           "BlockedNodes": [],
           "InitCards": [
-            5,
-            5,
-            1,
-            1,
             2,
-            2
+            2,
+            2,
+            1,
+            1,
+            1
           ],
           "IsHidden": false,
           "LockedTurn": 0,
@@ -5329,16 +5339,16 @@ export const SAMPLE_LEVELS: SampleLevel[] = [
         },
         {
           "Id": "0_2.85_1.85",
-          "TypeId": 2,
-          "BoxColor": 4,
+          "TypeId": 1,
+          "BoxColor": 6,
           "BlockedNodes": [],
           "InitCards": [
-            3,
-            3,
-            3,
-            5,
-            5,
-            5
+            6,
+            6,
+            6,
+            7,
+            7,
+            7
           ],
           "IsHidden": false,
           "LockedTurn": 0,
@@ -5347,14 +5357,50 @@ export const SAMPLE_LEVELS: SampleLevel[] = [
         },
         {
           "Id": "0_-1.9_0.0",
-          "TypeId": 2,
-          "BoxColor": 5,
+          "TypeId": 1,
+          "BoxColor": 7,
           "BlockedNodes": [],
           "InitCards": [
-            4,
-            4,
+            7,
+            7,
+            7,
+            6,
+            6,
+            6
+          ],
+          "IsHidden": false,
+          "LockedTurn": 0,
+          "IsPaperBox": false,
+          "IsRainbowBox": false
+        },
+        {
+          "Id": "0_1.9_0.0",
+          "TypeId": 1,
+          "BoxColor": 0,
+          "BlockedNodes": [],
+          "InitCards": [
+            0,
+            0,
+            0,
             1,
             1,
+            1
+          ],
+          "IsHidden": false,
+          "LockedTurn": 0,
+          "IsPaperBox": false,
+          "IsRainbowBox": false
+        },
+        {
+          "Id": "0_-2.85_-1.85",
+          "TypeId": 1,
+          "BoxColor": 1,
+          "BlockedNodes": [],
+          "InitCards": [
+            1,
+            1,
+            1,
+            2,
             2,
             2
           ],
@@ -5364,53 +5410,17 @@ export const SAMPLE_LEVELS: SampleLevel[] = [
           "IsRainbowBox": false
         },
         {
-          "Id": "0_1.9_0.0",
-          "TypeId": 2,
-          "BoxColor": 1,
-          "BlockedNodes": [],
-          "InitCards": [
-            2,
-            2,
-            2,
-            4,
-            4,
-            4
-          ],
-          "IsHidden": false,
-          "LockedTurn": 0,
-          "IsPaperBox": false,
-          "IsRainbowBox": false
-        },
-        {
-          "Id": "0_-2.85_-1.85",
-          "TypeId": 2,
+          "Id": "0_-0.95_-1.85",
+          "TypeId": 1,
           "BoxColor": 2,
           "BlockedNodes": [],
           "InitCards": [
-            1,
-            1,
-            1,
-            3,
-            3,
-            3
-          ],
-          "IsHidden": false,
-          "LockedTurn": 0,
-          "IsPaperBox": false,
-          "IsRainbowBox": false
-        },
-        {
-          "Id": "0_-0.95_-1.85",
-          "TypeId": 2,
-          "BoxColor": 3,
-          "BlockedNodes": [],
-          "InitCards": [
-            5,
-            5,
-            5,
-            4,
-            4,
-            4
+            2,
+            2,
+            0,
+            0,
+            6,
+            6
           ],
           "IsHidden": false,
           "LockedTurn": 0,
@@ -5419,14 +5429,16 @@ export const SAMPLE_LEVELS: SampleLevel[] = [
         },
         {
           "Id": "0_0.95_-1.85",
-          "TypeId": 2,
-          "BoxColor": 4,
+          "TypeId": 1,
+          "BoxColor": 6,
           "BlockedNodes": [],
           "InitCards": [
-            4,
-            4,
-            4,
-            4
+            6,
+            6,
+            6,
+            0,
+            0,
+            0
           ],
           "IsHidden": false,
           "LockedTurn": 0,
@@ -5435,10 +5447,17 @@ export const SAMPLE_LEVELS: SampleLevel[] = [
         },
         {
           "Id": "0_2.85_-1.85",
-          "TypeId": 2,
-          "BoxColor": 5,
+          "TypeId": 1,
+          "BoxColor": 7,
           "BlockedNodes": [],
-          "InitCards": [],
+          "InitCards": [
+            7,
+            7,
+            7,
+            0,
+            0,
+            0
+          ],
           "IsHidden": false,
           "LockedTurn": 0,
           "IsPaperBox": false,
@@ -5446,19 +5465,19 @@ export const SAMPLE_LEVELS: SampleLevel[] = [
         },
         {
           "Id": "1_-2.85_0.95",
-          "TypeId": 2,
-          "BoxColor": 1,
+          "TypeId": 1,
+          "BoxColor": 0,
           "BlockedNodes": [
             "0_-2.85_1.85",
             "0_-1.9_0.0"
           ],
           "InitCards": [
-            3,
-            3,
-            5,
-            5,
-            2,
-            4
+            0,
+            0,
+            0,
+            6,
+            6,
+            6
           ],
           "IsHidden": false,
           "LockedTurn": 0,
@@ -5467,8 +5486,8 @@ export const SAMPLE_LEVELS: SampleLevel[] = [
         },
         {
           "Id": "1_0.0_0.95",
-          "TypeId": 2,
-          "BoxColor": 2,
+          "TypeId": 1,
+          "BoxColor": 1,
           "BlockedNodes": [
             "0_-0.95_1.85",
             "0_0.95_1.85"
@@ -5476,10 +5495,9 @@ export const SAMPLE_LEVELS: SampleLevel[] = [
           "InitCards": [
             1,
             1,
-            4,
-            4,
-            3,
-            3
+            1,
+            2,
+            2
           ],
           "IsHidden": false,
           "LockedTurn": 0,
@@ -5488,18 +5506,17 @@ export const SAMPLE_LEVELS: SampleLevel[] = [
         },
         {
           "Id": "1_2.85_0.95",
-          "TypeId": 2,
-          "BoxColor": 3,
+          "TypeId": 1,
+          "BoxColor": 2,
           "BlockedNodes": [
             "0_2.85_1.85",
             "0_1.9_0.0"
           ],
           "InitCards": [
-            4,
-            4,
-            5,
-            5,
             2,
+            2,
+            0,
+            1,
             1
           ],
           "IsHidden": false,
@@ -5509,19 +5526,18 @@ export const SAMPLE_LEVELS: SampleLevel[] = [
         },
         {
           "Id": "1_-2.85_-0.95",
-          "TypeId": 2,
-          "BoxColor": 4,
+          "TypeId": 1,
+          "BoxColor": 6,
           "BlockedNodes": [
             "0_-1.9_0.0",
             "0_-2.85_-1.85"
           ],
           "InitCards": [
-            3,
-            3,
-            3,
-            2,
-            2,
-            2
+            6,
+            7,
+            7,
+            7,
+            7
           ],
           "IsHidden": false,
           "LockedTurn": 0,
@@ -5530,19 +5546,18 @@ export const SAMPLE_LEVELS: SampleLevel[] = [
         },
         {
           "Id": "1_0.0_-0.95",
-          "TypeId": 2,
-          "BoxColor": 5,
+          "TypeId": 1,
+          "BoxColor": 7,
           "BlockedNodes": [
             "0_-0.95_-1.85",
             "0_0.95_-1.85"
           ],
           "InitCards": [
             1,
-            1,
-            1,
-            3,
-            3,
-            3
+            2,
+            2,
+            6,
+            6
           ],
           "IsHidden": false,
           "LockedTurn": 0,
@@ -5551,16 +5566,15 @@ export const SAMPLE_LEVELS: SampleLevel[] = [
         },
         {
           "Id": "1_2.85_-0.95",
-          "TypeId": 2,
-          "BoxColor": 1,
+          "TypeId": 1,
+          "BoxColor": 0,
           "BlockedNodes": [
             "0_1.9_0.0",
             "0_2.85_-1.85"
           ],
           "InitCards": [
-            5,
-            5,
-            5,
+            0,
+            0,
             2,
             2,
             2
@@ -5572,20 +5586,19 @@ export const SAMPLE_LEVELS: SampleLevel[] = [
         },
         {
           "Id": "2_-1.9_0.0",
-          "TypeId": 2,
-          "BoxColor": 2,
+          "TypeId": 1,
+          "BoxColor": 1,
           "BlockedNodes": [
             "0_-1.9_0.0",
             "1_-2.85_0.95",
             "1_-2.85_-0.95"
           ],
           "InitCards": [
-            2,
-            1,
-            1,
-            3,
-            3,
-            5
+            0,
+            6,
+            6,
+            7,
+            7
           ],
           "IsHidden": false,
           "LockedTurn": 0,
@@ -5594,19 +5607,18 @@ export const SAMPLE_LEVELS: SampleLevel[] = [
         },
         {
           "Id": "2_0.0_0.0",
-          "TypeId": 2,
-          "BoxColor": 3,
+          "TypeId": 1,
+          "BoxColor": 2,
           "BlockedNodes": [
             "1_0.0_0.95",
             "1_0.0_-0.95"
           ],
           "InitCards": [
-            1,
-            1,
-            1,
             2,
             2,
-            2
+            2,
+            1,
+            1
           ],
           "IsHidden": false,
           "LockedTurn": 0,
@@ -5615,18 +5627,17 @@ export const SAMPLE_LEVELS: SampleLevel[] = [
         },
         {
           "Id": "2_1.9_0.0",
-          "TypeId": 2,
-          "BoxColor": 4,
+          "TypeId": 1,
+          "BoxColor": 6,
           "BlockedNodes": [
             "0_1.9_0.0",
             "1_2.85_0.95",
             "1_2.85_-0.95"
           ],
           "InitCards": [
-            1,
-            1,
-            1,
-            2,
+            6,
+            6,
+            6,
             2,
             2
           ],
@@ -5637,8 +5648,8 @@ export const SAMPLE_LEVELS: SampleLevel[] = [
         },
         {
           "Id": "3_-1.0_0.0",
-          "TypeId": 1,
-          "BoxColor": 1,
+          "TypeId": 0,
+          "BoxColor": 5,
           "BlockedNodes": [
             "0_-1.9_0.0",
             "1_0.0_0.95",
@@ -5647,10 +5658,10 @@ export const SAMPLE_LEVELS: SampleLevel[] = [
             "2_0.0_0.0"
           ],
           "InitCards": [
-            3,
-            3,
-            4,
-            4
+            1,
+            1,
+            1,
+            1
           ],
           "IsHidden": false,
           "LockedTurn": 0,
@@ -5659,8 +5670,8 @@ export const SAMPLE_LEVELS: SampleLevel[] = [
         },
         {
           "Id": "3_1.0_0.0",
-          "TypeId": 1,
-          "BoxColor": 1,
+          "TypeId": 0,
+          "BoxColor": 5,
           "BlockedNodes": [
             "0_1.9_0.0",
             "1_0.0_0.95",
@@ -5669,10 +5680,10 @@ export const SAMPLE_LEVELS: SampleLevel[] = [
             "2_1.9_0.0"
           ],
           "InitCards": [
-            3,
-            3,
-            2,
-            2
+            0,
+            1,
+            6,
+            6
           ],
           "IsHidden": false,
           "LockedTurn": 0,
@@ -5700,59 +5711,59 @@ export const SAMPLE_LEVELS: SampleLevel[] = [
         {
           "Id": "0_-1.15_1.05",
           "LayerId": 0,
-          "YRotation": 0,
+          "YRotation": 0.0,
           "XPosition": -1.15,
           "ZPosition": 1.05
         },
         {
           "Id": "0_1.15_1.05",
           "LayerId": 0,
-          "YRotation": 0,
+          "YRotation": 0.0,
           "XPosition": 1.15,
           "ZPosition": 1.05
         },
         {
           "Id": "0_-1.15_-1.05",
           "LayerId": 0,
-          "YRotation": 0,
+          "YRotation": 0.0,
           "XPosition": -1.15,
           "ZPosition": -1.05
         },
         {
           "Id": "0_1.15_-1.05",
           "LayerId": 0,
-          "YRotation": 0,
+          "YRotation": 0.0,
           "XPosition": 1.15,
           "ZPosition": -1.05
         },
         {
           "Id": "1_-1.15_0.0",
           "LayerId": 1,
-          "YRotation": 90,
+          "YRotation": 90.0,
           "XPosition": -1.15,
-          "ZPosition": 0
+          "ZPosition": 0.0
         },
         {
           "Id": "1_1.15_0.0",
           "LayerId": 1,
-          "YRotation": 90,
+          "YRotation": 90.0,
           "XPosition": 1.15,
-          "ZPosition": 0
+          "ZPosition": 0.0
         }
       ],
       "BoxNodes": [
         {
           "Id": "0_-1.15_1.05",
-          "TypeId": 2,
-          "BoxColor": 1,
+          "TypeId": 1,
+          "BoxColor": 0,
           "BlockedNodes": [],
           "InitCards": [
+            0,
+            0,
+            1,
+            1,
             2,
-            2,
-            2,
-            3,
-            3,
-            3
+            2
           ],
           "IsHidden": false,
           "LockedTurn": 0,
@@ -5761,26 +5772,8 @@ export const SAMPLE_LEVELS: SampleLevel[] = [
         },
         {
           "Id": "0_1.15_1.05",
-          "TypeId": 2,
-          "BoxColor": 2,
-          "BlockedNodes": [],
-          "InitCards": [
-            1,
-            1,
-            1,
-            3,
-            3,
-            3
-          ],
-          "IsHidden": false,
-          "LockedTurn": 0,
-          "IsPaperBox": false,
-          "IsRainbowBox": false
-        },
-        {
-          "Id": "0_-1.15_-1.05",
-          "TypeId": 2,
-          "BoxColor": 3,
+          "TypeId": 1,
+          "BoxColor": 1,
           "BlockedNodes": [],
           "InitCards": [
             1,
@@ -5796,14 +5789,32 @@ export const SAMPLE_LEVELS: SampleLevel[] = [
           "IsRainbowBox": false
         },
         {
-          "Id": "0_1.15_-1.05",
-          "TypeId": 2,
-          "BoxColor": 1,
+          "Id": "0_-1.15_-1.05",
+          "TypeId": 1,
+          "BoxColor": 2,
           "BlockedNodes": [],
           "InitCards": [
+            0,
+            0,
+            0,
             1,
             1,
-            1,
+            1
+          ],
+          "IsHidden": false,
+          "LockedTurn": 0,
+          "IsPaperBox": false,
+          "IsRainbowBox": false
+        },
+        {
+          "Id": "0_1.15_-1.05",
+          "TypeId": 1,
+          "BoxColor": 0,
+          "BlockedNodes": [],
+          "InitCards": [
+            0,
+            0,
+            0,
             2,
             2,
             2
@@ -5815,19 +5826,19 @@ export const SAMPLE_LEVELS: SampleLevel[] = [
         },
         {
           "Id": "1_-1.15_0.0",
-          "TypeId": 2,
-          "BoxColor": 2,
+          "TypeId": 1,
+          "BoxColor": 1,
           "BlockedNodes": [
             "0_-1.15_1.05",
             "0_-1.15_-1.05"
           ],
           "InitCards": [
+            1,
+            1,
+            0,
+            0,
             2,
-            2,
-            2,
-            3,
-            3,
-            3
+            2
           ],
           "IsHidden": false,
           "LockedTurn": 0,
@@ -5836,17 +5847,17 @@ export const SAMPLE_LEVELS: SampleLevel[] = [
         },
         {
           "Id": "1_1.15_0.0",
-          "TypeId": 2,
-          "BoxColor": 3,
+          "TypeId": 1,
+          "BoxColor": 2,
           "BlockedNodes": [
             "0_1.15_1.05",
             "0_1.15_-1.05"
           ],
           "InitCards": [
-            3,
-            3,
-            3,
-            1,
+            2,
+            2,
+            0,
+            0,
             1,
             1
           ],
@@ -5876,73 +5887,73 @@ export const SAMPLE_LEVELS: SampleLevel[] = [
         {
           "Id": "0_0.0_0.0",
           "LayerId": 0,
-          "YRotation": 0,
-          "XPosition": 0,
-          "ZPosition": 0
+          "YRotation": 0.0,
+          "XPosition": 0.0,
+          "ZPosition": 0.0
         },
         {
           "Id": "0_0.0_1.85",
           "LayerId": 0,
-          "YRotation": 0,
-          "XPosition": 0,
+          "YRotation": 0.0,
+          "XPosition": 0.0,
           "ZPosition": 1.85
         },
         {
           "Id": "0_0.0_-1.85",
           "LayerId": 0,
-          "YRotation": 0,
-          "XPosition": 0,
+          "YRotation": 0.0,
+          "XPosition": 0.0,
           "ZPosition": -1.85
         },
         {
           "Id": "0_-1.85_0.0",
           "LayerId": 0,
-          "YRotation": 90,
+          "YRotation": 90.0,
           "XPosition": -1.85,
-          "ZPosition": 0
+          "ZPosition": 0.0
         },
         {
           "Id": "0_1.85_0.0",
           "LayerId": 0,
-          "YRotation": 90,
+          "YRotation": 90.0,
           "XPosition": 1.85,
-          "ZPosition": 0
+          "ZPosition": 0.0
         },
         {
           "Id": "1_-1.65_0.0",
           "LayerId": 1,
-          "YRotation": 0,
+          "YRotation": 0.0,
           "XPosition": -1.65,
-          "ZPosition": 0
+          "ZPosition": 0.0
         },
         {
           "Id": "1_1.65_0.0",
           "LayerId": 1,
-          "YRotation": 0,
+          "YRotation": 0.0,
           "XPosition": 1.65,
-          "ZPosition": 0
+          "ZPosition": 0.0
         },
         {
           "Id": "1_0.0_0.0",
           "LayerId": 1,
-          "YRotation": 90,
-          "XPosition": 0,
-          "ZPosition": 0
+          "YRotation": 90.0,
+          "XPosition": 0.0,
+          "ZPosition": 0.0
         }
       ],
       "BoxNodes": [
         {
           "Id": "0_0.0_0.0",
-          "TypeId": 2,
-          "BoxColor": 1,
+          "TypeId": 1,
+          "BoxColor": 0,
           "BlockedNodes": [],
           "InitCards": [
+            0,
+            0,
+            1,
+            1,
             2,
-            2,
-            2,
-            4,
-            4,
-            4
+            2
           ],
           "IsHidden": false,
           "LockedTurn": 0,
@@ -5951,61 +5962,7 @@ export const SAMPLE_LEVELS: SampleLevel[] = [
         },
         {
           "Id": "0_0.0_1.85",
-          "TypeId": 2,
-          "BoxColor": 2,
-          "BlockedNodes": [],
-          "InitCards": [
-            3,
-            3,
-            3,
-            4,
-            4,
-            4
-          ],
-          "IsHidden": false,
-          "LockedTurn": 0,
-          "IsPaperBox": false,
-          "IsRainbowBox": false
-        },
-        {
-          "Id": "0_0.0_-1.85",
-          "TypeId": 2,
-          "BoxColor": 3,
-          "BlockedNodes": [],
-          "InitCards": [
-            3,
-            3,
-            3,
-            2,
-            2,
-            2
-          ],
-          "IsHidden": false,
-          "LockedTurn": 0,
-          "IsPaperBox": false,
-          "IsRainbowBox": false
-        },
-        {
-          "Id": "0_-1.85_0.0",
-          "TypeId": 2,
-          "BoxColor": 4,
-          "BlockedNodes": [],
-          "InitCards": [
-            1,
-            1,
-            1,
-            3,
-            3,
-            3
-          ],
-          "IsHidden": false,
-          "LockedTurn": 0,
-          "IsPaperBox": false,
-          "IsRainbowBox": false
-        },
-        {
-          "Id": "0_1.85_0.0",
-          "TypeId": 2,
+          "TypeId": 1,
           "BoxColor": 1,
           "BlockedNodes": [],
           "InitCards": [
@@ -6022,9 +5979,63 @@ export const SAMPLE_LEVELS: SampleLevel[] = [
           "IsRainbowBox": false
         },
         {
-          "Id": "1_-1.65_0.0",
-          "TypeId": 2,
+          "Id": "0_0.0_-1.85",
+          "TypeId": 1,
           "BoxColor": 2,
+          "BlockedNodes": [],
+          "InitCards": [
+            2,
+            2,
+            2,
+            0,
+            0,
+            0
+          ],
+          "IsHidden": false,
+          "LockedTurn": 0,
+          "IsPaperBox": false,
+          "IsRainbowBox": false
+        },
+        {
+          "Id": "0_-1.85_0.0",
+          "TypeId": 1,
+          "BoxColor": 6,
+          "BlockedNodes": [],
+          "InitCards": [
+            6,
+            6,
+            6,
+            0,
+            0,
+            2
+          ],
+          "IsHidden": false,
+          "LockedTurn": 0,
+          "IsPaperBox": false,
+          "IsRainbowBox": false
+        },
+        {
+          "Id": "0_1.85_0.0",
+          "TypeId": 1,
+          "BoxColor": 0,
+          "BlockedNodes": [],
+          "InitCards": [
+            0,
+            0,
+            0,
+            6,
+            6,
+            6
+          ],
+          "IsHidden": false,
+          "LockedTurn": 0,
+          "IsPaperBox": false,
+          "IsRainbowBox": false
+        },
+        {
+          "Id": "1_-1.65_0.0",
+          "TypeId": 1,
+          "BoxColor": 1,
           "BlockedNodes": [
             "0_0.0_0.0",
             "0_-1.85_0.0"
@@ -6032,10 +6043,10 @@ export const SAMPLE_LEVELS: SampleLevel[] = [
           "InitCards": [
             1,
             1,
-            1,
-            4,
-            4,
-            4
+            6,
+            6,
+            6,
+            6
           ],
           "IsHidden": false,
           "LockedTurn": 0,
@@ -6044,19 +6055,19 @@ export const SAMPLE_LEVELS: SampleLevel[] = [
         },
         {
           "Id": "1_1.65_0.0",
-          "TypeId": 2,
-          "BoxColor": 3,
+          "TypeId": 1,
+          "BoxColor": 2,
           "BlockedNodes": [
             "0_0.0_0.0",
             "0_1.85_0.0"
           ],
           "InitCards": [
+            0,
+            0,
             1,
             1,
-            1,
-            4,
-            4,
-            4
+            6,
+            6
           ],
           "IsHidden": false,
           "LockedTurn": 0,
@@ -6065,15 +6076,15 @@ export const SAMPLE_LEVELS: SampleLevel[] = [
         },
         {
           "Id": "1_0.0_0.0",
-          "TypeId": 2,
-          "BoxColor": 4,
+          "TypeId": 1,
+          "BoxColor": 6,
           "BlockedNodes": [
             "0_0.0_0.0"
           ],
           "InitCards": [
-            3,
-            3,
-            3,
+            1,
+            1,
+            1,
             2,
             2,
             2
@@ -6104,101 +6115,101 @@ export const SAMPLE_LEVELS: SampleLevel[] = [
         {
           "Id": "0_-1.15_1.95",
           "LayerId": 0,
-          "YRotation": 90,
+          "YRotation": 90.0,
           "XPosition": -1.15,
           "ZPosition": 1.95
         },
         {
           "Id": "0_1.15_1.95",
           "LayerId": 0,
-          "YRotation": 90,
+          "YRotation": 90.0,
           "XPosition": 1.15,
           "ZPosition": 1.95
         },
         {
           "Id": "0_-1.15_0.0",
           "LayerId": 0,
-          "YRotation": 90,
+          "YRotation": 90.0,
           "XPosition": -1.15,
-          "ZPosition": 0
+          "ZPosition": 0.0
         },
         {
           "Id": "0_1.15_0.0",
           "LayerId": 0,
-          "YRotation": 90,
+          "YRotation": 90.0,
           "XPosition": 1.15,
-          "ZPosition": 0
+          "ZPosition": 0.0
         },
         {
           "Id": "0_-1.15_-1.95",
           "LayerId": 0,
-          "YRotation": 90,
+          "YRotation": 90.0,
           "XPosition": -1.15,
           "ZPosition": -1.95
         },
         {
           "Id": "0_1.15_-1.95",
           "LayerId": 0,
-          "YRotation": 90,
+          "YRotation": 90.0,
           "XPosition": 1.15,
           "ZPosition": -1.95
         },
         {
           "Id": "1_-1.15_1.0",
           "LayerId": 1,
-          "YRotation": 0,
+          "YRotation": 0.0,
           "XPosition": -1.15,
-          "ZPosition": 1
+          "ZPosition": 1.0
         },
         {
           "Id": "1_1.15_1.0",
           "LayerId": 1,
-          "YRotation": 0,
+          "YRotation": 0.0,
           "XPosition": 1.15,
-          "ZPosition": 1
+          "ZPosition": 1.0
         },
         {
           "Id": "1_-1.15_-1.0",
           "LayerId": 1,
-          "YRotation": 0,
+          "YRotation": 0.0,
           "XPosition": -1.15,
-          "ZPosition": -1
+          "ZPosition": -1.0
         },
         {
           "Id": "1_1.15_-1.0",
           "LayerId": 1,
-          "YRotation": 0,
+          "YRotation": 0.0,
           "XPosition": 1.15,
-          "ZPosition": -1
+          "ZPosition": -1.0
         },
         {
           "Id": "2_0.0_1.0",
           "LayerId": 2,
-          "YRotation": 0,
-          "XPosition": 0,
-          "ZPosition": 1
+          "YRotation": 0.0,
+          "XPosition": 0.0,
+          "ZPosition": 1.0
         },
         {
           "Id": "2_0.0_-1.0",
           "LayerId": 2,
-          "YRotation": 0,
-          "XPosition": 0,
-          "ZPosition": -1
+          "YRotation": 0.0,
+          "XPosition": 0.0,
+          "ZPosition": -1.0
         }
       ],
       "BoxNodes": [
         {
           "Id": "0_-1.15_1.95",
-          "TypeId": 2,
-          "BoxColor": 1,
+          "TypeId": 1,
+          "BoxColor": 0,
           "BlockedNodes": [],
           "InitCards": [
-            5,
-            5,
-            5,
-            3,
-            3,
-            3
+            0,
+            0,
+            1,
+            1,
+            2,
+            2
           ],
           "IsHidden": false,
           "LockedTurn": 0,
@@ -6207,16 +6218,16 @@ export const SAMPLE_LEVELS: SampleLevel[] = [
         },
         {
           "Id": "0_1.15_1.95",
-          "TypeId": 2,
-          "BoxColor": 2,
+          "TypeId": 1,
+          "BoxColor": 1,
           "BlockedNodes": [],
           "InitCards": [
             1,
             1,
             1,
-            3,
-            3,
-            3
+            0,
+            0,
+            0
           ],
           "IsHidden": false,
           "LockedTurn": 0,
@@ -6225,16 +6236,15 @@ export const SAMPLE_LEVELS: SampleLevel[] = [
         },
         {
           "Id": "0_-1.15_0.0",
-          "TypeId": 2,
-          "BoxColor": 3,
+          "TypeId": 1,
+          "BoxColor": 2,
           "BlockedNodes": [],
           "InitCards": [
-            1,
-            1,
-            1,
-            4,
-            4,
-            4
+            2,
+            2,
+            7,
+            7,
+            7
           ],
           "IsHidden": false,
           "LockedTurn": 0,
@@ -6243,16 +6253,15 @@ export const SAMPLE_LEVELS: SampleLevel[] = [
         },
         {
           "Id": "0_1.15_0.0",
-          "TypeId": 2,
-          "BoxColor": 4,
+          "TypeId": 1,
+          "BoxColor": 6,
           "BlockedNodes": [],
           "InitCards": [
-            4,
-            4,
-            2,
-            2,
-            5,
-            5
+            6,
+            6,
+            6,
+            1,
+            1
           ],
           "IsHidden": false,
           "LockedTurn": 0,
@@ -6261,14 +6270,15 @@ export const SAMPLE_LEVELS: SampleLevel[] = [
         },
         {
           "Id": "0_-1.15_-1.95",
-          "TypeId": 2,
-          "BoxColor": 5,
+          "TypeId": 1,
+          "BoxColor": 7,
           "BlockedNodes": [],
           "InitCards": [
-            5,
-            5,
+            7,
+            7,
+            7,
             1,
-            3
+            1
           ],
           "IsHidden": false,
           "LockedTurn": 0,
@@ -6277,10 +6287,16 @@ export const SAMPLE_LEVELS: SampleLevel[] = [
         },
         {
           "Id": "0_1.15_-1.95",
-          "TypeId": 2,
-          "BoxColor": 1,
+          "TypeId": 1,
+          "BoxColor": 0,
           "BlockedNodes": [],
-          "InitCards": [],
+          "InitCards": [
+            0,
+            0,
+            0,
+            6,
+            6
+          ],
           "IsHidden": false,
           "LockedTurn": 0,
           "IsPaperBox": false,
@@ -6288,19 +6304,18 @@ export const SAMPLE_LEVELS: SampleLevel[] = [
         },
         {
           "Id": "1_-1.15_1.0",
-          "TypeId": 2,
-          "BoxColor": 2,
+          "TypeId": 1,
+          "BoxColor": 1,
           "BlockedNodes": [
             "0_-1.15_1.95",
             "0_-1.15_0.0"
           ],
           "InitCards": [
-            1,
-            1,
-            1,
-            4,
-            4,
-            4
+            0,
+            6,
+            6,
+            7,
+            7
           ],
           "IsHidden": false,
           "LockedTurn": 0,
@@ -6309,19 +6324,18 @@ export const SAMPLE_LEVELS: SampleLevel[] = [
         },
         {
           "Id": "1_1.15_1.0",
-          "TypeId": 2,
-          "BoxColor": 3,
+          "TypeId": 1,
+          "BoxColor": 2,
           "BlockedNodes": [
             "0_1.15_1.95",
             "0_1.15_0.0"
           ],
           "InitCards": [
-            5,
-            5,
-            5,
             2,
             2,
-            2
+            6,
+            6,
+            6
           ],
           "IsHidden": false,
           "LockedTurn": 0,
@@ -6330,19 +6344,18 @@ export const SAMPLE_LEVELS: SampleLevel[] = [
         },
         {
           "Id": "1_-1.15_-1.0",
-          "TypeId": 2,
-          "BoxColor": 4,
+          "TypeId": 1,
+          "BoxColor": 6,
           "BlockedNodes": [
             "0_-1.15_0.0",
             "0_-1.15_-1.95"
           ],
           "InitCards": [
-            3,
-            3,
-            3,
+            1,
             2,
             2,
-            2
+            7,
+            7
           ],
           "IsHidden": false,
           "LockedTurn": 0,
@@ -6351,19 +6364,18 @@ export const SAMPLE_LEVELS: SampleLevel[] = [
         },
         {
           "Id": "1_1.15_-1.0",
-          "TypeId": 2,
-          "BoxColor": 5,
+          "TypeId": 1,
+          "BoxColor": 7,
           "BlockedNodes": [
             "0_1.15_0.0",
             "0_1.15_-1.95"
           ],
           "InitCards": [
-            1,
-            1,
-            4,
-            4,
+            0,
             2,
-            2
+            2,
+            6,
+            6
           ],
           "IsHidden": false,
           "LockedTurn": 0,
@@ -6372,8 +6384,8 @@ export const SAMPLE_LEVELS: SampleLevel[] = [
         },
         {
           "Id": "2_0.0_1.0",
-          "TypeId": 1,
-          "BoxColor": 1,
+          "TypeId": 0,
+          "BoxColor": 5,
           "BlockedNodes": [
             "0_-1.15_1.95",
             "0_1.15_1.95",
@@ -6383,10 +6395,10 @@ export const SAMPLE_LEVELS: SampleLevel[] = [
             "1_1.15_1.0"
           ],
           "InitCards": [
-            2,
-            2,
-            3,
-            3
+            0,
+            0,
+            7,
+            7
           ],
           "IsHidden": false,
           "LockedTurn": 0,
@@ -6395,8 +6407,8 @@ export const SAMPLE_LEVELS: SampleLevel[] = [
         },
         {
           "Id": "2_0.0_-1.0",
-          "TypeId": 1,
-          "BoxColor": 1,
+          "TypeId": 0,
+          "BoxColor": 5,
           "BlockedNodes": [
             "0_-1.15_0.0",
             "0_1.15_0.0",
@@ -6406,10 +6418,10 @@ export const SAMPLE_LEVELS: SampleLevel[] = [
             "1_1.15_-1.0"
           ],
           "InitCards": [
-            5,
-            5,
-            4,
-            4
+            1,
+            1,
+            2,
+            2
           ],
           "IsHidden": false,
           "LockedTurn": 0,
@@ -6437,115 +6449,115 @@ export const SAMPLE_LEVELS: SampleLevel[] = [
         {
           "Id": "0_0.0_0.0",
           "LayerId": 0,
-          "YRotation": 0,
-          "XPosition": 0,
-          "ZPosition": 0
+          "YRotation": 0.0,
+          "XPosition": 0.0,
+          "ZPosition": 0.0
         },
         {
           "Id": "0_0.0_1.95",
           "LayerId": 0,
-          "YRotation": 0,
-          "XPosition": 0,
+          "YRotation": 0.0,
+          "XPosition": 0.0,
           "ZPosition": 1.95
         },
         {
           "Id": "0_0.0_-1.95",
           "LayerId": 0,
-          "YRotation": 0,
-          "XPosition": 0,
+          "YRotation": 0.0,
+          "XPosition": 0.0,
           "ZPosition": -1.95
         },
         {
           "Id": "0_-1.95_0.0",
           "LayerId": 0,
-          "YRotation": 90,
+          "YRotation": 90.0,
           "XPosition": -1.95,
-          "ZPosition": 0
+          "ZPosition": 0.0
         },
         {
           "Id": "0_1.95_0.0",
           "LayerId": 0,
-          "YRotation": 90,
+          "YRotation": 90.0,
           "XPosition": 1.95,
-          "ZPosition": 0
+          "ZPosition": 0.0
         },
         {
           "Id": "0_-1.95_1.95",
           "LayerId": 0,
-          "YRotation": 90,
+          "YRotation": 90.0,
           "XPosition": -1.95,
           "ZPosition": 1.95
         },
         {
           "Id": "0_1.95_-1.95",
           "LayerId": 0,
-          "YRotation": 90,
+          "YRotation": 90.0,
           "XPosition": 1.95,
           "ZPosition": -1.95
         },
         {
           "Id": "1_-1.0_1.0",
           "LayerId": 1,
-          "YRotation": 0,
-          "XPosition": -1,
-          "ZPosition": 1
+          "YRotation": 0.0,
+          "XPosition": -1.0,
+          "ZPosition": 1.0
         },
         {
           "Id": "1_1.0_-1.0",
           "LayerId": 1,
-          "YRotation": 0,
-          "XPosition": 1,
-          "ZPosition": -1
+          "YRotation": 0.0,
+          "XPosition": 1.0,
+          "ZPosition": -1.0
         },
         {
           "Id": "1_1.0_1.0",
           "LayerId": 1,
-          "YRotation": 90,
-          "XPosition": 1,
-          "ZPosition": 1
+          "YRotation": 90.0,
+          "XPosition": 1.0,
+          "ZPosition": 1.0
         },
         {
           "Id": "1_-1.0_-1.0",
           "LayerId": 1,
-          "YRotation": 90,
-          "XPosition": -1,
-          "ZPosition": -1
+          "YRotation": 90.0,
+          "XPosition": -1.0,
+          "ZPosition": -1.0
         },
         {
           "Id": "2_0.0_0.8",
           "LayerId": 2,
-          "YRotation": 0,
-          "XPosition": 0,
+          "YRotation": 0.0,
+          "XPosition": 0.0,
           "ZPosition": 0.8
         },
         {
           "Id": "2_0.0_-0.8",
           "LayerId": 2,
-          "YRotation": 0,
-          "XPosition": 0,
+          "YRotation": 0.0,
+          "XPosition": 0.0,
           "ZPosition": -0.8
         },
         {
           "Id": "3_0.0_0.0",
           "LayerId": 3,
-          "YRotation": 90,
-          "XPosition": 0,
-          "ZPosition": 0
+          "YRotation": 90.0,
+          "XPosition": 0.0,
+          "ZPosition": 0.0
         }
       ],
       "BoxNodes": [
         {
           "Id": "0_0.0_0.0",
-          "TypeId": 2,
-          "BoxColor": 1,
+          "TypeId": 1,
+          "BoxColor": 0,
           "BlockedNodes": [],
           "InitCards": [
-            4,
-            4,
-            4,
-            3,
-            3,
-            3
+            0,
+            0,
+            0,
+            1,
+            1,
+            1
           ],
           "IsHidden": false,
           "LockedTurn": 0,
@@ -6554,16 +6566,16 @@ export const SAMPLE_LEVELS: SampleLevel[] = [
         },
         {
           "Id": "0_0.0_1.95",
-          "TypeId": 2,
-          "BoxColor": 2,
+          "TypeId": 1,
+          "BoxColor": 1,
           "BlockedNodes": [],
           "InitCards": [
-            4,
-            4,
-            4,
-            5,
-            5,
-            5
+            0,
+            0,
+            2,
+            2,
+            6,
+            6
           ],
           "IsHidden": false,
           "LockedTurn": 0,
@@ -6572,16 +6584,16 @@ export const SAMPLE_LEVELS: SampleLevel[] = [
         },
         {
           "Id": "0_0.0_-1.95",
-          "TypeId": 2,
-          "BoxColor": 3,
+          "TypeId": 1,
+          "BoxColor": 2,
           "BlockedNodes": [],
           "InitCards": [
-            1,
-            1,
-            1,
             2,
             2,
-            2
+            1,
+            1,
+            7,
+            7
           ],
           "IsHidden": false,
           "LockedTurn": 0,
@@ -6590,14 +6602,14 @@ export const SAMPLE_LEVELS: SampleLevel[] = [
         },
         {
           "Id": "0_-1.95_0.0",
-          "TypeId": 2,
-          "BoxColor": 4,
+          "TypeId": 1,
+          "BoxColor": 6,
           "BlockedNodes": [],
           "InitCards": [
-            3,
-            3,
-            5,
-            5,
+            6,
+            6,
+            0,
+            0,
             1,
             1
           ],
@@ -6608,32 +6620,14 @@ export const SAMPLE_LEVELS: SampleLevel[] = [
         },
         {
           "Id": "0_1.95_0.0",
-          "TypeId": 2,
-          "BoxColor": 5,
+          "TypeId": 1,
+          "BoxColor": 7,
           "BlockedNodes": [],
           "InitCards": [
-            4,
-            4,
-            4,
-            4,
-            4,
-            4
-          ],
-          "IsHidden": false,
-          "LockedTurn": 0,
-          "IsPaperBox": false,
-          "IsRainbowBox": false
-        },
-        {
-          "Id": "0_-1.95_1.95",
-          "TypeId": 2,
-          "BoxColor": 1,
-          "BlockedNodes": [],
-          "InitCards": [
-            3,
-            3,
-            5,
-            5,
+            7,
+            7,
+            7,
+            2,
             2,
             2
           ],
@@ -6643,13 +6637,35 @@ export const SAMPLE_LEVELS: SampleLevel[] = [
           "IsRainbowBox": false
         },
         {
+          "Id": "0_-1.95_1.95",
+          "TypeId": 1,
+          "BoxColor": 0,
+          "BlockedNodes": [],
+          "InitCards": [
+            0,
+            0,
+            0,
+            6,
+            6,
+            6
+          ],
+          "IsHidden": false,
+          "LockedTurn": 0,
+          "IsPaperBox": false,
+          "IsRainbowBox": false
+        },
+        {
           "Id": "0_1.95_-1.95",
-          "TypeId": 2,
-          "BoxColor": 2,
+          "TypeId": 1,
+          "BoxColor": 1,
           "BlockedNodes": [],
           "InitCards": [
             1,
-            1
+            1,
+            1,
+            7,
+            7,
+            7
           ],
           "IsHidden": false,
           "LockedTurn": 0,
@@ -6658,8 +6674,8 @@ export const SAMPLE_LEVELS: SampleLevel[] = [
         },
         {
           "Id": "1_-1.0_1.0",
-          "TypeId": 2,
-          "BoxColor": 3,
+          "TypeId": 1,
+          "BoxColor": 2,
           "BlockedNodes": [
             "0_0.0_0.0",
             "0_0.0_1.95",
@@ -6669,10 +6685,10 @@ export const SAMPLE_LEVELS: SampleLevel[] = [
           "InitCards": [
             2,
             2,
-            1,
-            1,
-            5,
-            5
+            2,
+            6,
+            6,
+            6
           ],
           "IsHidden": false,
           "LockedTurn": 0,
@@ -6681,8 +6697,8 @@ export const SAMPLE_LEVELS: SampleLevel[] = [
         },
         {
           "Id": "1_1.0_-1.0",
-          "TypeId": 2,
-          "BoxColor": 4,
+          "TypeId": 1,
+          "BoxColor": 6,
           "BlockedNodes": [
             "0_0.0_0.0",
             "0_0.0_-1.95",
@@ -6690,53 +6706,9 @@ export const SAMPLE_LEVELS: SampleLevel[] = [
             "0_1.95_-1.95"
           ],
           "InitCards": [
-            3,
-            3,
-            3,
-            1,
-            1,
-            1
-          ],
-          "IsHidden": false,
-          "LockedTurn": 0,
-          "IsPaperBox": false,
-          "IsRainbowBox": false
-        },
-        {
-          "Id": "1_1.0_1.0",
-          "TypeId": 2,
-          "BoxColor": 5,
-          "BlockedNodes": [
-            "0_0.0_0.0",
-            "0_0.0_1.95",
-            "0_1.95_0.0"
-          ],
-          "InitCards": [
+            6,
+            6,
             2,
-            2,
-            2,
-            3,
-            3,
-            3
-          ],
-          "IsHidden": false,
-          "LockedTurn": 0,
-          "IsPaperBox": false,
-          "IsRainbowBox": false
-        },
-        {
-          "Id": "1_-1.0_-1.0",
-          "TypeId": 2,
-          "BoxColor": 1,
-          "BlockedNodes": [
-            "0_0.0_0.0",
-            "0_0.0_-1.95",
-            "0_-1.95_0.0"
-          ],
-          "InitCards": [
-            5,
-            5,
-            5,
             2,
             2,
             2
@@ -6747,9 +6719,51 @@ export const SAMPLE_LEVELS: SampleLevel[] = [
           "IsRainbowBox": false
         },
         {
+          "Id": "1_1.0_1.0",
+          "TypeId": 1,
+          "BoxColor": 7,
+          "BlockedNodes": [
+            "0_0.0_0.0",
+            "0_0.0_1.95",
+            "0_1.95_0.0"
+          ],
+          "InitCards": [
+            7,
+            7,
+            2,
+            2,
+            2
+          ],
+          "IsHidden": false,
+          "LockedTurn": 0,
+          "IsPaperBox": false,
+          "IsRainbowBox": false
+        },
+        {
+          "Id": "1_-1.0_-1.0",
+          "TypeId": 1,
+          "BoxColor": 0,
+          "BlockedNodes": [
+            "0_0.0_0.0",
+            "0_0.0_-1.95",
+            "0_-1.95_0.0"
+          ],
+          "InitCards": [
+            0,
+            0,
+            1,
+            1,
+            1
+          ],
+          "IsHidden": false,
+          "LockedTurn": 0,
+          "IsPaperBox": false,
+          "IsRainbowBox": false
+        },
+        {
           "Id": "2_0.0_0.8",
-          "TypeId": 2,
-          "BoxColor": 2,
+          "TypeId": 1,
+          "BoxColor": 1,
           "BlockedNodes": [
             "0_0.0_0.0",
             "0_0.0_1.95",
@@ -6759,10 +6773,9 @@ export const SAMPLE_LEVELS: SampleLevel[] = [
           "InitCards": [
             1,
             1,
-            1,
-            3,
-            3,
-            3
+            0,
+            0,
+            0
           ],
           "IsHidden": false,
           "LockedTurn": 0,
@@ -6771,8 +6784,8 @@ export const SAMPLE_LEVELS: SampleLevel[] = [
         },
         {
           "Id": "2_0.0_-0.8",
-          "TypeId": 2,
-          "BoxColor": 3,
+          "TypeId": 1,
+          "BoxColor": 2,
           "BlockedNodes": [
             "0_0.0_0.0",
             "0_0.0_-1.95",
@@ -6780,9 +6793,8 @@ export const SAMPLE_LEVELS: SampleLevel[] = [
             "1_-1.0_-1.0"
           ],
           "InitCards": [
-            2,
-            2,
-            2,
+            0,
+            0,
             1,
             1,
             1
@@ -6794,8 +6806,8 @@ export const SAMPLE_LEVELS: SampleLevel[] = [
         },
         {
           "Id": "3_0.0_0.0",
-          "TypeId": 1,
-          "BoxColor": 1,
+          "TypeId": 0,
+          "BoxColor": 5,
           "BlockedNodes": [
             "0_0.0_0.0",
             "1_-1.0_1.0",
@@ -6806,10 +6818,10 @@ export const SAMPLE_LEVELS: SampleLevel[] = [
             "2_0.0_-0.8"
           ],
           "InitCards": [
-            3,
-            3,
+            0,
             2,
-            2
+            7,
+            7
           ],
           "IsHidden": false,
           "LockedTurn": 0,
@@ -6837,115 +6849,115 @@ export const SAMPLE_LEVELS: SampleLevel[] = [
         {
           "Id": "0_-1.45_1.75",
           "LayerId": 0,
-          "YRotation": 0,
+          "YRotation": 0.0,
           "XPosition": -1.45,
           "ZPosition": 1.75
         },
         {
           "Id": "0_1.45_1.75",
           "LayerId": 0,
-          "YRotation": 0,
+          "YRotation": 0.0,
           "XPosition": 1.45,
           "ZPosition": 1.75
         },
         {
           "Id": "0_-1.45_-1.75",
           "LayerId": 0,
-          "YRotation": 0,
+          "YRotation": 0.0,
           "XPosition": -1.45,
           "ZPosition": -1.75
         },
         {
           "Id": "0_1.45_-1.75",
           "LayerId": 0,
-          "YRotation": 0,
+          "YRotation": 0.0,
           "XPosition": 1.45,
           "ZPosition": -1.75
         },
         {
           "Id": "0_-1.95_0.0",
           "LayerId": 0,
-          "YRotation": 90,
+          "YRotation": 90.0,
           "XPosition": -1.95,
-          "ZPosition": 0
+          "ZPosition": 0.0
         },
         {
           "Id": "0_1.95_0.0",
           "LayerId": 0,
-          "YRotation": 90,
+          "YRotation": 90.0,
           "XPosition": 1.95,
-          "ZPosition": 0
+          "ZPosition": 0.0
         },
         {
           "Id": "0_0.0_0.0",
           "LayerId": 0,
-          "YRotation": 0,
-          "XPosition": 0,
-          "ZPosition": 0
+          "YRotation": 0.0,
+          "XPosition": 0.0,
+          "ZPosition": 0.0
         },
         {
           "Id": "1_-1.15_0.95",
           "LayerId": 1,
-          "YRotation": 90,
+          "YRotation": 90.0,
           "XPosition": -1.15,
           "ZPosition": 0.95
         },
         {
           "Id": "1_1.15_0.95",
           "LayerId": 1,
-          "YRotation": 90,
+          "YRotation": 90.0,
           "XPosition": 1.15,
           "ZPosition": 0.95
         },
         {
           "Id": "1_-1.15_-0.95",
           "LayerId": 1,
-          "YRotation": 90,
+          "YRotation": 90.0,
           "XPosition": -1.15,
           "ZPosition": -0.95
         },
         {
           "Id": "1_1.15_-0.95",
           "LayerId": 1,
-          "YRotation": 90,
+          "YRotation": 90.0,
           "XPosition": 1.15,
           "ZPosition": -0.95
         },
         {
           "Id": "2_0.0_0.8",
           "LayerId": 2,
-          "YRotation": 0,
-          "XPosition": 0,
+          "YRotation": 0.0,
+          "XPosition": 0.0,
           "ZPosition": 0.8
         },
         {
           "Id": "2_0.0_-0.8",
           "LayerId": 2,
-          "YRotation": 0,
-          "XPosition": 0,
+          "YRotation": 0.0,
+          "XPosition": 0.0,
           "ZPosition": -0.8
         },
         {
           "Id": "3_0.0_0.0",
           "LayerId": 3,
-          "YRotation": 90,
-          "XPosition": 0,
-          "ZPosition": 0
+          "YRotation": 90.0,
+          "XPosition": 0.0,
+          "ZPosition": 0.0
         }
       ],
       "BoxNodes": [
         {
           "Id": "0_-1.45_1.75",
-          "TypeId": 2,
-          "BoxColor": 1,
+          "TypeId": 1,
+          "BoxColor": 0,
           "BlockedNodes": [],
           "InitCards": [
-            5,
-            5,
-            5,
-            4,
-            4,
-            4
+            0,
+            0,
+            0,
+            2,
+            2,
+            2
           ],
           "IsHidden": false,
           "LockedTurn": 0,
@@ -6954,16 +6966,16 @@ export const SAMPLE_LEVELS: SampleLevel[] = [
         },
         {
           "Id": "0_1.45_1.75",
-          "TypeId": 2,
-          "BoxColor": 2,
+          "TypeId": 1,
+          "BoxColor": 1,
           "BlockedNodes": [],
           "InitCards": [
             1,
             1,
             1,
-            3,
-            3,
-            3
+            7,
+            7,
+            7
           ],
           "IsHidden": false,
           "LockedTurn": 0,
@@ -6972,16 +6984,16 @@ export const SAMPLE_LEVELS: SampleLevel[] = [
         },
         {
           "Id": "0_-1.45_-1.75",
-          "TypeId": 2,
-          "BoxColor": 3,
+          "TypeId": 1,
+          "BoxColor": 2,
           "BlockedNodes": [],
           "InitCards": [
-            5,
-            5,
             2,
             2,
-            4,
-            4
+            2,
+            6,
+            6,
+            6
           ],
           "IsHidden": false,
           "LockedTurn": 0,
@@ -6990,16 +7002,16 @@ export const SAMPLE_LEVELS: SampleLevel[] = [
         },
         {
           "Id": "0_1.45_-1.75",
-          "TypeId": 2,
-          "BoxColor": 4,
+          "TypeId": 1,
+          "BoxColor": 6,
           "BlockedNodes": [],
           "InitCards": [
+            6,
+            6,
             1,
             1,
-            1,
-            3,
-            3,
-            3
+            2,
+            2
           ],
           "IsHidden": false,
           "LockedTurn": 0,
@@ -7008,14 +7020,50 @@ export const SAMPLE_LEVELS: SampleLevel[] = [
         },
         {
           "Id": "0_-1.95_0.0",
-          "TypeId": 2,
-          "BoxColor": 5,
+          "TypeId": 1,
+          "BoxColor": 7,
+          "BlockedNodes": [],
+          "InitCards": [
+            7,
+            7,
+            7,
+            1,
+            1,
+            1
+          ],
+          "IsHidden": false,
+          "LockedTurn": 0,
+          "IsPaperBox": false,
+          "IsRainbowBox": false
+        },
+        {
+          "Id": "0_1.95_0.0",
+          "TypeId": 1,
+          "BoxColor": 0,
+          "BlockedNodes": [],
+          "InitCards": [
+            0,
+            0,
+            1,
+            1,
+            7,
+            7
+          ],
+          "IsHidden": false,
+          "LockedTurn": 0,
+          "IsPaperBox": false,
+          "IsRainbowBox": false
+        },
+        {
+          "Id": "0_0.0_0.0",
+          "TypeId": 1,
+          "BoxColor": 1,
           "BlockedNodes": [],
           "InitCards": [
             1,
             1,
-            3,
-            3,
+            0,
+            0,
             2,
             2
           ],
@@ -7025,53 +7073,21 @@ export const SAMPLE_LEVELS: SampleLevel[] = [
           "IsRainbowBox": false
         },
         {
-          "Id": "0_1.95_0.0",
-          "TypeId": 2,
-          "BoxColor": 1,
-          "BlockedNodes": [],
-          "InitCards": [
-            5,
-            5,
-            5,
-            5,
-            3,
-            3
-          ],
-          "IsHidden": false,
-          "LockedTurn": 0,
-          "IsPaperBox": false,
-          "IsRainbowBox": false
-        },
-        {
-          "Id": "0_0.0_0.0",
-          "TypeId": 2,
-          "BoxColor": 2,
-          "BlockedNodes": [],
-          "InitCards": [
-            1,
-            4
-          ],
-          "IsHidden": false,
-          "LockedTurn": 0,
-          "IsPaperBox": false,
-          "IsRainbowBox": false
-        },
-        {
           "Id": "1_-1.15_0.95",
-          "TypeId": 2,
-          "BoxColor": 3,
+          "TypeId": 1,
+          "BoxColor": 2,
           "BlockedNodes": [
             "0_-1.45_1.75",
             "0_-1.95_0.0",
             "0_0.0_0.0"
           ],
           "InitCards": [
-            1,
-            1,
-            1,
-            4,
-            4,
-            4
+            2,
+            2,
+            2,
+            7,
+            7,
+            7
           ],
           "IsHidden": false,
           "LockedTurn": 0,
@@ -7080,17 +7096,17 @@ export const SAMPLE_LEVELS: SampleLevel[] = [
         },
         {
           "Id": "1_1.15_0.95",
-          "TypeId": 2,
-          "BoxColor": 4,
+          "TypeId": 1,
+          "BoxColor": 6,
           "BlockedNodes": [
             "0_1.45_1.75",
             "0_1.95_0.0",
             "0_0.0_0.0"
           ],
           "InitCards": [
-            1,
-            1,
-            1,
+            6,
+            6,
+            6,
             2,
             2,
             2
@@ -7102,20 +7118,19 @@ export const SAMPLE_LEVELS: SampleLevel[] = [
         },
         {
           "Id": "1_-1.15_-0.95",
-          "TypeId": 2,
-          "BoxColor": 5,
+          "TypeId": 1,
+          "BoxColor": 7,
           "BlockedNodes": [
             "0_-1.45_-1.75",
             "0_-1.95_0.0",
             "0_0.0_0.0"
           ],
           "InitCards": [
-            1,
-            1,
-            1,
-            2,
-            2,
-            2
+            7,
+            0,
+            0,
+            0,
+            0
           ],
           "IsHidden": false,
           "LockedTurn": 0,
@@ -7124,20 +7139,19 @@ export const SAMPLE_LEVELS: SampleLevel[] = [
         },
         {
           "Id": "1_1.15_-0.95",
-          "TypeId": 2,
-          "BoxColor": 1,
+          "TypeId": 1,
+          "BoxColor": 0,
           "BlockedNodes": [
             "0_1.45_-1.75",
             "0_1.95_0.0",
             "0_0.0_0.0"
           ],
           "InitCards": [
-            3,
-            3,
-            3,
-            2,
-            2,
-            2
+            1,
+            1,
+            6,
+            6,
+            6
           ],
           "IsHidden": false,
           "LockedTurn": 0,
@@ -7146,8 +7160,8 @@ export const SAMPLE_LEVELS: SampleLevel[] = [
         },
         {
           "Id": "2_0.0_0.8",
-          "TypeId": 2,
-          "BoxColor": 2,
+          "TypeId": 1,
+          "BoxColor": 1,
           "BlockedNodes": [
             "0_-1.45_1.75",
             "0_1.45_1.75",
@@ -7156,12 +7170,11 @@ export const SAMPLE_LEVELS: SampleLevel[] = [
             "1_1.15_0.95"
           ],
           "InitCards": [
-            3,
-            3,
-            3,
-            4,
-            4,
-            4
+            1,
+            1,
+            0,
+            0,
+            0
           ],
           "IsHidden": false,
           "LockedTurn": 0,
@@ -7170,8 +7183,8 @@ export const SAMPLE_LEVELS: SampleLevel[] = [
         },
         {
           "Id": "2_0.0_-0.8",
-          "TypeId": 2,
-          "BoxColor": 3,
+          "TypeId": 1,
+          "BoxColor": 2,
           "BlockedNodes": [
             "0_-1.45_-1.75",
             "0_1.45_-1.75",
@@ -7182,10 +7195,9 @@ export const SAMPLE_LEVELS: SampleLevel[] = [
           "InitCards": [
             2,
             2,
-            2,
-            5,
-            5,
-            5
+            0,
+            1,
+            1
           ],
           "IsHidden": false,
           "LockedTurn": 0,
@@ -7194,8 +7206,8 @@ export const SAMPLE_LEVELS: SampleLevel[] = [
         },
         {
           "Id": "3_0.0_0.0",
-          "TypeId": 1,
-          "BoxColor": 1,
+          "TypeId": 0,
+          "BoxColor": 5,
           "BlockedNodes": [
             "0_0.0_0.0",
             "1_-1.15_0.95",
@@ -7206,10 +7218,10 @@ export const SAMPLE_LEVELS: SampleLevel[] = [
             "2_0.0_-0.8"
           ],
           "InitCards": [
-            2,
-            2,
-            3,
-            3
+            0,
+            0,
+            0,
+            6
           ],
           "IsHidden": false,
           "LockedTurn": 0,
@@ -7237,122 +7249,122 @@ export const SAMPLE_LEVELS: SampleLevel[] = [
         {
           "Id": "0_-1.05_2.45",
           "LayerId": 0,
-          "YRotation": 0,
+          "YRotation": 0.0,
           "XPosition": -1.05,
           "ZPosition": 2.45
         },
         {
           "Id": "0_1.05_2.45",
           "LayerId": 0,
-          "YRotation": 0,
+          "YRotation": 0.0,
           "XPosition": 1.05,
           "ZPosition": 2.45
         },
         {
           "Id": "0_-1.05_-2.45",
           "LayerId": 0,
-          "YRotation": 0,
+          "YRotation": 0.0,
           "XPosition": -1.05,
           "ZPosition": -2.45
         },
         {
           "Id": "0_1.05_-2.45",
           "LayerId": 0,
-          "YRotation": 0,
+          "YRotation": 0.0,
           "XPosition": 1.05,
           "ZPosition": -2.45
         },
         {
           "Id": "0_-1.95_0.95",
           "LayerId": 0,
-          "YRotation": 90,
+          "YRotation": 90.0,
           "XPosition": -1.95,
           "ZPosition": 0.95
         },
         {
           "Id": "0_-1.95_-0.95",
           "LayerId": 0,
-          "YRotation": 90,
+          "YRotation": 90.0,
           "XPosition": -1.95,
           "ZPosition": -0.95
         },
         {
           "Id": "0_1.95_0.95",
           "LayerId": 0,
-          "YRotation": 90,
+          "YRotation": 90.0,
           "XPosition": 1.95,
           "ZPosition": 0.95
         },
         {
           "Id": "0_1.95_-0.95",
           "LayerId": 0,
-          "YRotation": 90,
+          "YRotation": 90.0,
           "XPosition": 1.95,
           "ZPosition": -0.95
         },
         {
           "Id": "1_-1.15_1.30",
           "LayerId": 1,
-          "YRotation": 90,
+          "YRotation": 90.0,
           "XPosition": -1.15,
           "ZPosition": 1.3
         },
         {
           "Id": "1_1.15_1.30",
           "LayerId": 1,
-          "YRotation": 90,
+          "YRotation": 90.0,
           "XPosition": 1.15,
           "ZPosition": 1.3
         },
         {
           "Id": "1_-1.15_-1.30",
           "LayerId": 1,
-          "YRotation": 90,
+          "YRotation": 90.0,
           "XPosition": -1.15,
           "ZPosition": -1.3
         },
         {
           "Id": "1_1.15_-1.30",
           "LayerId": 1,
-          "YRotation": 90,
+          "YRotation": 90.0,
           "XPosition": 1.15,
           "ZPosition": -1.3
         },
         {
           "Id": "2_0.0_1.15",
           "LayerId": 2,
-          "YRotation": 0,
-          "XPosition": 0,
+          "YRotation": 0.0,
+          "XPosition": 0.0,
           "ZPosition": 1.15
         },
         {
           "Id": "2_0.0_-1.15",
           "LayerId": 2,
-          "YRotation": 0,
-          "XPosition": 0,
+          "YRotation": 0.0,
+          "XPosition": 0.0,
           "ZPosition": -1.15
         },
         {
           "Id": "3_0.0_0.0",
           "LayerId": 3,
-          "YRotation": 90,
-          "XPosition": 0,
-          "ZPosition": 0
+          "YRotation": 90.0,
+          "XPosition": 0.0,
+          "ZPosition": 0.0
         }
       ],
       "BoxNodes": [
         {
           "Id": "0_-1.05_2.45",
-          "TypeId": 2,
-          "BoxColor": 1,
+          "TypeId": 1,
+          "BoxColor": 0,
           "BlockedNodes": [],
           "InitCards": [
-            5,
-            5,
-            5,
-            4,
-            4,
-            4
+            0,
+            0,
+            1,
+            1,
+            6,
+            6
           ],
           "IsHidden": false,
           "LockedTurn": 0,
@@ -7361,16 +7373,16 @@ export const SAMPLE_LEVELS: SampleLevel[] = [
         },
         {
           "Id": "0_1.05_2.45",
-          "TypeId": 2,
-          "BoxColor": 2,
+          "TypeId": 1,
+          "BoxColor": 1,
           "BlockedNodes": [],
           "InitCards": [
-            5,
-            5,
-            5,
             1,
             1,
-            1
+            0,
+            0,
+            7,
+            7
           ],
           "IsHidden": false,
           "LockedTurn": 0,
@@ -7379,8 +7391,8 @@ export const SAMPLE_LEVELS: SampleLevel[] = [
         },
         {
           "Id": "0_-1.05_-2.45",
-          "TypeId": 2,
-          "BoxColor": 3,
+          "TypeId": 1,
+          "BoxColor": 2,
           "BlockedNodes": [],
           "InitCards": [
             2,
@@ -7397,16 +7409,16 @@ export const SAMPLE_LEVELS: SampleLevel[] = [
         },
         {
           "Id": "0_1.05_-2.45",
-          "TypeId": 2,
-          "BoxColor": 4,
+          "TypeId": 1,
+          "BoxColor": 6,
           "BlockedNodes": [],
           "InitCards": [
+            6,
+            6,
+            0,
+            0,
             1,
-            1,
-            1,
-            3,
-            3,
-            3
+            1
           ],
           "IsHidden": false,
           "LockedTurn": 0,
@@ -7415,16 +7427,16 @@ export const SAMPLE_LEVELS: SampleLevel[] = [
         },
         {
           "Id": "0_-1.95_0.95",
-          "TypeId": 2,
-          "BoxColor": 5,
+          "TypeId": 1,
+          "BoxColor": 7,
           "BlockedNodes": [],
           "InitCards": [
-            5,
-            5,
-            5,
-            4,
-            4,
-            4
+            7,
+            7,
+            7,
+            0,
+            0,
+            0
           ],
           "IsHidden": false,
           "LockedTurn": 0,
@@ -7433,24 +7445,35 @@ export const SAMPLE_LEVELS: SampleLevel[] = [
         },
         {
           "Id": "0_-1.95_-0.95",
-          "TypeId": 2,
-          "BoxColor": 1,
+          "TypeId": 1,
+          "BoxColor": 4,
           "BlockedNodes": [],
           "InitCards": [
-            2,
-            3
+            4,
+            4,
+            4,
+            0,
+            0,
+            0
           ],
           "IsHidden": false,
           "LockedTurn": 0,
-          "IsPaperBox": true,
+          "IsPaperBox": false,
           "IsRainbowBox": false
         },
         {
           "Id": "0_1.95_0.95",
-          "TypeId": 2,
-          "BoxColor": 1,
+          "TypeId": 1,
+          "BoxColor": 0,
           "BlockedNodes": [],
-          "InitCards": [],
+          "InitCards": [
+            0,
+            0,
+            0,
+            7,
+            7,
+            7
+          ],
           "IsHidden": false,
           "LockedTurn": 0,
           "IsPaperBox": false,
@@ -7458,10 +7481,17 @@ export const SAMPLE_LEVELS: SampleLevel[] = [
         },
         {
           "Id": "0_1.95_-0.95",
-          "TypeId": 2,
-          "BoxColor": 2,
+          "TypeId": 1,
+          "BoxColor": 1,
           "BlockedNodes": [],
-          "InitCards": [],
+          "InitCards": [
+            1,
+            1,
+            1,
+            2,
+            2,
+            2
+          ],
           "IsHidden": false,
           "LockedTurn": 0,
           "IsPaperBox": false,
@@ -7469,8 +7499,8 @@ export const SAMPLE_LEVELS: SampleLevel[] = [
         },
         {
           "Id": "1_-1.15_1.30",
-          "TypeId": 2,
-          "BoxColor": 3,
+          "TypeId": 1,
+          "BoxColor": 2,
           "BlockedNodes": [
             "0_-1.05_2.45",
             "0_-1.95_0.95"
@@ -7479,9 +7509,9 @@ export const SAMPLE_LEVELS: SampleLevel[] = [
             2,
             2,
             2,
-            1,
-            1,
-            1
+            6,
+            6,
+            6
           ],
           "IsHidden": false,
           "LockedTurn": 0,
@@ -7490,19 +7520,19 @@ export const SAMPLE_LEVELS: SampleLevel[] = [
         },
         {
           "Id": "1_1.15_1.30",
-          "TypeId": 2,
-          "BoxColor": 4,
+          "TypeId": 1,
+          "BoxColor": 6,
           "BlockedNodes": [
             "0_1.05_2.45",
             "0_1.95_0.95"
           ],
           "InitCards": [
-            1,
-            1,
-            1,
-            3,
-            3,
-            3
+            6,
+            6,
+            6,
+            2,
+            2,
+            2
           ],
           "IsHidden": false,
           "LockedTurn": 0,
@@ -7511,16 +7541,15 @@ export const SAMPLE_LEVELS: SampleLevel[] = [
         },
         {
           "Id": "1_-1.15_-1.30",
-          "TypeId": 2,
-          "BoxColor": 5,
+          "TypeId": 1,
+          "BoxColor": 7,
           "BlockedNodes": [
             "0_-1.05_-2.45",
             "0_-1.95_-0.95"
           ],
           "InitCards": [
-            2,
-            2,
-            2,
+            7,
+            7,
             4,
             4,
             4
@@ -7532,40 +7561,38 @@ export const SAMPLE_LEVELS: SampleLevel[] = [
         },
         {
           "Id": "1_1.15_-1.30",
-          "TypeId": 2,
-          "BoxColor": 1,
+          "TypeId": 1,
+          "BoxColor": 4,
           "BlockedNodes": [
             "0_1.05_-2.45",
             "0_1.95_-0.95"
           ],
           "InitCards": [
-            2,
-            2,
-            2,
-            3,
-            3,
-            3
+            4,
+            4,
+            0,
+            1,
+            1
           ],
           "IsHidden": false,
           "LockedTurn": 0,
-          "IsPaperBox": true,
+          "IsPaperBox": false,
           "IsRainbowBox": false
         },
         {
           "Id": "2_0.0_1.15",
-          "TypeId": 2,
-          "BoxColor": 1,
+          "TypeId": 1,
+          "BoxColor": 0,
           "BlockedNodes": [
             "1_-1.15_1.30",
             "1_1.15_1.30"
           ],
           "InitCards": [
-            2,
-            2,
-            2,
-            4,
-            4,
-            4
+            1,
+            1,
+            1,
+            6,
+            6
           ],
           "IsHidden": false,
           "LockedTurn": 0,
@@ -7574,19 +7601,18 @@ export const SAMPLE_LEVELS: SampleLevel[] = [
         },
         {
           "Id": "2_0.0_-1.15",
-          "TypeId": 2,
-          "BoxColor": 2,
+          "TypeId": 1,
+          "BoxColor": 1,
           "BlockedNodes": [
             "1_-1.15_-1.30",
             "1_1.15_-1.30"
           ],
           "InitCards": [
-            1,
-            1,
-            1,
-            5,
-            5,
-            5
+            4,
+            4,
+            4,
+            7,
+            7
           ],
           "IsHidden": false,
           "LockedTurn": 0,
@@ -7595,8 +7621,8 @@ export const SAMPLE_LEVELS: SampleLevel[] = [
         },
         {
           "Id": "3_0.0_0.0",
-          "TypeId": 1,
-          "BoxColor": 1,
+          "TypeId": 0,
+          "BoxColor": 5,
           "BlockedNodes": [
             "1_-1.15_1.30",
             "1_1.15_1.30",
@@ -7606,10 +7632,10 @@ export const SAMPLE_LEVELS: SampleLevel[] = [
             "2_0.0_-1.15"
           ],
           "InitCards": [
-            3,
-            3,
-            2,
-            2
+            0,
+            0,
+            1,
+            4
           ],
           "IsHidden": false,
           "LockedTurn": 0,
@@ -7637,129 +7663,129 @@ export const SAMPLE_LEVELS: SampleLevel[] = [
         {
           "Id": "0_-2.0_1.95",
           "LayerId": 0,
-          "YRotation": 0,
-          "XPosition": -2,
+          "YRotation": 0.0,
+          "XPosition": -2.0,
           "ZPosition": 1.95
         },
         {
           "Id": "0_0.0_1.95",
           "LayerId": 0,
-          "YRotation": 0,
-          "XPosition": 0,
+          "YRotation": 0.0,
+          "XPosition": 0.0,
           "ZPosition": 1.95
         },
         {
           "Id": "0_2.0_1.95",
           "LayerId": 0,
-          "YRotation": 0,
-          "XPosition": 2,
+          "YRotation": 0.0,
+          "XPosition": 2.0,
           "ZPosition": 1.95
         },
         {
           "Id": "0_-1.25_0.0",
           "LayerId": 0,
-          "YRotation": 0,
+          "YRotation": 0.0,
           "XPosition": -1.25,
-          "ZPosition": 0
+          "ZPosition": 0.0
         },
         {
           "Id": "0_1.25_0.0",
           "LayerId": 0,
-          "YRotation": 0,
+          "YRotation": 0.0,
           "XPosition": 1.25,
-          "ZPosition": 0
+          "ZPosition": 0.0
         },
         {
           "Id": "0_-2.0_-1.95",
           "LayerId": 0,
-          "YRotation": 0,
-          "XPosition": -2,
+          "YRotation": 0.0,
+          "XPosition": -2.0,
           "ZPosition": -1.95
         },
         {
           "Id": "0_0.0_-1.95",
           "LayerId": 0,
-          "YRotation": 0,
-          "XPosition": 0,
+          "YRotation": 0.0,
+          "XPosition": 0.0,
           "ZPosition": -1.95
         },
         {
           "Id": "0_2.0_-1.95",
           "LayerId": 0,
-          "YRotation": 0,
-          "XPosition": 2,
+          "YRotation": 0.0,
+          "XPosition": 2.0,
           "ZPosition": -1.95
         },
         {
           "Id": "1_-1.55_1.0",
           "LayerId": 1,
-          "YRotation": 90,
+          "YRotation": 90.0,
           "XPosition": -1.55,
-          "ZPosition": 1
+          "ZPosition": 1.0
         },
         {
           "Id": "1_1.55_1.0",
           "LayerId": 1,
-          "YRotation": 90,
+          "YRotation": 90.0,
           "XPosition": 1.55,
-          "ZPosition": 1
+          "ZPosition": 1.0
         },
         {
           "Id": "1_-1.55_-1.0",
           "LayerId": 1,
-          "YRotation": 90,
+          "YRotation": 90.0,
           "XPosition": -1.55,
-          "ZPosition": -1
+          "ZPosition": -1.0
         },
         {
           "Id": "1_1.55_-1.0",
           "LayerId": 1,
-          "YRotation": 90,
+          "YRotation": 90.0,
           "XPosition": 1.55,
-          "ZPosition": -1
+          "ZPosition": -1.0
         },
         {
           "Id": "1_0.0_0.0",
           "LayerId": 1,
-          "YRotation": 90,
-          "XPosition": 0,
-          "ZPosition": 0
+          "YRotation": 90.0,
+          "XPosition": 0.0,
+          "ZPosition": 0.0
         },
         {
           "Id": "2_-1.0_0.0",
           "LayerId": 2,
-          "YRotation": 0,
-          "XPosition": -1,
-          "ZPosition": 0
+          "YRotation": 0.0,
+          "XPosition": -1.0,
+          "ZPosition": 0.0
         },
         {
           "Id": "2_1.0_0.0",
           "LayerId": 2,
-          "YRotation": 0,
-          "XPosition": 1,
-          "ZPosition": 0
+          "YRotation": 0.0,
+          "XPosition": 1.0,
+          "ZPosition": 0.0
         },
         {
           "Id": "3_0.0_0.0",
           "LayerId": 3,
-          "YRotation": 90,
-          "XPosition": 0,
-          "ZPosition": 0
+          "YRotation": 90.0,
+          "XPosition": 0.0,
+          "ZPosition": 0.0
         }
       ],
       "BoxNodes": [
         {
           "Id": "0_-2.0_1.95",
-          "TypeId": 2,
-          "BoxColor": 1,
+          "TypeId": 1,
+          "BoxColor": 0,
           "BlockedNodes": [],
           "InitCards": [
-            5,
-            5,
-            5,
-            4,
-            4,
-            4
+            0,
+            0,
+            0,
+            1,
+            1,
+            1
           ],
           "IsHidden": false,
           "LockedTurn": 0,
@@ -7768,16 +7794,16 @@ export const SAMPLE_LEVELS: SampleLevel[] = [
         },
         {
           "Id": "0_0.0_1.95",
-          "TypeId": 2,
-          "BoxColor": 2,
+          "TypeId": 1,
+          "BoxColor": 1,
           "BlockedNodes": [],
           "InitCards": [
             1,
             1,
-            3,
-            3,
-            5,
-            5
+            2,
+            2,
+            7,
+            7
           ],
           "IsHidden": false,
           "LockedTurn": 0,
@@ -7786,16 +7812,16 @@ export const SAMPLE_LEVELS: SampleLevel[] = [
         },
         {
           "Id": "0_2.0_1.95",
-          "TypeId": 2,
-          "BoxColor": 3,
+          "TypeId": 1,
+          "BoxColor": 2,
           "BlockedNodes": [],
           "InitCards": [
             2,
             2,
             2,
-            1,
-            1,
-            1
+            0,
+            0,
+            0
           ],
           "IsHidden": false,
           "LockedTurn": 0,
@@ -7804,16 +7830,16 @@ export const SAMPLE_LEVELS: SampleLevel[] = [
         },
         {
           "Id": "0_-1.25_0.0",
-          "TypeId": 2,
-          "BoxColor": 4,
+          "TypeId": 1,
+          "BoxColor": 6,
           "BlockedNodes": [],
           "InitCards": [
-            3,
-            3,
-            3,
-            5,
-            5,
-            5
+            6,
+            6,
+            6,
+            1,
+            1,
+            1
           ],
           "IsHidden": false,
           "LockedTurn": 0,
@@ -7822,16 +7848,16 @@ export const SAMPLE_LEVELS: SampleLevel[] = [
         },
         {
           "Id": "0_1.25_0.0",
-          "TypeId": 2,
-          "BoxColor": 5,
+          "TypeId": 1,
+          "BoxColor": 7,
           "BlockedNodes": [],
           "InitCards": [
-            4,
-            4,
-            4,
-            3,
-            3,
-            3
+            7,
+            7,
+            7,
+            6,
+            6,
+            6
           ],
           "IsHidden": false,
           "LockedTurn": 0,
@@ -7840,16 +7866,16 @@ export const SAMPLE_LEVELS: SampleLevel[] = [
         },
         {
           "Id": "0_-2.0_-1.95",
-          "TypeId": 2,
-          "BoxColor": 1,
+          "TypeId": 1,
+          "BoxColor": 0,
           "BlockedNodes": [],
           "InitCards": [
-            2,
-            2,
-            2,
-            4,
-            4,
-            4
+            0,
+            0,
+            0,
+            6,
+            6,
+            6
           ],
           "IsHidden": false,
           "LockedTurn": 0,
@@ -7858,178 +7884,13 @@ export const SAMPLE_LEVELS: SampleLevel[] = [
         },
         {
           "Id": "0_0.0_-1.95",
-          "TypeId": 2,
-          "BoxColor": 2,
-          "BlockedNodes": [],
-          "InitCards": [
-            2,
-            2,
-            2,
-            1,
-            1,
-            4
-          ],
-          "IsHidden": false,
-          "LockedTurn": 0,
-          "IsPaperBox": false,
-          "IsRainbowBox": false
-        },
-        {
-          "Id": "0_2.0_-1.95",
-          "TypeId": 2,
-          "BoxColor": 3,
-          "BlockedNodes": [],
-          "InitCards": [
-            5,
-            5
-          ],
-          "IsHidden": false,
-          "LockedTurn": 0,
-          "IsPaperBox": false,
-          "IsRainbowBox": false
-        },
-        {
-          "Id": "1_-1.55_1.0",
-          "TypeId": 2,
-          "BoxColor": 4,
-          "BlockedNodes": [
-            "0_-2.0_1.95",
-            "0_-1.25_0.0"
-          ],
-          "InitCards": [
-            1,
-            1,
-            1,
-            3,
-            3,
-            3
-          ],
-          "IsHidden": false,
-          "LockedTurn": 0,
-          "IsPaperBox": false,
-          "IsRainbowBox": false
-        },
-        {
-          "Id": "1_1.55_1.0",
-          "TypeId": 2,
-          "BoxColor": 5,
-          "BlockedNodes": [
-            "0_2.0_1.95",
-            "0_1.25_0.0"
-          ],
-          "InitCards": [
-            4,
-            4,
-            2,
-            2,
-            3,
-            3
-          ],
-          "IsHidden": false,
-          "LockedTurn": 0,
-          "IsPaperBox": false,
-          "IsRainbowBox": false
-        },
-        {
-          "Id": "1_-1.55_-1.0",
-          "TypeId": 2,
+          "TypeId": 1,
           "BoxColor": 1,
-          "BlockedNodes": [
-            "0_-1.25_0.0",
-            "0_-2.0_-1.95"
-          ],
-          "InitCards": [
-            4,
-            4,
-            4,
-            5,
-            5,
-            5
-          ],
-          "IsHidden": false,
-          "LockedTurn": 0,
-          "IsPaperBox": false,
-          "IsRainbowBox": false
-        },
-        {
-          "Id": "1_1.55_-1.0",
-          "TypeId": 2,
-          "BoxColor": 2,
-          "BlockedNodes": [
-            "0_1.25_0.0",
-            "0_2.0_-1.95"
-          ],
+          "BlockedNodes": [],
           "InitCards": [
             1,
             1,
             1,
-            3,
-            3,
-            3
-          ],
-          "IsHidden": false,
-          "LockedTurn": 0,
-          "IsPaperBox": false,
-          "IsRainbowBox": false
-        },
-        {
-          "Id": "1_0.0_0.0",
-          "TypeId": 2,
-          "BoxColor": 3,
-          "BlockedNodes": [
-            "0_-1.25_0.0",
-            "0_1.25_0.0"
-          ],
-          "InitCards": [
-            5,
-            5,
-            2,
-            2,
-            1,
-            1
-          ],
-          "IsHidden": false,
-          "LockedTurn": 0,
-          "IsPaperBox": false,
-          "IsRainbowBox": false
-        },
-        {
-          "Id": "2_-1.0_0.0",
-          "TypeId": 2,
-          "BoxColor": 4,
-          "BlockedNodes": [
-            "0_-1.25_0.0",
-            "1_-1.55_1.0",
-            "1_-1.55_-1.0",
-            "1_0.0_0.0"
-          ],
-          "InitCards": [
-            5,
-            5,
-            5,
-            1,
-            1,
-            1
-          ],
-          "IsHidden": false,
-          "LockedTurn": 0,
-          "IsPaperBox": false,
-          "IsRainbowBox": false
-        },
-        {
-          "Id": "2_1.0_0.0",
-          "TypeId": 2,
-          "BoxColor": 5,
-          "BlockedNodes": [
-            "0_1.25_0.0",
-            "1_1.55_1.0",
-            "1_1.55_-1.0",
-            "1_0.0_0.0"
-          ],
-          "InitCards": [
-            4,
-            4,
-            4,
             2,
             2,
             2
@@ -8040,9 +7901,174 @@ export const SAMPLE_LEVELS: SampleLevel[] = [
           "IsRainbowBox": false
         },
         {
-          "Id": "3_0.0_0.0",
+          "Id": "0_2.0_-1.95",
+          "TypeId": 1,
+          "BoxColor": 2,
+          "BlockedNodes": [],
+          "InitCards": [
+            2,
+            2,
+            2,
+            7,
+            7,
+            7
+          ],
+          "IsHidden": false,
+          "LockedTurn": 0,
+          "IsPaperBox": false,
+          "IsRainbowBox": false
+        },
+        {
+          "Id": "1_-1.55_1.0",
+          "TypeId": 1,
+          "BoxColor": 6,
+          "BlockedNodes": [
+            "0_-2.0_1.95",
+            "0_-1.25_0.0"
+          ],
+          "InitCards": [
+            6,
+            6,
+            0,
+            0,
+            1,
+            1
+          ],
+          "IsHidden": false,
+          "LockedTurn": 0,
+          "IsPaperBox": false,
+          "IsRainbowBox": false
+        },
+        {
+          "Id": "1_1.55_1.0",
+          "TypeId": 1,
+          "BoxColor": 7,
+          "BlockedNodes": [
+            "0_2.0_1.95",
+            "0_1.25_0.0"
+          ],
+          "InitCards": [
+            7,
+            7,
+            7,
+            2,
+            2,
+            2
+          ],
+          "IsHidden": false,
+          "LockedTurn": 0,
+          "IsPaperBox": false,
+          "IsRainbowBox": false
+        },
+        {
+          "Id": "1_-1.55_-1.0",
+          "TypeId": 1,
+          "BoxColor": 0,
+          "BlockedNodes": [
+            "0_-1.25_0.0",
+            "0_-2.0_-1.95"
+          ],
+          "InitCards": [
+            0,
+            0,
+            2,
+            2,
+            7,
+            7
+          ],
+          "IsHidden": false,
+          "LockedTurn": 0,
+          "IsPaperBox": false,
+          "IsRainbowBox": false
+        },
+        {
+          "Id": "1_1.55_-1.0",
           "TypeId": 1,
           "BoxColor": 1,
+          "BlockedNodes": [
+            "0_1.25_0.0",
+            "0_2.0_-1.95"
+          ],
+          "InitCards": [
+            1,
+            1,
+            6,
+            6,
+            6
+          ],
+          "IsHidden": false,
+          "LockedTurn": 0,
+          "IsPaperBox": false,
+          "IsRainbowBox": false
+        },
+        {
+          "Id": "1_0.0_0.0",
+          "TypeId": 1,
+          "BoxColor": 2,
+          "BlockedNodes": [
+            "0_-1.25_0.0",
+            "0_1.25_0.0"
+          ],
+          "InitCards": [
+            2,
+            0,
+            0,
+            0,
+            0
+          ],
+          "IsHidden": false,
+          "LockedTurn": 0,
+          "IsPaperBox": false,
+          "IsRainbowBox": false
+        },
+        {
+          "Id": "2_-1.0_0.0",
+          "TypeId": 1,
+          "BoxColor": 6,
+          "BlockedNodes": [
+            "0_-1.25_0.0",
+            "1_-1.55_1.0",
+            "1_-1.55_-1.0",
+            "1_0.0_0.0"
+          ],
+          "InitCards": [
+            6,
+            6,
+            0,
+            1,
+            1
+          ],
+          "IsHidden": false,
+          "LockedTurn": 0,
+          "IsPaperBox": false,
+          "IsRainbowBox": false
+        },
+        {
+          "Id": "2_1.0_0.0",
+          "TypeId": 1,
+          "BoxColor": 7,
+          "BlockedNodes": [
+            "0_1.25_0.0",
+            "1_1.55_1.0",
+            "1_1.55_-1.0",
+            "1_0.0_0.0"
+          ],
+          "InitCards": [
+            7,
+            7,
+            2,
+            6,
+            6
+          ],
+          "IsHidden": false,
+          "LockedTurn": 0,
+          "IsPaperBox": false,
+          "IsRainbowBox": false
+        },
+        {
+          "Id": "3_0.0_0.0",
+          "TypeId": 0,
+          "BoxColor": 5,
           "BlockedNodes": [
             "0_-1.25_0.0",
             "0_1.25_0.0",
@@ -8051,10 +8077,10 @@ export const SAMPLE_LEVELS: SampleLevel[] = [
             "2_1.0_0.0"
           ],
           "InitCards": [
-            3,
-            3,
-            2,
-            2
+            1,
+            7,
+            7,
+            7
           ],
           "IsHidden": false,
           "LockedTurn": 0,
@@ -8082,99 +8108,99 @@ export const SAMPLE_LEVELS: SampleLevel[] = [
         {
           "Id": "0_-2.4_1.45",
           "LayerId": 0,
-          "YRotation": 90,
+          "YRotation": 90.0,
           "XPosition": -2.4,
           "ZPosition": 1.45
         },
         {
           "Id": "0_0.0_1.45",
           "LayerId": 0,
-          "YRotation": 90,
-          "XPosition": 0,
+          "YRotation": 90.0,
+          "XPosition": 0.0,
           "ZPosition": 1.45
         },
         {
           "Id": "0_2.4_1.45",
           "LayerId": 0,
-          "YRotation": 90,
+          "YRotation": 90.0,
           "XPosition": 2.4,
           "ZPosition": 1.45
         },
         {
           "Id": "0_-2.4_-1.45",
           "LayerId": 0,
-          "YRotation": 90,
+          "YRotation": 90.0,
           "XPosition": -2.4,
           "ZPosition": -1.45
         },
         {
           "Id": "0_0.0_-1.45",
           "LayerId": 0,
-          "YRotation": 90,
-          "XPosition": 0,
+          "YRotation": 90.0,
+          "XPosition": 0.0,
           "ZPosition": -1.45
         },
         {
           "Id": "0_2.4_-1.45",
           "LayerId": 0,
-          "YRotation": 90,
+          "YRotation": 90.0,
           "XPosition": 2.4,
           "ZPosition": -1.45
         },
         {
-          "Id": "1_-1.2_1.45",
+          "Id": "1_-1.35_1.45",
           "LayerId": 1,
-          "YRotation": 0,
-          "XPosition": -1.2,
+          "YRotation": 0.0,
+          "XPosition": -1.35,
           "ZPosition": 1.45
         },
         {
-          "Id": "1_1.2_1.45",
+          "Id": "1_1.35_1.45",
           "LayerId": 1,
-          "YRotation": 0,
-          "XPosition": 1.2,
+          "YRotation": 0.0,
+          "XPosition": 1.35,
           "ZPosition": 1.45
         },
         {
-          "Id": "1_-1.2_-1.45",
+          "Id": "1_-1.35_-1.45",
           "LayerId": 1,
-          "YRotation": 0,
-          "XPosition": -1.2,
+          "YRotation": 0.0,
+          "XPosition": -1.35,
           "ZPosition": -1.45
         },
         {
-          "Id": "1_1.2_-1.45",
+          "Id": "1_1.35_-1.45",
           "LayerId": 1,
-          "YRotation": 0,
-          "XPosition": 1.2,
+          "YRotation": 0.0,
+          "XPosition": 1.35,
           "ZPosition": -1.45
         },
         {
-          "Id": "2_-1.2_0.0",
+          "Id": "2_-0.95_0.0",
           "LayerId": 2,
-          "YRotation": 90,
-          "XPosition": -1.2,
-          "ZPosition": 0
+          "YRotation": 90.0,
+          "XPosition": -0.95,
+          "ZPosition": 0.0
         },
         {
-          "Id": "2_1.2_0.0",
+          "Id": "2_0.95_0.0",
           "LayerId": 2,
-          "YRotation": 90,
-          "XPosition": 1.2,
-          "ZPosition": 0
+          "YRotation": 90.0,
+          "XPosition": 0.95,
+          "ZPosition": 0.0
         },
         {
           "Id": "3_0.0_0.85",
           "LayerId": 3,
-          "YRotation": 0,
-          "XPosition": 0,
+          "YRotation": 0.0,
+          "XPosition": 0.0,
           "ZPosition": 0.85
         },
         {
           "Id": "3_0.0_-0.85",
           "LayerId": 3,
-          "YRotation": 0,
-          "XPosition": 0,
+          "YRotation": 0.0,
+          "XPosition": 0.0,
           "ZPosition": -0.85
         }
       ],
@@ -8182,17 +8208,19 @@ export const SAMPLE_LEVELS: SampleLevel[] = [
         {
           "Id": "0_-2.4_1.45",
           "TypeId": 3,
-          "BoxColor": 1,
+          "BoxColor": 0,
           "BlockedNodes": [],
           "InitCards": [
+            0,
+            0,
+            0,
+            1,
+            1,
+            1,
             2,
             2,
             2,
-            3,
-            3,
-            3,
-            4,
-            4
+            2
           ],
           "IsHidden": false,
           "LockedTurn": 0,
@@ -8202,17 +8230,19 @@ export const SAMPLE_LEVELS: SampleLevel[] = [
         {
           "Id": "0_0.0_1.45",
           "TypeId": 3,
-          "BoxColor": 2,
+          "BoxColor": 1,
           "BlockedNodes": [],
           "InitCards": [
+            1,
+            1,
+            1,
+            1,
+            1,
             2,
             2,
             2,
             2,
-            4,
-            4,
-            4,
-            4
+            2
           ],
           "IsHidden": false,
           "LockedTurn": 0,
@@ -8222,17 +8252,19 @@ export const SAMPLE_LEVELS: SampleLevel[] = [
         {
           "Id": "0_2.4_1.45",
           "TypeId": 3,
-          "BoxColor": 3,
+          "BoxColor": 2,
           "BlockedNodes": [],
           "InitCards": [
+            0,
+            0,
+            0,
             1,
             1,
             1,
-            1,
-            4,
-            4,
-            4,
-            4
+            6,
+            6,
+            6,
+            6
           ],
           "IsHidden": false,
           "LockedTurn": 0,
@@ -8242,17 +8274,19 @@ export const SAMPLE_LEVELS: SampleLevel[] = [
         {
           "Id": "0_-2.4_-1.45",
           "TypeId": 3,
-          "BoxColor": 4,
+          "BoxColor": 6,
           "BlockedNodes": [],
           "InitCards": [
-            4,
-            4,
-            1,
-            1,
-            1,
-            3,
-            3,
-            3
+            6,
+            6,
+            6,
+            6,
+            0,
+            0,
+            0,
+            2,
+            2,
+            2
           ],
           "IsHidden": false,
           "LockedTurn": 0,
@@ -8262,70 +8296,14 @@ export const SAMPLE_LEVELS: SampleLevel[] = [
         {
           "Id": "0_0.0_-1.45",
           "TypeId": 3,
-          "BoxColor": 1,
+          "BoxColor": 0,
           "BlockedNodes": [],
           "InitCards": [
+            0,
+            0,
+            0,
+            0,
             1,
-            2,
-            2,
-            2,
-            2,
-            2,
-            4,
-            4
-          ],
-          "IsHidden": false,
-          "LockedTurn": 0,
-          "IsPaperBox": false,
-          "IsRainbowBox": false
-        },
-        {
-          "Id": "0_2.4_-1.45",
-          "TypeId": 3,
-          "BoxColor": 2,
-          "BlockedNodes": [],
-          "InitCards": [],
-          "IsHidden": false,
-          "LockedTurn": 0,
-          "IsPaperBox": false,
-          "IsRainbowBox": false
-        },
-        {
-          "Id": "1_-1.2_1.45",
-          "TypeId": 3,
-          "BoxColor": 3,
-          "BlockedNodes": [
-            "0_-2.4_1.45",
-            "0_0.0_1.45"
-          ],
-          "InitCards": [
-            2,
-            2,
-            2,
-            2,
-            4,
-            4,
-            4,
-            4
-          ],
-          "IsHidden": false,
-          "LockedTurn": 0,
-          "IsPaperBox": false,
-          "IsRainbowBox": false
-        },
-        {
-          "Id": "1_1.2_1.45",
-          "TypeId": 3,
-          "BoxColor": 4,
-          "BlockedNodes": [
-            "0_0.0_1.45",
-            "0_2.4_1.45"
-          ],
-          "InitCards": [
-            3,
-            3,
-            3,
-            3,
             1,
             1,
             1,
@@ -8337,18 +8315,64 @@ export const SAMPLE_LEVELS: SampleLevel[] = [
           "IsRainbowBox": false
         },
         {
-          "Id": "1_-1.2_-1.45",
+          "Id": "0_2.4_-1.45",
           "TypeId": 3,
           "BoxColor": 1,
+          "BlockedNodes": [],
+          "InitCards": [
+            1,
+            1,
+            1,
+            1,
+            6,
+            6,
+            6,
+            6,
+            6
+          ],
+          "IsHidden": false,
+          "LockedTurn": 0,
+          "IsPaperBox": false,
+          "IsRainbowBox": false
+        },
+        {
+          "Id": "1_-1.35_1.45",
+          "TypeId": 3,
+          "BoxColor": 2,
           "BlockedNodes": [
-            "0_-2.4_-1.45",
-            "0_0.0_-1.45"
+            "0_-2.4_1.45",
+            "0_0.0_1.45"
           ],
           "InitCards": [
-            3,
-            3,
-            3,
-            3,
+            2,
+            2,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0
+          ],
+          "IsHidden": false,
+          "LockedTurn": 0,
+          "IsPaperBox": false,
+          "IsRainbowBox": false
+        },
+        {
+          "Id": "1_1.35_1.45",
+          "TypeId": 3,
+          "BoxColor": 6,
+          "BlockedNodes": [
+            "0_0.0_1.45",
+            "0_2.4_1.45"
+          ],
+          "InitCards": [
+            6,
+            6,
+            6,
+            6,
+            6,
             2,
             2,
             2,
@@ -8360,9 +8384,33 @@ export const SAMPLE_LEVELS: SampleLevel[] = [
           "IsRainbowBox": false
         },
         {
-          "Id": "1_1.2_-1.45",
+          "Id": "1_-1.35_-1.45",
           "TypeId": 3,
-          "BoxColor": 2,
+          "BoxColor": 0,
+          "BlockedNodes": [
+            "0_-2.4_-1.45",
+            "0_0.0_-1.45"
+          ],
+          "InitCards": [
+            0,
+            0,
+            0,
+            0,
+            2,
+            2,
+            2,
+            2,
+            2
+          ],
+          "IsHidden": false,
+          "LockedTurn": 0,
+          "IsPaperBox": false,
+          "IsRainbowBox": false
+        },
+        {
+          "Id": "1_1.35_-1.45",
+          "TypeId": 3,
+          "BoxColor": 1,
           "BlockedNodes": [
             "0_0.0_-1.45",
             "0_2.4_-1.45"
@@ -8372,10 +8420,11 @@ export const SAMPLE_LEVELS: SampleLevel[] = [
             1,
             1,
             1,
-            3,
-            3,
-            3,
-            3
+            1,
+            1,
+            0,
+            0,
+            0
           ],
           "IsHidden": false,
           "LockedTurn": 0,
@@ -8383,26 +8432,25 @@ export const SAMPLE_LEVELS: SampleLevel[] = [
           "IsRainbowBox": false
         },
         {
-          "Id": "2_-1.2_0.0",
+          "Id": "2_-0.95_0.0",
           "TypeId": 3,
-          "BoxColor": 3,
+          "BoxColor": 2,
           "BlockedNodes": [
-            "0_-2.4_1.45",
             "0_0.0_1.45",
-            "0_-2.4_-1.45",
             "0_0.0_-1.45",
-            "1_-1.2_1.45",
-            "1_-1.2_-1.45"
+            "1_-1.35_1.45",
+            "1_-1.35_-1.45"
           ],
           "InitCards": [
-            1,
-            1,
-            1,
-            1,
-            4,
-            4,
-            4,
-            4
+            2,
+            2,
+            2,
+            2,
+            6,
+            6,
+            6,
+            6,
+            6
           ],
           "IsHidden": false,
           "LockedTurn": 0,
@@ -8410,26 +8458,25 @@ export const SAMPLE_LEVELS: SampleLevel[] = [
           "IsRainbowBox": false
         },
         {
-          "Id": "2_1.2_0.0",
+          "Id": "2_0.95_0.0",
           "TypeId": 3,
-          "BoxColor": 4,
+          "BoxColor": 6,
           "BlockedNodes": [
             "0_0.0_1.45",
-            "0_2.4_1.45",
             "0_0.0_-1.45",
-            "0_2.4_-1.45",
-            "1_1.2_1.45",
-            "1_1.2_-1.45"
+            "1_1.35_1.45",
+            "1_1.35_-1.45"
           ],
           "InitCards": [
+            0,
+            0,
+            0,
             1,
             1,
             1,
-            1,
-            3,
-            3,
-            3,
-            3
+            2,
+            2,
+            2
           ],
           "IsHidden": false,
           "LockedTurn": 0,
@@ -8438,20 +8485,20 @@ export const SAMPLE_LEVELS: SampleLevel[] = [
         },
         {
           "Id": "3_0.0_0.85",
-          "TypeId": 1,
-          "BoxColor": 1,
+          "TypeId": 0,
+          "BoxColor": 5,
           "BlockedNodes": [
             "0_0.0_1.45",
-            "1_-1.2_1.45",
-            "1_1.2_1.45",
-            "2_-1.2_0.0",
-            "2_1.2_0.0"
+            "1_-1.35_1.45",
+            "1_1.35_1.45",
+            "2_-0.95_0.0",
+            "2_0.95_0.0"
           ],
           "InitCards": [
-            2,
-            2,
-            3,
-            3
+            6,
+            6,
+            6,
+            6
           ],
           "IsHidden": false,
           "LockedTurn": 0,
@@ -8460,20 +8507,20 @@ export const SAMPLE_LEVELS: SampleLevel[] = [
         },
         {
           "Id": "3_0.0_-0.85",
-          "TypeId": 1,
-          "BoxColor": 1,
+          "TypeId": 0,
+          "BoxColor": 5,
           "BlockedNodes": [
             "0_0.0_-1.45",
-            "1_-1.2_-1.45",
-            "1_1.2_-1.45",
-            "2_-1.2_0.0",
-            "2_1.2_0.0"
+            "1_-1.35_-1.45",
+            "1_1.35_-1.45",
+            "2_-0.95_0.0",
+            "2_0.95_0.0"
           ],
           "InitCards": [
-            4,
-            4,
-            2,
-            2
+            1,
+            6,
+            6,
+            6
           ],
           "IsHidden": false,
           "LockedTurn": 0,
@@ -8501,136 +8548,136 @@ export const SAMPLE_LEVELS: SampleLevel[] = [
         {
           "Id": "0_-2.1_1.55",
           "LayerId": 0,
-          "YRotation": 0,
+          "YRotation": 0.0,
           "XPosition": -2.1,
           "ZPosition": 1.55
         },
         {
           "Id": "0_0.0_1.55",
           "LayerId": 0,
-          "YRotation": 0,
-          "XPosition": 0,
+          "YRotation": 0.0,
+          "XPosition": 0.0,
           "ZPosition": 1.55
         },
         {
           "Id": "0_2.1_1.55",
           "LayerId": 0,
-          "YRotation": 0,
+          "YRotation": 0.0,
           "XPosition": 2.1,
           "ZPosition": 1.55
         },
         {
           "Id": "0_-2.1_0.0",
           "LayerId": 0,
-          "YRotation": 90,
+          "YRotation": 90.0,
           "XPosition": -2.1,
-          "ZPosition": 0
+          "ZPosition": 0.0
         },
         {
           "Id": "0_2.1_0.0",
           "LayerId": 0,
-          "YRotation": 90,
+          "YRotation": 90.0,
           "XPosition": 2.1,
-          "ZPosition": 0
+          "ZPosition": 0.0
         },
         {
           "Id": "0_0.0_0.0",
           "LayerId": 0,
-          "YRotation": 0,
-          "XPosition": 0,
-          "ZPosition": 0
+          "YRotation": 0.0,
+          "XPosition": 0.0,
+          "ZPosition": 0.0
         },
         {
           "Id": "0_-2.1_-1.55",
           "LayerId": 0,
-          "YRotation": 0,
+          "YRotation": 0.0,
           "XPosition": -2.1,
           "ZPosition": -1.55
         },
         {
           "Id": "0_0.0_-1.55",
           "LayerId": 0,
-          "YRotation": 0,
-          "XPosition": 0,
+          "YRotation": 0.0,
+          "XPosition": 0.0,
           "ZPosition": -1.55
         },
         {
           "Id": "0_2.1_-1.55",
           "LayerId": 0,
-          "YRotation": 0,
+          "YRotation": 0.0,
           "XPosition": 2.1,
           "ZPosition": -1.55
         },
         {
           "Id": "1_-1.3_0.95",
           "LayerId": 1,
-          "YRotation": 90,
+          "YRotation": 90.0,
           "XPosition": -1.3,
           "ZPosition": 0.95
         },
         {
           "Id": "1_1.3_0.95",
           "LayerId": 1,
-          "YRotation": 90,
+          "YRotation": 90.0,
           "XPosition": 1.3,
           "ZPosition": 0.95
         },
         {
           "Id": "1_-1.3_-0.95",
           "LayerId": 1,
-          "YRotation": 90,
+          "YRotation": 90.0,
           "XPosition": -1.3,
           "ZPosition": -0.95
         },
         {
           "Id": "1_1.3_-0.95",
           "LayerId": 1,
-          "YRotation": 90,
+          "YRotation": 90.0,
           "XPosition": 1.3,
           "ZPosition": -0.95
         },
         {
           "Id": "1_0.0_0.0",
           "LayerId": 1,
-          "YRotation": 90,
-          "XPosition": 0,
-          "ZPosition": 0
+          "YRotation": 90.0,
+          "XPosition": 0.0,
+          "ZPosition": 0.0
         },
         {
           "Id": "2_0.0_0.95",
           "LayerId": 2,
-          "YRotation": 0,
-          "XPosition": 0,
+          "YRotation": 0.0,
+          "XPosition": 0.0,
           "ZPosition": 0.95
         },
         {
           "Id": "2_0.0_-0.95",
           "LayerId": 2,
-          "YRotation": 0,
-          "XPosition": 0,
+          "YRotation": 0.0,
+          "XPosition": 0.0,
           "ZPosition": -0.95
         },
         {
           "Id": "3_0.0_0.0",
           "LayerId": 3,
-          "YRotation": 90,
-          "XPosition": 0,
-          "ZPosition": 0
+          "YRotation": 90.0,
+          "XPosition": 0.0,
+          "ZPosition": 0.0
         }
       ],
       "BoxNodes": [
         {
           "Id": "0_-2.1_1.55",
-          "TypeId": 2,
-          "BoxColor": 1,
+          "TypeId": 1,
+          "BoxColor": 0,
           "BlockedNodes": [],
           "InitCards": [
-            3,
-            3,
-            3,
-            5,
-            5,
-            5
+            0,
+            0,
+            0,
+            1,
+            1,
+            1
           ],
           "IsHidden": false,
           "LockedTurn": 3,
@@ -8639,16 +8686,16 @@ export const SAMPLE_LEVELS: SampleLevel[] = [
         },
         {
           "Id": "0_0.0_1.55",
-          "TypeId": 2,
-          "BoxColor": 2,
+          "TypeId": 1,
+          "BoxColor": 1,
           "BlockedNodes": [],
           "InitCards": [
-            5,
-            5,
             1,
             1,
-            4,
-            4
+            1,
+            2,
+            2,
+            2
           ],
           "IsHidden": false,
           "LockedTurn": 0,
@@ -8657,16 +8704,16 @@ export const SAMPLE_LEVELS: SampleLevel[] = [
         },
         {
           "Id": "0_2.1_1.55",
-          "TypeId": 2,
-          "BoxColor": 3,
+          "TypeId": 1,
+          "BoxColor": 2,
           "BlockedNodes": [],
           "InitCards": [
-            3,
-            2,
-            2,
-            4,
-            4,
-            1
+            0,
+            0,
+            1,
+            1,
+            7,
+            7
           ],
           "IsHidden": false,
           "LockedTurn": 3,
@@ -8675,16 +8722,16 @@ export const SAMPLE_LEVELS: SampleLevel[] = [
         },
         {
           "Id": "0_-2.1_0.0",
-          "TypeId": 2,
-          "BoxColor": 4,
+          "TypeId": 1,
+          "BoxColor": 6,
           "BlockedNodes": [],
           "InitCards": [
-            3,
-            3,
-            3,
-            5,
-            5,
-            5
+            6,
+            6,
+            6,
+            0,
+            0,
+            0
           ],
           "IsHidden": false,
           "LockedTurn": 0,
@@ -8693,13 +8740,31 @@ export const SAMPLE_LEVELS: SampleLevel[] = [
         },
         {
           "Id": "0_2.1_0.0",
-          "TypeId": 2,
-          "BoxColor": 5,
+          "TypeId": 1,
+          "BoxColor": 7,
           "BlockedNodes": [],
           "InitCards": [
-            2,
-            2,
-            2,
+            7,
+            7,
+            7,
+            6,
+            6,
+            6
+          ],
+          "IsHidden": false,
+          "LockedTurn": 0,
+          "IsPaperBox": false,
+          "IsRainbowBox": false
+        },
+        {
+          "Id": "0_0.0_0.0",
+          "TypeId": 1,
+          "BoxColor": 4,
+          "BlockedNodes": [],
+          "InitCards": [
+            4,
+            4,
+            4,
             1,
             1,
             1
@@ -8710,35 +8775,17 @@ export const SAMPLE_LEVELS: SampleLevel[] = [
           "IsRainbowBox": false
         },
         {
-          "Id": "0_0.0_0.0",
-          "TypeId": 2,
-          "BoxColor": 1,
+          "Id": "0_-2.1_-1.55",
+          "TypeId": 1,
+          "BoxColor": 0,
           "BlockedNodes": [],
           "InitCards": [
-            4,
-            4,
-            4,
+            0,
+            0,
+            0,
             2,
             2,
             2
-          ],
-          "IsHidden": false,
-          "LockedTurn": 0,
-          "IsPaperBox": true,
-          "IsRainbowBox": false
-        },
-        {
-          "Id": "0_-2.1_-1.55",
-          "TypeId": 2,
-          "BoxColor": 1,
-          "BlockedNodes": [],
-          "InitCards": [
-            3,
-            3,
-            3,
-            5,
-            5,
-            5
           ],
           "IsHidden": false,
           "LockedTurn": 2,
@@ -8747,12 +8794,16 @@ export const SAMPLE_LEVELS: SampleLevel[] = [
         },
         {
           "Id": "0_0.0_-1.55",
-          "TypeId": 2,
-          "BoxColor": 2,
+          "TypeId": 1,
+          "BoxColor": 1,
           "BlockedNodes": [],
           "InitCards": [
             1,
-            4
+            1,
+            2,
+            2,
+            7,
+            7
           ],
           "IsHidden": false,
           "LockedTurn": 0,
@@ -8761,10 +8812,17 @@ export const SAMPLE_LEVELS: SampleLevel[] = [
         },
         {
           "Id": "0_2.1_-1.55",
-          "TypeId": 2,
-          "BoxColor": 3,
+          "TypeId": 1,
+          "BoxColor": 2,
           "BlockedNodes": [],
-          "InitCards": [],
+          "InitCards": [
+            2,
+            2,
+            2,
+            7,
+            7,
+            7
+          ],
           "IsHidden": false,
           "LockedTurn": 2,
           "IsPaperBox": false,
@@ -8772,8 +8830,8 @@ export const SAMPLE_LEVELS: SampleLevel[] = [
         },
         {
           "Id": "1_-1.3_0.95",
-          "TypeId": 2,
-          "BoxColor": 4,
+          "TypeId": 1,
+          "BoxColor": 6,
           "BlockedNodes": [
             "0_-2.1_1.55",
             "0_0.0_1.55",
@@ -8781,12 +8839,12 @@ export const SAMPLE_LEVELS: SampleLevel[] = [
             "0_0.0_0.0"
           ],
           "InitCards": [
-            5,
-            5,
-            5,
-            1,
-            1,
-            1
+            6,
+            6,
+            6,
+            2,
+            2,
+            2
           ],
           "IsHidden": false,
           "LockedTurn": 0,
@@ -8795,8 +8853,8 @@ export const SAMPLE_LEVELS: SampleLevel[] = [
         },
         {
           "Id": "1_1.3_0.95",
-          "TypeId": 2,
-          "BoxColor": 5,
+          "TypeId": 1,
+          "BoxColor": 7,
           "BlockedNodes": [
             "0_0.0_1.55",
             "0_2.1_1.55",
@@ -8804,12 +8862,12 @@ export const SAMPLE_LEVELS: SampleLevel[] = [
             "0_0.0_0.0"
           ],
           "InitCards": [
-            4,
-            4,
-            3,
-            3,
-            2,
-            2
+            0,
+            0,
+            1,
+            1,
+            6,
+            6
           ],
           "IsHidden": false,
           "LockedTurn": 2,
@@ -8818,8 +8876,8 @@ export const SAMPLE_LEVELS: SampleLevel[] = [
         },
         {
           "Id": "1_-1.3_-0.95",
-          "TypeId": 2,
-          "BoxColor": 1,
+          "TypeId": 1,
+          "BoxColor": 0,
           "BlockedNodes": [
             "0_-2.1_0.0",
             "0_0.0_0.0",
@@ -8827,12 +8885,12 @@ export const SAMPLE_LEVELS: SampleLevel[] = [
             "0_0.0_-1.55"
           ],
           "InitCards": [
-            4,
-            4,
-            4,
+            0,
+            0,
             2,
             2,
-            2
+            6,
+            6
           ],
           "IsHidden": false,
           "LockedTurn": 0,
@@ -8841,8 +8899,8 @@ export const SAMPLE_LEVELS: SampleLevel[] = [
         },
         {
           "Id": "1_1.3_-0.95",
-          "TypeId": 2,
-          "BoxColor": 2,
+          "TypeId": 1,
+          "BoxColor": 1,
           "BlockedNodes": [
             "0_2.1_0.0",
             "0_0.0_0.0",
@@ -8850,12 +8908,11 @@ export const SAMPLE_LEVELS: SampleLevel[] = [
             "0_2.1_-1.55"
           ],
           "InitCards": [
-            3,
-            3,
-            5,
-            5,
             1,
-            1
+            1,
+            1,
+            2,
+            7
           ],
           "IsHidden": false,
           "LockedTurn": 3,
@@ -8864,18 +8921,17 @@ export const SAMPLE_LEVELS: SampleLevel[] = [
         },
         {
           "Id": "1_0.0_0.0",
-          "TypeId": 2,
-          "BoxColor": 3,
+          "TypeId": 1,
+          "BoxColor": 2,
           "BlockedNodes": [
             "0_0.0_0.0"
           ],
           "InitCards": [
-            4,
-            4,
-            1,
-            1,
-            5,
-            2
+            6,
+            6,
+            7,
+            7,
+            7
           ],
           "IsHidden": false,
           "LockedTurn": 0,
@@ -8884,8 +8940,8 @@ export const SAMPLE_LEVELS: SampleLevel[] = [
         },
         {
           "Id": "2_0.0_0.95",
-          "TypeId": 2,
-          "BoxColor": 4,
+          "TypeId": 1,
+          "BoxColor": 6,
           "BlockedNodes": [
             "0_0.0_1.55",
             "0_0.0_0.0",
@@ -8894,12 +8950,11 @@ export const SAMPLE_LEVELS: SampleLevel[] = [
             "1_0.0_0.0"
           ],
           "InitCards": [
-            2,
-            2,
-            1,
-            1,
-            3,
-            3
+            4,
+            4,
+            4,
+            7,
+            7
           ],
           "IsHidden": false,
           "LockedTurn": 0,
@@ -8908,8 +8963,8 @@ export const SAMPLE_LEVELS: SampleLevel[] = [
         },
         {
           "Id": "2_0.0_-0.95",
-          "TypeId": 2,
-          "BoxColor": 5,
+          "TypeId": 1,
+          "BoxColor": 7,
           "BlockedNodes": [
             "0_0.0_0.0",
             "0_0.0_-1.55",
@@ -8918,12 +8973,11 @@ export const SAMPLE_LEVELS: SampleLevel[] = [
             "1_0.0_0.0"
           ],
           "InitCards": [
-            5,
-            1,
-            1,
-            2,
-            2,
-            4
+            0,
+            0,
+            0,
+            6,
+            6
           ],
           "IsHidden": false,
           "LockedTurn": 0,
@@ -8932,20 +8986,19 @@ export const SAMPLE_LEVELS: SampleLevel[] = [
         },
         {
           "Id": "3_0.0_0.0",
-          "TypeId": 1,
-          "BoxColor": 1,
+          "TypeId": 0,
+          "BoxColor": 5,
           "BlockedNodes": [
             "0_0.0_0.0",
-            "1_1.3_0.95",
             "1_0.0_0.0",
             "2_0.0_0.95",
             "2_0.0_-0.95"
           ],
           "InitCards": [
-            3,
-            3,
-            4,
-            4
+            2,
+            6,
+            7,
+            7
           ],
           "IsHidden": false,
           "LockedTurn": 0,
@@ -8973,206 +9026,206 @@ export const SAMPLE_LEVELS: SampleLevel[] = [
         {
           "Id": "0_-3.0_2.05",
           "LayerId": 0,
-          "YRotation": 0,
-          "XPosition": -3,
+          "YRotation": 0.0,
+          "XPosition": -3.0,
           "ZPosition": 2.05
         },
         {
           "Id": "0_-1.0_2.05",
           "LayerId": 0,
-          "YRotation": 0,
-          "XPosition": -1,
+          "YRotation": 0.0,
+          "XPosition": -1.0,
           "ZPosition": 2.05
         },
         {
           "Id": "0_1.0_2.05",
           "LayerId": 0,
-          "YRotation": 0,
-          "XPosition": 1,
+          "YRotation": 0.0,
+          "XPosition": 1.0,
           "ZPosition": 2.05
         },
         {
           "Id": "0_3.0_2.05",
           "LayerId": 0,
-          "YRotation": 0,
-          "XPosition": 3,
+          "YRotation": 0.0,
+          "XPosition": 3.0,
           "ZPosition": 2.05
         },
         {
           "Id": "0_-3.0_0.0",
           "LayerId": 0,
-          "YRotation": 0,
-          "XPosition": -3,
-          "ZPosition": 0
+          "YRotation": 0.0,
+          "XPosition": -3.0,
+          "ZPosition": 0.0
         },
         {
           "Id": "0_-1.0_0.0",
           "LayerId": 0,
-          "YRotation": 0,
-          "XPosition": -1,
-          "ZPosition": 0
+          "YRotation": 0.0,
+          "XPosition": -1.0,
+          "ZPosition": 0.0
         },
         {
           "Id": "0_1.0_0.0",
           "LayerId": 0,
-          "YRotation": 0,
-          "XPosition": 1,
-          "ZPosition": 0
+          "YRotation": 0.0,
+          "XPosition": 1.0,
+          "ZPosition": 0.0
         },
         {
           "Id": "0_3.0_0.0",
           "LayerId": 0,
-          "YRotation": 0,
-          "XPosition": 3,
-          "ZPosition": 0
+          "YRotation": 0.0,
+          "XPosition": 3.0,
+          "ZPosition": 0.0
         },
         {
           "Id": "0_-3.0_-2.05",
           "LayerId": 0,
-          "YRotation": 0,
-          "XPosition": -3,
+          "YRotation": 0.0,
+          "XPosition": -3.0,
           "ZPosition": -2.05
         },
         {
           "Id": "0_-1.0_-2.05",
           "LayerId": 0,
-          "YRotation": 0,
-          "XPosition": -1,
+          "YRotation": 0.0,
+          "XPosition": -1.0,
           "ZPosition": -2.05
         },
         {
           "Id": "0_1.0_-2.05",
           "LayerId": 0,
-          "YRotation": 0,
-          "XPosition": 1,
+          "YRotation": 0.0,
+          "XPosition": 1.0,
           "ZPosition": -2.05
         },
         {
           "Id": "0_3.0_-2.05",
           "LayerId": 0,
-          "YRotation": 0,
-          "XPosition": 3,
+          "YRotation": 0.0,
+          "XPosition": 3.0,
           "ZPosition": -2.05
         },
         {
           "Id": "1_-3.0_1.05",
           "LayerId": 1,
-          "YRotation": 90,
-          "XPosition": -3,
+          "YRotation": 90.0,
+          "XPosition": -3.0,
           "ZPosition": 1.05
         },
         {
           "Id": "1_-1.0_1.05",
           "LayerId": 1,
-          "YRotation": 90,
-          "XPosition": -1,
+          "YRotation": 90.0,
+          "XPosition": -1.0,
           "ZPosition": 1.05
         },
         {
           "Id": "1_1.0_1.05",
           "LayerId": 1,
-          "YRotation": 90,
-          "XPosition": 1,
+          "YRotation": 90.0,
+          "XPosition": 1.0,
           "ZPosition": 1.05
         },
         {
           "Id": "1_3.0_1.05",
           "LayerId": 1,
-          "YRotation": 90,
-          "XPosition": 3,
+          "YRotation": 90.0,
+          "XPosition": 3.0,
           "ZPosition": 1.05
         },
         {
           "Id": "1_-3.0_-1.05",
           "LayerId": 1,
-          "YRotation": 90,
-          "XPosition": -3,
+          "YRotation": 90.0,
+          "XPosition": -3.0,
           "ZPosition": -1.05
         },
         {
           "Id": "1_-1.0_-1.05",
           "LayerId": 1,
-          "YRotation": 90,
-          "XPosition": -1,
+          "YRotation": 90.0,
+          "XPosition": -1.0,
           "ZPosition": -1.05
         },
         {
           "Id": "1_1.0_-1.05",
           "LayerId": 1,
-          "YRotation": 90,
-          "XPosition": 1,
+          "YRotation": 90.0,
+          "XPosition": 1.0,
           "ZPosition": -1.05
         },
         {
           "Id": "1_3.0_-1.05",
           "LayerId": 1,
-          "YRotation": 90,
-          "XPosition": 3,
+          "YRotation": 90.0,
+          "XPosition": 3.0,
           "ZPosition": -1.05
         },
         {
           "Id": "2_-1.8_0.7",
           "LayerId": 2,
-          "YRotation": 0,
+          "YRotation": 0.0,
           "XPosition": -1.8,
           "ZPosition": 0.7
         },
         {
           "Id": "2_1.8_0.7",
           "LayerId": 2,
-          "YRotation": 0,
+          "YRotation": 0.0,
           "XPosition": 1.8,
           "ZPosition": 0.7
         },
         {
           "Id": "2_-1.8_-0.7",
           "LayerId": 2,
-          "YRotation": 0,
+          "YRotation": 0.0,
           "XPosition": -1.8,
           "ZPosition": -0.7
         },
         {
           "Id": "2_1.8_-0.7",
           "LayerId": 2,
-          "YRotation": 0,
+          "YRotation": 0.0,
           "XPosition": 1.8,
           "ZPosition": -0.7
         },
         {
           "Id": "3_-1.0_0.0",
           "LayerId": 3,
-          "YRotation": 90,
-          "XPosition": -1,
-          "ZPosition": 0
+          "YRotation": 90.0,
+          "XPosition": -1.0,
+          "ZPosition": 0.0
         },
         {
           "Id": "3_1.0_0.0",
           "LayerId": 3,
-          "YRotation": 90,
-          "XPosition": 1,
-          "ZPosition": 0
+          "YRotation": 90.0,
+          "XPosition": 1.0,
+          "ZPosition": 0.0
         },
         {
           "Id": "4_0.0_0.0",
           "LayerId": 4,
-          "YRotation": 0,
-          "XPosition": 0,
-          "ZPosition": 0
+          "YRotation": 0.0,
+          "XPosition": 0.0,
+          "ZPosition": 0.0
         }
       ],
       "BoxNodes": [
         {
           "Id": "0_-3.0_2.05",
-          "TypeId": 2,
-          "BoxColor": 1,
+          "TypeId": 1,
+          "BoxColor": 0,
           "BlockedNodes": [],
           "InitCards": [
-            3,
-            3,
-            3,
-            5,
-            5,
-            5
+            0,
+            0,
+            1,
+            1,
+            6,
+            6
           ],
           "IsHidden": false,
           "LockedTurn": 0,
@@ -9181,16 +9234,16 @@ export const SAMPLE_LEVELS: SampleLevel[] = [
         },
         {
           "Id": "0_-1.0_2.05",
-          "TypeId": 2,
-          "BoxColor": 2,
+          "TypeId": 1,
+          "BoxColor": 1,
           "BlockedNodes": [],
           "InitCards": [
             1,
             1,
             1,
-            4,
-            4,
-            4
+            0,
+            0,
+            0
           ],
           "IsHidden": false,
           "LockedTurn": 0,
@@ -9199,16 +9252,16 @@ export const SAMPLE_LEVELS: SampleLevel[] = [
         },
         {
           "Id": "0_1.0_2.05",
-          "TypeId": 2,
-          "BoxColor": 3,
+          "TypeId": 1,
+          "BoxColor": 2,
           "BlockedNodes": [],
           "InitCards": [
             1,
             1,
-            5,
-            5,
-            4,
-            4
+            6,
+            6,
+            7,
+            7
           ],
           "IsHidden": false,
           "LockedTurn": 0,
@@ -9217,16 +9270,16 @@ export const SAMPLE_LEVELS: SampleLevel[] = [
         },
         {
           "Id": "0_3.0_2.05",
-          "TypeId": 2,
-          "BoxColor": 4,
+          "TypeId": 1,
+          "BoxColor": 6,
           "BlockedNodes": [],
           "InitCards": [
+            0,
+            0,
             1,
             1,
-            1,
-            3,
-            3,
-            3
+            7,
+            7
           ],
           "IsHidden": false,
           "LockedTurn": 0,
@@ -9235,16 +9288,16 @@ export const SAMPLE_LEVELS: SampleLevel[] = [
         },
         {
           "Id": "0_-3.0_0.0",
-          "TypeId": 2,
-          "BoxColor": 5,
+          "TypeId": 1,
+          "BoxColor": 7,
           "BlockedNodes": [],
           "InitCards": [
+            7,
+            7,
+            7,
             2,
             2,
-            1,
-            1,
-            3,
-            3
+            2
           ],
           "IsHidden": false,
           "LockedTurn": 0,
@@ -9253,32 +9306,50 @@ export const SAMPLE_LEVELS: SampleLevel[] = [
         },
         {
           "Id": "0_-1.0_0.0",
-          "TypeId": 2,
-          "BoxColor": 1,
+          "TypeId": 1,
+          "BoxColor": 4,
           "BlockedNodes": [],
           "InitCards": [
-            5,
-            5,
-            5,
+            4,
+            4,
+            4,
             2,
             2,
             2
           ],
           "IsHidden": false,
           "LockedTurn": 0,
-          "IsPaperBox": true,
+          "IsPaperBox": false,
           "IsRainbowBox": false
         },
         {
           "Id": "0_1.0_0.0",
-          "TypeId": 2,
+          "TypeId": 1,
+          "BoxColor": 0,
+          "BlockedNodes": [],
+          "InitCards": [
+            0,
+            0,
+            1,
+            1,
+            7,
+            7
+          ],
+          "IsHidden": false,
+          "LockedTurn": 0,
+          "IsPaperBox": false,
+          "IsRainbowBox": false
+        },
+        {
+          "Id": "0_3.0_0.0",
+          "TypeId": 1,
           "BoxColor": 1,
           "BlockedNodes": [],
           "InitCards": [
             1,
             1,
-            3,
-            3,
+            1,
+            4,
             4,
             4
           ],
@@ -9288,118 +9359,15 @@ export const SAMPLE_LEVELS: SampleLevel[] = [
           "IsRainbowBox": false
         },
         {
-          "Id": "0_3.0_0.0",
-          "TypeId": 2,
-          "BoxColor": 2,
-          "BlockedNodes": [],
-          "InitCards": [
-            2,
-            5
-          ],
-          "IsHidden": false,
-          "LockedTurn": 0,
-          "IsPaperBox": false,
-          "IsRainbowBox": false
-        },
-        {
           "Id": "0_-3.0_-2.05",
-          "TypeId": 2,
-          "BoxColor": 3,
-          "BlockedNodes": [],
-          "InitCards": [],
-          "IsHidden": false,
-          "LockedTurn": 0,
-          "IsPaperBox": false,
-          "IsRainbowBox": false
-        },
-        {
-          "Id": "0_-1.0_-2.05",
-          "TypeId": 2,
-          "BoxColor": 4,
-          "BlockedNodes": [],
-          "InitCards": [],
-          "IsHidden": false,
-          "LockedTurn": 0,
-          "IsPaperBox": false,
-          "IsRainbowBox": false
-        },
-        {
-          "Id": "0_1.0_-2.05",
-          "TypeId": 2,
-          "BoxColor": 5,
-          "BlockedNodes": [],
-          "InitCards": [],
-          "IsHidden": false,
-          "LockedTurn": 0,
-          "IsPaperBox": false,
-          "IsRainbowBox": false
-        },
-        {
-          "Id": "0_3.0_-2.05",
-          "TypeId": 2,
-          "BoxColor": 1,
-          "BlockedNodes": [],
-          "InitCards": [],
-          "IsHidden": false,
-          "LockedTurn": 0,
-          "IsPaperBox": true,
-          "IsRainbowBox": false
-        },
-        {
-          "Id": "1_-3.0_1.05",
-          "TypeId": 2,
-          "BoxColor": 1,
-          "BlockedNodes": [
-            "0_-3.0_2.05",
-            "0_-3.0_0.0"
-          ],
-          "InitCards": [
-            2,
-            2,
-            2,
-            3,
-            3,
-            3
-          ],
-          "IsHidden": false,
-          "LockedTurn": 0,
-          "IsPaperBox": false,
-          "IsRainbowBox": false
-        },
-        {
-          "Id": "1_-1.0_1.05",
-          "TypeId": 2,
+          "TypeId": 1,
           "BoxColor": 2,
-          "BlockedNodes": [
-            "0_-1.0_2.05",
-            "0_-1.0_0.0"
-          ],
+          "BlockedNodes": [],
           "InitCards": [
-            1,
-            1,
-            4,
-            4,
-            3,
-            3
-          ],
-          "IsHidden": false,
-          "LockedTurn": 0,
-          "IsPaperBox": false,
-          "IsRainbowBox": false
-        },
-        {
-          "Id": "1_1.0_1.05",
-          "TypeId": 2,
-          "BoxColor": 3,
-          "BlockedNodes": [
-            "0_1.0_2.05",
-            "0_1.0_0.0"
-          ],
-          "InitCards": [
-            5,
-            5,
             2,
             2,
+            2,
+            1,
             1,
             1
           ],
@@ -9409,102 +9377,15 @@ export const SAMPLE_LEVELS: SampleLevel[] = [
           "IsRainbowBox": false
         },
         {
-          "Id": "1_3.0_1.05",
-          "TypeId": 2,
-          "BoxColor": 4,
-          "BlockedNodes": [
-            "0_3.0_2.05",
-            "0_3.0_0.0"
-          ],
+          "Id": "0_-1.0_-2.05",
+          "TypeId": 1,
+          "BoxColor": 6,
+          "BlockedNodes": [],
           "InitCards": [
-            1,
-            1,
-            1,
-            2,
-            2,
-            2
-          ],
-          "IsHidden": false,
-          "LockedTurn": 0,
-          "IsPaperBox": false,
-          "IsRainbowBox": false
-        },
-        {
-          "Id": "1_-3.0_-1.05",
-          "TypeId": 2,
-          "BoxColor": 5,
-          "BlockedNodes": [
-            "0_-3.0_0.0",
-            "0_-3.0_-2.05"
-          ],
-          "InitCards": [
+            6,
+            6,
+            6,
             4,
-            4,
-            4,
-            2,
-            2,
-            2
-          ],
-          "IsHidden": false,
-          "LockedTurn": 0,
-          "IsPaperBox": false,
-          "IsRainbowBox": false
-        },
-        {
-          "Id": "1_-1.0_-1.05",
-          "TypeId": 2,
-          "BoxColor": 1,
-          "BlockedNodes": [
-            "0_-1.0_0.0",
-            "0_-1.0_-2.05"
-          ],
-          "InitCards": [
-            5,
-            5,
-            4,
-            4,
-            3,
-            3
-          ],
-          "IsHidden": false,
-          "LockedTurn": 0,
-          "IsPaperBox": true,
-          "IsRainbowBox": false
-        },
-        {
-          "Id": "1_1.0_-1.05",
-          "TypeId": 2,
-          "BoxColor": 1,
-          "BlockedNodes": [
-            "0_1.0_0.0",
-            "0_1.0_-2.05"
-          ],
-          "InitCards": [
-            5,
-            5,
-            5,
-            2,
-            2,
-            2
-          ],
-          "IsHidden": false,
-          "LockedTurn": 0,
-          "IsPaperBox": false,
-          "IsRainbowBox": false
-        },
-        {
-          "Id": "1_3.0_-1.05",
-          "TypeId": 2,
-          "BoxColor": 2,
-          "BlockedNodes": [
-            "0_3.0_0.0",
-            "0_3.0_-2.05"
-          ],
-          "InitCards": [
-            1,
-            1,
-            5,
-            5,
             4,
             4
           ],
@@ -9514,9 +9395,213 @@ export const SAMPLE_LEVELS: SampleLevel[] = [
           "IsRainbowBox": false
         },
         {
+          "Id": "0_1.0_-2.05",
+          "TypeId": 1,
+          "BoxColor": 7,
+          "BlockedNodes": [],
+          "InitCards": [
+            7,
+            7,
+            7,
+            1,
+            1,
+            1
+          ],
+          "IsHidden": false,
+          "LockedTurn": 0,
+          "IsPaperBox": false,
+          "IsRainbowBox": false
+        },
+        {
+          "Id": "0_3.0_-2.05",
+          "TypeId": 1,
+          "BoxColor": 4,
+          "BlockedNodes": [],
+          "InitCards": [
+            0,
+            0,
+            1,
+            1,
+            2,
+            2
+          ],
+          "IsHidden": false,
+          "LockedTurn": 0,
+          "IsPaperBox": false,
+          "IsRainbowBox": false
+        },
+        {
+          "Id": "1_-3.0_1.05",
+          "TypeId": 1,
+          "BoxColor": 0,
+          "BlockedNodes": [
+            "0_-3.0_2.05",
+            "0_-3.0_0.0"
+          ],
+          "InitCards": [
+            0,
+            0,
+            0,
+            7,
+            7,
+            7
+          ],
+          "IsHidden": false,
+          "LockedTurn": 0,
+          "IsPaperBox": false,
+          "IsRainbowBox": false
+        },
+        {
+          "Id": "1_-1.0_1.05",
+          "TypeId": 1,
+          "BoxColor": 1,
+          "BlockedNodes": [
+            "0_-1.0_2.05",
+            "0_-1.0_0.0"
+          ],
+          "InitCards": [
+            1,
+            1,
+            1,
+            0,
+            0,
+            0
+          ],
+          "IsHidden": false,
+          "LockedTurn": 0,
+          "IsPaperBox": false,
+          "IsRainbowBox": false
+        },
+        {
+          "Id": "1_1.0_1.05",
+          "TypeId": 1,
+          "BoxColor": 2,
+          "BlockedNodes": [
+            "0_1.0_2.05",
+            "0_1.0_0.0"
+          ],
+          "InitCards": [
+            2,
+            2,
+            2,
+            6,
+            6,
+            6
+          ],
+          "IsHidden": false,
+          "LockedTurn": 0,
+          "IsPaperBox": false,
+          "IsRainbowBox": false
+        },
+        {
+          "Id": "1_3.0_1.05",
+          "TypeId": 1,
+          "BoxColor": 6,
+          "BlockedNodes": [
+            "0_3.0_2.05",
+            "0_3.0_0.0"
+          ],
+          "InitCards": [
+            6,
+            6,
+            6,
+            7,
+            7,
+            7
+          ],
+          "IsHidden": false,
+          "LockedTurn": 0,
+          "IsPaperBox": false,
+          "IsRainbowBox": false
+        },
+        {
+          "Id": "1_-3.0_-1.05",
+          "TypeId": 1,
+          "BoxColor": 7,
+          "BlockedNodes": [
+            "0_-3.0_0.0",
+            "0_-3.0_-2.05"
+          ],
+          "InitCards": [
+            7,
+            7,
+            7,
+            4,
+            4,
+            4
+          ],
+          "IsHidden": false,
+          "LockedTurn": 0,
+          "IsPaperBox": false,
+          "IsRainbowBox": false
+        },
+        {
+          "Id": "1_-1.0_-1.05",
+          "TypeId": 1,
+          "BoxColor": 4,
+          "BlockedNodes": [
+            "0_-1.0_0.0",
+            "0_-1.0_-2.05"
+          ],
+          "InitCards": [
+            4,
+            4,
+            0,
+            0,
+            2,
+            2
+          ],
+          "IsHidden": false,
+          "LockedTurn": 0,
+          "IsPaperBox": false,
+          "IsRainbowBox": false
+        },
+        {
+          "Id": "1_1.0_-1.05",
+          "TypeId": 1,
+          "BoxColor": 0,
+          "BlockedNodes": [
+            "0_1.0_0.0",
+            "0_1.0_-2.05"
+          ],
+          "InitCards": [
+            0,
+            0,
+            0,
+            6,
+            6,
+            6
+          ],
+          "IsHidden": false,
+          "LockedTurn": 0,
+          "IsPaperBox": false,
+          "IsRainbowBox": false
+        },
+        {
+          "Id": "1_3.0_-1.05",
+          "TypeId": 1,
+          "BoxColor": 1,
+          "BlockedNodes": [
+            "0_3.0_0.0",
+            "0_3.0_-2.05"
+          ],
+          "InitCards": [
+            1,
+            1,
+            1,
+            6,
+            6,
+            6
+          ],
+          "IsHidden": false,
+          "LockedTurn": 0,
+          "IsPaperBox": false,
+          "IsRainbowBox": false
+        },
+        {
           "Id": "2_-1.8_0.7",
-          "TypeId": 2,
-          "BoxColor": 3,
+          "TypeId": 1,
+          "BoxColor": 2,
           "BlockedNodes": [
             "0_-3.0_0.0",
             "0_-1.0_0.0",
@@ -9524,11 +9609,11 @@ export const SAMPLE_LEVELS: SampleLevel[] = [
             "1_-1.0_1.05"
           ],
           "InitCards": [
-            2,
-            2,
-            5,
-            5,
+            0,
+            0,
             1,
+            1,
+            4,
             4
           ],
           "IsHidden": false,
@@ -9538,8 +9623,8 @@ export const SAMPLE_LEVELS: SampleLevel[] = [
         },
         {
           "Id": "2_1.8_0.7",
-          "TypeId": 2,
-          "BoxColor": 4,
+          "TypeId": 1,
+          "BoxColor": 6,
           "BlockedNodes": [
             "0_1.0_0.0",
             "0_3.0_0.0",
@@ -9547,12 +9632,12 @@ export const SAMPLE_LEVELS: SampleLevel[] = [
             "1_3.0_1.05"
           ],
           "InitCards": [
+            6,
+            6,
+            6,
             2,
             2,
-            1,
-            1,
-            3,
-            3
+            2
           ],
           "IsHidden": false,
           "LockedTurn": 0,
@@ -9561,8 +9646,8 @@ export const SAMPLE_LEVELS: SampleLevel[] = [
         },
         {
           "Id": "2_-1.8_-0.7",
-          "TypeId": 2,
-          "BoxColor": 5,
+          "TypeId": 1,
+          "BoxColor": 7,
           "BlockedNodes": [
             "0_-3.0_0.0",
             "0_-1.0_0.0",
@@ -9572,10 +9657,9 @@ export const SAMPLE_LEVELS: SampleLevel[] = [
           "InitCards": [
             2,
             2,
-            1,
-            1,
-            4,
-            3
+            2,
+            6,
+            6
           ],
           "IsHidden": false,
           "LockedTurn": 0,
@@ -9584,8 +9668,8 @@ export const SAMPLE_LEVELS: SampleLevel[] = [
         },
         {
           "Id": "2_1.8_-0.7",
-          "TypeId": 2,
-          "BoxColor": 1,
+          "TypeId": 1,
+          "BoxColor": 4,
           "BlockedNodes": [
             "0_1.0_0.0",
             "0_3.0_0.0",
@@ -9593,22 +9677,21 @@ export const SAMPLE_LEVELS: SampleLevel[] = [
             "1_3.0_-1.05"
           ],
           "InitCards": [
-            1,
-            5,
-            5,
+            4,
+            4,
+            0,
             2,
-            2,
-            4
+            2
           ],
           "IsHidden": false,
           "LockedTurn": 0,
-          "IsPaperBox": true,
+          "IsPaperBox": false,
           "IsRainbowBox": false
         },
         {
           "Id": "3_-1.0_0.0",
-          "TypeId": 2,
-          "BoxColor": 1,
+          "TypeId": 1,
+          "BoxColor": 0,
           "BlockedNodes": [
             "0_-1.0_0.0",
             "1_-1.0_1.05",
@@ -9617,12 +9700,11 @@ export const SAMPLE_LEVELS: SampleLevel[] = [
             "2_-1.8_-0.7"
           ],
           "InitCards": [
+            0,
+            0,
             4,
             4,
-            5,
-            5,
-            3,
-            3
+            4
           ],
           "IsHidden": false,
           "LockedTurn": 0,
@@ -9631,8 +9713,8 @@ export const SAMPLE_LEVELS: SampleLevel[] = [
         },
         {
           "Id": "3_1.0_0.0",
-          "TypeId": 2,
-          "BoxColor": 2,
+          "TypeId": 1,
+          "BoxColor": 1,
           "BlockedNodes": [
             "0_1.0_0.0",
             "1_1.0_1.05",
@@ -9641,9 +9723,8 @@ export const SAMPLE_LEVELS: SampleLevel[] = [
             "2_1.8_-0.7"
           ],
           "InitCards": [
-            1,
-            1,
-            1,
+            0,
+            0,
             4,
             4,
             4
@@ -9655,8 +9736,8 @@ export const SAMPLE_LEVELS: SampleLevel[] = [
         },
         {
           "Id": "4_0.0_0.0",
-          "TypeId": 1,
-          "BoxColor": 1,
+          "TypeId": 0,
+          "BoxColor": 5,
           "BlockedNodes": [
             "0_-1.0_0.0",
             "0_1.0_0.0",
@@ -9668,10 +9749,10 @@ export const SAMPLE_LEVELS: SampleLevel[] = [
             "3_1.0_0.0"
           ],
           "InitCards": [
-            3,
-            3,
-            2,
-            2
+            0,
+            7,
+            7,
+            7
           ],
           "IsHidden": false,
           "LockedTurn": 0,
@@ -9685,8 +9766,8 @@ export const SAMPLE_LEVELS: SampleLevel[] = [
       "IsOddSize": false,
       "Version": 2
     }
-  }
+  },
 ];
 
-export const PRESET_LEVELS = SAMPLE_LEVELS;
-export const LEVEL_1_SAMPLE = SAMPLE_LEVELS[0].data;
+export const PRESET_LEVELS: SampleLevelPreset[] = SAMPLE_LEVELS;
+export const LEVEL_1_SAMPLE: LevelData = SAMPLE_LEVELS[0].data;

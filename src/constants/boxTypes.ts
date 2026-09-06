@@ -1,8 +1,8 @@
-import { BoxTypeDef } from '../types/level';
+import { BoxTypeDef, BoxSize } from '../types/level';
 
 export const BOX_TYPES: Record<number, BoxTypeDef> = {
-  1: {
-    id: 1,
+  [BoxSize.SmallBox]: {
+    id: BoxSize.SmallBox,
     name: 'Small Box (4 Slots)',
     capacity: 4,
     defaultSlots: 4,
@@ -10,8 +10,8 @@ export const BOX_TYPES: Record<number, BoxTypeDef> = {
     height: 94,
     isTray: false,
   },
-  2: {
-    id: 2,
+  [BoxSize.MediumBox]: {
+    id: BoxSize.MediumBox,
     name: 'Medium Box (6 Slots)',
     capacity: 6,
     defaultSlots: 6,
@@ -19,8 +19,8 @@ export const BOX_TYPES: Record<number, BoxTypeDef> = {
     height: 94,
     isTray: false,
   },
-  3: {
-    id: 3,
+  [BoxSize.LargeBox]: {
+    id: BoxSize.LargeBox,
     name: 'Large Box (8 Slots)',
     capacity: 8,
     defaultSlots: 8,
@@ -28,35 +28,8 @@ export const BOX_TYPES: Record<number, BoxTypeDef> = {
     height: 94,
     isTray: false,
   },
-  4: {
-    id: 4,
-    name: 'Small Tray (4 Slots)',
-    capacity: 4,
-    defaultSlots: 4,
-    width: 116,
-    height: 105,
-    isTray: true,
-  },
-  5: {
-    id: 5,
-    name: 'Medium Tray (6 Slots)',
-    capacity: 6,
-    defaultSlots: 6,
-    width: 160,
-    height: 105,
-    isTray: true,
-  },
-  6: {
-    id: 6,
-    name: 'Large Tray (8 Slots)',
-    capacity: 8,
-    defaultSlots: 8,
-    width: 205,
-    height: 105,
-    isTray: true,
-  },
-  7: {
-    id: 7,
+  [BoxSize.XLBox]: {
+    id: BoxSize.XLBox,
     name: 'XL Box (10 Slots)',
     capacity: 10,
     defaultSlots: 10,
@@ -64,8 +37,38 @@ export const BOX_TYPES: Record<number, BoxTypeDef> = {
     height: 94,
     isTray: false,
   },
-  8: {
-    id: 8,
+};
+
+export const TRAY_TYPES: Record<number, BoxTypeDef> = {
+  [BoxSize.SmallBox]: {
+    id: BoxSize.SmallBox,
+    name: 'Small Tray (4 Slots)',
+    capacity: 4,
+    defaultSlots: 4,
+    width: 116,
+    height: 105,
+    isTray: true,
+  },
+  [BoxSize.MediumBox]: {
+    id: BoxSize.MediumBox,
+    name: 'Medium Tray (6 Slots)',
+    capacity: 6,
+    defaultSlots: 6,
+    width: 160,
+    height: 105,
+    isTray: true,
+  },
+  [BoxSize.LargeBox]: {
+    id: BoxSize.LargeBox,
+    name: 'Large Tray (8 Slots)',
+    capacity: 8,
+    defaultSlots: 8,
+    width: 205,
+    height: 105,
+    isTray: true,
+  },
+  [BoxSize.XLBox]: {
+    id: BoxSize.XLBox,
     name: 'XL Tray (10 Slots)',
     capacity: 10,
     defaultSlots: 10,
@@ -77,15 +80,40 @@ export const BOX_TYPES: Record<number, BoxTypeDef> = {
 
 export const BOX_TYPE_OPTIONS = Object.values(BOX_TYPES);
 
-export const getBoxType = (id: number): BoxTypeDef => {
+export const getBoxType = (id: number, isTray: boolean = false): BoxTypeDef => {
+  // Normalize legacy IDs if any
+  let sizeId = id;
+  if (id === 1 && !BOX_TYPES[id]) sizeId = BoxSize.SmallBox;
+  else if (id === 2 && !BOX_TYPES[id]) sizeId = BoxSize.MediumBox;
+  else if (id === 3 && !BOX_TYPES[id]) sizeId = BoxSize.LargeBox;
+  else if (id === 4) sizeId = BoxSize.SmallBox;
+  else if (id === 5) sizeId = BoxSize.MediumBox;
+  else if (id === 6) sizeId = BoxSize.LargeBox;
+  else if (id === 7) sizeId = BoxSize.XLBox;
+  else if (id === 8) sizeId = BoxSize.XLBox;
+
+  if (isTray) {
+    return (
+      TRAY_TYPES[sizeId] || {
+        id: sizeId,
+        name: `Tray Size ${sizeId}`,
+        capacity: 4,
+        defaultSlots: 4,
+        width: 116,
+        height: 105,
+        isTray: true,
+      }
+    );
+  }
+
   return (
-    BOX_TYPES[id] || {
-      id,
-      name: `Custom Type ${id}`,
-      capacity: 8,
+    BOX_TYPES[sizeId] || {
+      id: sizeId,
+      name: `Box Size ${sizeId}`,
+      capacity: 6,
       defaultSlots: 6,
-      width: 97,
-      height: 138,
+      width: 132,
+      height: 94,
       isTray: false,
     }
   );

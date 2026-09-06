@@ -385,8 +385,8 @@ export const PlaytestModal: React.FC<PlaytestModalProps> = ({ levelData, onClose
     const activeBox = boxNode || (spawnerBoxes ? spawnerBoxes[0] : null);
     if (!activeBox) return;
 
-    const boxType = getBoxType(activeBox.TypeId);
-    const isTray = Boolean(activeBox.IsPaperBox || boxType.isTray);
+    const isTray = Boolean(activeBox.IsPaperBox);
+    const boxType = getBoxType(activeBox.TypeId, isTray);
 
     // === TRAY LOGIC ===
     // Trays store spare cards. When clicked:
@@ -868,7 +868,8 @@ export const PlaytestModal: React.FC<PlaytestModalProps> = ({ levelData, onClose
                       if (!activeBox) return null;
 
                       const isSpawner = !!spawnerBoxes && spawnerBoxes.length > 0;
-                      const boxType = getBoxType(activeBox.TypeId);
+                      const isTray = Boolean(activeBox.IsPaperBox);
+                      const boxType = getBoxType(activeBox.TypeId, isTray);
                       const colorDef = getColor(activeBox.BoxColor);
                       const blockers = liveBlockedByMap.get(bn.Id) || [];
                       const isBlocked = blockers.length > 0;
@@ -887,7 +888,6 @@ export const PlaytestModal: React.FC<PlaytestModalProps> = ({ levelData, onClose
 
                       const w = boxType.width;
                       const h = boxType.height;
-                      const isTray = Boolean(activeBox.IsPaperBox || boxType.isTray);
                       const layerId = bn.LayerId ?? bn.TileMapId ?? 0;
                       const layerElev = Math.min(Math.max(layerId, 0), 4);
                       const shadowY = layerElev * 3 + 3;

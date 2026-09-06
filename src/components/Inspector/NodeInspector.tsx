@@ -75,7 +75,7 @@ export const NodeInspector: React.FC<NodeInspectorProps> = ({
     IsCardsHidden: false,
   };
 
-  const boxType = getBoxType(currentBox.TypeId);
+  const boxType = getBoxType(currentBox.TypeId, Boolean(currentBox.IsPaperBox));
 
   const handleQuickAngle = (angle: number) => {
     onUpdateBoardNode({
@@ -202,16 +202,16 @@ export const NodeInspector: React.FC<NodeInspectorProps> = ({
             >
               {BOX_TYPE_OPTIONS.map(bt => (
                 <option key={`bt-${bt.id}`} value={bt.id}>
-                  Type {bt.id}: {bt.name} ({bt.capacity} max)
+                  Size {bt.id}: {bt.name} ({bt.capacity} max)
                 </option>
               ))}
             </select>
           </div>
 
-          {/* Box Color Selector (8 Colors Grid) */}
+          {/* Box Color Selector (10 Colors Grid) */}
           <div>
             <span className="text-[11px] text-slate-400 mb-1.5 block">Box Color Theme</span>
-            <div className="grid grid-cols-4 gap-1.5">
+            <div className="grid grid-cols-5 gap-1.5">
               {COLOR_LIST.map(c => {
                 const isSelectedColor = currentBox.BoxColor === c.id;
                 return (
@@ -257,7 +257,14 @@ export const NodeInspector: React.FC<NodeInspectorProps> = ({
               <span className="text-[11px] text-slate-400 mb-1 block">Paper Box (Tray)</span>
               <button
                 onClick={() => {
-                  if (boxNode) onUpdateBoxNode({ ...boxNode, IsPaperBox: !boxNode.IsPaperBox });
+                  if (boxNode) {
+                    const newPaper = !boxNode.IsPaperBox;
+                    onUpdateBoxNode({
+                      ...boxNode,
+                      IsPaperBox: newPaper,
+                      BoxColor: newPaper ? 5 : (boxNode.BoxColor === 5 ? 0 : boxNode.BoxColor),
+                    });
+                  }
                 }}
                 className={`w-full py-1 px-1.5 rounded-lg text-[11px] font-medium border flex items-center justify-center gap-1 transition ${
                   currentBox.IsPaperBox

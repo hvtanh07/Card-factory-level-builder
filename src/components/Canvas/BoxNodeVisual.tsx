@@ -42,7 +42,8 @@ export const BoxNodeVisual: React.FC<BoxNodeVisualProps> = ({
   const isSpawner = !!spawnerNode;
   const activeBox = isSpawner && spawnerNode.SpawnBoxes.length > 0 ? spawnerNode.SpawnBoxes[0] : boxNode;
 
-  const boxType = getBoxType(activeBox.TypeId);
+  const isTray = Boolean(activeBox.IsPaperBox);
+  const boxType = getBoxType(activeBox.TypeId, isTray);
   const boxColorDef = getColor(activeBox.BoxColor);
   const rot = boardNode.YRotation ?? boardNode.ZRotation ?? 0;
   const svgAngle = (-rot + 360) % 360;
@@ -52,7 +53,6 @@ export const BoxNodeVisual: React.FC<BoxNodeVisualProps> = ({
   const halfW = w / 2;
   const halfH = h / 2;
 
-  const isTray = Boolean(activeBox.IsPaperBox || boxType.isTray);
   const cardCount = activeBox.InitCards.length;
   const capacity = boxType.capacity;
   const slotCount = Math.max(capacity, cardCount || 1);

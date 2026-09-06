@@ -44,7 +44,7 @@ export const CardStackEditor: React.FC<CardStackEditorProps> = ({
 
   // Preset generators
   const handleFillBoxColor = () => {
-    const defaultColor = boxColor || 1;
+    const defaultColor = boxColor ?? 0;
     const newCards = Array(boxType.capacity).fill(defaultColor);
     onChange(newCards);
   };
@@ -52,10 +52,10 @@ export const CardStackEditor: React.FC<CardStackEditorProps> = ({
   const handleFillPairs = () => {
     const newCards: number[] = [];
     const count = boxType.capacity;
-    let currentColor = 1;
+    let currentColor = 0;
     for (let i = 0; i < count; i += 2) {
-      newCards.push(((currentColor - 1) % 8) + 1);
-      if (i + 1 < count) newCards.push(((currentColor - 1) % 8) + 1);
+      newCards.push(currentColor % 10);
+      if (i + 1 < count) newCards.push(currentColor % 10);
       currentColor++;
     }
     onChange(newCards);
@@ -154,7 +154,7 @@ export const CardStackEditor: React.FC<CardStackEditorProps> = ({
       {/* Quick Add Palette (Chips) */}
       <div className="space-y-1.5 pt-1">
         <span className="text-[11px] text-slate-400 font-medium">+ Quick Add Card:</span>
-        <div className="grid grid-cols-4 gap-1.5">
+        <div className="grid grid-cols-5 gap-1.5">
           {COLOR_LIST.map(c => (
             <button
               key={`add-${c.id}`}

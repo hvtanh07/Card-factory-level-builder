@@ -87,7 +87,7 @@ export function getNodeBoundingBox(
   gridUnit: number = DEFAULT_GRID_UNIT
 ): BoundingBox {
   const center = nodeToScreenPos(boardNode, originX, originY, gridUnit);
-  const boxType = getBoxType(boxNode.TypeId);
+  const boxType = getBoxType(boxNode.TypeId, Boolean(boxNode.IsPaperBox));
 
   const halfW = boxType.width / 2;
   const halfH = boxType.height / 2;

@@ -1,4 +1,4 @@
-import { LevelData, ValidationIssue } from '../types/level';
+import { LevelData, ValidationIssue, SpawnBox } from '../types/level';
 import { getBoxType } from '../constants/boxTypes';
 import { getBlockedByMap } from './autoBlocker';
 
@@ -384,198 +384,234 @@ export function balanceLevelCardDeckResult(data: LevelData, maxSlots = 4, maxCol
     return layerB - layerA;
   });
 
+  const coloredBoxes = sortedBoxes.filter(b => !b.IsPaperBox && !getBoxType(b.TypeId).isTray);
+  const trays = sortedBoxes.filter(b => b.IsPaperBox || getBoxType(b.TypeId).isTray);
+
+  const spawnerColoredBoxes: SpawnBox[] = [];
+  for (const sn of data.SpawnerNodes || []) {
+    for (const sb of sn.SpawnBoxes || []) {
+      if (!sb.IsPaperBox && !getBoxType(sb.TypeId).isTray) {
+        spawnerColoredBoxes.push(sb);
+      }
+    }
+  }
+
+  const allColoredHolders = [...coloredBoxes, ...spawnerColoredBoxes];
+  const totalDeckCards = Object.values(coloredCaps).reduce((sum, c) => sum + c, 0);
+
+  // 1. Calculate tray cards and evenly distribute remaining cards across all colored boxes
+  const trayTargetCounts = trays.map(tb => getBoxType(tb.TypeId, true).capacity);
+  const totalTrayCards = trayTargetCounts.reduce((sum, c) => sum + c, 0);
+
+  const remainingCardsCount = Math.max(allColoredHolders.length, totalDeckCards - totalTrayCards);
+  const numColored = allColoredHolders.length;
+  const coloredMaxCaps = allColoredHolders.map(bx => getBoxType(bx.TypeId).capacity);
+
+  const baseCount = numColored > 0 ? Math.floor(remainingCardsCount / numColored) : 0;
+  const extra = numColored > 0 ? remainingCardsCount % numColored : 0;
+  const targetBoxCounts: number[] = [];
+
+  for (let i = 0; i < numColored; i++) {
+    const maxC = coloredMaxCaps[i];
+    const cnt = baseCount + (i < extra ? 1 : 0);
+    targetBoxCounts.push(Math.min(cnt, maxC));
+  }
+
+  let diff = remainingCardsCount - targetBoxCounts.reduce((sum, c) => sum + c, 0);
+  for (let i = 0; i < targetBoxCounts.length; i++) {
+    if (diff > 0 && targetBoxCounts[i] < coloredMaxCaps[i]) {
+      const add = Math.min(diff, coloredMaxCaps[i] - targetBoxCounts[i]);
+      targetBoxCounts[i] += add;
+      diff -= add;
+    } else if (diff < 0 && targetBoxCounts[i] > 1) {
+      const sub = Math.min(-diff, targetBoxCounts[i] - 1);
+      targetBoxCounts[i] -= sub;
+      diff += sub;
+    }
+  }
+
+  interface HolderInfo {
+    id: string;
+    cap: number;
+    color: number;
+    isTray: boolean;
+    targetColors: number;
+  }
+
+  const allHolders: HolderInfo[] = [];
+  for (let i = 0; i < trays.length; i++) {
+    allHolders.push({
+      id: trays[i].Id,
+      cap: trayTargetCounts[i],
+      color: -1,
+      isTray: true,
+      targetColors: 2,
+    });
+  }
+  for (let i = 0; i < allColoredHolders.length; i++) {
+    allHolders.push({
+      id: allColoredHolders[i].Id,
+      cap: targetBoxCounts[i],
+      color: allColoredHolders[i].BoxColor,
+      isTray: false,
+      targetColors: 2,
+    });
+  }
+
+  const totalHoldersCount = allHolders.length;
   let bestLevel = data;
   let attempts = 0;
-  const maxAttempts = 300;
-
-  // Max 4-color boxes allowed when maxColorsPerBox === 4
-  const maxFourColorBoxes = maxColorsPerBox >= 4 ? Math.min(3, Math.max(1, Math.floor(data.BoxNodes.length * 0.2))) : 0;
+  const maxAttempts = 600;
 
   while (attempts < maxAttempts) {
     attempts++;
 
-    const remainingQuota: Record<number, number> = { ...coloredCaps };
-    const boxCardsMap = new Map<string, number[]>();
-    let fourColorBoxesUsed = 0;
-
-    for (const bx of sortedBoxes) {
-      const bType = getBoxType(bx.TypeId);
-      const cap = bType.capacity;
-      const isTray = Boolean(bx.IsPaperBox || bType.isTray);
-      const myColor = bx.BoxColor;
-
-      // Determine target color count for this box
-      let targetColors = 2;
-      if (colors.length <= 1) {
-        targetColors = 1;
-      } else if (maxColorsPerBox <= 2) {
-        targetColors = Math.min(2, colors.length);
-      } else if (maxColorsPerBox === 3) {
-        // 2-color per box is most common (~70% of boxes have 2 colors, ~30% have 3 colors)
-        if (cap >= 6 && colors.length >= 3 && Math.random() < 0.28) {
-          targetColors = 3;
-        } else {
-          targetColors = Math.min(2, colors.length);
-        }
-      } else {
-        // maxColorsPerBox >= 4: limit number of 4-color boxes to maxFourColorBoxes
-        if (cap >= 6 && colors.length >= 4 && fourColorBoxesUsed < maxFourColorBoxes && Math.random() < 0.35) {
-          targetColors = 4;
-          fourColorBoxesUsed++;
-        } else if (cap >= 6 && colors.length >= 3 && Math.random() < 0.4) {
-          targetColors = 3;
-        } else {
-          targetColors = Math.min(2, colors.length);
-        }
+    // Target 70% 2 colors per box, 30% 3 colors per box
+    if (colors.length <= 1) {
+      for (const h of allHolders) h.targetColors = 1;
+    } else if (colors.length === 2) {
+      for (const h of allHolders) h.targetColors = 2;
+    } else {
+      const num3 = Math.max(1, Math.round(totalHoldersCount * 0.30));
+      const num2 = totalHoldersCount - num3;
+      const targetColorsList = [...Array(num2).fill(2), ...Array(num3).fill(3)];
+      // Shuffle target colors
+      for (let i = targetColorsList.length - 1; i > 0; i--) {
+        const j = Math.floor(Math.random() * (i + 1));
+        [targetColorsList[i], targetColorsList[j]] = [targetColorsList[j], targetColorsList[i]];
       }
-
-      // Generate nearly-equal chunks: e.g. (2-2-2) or (3-3) or (2-2) or (2-2-2-2)
-      const chunkSizes = getEqualChunks(cap, targetColors);
-
-      const boxCards: number[] = [];
-      const boxColors = new Set<number>();
-      // If there are multiple colors in the level, non-tray boxes must NOT be filled only with their matching color
-      const maxMyColorCards = (!isTray && colors.length > 1) ? Math.max(0, cap - 2) : cap;
-      let myColorPlaced = 0;
-
-      for (let cIdx = 0; cIdx < chunkSizes.length; cIdx++) {
-        const sz = chunkSizes[cIdx];
-        let chosenColor = myColor;
-
-        const canPickColor = (c: number) => {
-          if ((remainingQuota[c] || 0) < sz) return false;
-          if (c === myColor && !isTray && myColorPlaced + sz > maxMyColorCards) return false;
-          if (!boxColors.has(c) && boxColors.size >= targetColors) return false;
-          return true;
-        };
-
-        const available = colors.filter(canPickColor);
-
-        if (available.length > 0) {
-          // If we need another color to reach targetColors, pick a new color
-          const newColors = available.filter(c => !boxColors.has(c));
-          if (boxColors.size < targetColors && newColors.length > 0) {
-            newColors.sort((a, b) => {
-              const aDiff = a !== myColor ? 1 : 0;
-              const bDiff = b !== myColor ? 1 : 0;
-              if (aDiff !== bDiff) return bDiff - aDiff;
-              return (remainingQuota[b] || 0) - (remainingQuota[a] || 0);
-            });
-            const pickIdx = Math.floor(Math.random() * Math.min(2, newColors.length));
-            chosenColor = newColors[pickIdx];
-          } else {
-            // Pick from existing colors in box
-            const existingAvailable = available.filter(c => boxColors.has(c));
-            if (existingAvailable.length > 0) {
-              existingAvailable.sort((a, b) => (remainingQuota[b] || 0) - (remainingQuota[a] || 0));
-              chosenColor = existingAvailable[0];
-            } else {
-              available.sort((a, b) => (remainingQuota[b] || 0) - (remainingQuota[a] || 0));
-              chosenColor = available[0];
-            }
-          }
-        } else {
-          // Fallback
-          const anyEligible = colors.filter(c => (remainingQuota[c] || 0) > 0 && (boxColors.has(c) || boxColors.size < targetColors));
-          if (anyEligible.length > 0) {
-            anyEligible.sort((a, b) => (remainingQuota[b] || 0) - (remainingQuota[a] || 0));
-            chosenColor = anyEligible[0];
-          } else {
-            const anyLeft = colors.filter(c => (remainingQuota[c] || 0) > 0);
-            chosenColor = anyLeft.length > 0 ? anyLeft[0] : myColor;
-          }
-        }
-
-        const actualCount = Math.min(sz, remainingQuota[chosenColor] || 0);
-        for (let k = 0; k < actualCount; k++) {
-          boxCards.push(chosenColor);
-        }
-        if (actualCount > 0) {
-          boxColors.add(chosenColor);
-          if (chosenColor === myColor) myColorPlaced += actualCount;
-          remainingQuota[chosenColor] = Math.max(0, (remainingQuota[chosenColor] || 0) - actualCount);
-        }
+      for (let i = 0; i < allHolders.length; i++) {
+        allHolders[i].targetColors = targetColorsList[i];
       }
-
-      while (boxCards.length < cap) {
-        const eligible = colors.filter(c => (remainingQuota[c] || 0) > 0 && (boxColors.has(c) || boxColors.size < maxColorsPerBox));
-        if (eligible.length > 0) {
-          eligible.sort((a, b) => {
-            const aHas = boxColors.has(a) ? 1 : 0;
-            const bHas = boxColors.has(b) ? 1 : 0;
-            if (aHas !== bHas) return bHas - aHas;
-            return (remainingQuota[b] || 0) - (remainingQuota[a] || 0);
-          });
-          const pick = eligible[0];
-          boxCards.push(pick);
-          boxColors.add(pick);
-          remainingQuota[pick]--;
-        } else {
-          const anyLeft = colors.find(c => (remainingQuota[c] || 0) > 0);
-          if (!anyLeft) break;
-          boxCards.push(anyLeft);
-          boxColors.add(anyLeft);
-          remainingQuota[anyLeft]--;
-        }
-      }
-
-      boxCardsMap.set(bx.Id, boxCards);
     }
 
-    // Top up any remaining quotas respecting maxColorsPerBox
-    for (const col of colors) {
-      while ((remainingQuota[col] || 0) > 0) {
-        let placed = false;
-        // Prefer placing `col` into boxes that already have `col` or have room under maxColorsPerBox
-        const candidateBoxes = [...data.BoxNodes].sort((a, b) => {
-          const aCards = boxCardsMap.get(a.Id) || [];
-          const bCards = boxCardsMap.get(b.Id) || [];
-          const aHas = aCards.includes(col) ? 1 : 0;
-          const bHas = bCards.includes(col) ? 1 : 0;
-          if (aHas !== bHas) return bHas - aHas;
-          const aDiff = a.BoxColor !== col ? 1 : 0;
-          const bDiff = b.BoxColor !== col ? 1 : 0;
-          return bDiff - aDiff;
-        });
+    const pool: Record<number, number> = { ...coloredCaps };
+    const boxCardsMap = new Map<string, number[]>();
+    let possible = true;
 
-        for (const bx of candidateBoxes) {
-          const bCards = boxCardsMap.get(bx.Id) || [];
-          const bType = getBoxType(bx.TypeId);
-          const distinctCols = new Set(bCards);
-          if (bCards.length < bType.capacity) {
-            if (!distinctCols.has(col) && distinctCols.size >= maxColorsPerBox) continue;
-            if (bx.BoxColor === col && bCards.length + 1 >= bType.capacity && bCards.every(c => c === col) && colors.length > 1) {
-              continue;
+    // Order holders: 3-color boxes and larger capacity boxes first
+    const holderOrder = [...allHolders].sort((a, b) => {
+      if (b.targetColors !== a.targetColors) return b.targetColors - a.targetColors;
+      return b.cap - a.cap;
+    });
+
+    for (const h of holderOrder) {
+      const cap = h.cap;
+      let tCol = Math.min(h.targetColors, colors.length);
+      const avail = colors.filter(c => (pool[c] || 0) > 0);
+      if (avail.length === 0) {
+        possible = false;
+        break;
+      }
+      tCol = Math.min(tCol, avail.length);
+
+      interface ComboCandidate {
+        cols: number[];
+        score: number;
+      }
+      const candidateCombos: ComboCandidate[] = [];
+
+      const searchCombos = (reqSize: number) => {
+        if (reqSize === 2) {
+          for (let i = 0; i < avail.length; i++) {
+            for (let j = i + 1; j < avail.length; j++) {
+              const c1 = avail[i];
+              const c2 = avail[j];
+              if ((pool[c1] || 0) + (pool[c2] || 0) >= cap) {
+                const hasDiff = (c1 !== h.color || c2 !== h.color) ? 1 : 0;
+                const score = hasDiff * 1000 + (pool[c1] || 0) + (pool[c2] || 0);
+                candidateCombos.push({ cols: [c1, c2], score });
+              }
             }
-            bCards.push(col);
-            remainingQuota[col]--;
-            placed = true;
+          }
+        } else if (reqSize === 3) {
+          for (let i = 0; i < avail.length; i++) {
+            for (let j = i + 1; j < avail.length; j++) {
+              for (let k = j + 1; k < avail.length; k++) {
+                const c1 = avail[i];
+                const c2 = avail[j];
+                const c3 = avail[k];
+                if ((pool[c1] || 0) + (pool[c2] || 0) + (pool[c3] || 0) >= cap) {
+                  const score = (pool[c1] || 0) + (pool[c2] || 0) + (pool[c3] || 0);
+                  candidateCombos.push({ cols: [c1, c2, c3], score });
+                }
+              }
+            }
+          }
+        } else if (reqSize === 1) {
+          for (const c of avail) {
+            if ((pool[c] || 0) >= cap) {
+              candidateCombos.push({ cols: [c], score: pool[c] || 0 });
+            }
+          }
+        }
+      };
+
+      searchCombos(tCol);
+      if (candidateCombos.length === 0) {
+        for (const fallbackSize of [2, 3, 1]) {
+          searchCombos(fallbackSize);
+          if (candidateCombos.length > 0) break;
+        }
+      }
+
+      if (candidateCombos.length === 0) {
+        possible = false;
+        break;
+      }
+
+      candidateCombos.sort((a, b) => b.score - a.score);
+      const topN = Math.min(3, candidateCombos.length);
+      const chosen = candidateCombos[Math.floor(Math.random() * topN)].cols;
+
+      const boxCards: number[] = [];
+      if (chosen.length === 1) {
+        const c1 = chosen[0];
+        for (let k = 0; k < cap; k++) boxCards.push(c1);
+        pool[c1] = (pool[c1] || 0) - cap;
+      } else if (chosen.length === 2) {
+        const [c1, c2] = chosen;
+        const half = Math.floor(cap / 2);
+        let take1 = Math.max(1, Math.min(half, pool[c1] || 0));
+        let take2 = cap - take1;
+        if (take2 > (pool[c2] || 0)) {
+          take2 = pool[c2] || 0;
+          take1 = cap - take2;
+        }
+        for (let k = 0; k < take1; k++) boxCards.push(c1);
+        for (let k = 0; k < take2; k++) boxCards.push(c2);
+        pool[c1] = (pool[c1] || 0) - take1;
+        pool[c2] = (pool[c2] || 0) - take2;
+      } else if (chosen.length === 3) {
+        const [c1, c2, c3] = chosen;
+        let t1 = Math.max(1, Math.min(Math.floor(cap / 3), pool[c1] || 0));
+        const rem = cap - t1;
+        let t2 = Math.max(1, Math.min(Math.floor(rem / 2), pool[c2] || 0));
+        let t3 = rem - t2;
+        if (t3 > (pool[c3] || 0)) {
+          const diffT = t3 - (pool[c3] || 0);
+          t3 = pool[c3] || 0;
+          if ((pool[c1] || 0) >= t1 + diffT) {
+            t1 += diffT;
+          } else if ((pool[c2] || 0) >= t2 + diffT) {
+            t2 += diffT;
+          } else {
+            possible = false;
             break;
           }
         }
-        if (!placed) {
-          // Relaxed fallback if strictly necessary
-          for (const bx of candidateBoxes) {
-            const bCards = boxCardsMap.get(bx.Id) || [];
-            const bType = getBoxType(bx.TypeId);
-            if (bCards.length < bType.capacity) {
-              bCards.push(col);
-              remainingQuota[col]--;
-              placed = true;
-              break;
-            }
-          }
-          if (!placed) break;
-        }
+        for (let k = 0; k < t1; k++) boxCards.push(c1);
+        for (let k = 0; k < t2; k++) boxCards.push(c2);
+        for (let k = 0; k < t3; k++) boxCards.push(c3);
+        pool[c1] = (pool[c1] || 0) - t1;
+        pool[c2] = (pool[c2] || 0) - t2;
+        pool[c3] = (pool[c3] || 0) - t3;
       }
-    }
 
-    // Ensure all cards in each box are grouped contiguously by color
-    for (const [id, rawCards] of boxCardsMap.entries()) {
-      const bx = data.BoxNodes.find(b => b.Id === id);
-      const myColor = bx?.BoxColor ?? 1;
+      // Group cards contiguously
+      const myColor = h.color;
       const groups = new Map<number, number>();
-      for (const c of rawCards) {
+      for (const c of boxCards) {
         groups.set(c, (groups.get(c) || 0) + 1);
       }
       const grouped: number[] = [];
@@ -587,7 +623,12 @@ export function balanceLevelCardDeckResult(data: LevelData, maxSlots = 4, maxCol
       for (const [col, count] of groups.entries()) {
         for (let k = 0; k < count; k++) grouped.push(col);
       }
-      boxCardsMap.set(id, grouped);
+
+      boxCardsMap.set(h.id, grouped);
+    }
+
+    if (!possible || Object.values(pool).some(cnt => cnt > 0)) {
+      continue;
     }
 
     // Process spawner boxes if any
@@ -639,9 +680,9 @@ export function balanceLevelCardDeckResult(data: LevelData, maxSlots = 4, maxCol
       }
     }
 
-    // Rule: Limit distinct colors per box
-    const exceedsMaxColors = candidateLevel.BoxNodes.some(bx => new Set(bx.InitCards).size > maxColorsPerBox);
-    if (exceedsMaxColors) {
+    // Rule: No box is empty
+    const hasEmptyBox = candidateLevel.BoxNodes.some(bx => !bx.InitCards || bx.InitCards.length === 0);
+    if (hasEmptyBox) {
       continue;
     }
 
