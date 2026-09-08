@@ -104,6 +104,8 @@ export function parseLevelData(rawInput: string | ArrayBuffer | Uint8Array): Lev
     LinkedBoxes: Array.isArray(parsed.LinkedBoxes) ? parsed.LinkedBoxes : [],
     IsOddSize: Boolean(parsed.IsOddSize ?? false),
     Version: Number(parsed.Version ?? 2),
+    IsHardLvl: Boolean(parsed.IsHardLvl ?? false),
+    InitialCards: Array.isArray(parsed.InitialCards) ? parsed.InitialCards.map(Number) : [],
   };
 
   return levelData;
@@ -137,6 +139,8 @@ export function levelDataToJson(data: LevelData, pretty = true): string {
     LinkedBoxes: data.LinkedBoxes || [],
     IsOddSize: Boolean(data.IsOddSize),
     Version: data.Version ?? 2,
+    IsHardLvl: Boolean(data.IsHardLvl ?? false),
+    InitialCards: Array.isArray(data.InitialCards) ? data.InitialCards : [],
   };
 
   return pretty ? JSON.stringify(output, null, 2) : JSON.stringify(output);

@@ -21,8 +21,11 @@ import {
   Lock,
   HelpCircle,
   PackagePlus,
-  Sparkles
+  Sparkles,
+  Box,
+  Settings
 } from 'lucide-react';
+import { ConveyorCardsEditor } from './ConveyorCardsEditor';
 
 interface NodeInspectorProps {
   levelData: LevelData;
@@ -32,6 +35,7 @@ interface NodeInspectorProps {
   onUpdateSpawnerNode?: (spawner: SpawnerNode) => void;
   onDuplicateNode: (id: string) => void;
   onDeleteNode: (id: string) => void;
+  onUpdateLevelSettings?: (updates: Partial<LevelData>) => void;
 }
 
 export const NodeInspector: React.FC<NodeInspectorProps> = ({
@@ -42,7 +46,17 @@ export const NodeInspector: React.FC<NodeInspectorProps> = ({
   onUpdateSpawnerNode,
   onDuplicateNode,
   onDeleteNode,
+  onUpdateLevelSettings,
 }) => {
+  const [activeTab, setActiveTab] = React.useState<'node' | 'level'>('node');
+
+  // If selected node changes, switch back to node view
+  React.useEffect(() => {
+    if (selectedNodeId) {
+      setActiveTab('node');
+    }
+  }, [selectedNodeId]);
+
   const boardNode = levelData.BoardNodes.find(n => n.Id === selectedNodeId);
   const boxNode = levelData.BoxNodes.find(b => b.Id === selectedNodeId);
   const spawnerNode = (levelData.SpawnerNodes || []).find(s => s.Id === selectedNodeId);
@@ -50,16 +64,109 @@ export const NodeInspector: React.FC<NodeInspectorProps> = ({
   const blockedByMap = getBlockedByMap(levelData.BoxNodes);
   const blockersOfThisNode = selectedNodeId ? blockedByMap.get(selectedNodeId) || [] : [];
 
-  if (!boardNode || (!boxNode && !spawnerNode)) {
-    return (
-      <div className="w-80 h-full bg-slate-900/90 backdrop-blur-md border-l border-slate-800 p-6 flex flex-col items-center justify-center text-center text-slate-500">
-        <Sliders size={36} className="mb-3 opacity-40 text-sky-400" />
-        <h3 className="text-sm font-bold text-slate-300 mb-1">No Node Selected</h3>
-        <p className="text-xs max-w-xs text-slate-500">
-          Click any box or spawner on the canvas to inspect and edit its properties.
-        </p>
+  const renderLevelConfigView = () => (
+    <div className="w-84 h-full bg-slate-900/95 backdrop-blur-md border-l border-slate-800 flex flex-col overflow-y-auto">
+      {/* Header */}
+      <div className="p-4 border-b border-slate-800 flex items-center justify-between bg-slate-950/40 shrink-0">
+        <div className="flex items-center gap-2">
+          <div className="w-8 h-8 rounded-xl bg-amber-500/20 border border-amber-500/40 flex items-center justify-center text-amber-300 shadow-md">
+            <Sliders size={16} />
+          </div>
+          <div>
+            <span className="text-[10px] uppercase font-bold text-amber-400 tracking-wider">
+              Level Global Config
+            </span>
+            <h2 className="text-sm font-bold text-slate-100 font-mono">
+              Level {levelData.Id ?? 1}
+            </h2>
+          </div>
+        </div>
+
+        {boardNode && (
+          <button
+            onClick={() => setActiveTab('node')}
+            className="text-xs text-sky-400 hover:text-sky-300 font-semibold px-2 py-1 rounded bg-sky-950/40 border border-sky-800/40 transition"
+          >
+            Back to Node
+          </button>
+        )}
       </div>
-    );
+
+      <div className="p-4 space-y-5">
+        {/* IsHardLvl Difficulty Setting */}
+        <div className="space-y-2">
+          <label className="text-xs font-bold uppercase tracking-wider text-slate-300 flex items-center justify-between">
+            <span>Difficulty Mode (IsHardLvl)</span>
+            <span className="text-[10px] font-mono text-slate-500">
+              {levelData.IsHardLvl ? 'true' : 'false'}
+            </span>
+          </label>
+          <div className="grid grid-cols-2 gap-2">
+            <button
+              type="button"
+              onClick={() => onUpdateLevelSettings?.({ IsHardLvl: false })}
+              className={`p-2.5 rounded-xl border text-left transition flex flex-col gap-0.5 ${
+                !levelData.IsHardLvl
+                  ? 'bg-emerald-950/40 border-emerald-500/60 text-emerald-300 shadow-sm'
+                  : 'bg-slate-800/60 border-slate-700 text-slate-400 hover:bg-slate-800 hover:text-slate-200'
+              }`}
+            >
+              <span className="text-xs font-bold flex items-center gap-1">
+                <span>Normal Level</span>
+              </span>
+              <span className="text-[10px] text-slate-400 leading-tight">
+                Standard in-game mode
+              </span>
+            </button>
+
+            <button
+              type="button"
+              onClick={() => onUpdateLevelSettings?.({ IsHardLvl: true })}
+              className={`p-2.5 rounded-xl border text-left transition flex flex-col gap-0.5 ${
+                levelData.IsHardLvl
+                  ? 'bg-rose-950/40 border-rose-500/60 text-rose-300 shadow-sm shadow-rose-950/50'
+                  : 'bg-slate-800/60 border-slate-700 text-slate-400 hover:bg-slate-800 hover:text-slate-200'
+              }`}
+            >
+              <span className="text-xs font-bold flex items-center gap-1">
+                <span>⚡ Hard Level</span>
+              </span>
+              <span className="text-[10px] text-slate-400 leading-tight">
+                Hard in-game challenge
+              </span>
+            </button>
+          </div>
+        </div>
+
+        {/* Board Options */}
+        <div className="p-3 rounded-xl bg-slate-800/40 border border-slate-700/60 space-y-2.5">
+          <span className="text-[10px] font-bold uppercase tracking-wider text-slate-400 block">
+            Board Attributes
+          </span>
+          <label className="flex items-center justify-between cursor-pointer text-xs text-slate-300">
+            <span>Odd Size Grid (IsOddSize)</span>
+            <input
+              type="checkbox"
+              checked={Boolean(levelData.IsOddSize)}
+              onChange={(e) => onUpdateLevelSettings?.({ IsOddSize: e.target.checked })}
+              className="rounded bg-slate-900 border-slate-700 text-sky-500 focus:ring-0 w-4 h-4"
+            />
+          </label>
+        </div>
+
+        {/* Conveyor Prespawn Cards Editor */}
+        <div className="pt-2 border-t border-slate-800">
+          <ConveyorCardsEditor
+            initialCards={levelData.InitialCards || []}
+            onChange={(cards) => onUpdateLevelSettings?.({ InitialCards: cards })}
+          />
+        </div>
+      </div>
+    </div>
+  );
+
+  if (!boardNode || (!boxNode && !spawnerNode) || activeTab === 'level') {
+    return renderLevelConfigView();
   }
 
   // Active box or Spawner primary box
@@ -134,6 +241,24 @@ export const NodeInspector: React.FC<NodeInspectorProps> = ({
 
   return (
     <div className="w-84 h-full bg-slate-900/95 backdrop-blur-md border-l border-slate-800 flex flex-col overflow-y-auto">
+      {/* Tab Switcher: Node vs Level Config */}
+      <div className="flex border-b border-slate-800 bg-slate-950/60 p-1 gap-1 shrink-0">
+        <button
+          onClick={() => setActiveTab('node')}
+          className="flex-1 py-1.5 rounded-lg text-xs font-semibold flex items-center justify-center gap-1.5 transition bg-slate-800 text-sky-400 border border-slate-700 shadow-sm"
+        >
+          <Box size={13} />
+          <span>Node: {boardNode.Id}</span>
+        </button>
+        <button
+          onClick={() => setActiveTab('level')}
+          className="flex-1 py-1.5 rounded-lg text-xs font-semibold flex items-center justify-center gap-1.5 transition text-slate-400 hover:text-slate-200"
+        >
+          <Sliders size={13} />
+          <span>Level Config</span>
+        </button>
+      </div>
+
       {/* Header */}
       <div className="p-4 border-b border-slate-800 flex items-center justify-between bg-slate-950/40">
         <div className="flex items-center gap-2">

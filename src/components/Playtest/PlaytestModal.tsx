@@ -198,6 +198,14 @@ export const PlaytestModal: React.FC<PlaytestModalProps> = ({ levelData, onClose
     }
     setSpawnerQueues(initialSpawners);
 
+    // Initialize prespawned initial cards on conveyor belt
+    const initialBeltCards: ConveyorCard[] = (levelData.InitialCards || []).map((color, idx) => ({
+      uid: `init_card_${idx}_${Date.now()}`,
+      color,
+      dist: idx * MIN_CARD_DISTANCE,
+    }));
+    conveyorCardsRef.current = initialBeltCards;
+
     setDeliveredCardsCount(0);
     setDeliveredBoxesCount(0);
     setIsWon(false);
@@ -217,6 +225,7 @@ export const PlaytestModal: React.FC<PlaytestModalProps> = ({ levelData, onClose
         count += sb.InitCards.length;
       }
     }
+    count += (levelData.InitialCards || []).length;
     return count;
   }, [levelData]);
 
@@ -553,6 +562,11 @@ export const PlaytestModal: React.FC<PlaytestModalProps> = ({ levelData, onClose
                 <span className="text-[10px] bg-amber-500/20 text-amber-300 border border-amber-500/40 px-2 py-0.5 rounded font-bold uppercase">
                   Feeder Trays & Strict Sorting • 60 FPS
                 </span>
+                {levelData.IsHardLvl && (
+                  <span className="text-[10px] bg-rose-500/20 text-rose-300 border border-rose-500/40 px-2 py-0.5 rounded font-bold uppercase flex items-center gap-1">
+                    ⚡ Hard Level
+                  </span>
+                )}
               </div>
               <span className="text-[11px] text-slate-400 hidden sm:inline">
                 Trays feed spare cards directly to the conveyor and disappear immediately!

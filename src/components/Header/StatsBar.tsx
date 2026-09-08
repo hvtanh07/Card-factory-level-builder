@@ -8,7 +8,8 @@ interface StatsBarProps {
   levelData: LevelData;
   validationIssues: ValidationIssue[];
   onOpenValidationModal?: () => void;
-  onUpdateGlobalSettings: (isOddSize: boolean, version: number) => void;
+  onUpdateGlobalSettings: (isOddSize: boolean, version: number, isHardLvl?: boolean) => void;
+  onOpenConveyorCards?: () => void;
 }
 
 export const StatsBar: React.FC<StatsBarProps> = ({
@@ -16,6 +17,7 @@ export const StatsBar: React.FC<StatsBarProps> = ({
   validationIssues,
   onOpenValidationModal,
   onUpdateGlobalSettings,
+  onOpenConveyorCards,
 }) => {
   const cardDistribution = getCardDistribution(levelData);
   const totalCards = Object.values(cardDistribution).reduce((a, b) => a + b, 0);
@@ -38,6 +40,32 @@ export const StatsBar: React.FC<StatsBarProps> = ({
           <span>Total Cards:</span>
           <span className="font-mono font-bold text-slate-200">{totalCards}</span>
         </div>
+
+        {/* Conveyor Initial Cards chip */}
+        <button
+          onClick={onOpenConveyorCards}
+          className="flex items-center gap-1.5 px-2 py-0.5 rounded bg-slate-950 border border-slate-800 hover:border-slate-700 transition"
+          title="Cards prespawned on conveyor before level starts. Click to edit in inspector."
+        >
+          <span className="text-[11px] text-slate-400">Conveyor:</span>
+          <span className="font-mono font-bold text-sky-400 text-[11px]">
+            {(levelData.InitialCards || []).length}
+          </span>
+          {(levelData.InitialCards || []).length > 0 && (
+            <div className="flex items-center gap-0.5 ml-0.5">
+              {(levelData.InitialCards || []).slice(0, 5).map((col, idx) => (
+                <div
+                  key={`conveyor-chip-${idx}`}
+                  className="w-2 h-2 rounded-full border border-white/20"
+                  style={{ backgroundColor: getColor(col).hex }}
+                />
+              ))}
+              {(levelData.InitialCards || []).length > 5 && (
+                <span className="text-[9px] text-slate-500 font-bold">+</span>
+              )}
+            </div>
+          )}
+        </button>
 
         <div className="h-4 w-px bg-slate-800"></div>
 
@@ -67,12 +95,26 @@ export const StatsBar: React.FC<StatsBarProps> = ({
 
       {/* Right: Validation Status & Global settings */}
       <div className="flex items-center gap-3">
+        {/* IsHardLvl toggle */}
+        <button
+          onClick={() => onUpdateGlobalSettings(levelData.IsOddSize, levelData.Version, !levelData.IsHardLvl)}
+          className={`flex items-center gap-1 px-2 py-0.5 rounded text-xs font-semibold transition border ${
+            levelData.IsHardLvl
+              ? 'bg-rose-500/20 text-rose-300 border-rose-500/50 shadow-sm shadow-rose-500/20'
+              : 'bg-slate-800/80 text-slate-400 border-slate-700 hover:text-slate-200'
+          }`}
+          title="Toggle whether level is set as Hard or Normal in game (IsHardLvl)"
+        >
+          <span>⚡</span>
+          <span>{levelData.IsHardLvl ? 'Hard Lvl' : 'Normal Lvl'}</span>
+        </button>
+
         {/* IsOddSize toggle */}
         <label className="flex items-center gap-1.5 cursor-pointer text-xs text-slate-400 hover:text-slate-200">
           <input
             type="checkbox"
             checked={levelData.IsOddSize}
-            onChange={(e) => onUpdateGlobalSettings(e.target.checked, levelData.Version)}
+            onChange={(e) => onUpdateGlobalSettings(e.target.checked, levelData.Version, levelData.IsHardLvl)}
             className="rounded bg-slate-800 border-slate-700 text-sky-500 focus:ring-0"
           />
           <span>IsOddSize</span>

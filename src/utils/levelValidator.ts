@@ -189,6 +189,9 @@ export function getCardDistribution(data: LevelData): Record<number, number> {
       }
     }
   }
+  for (const cardColor of (data.InitialCards || [])) {
+    distribution[cardColor] = (distribution[cardColor] || 0) + 1;
+  }
   return distribution;
 }
 
@@ -340,7 +343,8 @@ export function isLevelSolvable(levelData: LevelData, maxSlots = 4): SolverResul
     return null;
   }
 
-  const solution = dfs(0, [], [], []);
+  const initialBelt = levelData.InitialCards ? [...levelData.InitialCards] : [];
+  const solution = dfs(0, [], initialBelt, []);
   return {
     solvable: solution !== null,
     solutionMoves: solution || undefined,

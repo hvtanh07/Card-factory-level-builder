@@ -472,7 +472,15 @@ export function App() {
       <StatsBar
         levelData={levelData}
         validationIssues={validationIssues}
-        onUpdateGlobalSettings={(isOdd, ver) => setLevelData(prev => ({ ...prev, IsOddSize: isOdd, Version: ver }))}
+        onUpdateGlobalSettings={(isOdd, ver, isHard) =>
+          setLevelData(prev => ({
+            ...prev,
+            IsOddSize: isOdd,
+            Version: ver,
+            IsHardLvl: isHard !== undefined ? isHard : (prev.IsHardLvl ?? false),
+          }))
+        }
+        onOpenConveyorCards={() => setSelectedNodeId(null)}
       />
 
       {/* Main Workspace 3-Column Layout */}
@@ -577,6 +585,7 @@ export function App() {
             onUpdateSpawnerNode={handleUpdateSpawnerNode}
             onDuplicateNode={handleDuplicateNode}
             onDeleteNode={handleDeleteNode}
+            onUpdateLevelSettings={(updates) => setLevelData(prev => ({ ...prev, ...updates }))}
           />
         </aside>
       </div>

@@ -76,6 +76,8 @@ export interface LevelData {
   LinkedBoxes: any[];
   IsOddSize: boolean;
   Version: number;
+  IsHardLvl?: boolean;
+  InitialCards?: number[];
 }
 
 export interface BoxTypeDef {
