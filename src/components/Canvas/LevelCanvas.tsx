@@ -5,6 +5,7 @@ import { getBlockedByMap } from '../../utils/autoBlocker';
 import { BoxNodeVisual } from './BoxNodeVisual';
 import { DependencyOverlay } from './DependencyOverlay';
 import { GridBackground } from './GridBackground';
+import { CardBalanceTracker } from './CardBalanceTracker';
 import { 
   ZoomIn, 
   ZoomOut, 
@@ -371,6 +372,9 @@ export const LevelCanvas: React.FC<LevelCanvasProps> = ({
           showAllDependencies={showAllDependencies}
         />
       </svg>
+
+      {/* Live Missing & Spare Card Balance Tracker (Top-Right) */}
+      <CardBalanceTracker levelData={levelData} />
 
       {/* Floating Canvas Controls Toolbar (Bottom-Left) */}
       <div className="absolute bottom-6 left-6 z-20 flex items-center gap-2 bg-slate-900/80 backdrop-blur-md p-1.5 rounded-xl border border-slate-700/60 shadow-xl">
