@@ -1,5 +1,7 @@
 import React, { useState, useEffect, useMemo, useCallback, useRef } from 'react';
 import { LevelData, BoardNode, BoxNode, SpawnerNode, SpawnBox } from '../../types/level';
+import { ConveyorData, ConveyorNode, ConveyorSlot } from '../../types/conveyor';
+import { DEFAULT_CONVEYOR_DEMO } from '../../constants/sampleConveyors';
 import { getColor } from '../../constants/colors';
 import { getBoxType } from '../../constants/boxTypes';
 import { getBlockedByMap } from '../../utils/autoBlocker';
@@ -12,17 +14,20 @@ import {
   Maximize2, 
   AlertTriangle,
   Layers,
-  Move
+  Move,
+  Lock,
+  Tv
 } from 'lucide-react';
 
 interface PlaytestModalProps {
   levelData: LevelData;
+  conveyorData?: ConveyorData;
   onClose: () => void;
 }
 
 interface DockedBox {
   instanceId: string; // Unique instance ID
-  slotIdx: number;     // Fixed slot index 0..3
+  slotIdx: number;     // Slot index 0..(numSlots - 1)
   id: string;
   boardNode: BoardNode;
   boxColor: number;
@@ -37,7 +42,7 @@ interface DockedBox {
 interface ConveyorCard {
   uid: string;
   color: number;
-  dist: number; // Distance along track (0 to L_TOTAL)
+  dist: number; // Distance along track (0 to totalLen)
 }
 
 interface FlyingCard {
@@ -52,30 +57,152 @@ interface FlyingCard {
   duration: number; // in seconds
 }
 
-const MAX_BOX_SLOTS = 4;
 const BELT_SPEED = 185.0; // pixels per second
 const MIN_CARD_DISTANCE = 32.0; // Fixed separation distance to prevent overlap
 
-// Racetrack Conveyor Geometry
-const TOP_Y = 105.0;
-const BOTTOM_Y = 185.0;
-const RADIUS = 40.0;
-const LEFT_X = 110.0;
-const RIGHT_X = 750.0;
+interface TrackSegment {
+  p1: { id?: string; x: number; y: number };
+  p2: { id?: string; x: number; y: number };
+  len: number;
+  cumStart: number;
+}
 
-const L_STRAIGHT = RIGHT_X - LEFT_X; // 640.0
-const L_ARC = Math.PI * RADIUS;       // ~125.66
-const L_TOTAL = 2 * L_STRAIGHT + 2 * L_ARC; // ~1531.33
+interface SlotGeometry {
+  slot: ConveyorSlot;
+  idx: number;
+  x: number;
+  y: number;
+  checkpointDist: number;
+}
 
-// 4 Docked Boxes with Fixed Positions (64px width, 66px gap) symmetrically centered
-const BOX_X_POSITIONS = [235.0, 365.0, 495.0, 625.0];
-const BOX_CHECKPOINTS = BOX_X_POSITIONS.map(bx => bx - LEFT_X);
+interface ConveyorGeometry {
+  toScreenX: (x: number) => number;
+  toScreenY: (z: number) => number;
+  screenPts: { id: string; x: number; y: number }[];
+  segments: TrackSegment[];
+  totalLen: number;
+  slotData: SlotGeometry[];
+  isLoop: boolean;
+}
 
-/**
- * Resolves any overlapping cards on the conveyor belt by enforcing
- * a fixed minimum distance between consecutive cards along the track loop.
- */
-function resolveCardOverlaps(cards: ConveyorCard[]): void {
+function computeConveyorGeometry(conveyor: ConveyorData): ConveyorGeometry {
+  const nodeMap = new Map(conveyor.ConveyorNodes.map(n => [n.Id, n]));
+  const routeNodes: ConveyorNode[] = [];
+  for (const id of conveyor.ConveyorRoute) {
+    const node = nodeMap.get(id);
+    if (node) routeNodes.push(node);
+  }
+
+  // Fallback if route is empty
+  if (routeNodes.length < 2) {
+    routeNodes.push(
+      { Id: "0", XPosition: -3.0, ZPosition: 0.0, TangentMode: 1, YRotation: 90.0 },
+      { Id: "1", XPosition: 3.0, ZPosition: 0.0, TangentMode: 1, YRotation: 90.0 }
+    );
+  }
+
+  // Bounds
+  let minX = Infinity, maxX = -Infinity;
+  for (const n of conveyor.ConveyorNodes) {
+    minX = Math.min(minX, n.XPosition);
+    maxX = Math.max(maxX, n.XPosition);
+  }
+  for (const s of conveyor.ConveyorSlots) {
+    minX = Math.min(minX, s.XPosition);
+    maxX = Math.max(maxX, s.XPosition);
+  }
+
+  const spanX = Math.max(maxX - minX, 4.0);
+  const scale = Math.min(620 / spanX, 100);
+  const midX = (minX + maxX) / 2;
+
+  const toScreenX = (x: number) => 430 + (x - midX) * scale;
+  const toScreenY = (z: number) => 140 - z * (scale * 0.46);
+
+  const screenPts = routeNodes.map(n => ({
+    id: n.Id,
+    x: toScreenX(n.XPosition),
+    y: toScreenY(n.ZPosition),
+  }));
+
+  if (conveyor.IsLoop) {
+    screenPts.push({ ...screenPts[0] });
+  }
+
+  const segments: TrackSegment[] = [];
+  let totalLen = 0;
+  for (let i = 0; i < screenPts.length - 1; i++) {
+    const p1 = screenPts[i];
+    const p2 = screenPts[i + 1];
+    const dx = p2.x - p1.x;
+    const dy = p2.y - p1.y;
+    const len = Math.sqrt(dx * dx + dy * dy) || 0.001;
+    segments.push({ p1, p2, len, cumStart: totalLen });
+    totalLen += len;
+  }
+
+  const slotData: SlotGeometry[] = conveyor.ConveyorSlots.map((slot, idx) => {
+    const slotX = toScreenX(slot.XPosition);
+    const slotY = toScreenY(slot.ZPosition);
+
+    let checkpointDist = 0;
+    let found = false;
+    for (const seg of segments) {
+      if (seg.p1.id === slot.TargetNodeId) {
+        checkpointDist = seg.cumStart;
+        found = true;
+        break;
+      }
+    }
+    if (!found) {
+      checkpointDist = (totalLen / Math.max(conveyor.ConveyorSlots.length, 1)) * idx;
+    }
+
+    return {
+      slot,
+      idx,
+      x: slotX,
+      y: slotY,
+      checkpointDist,
+    };
+  });
+
+  return {
+    toScreenX,
+    toScreenY,
+    screenPts,
+    segments,
+    totalLen: Math.max(totalLen, 100),
+    slotData,
+    isLoop: conveyor.IsLoop,
+  };
+}
+
+function getTrackCoords(distance: number, geom: ConveyorGeometry) {
+  const { segments, totalLen } = geom;
+  if (totalLen <= 0 || segments.length === 0) {
+    return { x: 430, y: 140, angle: 0 };
+  }
+
+  const d = ((distance % totalLen) + totalLen) % totalLen;
+
+  for (let i = 0; i < segments.length; i++) {
+    const seg = segments[i];
+    if (d <= seg.cumStart + seg.len || i === segments.length - 1) {
+      const segD = d - seg.cumStart;
+      const t = Math.max(0, Math.min(1, segD / seg.len));
+      const x = seg.p1.x + (seg.p2.x - seg.p1.x) * t;
+      const y = seg.p1.y + (seg.p2.y - seg.p1.y) * t;
+      const angle = (Math.atan2(seg.p2.y - seg.p1.y, seg.p2.x - seg.p1.x) * 180) / Math.PI;
+      return { x, y, angle };
+    }
+  }
+
+  const last = segments[segments.length - 1];
+  return { x: last.p2.x, y: last.p2.y, angle: 0 };
+}
+
+function resolveCardOverlaps(cards: ConveyorCard[], totalLen: number): void {
   if (cards.length <= 1) return;
 
   cards.sort((a, b) => a.dist - b.dist);
@@ -84,69 +211,39 @@ function resolveCardOverlaps(cards: ConveyorCard[]): void {
     for (let i = 0; i < cards.length - 1; i++) {
       const diff = cards[i + 1].dist - cards[i].dist;
       if (diff < MIN_CARD_DISTANCE) {
-        cards[i + 1].dist = (cards[i].dist + MIN_CARD_DISTANCE) % L_TOTAL;
+        cards[i + 1].dist = (cards[i].dist + MIN_CARD_DISTANCE) % totalLen;
       }
     }
 
-    // Check circular wrap gap between the last card and first card
-    const wrapGap = (cards[0].dist + L_TOTAL) - cards[cards.length - 1].dist;
+    const wrapGap = (cards[0].dist + totalLen) - cards[cards.length - 1].dist;
     if (wrapGap < MIN_CARD_DISTANCE) {
       const shift = MIN_CARD_DISTANCE - wrapGap;
       for (let i = 0; i < cards.length; i++) {
-        cards[i].dist = (cards[i].dist + shift / 2) % L_TOTAL;
+        cards[i].dist = (cards[i].dist + shift / 2) % totalLen;
       }
       cards.sort((a, b) => a.dist - b.dist);
     }
   }
 }
 
-function getTrackCoords(distance: number) {
-  const d = ((distance % L_TOTAL) + L_TOTAL) % L_TOTAL;
-  if (d < L_STRAIGHT) {
-    // Top straight: left to right (y = TOP_Y)
-    return {
-      x: LEFT_X + d,
-      y: TOP_Y,
-      angle: 0.0,
-    };
-  } else if (d < L_STRAIGHT + L_ARC) {
-    // Right curve
-    const arcD = d - L_STRAIGHT;
-    const theta = -Math.PI / 2.0 + (arcD / L_ARC) * Math.PI;
-    return {
-      x: RIGHT_X + RADIUS * Math.cos(theta),
-      y: (TOP_Y + BOTTOM_Y) / 2.0 + RADIUS * Math.sin(theta),
-      angle: 90.0 + (arcD / L_ARC) * 180.0,
-    };
-  } else if (d < 2 * L_STRAIGHT + L_ARC) {
-    // Bottom straight: right to left (y = BOTTOM_Y)
-    const straightD = d - (L_STRAIGHT + L_ARC);
-    return {
-      x: RIGHT_X - straightD,
-      y: BOTTOM_Y,
-      angle: 180.0,
-    };
-  } else {
-    // Left curve
-    const arcD = d - (2 * L_STRAIGHT + L_ARC);
-    const theta = Math.PI / 2.0 + (arcD / L_ARC) * Math.PI;
-    return {
-      x: LEFT_X + RADIUS * Math.cos(theta),
-      y: (TOP_Y + BOTTOM_Y) / 2.0 + RADIUS * Math.sin(theta),
-      angle: 270.0 + (arcD / L_ARC) * 180.0,
-    };
-  }
-}
-
-export const PlaytestModal: React.FC<PlaytestModalProps> = ({ levelData, onClose }) => {
+export const PlaytestModal: React.FC<PlaytestModalProps> = ({
+  levelData,
+  conveyorData = DEFAULT_CONVEYOR_DEMO,
+  onClose,
+}) => {
   // Zoom & Pan state for board
   const [zoom, setZoom] = useState(1);
   const [pan, setPan] = useState({ x: 0, y: 0 });
   const [isPanning, setIsPanning] = useState(false);
   const [panStart, setPanStart] = useState({ x: 0, y: 0 });
 
-  // Game state: 4 fixed slots (either a DockedBox or null)
-  const [boxSlots, setBoxSlots] = useState<(DockedBox | null)[]>([null, null, null, null]);
+  // Dynamic Conveyor Geometry
+  const geom = useMemo(() => computeConveyorGeometry(conveyorData), [conveyorData]);
+
+  const numSlots = conveyorData.ConveyorSlots.length || 4;
+
+  // Game state: dynamic slots array
+  const [boxSlots, setBoxSlots] = useState<(DockedBox | null)[]>(() => new Array(numSlots).fill(null));
   const [clearedNodes, setClearedNodes] = useState<Set<string>>(new Set());
   const [spawnerQueues, setSpawnerQueues] = useState<Map<string, SpawnBox[]>>(new Map());
   const [deliveredCardsCount, setDeliveredCardsCount] = useState<number>(0);
@@ -157,9 +254,13 @@ export const PlaytestModal: React.FC<PlaytestModalProps> = ({ levelData, onClose
   // High-performance real-time simulation state
   const conveyorCardsRef = useRef<ConveyorCard[]>([]);
   const flyingCardsRef = useRef<FlyingCard[]>([]);
-  const boxSlotsRef = useRef<(DockedBox | null)[]>([null, null, null, null]);
+  const boxSlotsRef = useRef<(DockedBox | null)[]>(new Array(numSlots).fill(null));
   const clearedNodesRef = useRef<Set<string>>(new Set());
-  const beltBaseDistRef = useRef<number>(0);
+  const geomRef = useRef<ConveyorGeometry>(geom);
+
+  useEffect(() => {
+    geomRef.current = geom;
+  }, [geom]);
 
   // Render trigger for animation frames
   const [, setFrameTick] = useState(0);
@@ -184,13 +285,12 @@ export const PlaytestModal: React.FC<PlaytestModalProps> = ({ levelData, onClose
   const resetGame = useCallback(() => {
     conveyorCardsRef.current = [];
     flyingCardsRef.current = [];
-    boxSlotsRef.current = [null, null, null, null];
+    boxSlotsRef.current = new Array(numSlots).fill(null);
     clearedNodesRef.current = new Set();
-    beltBaseDistRef.current = 0;
 
-    setBoxSlots([null, null, null, null]);
+    setBoxSlots(new Array(numSlots).fill(null));
     setClearedNodes(new Set());
-    
+
     // Initialize spawner queues
     const initialSpawners = new Map<string, SpawnBox[]>();
     for (const sn of (levelData.SpawnerNodes || [])) {
@@ -212,11 +312,11 @@ export const PlaytestModal: React.FC<PlaytestModalProps> = ({ levelData, onClose
     setWarningMessage(null);
     setPan({ x: 0, y: 0 });
     setZoom(1);
-  }, [levelData]);
+  }, [levelData, numSlots]);
 
   useEffect(() => {
     resetGame();
-  }, [levelData, resetGame]);
+  }, [levelData, conveyorData, resetGame]);
 
   const totalCardsInLevel = useMemo(() => {
     let count = levelData.BoxNodes.reduce((acc, b) => acc + b.InitCards.length, 0);
@@ -235,7 +335,7 @@ export const PlaytestModal: React.FC<PlaytestModalProps> = ({ levelData, onClose
     return getBlockedByMap(remainingBoxNodes);
   }, [levelData.BoxNodes, clearedNodes]);
 
-  // Main 60FPS Continuous Animation & Physics Loop with Individual Card Movement & Overlap Prevention
+  // Main 60FPS Continuous Animation & Physics Loop
   useEffect(() => {
     const updateLoop = (now: number) => {
       const dt = Math.min((now - lastTimeRef.current) / 1000, 0.05);
@@ -245,14 +345,16 @@ export const PlaytestModal: React.FC<PlaytestModalProps> = ({ levelData, onClose
       const currentConveyor = conveyorCardsRef.current;
       const currentFlying = flyingCardsRef.current;
       const currentSlots = [...boxSlotsRef.current];
+      const curGeom = geomRef.current;
+      const totalLen = curGeom.totalLen;
 
       // 1. Advance each card along the track
       for (let i = 0; i < currentConveyor.length; i++) {
-        currentConveyor[i].dist = (currentConveyor[i].dist + BELT_SPEED * dt) % L_TOTAL;
+        currentConveyor[i].dist = (currentConveyor[i].dist + BELT_SPEED * dt) % totalLen;
       }
 
-      // Maintain minimum fixed distance between cards and prevent any overlapping
-      resolveCardOverlaps(currentConveyor);
+      // Maintain minimum fixed distance between cards
+      resolveCardOverlaps(currentConveyor, totalLen);
 
       // 2. Check Proximity Flying for Each Card
       const remainingConveyor: ConveyorCard[] = [];
@@ -261,43 +363,38 @@ export const PlaytestModal: React.FC<PlaytestModalProps> = ({ levelData, onClose
         const card = currentConveyor[i];
         let triggeredFly = false;
 
-        // Check if card on top straight passes any matching docked box checkpoint
-        if (card.dist <= L_STRAIGHT + 25.0) {
-          for (let slotIdx = 0; slotIdx < MAX_BOX_SLOTS; slotIdx++) {
-            const box = currentSlots[slotIdx];
-            // STRICT CHECK: Box must exist, NOT be clearing, and MUST MATCH CARD COLOR
-            if (!box || box.isClearing || box.boxColor !== card.color) {
-              continue;
-            }
+        for (let slotIdx = 0; slotIdx < curGeom.slotData.length; slotIdx++) {
+          const slotGeom = curGeom.slotData[slotIdx];
+          const box = currentSlots[slotIdx];
 
-            const checkpoint = BOX_CHECKPOINTS[slotIdx];
-            const neededCards = box.capacity - (box.currentCards.length + box.incomingCount);
+          if (!box || box.isClearing || box.boxColor !== card.color) {
+            continue;
+          }
 
-            if (neededCards > 0) {
-              const distDiff = Math.abs(card.dist - checkpoint);
-              if (distDiff < BELT_SPEED * dt * 1.5 || (card.dist >= checkpoint && card.dist - checkpoint < 20.0)) {
-                // Spawn flying card animation to this specific box instance
-                const cardPos = getTrackCoords(card.dist);
-                const targetX = BOX_X_POSITIONS[slotIdx];
-                const targetY = 42.0;
+          const checkpoint = slotGeom.checkpointDist;
+          const neededCards = box.capacity - (box.currentCards.length + box.incomingCount);
 
-                box.incomingCount += 1;
-                currentFlying.push({
-                  uid: `fly_${card.uid}_${Date.now()}`,
-                  color: card.color,
-                  startX: cardPos.x,
-                  startY: cardPos.y,
-                  targetX,
-                  targetY,
-                  targetInstanceId: box.instanceId,
-                  progress: 0,
-                  duration: 0.30,
-                });
+          if (neededCards > 0) {
+            const distDiff = Math.abs(card.dist - checkpoint);
+            if (distDiff < BELT_SPEED * dt * 1.6 || (card.dist >= checkpoint && card.dist - checkpoint < 22.0)) {
+              const cardPos = getTrackCoords(card.dist, curGeom);
 
-                triggeredFly = true;
-                hasStateChanges = true;
-                break;
-              }
+              box.incomingCount += 1;
+              currentFlying.push({
+                uid: `fly_${card.uid}_${Date.now()}`,
+                color: card.color,
+                startX: cardPos.x,
+                startY: cardPos.y,
+                targetX: slotGeom.x,
+                targetY: slotGeom.y + 40,
+                targetInstanceId: box.instanceId,
+                progress: 0,
+                duration: 0.32,
+              });
+
+              triggeredFly = true;
+              hasStateChanges = true;
+              break;
             }
           }
         }
@@ -309,7 +406,7 @@ export const PlaytestModal: React.FC<PlaytestModalProps> = ({ levelData, onClose
 
       conveyorCardsRef.current = remainingConveyor;
 
-      // 2. Update Flying Cards Trajectory & Landing
+      // 3. Update Flying Cards Trajectory & Landing
       const activeFlying: FlyingCard[] = [];
 
       for (let f = 0; f < currentFlying.length; f++) {
@@ -317,17 +414,14 @@ export const PlaytestModal: React.FC<PlaytestModalProps> = ({ levelData, onClose
         fc.progress += dt / fc.duration;
 
         if (fc.progress >= 1.0) {
-          // Card has landed! Find target box by unique instanceId
           const targetBox = currentSlots.find(b => b && b.instanceId === fc.targetInstanceId);
           if (targetBox) {
             targetBox.incomingCount = Math.max(0, targetBox.incomingCount - 1);
 
-            // STRICT COLOR VALIDATION: Card MUST match box color
             if (targetBox.boxColor === fc.color && targetBox.currentCards.length < targetBox.capacity) {
               targetBox.currentCards.push(fc.color);
             }
 
-            // Check if box is now completely full
             if (targetBox.currentCards.length >= targetBox.capacity && !targetBox.isClearing) {
               targetBox.isFull = true;
               targetBox.isClearing = true;
@@ -396,24 +490,19 @@ export const PlaytestModal: React.FC<PlaytestModalProps> = ({ levelData, onClose
 
     const isTray = Boolean(activeBox.IsPaperBox);
     const boxType = getBoxType(activeBox.TypeId, isTray);
+    const totalLen = geom.totalLen;
 
     // === TRAY LOGIC ===
-    // Trays store spare cards. When clicked:
-    // 1. Only its cards are sent to the conveyor belt.
-    // 2. The tray disappears immediately without occupying any of the 4 box slots!
     if (isTray) {
-
-      // Inject cards onto conveyor belt with individual distance and no overlap
-      const entryBase = 620.0;
+      const entryBase = totalLen * 0.45;
       const newCards: ConveyorCard[] = activeBox.InitCards.map((col, idx) => ({
         uid: `card_tray_${Date.now()}_${idx}_${Math.random().toString(36).substring(2, 6)}`,
         color: col,
-        dist: ((entryBase - idx * MIN_CARD_DISTANCE) % L_TOTAL + L_TOTAL) % L_TOTAL,
+        dist: ((entryBase - idx * MIN_CARD_DISTANCE) % totalLen + totalLen) % totalLen,
       }));
       conveyorCardsRef.current = [...conveyorCardsRef.current, ...newCards];
-      resolveCardOverlaps(conveyorCardsRef.current);
+      resolveCardOverlaps(conveyorCardsRef.current, totalLen);
 
-      // Disappear from board
       const newClearedNodes = new Set(clearedNodes);
       if (spawnerBoxes && spawnerBoxes.length > 0) {
         const remainingSpawnBoxes = spawnerBoxes.slice(1);
@@ -434,17 +523,13 @@ export const PlaytestModal: React.FC<PlaytestModalProps> = ({ levelData, onClose
     }
 
     // === NORMAL COLORED BOX LOGIC ===
-    // 1. Find first available box slot (0..3)
     const currentSlots = boxSlotsRef.current;
     const availableSlotIdx = currentSlots.findIndex(s => s === null);
     if (availableSlotIdx === -1) {
-      showWarning('All 4 box slots are occupied! Clear a matching box first.');
+      showWarning(`All ${numSlots} conveyor slots are occupied! Clear a matching box first.`);
       return;
     }
 
-    // STRICT IN-BOX COLOR FILTER:
-    // Only cards matching activeBox.BoxColor stay in the box!
-    // All other cards go to the conveyor belt!
     let matchingInBox: number[] = [];
     let unmatchedInBox: number[] = [];
 
@@ -456,18 +541,6 @@ export const PlaytestModal: React.FC<PlaytestModalProps> = ({ levelData, onClose
       }
     }
 
-    // 2. Dynamic Capacity Check:
-    let immediateAbsorbCount = 0;
-    for (const card of conveyorCardsRef.current) {
-      if (
-        card.color === activeBox.BoxColor &&
-        matchingInBox.length + immediateAbsorbCount < boxType.capacity
-      ) {
-        immediateAbsorbCount++;
-      }
-    }
-
-    // 3. Move is VALID: dock box in available slot and inject unmatched cards onto conveyor
     const uniqueInstanceId = `box_${nodeId}_${Date.now()}_${Math.random().toString(36).substring(2, 6)}`;
     const newDockedBox: DockedBox = {
       instanceId: uniqueInstanceId,
@@ -482,25 +555,22 @@ export const PlaytestModal: React.FC<PlaytestModalProps> = ({ levelData, onClose
       isFull: matchingInBox.length >= boxType.capacity,
     };
 
-    const entryBase = 620.0;
+    const entryBase = totalLen * 0.45;
     const newCards: ConveyorCard[] = unmatchedInBox.map((col, idx) => ({
       uid: `card_${Date.now()}_${idx}_${Math.random().toString(36).substring(2, 6)}`,
       color: col,
-      dist: ((entryBase - idx * MIN_CARD_DISTANCE) % L_TOTAL + L_TOTAL) % L_TOTAL,
+      dist: ((entryBase - idx * MIN_CARD_DISTANCE) % totalLen + totalLen) % totalLen,
     }));
 
     conveyorCardsRef.current = [...conveyorCardsRef.current, ...newCards];
-    resolveCardOverlaps(conveyorCardsRef.current);
+    resolveCardOverlaps(conveyorCardsRef.current, totalLen);
 
-    // Update docked slots
     const updatedSlots = [...currentSlots];
     updatedSlots[availableSlotIdx] = newDockedBox;
     setBoxSlots(updatedSlots);
     boxSlotsRef.current = updatedSlots;
 
-    // Update board state & spawners
     const newClearedNodes = new Set(clearedNodes);
-
     if (spawnerBoxes && spawnerBoxes.length > 0) {
       const remainingSpawnBoxes = spawnerBoxes.slice(1);
       const updatedMap = new Map(spawnerQueues);
@@ -544,6 +614,17 @@ export const PlaytestModal: React.FC<PlaytestModalProps> = ({ levelData, onClose
 
   const currentConveyorCount = conveyorCardsRef.current.length;
 
+  // Track path SVG `d`
+  const beltPathData = useMemo(() => {
+    if (geom.screenPts.length < 2) return '';
+    let d = `M ${geom.screenPts[0].x} ${geom.screenPts[0].y}`;
+    for (let i = 1; i < geom.screenPts.length; i++) {
+      d += ` L ${geom.screenPts[i].x} ${geom.screenPts[i].y}`;
+    }
+    if (geom.isLoop) d += ' Z';
+    return d;
+  }, [geom]);
+
   return (
     <div className="fixed inset-0 z-50 bg-slate-950/90 backdrop-blur-md flex items-center justify-center p-2 sm:p-4 select-none">
       <div className="relative w-full max-w-5xl h-[94vh] bg-[#629fc9] rounded-3xl overflow-hidden border-4 border-slate-700 shadow-2xl flex flex-col">
@@ -560,7 +641,7 @@ export const PlaytestModal: React.FC<PlaytestModalProps> = ({ levelData, onClose
                   Playtest Simulator
                 </h2>
                 <span className="text-[10px] bg-amber-500/20 text-amber-300 border border-amber-500/40 px-2 py-0.5 rounded font-bold uppercase">
-                  Feeder Trays & Strict Sorting • 60 FPS
+                  Conveyor #{conveyorData.Id} ({numSlots} Slots)
                 </span>
                 {levelData.IsHardLvl && (
                   <span className="text-[10px] bg-rose-500/20 text-rose-300 border border-rose-500/40 px-2 py-0.5 rounded font-bold uppercase flex items-center gap-1">
@@ -569,7 +650,7 @@ export const PlaytestModal: React.FC<PlaytestModalProps> = ({ levelData, onClose
                 )}
               </div>
               <span className="text-[11px] text-slate-400 hidden sm:inline">
-                Trays feed spare cards directly to the conveyor and disappear immediately!
+                Live simulation of current level running with active Conveyor #{conveyorData.Id}
               </span>
             </div>
           </div>
@@ -604,13 +685,13 @@ export const PlaytestModal: React.FC<PlaytestModalProps> = ({ levelData, onClose
         {/* Main Playable Area */}
         <div className="flex-1 relative overflow-hidden flex flex-col">
           
-          {/* TOP SECTION: 5 DOCKED BOXES & REAL-TIME ANIMATED CONVEYOR BELT */}
+          {/* TOP SECTION: CONVEYOR BELT & DOCKED BOXES */}
           <div className="w-full bg-[#5287aa] border-b-2 border-[#8ebfda]/40 p-2 flex flex-col items-center gap-1 shadow-lg shrink-0 z-20">
             
             {/* Header info & score */}
             <div className="w-full max-w-4xl flex items-center justify-between px-2 text-[11px] font-bold text-white uppercase tracking-wider">
               <span className="drop-shadow">
-                Docked Boxes ({boxSlots.filter(b => b !== null && !b.isClearing).length}/4) • Conveyor Cards ({currentConveyorCount})
+                Docked Boxes ({boxSlots.filter(b => b !== null && !b.isClearing).length}/{numSlots}) • Conveyor Cards ({currentConveyorCount})
               </span>
               <div className="bg-slate-950/80 border border-slate-700 px-3 py-1 rounded-xl text-xs font-mono text-sky-400 shadow">
                 Delivered: {deliveredCardsCount}/{totalCardsInLevel}
@@ -620,7 +701,6 @@ export const PlaytestModal: React.FC<PlaytestModalProps> = ({ levelData, onClose
             {/* Integrated SVG Conveyor System & Docked Boxes */}
             <div className="w-full max-w-4xl h-48 bg-slate-950/40 rounded-2xl border border-slate-700/50 relative overflow-hidden flex items-center justify-center shadow-inner">
               <svg className="w-full h-full" viewBox="0 0 860 230">
-                {/* Defs for gradients & shadows */}
                 <defs>
                   <linearGradient id="beltGradient" x1="0" y1="0" x2="1" y2="0">
                     <stop offset="0%" stopColor="#1e293b" />
@@ -629,52 +709,74 @@ export const PlaytestModal: React.FC<PlaytestModalProps> = ({ levelData, onClose
                   </linearGradient>
                 </defs>
 
-                {/* 1. Conveyor Track Rail */}
-                <path
-                  d={`M ${LEFT_X} ${TOP_Y} L ${RIGHT_X} ${TOP_Y} A ${RADIUS} ${RADIUS} 0 0 1 ${RIGHT_X} ${BOTTOM_Y} L ${LEFT_X} ${BOTTOM_Y} A ${RADIUS} ${RADIUS} 0 0 1 ${LEFT_X} ${TOP_Y} Z`}
-                  fill="none"
-                  stroke="#0f172a"
-                  strokeWidth="42"
-                  strokeLinecap="round"
-                  strokeLinejoin="round"
-                />
-                <path
-                  d={`M ${LEFT_X} ${TOP_Y} L ${RIGHT_X} ${TOP_Y} A ${RADIUS} ${RADIUS} 0 0 1 ${RIGHT_X} ${BOTTOM_Y} L ${LEFT_X} ${BOTTOM_Y} A ${RADIUS} ${RADIUS} 0 0 1 ${LEFT_X} ${TOP_Y} Z`}
-                  fill="none"
-                  stroke="url(#beltGradient)"
-                  strokeWidth="32"
-                  strokeLinecap="round"
-                  strokeLinejoin="round"
-                />
-                <path
-                  d={`M ${LEFT_X} ${TOP_Y} L ${RIGHT_X} ${TOP_Y} A ${RADIUS} ${RADIUS} 0 0 1 ${RIGHT_X} ${BOTTOM_Y} L ${LEFT_X} ${BOTTOM_Y} A ${RADIUS} ${RADIUS} 0 0 1 ${LEFT_X} ${TOP_Y} Z`}
-                  fill="none"
-                  stroke="#475569"
-                  strokeWidth="24"
-                  strokeDasharray="6,6"
-                />
-                <path
-                  d={`M ${LEFT_X} ${TOP_Y} L ${RIGHT_X} ${TOP_Y} A ${RADIUS} ${RADIUS} 0 0 1 ${RIGHT_X} ${BOTTOM_Y} L ${LEFT_X} ${BOTTOM_Y} A ${RADIUS} ${RADIUS} 0 0 1 ${LEFT_X} ${TOP_Y} Z`}
-                  fill="none"
-                  stroke="#38bdf8"
-                  strokeWidth="2"
-                  opacity="0.5"
-                />
+                {/* 1. Dynamic Conveyor Track Rail */}
+                {beltPathData && (
+                  <g>
+                    {/* Outer Casing */}
+                    <path
+                      d={beltPathData}
+                      fill="none"
+                      stroke="#131b2b"
+                      strokeWidth="44"
+                      strokeLinecap="round"
+                      strokeLinejoin="round"
+                    />
+                    <path
+                      d={beltPathData}
+                      fill="none"
+                      stroke="#334155"
+                      strokeWidth="36"
+                      strokeLinecap="round"
+                      strokeLinejoin="round"
+                    />
+                    <path
+                      d={beltPathData}
+                      fill="none"
+                      stroke="url(#beltGradient)"
+                      strokeWidth="28"
+                      strokeLinecap="round"
+                      strokeLinejoin="round"
+                    />
+                    <path
+                      d={beltPathData}
+                      fill="none"
+                      stroke="#94a3b8"
+                      strokeWidth="2"
+                      opacity="0.4"
+                    />
 
-                {/* 2. Docked Box Slots with Fixed Spacing & No Overlap (64px width, 46px gap) */}
-                {BOX_X_POSITIONS.map((bx, slotIdx) => {
+                    {/* Inlet machine on start node (if not loop) */}
+                    {!geom.isLoop && geom.screenPts.length > 0 && (
+                      <g transform={`translate(${geom.screenPts[0].x}, ${geom.screenPts[0].y})`}>
+                        <rect x="-24" y="-22" width="48" height="44" rx="8" fill="#1e3a8a" stroke="#3b82f6" strokeWidth="2" />
+                        <circle cx="0" cy="0" r="10" fill="#0f172a" stroke="#60a5fa" strokeWidth="2" />
+                      </g>
+                    )}
+
+                    {/* Outlet machine on end node (if not loop) */}
+                    {!geom.isLoop && geom.screenPts.length > 1 && (
+                      <g transform={`translate(${geom.screenPts[geom.screenPts.length - 1].x}, ${geom.screenPts[geom.screenPts.length - 1].y})`}>
+                        <rect x="-24" y="-22" width="48" height="44" rx="8" fill="#1e3a8a" stroke="#3b82f6" strokeWidth="2" />
+                        <rect x="-14" y="-12" width="28" height="24" rx="4" fill="#0f172a" stroke="#60a5fa" strokeWidth="1.5" />
+                      </g>
+                    )}
+                  </g>
+                )}
+
+                {/* 2. Docked Box Slots dynamically positioned from geom.slotData (Tall Rounded Rectangle) */}
+                {geom.slotData.map((sGeom, slotIdx) => {
                   const box = boxSlots[slotIdx];
                   const colorDef = box ? getColor(box.boxColor) : null;
                   const isClearing = box?.isClearing;
 
                   return (
-                    <g key={`docked-slot-${slotIdx}`} transform={`translate(${bx}, 44)`}>
-                      {/* Slot Docking Base Plate */}
+                    <g key={`docked-slot-${slotIdx}`} transform={`translate(${sGeom.x}, ${sGeom.y})`}>
+                      {/* Slot Docking Base Plate (Tall frame extending down to belt) */}
                       <rect
-                        x="-32"
-                        y="-30"
-                        width="64"
-                        height="60"
+                        x="-30"
+                        y="-6"
+                        width="60"
+                        height="92"
                         rx="12"
                         fill="#1e293b"
                         stroke="#475569"
@@ -689,53 +791,50 @@ export const PlaytestModal: React.FC<PlaytestModalProps> = ({ levelData, onClose
                             isClearing ? 'scale-110 opacity-0' : 'scale-100 opacity-100'
                           }`}
                         >
-                          {/* Outer Box */}
                           <rect
-                            x="-30"
-                            y="-28"
-                            width="60"
-                            height="56"
+                            x="-28"
+                            y="-4"
+                            width="56"
+                            height="88"
                             rx="10"
                             fill={colorDef.hex}
                             stroke="#ffffff"
                             strokeWidth="2"
                           />
-                          {/* Inner Recess */}
                           <rect
-                            x="-26"
-                            y="-12"
-                            width="52"
-                            height="36"
+                            x="-24"
+                            y="16"
+                            width="48"
+                            height="64"
                             rx="6"
                             fill={colorDef.darkHex}
                             opacity="0.4"
                           />
 
-                          {/* ID & Capacity Label */}
                           <text
                             x="0"
-                            y="-16"
+                            y="8"
                             textAnchor="middle"
                             fill="#ffffff"
-                            fontSize="9"
+                            fontSize="10"
                             fontWeight="900"
                             fontFamily="monospace"
                           >
                             {box.currentCards.length}/{box.capacity}
                           </text>
 
-                          {/* Cards Stacked inside Box (Strictly Matching Box Color Only!) */}
+                          {/* Stacked Cards */}
                           {box.currentCards.map((cCol, cIdx) => {
                             const cColor = getColor(cCol);
-                            const cardH = 4.5;
-                            const cardY = 18 - cIdx * (cardH + 1);
+                            const cardH = 5.0;
+                            const cardY = 70 - cIdx * (cardH + 2);
 
                             return (
                               <rect
                                 key={`stacked-card-${cIdx}`}
-                                x="-22"
+                                x="-20"
                                 y={cardY}
-                                width="44"
+                                width="40"
                                 height={cardH}
                                 rx="2"
                                 fill={cColor.hex}
@@ -748,7 +847,7 @@ export const PlaytestModal: React.FC<PlaytestModalProps> = ({ levelData, onClose
                       ) : (
                         <text
                           x="0"
-                          y="4"
+                          y="44"
                           textAnchor="middle"
                           fill="#64748b"
                           fontSize="10"
@@ -761,9 +860,9 @@ export const PlaytestModal: React.FC<PlaytestModalProps> = ({ levelData, onClose
                   );
                 })}
 
-                {/* 3. Cards in Motion along Conveyor (No Overlap, Fixed Separation Distance) */}
+                {/* 3. Cards in Motion along Conveyor */}
                 {conveyorCardsRef.current.map((card) => {
-                  const pt = getTrackCoords(card.dist);
+                  const pt = getTrackCoords(card.dist, geom);
                   const colorDef = getColor(card.color);
 
                   return (
@@ -771,7 +870,6 @@ export const PlaytestModal: React.FC<PlaytestModalProps> = ({ levelData, onClose
                       key={`riding-card-${card.uid}`}
                       transform={`translate(${pt.x}, ${pt.y}) rotate(${pt.angle})`}
                     >
-                      {/* Card Drop Shadow */}
                       <rect
                         x="-10"
                         y="-13"
@@ -780,7 +878,6 @@ export const PlaytestModal: React.FC<PlaytestModalProps> = ({ levelData, onClose
                         rx="4"
                         fill="rgba(0, 0, 0, 0.45)"
                       />
-                      {/* Card Body */}
                       <rect
                         x="-9"
                         y="-12"
@@ -791,7 +888,6 @@ export const PlaytestModal: React.FC<PlaytestModalProps> = ({ levelData, onClose
                         stroke="#ffffff"
                         strokeWidth="1.5"
                       />
-                      {/* Card Gloss Stripe */}
                       <rect
                         x="-7"
                         y="-10"
@@ -804,7 +900,7 @@ export const PlaytestModal: React.FC<PlaytestModalProps> = ({ levelData, onClose
                   );
                 })}
 
-                {/* 4. Flying Cards to Matching Box (Smooth Parabolic Trajectory) */}
+                {/* 4. Flying Cards to Matching Box */}
                 {flyingCardsRef.current.map(fc => {
                   const p = fc.progress;
                   const currX = fc.startX + (fc.targetX - fc.startX) * p;
@@ -816,7 +912,6 @@ export const PlaytestModal: React.FC<PlaytestModalProps> = ({ levelData, onClose
                       key={`flying-${fc.uid}`}
                       transform={`translate(${currX}, ${currY}) scale(${1 + 0.2 * Math.sin(p * Math.PI)})`}
                     >
-                      {/* Flying Card Shadow */}
                       <ellipse
                         cx="0"
                         cy="14"
@@ -825,7 +920,6 @@ export const PlaytestModal: React.FC<PlaytestModalProps> = ({ levelData, onClose
                         fill="rgba(0, 0, 0, 0.35)"
                         opacity={1 - p * 0.4}
                       />
-                      {/* Card Body */}
                       <rect
                         x="-10"
                         y="-13"
@@ -888,12 +982,15 @@ export const PlaytestModal: React.FC<PlaytestModalProps> = ({ levelData, onClose
                       const blockers = liveBlockedByMap.get(bn.Id) || [];
                       const isBlocked = blockers.length > 0;
 
-                      // Mystery / Rainbow Box: color is hidden while blocked
                       const isHidden = (activeBox.IsRainbowBox || activeBox.IsHidden) && isBlocked;
                       const areCardsHidden = activeBox.IsCardsHidden;
 
-                      const unityX = bn.XPosition !== undefined ? bn.XPosition : (bn.MapPosX ?? 0);
-                      const unityZ = bn.ZPosition !== undefined ? bn.ZPosition : ((bn.MapPosY ?? 0) + (bn.YPosition ?? 0));
+                      // Position offset by conveyor board offsets
+                      const rawX = bn.XPosition !== undefined ? bn.XPosition : (bn.MapPosX ?? 0);
+                      const rawZ = bn.ZPosition !== undefined ? bn.ZPosition : ((bn.MapPosY ?? 0) + (bn.YPosition ?? 0));
+
+                      const unityX = rawX + (conveyorData.BoardOffsetX || 0);
+                      const unityZ = rawZ - (conveyorData.BoardOffsetZ || 0);
 
                       const cx = unityX * 74;
                       const cy = -unityZ * 74;
@@ -953,52 +1050,31 @@ export const PlaytestModal: React.FC<PlaytestModalProps> = ({ levelData, onClose
                                 y={-h / 2}
                                 width={w}
                                 height={h}
-                                rx={12}
-                                fill="#e2e8f0"
-                                stroke={isBlocked ? '#64748b' : '#ffffff'}
-                                strokeWidth={isBlocked ? 1.5 : 2.5}
+                                rx={10}
+                                fill="#d97706"
+                                stroke="#fde68a"
+                                strokeWidth={2}
+                                strokeDasharray="3,2"
                               />
                               <rect
                                 x={-w / 2 + 3}
                                 y={-h / 2 + 3}
                                 width={w - 6}
                                 height={h - 6}
-                                rx={9}
-                                fill="#cbd5e1"
-                              />
-                            </g>
-                          ) : isHidden ? (
-                            /* Hidden Mystery Box Body */
-                            <g>
-                              <rect
-                                x={-w / 2}
-                                y={-h / 2}
-                                width={w}
-                                height={h}
-                                rx={12}
-                                fill="#1e293b"
-                                stroke="#a855f7"
-                                strokeWidth={2}
-                                strokeDasharray="4,2"
-                              />
-                              <rect
-                                x={-w / 2 + 4}
-                                y={-h / 2 + 4}
-                                width={w - 8}
-                                height={h - 8}
                                 rx={8}
-                                fill="#334155"
+                                fill="#92400e"
                                 opacity={0.6}
                               />
                               <text
                                 x="0"
-                                y="7"
+                                y="-18"
                                 textAnchor="middle"
-                                fill="#c084fc"
-                                fontSize="22"
-                                fontWeight="900"
+                                fill="#fef3c7"
+                                fontSize="10"
+                                fontWeight="bold"
+                                letterSpacing="1"
                               >
-                                ?
+                                TRAY
                               </text>
                             </g>
                           ) : (
@@ -1008,89 +1084,67 @@ export const PlaytestModal: React.FC<PlaytestModalProps> = ({ levelData, onClose
                                 y={-h / 2}
                                 width={w}
                                 height={h}
-                                rx={12}
-                                fill={colorDef.hex}
-                                stroke={isBlocked ? '#64748b' : '#ffffff'}
-                                strokeWidth={isBlocked ? 1.5 : 2.5}
+                                rx={10}
+                                fill={isHidden ? '#475569' : colorDef.hex}
+                                stroke="#ffffff"
+                                strokeWidth={2}
                               />
                               <rect
                                 x={-w / 2 + 4}
                                 y={-h / 2 + 4}
                                 width={w - 8}
                                 height={h - 8}
-                                rx={8}
-                                fill={colorDef.darkHex}
+                                rx={7}
+                                fill={isHidden ? '#1e293b' : colorDef.darkHex}
                                 opacity={0.35}
                               />
                             </g>
                           )}
 
-                          {/* Cards Stack inside Box / Tray (only if not full mystery box) */}
-                          {!isHidden && activeBox.InitCards.map((cCol, cIdx) => {
-                            const spacing = (w - 16) / Math.max(activeBox.InitCards.length, 1);
-                            const cardX = -w / 2 + 8 + cIdx * spacing;
-                            const cardH = h - 12;
-                            const cardThickness = Math.min(spacing - 2, 14);
-                            const cColorDef = getColor(cCol);
+                          {/* Cards rendering inside board box */}
+                          <g transform="translate(0, 0)">
+                            {activeBox.InitCards.map((cCol, cIdx) => {
+                              const cDef = getColor(cCol);
+                              const totalC = activeBox.InitCards.length;
+                              const cW = Math.min(w * 0.72, 46);
+                              const cH = 6.0;
+                              const startY = (totalC * (cH + 2)) / 2 - 8;
+                              const cY = startY - cIdx * (cH + 2);
 
-                            return (
-                              <g key={`play-box-card-${cIdx}`}>
-                                <rect
-                                  x={cardX}
-                                  y={-cardH / 2}
-                                  width={cardThickness}
-                                  height={cardH}
-                                  rx={3}
-                                  fill={areCardsHidden ? '#334155' : cColorDef.hex}
-                                  stroke={areCardsHidden ? '#64748b' : cColorDef.borderHex}
-                                  strokeWidth={1}
-                                />
-                                {areCardsHidden ? (
-                                  <text
-                                    x={cardX + cardThickness / 2}
-                                    y="3.5"
-                                    textAnchor="middle"
-                                    fill="#94a3b8"
-                                    fontSize="8"
-                                    fontWeight="bold"
-                                  >
-                                    ?
-                                  </text>
-                                ) : (
+                              return (
+                                <g key={`board-box-card-${cIdx}`}>
                                   <rect
-                                    x={cardX + 1}
-                                    y={-cardH / 2 + 2}
-                                    width={Math.max(cardThickness - 2, 1)}
-                                    height={cardH - 4}
-                                    rx={1.5}
-                                    fill="rgba(255, 255, 255, 0.4)"
+                                    x={-cW / 2}
+                                    y={cY}
+                                    width={cW}
+                                    height={cH}
+                                    rx={2}
+                                    fill={areCardsHidden || isHidden ? '#64748b' : cDef.hex}
+                                    stroke="#ffffff"
+                                    strokeWidth={0.8}
                                   />
-                                )}
-                              </g>
-                            );
-                          })}
+                                </g>
+                              );
+                            })}
+                          </g>
 
-                          {/* Spawner Badge */}
-                          {isSpawner && (
-                            <g transform={`translate(${-w / 2 + 8}, ${-h / 2 - 6})`}>
-                              <rect x="-12" y="-6" width="24" height="12" rx="3" fill="#f59e0b" stroke="#ffffff" strokeWidth="1" />
-                              <text x="0" y="3" textAnchor="middle" fill="#0f172a" fontSize="8" fontWeight="900">
-                                x{spawnerBoxes.length}
-                              </text>
-                            </g>
-                          )}
-
-                          {/* Lock Icon Badge if Blocked */}
+                          {/* Blocked Overlay */}
                           {isBlocked && (
-                            <g transform={`translate(${w / 2 - 14}, ${-h / 2 + 4})`}>
-                              <circle cx="6" cy="6" r="8" fill="#1e293b" stroke="#f43f5e" strokeWidth="1.5" />
-                              <path
-                                d="M 4 6 L 4 4.5 C 4 3 5 2 6 2 C 7 2 8 3 8 4.5 L 8 6 M 3 6 L 9 6 L 9 9.5 L 3 9.5 Z"
-                                fill="none"
-                                stroke="#f43f5e"
-                                strokeWidth="1.2"
-                                strokeLinecap="round"
+                            <g>
+                              <rect
+                                x={-w / 2}
+                                y={-h / 2}
+                                width={w}
+                                height={h}
+                                rx={10}
+                                fill="rgba(15, 23, 42, 0.45)"
                               />
+                              <g transform="translate(0, -2)">
+                                <circle cx="0" cy="0" r="10" fill="#0f172a" stroke="#64748b" strokeWidth="1.5" />
+                                <text x="0" y="3.5" textAnchor="middle" fill="#e2e8f0" fontSize="10" fontWeight="bold">
+                                  {blockers.length}
+                                </text>
+                              </g>
                             </g>
                           )}
                         </g>
@@ -1099,71 +1153,37 @@ export const PlaytestModal: React.FC<PlaytestModalProps> = ({ levelData, onClose
                 </g>
               </svg>
             </div>
-
-            {/* Floating Zoom & Pan Controls (Bottom-Left) */}
-            <div className="absolute bottom-4 left-4 z-20 flex items-center gap-1.5 bg-slate-900/85 backdrop-blur-md p-1.5 rounded-xl border border-slate-700 shadow-xl pointer-events-auto">
-              <button
-                onClick={() => setZoom(z => Math.min(z * 1.2, 2.5))}
-                className="p-1.5 hover:bg-slate-800 rounded-lg text-slate-300 hover:text-white transition"
-                title="Zoom In"
-              >
-                <ZoomIn size={16} />
-              </button>
-              <button
-                onClick={() => setZoom(z => Math.max(z / 1.2, 0.4))}
-                className="p-1.5 hover:bg-slate-800 rounded-lg text-slate-300 hover:text-white transition"
-                title="Zoom Out"
-              >
-                <ZoomOut size={16} />
-              </button>
-              <button
-                onClick={() => { setZoom(1); setPan({ x: 0, y: 0 }); }}
-                className="p-1.5 hover:bg-slate-800 rounded-lg text-slate-300 hover:text-white transition"
-                title="Reset View & Center"
-              >
-                <Maximize2 size={16} />
-              </button>
-              <span className="text-[11px] font-mono text-slate-400 px-1">
-                {Math.round(zoom * 100)}%
-              </span>
-            </div>
-
-            {/* Pan & Drag Hint Badge (Bottom-Right) */}
-            <div className="absolute bottom-4 right-4 z-20 bg-slate-900/80 backdrop-blur-md px-3 py-1.5 rounded-xl border border-slate-700/60 text-[11px] text-slate-400 flex items-center gap-2 pointer-events-none">
-              <Move size={12} className="text-sky-400" />
-              <span>Drag background to Pan • Scroll to Zoom</span>
-            </div>
-
-            {/* Win Celebration Banner */}
-            {isWon && (
-              <div className="absolute inset-0 bg-slate-950/85 backdrop-blur-md flex flex-col items-center justify-center p-6 text-center animate-fadeIn z-40 pointer-events-auto">
-                <div className="w-20 h-20 rounded-3xl bg-gradient-to-tr from-amber-400 to-yellow-300 flex items-center justify-center shadow-2xl shadow-amber-400/40 mb-4 animate-bounce">
-                  <Trophy size={42} className="text-slate-950" />
-                </div>
-                <h3 className="text-3xl font-black text-white uppercase tracking-wider mb-2">
-                  Level Complete!
-                </h3>
-                <p className="text-sm text-slate-300 max-w-md mb-6">
-                  All boxes and cards have been sorted and cleared through the 4 box slots!
-                </p>
-                <div className="flex items-center gap-3">
-                  <button
-                    onClick={resetGame}
-                    className="py-2.5 px-6 bg-gradient-to-r from-emerald-500 to-teal-500 hover:from-emerald-400 hover:to-teal-400 text-slate-950 font-bold rounded-xl shadow-lg transition active:scale-95 flex items-center gap-2"
-                  >
-                    <RotateCcw size={16} />
-                    <span>Replay Level</span>
-                  </button>
-                  <button
-                    onClick={onClose}
-                    className="py-2.5 px-6 bg-slate-800 hover:bg-slate-700 text-slate-200 font-semibold rounded-xl border border-slate-700 transition"
-                  >
-                    Return to Builder
-                  </button>
-                </div>
-              </div>
-            )}
           </div>
+
+          {/* VICTORY OVERLAY */}
+          {isWon && (
+            <div className="absolute inset-0 z-50 bg-slate-950/85 backdrop-blur-md flex flex-col items-center justify-center animate-fadeIn">
+              <div className="w-20 h-20 rounded-3xl bg-gradient-to-tr from-amber-400 to-yellow-300 flex items-center justify-center shadow-2xl shadow-amber-500/30 mb-4 animate-bounce">
+                <Trophy size={42} className="text-slate-950" />
+              </div>
+              <h1 className="text-2xl sm:text-3xl font-black text-white uppercase tracking-wider mb-2 drop-shadow-md">
+                Level Cleared!
+              </h1>
+              <p className="text-xs sm:text-sm text-sky-200 mb-6 font-medium">
+                All boxes delivered successfully with Conveyor #{conveyorData.Id} ({totalCardsInLevel} cards sorted).
+              </p>
+              <div className="flex items-center gap-3">
+                <button
+                  onClick={resetGame}
+                  className="py-2.5 px-6 rounded-xl bg-slate-800 hover:bg-slate-700 text-white font-bold text-xs flex items-center gap-2 border border-slate-700 transition active:scale-95 shadow-lg"
+                >
+                  <RotateCcw size={15} />
+                  <span>Replay</span>
+                </button>
+                <button
+                  onClick={onClose}
+                  className="py-2.5 px-6 rounded-xl bg-gradient-to-r from-emerald-500 to-teal-500 hover:from-emerald-400 hover:to-teal-400 text-slate-950 font-bold text-xs flex items-center gap-2 transition active:scale-95 shadow-lg shadow-emerald-500/20"
+                >
+                  <span>Finish Playtest</span>
+                </button>
+              </div>
+            </div>
+          )}
         </div>
       </div>
     </div>
