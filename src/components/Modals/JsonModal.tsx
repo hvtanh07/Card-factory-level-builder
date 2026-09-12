@@ -62,7 +62,7 @@ export const JsonModal: React.FC<JsonModalProps> = ({ levelData, onClose, onAppl
         <div className="h-14 bg-slate-950 px-5 flex items-center justify-between border-b border-slate-800">
           <div className="flex items-center gap-2">
             <span className="text-sm font-bold text-slate-100 uppercase tracking-wider">
-              Level Data (JSON / .bytes payload)
+              Level Data (JSON payload)
             </span>
             {parseError ? (
               <span className="text-xs bg-rose-500/20 text-rose-300 border border-rose-500/30 px-2 py-0.5 rounded flex items-center gap-1">
@@ -130,7 +130,7 @@ export const JsonModal: React.FC<JsonModalProps> = ({ levelData, onClose, onAppl
         {/* Footer actions */}
         <div className="h-14 bg-slate-950 px-5 flex items-center justify-between border-t border-slate-800">
           <span className="text-xs text-slate-500">
-            Paste raw JSON from game files or copy this payload to write to a `.bytes` asset.
+            Paste raw JSON from game files or copy this payload to save as a .json file.
           </span>
           <div className="flex items-center gap-2">
             <button

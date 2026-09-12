@@ -1,0 +1,608 @@
+Created At: 2026-09-02T15:57:28+07:00
+Completed At: 2026-09-02T15:57:28+07:00
+File Path: `file:///c:/Users/TUAN%20ANH/Documents/GitHub/Card%20factory%20level%20builder/src/components/Playtest/PlaytestModal.tsx`
+Total Lines: 1162
+Total Bytes: 46832
+Showing lines 1 to 600
+The following code has been modified to include a line number before every line, in the format: <line_number>: <original_line>. Please note that any changes targeting the original code should remove the line number, colon, and leading space.
+1: import React, { useState, useEffect, useMemo, useCallback, useRef } from 'react';
+2: import { LevelData, BoardNode, BoxNode, SpawnerNode, SpawnBox } from '../../types/level';
+3: import { getColor } from '../../constants/colors';
+4: import { getBoxType } from '../../constants/boxTypes';
+5: import { getBlockedByMap } from '../../utils/autoBlocker';
+6: import { 
+7:   X, 
+8:   RotateCcw, 
+9:   Trophy, 
+10:   ZoomIn, 
+11:   ZoomOut, 
+12:   Maximize2, 
+13:   AlertTriangle,
+14:   Layers,
+15:   Move
+16: } from 'lucide-react';
+17: 
+18: interface PlaytestModalProps {
+19:   levelData: LevelData;
+20:   onClose: () => void;
+21: }
+22: 
+23: interface DockedBox {
+24:   instanceId: string; // Unique instance ID
+25:   slotIdx: number;     // Fixed slot index 0..4
+26:   id: string;
+27:   boardNode: BoardNode;
+28:   boxColor: number;
+29:   capacity: number;
+30:   currentCards: number[];
+31:   incomingCount: number; // Reserved cards currently flying to this box
+32:   timestamp: number;
+33:   isFull: boolean;
+34:   isClearing?: boolean;
+35: }
+36: 
+37: interface ConveyorCard {
+38:   uid: string;
+39:   color: number;
+40:   dist: number; // Distance along track (0 to L_TOTAL)
+41: }
+42: 
+43: interface FlyingCard {
+44:   uid: string;
+45:   color: number;
+46:   startX: number;
+47:   startY: number;
+48:   targetX: number;
+49:   targetY: number;
+50:   targetInstanceId: string;
+51:   progress: number; // 0 to 1
+52:   duration: number; // in seconds
+53: }
+54: 
+55: const MAX_BOX_SLOTS = 5;
+56: const BELT_SPEED = 185.0; // pixels per second
+57: const MIN_CARD_DISTANCE = 32.0; // Fixed separation distance to prevent overlap
+58: 
+59: // Racetrack Conveyor Geometry
+60: const TOP_Y = 105.0;
+61: const BOTTOM_Y = 185.0;
+62: const RADIUS = 40.0;
+63: const LEFT_X = 110.0;
+64: const RIGHT_X = 750.0;
+65: 
+66: const L_STRAIGHT = RIGHT_X - LEFT_X; // 640.0
+67: const L_ARC = Math.PI * RADIUS;       // ~125.66
+68: const L_TOTAL = 2 * L_STRAIGHT + 2 * L_ARC; // ~1531.33
+69: 
+70: // 5 Docked Boxes with Fixed Positions (64px width, 46px padding)
+71: const BOX_X_POSITIONS = [200.0, 310.0, 420.0, 530.0, 640.0];
+72: const BOX_CHECKPOINTS = BOX_X_POSITIONS.map(bx => bx - LEFT_X);
+73: 
+74: /**
+75:  * Resolves any overlapping cards on the conveyor belt by enforcing
+76:  * a fixed minimum distance between consecutive cards along the track loop.
+77:  */
+78: function resolveCardOverlaps(cards: ConveyorCard[]): void {
+79:   if (cards.length <= 1) return;
+80: 
+81:   cards.sort((a, b) => a.dist - b.dist);
+82: 
+83:   for (let iter = 0; iter < 4; iter++) {
+84:     for (let i = 0; i < cards.length - 1; i++) {
+85:       const diff = cards[i + 1].dist - cards[i].dist;
+86:       if (diff < MIN_CARD_DISTANCE) {
+87:         cards[i + 1].dist = (cards[i].dist + MIN_CARD_DISTANCE) % L_TOTAL;
+88:       }
+89:     }
+90: 
+91:     // Check circular wrap gap between the last card and first card
+92:     const wrapGap = (cards[0].dist + L_TOTAL) - cards[cards.length - 1].dist;
+93:     if (wrapGap < MIN_CARD_DISTANCE) {
+94:       const shift = MIN_CARD_DISTANCE - wrapGap;
+95:       for (let i = 0; i < cards.length; i++) {
+96:         cards[i].dist = (cards[i].dist + shift / 2) % L_TOTAL;
+97:       }
+98:       cards.sort((a, b) => a.dist - b.dist);
+99:     }
+100:   }
+101: }
+102: 
+103: function getTrackCoords(distance: number) {
+104:   const d = ((distance % L_TOTAL) + L_TOTAL) % L_TOTAL;
+105:   if (d < L_STRAIGHT) {
+106:     // Top straight: left to right (y = TOP_Y)
+107:     return {
+108:       x: LEFT_X + d,
+109:       y: TOP_Y,
+110:       angle: 0.0,
+111:     };
+112:   } else if (d < L_STRAIGHT + L_ARC) {
+113:     // Right curve
+114:     const arcD = d - L_STRAIGHT;
+115:     const theta = -Math.PI / 2.0 + (arcD / L_ARC) * Math.PI;
+116:     return {
+117:       x: RIGHT_X + RADIUS * Math.cos(theta),
+118:       y: (TOP_Y + BOTTOM_Y) / 2.0 + RADIUS * Math.sin(theta),
+119:       angle: 90.0 + (arcD / L_ARC) * 180.0,
+120:     };
+121:   } else if (d < 2 * L_STRAIGHT + L_ARC) {
+122:     // Bottom straight: right to left (y = BOTTOM_Y)
+123:     const straightD = d - (L_STRAIGHT + L_ARC);
+124:     return {
+125:       x: RIGHT_X - straightD,
+126:       y: BOTTOM_Y,
+127:       angle: 180.0,
+128:     };
+129:   } else {
+130:     // Left curve
+131:     const arcD = d - (2 * L_STRAIGHT + L_ARC);
+132:     const theta = Math.PI / 2.0 + (arcD / L_ARC) * Math.PI;
+133:     return {
+134:       x: LEFT_X + RADIUS * Math.cos(theta),
+135:       y: (TOP_Y + BOTTOM_Y) / 2.0 + RADIUS * Math.sin(theta),
+136:       angle: 270.0 + (arcD / L_ARC) * 180.0,
+137:     };
+138:   }
+139: }
+140: 
+141: export const PlaytestModal: React.FC<PlaytestModalProps> = ({ levelData, onClose }) => {
+142:   // Zoom & Pan state for board
+143:   const [zoom, setZoom] = useState(1);
+144:   const [pan, setPan] = useState({ x: 0, y: 0 });
+145:   const [isPanning, setIsPanning] = useState(false);
+146:   const [panStart, setPanStart] = useState({ x: 0, y: 0 });
+147: 
+148:   // Game state: 5 fixed slots (either a DockedBox or null)
+149:   const [boxSlots, setBoxSlots] = useState<(DockedBox | null)[]>([null, null, null, null, null]);
+150:   const [clearedNodes, setClearedNodes] = useState<Set<string>>(new Set());
+151:   const [spawnerQueues, setSpawnerQueues] = useState<Map<string, SpawnBox[]>>(new Map());
+152:   const [deliveredCardsCount, setDeliveredCardsCount] = useState<number>(0);
+153:   const [deliveredBoxesCount, setDeliveredBoxesCount] = useState<number>(0);
+154:   const [isWon, setIsWon] = useState<boolean>(false);
+155:   const [warningMessage, setWarningMessage] = useState<string | null>(null);
+156: 
+157:   // High-performance real-time simulation state
+158:   const conveyorCardsRef = useRef<ConveyorCard[]>([]);
+159:   const flyingCardsRef = useRef<FlyingCard[]>([]);
+160:   const boxSlotsRef = useRef<(DockedBox | null)[]>([null, null, null, null, null]);
+161:   const clearedNodesRef = useRef<Set<string>>(new Set());
+162:   const beltBaseDistRef = useRef<number>(0);
+163: 
+164:   // Render trigger for animation frames
+165:   const [, setFrameTick] = useState(0);
+166:   const lastTimeRef = useRef<number>(performance.now());
+167:   const animationFrameRef = useRef<number | null>(null);
+168: 
+169:   // Sync ref with state
+170:   useEffect(() => {
+171:     boxSlotsRef.current = boxSlots;
+172:   }, [boxSlots]);
+173: 
+174:   useEffect(() => {
+175:     clearedNodesRef.current = clearedNodes;
+176:   }, [clearedNodes]);
+177: 
+178:   const showWarning = (msg: string) => {
+179:     setWarningMessage(msg);
+180:     setTimeout(() => setWarningMessage(null), 3000);
+181:   };
+182: 
+183:   // Reset entire playtest
+184:   const resetGame = useCallback(() => {
+185:     conveyorCardsRef.current = [];
+186:     flyingCardsRef.current = [];
+187:     boxSlotsRef.current = [null, null, null, null, null];
+188:     clearedNodesRef.current = new Set();
+189:     beltBaseDistRef.current = 0;
+190: 
+191:     setBoxSlots([null, null, null, null, null]);
+192:     setClearedNodes(new Set());
+193:     
+194:     // Initialize spawner queues
+195:     const initialSpawners = new Map<string, SpawnBox[]>();
+196:     for (const sn of (levelData.SpawnerNodes || [])) {
+197:       initialSpawners.set(sn.Id, [...sn.SpawnBoxes]);
+198:     }
+199:     setSpawnerQueues(initialSpawners);
+200: 
+201:     setDeliveredCardsCount(0);
+202:     setDeliveredBoxesCount(0);
+203:     setIsWon(false);
+204:     setWarningMessage(null);
+205:     setPan({ x: 0, y: 0 });
+206:     setZoom(1);
+207:   }, [levelData]);
+208: 
+209:   useEffect(() => {
+210:     resetGame();
+211:   }, [levelData, resetGame]);
+212: 
+213:   const totalCardsInLevel = useMemo(() => {
+214:     let count = levelData.BoxNodes.reduce((acc, b) => acc + b.InitCards.length, 0);
+215:     for (const sn of (levelData.SpawnerNodes || [])) {
+216:       for (const sb of sn.SpawnBoxes) {
+217:         count += sb.InitCards.length;
+218:       }
+219:     }
+220:     return count;
+221:   }, [levelData]);
+222: 
+223:   // Live blocked nodes on board
+224:   const liveBlockedByMap = useMemo(() => {
+225:     const remainingBoxNodes = levelData.BoxNodes.filter(b => !clearedNodes.has(b.Id));
+226:     return getBlockedByMap(remainingBoxNodes);
+227:   }, [levelData.BoxNodes, clearedNodes]);
+228: 
+229:   // Main 60FPS Continuous Animation & Physics Loop with Individual Card Movement & Overlap Prevention
+230:   useEffect(() => {
+231:     const updateLoop = (now: number) => {
+232:       const dt = Math.min((now - lastTimeRef.current) / 1000, 0.05);
+233:       lastTimeRef.current = now;
+234: 
+235:       let hasStateChanges = false;
+236:       const currentConveyor = conveyorCardsRef.current;
+237:       const currentFlying = flyingCardsRef.current;
+238:       const currentSlots = [...boxSlotsRef.current];
+239: 
+240:       // 1. Advance each card along the track
+241:       for (let i = 0; i < currentConveyor.length; i++) {
+242:         currentConveyor[i].dist = (currentConveyor[i].dist + BELT_SPEED * dt) % L_TOTAL;
+243:       }
+244: 
+245:       // Maintain minimum fixed distance between cards and prevent any overlapping
+246:       resolveCardOverlaps(currentConveyor);
+247: 
+248:       // 2. Check Proximity Flying for Each Card
+249:       const remainingConveyor: ConveyorCard[] = [];
+250: 
+251:       for (let i = 0; i < currentConveyor.length; i++) {
+252:         const card = currentConveyor[i];
+253:         let triggeredFly = false;
+254: 
+255:         // Check if card on top straight passes any matching docked box checkpoint
+256:         if (card.dist <= L_STRAIGHT + 25.0) {
+257:           for (let slotIdx = 0; slotIdx < MAX_BOX_SLOTS; slotIdx++) {
+258:             const box = currentSlots[slotIdx];
+259:             // STRICT CHECK: Box must exist, NOT be neutral tray (5), NOT be clearing, and MUST MATCH CARD COLOR
+260:             if (!box || box.boxColor === 5 || box.isClearing || box.boxColor !== card.color) {
+261:               continue;
+262:             }
+263: 
+264:             const checkpoint = BOX_CHECKPOINTS[slotIdx];
+265:             const neededCards = box.capacity - (box.currentCards.length + box.incomingCount);
+266: 
+267:             if (neededCards > 0) {
+268:               const distDiff = Math.abs(card.dist - checkpoint);
+269:               if (distDiff < BELT_SPEED * dt * 1.5 || (card.dist >= checkpoint && card.dist - checkpoint < 20.0)) {
+270:                 // Spawn flying card animation to this specific box instance
+271:                 const cardPos = getTrackCoords(card.dist);
+272:                 const targetX = BOX_X_POSITIONS[slotIdx];
+273:                 const targetY = 42.0;
+274: 
+275:                 box.incomingCount += 1;
+276:                 currentFlying.push({
+277:                   uid: `fly_${card.uid}_${Date.now()}`,
+278:                   color: card.color,
+279:                   startX: cardPos.x,
+280:                   startY: cardPos.y,
+281:                   targetX,
+282:                   targetY,
+283:                   targetInstanceId: box.instanceId,
+284:                   progress: 0,
+285:                   duration: 0.30,
+286:                 });
+287: 
+288:                 triggeredFly = true;
+289:                 hasStateChanges = true;
+290:                 break;
+291:               }
+292:             }
+293:           }
+294:         }
+295: 
+296:         if (!triggeredFly) {
+297:           remainingConveyor.push(card);
+298:         }
+299:       }
+300: 
+301:       conveyorCardsRef.current = remainingConveyor;
+302: 
+303:       // 2. Update Flying Cards Trajectory & Landing
+304:       const activeFlying: FlyingCard[] = [];
+305: 
+306:       for (let f = 0; f < currentFlying.length; f++) {
+307:         const fc = currentFlying[f];
+308:         fc.progress += dt / fc.duration;
+309: 
+310:         if (fc.progress >= 1.0) {
+311:           // Card has landed! Find target box by unique instanceId
+312:           const targetBox = currentSlots.find(b => b && b.instanceId === fc.targetInstanceId);
+313:           if (targetBox) {
+314:             targetBox.incomingCount = Math.max(0, targetBox.incomingCount - 1);
+315: 
+316:             // STRICT COLOR VALIDATION: Card MUST match box color
+317:             if (targetBox.boxColor === fc.color && targetBox.currentCards.length < targetBox.capacity) {
+318:               targetBox.currentCards.push(fc.color);
+319:             }
+320: 
+321:             // Check if box is now completely full
+322:             if (targetBox.currentCards.length >= targetBox.capacity && !targetBox.isClearing) {
+323:               targetBox.isFull = true;
+324:               targetBox.isClearing = true;
+325:               setDeliveredBoxesCount(prev => prev + 1);
+326: 
+327:               const slotToClear = targetBox.slotIdx;
+328:               setTimeout(() => {
+329:                 setBoxSlots(prev => {
+330:                   const updated = [...prev];
+331:                   updated[slotToClear] = null;
+332:                   return updated;
+333:                 });
+334:               }, 380);
+335:             }
+336:           }
+337: 
+338:           setDeliveredCardsCount(prev => prev + 1);
+339:           hasStateChanges = true;
+340:         } else {
+341:           activeFlying.push(fc);
+342:         }
+343:       }
+344: 
+345:       flyingCardsRef.current = activeFlying;
+346: 
+347:       if (hasStateChanges) {
+348:         setBoxSlots(currentSlots);
+349:         boxSlotsRef.current = currentSlots;
+350: 
+351:         // Check Win condition
+352:         if (
+353:           clearedNodesRef.current.size >= levelData.BoardNodes.length &&
+354:           conveyorCardsRef.current.length === 0 &&
+355:           flyingCardsRef.current.length === 0 &&
+356:           currentSlots.every(b => !b || b.isClearing)
+357:         ) {
+358:           setIsWon(true);
+359:         }
+360:       }
+361: 
+362:       setFrameTick(t => (t + 1) % 1000000);
+363:       animationFrameRef.current = requestAnimationFrame(updateLoop);
+364:     };
+365: 
+366:     animationFrameRef.current = requestAnimationFrame(updateLoop);
+367:     return () => {
+368:       if (animationFrameRef.current) {
+369:         cancelAnimationFrame(animationFrameRef.current);
+370:       }
+371:     };
+372:   }, [levelData]);
+373: 
+374:   // Handle clicking an unblocked box or tray on the board
+375:   const handleBoardBoxClick = (nodeId: string) => {
+376:     const blockers = liveBlockedByMap.get(nodeId) || [];
+377:     if (blockers.length > 0) return;
+378: 
+379:     const boardNode = levelData.BoardNodes.find(n => n.Id === nodeId);
+380:     const boxNode = levelData.BoxNodes.find(b => b.Id === nodeId);
+381:     const spawnerBoxes = spawnerQueues.get(nodeId);
+382: 
+383:     if (!boardNode || (!boxNode && (!spawnerBoxes || spawnerBoxes.length === 0))) return;
+384: 
+385:     const activeBox = boxNode || (spawnerBoxes ? spawnerBoxes[0] : null);
+386:     if (!activeBox) return;
+387: 
+388:     const boxType = getBoxType(activeBox.TypeId);
+389:     const isTray = Boolean(activeBox.IsPaperBox || boxType.isTray);
+390: 
+391:     // === TRAY LOGIC ===
+392:     // Trays store spare cards. When clicked:
+393:     // 1. Only its cards are sent to the conveyor belt.
+394:     // 2. The tray disappears immediately without occupying any of the 5 box slots!
+395:     if (isTray) {
+396: 
+397:       // Inject cards onto conveyor belt with individual distance and no overlap
+398:       const entryBase = 620.0;
+399:       const newCards: ConveyorCard[] = activeBox.InitCards.map((col, idx) => ({
+400:         uid: `card_tray_${Date.now()}_${idx}_${Math.random().toString(36).substring(2, 6)}`,
+401:         color: col,
+402:         dist: ((entryBase - idx * MIN_CARD_DISTANCE) % L_TOTAL + L_TOTAL) % L_TOTAL,
+403:       }));
+404:       conveyorCardsRef.current = [...conveyorCardsRef.current, ...newCards];
+405:       resolveCardOverlaps(conveyorCardsRef.current);
+406: 
+407:       // Disappear from board
+408:       const newClearedNodes = new Set(clearedNodes);
+409:       if (spawnerBoxes && spawnerBoxes.length > 0) {
+410:         const remainingSpawnBoxes = spawnerBoxes.slice(1);
+411:         const updatedMap = new Map(spawnerQueues);
+412:         updatedMap.set(nodeId, remainingSpawnBoxes);
+413:         setSpawnerQueues(updatedMap);
+414: 
+415:         if (remainingSpawnBoxes.length === 0) {
+416:           newClearedNodes.add(nodeId);
+417:         }
+418:       } else {
+419:         newClearedNodes.add(nodeId);
+420:       }
+421: 
+422:       setClearedNodes(newClearedNodes);
+423:       clearedNodesRef.current = newClearedNodes;
+424:       return;
+425:     }
+426: 
+427:     // === NORMAL COLORED BOX LOGIC ===
+428:     // 1. Find first available box slot (0..4)
+429:     const currentSlots = boxSlotsRef.current;
+430:     const availableSlotIdx = currentSlots.findIndex(s => s === null);
+431:     if (availableSlotIdx === -1) {
+432:       showWarning('All 5 box slots are occupied! Clear a matching box first.');
+433:       return;
+434:     }
+435: 
+436:     // STRICT IN-BOX COLOR FILTER:
+437:     // Only cards matching activeBox.BoxColor stay in the box!
+438:     // All other cards go to the conveyor belt!
+439:     let matchingInBox: number[] = [];
+440:     let unmatchedInBox: number[] = [];
+441: 
+442:     for (const c of activeBox.InitCards) {
+443:       if (c === activeBox.BoxColor && matchingInBox.length < boxType.capacity) {
+444:         matchingInBox.push(c);
+445:       } else {
+446:         unmatchedInBox.push(c);
+447:       }
+448:     }
+449: 
+450:     // 2. Dynamic Capacity Check:
+451:     let immediateAbsorbCount = 0;
+452:     for (const card of conveyorCardsRef.current) {
+453:       if (
+454:         card.color === activeBox.BoxColor &&
+455:         matchingInBox.length + immediateAbsorbCount < boxType.capacity
+456:       ) {
+457:         immediateAbsorbCount++;
+458:       }
+459:     }
+460: 
+461:     // 3. Move is VALID: dock box in available slot and inject unmatched cards onto conveyor
+462:     const uniqueInstanceId = `box_${nodeId}_${Date.now()}_${Math.random().toString(36).substring(2, 6)}`;
+463:     const newDockedBox: DockedBox = {
+464:       instanceId: uniqueInstanceId,
+465:       slotIdx: availableSlotIdx,
+466:       id: nodeId,
+467:       boardNode,
+468:       boxColor: activeBox.BoxColor,
+469:       capacity: boxType.capacity,
+470:       currentCards: matchingInBox,
+471:       incomingCount: 0,
+472:       timestamp: Date.now(),
+473:       isFull: matchingInBox.length >= boxType.capacity,
+474:     };
+475: 
+476:     const entryBase = 620.0;
+477:     const newCards: ConveyorCard[] = unmatchedInBox.map((col, idx) => ({
+478:       uid: `card_${Date.now()}_${idx}_${Math.random().toString(36).substring(2, 6)}`,
+479:       color: col,
+480:       dist: ((entryBase - idx * MIN_CARD_DISTANCE) % L_TOTAL + L_TOTAL) % L_TOTAL,
+481:     }));
+482: 
+483:     conveyorCardsRef.current = [...conveyorCardsRef.current, ...newCards];
+484:     resolveCardOverlaps(conveyorCardsRef.current);
+485: 
+486:     // Update docked slots
+487:     const updatedSlots = [...currentSlots];
+488:     updatedSlots[availableSlotIdx] = newDockedBox;
+489:     setBoxSlots(updatedSlots);
+490:     boxSlotsRef.current = updatedSlots;
+491: 
+492:     // Update board state & spawners
+493:     const newClearedNodes = new Set(clearedNodes);
+494: 
+495:     if (spawnerBoxes && spawnerBoxes.length > 0) {
+496:       const remainingSpawnBoxes = spawnerBoxes.slice(1);
+497:       const updatedMap = new Map(spawnerQueues);
+498:       updatedMap.set(nodeId, remainingSpawnBoxes);
+499:       setSpawnerQueues(updatedMap);
+500: 
+501:       if (remainingSpawnBoxes.length === 0) {
+502:         newClearedNodes.add(nodeId);
+503:       }
+504:     } else {
+505:       newClearedNodes.add(nodeId);
+506:     }
+507: 
+508:     setClearedNodes(newClearedNodes);
+509:     clearedNodesRef.current = newClearedNodes;
+510:   };
+511: 
+512:   // Zoom handlers
+513:   const handleWheel = (e: React.WheelEvent) => {
+514:     e.preventDefault();
+515:     const factor = e.deltaY < 0 ? 1.12 : 0.88;
+516:     setZoom(z => Math.min(Math.max(z * factor, 0.4), 2.5));
+517:   };
+518: 
+519:   const handleMouseDown = (e: React.MouseEvent) => {
+520:     if (e.button === 1 || e.button === 0) {
+521:       setIsPanning(true);
+522:       setPanStart({ x: e.clientX - pan.x, y: e.clientY - pan.y });
+523:     }
+524:   };
+525: 
+526:   const handleMouseMove = (e: React.MouseEvent) => {
+527:     if (isPanning) {
+528:       setPan({ x: e.clientX - panStart.x, y: e.clientY - panStart.y });
+529:     }
+530:   };
+531: 
+532:   const handleMouseUp = () => {
+533:     setIsPanning(false);
+534:   };
+535: 
+536:   const currentConveyorCount = conveyorCardsRef.current.length;
+537: 
+538:   return (
+539:     <div className="fixed inset-0 z-50 bg-slate-950/90 backdrop-blur-md flex items-center justify-center p-2 sm:p-4 select-none">
+540:       <div className="relative w-full max-w-5xl h-[94vh] bg-[#629fc9] rounded-3xl overflow-hidden border-4 border-slate-700 shadow-2xl flex flex-col">
+541:         
+542:         {/* Top Header Bar */}
+543:         <div className="h-14 bg-slate-950/95 backdrop-blur-md px-4 sm:px-6 flex items-center justify-between border-b border-slate-800 z-30 shrink-0">
+544:           <div className="flex items-center gap-3">
+545:             <div className="w-8 h-8 rounded-xl bg-gradient-to-tr from-amber-500 to-orange-500 flex items-center justify-center shadow-lg shadow-amber-500/20">
+546:               <Layers size={16} className="text-slate-950" />
+547:             </div>
+548:             <div>
+549:               <div className="flex items-center gap-2">
+550:                 <h2 className="text-xs sm:text-sm font-bold text-white uppercase tracking-wider">
+551:                   Playtest Simulator
+552:                 </h2>
+553:                 <span className="text-[10px] bg-amber-500/20 text-amber-300 border border-amber-500/40 px-2 py-0.5 rounded font-bold uppercase">
+554:                   Feeder Trays & Strict Sorting • 60 FPS
+555:                 </span>
+556:               </div>
+557:               <span className="text-[11px] text-slate-400 hidden sm:inline">
+558:                 Trays feed spare cards directly to the conveyor and disappear immediately!
+559:               </span>
+560:             </div>
+561:           </div>
+562: 
+563:           {/* Right Controls: Reset & Close */}
+564:           <div className="flex items-center gap-2">
+565:             <button
+566:               onClick={resetGame}
+567:               className="py-1.5 px-3 rounded-lg bg-slate-800 hover:bg-slate-700 text-slate-200 text-xs font-medium flex items-center gap-1.5 border border-slate-700 transition"
+568:             >
+569:               <RotateCcw size={13} />
+570:               <span>Reset</span>
+571:             </button>
+572: 
+573:             <button
+574:               onClick={onClose}
+575:               className="p-1.5 rounded-lg text-slate-400 hover:text-white hover:bg-slate-800 transition ml-1"
+576:             >
+577:               <X size={18} />
+578:             </button>
+579:           </div>
+580:         </div>
+581: 
+582:         {/* Warning Alert Toast */}
+583:         {warningMessage && (
+584:           <div className="absolute top-16 left-1/2 -translate-x-1/2 z-50 bg-rose-950/95 border-2 border-rose-500 text-rose-100 px-4 py-2 rounded-2xl shadow-2xl backdrop-blur-md flex items-center gap-2 text-xs font-bold animate-bounce">
+585:             <AlertTriangle size={16} className="text-rose-400 shrink-0" />
+586:             <span>{warningMessage}</span>
+587:           </div>
+588:         )}
+589: 
+590:         {/* Main Playable Area */}
+591:         <div className="flex-1 relative overflow-hidden flex flex-col">
+592:           
+593:           {/* TOP SECTION: 5 DOCKED BOXES & REAL-TIME ANIMATED CONVEYOR BELT */}
+594:           <div className="w-full bg-[#5287aa] border-b-2 border-[#8ebfda]/40 p-2 flex flex-col items-center gap-1 shadow-lg shrink-0 z-20">
+595:             
+596:             {/* Header info & score */}
+597:             <div className="w-full max-w-4xl flex items-center justify-between px-2 text-[11px] font-bold text-white uppercase tracking-wider">
+598:               <span className="drop-shadow">
+599:                 Docked Boxes ({boxSlots.filter(b => b !== null && !b.isClearing).length}/5) • Conveyor Cards ({currentConveyorCount})
+600:               </span>
+The above content does NOT show the entire file contents. If you need to view any lines of the file which were not shown to complete your task, call this tool again to view those lines.

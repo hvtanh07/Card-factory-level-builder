@@ -1,0 +1,79 @@
+Created At: 2026-08-31T09:17:24+07:00
+Completed At: 2026-08-31T09:17:24+07:00
+File Path: `file:///c:/Users/TUAN%20ANH/Documents/GitHub/Card%20factory%20level%20builder/src/components/Playtest/PlaytestModal.tsx`
+Total Lines: 1113
+Total Bytes: 44447
+Showing lines 980 to 1050
+The following code has been modified to include a line number before every line, in the format: <line_number>: <original_line>. Please note that any changes targeting the original code should remove the line number, colon, and leading space.
+980:                             </g>
+981:                           )}
+982: 
+983:                           {/* Cards Stack inside Box / Tray */}
+984:                           {activeBox.InitCards.map((cCol, cIdx) => {
+985:                             const spacing = (h - 16) / Math.max(activeBox.InitCards.length, 1);
+986:                             const cardY = -h / 2 + 8 + cIdx * spacing;
+987:                             const cardW = w - 12;
+988:                             const cColorDef = getColor(cCol);
+989: 
+990:                             return (
+991:                               <g key={`play-box-card-${cIdx}`}>
+992:                                 <rect
+993:                                   x={-cardW / 2}
+994:                                   y={cardY}
+995:                                   width={cardW}
+996:                                   height={Math.min(spacing - 2, 14)}
+997:                                   rx={3}
+998:                                   fill={cColorDef.hex}
+999:                                   stroke={cColorDef.borderHex}
+1000:                                   strokeWidth={1}
+1001:                                 />
+1002:                                 <rect
+1003:                                   x={-cardW / 2 + 2}
+1004:                                   y={cardY + 1}
+1005:                                   width={cardW - 4}
+1006:                                   height={3}
+1007:                                   rx={1.5}
+1008:                                   fill="rgba(255, 255, 255, 0.4)"
+1009:                                 />
+1010:                               </g>
+1011:                             );
+1012:                           })}
+1013: 
+1014:                           {/* Spawner Badge */}
+1015:                           {isSpawner && (
+1016:                             <g transform={`translate(${-w / 2 + 8}, ${-h / 2 - 6})`}>
+1017:                               <rect x="-12" y="-6" width="24" height="12" rx="3" fill="#f59e0b" stroke="#ffffff" strokeWidth="1" />
+1018:                               <text x="0" y="3" textAnchor="middle" fill="#0f172a" fontSize="8" fontWeight="900">
+1019:                                 x{spawnerBoxes.length}
+1020:                               </text>
+1021:                             </g>
+1022:                           )}
+1023: 
+1024:                           {/* Lock Icon Badge if Blocked */}
+1025:                           {isBlocked && (
+1026:                             <g transform={`translate(${w / 2 - 14}, ${-h / 2 + 4})`}>
+1027:                               <circle cx="6" cy="6" r="8" fill="#1e293b" stroke="#f43f5e" strokeWidth="1.5" />
+1028:                               <path
+1029:                                 d="M 4 6 L 4 4.5 C 4 3 5 2 6 2 C 7 2 8 3 8 4.5 L 8 6 M 3 6 L 9 6 L 9 9.5 L 3 9.5 Z"
+1030:                                 fill="none"
+1031:                                 stroke="#f43f5e"
+1032:                                 strokeWidth="1.2"
+1033:                                 strokeLinecap="round"
+1034:                               />
+1035:                             </g>
+1036:                           )}
+1037:                         </g>
+1038:                       );
+1039:                     })}
+1040:                 </g>
+1041:               </svg>
+1042:             </div>
+1043: 
+1044:             {/* Floating Zoom & Pan Controls (Bottom-Left) */}
+1045:             <div className="absolute bottom-4 left-4 z-20 flex items-center gap-1.5 bg-slate-900/85 backdrop-blur-md p-1.5 rounded-xl border border-slate-700 shadow-xl pointer-events-auto">
+1046:               <button
+1047:                 onClick={() => setZoom(z => Math.min(z * 1.2, 2.5))}
+1048:                 className="p-1.5 hover:bg-slate-800 rounded-lg text-slate-300 hover:text-white transition"
+1049:                 title="Zoom In"
+1050:               >
+The above content does NOT show the entire file contents. If you need to view any lines of the file which were not shown to complete your task, call this tool again to view those lines.

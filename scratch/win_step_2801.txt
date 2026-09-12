@@ -1,0 +1,168 @@
+Created At: 2026-09-12T11:22:07+07:00
+Completed At: 2026-09-12T11:22:07+07:00
+File Path: `file:///c:/Users/TUAN%20ANH/Documents/GitHub/Card%20factory%20level%20builder/src/components/Playtest/PlaytestModal.tsx`
+Total Lines: 1172
+Total Bytes: 48389
+Showing lines 1 to 160
+The following code has been modified to include a line number before every line, in the format: <line_number>: <original_line>. Please note that any changes targeting the original code should remove the line number, colon, and leading space.
+1: import React, { useState, useEffect, useMemo, useCallback, useRef } from 'react';
+2: import { LevelData, BoardNode, BoxNode, SpawnerNode, SpawnBox } from '../../types/level';
+3: import { getColor } from '../../constants/colors';
+4: import { getBoxType } from '../../constants/boxTypes';
+5: import { getBlockedByMap } from '../../utils/autoBlocker';
+6: import { 
+7:   X, 
+8:   RotateCcw, 
+9:   Trophy, 
+10:   ZoomIn, 
+11:   ZoomOut, 
+12:   Maximize2, 
+13:   AlertTriangle,
+14:   Layers,
+15:   Move
+16: } from 'lucide-react';
+17: 
+18: interface PlaytestModalProps {
+19:   levelData: LevelData;
+20:   onClose: () => void;
+21: }
+22: 
+23: interface DockedBox {
+24:   instanceId: string; // Unique instance ID
+25:   slotIdx: number;     // Fixed slot index 0..3
+26:   id: string;
+27:   boardNode: BoardNode;
+28:   boxColor: number;
+29:   capacity: number;
+30:   currentCards: number[];
+31:   incomingCount: number; // Reserved cards currently flying to this box
+32:   timestamp: number;
+33:   isFull: boolean;
+34:   isClearing?: boolean;
+35: }
+36: 
+37: interface ConveyorCard {
+38:   uid: string;
+39:   color: number;
+40:   dist: number; // Distance along track (0 to L_TOTAL)
+41: }
+42: 
+43: interface FlyingCard {
+44:   uid: string;
+45:   color: number;
+46:   startX: number;
+47:   startY: number;
+48:   targetX: number;
+49:   targetY: number;
+50:   targetInstanceId: string;
+51:   progress: number; // 0 to 1
+52:   duration: number; // in seconds
+53: }
+54: 
+55: const MAX_BOX_SLOTS = 4;
+56: const BELT_SPEED = 185.0; // pixels per second
+57: const MIN_CARD_DISTANCE = 32.0; // Fixed separation distance to prevent overlap
+58: 
+59: // Racetrack Conveyor Geometry
+60: const TOP_Y = 105.0;
+61: const BOTTOM_Y = 185.0;
+62: const RADIUS = 40.0;
+63: const LEFT_X = 110.0;
+64: const RIGHT_X = 750.0;
+65: 
+66: const L_STRAIGHT = RIGHT_X - LEFT_X; // 640.0
+67: const L_ARC = Math.PI * RADIUS;       // ~125.66
+68: const L_TOTAL = 2 * L_STRAIGHT + 2 * L_ARC; // ~1531.33
+69: 
+70: // 4 Docked Boxes with Fixed Positions (64px width, 66px gap) symmetrically centered
+71: const BOX_X_POSITIONS = [235.0, 365.0, 495.0, 625.0];
+72: const BOX_CHECKPOINTS = BOX_X_POSITIONS.map(bx => bx - LEFT_X);
+73: 
+74: /**
+75:  * Resolves any overlapping cards on the conveyor belt by enforcing
+76:  * a fixed minimum distance between consecutive cards along the track loop.
+77:  */
+78: function resolveCardOverlaps(cards: ConveyorCard[]): void {
+79:   if (cards.length <= 1) return;
+80: 
+81:   cards.sort((a, b) => a.dist - b.dist);
+82: 
+83:   for (let iter = 0; iter < 4; iter++) {
+84:     for (let i = 0; i < cards.length - 1; i++) {
+85:       const diff = cards[i + 1].dist - cards[i].dist;
+86:       if (diff < MIN_CARD_DISTANCE) {
+87:         cards[i + 1].dist = (cards[i].dist + MIN_CARD_DISTANCE) % L_TOTAL;
+88:       }
+89:     }
+90: 
+91:     // Check circular wrap gap between the last card and first card
+92:     const wrapGap = (cards[0].dist + L_TOTAL) - cards[cards.length - 1].dist;
+93:     if (wrapGap < MIN_CARD_DISTANCE) {
+94:       const shift = MIN_CARD_DISTANCE - wrapGap;
+95:       for (let i = 0; i < cards.length; i++) {
+96:         cards[i].dist = (cards[i].dist + shift / 2) % L_TOTAL;
+97:       }
+98:       cards.sort((a, b) => a.dist - b.dist);
+99:     }
+100:   }
+101: }
+102: 
+103: function getTrackCoords(distance: number) {
+104:   const d = ((distance % L_TOTAL) + L_TOTAL) % L_TOTAL;
+105:   if (d < L_STRAIGHT) {
+106:     // Top straight: left to right (y = TOP_Y)
+107:     return {
+108:       x: LEFT_X + d,
+109:       y: TOP_Y,
+110:       angle: 0.0,
+111:     };
+112:   } else if (d < L_STRAIGHT + L_ARC) {
+113:     // Right curve
+114:     const arcD = d - L_STRAIGHT;
+115:     const theta = -Math.PI / 2.0 + (arcD / L_ARC) * Math.PI;
+116:     return {
+117:       x: RIGHT_X + RADIUS * Math.cos(theta),
+118:       y: (TOP_Y + BOTTOM_Y) / 2.0 + RADIUS * Math.sin(theta),
+119:       angle: 90.0 + (arcD / L_ARC) * 180.0,
+120:     };
+121:   } else if (d < 2 * L_STRAIGHT + L_ARC) {
+122:     // Bottom straight: right to left (y = BOTTOM_Y)
+123:     const straightD = d - (L_STRAIGHT + L_ARC);
+124:     return {
+125:       x: RIGHT_X - straightD,
+126:       y: BOTTOM_Y,
+127:       angle: 180.0,
+128:     };
+129:   } else {
+130:     // Left curve
+131:     const arcD = d - (2 * L_STRAIGHT + L_ARC);
+132:     const theta = Math.PI / 2.0 + (arcD / L_ARC) * Math.PI;
+133:     return {
+134:       x: LEFT_X + RADIUS * Math.cos(theta),
+135:       y: (TOP_Y + BOTTOM_Y) / 2.0 + RADIUS * Math.sin(theta),
+136:       angle: 270.0 + (arcD / L_ARC) * 180.0,
+137:     };
+138:   }
+139: }
+140: 
+141: export const PlaytestModal: React.FC<PlaytestModalProps> = ({ levelData, onClose }) => {
+142:   // Zoom & Pan state for board
+143:   const [zoom, setZoom] = useState(1);
+144:   const [pan, setPan] = useState({ x: 0, y: 0 });
+145:   const [isPanning, setIsPanning] = useState(false);
+146:   const [panStart, setPanStart] = useState({ x: 0, y: 0 });
+147: 
+148:   // Game state: 4 fixed slots (either a DockedBox or null)
+149:   const [boxSlots, setBoxSlots] = useState<(DockedBox | null)[]>([null, null, null, null]);
+150:   const [clearedNodes, setClearedNodes] = useState<Set<string>>(new Set());
+151:   const [spawnerQueues, setSpawnerQueues] = useState<Map<string, SpawnBox[]>>(new Map());
+152:   const [deliveredCardsCount, setDeliveredCardsCount] = useState<number>(0);
+153:   const [deliveredBoxesCount, setDeliveredBoxesCount] = useState<number>(0);
+154:   const [isWon, setIsWon] = useState<boolean>(false);
+155:   const [warningMessage, setWarningMessage] = useState<string | null>(null);
+156: 
+157:   // High-performance real-time simulation state
+158:   const conveyorCardsRef = useRef<ConveyorCard[]>([]);
+159:   const flyingCardsRef = useRef<FlyingCard[]>([]);
+160:   const boxSlotsRef = useRef<(DockedBox | null)[]>([null, null, null, null]);
+The above content does NOT show the entire file contents. If you need to view any lines of the file which were not shown to complete your task, call this tool again to view those lines.

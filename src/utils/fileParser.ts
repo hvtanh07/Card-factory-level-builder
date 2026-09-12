@@ -146,19 +146,14 @@ export function levelDataToJson(data: LevelData, pretty = true): string {
   return pretty ? JSON.stringify(output, null, 2) : JSON.stringify(output);
 }
 
-export function downloadLevelFile(data: LevelData, filename: string, asBytes = true) {
-  const jsonStr = levelDataToJson(data, false);
-  const encoder = new TextEncoder();
-  const bytes = encoder.encode(jsonStr);
-
-  const mimeType = asBytes ? 'application/octet-stream' : 'application/json';
-  const blob = new Blob([bytes], { type: mimeType });
+export function downloadLevelFile(data: LevelData, filename: string) {
+  const jsonStr = levelDataToJson(data, true);
+  const blob = new Blob([jsonStr], { type: 'application/json' });
   const url = URL.createObjectURL(blob);
 
   const a = document.createElement('a');
   a.href = url;
-  const ext = asBytes ? '.bytes' : '.json';
-  a.download = filename.endsWith('.bytes') || filename.endsWith('.json') ? filename : `${filename}${ext}`;
+  a.download = filename.endsWith('.json') ? filename : `${filename}.json`;
   document.body.appendChild(a);
   a.click();
   document.body.removeChild(a);
@@ -175,10 +170,10 @@ export async function parseMultipleFiles(files: FileList | File[]): Promise<{ na
       try {
         const zip = await JSZip.loadAsync(file);
         for (const [relativePath, zipEntry] of Object.entries(zip.files)) {
-          if (!zipEntry.dir && (relativePath.endsWith('.bytes') || relativePath.endsWith('.json') || relativePath.endsWith('.txt'))) {
-            const buffer = await zipEntry.async('arraybuffer');
+          if (!zipEntry.dir && (relativePath.endsWith('.json') || relativePath.endsWith('.txt'))) {
+            const text = await zipEntry.async('text');
             try {
-              const parsed = parseLevelData(buffer);
+              const parsed = parseLevelData(text);
               const baseName = relativePath.split('/').pop()?.replace(/\.[^/.]+$/, "") || relativePath;
               results.push({ name: baseName, data: parsed });
             } catch (e) {
@@ -191,8 +186,8 @@ export async function parseMultipleFiles(files: FileList | File[]): Promise<{ na
       }
     } else {
       try {
-        const buffer = await file.arrayBuffer();
-        const parsed = parseLevelData(buffer);
+        const text = await file.text();
+        const parsed = parseLevelData(text);
         const baseName = file.name.replace(/\.[^/.]+$/, "");
         results.push({ name: baseName, data: parsed });
       } catch (err) {
@@ -206,13 +201,11 @@ export async function parseMultipleFiles(files: FileList | File[]): Promise<{ na
 
 export async function exportAllLevelsAsZip(levels: { name: string; data: LevelData }[], zipFilename = 'card_factory_levels.zip') {
   const zip = new JSZip();
-  const encoder = new TextEncoder();
 
   for (const lvl of levels) {
-    const jsonStr = levelDataToJson(lvl.data, false);
-    const bytes = encoder.encode(jsonStr);
+    const jsonStr = levelDataToJson(lvl.data, true);
     const safeName = lvl.name.replace(/[/\\?%*:|"<>]/g, '_');
-    zip.file(`${safeName}.bytes`, bytes);
+    zip.file(`${safeName}.json`, jsonStr);
   }
 
   const blob = await zip.generateAsync({ type: 'blob' });

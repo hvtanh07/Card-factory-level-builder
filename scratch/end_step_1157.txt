@@ -1,0 +1,59 @@
+Created At: 2026-08-31T09:24:04+07:00
+Completed At: 2026-08-31T09:24:04+07:00
+File Path: `file:///c:/Users/TUAN%20ANH/Documents/GitHub/Card%20factory%20level%20builder/src/components/Playtest/PlaytestModal.tsx`
+Total Lines: 1185
+Total Bytes: 48001
+Showing lines 1080 to 1130
+The following code has been modified to include a line number before every line, in the format: <line_number>: <original_line>. Please note that any changes targeting the original code should remove the line number, colon, and leading space.
+1080:                                 x{spawnerBoxes.length}
+1081:                               </text>
+1082:                             </g>
+1083:                           )}
+1084: 
+1085:                           {/* Lock Icon Badge if Blocked */}
+1086:                           {isBlocked && (
+1087:                             <g transform={`translate(${w / 2 - 14}, ${-h / 2 + 4})`}>
+1088:                               <circle cx="6" cy="6" r="8" fill="#1e293b" stroke="#f43f5e" strokeWidth="1.5" />
+1089:                               <path
+1090:                                 d="M 4 6 L 4 4.5 C 4 3 5 2 6 2 C 7 2 8 3 8 4.5 L 8 6 M 3 6 L 9 6 L 9 9.5 L 3 9.5 Z"
+1091:                                 fill="none"
+1092:                                 stroke="#f43f5e"
+1093:                                 strokeWidth="1.2"
+1094:                                 strokeLinecap="round"
+1095:                               />
+1096:                             </g>
+1097:                           )}
+1098:                         </g>
+1099:                       );
+1100:                     })}
+1101:                 </g>
+1102:                                 fill="none"
+1103:                                 stroke="#f43f5e"
+1104:                                 strokeWidth="1.2"
+1105:                                 strokeLinecap="round"
+1106:                               />
+1107:                             </g>
+1108:                           )}
+1109:                         </g>
+1110:                       );
+1111:                     })}
+1112:                 </g>
+1113:               </svg>
+1114:             </div>
+1115: 
+1116:             {/* Floating Zoom & Pan Controls (Bottom-Left) */}
+1117:             <div className="absolute bottom-4 left-4 z-20 flex items-center gap-1.5 bg-slate-900/85 backdrop-blur-md p-1.5 rounded-xl border border-slate-700 shadow-xl pointer-events-auto">
+1118:               <button
+1119:                 onClick={() => setZoom(z => Math.min(z * 1.2, 2.5))}
+1120:                 className="p-1.5 hover:bg-slate-800 rounded-lg text-slate-300 hover:text-white transition"
+1121:                 title="Zoom In"
+1122:               >
+1123:                 <ZoomIn size={16} />
+1124:               </button>
+1125:               <button
+1126:                 onClick={() => setZoom(z => Math.max(z / 1.2, 0.4))}
+1127:                 className="p-1.5 hover:bg-slate-800 rounded-lg text-slate-300 hover:text-white transition"
+1128:                 title="Zoom Out"
+1129:               >
+1130:                 <ZoomOut size={16} />
+The above content does NOT show the entire file contents. If you need to view any lines of the file which were not shown to complete your task, call this tool again to view those lines.

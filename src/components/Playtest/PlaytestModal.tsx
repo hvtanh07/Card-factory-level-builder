@@ -1,5 +1,7 @@
 import React, { useState, useEffect, useMemo, useCallback, useRef } from 'react';
 import { LevelData, BoardNode, BoxNode, SpawnerNode, SpawnBox } from '../../types/level';
+import { ConveyorData, ConveyorSlot, ConveyorNode } from '../../types/conveyor';
+import { DEFAULT_CONVEYOR_DATA } from '../../constants/defaultConveyor';
 import { getColor } from '../../constants/colors';
 import { getBoxType } from '../../constants/boxTypes';
 import { getBlockedByMap } from '../../utils/autoBlocker';
@@ -12,23 +14,29 @@ import {
   Maximize2, 
   AlertTriangle,
   Layers,
-  Move
+  Lock,
+  Tv,
+  Workflow,
+  Sparkles,
+  CheckCircle2
 } from 'lucide-react';
 
 interface PlaytestModalProps {
   levelData: LevelData;
+  conveyorData?: ConveyorData;
   onClose: () => void;
 }
 
 interface DockedBox {
-  instanceId: string; // Unique instance ID
-  slotIdx: number;     // Fixed slot index 0..3
+  instanceId: string;
+  slotIdx: number;
+  slotId: string;
   id: string;
   boardNode: BoardNode;
   boxColor: number;
   capacity: number;
   currentCards: number[];
-  incomingCount: number; // Reserved cards currently flying to this box
+  incomingCount: number;
   timestamp: number;
   isFull: boolean;
   isClearing?: boolean;
@@ -52,31 +60,19 @@ interface FlyingCard {
   duration: number; // in seconds
 }
 
-const MAX_BOX_SLOTS = 4;
-const BELT_SPEED = 185.0; // pixels per second
-const MIN_CARD_DISTANCE = 32.0; // Fixed separation distance to prevent overlap
+interface RoutePoint {
+  x: number;
+  y: number;
+  dist: number;
+  angle: number;
+}
 
-// Racetrack Conveyor Geometry
-const TOP_Y = 105.0;
-const BOTTOM_Y = 185.0;
-const RADIUS = 40.0;
-const LEFT_X = 110.0;
-const RIGHT_X = 750.0;
+const BELT_SPEED = 190.0; // pixels per second
+const MIN_CARD_DISTANCE = 32.0;
+const GRID_SCALE = 62.0; // Screen pixels per unity unit
 
-const L_STRAIGHT = RIGHT_X - LEFT_X; // 640.0
-const L_ARC = Math.PI * RADIUS;       // ~125.66
-const L_TOTAL = 2 * L_STRAIGHT + 2 * L_ARC; // ~1531.33
-
-// 4 Docked Boxes with Fixed Positions (64px width, 66px gap) symmetrically centered
-const BOX_X_POSITIONS = [235.0, 365.0, 495.0, 625.0];
-const BOX_CHECKPOINTS = BOX_X_POSITIONS.map(bx => bx - LEFT_X);
-
-/**
- * Resolves any overlapping cards on the conveyor belt by enforcing
- * a fixed minimum distance between consecutive cards along the track loop.
- */
-function resolveCardOverlaps(cards: ConveyorCard[]): void {
-  if (cards.length <= 1) return;
+function resolveCardOverlaps(cards: ConveyorCard[], totalLength: number): void {
+  if (cards.length <= 1 || totalLength <= 0) return;
 
   cards.sort((a, b) => a.dist - b.dist);
 
@@ -84,89 +80,197 @@ function resolveCardOverlaps(cards: ConveyorCard[]): void {
     for (let i = 0; i < cards.length - 1; i++) {
       const diff = cards[i + 1].dist - cards[i].dist;
       if (diff < MIN_CARD_DISTANCE) {
-        cards[i + 1].dist = (cards[i].dist + MIN_CARD_DISTANCE) % L_TOTAL;
+        cards[i + 1].dist = (cards[i].dist + MIN_CARD_DISTANCE) % totalLength;
       }
     }
 
-    // Check circular wrap gap between the last card and first card
-    const wrapGap = (cards[0].dist + L_TOTAL) - cards[cards.length - 1].dist;
+    const wrapGap = (cards[0].dist + totalLength) - cards[cards.length - 1].dist;
     if (wrapGap < MIN_CARD_DISTANCE) {
       const shift = MIN_CARD_DISTANCE - wrapGap;
       for (let i = 0; i < cards.length; i++) {
-        cards[i].dist = (cards[i].dist + shift / 2) % L_TOTAL;
+        cards[i].dist = (cards[i].dist + shift / 2) % totalLength;
       }
       cards.sort((a, b) => a.dist - b.dist);
     }
   }
 }
 
-function getTrackCoords(distance: number) {
-  const d = ((distance % L_TOTAL) + L_TOTAL) % L_TOTAL;
-  if (d < L_STRAIGHT) {
-    // Top straight: left to right (y = TOP_Y)
-    return {
-      x: LEFT_X + d,
-      y: TOP_Y,
-      angle: 0.0,
-    };
-  } else if (d < L_STRAIGHT + L_ARC) {
-    // Right curve
-    const arcD = d - L_STRAIGHT;
-    const theta = -Math.PI / 2.0 + (arcD / L_ARC) * Math.PI;
-    return {
-      x: RIGHT_X + RADIUS * Math.cos(theta),
-      y: (TOP_Y + BOTTOM_Y) / 2.0 + RADIUS * Math.sin(theta),
-      angle: 90.0 + (arcD / L_ARC) * 180.0,
-    };
-  } else if (d < 2 * L_STRAIGHT + L_ARC) {
-    // Bottom straight: right to left (y = BOTTOM_Y)
-    const straightD = d - (L_STRAIGHT + L_ARC);
-    return {
-      x: RIGHT_X - straightD,
-      y: BOTTOM_Y,
-      angle: 180.0,
-    };
-  } else {
-    // Left curve
-    const arcD = d - (2 * L_STRAIGHT + L_ARC);
-    const theta = Math.PI / 2.0 + (arcD / L_ARC) * Math.PI;
-    return {
-      x: LEFT_X + RADIUS * Math.cos(theta),
-      y: (TOP_Y + BOTTOM_Y) / 2.0 + RADIUS * Math.sin(theta),
-      angle: 270.0 + (arcD / L_ARC) * 180.0,
-    };
-  }
-}
-
-export const PlaytestModal: React.FC<PlaytestModalProps> = ({ levelData, onClose }) => {
-  // Zoom & Pan state for board
+export const PlaytestModal: React.FC<PlaytestModalProps> = ({
+  levelData,
+  conveyorData = DEFAULT_CONVEYOR_DATA,
+  onClose,
+}) => {
+  // Zoom & Pan state for unified level area
   const [zoom, setZoom] = useState(1);
   const [pan, setPan] = useState({ x: 0, y: 0 });
   const [isPanning, setIsPanning] = useState(false);
   const [panStart, setPanStart] = useState({ x: 0, y: 0 });
 
-  // Game state: 4 fixed slots (either a DockedBox or null)
-  const [boxSlots, setBoxSlots] = useState<(DockedBox | null)[]>([null, null, null, null]);
+  // Conveyor definitions
+  const activeSlots = useMemo(() => {
+    return conveyorData.ConveyorSlots && conveyorData.ConveyorSlots.length > 0
+      ? conveyorData.ConveyorSlots
+      : DEFAULT_CONVEYOR_DATA.ConveyorSlots;
+  }, [conveyorData]);
+
+  const activeNodes = useMemo(() => {
+    return conveyorData.ConveyorNodes && conveyorData.ConveyorNodes.length > 0
+      ? conveyorData.ConveyorNodes
+      : DEFAULT_CONVEYOR_DATA.ConveyorNodes;
+  }, [conveyorData]);
+
+  const activeRoute = useMemo(() => {
+    return conveyorData.ConveyorRoute && conveyorData.ConveyorRoute.length > 0
+      ? conveyorData.ConveyorRoute
+      : activeNodes.map(n => n.Id);
+  }, [conveyorData, activeNodes]);
+
+  const isLoopTrack = conveyorData.IsLoop ?? false;
+
+  // Game state
+  const [boxSlots, setBoxSlots] = useState<(DockedBox | null)[]>(() => new Array(activeSlots.length).fill(null));
   const [clearedNodes, setClearedNodes] = useState<Set<string>>(new Set());
   const [spawnerQueues, setSpawnerQueues] = useState<Map<string, SpawnBox[]>>(new Map());
   const [deliveredCardsCount, setDeliveredCardsCount] = useState<number>(0);
   const [deliveredBoxesCount, setDeliveredBoxesCount] = useState<number>(0);
+  const [boxesSentUpCount, setBoxesSentUpCount] = useState<number>(0);
+  const [adUnlockedSlots, setAdUnlockedSlots] = useState<Set<string>>(new Set());
   const [isWon, setIsWon] = useState<boolean>(false);
   const [warningMessage, setWarningMessage] = useState<string | null>(null);
 
-  // High-performance real-time simulation state
+  // Simulation Refs
   const conveyorCardsRef = useRef<ConveyorCard[]>([]);
   const flyingCardsRef = useRef<FlyingCard[]>([]);
-  const boxSlotsRef = useRef<(DockedBox | null)[]>([null, null, null, null]);
+  const boxSlotsRef = useRef<(DockedBox | null)[]>([]);
   const clearedNodesRef = useRef<Set<string>>(new Set());
-  const beltBaseDistRef = useRef<number>(0);
+  const boxesSentUpRef = useRef<number>(0);
+  const adUnlockedSlotsRef = useRef<Set<string>>(new Set());
 
-  // Render trigger for animation frames
   const [, setFrameTick] = useState(0);
   const lastTimeRef = useRef<number>(performance.now());
   const animationFrameRef = useRef<number | null>(null);
 
-  // Sync ref with state
+  // === UNIFIED SCENE LAYOUT & SPATIAL POSITIONING ===
+  // Position Conveyor at the top and Board in the middle/lower area with clean separation distance
+  const sceneLayout = useMemo(() => {
+    // 1. Conveyor bounds
+    const convX = [...activeNodes.map(n => n.XPosition), ...activeSlots.map(s => s.XPosition)];
+    const convZ = [...activeNodes.map(n => n.ZPosition), ...activeSlots.map(s => s.ZPosition)];
+
+    const minConvX = convX.length > 0 ? Math.min(...convX) : -3.5;
+    const maxConvX = convX.length > 0 ? Math.max(...convX) : 3.5;
+    const minConvZ = convZ.length > 0 ? Math.min(...convZ) : 0;
+    const maxConvZ = convZ.length > 0 ? Math.max(...convZ) : 2.5;
+
+    // 2. Board bounds
+    const boardNodes = levelData.BoardNodes || [];
+    const bX = boardNodes.map(b => b.XPosition !== undefined ? b.XPosition : (b.MapPosX ?? 0));
+    const bZ = boardNodes.map(b => b.ZPosition !== undefined ? b.ZPosition : ((b.MapPosY ?? 0) + (b.YPosition ?? 0)));
+
+    const minBX = bX.length > 0 ? Math.min(...bX) : -2.0;
+    const maxBX = bX.length > 0 ? Math.max(...bX) : 2.0;
+    const minBZ = bZ.length > 0 ? Math.min(...bZ) : -2.0;
+    const maxBZ = bZ.length > 0 ? Math.max(...bZ) : 1.0;
+
+    // Vertical distance margin between conveyor bottom and board top
+    const userOffsetZ = conveyorData.BoardOffsetZ !== undefined ? conveyorData.BoardOffsetZ : 2.0;
+    const userOffsetX = conveyorData.BoardOffsetX !== undefined ? conveyorData.BoardOffsetX : 0.0;
+
+    // Ensure minimum clear separation gap (e.g. at least 2.2 units between conveyor bottom and board top)
+    const requiredGap = Math.max(userOffsetZ, 2.2);
+    // Board shift downwards so board top sits at (minConvZ - requiredGap)
+    const boardZShift = (minConvZ - maxBZ - requiredGap);
+
+    // Combined bounds
+    const totalMinX = Math.min(minConvX, minBX + userOffsetX) - 1.2;
+    const totalMaxX = Math.max(maxConvX, maxBX + userOffsetX) + 1.2;
+    const totalMinZ = Math.min(minConvZ - 0.5, minBZ + boardZShift) - 1.2;
+    const totalMaxZ = Math.max(maxConvZ + 0.8, maxBZ + boardZShift) + 0.8;
+
+    const centerX = (totalMinX + totalMaxX) / 2;
+    const centerZ = (totalMinZ + totalMaxZ) / 2;
+
+    // Coordinate converters
+    const unityToScreen = (ux: number, uz: number) => {
+      const sx = (ux - centerX) * GRID_SCALE;
+      const sy = -(uz - centerZ) * GRID_SCALE;
+      return { x: sx, y: sy };
+    };
+
+    // Build dense track points along ConveyorRoute
+    const nodeMap = new Map(activeNodes.map(n => [n.Id, n]));
+    const orderedNodes: ConveyorNode[] = [];
+    for (const id of activeRoute) {
+      const n = nodeMap.get(id);
+      if (n) orderedNodes.push(n);
+    }
+    if (orderedNodes.length === 0) {
+      orderedNodes.push(...activeNodes);
+    }
+
+    const fullRouteNodes = [...orderedNodes];
+    if (isLoopTrack && fullRouteNodes.length > 2) {
+      fullRouteNodes.push(fullRouteNodes[0]);
+    }
+
+    const densePoints: RoutePoint[] = [];
+    let accumDist = 0;
+
+    for (let i = 0; i < fullRouteNodes.length - 1; i++) {
+      const p1 = unityToScreen(fullRouteNodes[i].XPosition, fullRouteNodes[i].ZPosition);
+      const p2 = unityToScreen(fullRouteNodes[i + 1].XPosition, fullRouteNodes[i + 1].ZPosition);
+
+      const dx = p2.x - p1.x;
+      const dy = p2.y - p1.y;
+      const segLen = Math.sqrt(dx * dx + dy * dy);
+      const angle = (Math.atan2(dy, dx) * 180) / Math.PI;
+
+      const steps = Math.max(Math.ceil(segLen / 4), 1);
+      for (let s = 0; s < steps; s++) {
+        const t = s / steps;
+        densePoints.push({
+          x: p1.x + dx * t,
+          y: p1.y + dy * t,
+          dist: accumDist + segLen * t,
+          angle,
+        });
+      }
+      accumDist += segLen;
+    }
+
+    const totalLen = accumDist > 0 ? accumDist : 1000;
+
+    // Slot Checkpoints on track
+    const checkpoints = activeSlots.map(slot => {
+      const targetNode = nodeMap.get(slot.TargetNodeId);
+      if (targetNode) {
+        const targetSvg = unityToScreen(targetNode.XPosition, targetNode.ZPosition);
+        let closestDist = 0;
+        let minDistSq = Infinity;
+        for (const pt of densePoints) {
+          const dSq = (pt.x - targetSvg.x) ** 2 + (pt.y - targetSvg.y) ** 2;
+          if (dSq < minDistSq) {
+            minDistSq = dSq;
+            closestDist = pt.dist;
+          }
+        }
+        return closestDist;
+      }
+      return 0;
+    });
+
+    return {
+      unityToScreen,
+      boardZShift,
+      userOffsetX,
+      trackPoints: densePoints,
+      totalTrackLength: totalLen,
+      slotCheckpoints: checkpoints,
+      orderedNodes,
+    };
+  }, [activeNodes, activeSlots, activeRoute, isLoopTrack, levelData.BoardNodes, conveyorData.BoardOffsetX, conveyorData.BoardOffsetZ]);
+
+  // Sync refs
   useEffect(() => {
     boxSlotsRef.current = boxSlots;
   }, [boxSlots]);
@@ -175,30 +279,58 @@ export const PlaytestModal: React.FC<PlaytestModalProps> = ({ levelData, onClose
     clearedNodesRef.current = clearedNodes;
   }, [clearedNodes]);
 
+  useEffect(() => {
+    boxesSentUpRef.current = boxesSentUpCount;
+  }, [boxesSentUpCount]);
+
+  useEffect(() => {
+    adUnlockedSlotsRef.current = adUnlockedSlots;
+  }, [adUnlockedSlots]);
+
   const showWarning = (msg: string) => {
     setWarningMessage(msg);
     setTimeout(() => setWarningMessage(null), 3000);
   };
 
-  // Reset entire playtest
+  const isSlotUnlocked = useCallback((slot: ConveyorSlot, sentUp: number, adUnlocked: Set<string>): boolean => {
+    if (slot.UnlockedByAd && !adUnlocked.has(slot.Id)) {
+      return false;
+    }
+    if (slot.LockedTurn > 0 && sentUp < slot.LockedTurn) {
+      return false;
+    }
+    return true;
+  }, []);
+
+  const handleUnlockAdSlot = (slotId: string) => {
+    setAdUnlockedSlots(prev => {
+      const next = new Set(prev);
+      next.add(slotId);
+      return next;
+    });
+    showWarning(`Slot ${slotId} unlocked!`);
+  };
+
+  // Reset entire simulation
   const resetGame = useCallback(() => {
     conveyorCardsRef.current = [];
     flyingCardsRef.current = [];
-    boxSlotsRef.current = [null, null, null, null];
+    boxSlotsRef.current = new Array(activeSlots.length).fill(null);
     clearedNodesRef.current = new Set();
-    beltBaseDistRef.current = 0;
+    boxesSentUpRef.current = 0;
+    adUnlockedSlotsRef.current = new Set();
 
-    setBoxSlots([null, null, null, null]);
+    setBoxSlots(new Array(activeSlots.length).fill(null));
     setClearedNodes(new Set());
+    setBoxesSentUpCount(0);
+    setAdUnlockedSlots(new Set());
     
-    // Initialize spawner queues
     const initialSpawners = new Map<string, SpawnBox[]>();
     for (const sn of (levelData.SpawnerNodes || [])) {
       initialSpawners.set(sn.Id, [...sn.SpawnBoxes]);
     }
     setSpawnerQueues(initialSpawners);
 
-    // Initialize prespawned initial cards on conveyor belt
     const initialBeltCards: ConveyorCard[] = (levelData.InitialCards || []).map((color, idx) => ({
       uid: `init_card_${idx}_${Date.now()}`,
       color,
@@ -212,7 +344,7 @@ export const PlaytestModal: React.FC<PlaytestModalProps> = ({ levelData, onClose
     setWarningMessage(null);
     setPan({ x: 0, y: 0 });
     setZoom(1);
-  }, [levelData]);
+  }, [levelData, activeSlots]);
 
   useEffect(() => {
     resetGame();
@@ -229,75 +361,92 @@ export const PlaytestModal: React.FC<PlaytestModalProps> = ({ levelData, onClose
     return count;
   }, [levelData]);
 
-  // Live blocked nodes on board
   const liveBlockedByMap = useMemo(() => {
     const remainingBoxNodes = levelData.BoxNodes.filter(b => !clearedNodes.has(b.Id));
     return getBlockedByMap(remainingBoxNodes);
   }, [levelData.BoxNodes, clearedNodes]);
 
-  // Main 60FPS Continuous Animation & Physics Loop with Individual Card Movement & Overlap Prevention
+  // Track position helper
+  const getTrackCoords = useCallback((distance: number): RoutePoint => {
+    const { trackPoints, totalTrackLength } = sceneLayout;
+    if (!trackPoints || trackPoints.length === 0) {
+      return { x: 0, y: 0, dist: 0, angle: 0 };
+    }
+    const d = ((distance % totalTrackLength) + totalTrackLength) % totalTrackLength;
+    
+    let low = 0;
+    let high = trackPoints.length - 1;
+    while (low <= high) {
+      const mid = Math.floor((low + high) / 2);
+      if (trackPoints[mid].dist < d) {
+        low = mid + 1;
+      } else {
+        high = mid - 1;
+      }
+    }
+    const idx = Math.min(Math.max(low, 0), trackPoints.length - 1);
+    return trackPoints[idx];
+  }, [sceneLayout]);
+
+  // Main 60FPS Continuous Animation & Physics Loop
   useEffect(() => {
     const updateLoop = (now: number) => {
       const dt = Math.min((now - lastTimeRef.current) / 1000, 0.05);
       lastTimeRef.current = now;
 
       let hasStateChanges = false;
+      const { totalTrackLength, slotCheckpoints, unityToScreen } = sceneLayout;
       const currentConveyor = conveyorCardsRef.current;
       const currentFlying = flyingCardsRef.current;
       const currentSlots = [...boxSlotsRef.current];
 
-      // 1. Advance each card along the track
+      // 1. Advance cards along conveyor track
       for (let i = 0; i < currentConveyor.length; i++) {
-        currentConveyor[i].dist = (currentConveyor[i].dist + BELT_SPEED * dt) % L_TOTAL;
+        currentConveyor[i].dist = (currentConveyor[i].dist + BELT_SPEED * dt) % totalTrackLength;
       }
 
-      // Maintain minimum fixed distance between cards and prevent any overlapping
-      resolveCardOverlaps(currentConveyor);
+      resolveCardOverlaps(currentConveyor, totalTrackLength);
 
-      // 2. Check Proximity Flying for Each Card
+      // 2. Check Proximity Flying for Each Card to matching Docked Box
       const remainingConveyor: ConveyorCard[] = [];
 
       for (let i = 0; i < currentConveyor.length; i++) {
         const card = currentConveyor[i];
         let triggeredFly = false;
 
-        // Check if card on top straight passes any matching docked box checkpoint
-        if (card.dist <= L_STRAIGHT + 25.0) {
-          for (let slotIdx = 0; slotIdx < MAX_BOX_SLOTS; slotIdx++) {
-            const box = currentSlots[slotIdx];
-            // STRICT CHECK: Box must exist, NOT be clearing, and MUST MATCH CARD COLOR
-            if (!box || box.isClearing || box.boxColor !== card.color) {
-              continue;
-            }
+        for (let slotIdx = 0; slotIdx < activeSlots.length; slotIdx++) {
+          const slot = activeSlots[slotIdx];
+          const box = currentSlots[slotIdx];
 
-            const checkpoint = BOX_CHECKPOINTS[slotIdx];
-            const neededCards = box.capacity - (box.currentCards.length + box.incomingCount);
+          if (!box || box.isClearing || box.boxColor !== card.color) {
+            continue;
+          }
 
-            if (neededCards > 0) {
-              const distDiff = Math.abs(card.dist - checkpoint);
-              if (distDiff < BELT_SPEED * dt * 1.5 || (card.dist >= checkpoint && card.dist - checkpoint < 20.0)) {
-                // Spawn flying card animation to this specific box instance
-                const cardPos = getTrackCoords(card.dist);
-                const targetX = BOX_X_POSITIONS[slotIdx];
-                const targetY = 42.0;
+          const checkpoint = slotCheckpoints[slotIdx] || 0;
+          const neededCards = box.capacity - (box.currentCards.length + box.incomingCount);
 
-                box.incomingCount += 1;
-                currentFlying.push({
-                  uid: `fly_${card.uid}_${Date.now()}`,
-                  color: card.color,
-                  startX: cardPos.x,
-                  startY: cardPos.y,
-                  targetX,
-                  targetY,
-                  targetInstanceId: box.instanceId,
-                  progress: 0,
-                  duration: 0.30,
-                });
+          if (neededCards > 0) {
+            const distDiff = Math.abs(card.dist - checkpoint);
+            if (distDiff < BELT_SPEED * dt * 2.0 || (card.dist >= checkpoint && card.dist - checkpoint < 26.0)) {
+              const cardPos = getTrackCoords(card.dist);
+              const slotPos = unityToScreen(slot.XPosition, slot.ZPosition);
 
-                triggeredFly = true;
-                hasStateChanges = true;
-                break;
-              }
+              box.incomingCount += 1;
+              currentFlying.push({
+                uid: `fly_${card.uid}_${Date.now()}`,
+                color: card.color,
+                startX: cardPos.x,
+                startY: cardPos.y,
+                targetX: slotPos.x,
+                targetY: slotPos.y,
+                targetInstanceId: box.instanceId,
+                progress: 0,
+                duration: 0.32,
+              });
+
+              triggeredFly = true;
+              hasStateChanges = true;
+              break;
             }
           }
         }
@@ -309,7 +458,7 @@ export const PlaytestModal: React.FC<PlaytestModalProps> = ({ levelData, onClose
 
       conveyorCardsRef.current = remainingConveyor;
 
-      // 2. Update Flying Cards Trajectory & Landing
+      // 3. Update Flying Cards Trajectory & Landing
       const activeFlying: FlyingCard[] = [];
 
       for (let f = 0; f < currentFlying.length; f++) {
@@ -317,17 +466,14 @@ export const PlaytestModal: React.FC<PlaytestModalProps> = ({ levelData, onClose
         fc.progress += dt / fc.duration;
 
         if (fc.progress >= 1.0) {
-          // Card has landed! Find target box by unique instanceId
           const targetBox = currentSlots.find(b => b && b.instanceId === fc.targetInstanceId);
           if (targetBox) {
             targetBox.incomingCount = Math.max(0, targetBox.incomingCount - 1);
 
-            // STRICT COLOR VALIDATION: Card MUST match box color
             if (targetBox.boxColor === fc.color && targetBox.currentCards.length < targetBox.capacity) {
               targetBox.currentCards.push(fc.color);
             }
 
-            // Check if box is now completely full
             if (targetBox.currentCards.length >= targetBox.capacity && !targetBox.isClearing) {
               targetBox.isFull = true;
               targetBox.isClearing = true;
@@ -357,7 +503,6 @@ export const PlaytestModal: React.FC<PlaytestModalProps> = ({ levelData, onClose
         setBoxSlots(currentSlots);
         boxSlotsRef.current = currentSlots;
 
-        // Check Win condition
         if (
           clearedNodesRef.current.size >= levelData.BoardNodes.length &&
           conveyorCardsRef.current.length === 0 &&
@@ -378,9 +523,9 @@ export const PlaytestModal: React.FC<PlaytestModalProps> = ({ levelData, onClose
         cancelAnimationFrame(animationFrameRef.current);
       }
     };
-  }, [levelData]);
+  }, [levelData, activeSlots, sceneLayout, getTrackCoords]);
 
-  // Handle clicking an unblocked box or tray on the board
+  // Handle clicking a box on the board
   const handleBoardBoxClick = (nodeId: string) => {
     const blockers = liveBlockedByMap.get(nodeId) || [];
     if (blockers.length > 0) return;
@@ -396,24 +541,18 @@ export const PlaytestModal: React.FC<PlaytestModalProps> = ({ levelData, onClose
 
     const isTray = Boolean(activeBox.IsPaperBox);
     const boxType = getBoxType(activeBox.TypeId, isTray);
+    const { totalTrackLength } = sceneLayout;
 
     // === TRAY LOGIC ===
-    // Trays store spare cards. When clicked:
-    // 1. Only its cards are sent to the conveyor belt.
-    // 2. The tray disappears immediately without occupying any of the 4 box slots!
     if (isTray) {
-
-      // Inject cards onto conveyor belt with individual distance and no overlap
-      const entryBase = 620.0;
       const newCards: ConveyorCard[] = activeBox.InitCards.map((col, idx) => ({
         uid: `card_tray_${Date.now()}_${idx}_${Math.random().toString(36).substring(2, 6)}`,
         color: col,
-        dist: ((entryBase - idx * MIN_CARD_DISTANCE) % L_TOTAL + L_TOTAL) % L_TOTAL,
+        dist: ((totalTrackLength - idx * MIN_CARD_DISTANCE) % totalTrackLength + totalTrackLength) % totalTrackLength,
       }));
       conveyorCardsRef.current = [...conveyorCardsRef.current, ...newCards];
-      resolveCardOverlaps(conveyorCardsRef.current);
+      resolveCardOverlaps(conveyorCardsRef.current, totalTrackLength);
 
-      // Disappear from board
       const newClearedNodes = new Set(clearedNodes);
       if (spawnerBoxes && spawnerBoxes.length > 0) {
         const remainingSpawnBoxes = spawnerBoxes.slice(1);
@@ -434,17 +573,29 @@ export const PlaytestModal: React.FC<PlaytestModalProps> = ({ levelData, onClose
     }
 
     // === NORMAL COLORED BOX LOGIC ===
-    // 1. Find first available box slot (0..3)
     const currentSlots = boxSlotsRef.current;
-    const availableSlotIdx = currentSlots.findIndex(s => s === null);
+    let availableSlotIdx = -1;
+
+    for (let i = 0; i < activeSlots.length; i++) {
+      const slot = activeSlots[i];
+      if (isSlotUnlocked(slot, boxesSentUpCount, adUnlockedSlots) && currentSlots[i] === null) {
+        availableSlotIdx = i;
+        break;
+      }
+    }
+
     if (availableSlotIdx === -1) {
-      showWarning('All 4 box slots are occupied! Clear a matching box first.');
+      const hasLockedSlots = activeSlots.some(s => !isSlotUnlocked(s, boxesSentUpCount, adUnlockedSlots));
+      if (hasLockedSlots) {
+        showWarning('All unlocked slots are full! Send more boxes to unlock move-slots or unlock via Ad.');
+      } else {
+        showWarning('All slots are occupied! Clear a matching box first.');
+      }
       return;
     }
 
-    // STRICT IN-BOX COLOR FILTER:
-    // Only cards matching activeBox.BoxColor stay in the box!
-    // All other cards go to the conveyor belt!
+    const chosenSlot = activeSlots[availableSlotIdx];
+
     let matchingInBox: number[] = [];
     let unmatchedInBox: number[] = [];
 
@@ -456,22 +607,15 @@ export const PlaytestModal: React.FC<PlaytestModalProps> = ({ levelData, onClose
       }
     }
 
-    // 2. Dynamic Capacity Check:
-    let immediateAbsorbCount = 0;
-    for (const card of conveyorCardsRef.current) {
-      if (
-        card.color === activeBox.BoxColor &&
-        matchingInBox.length + immediateAbsorbCount < boxType.capacity
-      ) {
-        immediateAbsorbCount++;
-      }
-    }
+    const newSentUp = boxesSentUpCount + 1;
+    setBoxesSentUpCount(newSentUp);
+    boxesSentUpRef.current = newSentUp;
 
-    // 3. Move is VALID: dock box in available slot and inject unmatched cards onto conveyor
     const uniqueInstanceId = `box_${nodeId}_${Date.now()}_${Math.random().toString(36).substring(2, 6)}`;
     const newDockedBox: DockedBox = {
       instanceId: uniqueInstanceId,
       slotIdx: availableSlotIdx,
+      slotId: chosenSlot.Id,
       id: nodeId,
       boardNode,
       boxColor: activeBox.BoxColor,
@@ -482,25 +626,21 @@ export const PlaytestModal: React.FC<PlaytestModalProps> = ({ levelData, onClose
       isFull: matchingInBox.length >= boxType.capacity,
     };
 
-    const entryBase = 620.0;
     const newCards: ConveyorCard[] = unmatchedInBox.map((col, idx) => ({
       uid: `card_${Date.now()}_${idx}_${Math.random().toString(36).substring(2, 6)}`,
       color: col,
-      dist: ((entryBase - idx * MIN_CARD_DISTANCE) % L_TOTAL + L_TOTAL) % L_TOTAL,
+      dist: ((totalTrackLength - idx * MIN_CARD_DISTANCE) % totalTrackLength + totalTrackLength) % totalTrackLength,
     }));
 
     conveyorCardsRef.current = [...conveyorCardsRef.current, ...newCards];
-    resolveCardOverlaps(conveyorCardsRef.current);
+    resolveCardOverlaps(conveyorCardsRef.current, totalTrackLength);
 
-    // Update docked slots
     const updatedSlots = [...currentSlots];
     updatedSlots[availableSlotIdx] = newDockedBox;
     setBoxSlots(updatedSlots);
     boxSlotsRef.current = updatedSlots;
 
-    // Update board state & spawners
     const newClearedNodes = new Set(clearedNodes);
-
     if (spawnerBoxes && spawnerBoxes.length > 0) {
       const remainingSpawnBoxes = spawnerBoxes.slice(1);
       const updatedMap = new Map(spawnerQueues);
@@ -542,11 +682,28 @@ export const PlaytestModal: React.FC<PlaytestModalProps> = ({ levelData, onClose
     setIsPanning(false);
   };
 
+  // SVG Track Path calculation for Unified Conveyor Rail
+  const trackSvgPath = useMemo(() => {
+    const { trackPoints } = sceneLayout;
+    if (!trackPoints || trackPoints.length === 0) return '';
+    let d = `M ${trackPoints[0].x} ${trackPoints[0].y}`;
+    for (let i = 1; i < trackPoints.length; i += 2) {
+      d += ` L ${trackPoints[i].x} ${trackPoints[i].y}`;
+    }
+    if (isLoopTrack) {
+      d += ' Z';
+    }
+    return d;
+  }, [sceneLayout, isLoopTrack]);
+
   const currentConveyorCount = conveyorCardsRef.current.length;
+  const occupiedSlotsCount = boxSlots.filter(b => b !== null && !b.isClearing).length;
+
+  const { unityToScreen, boardZShift, userOffsetX, orderedNodes } = sceneLayout;
 
   return (
     <div className="fixed inset-0 z-50 bg-slate-950/90 backdrop-blur-md flex items-center justify-center p-2 sm:p-4 select-none">
-      <div className="relative w-full max-w-5xl h-[94vh] bg-[#629fc9] rounded-3xl overflow-hidden border-4 border-slate-700 shadow-2xl flex flex-col">
+      <div className="relative w-full max-w-5xl h-[94vh] bg-[#759ebb] rounded-3xl overflow-hidden border-4 border-slate-700 shadow-2xl flex flex-col">
         
         {/* Top Header Bar */}
         <div className="h-14 bg-slate-950/95 backdrop-blur-md px-4 sm:px-6 flex items-center justify-between border-b border-slate-800 z-30 shrink-0">
@@ -559,8 +716,8 @@ export const PlaytestModal: React.FC<PlaytestModalProps> = ({ levelData, onClose
                 <h2 className="text-xs sm:text-sm font-bold text-white uppercase tracking-wider">
                   Playtest Simulator
                 </h2>
-                <span className="text-[10px] bg-amber-500/20 text-amber-300 border border-amber-500/40 px-2 py-0.5 rounded font-bold uppercase">
-                  Feeder Trays & Strict Sorting • 60 FPS
+                <span className="text-[10px] bg-sky-500/20 text-sky-300 border border-sky-500/40 px-2 py-0.5 rounded font-bold uppercase flex items-center gap-1">
+                  <Workflow size={11} /> Unified Level Simulation
                 </span>
                 {levelData.IsHardLvl && (
                   <span className="text-[10px] bg-rose-500/20 text-rose-300 border border-rose-500/40 px-2 py-0.5 rounded font-bold uppercase flex items-center gap-1">
@@ -569,7 +726,7 @@ export const PlaytestModal: React.FC<PlaytestModalProps> = ({ levelData, onClose
                 )}
               </div>
               <span className="text-[11px] text-slate-400 hidden sm:inline">
-                Trays feed spare cards directly to the conveyor and disappear immediately!
+                Docked Boxes: {occupiedSlotsCount}/{activeSlots.length} • Delivered: {deliveredCardsCount}/{totalCardsInLevel} Cards
               </span>
             </div>
           </div>
@@ -578,7 +735,7 @@ export const PlaytestModal: React.FC<PlaytestModalProps> = ({ levelData, onClose
           <div className="flex items-center gap-2">
             <button
               onClick={resetGame}
-              className="py-1.5 px-3 rounded-lg bg-slate-800 hover:bg-slate-700 text-slate-200 text-xs font-medium flex items-center gap-1.5 border border-slate-700 transition"
+              className="py-1.5 px-3 rounded-lg bg-slate-800 hover:bg-slate-700 text-slate-200 text-xs font-medium flex items-center gap-1.5 border border-slate-700 transition active:scale-95"
             >
               <RotateCcw size={13} />
               <span>Reset</span>
@@ -601,85 +758,69 @@ export const PlaytestModal: React.FC<PlaytestModalProps> = ({ levelData, onClose
           </div>
         )}
 
-        {/* Main Playable Area */}
-        <div className="flex-1 relative overflow-hidden flex flex-col">
-          
-          {/* TOP SECTION: 5 DOCKED BOXES & REAL-TIME ANIMATED CONVEYOR BELT */}
-          <div className="w-full bg-[#5287aa] border-b-2 border-[#8ebfda]/40 p-2 flex flex-col items-center gap-1 shadow-lg shrink-0 z-20">
-            
-            {/* Header info & score */}
-            <div className="w-full max-w-4xl flex items-center justify-between px-2 text-[11px] font-bold text-white uppercase tracking-wider">
-              <span className="drop-shadow">
-                Docked Boxes ({boxSlots.filter(b => b !== null && !b.isClearing).length}/4) • Conveyor Cards ({currentConveyorCount})
-              </span>
-              <div className="bg-slate-950/80 border border-slate-700 px-3 py-1 rounded-xl text-xs font-mono text-sky-400 shadow">
-                Delivered: {deliveredCardsCount}/{totalCardsInLevel}
-              </div>
-            </div>
+        {/* SINGLE UNIFIED PLAYTEST CANVAS (CONVEYOR & BOARD IN ONE SCENE) */}
+        <div
+          className="flex-1 relative overflow-hidden flex items-center justify-center cursor-grab active:cursor-grabbing select-none"
+          onWheel={handleWheel}
+          onMouseDown={handleMouseDown}
+          onMouseMove={handleMouseMove}
+          onMouseUp={handleMouseUp}
+        >
+          <div
+            className="w-full h-full absolute inset-0 flex items-center justify-center pointer-events-none"
+            style={{
+              transform: `translate(${pan.x}px, ${pan.y}px) scale(${zoom})`,
+              transformOrigin: 'center center',
+              transition: isPanning ? 'none' : 'transform 0.05s ease-out',
+            }}
+          >
+            <svg className="w-[1000px] h-[900px] pointer-events-auto" viewBox="-500 -450 1000 900">
+              <defs>
+                <linearGradient id="unifiedBeltGradient" x1="0" y1="0" x2="1" y2="0">
+                  <stop offset="0%" stopColor="#293548" />
+                  <stop offset="50%" stopColor="#475569" />
+                  <stop offset="100%" stopColor="#293548" />
+                </linearGradient>
+                <linearGradient id="portalGrad" x1="0" y1="0" x2="0" y2="1">
+                  <stop offset="0%" stopColor="#1e3a8a" />
+                  <stop offset="50%" stopColor="#3b82f6" />
+                  <stop offset="100%" stopColor="#172554" />
+                </linearGradient>
+                <filter id="glow" x="-20%" y="-20%" width="140%" height="140%">
+                  <feGaussianBlur stdDeviation="3" result="blur" />
+                  <feComposite in="SourceGraphic" in2="blur" operator="over" />
+                </filter>
+              </defs>
 
-            {/* Integrated SVG Conveyor System & Docked Boxes */}
-            <div className="w-full max-w-4xl h-48 bg-slate-950/40 rounded-2xl border border-slate-700/50 relative overflow-hidden flex items-center justify-center shadow-inner">
-              <svg className="w-full h-full" viewBox="0 0 860 230">
-                {/* Defs for gradients & shadows */}
-                <defs>
-                  <linearGradient id="beltGradient" x1="0" y1="0" x2="1" y2="0">
-                    <stop offset="0%" stopColor="#1e293b" />
-                    <stop offset="50%" stopColor="#334155" />
-                    <stop offset="100%" stopColor="#1e293b" />
-                  </linearGradient>
-                </defs>
-
-                {/* 1. Conveyor Track Rail */}
-                <path
-                  d={`M ${LEFT_X} ${TOP_Y} L ${RIGHT_X} ${TOP_Y} A ${RADIUS} ${RADIUS} 0 0 1 ${RIGHT_X} ${BOTTOM_Y} L ${LEFT_X} ${BOTTOM_Y} A ${RADIUS} ${RADIUS} 0 0 1 ${LEFT_X} ${TOP_Y} Z`}
-                  fill="none"
-                  stroke="#0f172a"
-                  strokeWidth="42"
-                  strokeLinecap="round"
-                  strokeLinejoin="round"
-                />
-                <path
-                  d={`M ${LEFT_X} ${TOP_Y} L ${RIGHT_X} ${TOP_Y} A ${RADIUS} ${RADIUS} 0 0 1 ${RIGHT_X} ${BOTTOM_Y} L ${LEFT_X} ${BOTTOM_Y} A ${RADIUS} ${RADIUS} 0 0 1 ${LEFT_X} ${TOP_Y} Z`}
-                  fill="none"
-                  stroke="url(#beltGradient)"
-                  strokeWidth="32"
-                  strokeLinecap="round"
-                  strokeLinejoin="round"
-                />
-                <path
-                  d={`M ${LEFT_X} ${TOP_Y} L ${RIGHT_X} ${TOP_Y} A ${RADIUS} ${RADIUS} 0 0 1 ${RIGHT_X} ${BOTTOM_Y} L ${LEFT_X} ${BOTTOM_Y} A ${RADIUS} ${RADIUS} 0 0 1 ${LEFT_X} ${TOP_Y} Z`}
-                  fill="none"
-                  stroke="#475569"
-                  strokeWidth="24"
-                  strokeDasharray="6,6"
-                />
-                <path
-                  d={`M ${LEFT_X} ${TOP_Y} L ${RIGHT_X} ${TOP_Y} A ${RADIUS} ${RADIUS} 0 0 1 ${RIGHT_X} ${BOTTOM_Y} L ${LEFT_X} ${BOTTOM_Y} A ${RADIUS} ${RADIUS} 0 0 1 ${LEFT_X} ${TOP_Y} Z`}
-                  fill="none"
-                  stroke="#38bdf8"
-                  strokeWidth="2"
-                  opacity="0.5"
-                />
-
-                {/* 2. Docked Box Slots with Fixed Spacing & No Overlap (64px width, 46px gap) */}
-                {BOX_X_POSITIONS.map((bx, slotIdx) => {
+              {/* 1. CONVEYOR DOCKING PARKING SLOTS (Positioned above/behind track) */}
+              <g id="conveyor-docking-slots">
+                {activeSlots.map((slot, slotIdx) => {
+                  const svgPos = unityToScreen(slot.XPosition, slot.ZPosition);
                   const box = boxSlots[slotIdx];
                   const colorDef = box ? getColor(box.boxColor) : null;
                   const isClearing = box?.isClearing;
 
+                  const isAdLocked = slot.UnlockedByAd && !adUnlockedSlots.has(slot.Id);
+                  const isMoveLocked = slot.LockedTurn > 0 && boxesSentUpCount < slot.LockedTurn;
+                  const remainingMoves = Math.max(0, slot.LockedTurn - boxesSentUpCount);
+
+                  const slotW = 68;
+                  const slotH = 92;
+
                   return (
-                    <g key={`docked-slot-${slotIdx}`} transform={`translate(${bx}, 44)`}>
+                    <g key={`unified-slot-${slot.Id}-${slotIdx}`} transform={`translate(${svgPos.x}, ${svgPos.y})`}>
                       {/* Slot Docking Base Plate */}
                       <rect
-                        x="-32"
-                        y="-30"
-                        width="64"
-                        height="60"
-                        rx="12"
-                        fill="#1e293b"
-                        stroke="#475569"
-                        strokeWidth="2"
-                        strokeDasharray={box ? 'none' : '4,3'}
+                        x={-slotW / 2}
+                        y={-slotH / 2}
+                        width={slotW}
+                        height={slotH}
+                        rx={14}
+                        fill={isAdLocked ? '#450a0a' : isMoveLocked ? '#2e1065' : '#1e293b'}
+                        stroke={isAdLocked ? '#ef4444' : isMoveLocked ? '#a855f7' : '#ffffff'}
+                        strokeWidth={2.5}
+                        strokeDasharray={box ? 'none' : '5,4'}
+                        className="transition-colors duration-300"
                       />
 
                       {/* Docked Box Body */}
@@ -689,79 +830,215 @@ export const PlaytestModal: React.FC<PlaytestModalProps> = ({ levelData, onClose
                             isClearing ? 'scale-110 opacity-0' : 'scale-100 opacity-100'
                           }`}
                         >
-                          {/* Outer Box */}
                           <rect
-                            x="-30"
-                            y="-28"
-                            width="60"
-                            height="56"
-                            rx="10"
+                            x={-slotW / 2 + 2}
+                            y={-slotH / 2 + 2}
+                            width={slotW - 4}
+                            height={slotH - 4}
+                            rx={12}
                             fill={colorDef.hex}
                             stroke="#ffffff"
-                            strokeWidth="2"
+                            strokeWidth={2}
                           />
-                          {/* Inner Recess */}
                           <rect
-                            x="-26"
-                            y="-12"
-                            width="52"
-                            height="36"
-                            rx="6"
+                            x={-slotW / 2 + 6}
+                            y={-slotH / 2 + 6}
+                            width={slotW - 12}
+                            height={slotH - 12}
+                            rx={8}
                             fill={colorDef.darkHex}
-                            opacity="0.4"
+                            opacity={0.35}
                           />
 
-                          {/* ID & Capacity Label */}
+                          {/* Capacity Label */}
                           <text
                             x="0"
-                            y="-16"
+                            y={-slotH / 2 + 16}
                             textAnchor="middle"
                             fill="#ffffff"
-                            fontSize="9"
+                            fontSize="10"
                             fontWeight="900"
                             fontFamily="monospace"
                           >
                             {box.currentCards.length}/{box.capacity}
                           </text>
 
-                          {/* Cards Stacked inside Box (Strictly Matching Box Color Only!) */}
-                          {box.currentCards.map((cCol, cIdx) => {
-                            const cColor = getColor(cCol);
-                            const cardH = 4.5;
-                            const cardY = 18 - cIdx * (cardH + 1);
+                          {/* Stacked Cards inside Docked Box */}
+                          {(() => {
+                            const cardCount = box.currentCards.length;
+                            const availableW = slotW - 20;
+                            const cardSpacing = availableW / Math.max(cardCount, 1);
+                            const cardThickness = Math.min(cardSpacing - 2, 14);
+                            const cardH = slotH - 32;
 
-                            return (
-                              <rect
-                                key={`stacked-card-${cIdx}`}
-                                x="-22"
-                                y={cardY}
-                                width="44"
-                                height={cardH}
-                                rx="2"
-                                fill={cColor.hex}
-                                stroke="#ffffff"
-                                strokeWidth="0.8"
-                              />
-                            );
-                          })}
+                            return box.currentCards.map((cCol, cIdx) => {
+                              const cColor = getColor(cCol);
+                              const cardX = -slotW / 2 + 10 + cIdx * cardSpacing;
+
+                              return (
+                                <g key={`docked-card-${cIdx}`}>
+                                  <rect
+                                    x={cardX}
+                                    y={-cardH / 2 + 6}
+                                    width={cardThickness}
+                                    height={cardH}
+                                    rx={cardThickness / 2}
+                                    fill={cColor.hex}
+                                    stroke="#ffffff"
+                                    strokeWidth={1}
+                                  />
+                                </g>
+                              );
+                            });
+                          })()}
+                        </g>
+                      ) : isAdLocked ? (
+                        /* Ad Locked Slot UI */
+                        <g
+                          className="cursor-pointer group"
+                          onClick={() => handleUnlockAdSlot(slot.Id)}
+                        >
+                          <circle cx="0" cy="-6" r="14" fill="#7f1d1d" stroke="#f87171" strokeWidth="1.5" />
+                          <text x="0" y="-1" textAnchor="middle" fill="#fca5a5" fontSize="12" fontWeight="bold">
+                            📺
+                          </text>
+                          <rect
+                            x="-28"
+                            y="14"
+                            width="56"
+                            height="16"
+                            rx="5"
+                            fill="#ef4444"
+                            className="group-hover:fill-rose-400 transition"
+                          />
+                          <text
+                            x="0"
+                            y="25"
+                            textAnchor="middle"
+                            fill="#ffffff"
+                            fontSize="9"
+                            fontWeight="bold"
+                          >
+                            UNLOCK AD
+                          </text>
+                        </g>
+                      ) : isMoveLocked ? (
+                        /* Move Locked Slot UI */
+                        <g>
+                          <circle cx="0" cy="-6" r="14" fill="#581c87" stroke="#c084fc" strokeWidth="1.5" />
+                          <text x="0" y="-1" textAnchor="middle" fill="#e9d5ff" fontSize="12" fontWeight="bold">
+                            🔒
+                          </text>
+                          <rect
+                            x="-28"
+                            y="14"
+                            width="56"
+                            height="16"
+                            rx="5"
+                            fill="#7e22ce"
+                          />
+                          <text
+                            x="0"
+                            y="25"
+                            textAnchor="middle"
+                            fill="#ffffff"
+                            fontSize="9"
+                            fontWeight="bold"
+                          >
+                            MOVE {remainingMoves}
+                          </text>
                         </g>
                       ) : (
-                        <text
-                          x="0"
-                          y="4"
-                          textAnchor="middle"
-                          fill="#64748b"
-                          fontSize="10"
-                          fontWeight="700"
-                        >
-                          Slot {slotIdx + 1}
-                        </text>
+                        /* Unlocked Empty Slot */
+                        <g>
+                          <text
+                            x="0"
+                            y="4"
+                            textAnchor="middle"
+                            fill="#94a3b8"
+                            fontSize="11"
+                            fontWeight="800"
+                          >
+                            Slot {slotIdx + 1}
+                          </text>
+                        </g>
                       )}
                     </g>
                   );
                 })}
+              </g>
 
-                {/* 3. Cards in Motion along Conveyor (No Overlap, Fixed Separation Distance) */}
+              {/* 2. CONVEYOR RAIL TRACK */}
+              {trackSvgPath && (
+                <g id="conveyor-track-system">
+                  <path
+                    d={trackSvgPath}
+                    fill="none"
+                    stroke="#0f172a"
+                    strokeWidth="42"
+                    strokeLinecap="round"
+                    strokeLinejoin="round"
+                  />
+                  <path
+                    d={trackSvgPath}
+                    fill="none"
+                    stroke="url(#unifiedBeltGradient)"
+                    strokeWidth="32"
+                    strokeLinecap="round"
+                    strokeLinejoin="round"
+                  />
+                  <path
+                    d={trackSvgPath}
+                    fill="none"
+                    stroke="#64748b"
+                    strokeWidth="22"
+                    strokeDasharray="8,6"
+                  />
+                  <path
+                    d={trackSvgPath}
+                    fill="none"
+                    stroke="#38bdf8"
+                    strokeWidth="2.5"
+                    opacity="0.5"
+                  />
+
+                  {/* Left & Right Portal Casings (if not loop) */}
+                  {!isLoopTrack && orderedNodes.length >= 2 && (
+                    <>
+                      {/* Entry Portal (First Node) */}
+                      {(() => {
+                        const p0 = unityToScreen(orderedNodes[0].XPosition, orderedNodes[0].ZPosition);
+                        return (
+                          <g transform={`translate(${p0.x - 12}, ${p0.y})`}>
+                            <rect x="-16" y="-28" width="32" height="56" rx="8" fill="url(#portalGrad)" stroke="#60a5fa" strokeWidth="2.5" />
+                            <ellipse cx="0" cy="0" rx="6" ry="18" fill="#0f172a" />
+                            <text x="0" y="-32" textAnchor="middle" fill="#93c5fd" fontSize="9" fontWeight="bold">
+                              IN
+                            </text>
+                          </g>
+                        );
+                      })()}
+
+                      {/* Exit Portal (Last Node) */}
+                      {(() => {
+                        const pN = unityToScreen(orderedNodes[orderedNodes.length - 1].XPosition, orderedNodes[orderedNodes.length - 1].ZPosition);
+                        return (
+                          <g transform={`translate(${pN.x + 12}, ${pN.y})`}>
+                            <rect x="-16" y="-28" width="32" height="56" rx="8" fill="url(#portalGrad)" stroke="#60a5fa" strokeWidth="2.5" />
+                            <ellipse cx="0" cy="0" rx="6" ry="18" fill="#0f172a" />
+                            <text x="0" y="-32" textAnchor="middle" fill="#93c5fd" fontSize="9" fontWeight="bold">
+                              OUT
+                            </text>
+                          </g>
+                        );
+                      })()}
+                    </>
+                  )}
+                </g>
+              )}
+
+              {/* 3. CARDS RIDING ALONG CONVEYOR TRACK */}
+              <g id="conveyor-riding-cards">
                 {conveyorCardsRef.current.map((card) => {
                   const pt = getTrackCoords(card.dist);
                   const colorDef = getColor(card.color);
@@ -771,16 +1048,254 @@ export const PlaytestModal: React.FC<PlaytestModalProps> = ({ levelData, onClose
                       key={`riding-card-${card.uid}`}
                       transform={`translate(${pt.x}, ${pt.y}) rotate(${pt.angle})`}
                     >
-                      {/* Card Drop Shadow */}
                       <rect
                         x="-10"
-                        y="-13"
+                        y="-14"
                         width="20"
-                        height="26"
+                        height="28"
                         rx="4"
                         fill="rgba(0, 0, 0, 0.45)"
                       />
-                      {/* Card Body */}
+                      <rect
+                        x="-9"
+                        y="-13"
+                        width="18"
+                        height="26"
+                        rx="4"
+                        fill={colorDef.hex}
+                        stroke="#ffffff"
+                        strokeWidth="1.5"
+                      />
+                      <rect
+                        x="-7"
+                        y="-11"
+                        width="14"
+                        height="4"
+                        rx="2"
+                        fill="rgba(255, 255, 255, 0.6)"
+                      />
+                    </g>
+                  );
+                })}
+              </g>
+
+              {/* 4. BOARD LEVEL BOXES (Rendered with exact visual and spacing) */}
+              <g id="board-level-boxes">
+                {[...levelData.BoardNodes]
+                  .sort((a, b) => (a.LayerId ?? a.TileMapId ?? 0) - (b.LayerId ?? b.TileMapId ?? 0))
+                  .map(bn => {
+                    if (clearedNodes.has(bn.Id)) return null;
+
+                    const bx = levelData.BoxNodes.find(b => b.Id === bn.Id);
+                    const spawnerBoxes = spawnerQueues.get(bn.Id);
+                    const activeBox = bx || (spawnerBoxes && spawnerBoxes.length > 0 ? spawnerBoxes[0] : null);
+
+                    if (!activeBox) return null;
+
+                    const isSpawner = !bx && !!spawnerBoxes && spawnerBoxes.length > 0;
+                    const isTray = Boolean(activeBox.IsPaperBox);
+                    const boxType = getBoxType(activeBox.TypeId, isTray);
+                    const colorDef = getColor(activeBox.BoxColor);
+                    const blockers = liveBlockedByMap.get(bn.Id) || [];
+                    const isBlocked = blockers.length > 0;
+
+                    const isHidden = (activeBox.IsRainbowBox || activeBox.IsHidden) && isBlocked;
+                    const areCardsHidden = activeBox.IsCardsHidden;
+
+                    const unityX = (bn.XPosition !== undefined ? bn.XPosition : (bn.MapPosX ?? 0)) + userOffsetX;
+                    const unityZ = (bn.ZPosition !== undefined ? bn.ZPosition : ((bn.MapPosY ?? 0) + (bn.YPosition ?? 0))) + boardZShift;
+
+                    const pos = unityToScreen(unityX, unityZ);
+                    const rot = bn.YRotation ?? bn.ZRotation ?? 0;
+                    const svgAngle = (-rot + 360) % 360;
+
+                    // Box dimensions matching editor (scale ~ 0.65 to fit seamlessly in unified view)
+                    const boxScale = 0.65;
+                    const w = boxType.width * boxScale;
+                    const h = boxType.height * boxScale;
+                    const layerId = bn.LayerId ?? bn.TileMapId ?? 0;
+                    const layerElev = Math.min(Math.max(layerId, 0), 4);
+                    const shadowY = layerElev * 3 + 3;
+
+                    const cardCount = activeBox.InitCards.length;
+                    const slotCount = Math.max(boxType.capacity, cardCount || 1);
+
+                    return (
+                      <g
+                        key={`board-box-${bn.Id}`}
+                        transform={`translate(${pos.x}, ${pos.y}) rotate(${svgAngle})`}
+                        onClick={(e) => {
+                          e.stopPropagation();
+                          handleBoardBoxClick(bn.Id);
+                        }}
+                        className={`cursor-pointer transition-opacity duration-150 ${
+                          isBlocked ? 'opacity-85 brightness-75' : ''
+                        }`}
+                      >
+                        {/* Drop Shadow */}
+                        <rect
+                          x={-w / 2}
+                          y={-h / 2 + shadowY}
+                          width={w}
+                          height={h}
+                          rx={12}
+                          fill="rgba(0,0,0,0.35)"
+                        />
+
+                        {/* Outer Box Body */}
+                        {isTray ? (
+                          <g>
+                            <rect
+                              x={-w / 2}
+                              y={-h / 2}
+                              width={w}
+                              height={h}
+                              rx={12}
+                              fill="#e2e8f0"
+                              stroke={isBlocked ? '#475569' : '#ffffff'}
+                              strokeWidth={2}
+                            />
+                            <rect
+                              x={-w / 2 + 3}
+                              y={-h / 2 + 3}
+                              width={w - 6}
+                              height={h - 6}
+                              rx={9}
+                              fill="#cbd5e1"
+                              stroke="#94a3b8"
+                              strokeWidth={1}
+                            />
+                          </g>
+                        ) : (
+                          <g>
+                            <rect
+                              x={-w / 2}
+                              y={-h / 2}
+                              width={w}
+                              height={h}
+                              rx={12}
+                              fill={isHidden ? '#64748b' : colorDef.hex}
+                              stroke={isBlocked ? '#475569' : '#ffffff'}
+                              strokeWidth={2}
+                            />
+                            <rect
+                              x={-w / 2 + 4}
+                              y={-h / 2 + 4}
+                              width={w - 8}
+                              height={h - 8}
+                              rx={8}
+                              fill={isHidden ? '#475569' : colorDef.darkHex}
+                              opacity={0.35}
+                            />
+                          </g>
+                        )}
+
+                        {/* Internal Cards or Slots (exact BoxNodeVisual design matching reference image) */}
+                        <g>
+                          {!areCardsHidden && cardCount > 0 ? (
+                            (() => {
+                              const availableWidth = w - 16;
+                              const cardSpacing = availableWidth / Math.max(cardCount, 1);
+                              const cardThickness = Math.min(cardSpacing - 2, 14);
+                              const cardH = h - 12;
+
+                              return activeBox.InitCards.map((cardColorId, idx) => {
+                                const cardColor = getColor(cardColorId);
+                                const cardX = -w / 2 + 8 + idx * cardSpacing;
+
+                                return (
+                                  <g key={`box-card-${idx}`}>
+                                    <rect
+                                      x={cardX + 1}
+                                      y={-cardH / 2 + 1}
+                                      width={cardThickness}
+                                      height={cardH}
+                                      rx={cardThickness / 2}
+                                      fill="rgba(0, 0, 0, 0.25)"
+                                    />
+                                    <rect
+                                      x={cardX}
+                                      y={-cardH / 2}
+                                      width={cardThickness}
+                                      height={cardH}
+                                      rx={cardThickness / 2}
+                                      fill={isHidden ? '#64748b' : cardColor.hex}
+                                      stroke={isHidden ? '#94a3b8' : '#ffffff'}
+                                      strokeWidth={1}
+                                    />
+                                    <rect
+                                      x={cardX + 1}
+                                      y={-cardH / 2 + 2}
+                                      width={Math.max(cardThickness / 2 - 1, 1)}
+                                      height={cardH - 4}
+                                      rx={cardThickness / 4}
+                                      fill="rgba(255, 255, 255, 0.4)"
+                                    />
+                                  </g>
+                                );
+                              });
+                            })()
+                          ) : !areCardsHidden ? (
+                            (() => {
+                              const lines: React.ReactNode[] = [];
+                              const step = (w - 16) / slotCount;
+                              for (let i = 1; i < slotCount; i++) {
+                                lines.push(
+                                  <line
+                                    key={`slot-${i}`}
+                                    x1={-w / 2 + 8 + i * step}
+                                    y1={-h / 2 + 8}
+                                    x2={-w / 2 + 8 + i * step}
+                                    y2={h / 2 - 8}
+                                    stroke="rgba(255, 255, 255, 0.2)"
+                                    strokeDasharray="2,2"
+                                  />
+                                );
+                              }
+                              return lines;
+                            })()
+                          ) : null}
+                        </g>
+
+                        {/* Spawner Multiplier Badge */}
+                        {isSpawner && spawnerBoxes.length > 1 && (
+                          <g transform={`translate(${-w / 2 + 10}, ${-h / 2 + 10})`}>
+                            <rect x="-10" y="-8" width="20" height="16" rx="4" fill="#a855f7" stroke="#ffffff" strokeWidth="1" />
+                            <text x="0" y="4" textAnchor="middle" fill="#ffffff" fontSize="9" fontWeight="bold">
+                              x{spawnerBoxes.length}
+                            </text>
+                          </g>
+                        )}
+
+                        {/* Lock Overlay if Blocked */}
+                        {isBlocked && (
+                          <g transform="translate(0, 0)">
+                            <circle cx="0" cy="0" r="14" fill="rgba(15, 23, 42, 0.75)" stroke="#ef4444" strokeWidth="1.5" />
+                            <text x="0" y="4" textAnchor="middle" fill="#fca5a5" fontSize="11" fontWeight="bold">
+                              🔒
+                            </text>
+                          </g>
+                        )}
+                      </g>
+                    );
+                  })}
+              </g>
+
+              {/* 5. FLYING CARDS TO DOCKED BOXES */}
+              <g id="flying-cards">
+                {flyingCardsRef.current.map((fc) => {
+                  const t = fc.progress;
+                  const curX = fc.startX + (fc.targetX - fc.startX) * t;
+                  const curY = fc.startY + (fc.targetY - fc.startY) * t - Math.sin(t * Math.PI) * 45;
+                  const scale = 1.0 + Math.sin(t * Math.PI) * 0.3;
+                  const colorDef = getColor(fc.color);
+
+                  return (
+                    <g
+                      key={`flying-${fc.uid}`}
+                      transform={`translate(${curX}, ${curY}) scale(${scale})`}
+                      filter="url(#glow)"
+                    >
                       <rect
                         x="-9"
                         y="-12"
@@ -789,382 +1304,75 @@ export const PlaytestModal: React.FC<PlaytestModalProps> = ({ levelData, onClose
                         rx="4"
                         fill={colorDef.hex}
                         stroke="#ffffff"
-                        strokeWidth="1.5"
-                      />
-                      {/* Card Gloss Stripe */}
-                      <rect
-                        x="-7"
-                        y="-10"
-                        width="14"
-                        height="4"
-                        rx="2"
-                        fill="rgba(255, 255, 255, 0.55)"
-                      />
-                    </g>
-                  );
-                })}
-
-                {/* 4. Flying Cards to Matching Box (Smooth Parabolic Trajectory) */}
-                {flyingCardsRef.current.map(fc => {
-                  const p = fc.progress;
-                  const currX = fc.startX + (fc.targetX - fc.startX) * p;
-                  const currY = fc.startY + (fc.targetY - fc.startY) * p - Math.sin(p * Math.PI) * 22;
-                  const colorDef = getColor(fc.color);
-
-                  return (
-                    <g
-                      key={`flying-${fc.uid}`}
-                      transform={`translate(${currX}, ${currY}) scale(${1 + 0.2 * Math.sin(p * Math.PI)})`}
-                    >
-                      {/* Flying Card Shadow */}
-                      <ellipse
-                        cx="0"
-                        cy="14"
-                        rx="12"
-                        ry="4"
-                        fill="rgba(0, 0, 0, 0.35)"
-                        opacity={1 - p * 0.4}
-                      />
-                      {/* Card Body */}
-                      <rect
-                        x="-10"
-                        y="-13"
-                        width="20"
-                        height="26"
-                        rx="4"
-                        fill={colorDef.hex}
-                        stroke="#ffffff"
                         strokeWidth="2"
-                        filter="drop-shadow(0px 4px 6px rgba(0,0,0,0.3))"
-                      />
-                      <rect
-                        x="-8"
-                        y="-10"
-                        width="16"
-                        height="4"
-                        rx="2"
-                        fill="rgba(255, 255, 255, 0.6)"
                       />
                     </g>
                   );
                 })}
-              </svg>
-            </div>
+              </g>
+            </svg>
           </div>
 
-          {/* BOTTOM SECTION: 3D INTERACTIVE BOARD VIEW */}
-          <div
-            className="flex-1 relative overflow-hidden flex items-center justify-center cursor-grab active:cursor-grabbing select-none"
-            onWheel={handleWheel}
-            onMouseDown={handleMouseDown}
-            onMouseMove={handleMouseMove}
-            onMouseUp={handleMouseUp}
-          >
-            <div
-              className="w-full h-full absolute inset-0 flex items-center justify-center pointer-events-none"
-              style={{
-                transform: `translate(${pan.x}px, ${pan.y}px) scale(${zoom})`,
-                transformOrigin: 'center center',
-                transition: isPanning ? 'none' : 'transform 0.05s ease-out',
-              }}
+          {/* Floating Zoom & Pan Controls (Bottom-Left) */}
+          <div className="absolute bottom-4 left-4 z-20 flex items-center gap-1.5 bg-slate-900/85 backdrop-blur-md p-1.5 rounded-xl border border-slate-700 shadow-xl pointer-events-auto">
+            <button
+              onClick={() => setZoom(z => Math.min(z * 1.2, 2.5))}
+              className="p-1.5 hover:bg-slate-800 rounded-lg text-slate-300 hover:text-white transition"
+              title="Zoom In"
             >
-              <svg className="w-[700px] h-[700px] pointer-events-auto" viewBox="-350 -350 700 700">
-                <g id="board-boxes-system">
-                  {[...levelData.BoardNodes]
-                    .sort((a, b) => (a.LayerId ?? a.TileMapId ?? 0) - (b.LayerId ?? b.TileMapId ?? 0))
-                    .map(bn => {
-                      if (clearedNodes.has(bn.Id)) return null;
-
-                      const bx = levelData.BoxNodes.find(b => b.Id === bn.Id);
-                      const spawnerBoxes = spawnerQueues.get(bn.Id);
-                      const activeBox = bx || (spawnerBoxes && spawnerBoxes.length > 0 ? spawnerBoxes[0] : null);
-
-                      if (!activeBox) return null;
-
-                      const isSpawner = !!spawnerBoxes && spawnerBoxes.length > 0;
-                      const isTray = Boolean(activeBox.IsPaperBox);
-                      const boxType = getBoxType(activeBox.TypeId, isTray);
-                      const colorDef = getColor(activeBox.BoxColor);
-                      const blockers = liveBlockedByMap.get(bn.Id) || [];
-                      const isBlocked = blockers.length > 0;
-
-                      // Mystery / Rainbow Box: color is hidden while blocked
-                      const isHidden = (activeBox.IsRainbowBox || activeBox.IsHidden) && isBlocked;
-                      const areCardsHidden = activeBox.IsCardsHidden;
-
-                      const unityX = bn.XPosition !== undefined ? bn.XPosition : (bn.MapPosX ?? 0);
-                      const unityZ = bn.ZPosition !== undefined ? bn.ZPosition : ((bn.MapPosY ?? 0) + (bn.YPosition ?? 0));
-
-                      const cx = unityX * 74;
-                      const cy = -unityZ * 74;
-                      const rot = bn.YRotation ?? bn.ZRotation ?? 0;
-                      const svgAngle = (-rot + 360) % 360;
-
-                      const w = boxType.width;
-                      const h = boxType.height;
-                      const layerId = bn.LayerId ?? bn.TileMapId ?? 0;
-                      const layerElev = Math.min(Math.max(layerId, 0), 4);
-                      const shadowY = layerElev * 3 + 3;
-
-                      return (
-                        <g
-                          key={`play-board-box-${bn.Id}`}
-                          transform={`translate(${cx}, ${cy}) rotate(${svgAngle})`}
-                          className={`select-none transition-opacity duration-200 ${
-                            isBlocked
-                              ? 'opacity-40 grayscale-[50%] cursor-not-allowed'
-                              : 'cursor-pointer opacity-100 hover:brightness-110'
-                          }`}
-                          onClick={(e) => {
-                            e.stopPropagation();
-                            handleBoardBoxClick(bn.Id);
-                          }}
-                        >
-                          {/* 3D Drop Shadow */}
-                          <rect
-                            x={-w / 2 + 2}
-                            y={-h / 2 + shadowY}
-                            width={w}
-                            height={h}
-                            rx={12}
-                            fill="rgba(0, 0, 0, 0.45)"
-                          />
-
-                          {/* Spawner Portal Glow Outline */}
-                          {isSpawner && (
-                            <rect
-                              x={-w / 2 - 4}
-                              y={-h / 2 - 4}
-                              width={w + 8}
-                              height={h + 8}
-                              rx={14}
-                              fill="none"
-                              stroke="#f59e0b"
-                              strokeWidth={2}
-                              strokeDasharray="4,2"
-                            />
-                          )}
-
-                          {/* Box Body */}
-                          {isTray ? (
-                            <g>
-                              <rect
-                                x={-w / 2}
-                                y={-h / 2}
-                                width={w}
-                                height={h}
-                                rx={12}
-                                fill="#e2e8f0"
-                                stroke={isBlocked ? '#64748b' : '#ffffff'}
-                                strokeWidth={isBlocked ? 1.5 : 2.5}
-                              />
-                              <rect
-                                x={-w / 2 + 3}
-                                y={-h / 2 + 3}
-                                width={w - 6}
-                                height={h - 6}
-                                rx={9}
-                                fill="#cbd5e1"
-                              />
-                            </g>
-                          ) : isHidden ? (
-                            /* Hidden Mystery Box Body */
-                            <g>
-                              <rect
-                                x={-w / 2}
-                                y={-h / 2}
-                                width={w}
-                                height={h}
-                                rx={12}
-                                fill="#1e293b"
-                                stroke="#a855f7"
-                                strokeWidth={2}
-                                strokeDasharray="4,2"
-                              />
-                              <rect
-                                x={-w / 2 + 4}
-                                y={-h / 2 + 4}
-                                width={w - 8}
-                                height={h - 8}
-                                rx={8}
-                                fill="#334155"
-                                opacity={0.6}
-                              />
-                              <text
-                                x="0"
-                                y="7"
-                                textAnchor="middle"
-                                fill="#c084fc"
-                                fontSize="22"
-                                fontWeight="900"
-                              >
-                                ?
-                              </text>
-                            </g>
-                          ) : (
-                            <g>
-                              <rect
-                                x={-w / 2}
-                                y={-h / 2}
-                                width={w}
-                                height={h}
-                                rx={12}
-                                fill={colorDef.hex}
-                                stroke={isBlocked ? '#64748b' : '#ffffff'}
-                                strokeWidth={isBlocked ? 1.5 : 2.5}
-                              />
-                              <rect
-                                x={-w / 2 + 4}
-                                y={-h / 2 + 4}
-                                width={w - 8}
-                                height={h - 8}
-                                rx={8}
-                                fill={colorDef.darkHex}
-                                opacity={0.35}
-                              />
-                            </g>
-                          )}
-
-                          {/* Cards Stack inside Box / Tray (only if not full mystery box) */}
-                          {!isHidden && activeBox.InitCards.map((cCol, cIdx) => {
-                            const spacing = (w - 16) / Math.max(activeBox.InitCards.length, 1);
-                            const cardX = -w / 2 + 8 + cIdx * spacing;
-                            const cardH = h - 12;
-                            const cardThickness = Math.min(spacing - 2, 14);
-                            const cColorDef = getColor(cCol);
-
-                            return (
-                              <g key={`play-box-card-${cIdx}`}>
-                                <rect
-                                  x={cardX}
-                                  y={-cardH / 2}
-                                  width={cardThickness}
-                                  height={cardH}
-                                  rx={3}
-                                  fill={areCardsHidden ? '#334155' : cColorDef.hex}
-                                  stroke={areCardsHidden ? '#64748b' : cColorDef.borderHex}
-                                  strokeWidth={1}
-                                />
-                                {areCardsHidden ? (
-                                  <text
-                                    x={cardX + cardThickness / 2}
-                                    y="3.5"
-                                    textAnchor="middle"
-                                    fill="#94a3b8"
-                                    fontSize="8"
-                                    fontWeight="bold"
-                                  >
-                                    ?
-                                  </text>
-                                ) : (
-                                  <rect
-                                    x={cardX + 1}
-                                    y={-cardH / 2 + 2}
-                                    width={Math.max(cardThickness - 2, 1)}
-                                    height={cardH - 4}
-                                    rx={1.5}
-                                    fill="rgba(255, 255, 255, 0.4)"
-                                  />
-                                )}
-                              </g>
-                            );
-                          })}
-
-                          {/* Spawner Badge */}
-                          {isSpawner && (
-                            <g transform={`translate(${-w / 2 + 8}, ${-h / 2 - 6})`}>
-                              <rect x="-12" y="-6" width="24" height="12" rx="3" fill="#f59e0b" stroke="#ffffff" strokeWidth="1" />
-                              <text x="0" y="3" textAnchor="middle" fill="#0f172a" fontSize="8" fontWeight="900">
-                                x{spawnerBoxes.length}
-                              </text>
-                            </g>
-                          )}
-
-                          {/* Lock Icon Badge if Blocked */}
-                          {isBlocked && (
-                            <g transform={`translate(${w / 2 - 14}, ${-h / 2 + 4})`}>
-                              <circle cx="6" cy="6" r="8" fill="#1e293b" stroke="#f43f5e" strokeWidth="1.5" />
-                              <path
-                                d="M 4 6 L 4 4.5 C 4 3 5 2 6 2 C 7 2 8 3 8 4.5 L 8 6 M 3 6 L 9 6 L 9 9.5 L 3 9.5 Z"
-                                fill="none"
-                                stroke="#f43f5e"
-                                strokeWidth="1.2"
-                                strokeLinecap="round"
-                              />
-                            </g>
-                          )}
-                        </g>
-                      );
-                    })}
-                </g>
-              </svg>
-            </div>
-
-            {/* Floating Zoom & Pan Controls (Bottom-Left) */}
-            <div className="absolute bottom-4 left-4 z-20 flex items-center gap-1.5 bg-slate-900/85 backdrop-blur-md p-1.5 rounded-xl border border-slate-700 shadow-xl pointer-events-auto">
-              <button
-                onClick={() => setZoom(z => Math.min(z * 1.2, 2.5))}
-                className="p-1.5 hover:bg-slate-800 rounded-lg text-slate-300 hover:text-white transition"
-                title="Zoom In"
-              >
-                <ZoomIn size={16} />
-              </button>
-              <button
-                onClick={() => setZoom(z => Math.max(z / 1.2, 0.4))}
-                className="p-1.5 hover:bg-slate-800 rounded-lg text-slate-300 hover:text-white transition"
-                title="Zoom Out"
-              >
-                <ZoomOut size={16} />
-              </button>
-              <button
-                onClick={() => { setZoom(1); setPan({ x: 0, y: 0 }); }}
-                className="p-1.5 hover:bg-slate-800 rounded-lg text-slate-300 hover:text-white transition"
-                title="Reset View & Center"
-              >
-                <Maximize2 size={16} />
-              </button>
-              <span className="text-[11px] font-mono text-slate-400 px-1">
-                {Math.round(zoom * 100)}%
-              </span>
-            </div>
-
-            {/* Pan & Drag Hint Badge (Bottom-Right) */}
-            <div className="absolute bottom-4 right-4 z-20 bg-slate-900/80 backdrop-blur-md px-3 py-1.5 rounded-xl border border-slate-700/60 text-[11px] text-slate-400 flex items-center gap-2 pointer-events-none">
-              <Move size={12} className="text-sky-400" />
-              <span>Drag background to Pan • Scroll to Zoom</span>
-            </div>
-
-            {/* Win Celebration Banner */}
-            {isWon && (
-              <div className="absolute inset-0 bg-slate-950/85 backdrop-blur-md flex flex-col items-center justify-center p-6 text-center animate-fadeIn z-40 pointer-events-auto">
-                <div className="w-20 h-20 rounded-3xl bg-gradient-to-tr from-amber-400 to-yellow-300 flex items-center justify-center shadow-2xl shadow-amber-400/40 mb-4 animate-bounce">
-                  <Trophy size={42} className="text-slate-950" />
-                </div>
-                <h3 className="text-3xl font-black text-white uppercase tracking-wider mb-2">
-                  Level Complete!
-                </h3>
-                <p className="text-sm text-slate-300 max-w-md mb-6">
-                  All boxes and cards have been sorted and cleared through the 4 box slots!
-                </p>
-                <div className="flex items-center gap-3">
-                  <button
-                    onClick={resetGame}
-                    className="py-2.5 px-6 bg-gradient-to-r from-emerald-500 to-teal-500 hover:from-emerald-400 hover:to-teal-400 text-slate-950 font-bold rounded-xl shadow-lg transition active:scale-95 flex items-center gap-2"
-                  >
-                    <RotateCcw size={16} />
-                    <span>Replay Level</span>
-                  </button>
-                  <button
-                    onClick={onClose}
-                    className="py-2.5 px-6 bg-slate-800 hover:bg-slate-700 text-slate-200 font-semibold rounded-xl border border-slate-700 transition"
-                  >
-                    Return to Builder
-                  </button>
-                </div>
-              </div>
-            )}
+              <ZoomIn size={16} />
+            </button>
+            <button
+              onClick={() => setZoom(z => Math.max(z / 1.2, 0.4))}
+              className="p-1.5 hover:bg-slate-800 rounded-lg text-slate-300 hover:text-white transition"
+              title="Zoom Out"
+            >
+              <ZoomOut size={16} />
+            </button>
+            <button
+              onClick={() => {
+                setZoom(1);
+                setPan({ x: 0, y: 0 });
+              }}
+              className="p-1.5 hover:bg-slate-800 rounded-lg text-slate-300 hover:text-white transition"
+              title="Reset Zoom & Pan"
+            >
+              <Maximize2 size={16} />
+            </button>
           </div>
         </div>
+
+        {/* Level Win Modal Overlay */}
+        {isWon && (
+          <div className="absolute inset-0 z-50 bg-slate-950/85 backdrop-blur-md flex items-center justify-center p-4 animate-fadeIn">
+            <div className="bg-slate-900 border border-slate-700/80 rounded-3xl p-8 max-w-sm w-full text-center shadow-2xl flex flex-col items-center">
+              <div className="w-16 h-16 rounded-2xl bg-amber-500/20 text-amber-400 border border-amber-500/40 flex items-center justify-center mb-4 shadow-lg shadow-amber-500/10 animate-bounce">
+                <Trophy size={32} />
+              </div>
+              <h3 className="text-xl font-black text-slate-100 uppercase tracking-wider mb-1">
+                Level Complete!
+              </h3>
+              <p className="text-xs text-slate-400 mb-6">
+                All {levelData.BoardNodes.length} boxes cleared successfully.
+              </p>
+              <div className="flex items-center gap-3 w-full">
+                <button
+                  onClick={resetGame}
+                  className="flex-1 py-2.5 rounded-xl bg-slate-800 hover:bg-slate-700 text-slate-200 text-xs font-semibold flex items-center justify-center gap-1.5 transition"
+                >
+                  <RotateCcw size={14} />
+                  <span>Replay</span>
+                </button>
+                <button
+                  onClick={onClose}
+                  className="flex-1 py-2.5 rounded-xl bg-emerald-600 hover:bg-emerald-500 text-white text-xs font-bold transition shadow-lg shadow-emerald-600/30"
+                >
+                  Done
+                </button>
+              </div>
+            </div>
+          </div>
+        )}
       </div>
     </div>
   );

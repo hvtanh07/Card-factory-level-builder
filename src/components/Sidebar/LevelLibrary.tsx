@@ -124,7 +124,7 @@ export const LevelLibrary: React.FC<LevelLibraryProps> = ({
         ref={fileInputRef}
         type="file"
         multiple
-        accept=".bytes,.json,.zip,text/plain"
+        accept=".json,.zip,text/plain"
         onChange={(e) => {
           if (e.target.files && e.target.files.length > 0) {
             onImportFiles(e.target.files);
@@ -151,7 +151,7 @@ export const LevelLibrary: React.FC<LevelLibraryProps> = ({
         <button
           onClick={() => fileInputRef.current?.click()}
           className="flex-1 py-1.5 px-2 bg-slate-800 hover:bg-slate-700 text-sky-300 border border-slate-700 rounded-lg text-xs font-semibold flex items-center justify-center gap-1 transition active:scale-95 shadow-sm"
-          title="Import multiple .bytes or .zip files"
+          title="Import multiple .json or .zip files"
         >
           <UploadCloud size={13} />
           <span>Files</span>
@@ -261,9 +261,9 @@ export const LevelLibrary: React.FC<LevelLibraryProps> = ({
                     {getDifficultyBadge(preset.difficulty)}
 
                     <button
-                      onClick={() => downloadLevelFile(preset.data, preset.name, true)}
+                      onClick={() => downloadLevelFile(preset.data, preset.name)}
                       className="p-1 hover:bg-slate-700 text-slate-400 hover:text-emerald-400 rounded transition ml-1"
-                      title="Download .bytes"
+                      title="Download JSON"
                     >
                       <Download size={12} />
                     </button>
@@ -365,7 +365,7 @@ export const LevelLibrary: React.FC<LevelLibraryProps> = ({
         <div className="space-y-1.5 max-h-56 overflow-y-auto pr-1">
           {filteredSaved.length === 0 ? (
             <div className="p-4 text-center text-xs text-slate-500 italic rounded-xl border border-dashed border-slate-800">
-              No saved project levels yet. Import .bytes or save current level above!
+              No saved project levels yet. Import .json or save current level above!
             </div>
           ) : (
             filteredSaved.map(saved => {
@@ -397,9 +397,9 @@ export const LevelLibrary: React.FC<LevelLibraryProps> = ({
 
                   <div className="flex items-center gap-1 shrink-0">
                     <button
-                      onClick={() => downloadLevelFile(saved.data, saved.name, true)}
+                      onClick={() => downloadLevelFile(saved.data, saved.name)}
                       className="p-1 hover:bg-slate-700 text-slate-400 hover:text-emerald-400 rounded transition"
-                      title="Download .bytes"
+                      title="Download JSON"
                     >
                       <Download size={13} />
                     </button>

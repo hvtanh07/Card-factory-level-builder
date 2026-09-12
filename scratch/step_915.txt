@@ -1,0 +1,59 @@
+Created At: 2026-08-25T21:49:12+07:00
+Completed At: 2026-08-25T21:49:12+07:00
+File Path: `file:///c:/Users/TUAN%20ANH/Documents/GitHub/Card%20factory%20level%20builder/src/components/Playtest/PlaytestModal.tsx`
+Total Lines: 1084
+Total Bytes: 43481
+Showing lines 710 to 760
+The following code has been modified to include a line number before every line, in the format: <line_number>: <original_line>. Please note that any changes targeting the original code should remove the line number, colon, and leading space.
+710:                                 stroke="#ffffff"
+711:                                 strokeWidth="0.8"
+712:                               />
+713:                             );
+714:                           })}
+715:                         </g>
+716:                       ) : (
+717:                         <text
+718:                           x="0"
+719:                           y="4"
+720:                           textAnchor="middle"
+721:                           fill="#64748b"
+722:                           fontSize="10"
+723:                           fontWeight="700"
+724:                         >
+725:                           Slot {slotIdx + 1}
+726:                         </text>
+727:                       )}
+728:                     </g>
+729:                   );
+730:                 })}
+731: 
+732:                 {/* 3. Cards in Motion along Conveyor (Evenly Distributed with Fixed Padding) */}
+733:                 {conveyorCardsRef.current.map((card, cardIdx) => {
+734:                   const cardDist = (beltBaseDistRef.current + cardIdx * currentCardSpacing) % L_TOTAL;
+735:                   const pt = getTrackCoords(cardDist);
+736:                   const colorDef = getColor(card.color);
+737: 
+738:                   return (
+739:                     <g
+740:                       key={`riding-card-${card.uid}`}
+741:                       transform={`translate(${pt.x}, ${pt.y}) rotate(${pt.angle})`}
+742:                     >
+743:                       {/* Card Drop Shadow */}
+744:                       <rect
+745:                         x="-10"
+746:                         y="-13"
+747:                         width="20"
+748:                         height="26"
+749:                         rx="4"
+750:                         fill="rgba(0, 0, 0, 0.45)"
+751:                       />
+752:                       {/* Card Body */}
+753:                       <rect
+754:                         x="-9"
+755:                         y="-12"
+756:                         width="18"
+757:                         height="24"
+758:                         rx="4"
+759:                         fill={colorDef.hex}
+760:                         stroke="#ffffff"
+The above content does NOT show the entire file contents. If you need to view any lines of the file which were not shown to complete your task, call this tool again to view those lines.

@@ -1,0 +1,219 @@
+Created At: 2026-08-25T21:49:07+07:00
+Completed At: 2026-08-25T21:49:07+07:00
+File Path: `file:///c:/Users/TUAN%20ANH/Documents/GitHub/Card%20factory%20level%20builder/src/components/Playtest/PlaytestModal.tsx`
+Total Lines: 1084
+Total Bytes: 43481
+Showing lines 440 to 650
+The following code has been modified to include a line number before every line, in the format: <line_number>: <original_line>. Please note that any changes targeting the original code should remove the line number, colon, and leading space.
+440:     if (projectedBeltCards > MAX_CARD_SLOTS) {
+441:       showWarning(`Conveyor full! (Would result in ${projectedBeltCards}/${MAX_CARD_SLOTS} cards). Match cards before sending more.`);
+442:       return;
+443:     }
+444: 
+445:     // 3. Move is VALID: dock box in available slot and inject unmatched cards onto conveyor
+446:     const uniqueInstanceId = `box_${nodeId}_${Date.now()}_${Math.random().toString(36).substring(2, 6)}`;
+447:     const newDockedBox: DockedBox = {
+448:       instanceId: uniqueInstanceId,
+449:       slotIdx: availableSlotIdx,
+450:       id: nodeId,
+451:       boardNode,
+452:       boxColor: activeBox.BoxColor,
+453:       capacity: boxType.capacity,
+454:       currentCards: matchingInBox,
+455:       incomingCount: 0,
+456:       timestamp: Date.now(),
+457:       isFull: matchingInBox.length >= boxType.capacity,
+458:     };
+459: 
+460:     const newCards: ConveyorCard[] = unmatchedInBox.map((col, idx) => ({
+461:       uid: `card_${Date.now()}_${idx}_${Math.random().toString(36).substring(2, 6)}`,
+462:       color: col,
+463:     }));
+464: 
+465:     conveyorCardsRef.current = [...conveyorCardsRef.current, ...newCards];
+466: 
+467:     // Update docked slots
+468:     const updatedSlots = [...currentSlots];
+469:     updatedSlots[availableSlotIdx] = newDockedBox;
+470:     setBoxSlots(updatedSlots);
+471:     boxSlotsRef.current = updatedSlots;
+472: 
+473:     // Update board state & spawners
+474:     const newClearedNodes = new Set(clearedNodes);
+475: 
+476:     if (spawnerBoxes && spawnerBoxes.length > 0) {
+477:       const remainingSpawnBoxes = spawnerBoxes.slice(1);
+478:       const updatedMap = new Map(spawnerQueues);
+479:       updatedMap.set(nodeId, remainingSpawnBoxes);
+480:       setSpawnerQueues(updatedMap);
+481: 
+482:       if (remainingSpawnBoxes.length === 0) {
+483:         newClearedNodes.add(nodeId);
+484:       }
+485:     } else {
+486:       newClearedNodes.add(nodeId);
+487:     }
+488: 
+489:     setClearedNodes(newClearedNodes);
+490:     clearedNodesRef.current = newClearedNodes;
+491:   };
+492: 
+493:   // Zoom handlers
+494:   const handleWheel = (e: React.WheelEvent) => {
+495:     e.preventDefault();
+496:     const factor = e.deltaY < 0 ? 1.12 : 0.88;
+497:     setZoom(z => Math.min(Math.max(z * factor, 0.4), 2.5));
+498:   };
+499: 
+500:   const handleMouseDown = (e: React.MouseEvent) => {
+501:     if (e.button === 1 || e.button === 0) {
+502:       setIsPanning(true);
+503:       setPanStart({ x: e.clientX - pan.x, y: e.clientY - pan.y });
+504:     }
+505:   };
+506: 
+507:   const handleMouseMove = (e: React.MouseEvent) => {
+508:     if (isPanning) {
+509:       setPan({ x: e.clientX - panStart.x, y: e.clientY - panStart.y });
+510:     }
+511:   };
+512: 
+513:   const handleMouseUp = () => {
+514:     setIsPanning(false);
+515:   };
+516: 
+517:   const currentConveyorCount = conveyorCardsRef.current.length;
+518:   const currentCardSpacing = currentConveyorCount > 0 ? L_TOTAL / currentConveyorCount : L_TOTAL;
+519: 
+520:   return (
+521:     <div className="fixed inset-0 z-50 bg-slate-950/90 backdrop-blur-md flex items-center justify-center p-2 sm:p-4 select-none">
+522:       <div className="relative w-full max-w-5xl h-[94vh] bg-[#629fc9] rounded-3xl overflow-hidden border-4 border-slate-700 shadow-2xl flex flex-col">
+523:         
+524:         {/* Top Header Bar */}
+525:         <div className="h-14 bg-slate-950/95 backdrop-blur-md px-4 sm:px-6 flex items-center justify-between border-b border-slate-800 z-30 shrink-0">
+526:           <div className="flex items-center gap-3">
+527:             <div className="w-8 h-8 rounded-xl bg-gradient-to-tr from-amber-500 to-orange-500 flex items-center justify-center shadow-lg shadow-amber-500/20">
+528:               <Layers size={16} className="text-slate-950" />
+529:             </div>
+530:             <div>
+531:               <div className="flex items-center gap-2">
+532:                 <h2 className="text-xs sm:text-sm font-bold text-white uppercase tracking-wider">
+533:                   Playtest Simulator
+534:                 </h2>
+535:                 <span className="text-[10px] bg-amber-500/20 text-amber-300 border border-amber-500/40 px-2 py-0.5 rounded font-bold uppercase">
+536:                   Feeder Trays & Strict Sorting • 60 FPS
+537:                 </span>
+538:               </div>
+539:               <span className="text-[11px] text-slate-400 hidden sm:inline">
+540:                 Trays feed spare cards directly to the conveyor and disappear immediately!
+541:               </span>
+542:             </div>
+543:           </div>
+544: 
+545:           {/* Right Controls: Reset & Close */}
+546:           <div className="flex items-center gap-2">
+547:             <button
+548:               onClick={resetGame}
+549:               className="py-1.5 px-3 rounded-lg bg-slate-800 hover:bg-slate-700 text-slate-200 text-xs font-medium flex items-center gap-1.5 border border-slate-700 transition"
+550:             >
+551:               <RotateCcw size={13} />
+552:               <span>Reset</span>
+553:             </button>
+554: 
+555:             <button
+556:               onClick={onClose}
+557:               className="p-1.5 rounded-lg text-slate-400 hover:text-white hover:bg-slate-800 transition ml-1"
+558:             >
+559:               <X size={18} />
+560:             </button>
+561:           </div>
+562:         </div>
+563: 
+564:         {/* Warning Alert Toast */}
+565:         {warningMessage && (
+566:           <div className="absolute top-16 left-1/2 -translate-x-1/2 z-50 bg-rose-950/95 border-2 border-rose-500 text-rose-100 px-4 py-2 rounded-2xl shadow-2xl backdrop-blur-md flex items-center gap-2 text-xs font-bold animate-bounce">
+567:             <AlertTriangle size={16} className="text-rose-400 shrink-0" />
+568:             <span>{warningMessage}</span>
+569:           </div>
+570:         )}
+571: 
+572:         {/* Main Playable Area */}
+573:         <div className="flex-1 relative overflow-hidden flex flex-col">
+574:           
+575:           {/* TOP SECTION: 5 DOCKED BOXES & REAL-TIME ANIMATED CONVEYOR BELT */}
+576:           <div className="w-full bg-[#5287aa] border-b-2 border-[#8ebfda]/40 p-2 flex flex-col items-center gap-1 shadow-lg shrink-0 z-20">
+577:             
+578:             {/* Header info & score */}
+579:             <div className="w-full max-w-4xl flex items-center justify-between px-2 text-[11px] font-bold text-white uppercase tracking-wider">
+580:               <span className="drop-shadow">
+581:                 Docked Boxes ({boxSlots.filter(b => b !== null && !b.isClearing).length}/5) • Conveyor Cards ({currentConveyorCount}/24)
+582:               </span>
+583:               <div className="bg-slate-950/80 border border-slate-700 px-3 py-1 rounded-xl text-xs font-mono text-sky-400 shadow">
+584:                 Delivered: {deliveredCardsCount}/{totalCardsInLevel}
+585:               </div>
+586:             </div>
+587: 
+588:             {/* Integrated SVG Conveyor System & Docked Boxes */}
+589:             <div className="w-full max-w-4xl h-48 bg-slate-950/40 rounded-2xl border border-slate-700/50 relative overflow-hidden flex items-center justify-center shadow-inner">
+590:               <svg className="w-full h-full" viewBox="0 0 860 230">
+591:                 {/* Defs for gradients & shadows */}
+592:                 <defs>
+593:                   <linearGradient id="beltGradient" x1="0" y1="0" x2="1" y2="0">
+594:                     <stop offset="0%" stopColor="#1e293b" />
+595:                     <stop offset="50%" stopColor="#334155" />
+596:                     <stop offset="100%" stopColor="#1e293b" />
+597:                   </linearGradient>
+598:                 </defs>
+599: 
+600:                 {/* 1. Conveyor Track Rail */}
+601:                 <path
+602:                   d={`M ${LEFT_X} ${TOP_Y} L ${RIGHT_X} ${TOP_Y} A ${RADIUS} ${RADIUS} 0 0 1 ${RIGHT_X} ${BOTTOM_Y} L ${LEFT_X} ${BOTTOM_Y} A ${RADIUS} ${RADIUS} 0 0 1 ${LEFT_X} ${TOP_Y} Z`}
+603:                   fill="none"
+604:                   stroke="#0f172a"
+605:                   strokeWidth="42"
+606:                   strokeLinecap="round"
+607:                   strokeLinejoin="round"
+608:                 />
+609:                 <path
+610:                   d={`M ${LEFT_X} ${TOP_Y} L ${RIGHT_X} ${TOP_Y} A ${RADIUS} ${RADIUS} 0 0 1 ${RIGHT_X} ${BOTTOM_Y} L ${LEFT_X} ${BOTTOM_Y} A ${RADIUS} ${RADIUS} 0 0 1 ${LEFT_X} ${TOP_Y} Z`}
+611:                   fill="none"
+612:                   stroke="url(#beltGradient)"
+613:                   strokeWidth="32"
+614:                   strokeLinecap="round"
+615:                   strokeLinejoin="round"
+616:                 />
+617:                 <path
+618:                   d={`M ${LEFT_X} ${TOP_Y} L ${RIGHT_X} ${TOP_Y} A ${RADIUS} ${RADIUS} 0 0 1 ${RIGHT_X} ${BOTTOM_Y} L ${LEFT_X} ${BOTTOM_Y} A ${RADIUS} ${RADIUS} 0 0 1 ${LEFT_X} ${TOP_Y} Z`}
+619:                   fill="none"
+620:                   stroke="#475569"
+621:                   strokeWidth="24"
+622:                   strokeDasharray="6,6"
+623:                 />
+624:                 <path
+625:                   d={`M ${LEFT_X} ${TOP_Y} L ${RIGHT_X} ${TOP_Y} A ${RADIUS} ${RADIUS} 0 0 1 ${RIGHT_X} ${BOTTOM_Y} L ${LEFT_X} ${BOTTOM_Y} A ${RADIUS} ${RADIUS} 0 0 1 ${LEFT_X} ${TOP_Y} Z`}
+626:                   fill="none"
+627:                   stroke="#38bdf8"
+628:                   strokeWidth="2"
+629:                   opacity="0.5"
+630:                 />
+631: 
+632:                 {/* 2. Docked Box Slots with Fixed Spacing & No Overlap (64px width, 46px gap) */}
+633:                 {BOX_X_POSITIONS.map((bx, slotIdx) => {
+634:                   const box = boxSlots[slotIdx];
+635:                   const colorDef = box ? getColor(box.boxColor) : null;
+636:                   const isClearing = box?.isClearing;
+637: 
+638:                   return (
+639:                     <g key={`docked-slot-${slotIdx}`} transform={`translate(${bx}, 44)`}>
+640:                       {/* Slot Docking Base Plate */}
+641:                       <rect
+642:                         x="-32"
+643:                         y="-30"
+644:                         width="64"
+645:                         height="60"
+646:                         rx="12"
+647:                         fill="#1e293b"
+648:                         stroke="#475569"
+649:                         strokeWidth="2"
+650:                         strokeDasharray={box ? 'none' : '4,3'}
+The above content does NOT show the entire file contents. If you need to view any lines of the file which were not shown to complete your task, call this tool again to view those lines.

@@ -1,23 +1,32 @@
 import React, { useState, useEffect, useMemo, useCallback } from 'react';
 import { LevelData, BoardNode, BoxNode, SpawnerNode, ValidationIssue } from './types/level';
+import { ConveyorData } from './types/conveyor';
 import { LEVEL_1_SAMPLE, PRESET_LEVELS } from './constants/sampleLevels';
+import { DEFAULT_CONVEYOR_DATA } from './constants/defaultConveyor';
 import { 
   parseLevelData, 
   downloadLevelFile, 
   parseMultipleFiles, 
   exportAllLevelsAsZip 
 } from './utils/fileParser';
+import { 
+  parseConveyorData, 
+  downloadConveyorJson 
+} from './utils/conveyorParser';
 import { calculateAutoBlockers, calculateAutoBlockersResult } from './utils/autoBlocker';
 import { validateLevel, balanceLevelCardDeck, balanceLevelCardDeckResult } from './utils/levelValidator';
 import { Navbar } from './components/Header/Navbar';
 import { StatsBar } from './components/Header/StatsBar';
 import { LevelCanvas } from './components/Canvas/LevelCanvas';
 import { NodeInspector } from './components/Inspector/NodeInspector';
+import { ConveyorCanvas } from './components/Conveyor/ConveyorCanvas';
+import { ConveyorInspector } from './components/Conveyor/ConveyorInspector';
 import { LayerManager } from './components/Sidebar/LayerManager';
 import { PalettePanel } from './components/Sidebar/PalettePanel';
 import { LevelLibrary, SavedLevel } from './components/Sidebar/LevelLibrary';
 import { JsonModal } from './components/Modals/JsonModal';
 import { LoadJsonModal } from './components/Modals/LoadJsonModal';
+import { ConveyorJsonModal } from './components/Conveyor/ConveyorJsonModal';
 import { PlaytestModal } from './components/Playtest/PlaytestModal';
 import { HelpModal } from './components/Modals/HelpModal';
 import { 
@@ -25,16 +34,46 @@ import {
   PackagePlus, 
   Bookmark, 
   CheckCircle2, 
-  AlertCircle 
+  AlertCircle,
+  Workflow
 } from 'lucide-react';
 
 const STORAGE_KEY = 'card_factory_project_levels';
+const CONVEYOR_STORAGE_KEY = 'card_factory_conveyor_data';
 
 export function App() {
+  // Mode: 'level' (Box Builder) or 'conveyor' (Conveyor Builder)
+  const [editorMode, setEditorMode] = useState<'level' | 'conveyor'>('level');
+
   // Current Level State
   const [levelData, setLevelData] = useState<LevelData>(LEVEL_1_SAMPLE);
   const [levelName, setLevelName] = useState('Level 1 (Tutorial)');
   const [selectedNodeId, setSelectedNodeId] = useState<string | null>('0_-1_0');
+
+  // Current Conveyor State
+  const [conveyorData, setConveyorData] = useState<ConveyorData>(() => {
+    try {
+      const stored = localStorage.getItem(CONVEYOR_STORAGE_KEY);
+      if (stored) return JSON.parse(stored);
+    } catch (e) {
+      console.error(e);
+    }
+    return DEFAULT_CONVEYOR_DATA;
+  });
+
+  const [selectedConveyorId, setSelectedConveyorId] = useState<string | null>('0');
+  const [selectedConveyorType, setSelectedConveyorType] = useState<'node' | 'slot' | null>('node');
+  const [showGhostLevel, setShowGhostLevel] = useState<boolean>(true);
+
+  // Sync conveyor data to LocalStorage
+  const updateConveyorData = (updated: ConveyorData) => {
+    setConveyorData(updated);
+    try {
+      localStorage.setItem(CONVEYOR_STORAGE_KEY, JSON.stringify(updated));
+    } catch (e) {
+      console.error(e);
+    }
+  };
 
   // Stored Project Levels
   const [savedLevels, setSavedLevels] = useState<SavedLevel[]>(() => {
@@ -70,6 +109,7 @@ export function App() {
   // Modals
   const [showJsonModal, setShowJsonModal] = useState(false);
   const [showLoadJsonModal, setShowLoadJsonModal] = useState(false);
+  const [showConveyorJsonModal, setShowConveyorJsonModal] = useState(false);
   const [showPlaytestModal, setShowPlaytestModal] = useState(false);
   const [showHelpModal, setShowHelpModal] = useState(false);
 
@@ -84,7 +124,7 @@ export function App() {
   // Validation
   const validationIssues = useMemo(() => validateLevel(levelData), [levelData]);
 
-  // Batch Multi-File Import (.bytes, .json, .zip)
+  // Batch Multi-File Import (.json, .zip)
   const handleImportFiles = async (files: FileList | File[]) => {
     try {
       const parsedLevels = await parseMultipleFiles(files);
@@ -116,15 +156,29 @@ export function App() {
     }
   };
 
-  // Export handlers
-  const handleExportBytes = () => {
-    downloadLevelFile(levelData, levelName, true);
-    showToast(`Exported "${levelName}.bytes" file!`);
+  // Conveyor JSON File Import
+  const handleImportConveyorFile = async (file: File) => {
+    try {
+      const text = await file.text();
+      const parsed = parseConveyorData(text);
+      updateConveyorData(parsed);
+      setSelectedConveyorId(parsed.ConveyorNodes[0]?.Id || parsed.ConveyorSlots[0]?.Id || null);
+      setSelectedConveyorType(parsed.ConveyorNodes[0] ? 'node' : parsed.ConveyorSlots[0] ? 'slot' : null);
+      showToast(`Successfully imported conveyor layout (${parsed.ConveyorNodes.length} nodes, ${parsed.ConveyorSlots.length} slots)!`);
+    } catch (err: any) {
+      showToast(`Failed to import conveyor: ${err.message}`, 'warning');
+    }
   };
 
+  // Export handlers
   const handleExportJson = () => {
-    downloadLevelFile(levelData, levelName, false);
+    downloadLevelFile(levelData, levelName);
     showToast(`Exported "${levelName}.json" file!`);
+  };
+
+  const handleExportConveyorJson = () => {
+    downloadConveyorJson(conveyorData, 'conveyor_layout.json');
+    showToast('Exported conveyor layout to "conveyor_layout.json"!');
   };
 
   const handleExportAllZip = () => {
@@ -303,9 +357,9 @@ export function App() {
       TileMapId: targetLayer,
       YRotation: rotation,
       ZRotation: rotation,
-      XPosition: index,
+      XPosition: 0,
       ZPosition: 0,
-      MapPosX: index,
+      MapPosX: 0,
       MapPosY: 0,
       YPosition: 0,
     };
@@ -315,7 +369,7 @@ export function App() {
       TypeId: typeId,
       BoxColor: colorId,
       BlockedNodes: [],
-      InitCards: [...cards],
+      InitCards: cards,
       IsHidden: false,
       LockedTurn: 0,
       IsCardsHidden: false,
@@ -328,48 +382,44 @@ export function App() {
     }));
 
     setSelectedNodeId(newId);
-    showToast(`Added preset to Layer ${targetLayer}!`);
+    showToast(`Created new preset Box "${newId}"`);
   };
 
   // Duplicate node
   const handleDuplicateNode = (id: string) => {
-    const sourceBoard = levelData.BoardNodes.find(n => n.Id === id);
-    const sourceBox = levelData.BoxNodes.find(b => b.Id === id);
-    if (!sourceBoard || !sourceBox) return;
+    const origBoard = levelData.BoardNodes.find(n => n.Id === id);
+    const origBox = levelData.BoxNodes.find(b => b.Id === id);
+    const origSpawner = (levelData.SpawnerNodes || []).find(s => s.Id === id);
 
-    const layer = sourceBoard.LayerId ?? sourceBoard.TileMapId ?? 0;
-    const x = sourceBoard.XPosition !== undefined ? sourceBoard.XPosition : (sourceBoard.MapPosX ?? 0);
-    const z = sourceBoard.ZPosition !== undefined ? sourceBoard.ZPosition : ((sourceBoard.MapPosY ?? 0) + (sourceBoard.YPosition ?? 0));
+    if (!origBoard) return;
 
     let index = 1;
-    let newId = `${layer}_${Math.round(x + 1)}_${Math.round(z)}`;
+    let newId = `${origBoard.Id}_copy_${index}`;
     while (levelData.BoardNodes.some(n => n.Id === newId)) {
       index++;
-      newId = `${layer}_${Math.round(x + index)}_${Math.round(z)}`;
+      newId = `${origBoard.Id}_copy_${index}`;
     }
 
     const newBoardNode: BoardNode = {
-      ...sourceBoard,
+      ...origBoard,
       Id: newId,
-      LayerId: layer,
-      TileMapId: layer,
-      XPosition: x + 1,
-      ZPosition: z,
-      MapPosX: Math.floor(x + 1),
-      MapPosY: Math.floor(z),
+      XPosition: origBoard.XPosition + 1.2,
+      ZPosition: origBoard.ZPosition,
     };
 
-    const newBoxNode: BoxNode = {
-      ...sourceBox,
-      Id: newId,
-      InitCards: [...sourceBox.InitCards],
-      BlockedNodes: [...sourceBox.BlockedNodes],
-    };
+    const updatedBoxes = origBox
+      ? [...levelData.BoxNodes, { ...origBox, Id: newId, BlockedNodes: [] }]
+      : levelData.BoxNodes;
+
+    const updatedSpawners = origSpawner
+      ? [...(levelData.SpawnerNodes || []), { ...origSpawner, Id: newId, BlockedNodes: [] }]
+      : (levelData.SpawnerNodes || []);
 
     setLevelData(prev => ({
       ...prev,
       BoardNodes: [...prev.BoardNodes, newBoardNode],
-      BoxNodes: [...prev.BoxNodes, newBoxNode],
+      BoxNodes: updatedBoxes,
+      SpawnerNodes: updatedSpawners,
     }));
 
     setSelectedNodeId(newId);
@@ -383,9 +433,12 @@ export function App() {
       BoardNodes: prev.BoardNodes.filter(n => n.Id !== id),
       BoxNodes: prev.BoxNodes.filter(b => b.Id !== id).map(b => ({
         ...b,
-        BlockedNodes: b.BlockedNodes.filter(targetId => targetId !== id),
+        BlockedNodes: b.BlockedNodes.filter(bn => bn !== id),
       })),
-      SpawnerNodes: (prev.SpawnerNodes || []).filter(s => s.Id !== id),
+      SpawnerNodes: (prev.SpawnerNodes || []).filter(s => s.Id !== id).map(s => ({
+        ...s,
+        BlockedNodes: s.BlockedNodes.filter(bn => bn !== id),
+      })),
     }));
 
     if (selectedNodeId === id) {
@@ -394,101 +447,96 @@ export function App() {
     showToast(`Deleted node "${id}"`);
   };
 
-  // Load level handler
-  const handleLoadLevel = (data: LevelData, name: string) => {
+  // Load level from preset / library
+  const handleLoadLevel = (level: LevelData, name: string) => {
+    setLevelData(level);
+    setLevelName(name);
+    setSelectedNodeId(level.BoardNodes[0]?.Id || null);
+    showToast(`Loaded "${name}"`);
+  };
+
+  // Load level from single JSON input
+  const handleLoadLevelFromJson = (data: LevelData, name: string) => {
     setLevelData(data);
     setLevelName(name);
     setSelectedNodeId(data.BoardNodes[0]?.Id || null);
-    showToast(`Loaded "${name}"!`);
+    showToast(`Loaded "${name}" from JSON`);
   };
 
-  // Load level from JSON string input
-  const handleLoadLevelFromJson = (data: LevelData, name: string, saveToLibrary?: boolean) => {
-    setLevelData(data);
-    const resolvedName = name.trim() || `Level ${data.Id || 'Imported'}`;
-    setLevelName(resolvedName);
-    setSelectedNodeId(data.BoardNodes[0]?.Id || null);
-
-    if (saveToLibrary) {
-      const newEntry: SavedLevel = {
-        id: `json_${Date.now()}_${Math.random().toString(36).substring(2, 7)}`,
-        name: resolvedName,
-        updatedAt: new Date().toLocaleDateString(),
-        data,
-      };
-      const updated = [newEntry, ...savedLevels];
-      updateSavedLevels(updated);
-      showToast(`Loaded "${resolvedName}" & saved to library!`);
-    } else {
-      showToast(`Loaded "${resolvedName}" from JSON!`);
-    }
-  };
-
-  // Batch import multiple levels from JSON array
-  const handleBatchImportFromJson = (levels: Array<{ name: string; data: LevelData }>) => {
-    const newEntries: SavedLevel[] = levels.map(l => ({
-      id: `imported_json_${Date.now()}_${Math.random().toString(36).substring(2, 7)}`,
-      name: l.name,
+  // Batch import from JSON modal
+  const handleBatchImportFromJson = (levels: { name: string; data: LevelData }[]) => {
+    const newEntries: SavedLevel[] = levels.map(p => ({
+      id: `imported_${Date.now()}_${Math.random().toString(36).substring(2, 7)}`,
+      name: p.name,
       updatedAt: new Date().toLocaleDateString(),
-      data: l.data,
+      data: p.data,
     }));
-    const updated = [...newEntries, ...savedLevels];
-    updateSavedLevels(updated);
-    if (levels.length > 0) {
-      setLevelData(levels[0].data);
-      setLevelName(levels[0].name);
-      setSelectedNodeId(levels[0].data.BoardNodes[0]?.Id || null);
-    }
-    showToast(`Imported ${levels.length} levels from JSON array!`);
+
+    const updatedStore = [...newEntries, ...savedLevels];
+    updateSavedLevels(updatedStore);
+
+    const first = levels[0];
+    setLevelData(first.data);
+    setLevelName(first.name);
+    setSelectedNodeId(first.data.BoardNodes[0]?.Id || null);
+
+    showToast(`Batch imported ${levels.length} levels!`);
   };
 
   return (
-    <div className="w-screen h-screen flex flex-col bg-slate-950 text-slate-100 overflow-hidden font-sans">
-      {/* Top Navigation */}
+    <div className="flex flex-col h-screen w-screen overflow-hidden bg-slate-950 text-slate-100 select-none">
+      {/* Top Navbar */}
       <Navbar
+        editorMode={editorMode}
+        onToggleEditorMode={setEditorMode}
         levelName={levelName}
         onLevelNameChange={setLevelName}
         onImportFiles={handleImportFiles}
-        onExportBytes={handleExportBytes}
         onExportJson={handleExportJson}
         onExportAllZip={handleExportAllZip}
         onOpenJsonModal={() => setShowJsonModal(true)}
         onOpenLoadJsonModal={() => setShowLoadJsonModal(true)}
         onAutoCalculateBlockers={handleAutoCalculateBlockers}
         onAutoBalanceDeck={handleAutoBalanceDeck}
+        realBoxSize={realBoxSize}
+        onToggleRealBoxSize={() => setRealBoxSize(prev => !prev)}
+        showGrid={showGrid}
+        onToggleShowGrid={() => setShowGrid(prev => !prev)}
+        snapToGrid={snapToGrid}
+        onToggleSnapToGrid={() => setSnapToGrid(prev => !prev)}
+        showAllDependencies={showAllDependencies}
+        onToggleShowAllDependencies={() => setShowAllDependencies(prev => !prev)}
+        conveyorSlotsCount={conveyorData.ConveyorSlots.length}
+        conveyorNodesCount={conveyorData.ConveyorNodes.length}
+        onImportConveyorFile={handleImportConveyorFile}
+        onExportConveyorJson={handleExportConveyorJson}
+        onOpenConveyorJsonModal={() => setShowConveyorJsonModal(true)}
+        showGhostLevel={showGhostLevel}
+        onToggleGhostLevel={() => setShowGhostLevel(prev => !prev)}
         onStartPlaytest={() => setShowPlaytestModal(true)}
         onOpenHelp={() => setShowHelpModal(true)}
-        realBoxSize={realBoxSize}
-        onToggleRealBoxSize={() => setRealBoxSize(!realBoxSize)}
-        showGrid={showGrid}
-        onToggleShowGrid={() => setShowGrid(!showGrid)}
-        snapToGrid={snapToGrid}
-        onToggleSnapToGrid={() => setSnapToGrid(!snapToGrid)}
-        showAllDependencies={showAllDependencies}
-        onToggleShowAllDependencies={() => setShowAllDependencies(!showAllDependencies)}
       />
 
-      {/* Subheader Metrics & Deck Bar */}
+      {/* Stats and Validation Bar */}
       <StatsBar
         levelData={levelData}
         validationIssues={validationIssues}
-        onUpdateGlobalSettings={(isOdd, ver, isHard) =>
+        onUpdateGlobalSettings={(isOddSize, version, isHardLvl) => {
           setLevelData(prev => ({
             ...prev,
-            IsOddSize: isOdd,
-            Version: ver,
-            IsHardLvl: isHard !== undefined ? isHard : (prev.IsHardLvl ?? false),
-          }))
-        }
-        onOpenConveyorCards={() => setSelectedNodeId(null)}
+            IsOddSize: isOddSize,
+            Version: version,
+            ...(isHardLvl !== undefined ? { IsHardLvl: isHardLvl } : {}),
+          }));
+        }}
       />
 
-      {/* Main Workspace 3-Column Layout */}
+      {/* Main Workspace Area */}
       <div className="flex-1 flex overflow-hidden relative">
-        {/* Left Sidebar: Library / Layers / Palette */}
-        <aside className="w-80 bg-slate-900/95 border-r border-slate-800 flex flex-col z-10 shrink-0">
-          {/* Sidebar Tab Bar */}
-          <div className="flex border-b border-slate-800 bg-slate-950/60 p-1 gap-1">
+        {/* Left Sidebar: Library, Layers, Palette */}
+        <aside className="w-72 h-full bg-slate-900 border-r border-slate-800 flex flex-col z-10 shrink-0">
+          {/* Sidebar Tabs */}
+          <div className="h-10 bg-slate-950 border-b border-slate-800 px-2 flex items-center gap-1 shrink-0">
             <button
               onClick={() => setActiveSidebarTab('library')}
               className={`flex-1 py-1.5 rounded-lg text-xs font-semibold flex items-center justify-center gap-1.5 transition ${
@@ -525,7 +573,7 @@ export function App() {
           </div>
 
           {/* Sidebar Tab Content */}
-          <div className="flex-1 p-3 overflow-y-auto">
+          <div className="flex-1 p-3 overflow-y-auto custom-scrollbar">
             {activeSidebarTab === 'library' && (
               <LevelLibrary
                 currentLevelData={levelData}
@@ -557,36 +605,68 @@ export function App() {
           </div>
         </aside>
 
-        {/* Center: Interactive Visual Canvas */}
+        {/* Center Canvas: Conditionally Box Canvas OR Conveyor Canvas */}
         <main className="flex-1 relative overflow-hidden">
-          <LevelCanvas
-            levelData={levelData}
-            selectedNodeId={selectedNodeId}
-            visibleLayers={visibleLayers}
-            isolatedLayer={isolatedLayer}
-            realBoxSize={realBoxSize}
-            showGrid={showGrid}
-            showCoordinates={showCoordinates}
-            showAllDependencies={showAllDependencies}
-            snapToGrid={snapToGrid}
-            onSelectNode={setSelectedNodeId}
-            onUpdateBoardNode={handleUpdateBoardNode}
-            onUpdateBoxNode={handleUpdateBoxNode}
-          />
+          {editorMode === 'level' ? (
+            <LevelCanvas
+              levelData={levelData}
+              selectedNodeId={selectedNodeId}
+              visibleLayers={visibleLayers}
+              isolatedLayer={isolatedLayer}
+              realBoxSize={realBoxSize}
+              showGrid={showGrid}
+              showCoordinates={showCoordinates}
+              showAllDependencies={showAllDependencies}
+              snapToGrid={snapToGrid}
+              onSelectNode={setSelectedNodeId}
+              onUpdateBoardNode={handleUpdateBoardNode}
+              onUpdateBoxNode={handleUpdateBoxNode}
+            />
+          ) : (
+            <ConveyorCanvas
+              conveyorData={conveyorData}
+              levelData={levelData}
+              selectedId={selectedConveyorId}
+              selectedType={selectedConveyorType}
+              showGrid={showGrid}
+              showCoordinates={showCoordinates}
+              snapToGrid={snapToGrid}
+              showGhostLevel={showGhostLevel}
+              onToggleGhostLevel={() => setShowGhostLevel(prev => !prev)}
+              onSelectItem={(id, type) => {
+                setSelectedConveyorId(id);
+                setSelectedConveyorType(type);
+              }}
+              onUpdateConveyorData={updateConveyorData}
+            />
+          )}
         </main>
 
-        {/* Right Sidebar: Node & Box Inspector */}
+        {/* Right Sidebar: Conditionally Node Inspector OR Conveyor Inspector */}
         <aside className="w-80 h-full shrink-0 z-10">
-          <NodeInspector
-            levelData={levelData}
-            selectedNodeId={selectedNodeId}
-            onUpdateBoardNode={handleUpdateBoardNode}
-            onUpdateBoxNode={handleUpdateBoxNode}
-            onUpdateSpawnerNode={handleUpdateSpawnerNode}
-            onDuplicateNode={handleDuplicateNode}
-            onDeleteNode={handleDeleteNode}
-            onUpdateLevelSettings={(updates) => setLevelData(prev => ({ ...prev, ...updates }))}
-          />
+          {editorMode === 'level' ? (
+            <NodeInspector
+              levelData={levelData}
+              selectedNodeId={selectedNodeId}
+              onUpdateBoardNode={handleUpdateBoardNode}
+              onUpdateBoxNode={handleUpdateBoxNode}
+              onUpdateSpawnerNode={handleUpdateSpawnerNode}
+              onDuplicateNode={handleDuplicateNode}
+              onDeleteNode={handleDeleteNode}
+              onUpdateLevelSettings={(updates) => setLevelData(prev => ({ ...prev, ...updates }))}
+            />
+          ) : (
+            <ConveyorInspector
+              conveyorData={conveyorData}
+              selectedId={selectedConveyorId}
+              selectedType={selectedConveyorType}
+              onSelectItem={(id, type) => {
+                setSelectedConveyorId(id);
+                setSelectedConveyorType(type);
+              }}
+              onUpdateConveyorData={updateConveyorData}
+            />
+          )}
         </aside>
       </div>
 
@@ -623,9 +703,21 @@ export function App() {
         />
       )}
 
+      {showConveyorJsonModal && (
+        <ConveyorJsonModal
+          conveyorData={conveyorData}
+          onClose={() => setShowConveyorJsonModal(false)}
+          onApply={(updated) => {
+            updateConveyorData(updated);
+            showToast('Applied Conveyor JSON updates!');
+          }}
+        />
+      )}
+
       {showPlaytestModal && (
         <PlaytestModal
           levelData={levelData}
+          conveyorData={conveyorData}
           onClose={() => setShowPlaytestModal(false)}
         />
       )}

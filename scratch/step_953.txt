@@ -1,0 +1,49 @@
+Created At: 2026-08-25T21:51:15+07:00
+Completed At: 2026-08-25T21:51:15+07:00
+File Path: `file:///c:/Users/TUAN%20ANH/Documents/GitHub/Card%20factory%20level%20builder/src/components/Playtest/PlaytestModal.tsx`
+Total Lines: 1115
+Total Bytes: 44647
+Showing lines 740 to 780
+The following code has been modified to include a line number before every line, in the format: <line_number>: <original_line>. Please note that any changes targeting the original code should remove the line number, colon, and leading space.
+740:                                 fill={cColor.hex}
+741:                                 stroke="#ffffff"
+742:                                 strokeWidth="0.8"
+743:                               />
+744:                             );
+745:                           })}
+746:                         </g>
+747:                       ) : (
+748:                         <text
+749:                           x="0"
+750:                           y="4"
+751:                           textAnchor="middle"
+752:                           fill="#64748b"
+753:                           fontSize="10"
+754:                           fontWeight="700"
+755:                         >
+756:                           Slot {slotIdx + 1}
+757:                         </text>
+758:                       )}
+759:                     </g>
+760:                   );
+761:                 })}
+762: 
+763:                 {/* 3. Cards in Motion along Conveyor (Evenly Distributed with Fixed Padding) */}
+764:                 {conveyorCardsRef.current.map((card, cardIdx) => {
+765:                   const cardDist = (beltBaseDistRef.current + cardIdx * currentCardSpacing) % L_TOTAL;
+766:                   const pt = getTrackCoords(cardDist);
+767:                   const colorDef = getColor(card.color);
+768: 
+769:                   return (
+770:                     <g
+771:                       key={`riding-card-${card.uid}`}
+772:                       transform={`translate(${pt.x}, ${pt.y}) rotate(${pt.angle})`}
+773:                     >
+774:                       {/* Card Drop Shadow */}
+775:                       <rect
+776:                         x="-10"
+777:                         y="-13"
+778:                         width="20"
+779:                         height="26"
+780:                         rx="4"
+The above content does NOT show the entire file contents. If you need to view any lines of the file which were not shown to complete your task, call this tool again to view those lines.

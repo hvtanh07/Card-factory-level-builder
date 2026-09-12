@@ -28,7 +28,7 @@ export const HelpModal: React.FC<HelpModalProps> = ({ onClose }) => {
           <div className="space-y-2">
             <h3 className="text-sm font-bold text-sky-400 flex items-center gap-2">
               <Layers size={16} />
-              About the Game & Level Data (.bytes)
+              About the Game & Level Data
             </h3>
             <p className="text-slate-400">
               In <strong>Card Factory</strong>, players sort and clear stacks of cards packed into colored boxes and trays. Boxes are arranged on a 2D tilemap grid across multiple overlapping layers (Layer 0 on top, down to Layer 3 at the bottom). Boxes in upper layers block the boxes underneath them until the upper boxes are cleared.
@@ -95,13 +95,13 @@ export const HelpModal: React.FC<HelpModalProps> = ({ onClose }) => {
                 <strong className="text-slate-200">Auto-Blockers:</strong> Automatically calculates physical spatial overlap between upper and lower layer boxes and updates each box's <code className="text-amber-300 font-mono">BlockedNodes</code> array.
               </li>
               <li>
-                <strong className="text-slate-200">Card Deck Editor:</strong> Customize the initial card sequence inside each box with 6 vibrant colors and quick fill presets.
+                <strong className="text-slate-200">Card Deck Editor:</strong> Customize the initial card sequence inside each box with vibrant colors and quick fill presets.
               </li>
               <li>
                 <strong className="text-slate-200">Playtest Simulation:</strong> Test level solvability right inside the builder with real unblocking cascade and win verification.
               </li>
               <li>
-                <strong className="text-slate-200">Unity .bytes & JSON Export:</strong> Export directly to <code className="text-emerald-300 font-mono">.bytes</code> format ready to drop into Unity Resources or AssetBundles.
+                <strong className="text-slate-200">JSON Export:</strong> Export directly to <code className="text-emerald-300 font-mono">.json</code> format ready to use in the game.
               </li>
             </ul>
           </div>
