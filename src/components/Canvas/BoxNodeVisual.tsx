@@ -162,87 +162,107 @@ export const BoxNodeVisual: React.FC<BoxNodeVisualProps> = ({
         </g>
       )}
 
-      {/* Internal Cards or Slots */}
+      {/* Internal Cards or Slots Grid (2 Rows x N Cols) */}
       <g>
-        {cardCount > 0 ? (
-          (() => {
-            const availableWidth = w - 16 * scaleMultiplier;
-            const cardSpacing = availableWidth / Math.max(cardCount, 1);
-            const cardThickness = Math.min(cardSpacing - 2 * scaleMultiplier, 14 * scaleMultiplier);
+        {(() => {
+          const rows = 2;
+          const cols = Math.max(Math.ceil(capacity / rows), 1);
+          const totalSlots = cols * rows;
 
-            return activeBox.InitCards.map((cardColorId, idx) => {
-              const cardColor = getColor(cardColorId);
-              const cardX = -halfW + 8 * scaleMultiplier + idx * cardSpacing;
-              const cardH = h - 12 * scaleMultiplier;
+          const margin = 8 * scaleMultiplier;
+          const innerW = w - 2 * margin;
+          const innerH = h - 2 * margin;
 
-              return (
-                <g key={`card-${idx}`}>
+          const cellW = innerW / cols;
+          const cellH = innerH / rows;
+
+          const padX = 2.5 * scaleMultiplier;
+          const padY = 2.5 * scaleMultiplier;
+          const cardW = Math.max(cellW - padX * 2, 4);
+          const cardH = Math.max(cellH - padY * 2, 4);
+          const cardRx = Math.min(cardW, cardH) * 0.25;
+
+          const elements: React.ReactNode[] = [];
+
+          for (let slotIdx = 0; slotIdx < totalSlots; slotIdx++) {
+            const col = Math.floor(slotIdx / rows);
+            const row = slotIdx % rows;
+
+            const slotCenterX = -halfW + margin + (col + 0.5) * cellW;
+            const slotCenterY = -halfH + margin + (row + 0.5) * cellH;
+
+            const hasCard = slotIdx < cardCount;
+            const cardColorId = hasCard ? activeBox.InitCards[slotIdx] : null;
+            const cardColor = cardColorId !== null ? getColor(cardColorId) : null;
+
+            if (hasCard && cardColor) {
+              elements.push(
+                <g key={`slot-card-${slotIdx}`}>
                   {/* Card Drop Shadow */}
                   <rect
-                    x={cardX + 1}
-                    y={-cardH / 2 + 1}
-                    width={cardThickness}
+                    x={slotCenterX - cardW / 2 + 1}
+                    y={slotCenterY - cardH / 2 + 1}
+                    width={cardW}
                     height={cardH}
-                    rx={cardThickness / 2}
+                    rx={cardRx}
                     fill="rgba(0, 0, 0, 0.25)"
                   />
                   {/* Card Base */}
                   <rect
-                    x={cardX}
-                    y={-cardH / 2}
-                    width={cardThickness}
+                    x={slotCenterX - cardW / 2}
+                    y={slotCenterY - cardH / 2}
+                    width={cardW}
                     height={cardH}
-                    rx={cardThickness / 2}
+                    rx={cardRx}
                     fill={isCardsHidden ? '#334155' : cardColor.hex}
-                    stroke={isCardsHidden ? '#64748b' : cardColor.borderHex}
+                    stroke={isCardsHidden ? '#64748b' : '#ffffff'}
                     strokeWidth={1}
                   />
                   {/* Card Gloss / Question Mark if hidden */}
                   {isCardsHidden ? (
                     <text
-                      x={cardX + cardThickness / 2}
-                      y="3.5"
+                      x={slotCenterX}
+                      y={slotCenterY + 3.5}
                       textAnchor="middle"
                       fill="#94a3b8"
-                      fontSize="9"
+                      fontSize={9 * scaleMultiplier}
                       fontWeight="bold"
                     >
                       ?
                     </text>
                   ) : (
                     <rect
-                      x={cardX + 1}
-                      y={-cardH / 2 + 2 * scaleMultiplier}
-                      width={Math.max(cardThickness / 2 - 1, 1)}
-                      height={cardH - 4 * scaleMultiplier}
-                      rx={cardThickness / 4}
-                      fill="rgba(255, 255, 255, 0.4)"
+                      x={slotCenterX - cardW / 2 + 1.5}
+                      y={slotCenterY - cardH / 2 + 1.5}
+                      width={cardW - 3}
+                      height={Math.max(cardH * 0.35, 2)}
+                      rx={cardRx / 2}
+                      fill="rgba(255, 255, 255, 0.35)"
                     />
                   )}
                 </g>
               );
-            });
-          })()
-        ) : (
-          (() => {
-            const lines: React.ReactNode[] = [];
-            const step = (w - 16 * scaleMultiplier) / slotCount;
-            for (let i = 1; i < slotCount; i++) {
-              lines.push(
-                <line
-                  key={`slot-${i}`}
-                  x1={-halfW + 8 * scaleMultiplier + i * step}
-                  y1={-halfH + 8 * scaleMultiplier}
-                  x2={-halfW + 8 * scaleMultiplier + i * step}
-                  y2={halfH - 8 * scaleMultiplier}
-                  stroke="rgba(255, 255, 255, 0.2)"
+            } else {
+              // Empty Slot Placeholder
+              elements.push(
+                <rect
+                  key={`empty-slot-${slotIdx}`}
+                  x={slotCenterX - cardW / 2}
+                  y={slotCenterY - cardH / 2}
+                  width={cardW}
+                  height={cardH}
+                  rx={cardRx}
+                  fill="rgba(0, 0, 0, 0.12)"
+                  stroke="rgba(255, 255, 255, 0.18)"
+                  strokeWidth={0.8}
                   strokeDasharray="2,2"
                 />
               );
             }
-            return lines;
-          })()
-        )}
+          }
+
+          return elements;
+        })()}
       </g>
 
       {/* Spawner Queue Badge */}

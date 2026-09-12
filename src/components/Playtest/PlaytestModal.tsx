@@ -863,33 +863,86 @@ export const PlaytestModal: React.FC<PlaytestModalProps> = ({
                             {box.currentCards.length}/{box.capacity}
                           </text>
 
-                          {/* Stacked Cards inside Docked Box */}
+                          {/* Cards / Slots inside Docked Box (2 Rows x N Cols) */}
                           {(() => {
-                            const cardCount = box.currentCards.length;
-                            const availableW = slotW - 20;
-                            const cardSpacing = availableW / Math.max(cardCount, 1);
-                            const cardThickness = Math.min(cardSpacing - 2, 14);
-                            const cardH = slotH - 32;
+                            const rows = 2;
+                            const cols = Math.max(Math.ceil(box.capacity / rows), 1);
+                            const totalSlots = cols * rows;
 
-                            return box.currentCards.map((cCol, cIdx) => {
-                              const cColor = getColor(cCol);
-                              const cardX = -slotW / 2 + 10 + cIdx * cardSpacing;
+                            const margin = 8;
+                            const innerW = slotW - 2 * margin;
+                            const innerH = slotH - 34;
 
-                              return (
-                                <g key={`docked-card-${cIdx}`}>
+                            const cellW = innerW / cols;
+                            const cellH = innerH / rows;
+
+                            const cardW = Math.max(cellW - 4, 4);
+                            const cardH = Math.max(cellH - 4, 4);
+                            const cardRx = Math.min(cardW, cardH) * 0.25;
+
+                            const elements: React.ReactNode[] = [];
+
+                            for (let sIdx = 0; sIdx < totalSlots; sIdx++) {
+                              const col = Math.floor(sIdx / rows);
+                              const row = sIdx % rows;
+
+                              const slotCenterX = -slotW / 2 + margin + (col + 0.5) * cellW;
+                              const slotCenterY = -slotH / 2 + 20 + (row + 0.5) * cellH;
+
+                              const hasCard = sIdx < box.currentCards.length;
+                              const cCol = hasCard ? box.currentCards[sIdx] : null;
+                              const cColor = cCol !== null ? getColor(cCol) : null;
+
+                              if (hasCard && cColor) {
+                                elements.push(
+                                  <g key={`docked-card-${sIdx}`}>
+                                    <rect
+                                      x={slotCenterX - cardW / 2 + 1}
+                                      y={slotCenterY - cardH / 2 + 1}
+                                      width={cardW}
+                                      height={cardH}
+                                      rx={cardRx}
+                                      fill="rgba(0, 0, 0, 0.25)"
+                                    />
+                                    <rect
+                                      x={slotCenterX - cardW / 2}
+                                      y={slotCenterY - cardH / 2}
+                                      width={cardW}
+                                      height={cardH}
+                                      rx={cardRx}
+                                      fill={cColor.hex}
+                                      stroke="#ffffff"
+                                      strokeWidth={1}
+                                    />
+                                    <rect
+                                      x={slotCenterX - cardW / 2 + 1.5}
+                                      y={slotCenterY - cardH / 2 + 1.5}
+                                      width={cardW - 3}
+                                      height={Math.max(cardH * 0.35, 2)}
+                                      rx={cardRx / 2}
+                                      fill="rgba(255, 255, 255, 0.4)"
+                                    />
+                                  </g>
+                                );
+                              } else {
+                                elements.push(
                                   <rect
-                                    x={cardX}
-                                    y={-cardH / 2 + 6}
-                                    width={cardThickness}
+                                    key={`empty-docked-slot-${sIdx}`}
+                                    x={slotCenterX - cardW / 2}
+                                    y={slotCenterY - cardH / 2}
+                                    width={cardW}
                                     height={cardH}
-                                    rx={cardThickness / 2}
-                                    fill={cColor.hex}
-                                    stroke="#ffffff"
-                                    strokeWidth={1}
+                                    rx={cardRx}
+                                    fill="rgba(0, 0, 0, 0.15)"
+                                    stroke="rgba(255, 255, 255, 0.2)"
+                                    strokeWidth={0.8}
+                                    strokeDasharray="2,2"
                                   />
-                                </g>
-                              );
-                            });
+                                );
+                              }
+                            }
+
+                            return elements;
                           })()}
                         </g>
                       ) : isAdLocked ? (
@@ -1190,71 +1243,107 @@ export const PlaytestModal: React.FC<PlaytestModalProps> = ({
                           </g>
                         )}
 
-                        {/* Internal Cards or Slots (exact BoxNodeVisual design matching reference image) */}
+                        {/* Internal Cards or Slots Grid (2 Rows x N Cols) */}
                         <g>
-                          {!areCardsHidden && cardCount > 0 ? (
-                            (() => {
-                              const availableWidth = w - 16;
-                              const cardSpacing = availableWidth / Math.max(cardCount, 1);
-                              const cardThickness = Math.min(cardSpacing - 2, 14);
-                              const cardH = h - 12;
+                          {(() => {
+                            const rows = 2;
+                            const cols = Math.max(Math.ceil(boxType.capacity / rows), 1);
+                            const totalSlots = cols * rows;
 
-                              return activeBox.InitCards.map((cardColorId, idx) => {
-                                const cardColor = getColor(cardColorId);
-                                const cardX = -w / 2 + 8 + idx * cardSpacing;
+                            const margin = 6;
+                            const innerW = w - 2 * margin;
+                            const innerH = h - 2 * margin;
 
-                                return (
-                                  <g key={`box-card-${idx}`}>
+                            const cellW = innerW / cols;
+                            const cellH = innerH / rows;
+
+                            const padX = 2;
+                            const padY = 2;
+                            const cardW = Math.max(cellW - padX * 2, 3);
+                            const cardH = Math.max(cellH - padY * 2, 3);
+                            const cardRx = Math.min(cardW, cardH) * 0.25;
+
+                            const elements: React.ReactNode[] = [];
+
+                            for (let slotIdx = 0; slotIdx < totalSlots; slotIdx++) {
+                              const col = Math.floor(slotIdx / rows);
+                              const row = slotIdx % rows;
+
+                              const slotCenterX = -w / 2 + margin + (col + 0.5) * cellW;
+                              const slotCenterY = -h / 2 + margin + (row + 0.5) * cellH;
+
+                              const hasCard = slotIdx < cardCount;
+                              const cardColorId = hasCard ? activeBox.InitCards[slotIdx] : null;
+                              const cardColor = cardColorId !== null ? getColor(cardColorId) : null;
+
+                              if (hasCard && cardColor) {
+                                elements.push(
+                                  <g key={`box-card-${slotIdx}`}>
+                                    {/* Card Drop Shadow */}
                                     <rect
-                                      x={cardX + 1}
-                                      y={-cardH / 2 + 1}
-                                      width={cardThickness}
+                                      x={slotCenterX - cardW / 2 + 1}
+                                      y={slotCenterY - cardH / 2 + 1}
+                                      width={cardW}
                                       height={cardH}
-                                      rx={cardThickness / 2}
+                                      rx={cardRx}
                                       fill="rgba(0, 0, 0, 0.25)"
                                     />
+                                    {/* Card Base */}
                                     <rect
-                                      x={cardX}
-                                      y={-cardH / 2}
-                                      width={cardThickness}
+                                      x={slotCenterX - cardW / 2}
+                                      y={slotCenterY - cardH / 2}
+                                      width={cardW}
                                       height={cardH}
-                                      rx={cardThickness / 2}
-                                      fill={isHidden ? '#64748b' : cardColor.hex}
-                                      stroke={isHidden ? '#94a3b8' : '#ffffff'}
+                                      rx={cardRx}
+                                      fill={areCardsHidden ? '#334155' : isHidden ? '#64748b' : cardColor.hex}
+                                      stroke={areCardsHidden ? '#64748b' : '#ffffff'}
                                       strokeWidth={1}
                                     />
-                                    <rect
-                                      x={cardX + 1}
-                                      y={-cardH / 2 + 2}
-                                      width={Math.max(cardThickness / 2 - 1, 1)}
-                                      height={cardH - 4}
-                                      rx={cardThickness / 4}
-                                      fill="rgba(255, 255, 255, 0.4)"
-                                    />
+                                    {/* Card Gloss / Question Mark if hidden */}
+                                    {areCardsHidden ? (
+                                      <text
+                                        x={slotCenterX}
+                                        y={slotCenterY + 3}
+                                        textAnchor="middle"
+                                        fill="#94a3b8"
+                                        fontSize={8}
+                                        fontWeight="bold"
+                                      >
+                                        ?
+                                      </text>
+                                    ) : (
+                                      <rect
+                                        x={slotCenterX - cardW / 2 + 1}
+                                        y={slotCenterY - cardH / 2 + 1}
+                                        width={Math.max(cardW - 2, 1)}
+                                        height={Math.max(cardH * 0.35, 2)}
+                                        rx={cardRx / 2}
+                                        fill="rgba(255, 255, 255, 0.35)"
+                                      />
+                                    )}
                                   </g>
                                 );
-                              });
-                            })()
-                          ) : !areCardsHidden ? (
-                            (() => {
-                              const lines: React.ReactNode[] = [];
-                              const step = (w - 16) / slotCount;
-                              for (let i = 1; i < slotCount; i++) {
-                                lines.push(
-                                  <line
-                                    key={`slot-${i}`}
-                                    x1={-w / 2 + 8 + i * step}
-                                    y1={-h / 2 + 8}
-                                    x2={-w / 2 + 8 + i * step}
-                                    y2={h / 2 - 8}
-                                    stroke="rgba(255, 255, 255, 0.2)"
+                              } else {
+                                // Empty Slot Placeholder
+                                elements.push(
+                                  <rect
+                                    key={`empty-slot-${slotIdx}`}
+                                    x={slotCenterX - cardW / 2}
+                                    y={slotCenterY - cardH / 2}
+                                    width={cardW}
+                                    height={cardH}
+                                    rx={cardRx}
+                                    fill="rgba(0, 0, 0, 0.12)"
+                                    stroke="rgba(255, 255, 255, 0.18)"
+                                    strokeWidth={0.8}
                                     strokeDasharray="2,2"
                                   />
                                 );
                               }
-                              return lines;
-                            })()
-                          ) : null}
+                            }
+
+                            return elements;
+                          })()}
                         </g>
 
                         {/* Spawner Multiplier Badge */}
