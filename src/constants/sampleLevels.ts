@@ -129,7 +129,7 @@ export const SAMPLE_LEVELS: SampleLevelPreset[] = [
     "id": "easy_2",
     "name": "Easy 2: Color Exchange",
     "difficulty": "easy",
-    "description": "Top boxes hold each other\u2019s colors, dumping them to the belt to initiate a cascade of clears.",
+    "description": "Top boxes hold each other’s colors, dumping them to the belt to initiate a cascade of clears.",
     "data": {
       "Id": 2,
       "BoardOffsetX": 0,
@@ -1027,206 +1027,210 @@ export const SAMPLE_LEVELS: SampleLevelPreset[] = [
     "id": "easy_5",
     "name": "Easy 5: Tower of Eight",
     "difficulty": "easy",
-    "description": "First 3-tier challenge introducing size-8 heavy containers. Send at least 3 supporting boxes up to fuel and clear the apex container.",
+    "description": "Introduce 3-layer architecture and size-8 heavy containers with surplus overflow management.",
     "data": {
       "Id": 5,
       "BoardOffsetX": 0,
       "BoardOffsetZ": 0,
       "BoardNodes": [
         {
-          "Id": "2_0.0_1.2",
+          "Id": "2_-2.4_0.7",
           "LayerId": 2,
           "TileMapId": 2,
-          "XPosition": 0.0,
+          "XPosition": -2.4,
+          "ZPosition": 0.7,
+          "YRotation": 0,
+          "ZRotation": 0,
+          "MapPosX": -2.4,
+          "MapPosY": 0.7,
+          "YPosition": 0
+        },
+        {
+          "Id": "2_0.0_0.7",
+          "LayerId": 2,
+          "TileMapId": 2,
+          "XPosition": 0,
+          "ZPosition": 0.7,
+          "YRotation": 0,
+          "ZRotation": 0,
+          "MapPosX": 0,
+          "MapPosY": 0.7,
+          "YPosition": 0
+        },
+        {
+          "Id": "2_2.4_0.7",
+          "LayerId": 2,
+          "TileMapId": 2,
+          "XPosition": 2.4,
+          "ZPosition": 0.7,
+          "YRotation": 0,
+          "ZRotation": 0,
+          "MapPosX": 2.4,
+          "MapPosY": 0.7,
+          "YPosition": 0
+        },
+        {
+          "Id": "2_0.0_-0.7",
+          "LayerId": 2,
+          "TileMapId": 2,
+          "XPosition": 0,
+          "ZPosition": -0.7,
+          "YRotation": 0,
+          "ZRotation": 0,
+          "MapPosX": 0,
+          "MapPosY": -0.7,
+          "YPosition": 0
+        },
+        {
+          "Id": "1_-2.0_1.2",
+          "LayerId": 1,
+          "TileMapId": 1,
+          "XPosition": -2,
           "ZPosition": 1.2,
           "YRotation": 0,
           "ZRotation": 0,
-          "MapPosX": 0.0,
+          "MapPosX": -2,
           "MapPosY": 1.2,
           "YPosition": 0
         },
         {
-          "Id": "1_-1.6_0.3",
+          "Id": "1_0.0_1.2",
           "LayerId": 1,
           "TileMapId": 1,
-          "XPosition": -1.6,
-          "ZPosition": 0.3,
+          "XPosition": 0,
+          "ZPosition": 1.2,
           "YRotation": 0,
           "ZRotation": 0,
-          "MapPosX": -1.6,
-          "MapPosY": 0.3,
+          "MapPosX": 0,
+          "MapPosY": 1.2,
           "YPosition": 0
         },
         {
-          "Id": "1_0.0_0.2",
+          "Id": "1_2.0_1.2",
           "LayerId": 1,
           "TileMapId": 1,
-          "XPosition": 0.0,
-          "ZPosition": 0.2,
+          "XPosition": 2,
+          "ZPosition": 1.2,
           "YRotation": 0,
           "ZRotation": 0,
-          "MapPosX": 0.0,
-          "MapPosY": 0.2,
+          "MapPosX": 2,
+          "MapPosY": 1.2,
           "YPosition": 0
         },
         {
-          "Id": "1_1.6_0.3",
+          "Id": "1_-2.0_-0.2",
           "LayerId": 1,
           "TileMapId": 1,
-          "XPosition": 1.6,
-          "ZPosition": 0.3,
+          "XPosition": -2,
+          "ZPosition": -0.2,
           "YRotation": 0,
           "ZRotation": 0,
-          "MapPosX": 1.6,
-          "MapPosY": 0.3,
+          "MapPosX": -2,
+          "MapPosY": -0.2,
           "YPosition": 0
         },
         {
-          "Id": "0_-1.5_-0.7",
-          "LayerId": 0,
-          "TileMapId": 0,
-          "XPosition": -1.5,
-          "ZPosition": -0.7,
+          "Id": "1_0.0_-0.2",
+          "LayerId": 1,
+          "TileMapId": 1,
+          "XPosition": 0,
+          "ZPosition": -0.2,
           "YRotation": 0,
           "ZRotation": 0,
-          "MapPosX": -1.5,
-          "MapPosY": -0.7,
+          "MapPosX": 0,
+          "MapPosY": -0.2,
           "YPosition": 0
         },
         {
-          "Id": "0_0.0_-0.9",
-          "LayerId": 0,
-          "TileMapId": 0,
-          "XPosition": 0.0,
-          "ZPosition": -0.9,
+          "Id": "1_2.0_-0.2",
+          "LayerId": 1,
+          "TileMapId": 1,
+          "XPosition": 2,
+          "ZPosition": -0.2,
           "YRotation": 0,
           "ZRotation": 0,
-          "MapPosX": 0.0,
-          "MapPosY": -0.9,
+          "MapPosX": 2,
+          "MapPosY": -0.2,
           "YPosition": 0
         },
         {
-          "Id": "0_1.5_-0.7",
+          "Id": "0_-2.2_0.5",
           "LayerId": 0,
           "TileMapId": 0,
-          "XPosition": 1.5,
-          "ZPosition": -0.7,
+          "XPosition": -2.2,
+          "ZPosition": 0.5,
+          "YRotation": 90,
+          "ZRotation": 90,
+          "MapPosX": -2.2,
+          "MapPosY": 0.5,
+          "YPosition": 0
+        },
+        {
+          "Id": "0_2.2_0.5",
+          "LayerId": 0,
+          "TileMapId": 0,
+          "XPosition": 2.2,
+          "ZPosition": 0.5,
+          "YRotation": 90,
+          "ZRotation": 90,
+          "MapPosX": 2.2,
+          "MapPosY": 0.5,
+          "YPosition": 0
+        },
+        {
+          "Id": "0_-1.0_-1.1",
+          "LayerId": 0,
+          "TileMapId": 0,
+          "XPosition": -1,
+          "ZPosition": -1.1,
           "YRotation": 0,
           "ZRotation": 0,
-          "MapPosX": 1.5,
-          "MapPosY": -0.7,
+          "MapPosX": -1,
+          "MapPosY": -1.1,
+          "YPosition": 0
+        },
+        {
+          "Id": "0_0.0_-1.1",
+          "LayerId": 0,
+          "TileMapId": 0,
+          "XPosition": 0,
+          "ZPosition": -1.1,
+          "YRotation": 0,
+          "ZRotation": 0,
+          "MapPosX": 0,
+          "MapPosY": -1.1,
+          "YPosition": 0
+        },
+        {
+          "Id": "0_1.0_-1.1",
+          "LayerId": 0,
+          "TileMapId": 0,
+          "XPosition": 1,
+          "ZPosition": -1.1,
+          "YRotation": 0,
+          "ZRotation": 0,
+          "MapPosX": 1,
+          "MapPosY": -1.1,
           "YPosition": 0
         }
       ],
       "BoxNodes": [
         {
-          "Id": "2_0.0_1.2",
+          "Id": "2_-2.4_0.7",
           "TypeId": 2,
           "BoxColor": 0,
           "BlockedNodes": [
-            "1_-1.6_0.3",
-            "1_0.0_0.2",
-            "1_1.6_0.3"
-          ],
-          "InitCards": [
-            0,
-            0
-          ],
-          "IsHidden": false,
-          "LockedTurn": 0,
-          "IsPaperBox": false,
-          "IsRainbowBox": false
-        },
-        {
-          "Id": "1_-1.6_0.3",
-          "TypeId": 1,
-          "BoxColor": 1,
-          "BlockedNodes": [
-            "0_-1.5_-0.7"
-          ],
-          "InitCards": [
-            1,
-            1,
-            1,
-            1,
-            0,
-            0
-          ],
-          "IsHidden": false,
-          "LockedTurn": 0,
-          "IsPaperBox": false,
-          "IsRainbowBox": false
-        },
-        {
-          "Id": "1_0.0_0.2",
-          "TypeId": 1,
-          "BoxColor": 5,
-          "BlockedNodes": [
-            "0_-1.5_-0.7",
-            "0_0.0_-0.9",
-            "0_1.5_-0.7"
+            "1_-2.0_1.2",
+            "1_-2.0_-0.2",
+            "0_-2.2_0.5"
           ],
           "InitCards": [
             0,
             0,
-            1,
-            1,
-            2,
-            2
-          ],
-          "IsHidden": false,
-          "LockedTurn": 0,
-          "IsPaperBox": true,
-          "IsRainbowBox": false
-        },
-        {
-          "Id": "1_1.6_0.3",
-          "TypeId": 1,
-          "BoxColor": 2,
-          "BlockedNodes": [
-            "0_1.5_-0.7"
-          ],
-          "InitCards": [
-            2,
-            2,
-            2,
-            2,
-            0,
-            0
-          ],
-          "IsHidden": false,
-          "LockedTurn": 0,
-          "IsPaperBox": false,
-          "IsRainbowBox": false
-        },
-        {
-          "Id": "0_-1.5_-0.7",
-          "TypeId": 1,
-          "BoxColor": 1,
-          "BlockedNodes": [],
-          "InitCards": [
-            1,
-            1,
-            1,
-            1,
-            0,
-            2
-          ],
-          "IsHidden": false,
-          "LockedTurn": 0,
-          "IsPaperBox": false,
-          "IsRainbowBox": false
-        },
-        {
-          "Id": "0_0.0_-0.9",
-          "TypeId": 1,
-          "BoxColor": 0,
-          "BlockedNodes": [],
-          "InitCards": [
             0,
             0,
-            0,
-            0,
+            1,
+            1,
             1,
             1
           ],
@@ -1236,7 +1240,241 @@ export const SAMPLE_LEVELS: SampleLevelPreset[] = [
           "IsRainbowBox": false
         },
         {
-          "Id": "0_1.5_-0.7",
+          "Id": "2_0.0_0.7",
+          "TypeId": 2,
+          "BoxColor": 1,
+          "BlockedNodes": [
+            "1_0.0_1.2",
+            "1_0.0_-0.2"
+          ],
+          "InitCards": [
+            1,
+            1,
+            1,
+            1,
+            0,
+            0,
+            0,
+            0
+          ],
+          "IsHidden": false,
+          "LockedTurn": 0,
+          "IsPaperBox": false,
+          "IsRainbowBox": false
+        },
+        {
+          "Id": "2_2.4_0.7",
+          "TypeId": 2,
+          "BoxColor": 2,
+          "BlockedNodes": [
+            "1_2.0_1.2",
+            "1_2.0_-0.2",
+            "0_2.2_0.5"
+          ],
+          "InitCards": [
+            2,
+            2,
+            2,
+            2,
+            0,
+            0,
+            0,
+            0
+          ],
+          "IsHidden": false,
+          "LockedTurn": 0,
+          "IsPaperBox": false,
+          "IsRainbowBox": false
+        },
+        {
+          "Id": "2_0.0_-0.7",
+          "TypeId": 2,
+          "BoxColor": 3,
+          "BlockedNodes": [
+            "1_0.0_-0.2",
+            "0_-1.0_-1.1",
+            "0_0.0_-1.1",
+            "0_1.0_-1.1"
+          ],
+          "InitCards": [
+            3,
+            3,
+            3,
+            3,
+            1,
+            1,
+            1,
+            1
+          ],
+          "IsHidden": false,
+          "LockedTurn": 0,
+          "IsPaperBox": false,
+          "IsRainbowBox": false
+        },
+        {
+          "Id": "1_-2.0_1.2",
+          "TypeId": 1,
+          "BoxColor": 0,
+          "BlockedNodes": [
+            "0_-2.2_0.5"
+          ],
+          "InitCards": [
+            0,
+            0,
+            0,
+            2,
+            2,
+            2
+          ],
+          "IsHidden": false,
+          "LockedTurn": 0,
+          "IsPaperBox": false,
+          "IsRainbowBox": false
+        },
+        {
+          "Id": "1_0.0_1.2",
+          "TypeId": 1,
+          "BoxColor": 1,
+          "BlockedNodes": [],
+          "InitCards": [
+            1,
+            1,
+            1,
+            2,
+            2,
+            2
+          ],
+          "IsHidden": false,
+          "LockedTurn": 0,
+          "IsPaperBox": false,
+          "IsRainbowBox": false
+        },
+        {
+          "Id": "1_2.0_1.2",
+          "TypeId": 1,
+          "BoxColor": 2,
+          "BlockedNodes": [
+            "0_2.2_0.5"
+          ],
+          "InitCards": [
+            2,
+            2,
+            2,
+            3,
+            3,
+            3
+          ],
+          "IsHidden": false,
+          "LockedTurn": 0,
+          "IsPaperBox": false,
+          "IsRainbowBox": false
+        },
+        {
+          "Id": "1_-2.0_-0.2",
+          "TypeId": 1,
+          "BoxColor": 0,
+          "BlockedNodes": [
+            "0_-2.2_0.5",
+            "0_-1.0_-1.1"
+          ],
+          "InitCards": [
+            0,
+            0,
+            0,
+            1,
+            1,
+            1
+          ],
+          "IsHidden": false,
+          "LockedTurn": 0,
+          "IsPaperBox": false,
+          "IsRainbowBox": false
+        },
+        {
+          "Id": "1_0.0_-0.2",
+          "TypeId": 1,
+          "BoxColor": 1,
+          "BlockedNodes": [
+            "0_-1.0_-1.1",
+            "0_0.0_-1.1",
+            "0_1.0_-1.1"
+          ],
+          "InitCards": [
+            1,
+            1,
+            1,
+            0,
+            0,
+            0
+          ],
+          "IsHidden": false,
+          "LockedTurn": 0,
+          "IsPaperBox": false,
+          "IsRainbowBox": false
+        },
+        {
+          "Id": "1_2.0_-0.2",
+          "TypeId": 1,
+          "BoxColor": 2,
+          "BlockedNodes": [
+            "0_2.2_0.5",
+            "0_1.0_-1.1"
+          ],
+          "InitCards": [
+            2,
+            2,
+            2,
+            0,
+            0,
+            0
+          ],
+          "IsHidden": false,
+          "LockedTurn": 0,
+          "IsPaperBox": false,
+          "IsRainbowBox": false
+        },
+        {
+          "Id": "0_-2.2_0.5",
+          "TypeId": 2,
+          "BoxColor": 0,
+          "BlockedNodes": [],
+          "InitCards": [
+            0,
+            0,
+            0,
+            0,
+            3,
+            3,
+            3,
+            3
+          ],
+          "IsHidden": false,
+          "LockedTurn": 0,
+          "IsPaperBox": false,
+          "IsRainbowBox": false
+        },
+        {
+          "Id": "0_2.2_0.5",
+          "TypeId": 2,
+          "BoxColor": 1,
+          "BlockedNodes": [],
+          "InitCards": [
+            1,
+            1,
+            1,
+            1,
+            2,
+            2,
+            2,
+            2
+          ],
+          "IsHidden": false,
+          "LockedTurn": 0,
+          "IsPaperBox": false,
+          "IsRainbowBox": false
+        },
+        {
+          "Id": "0_-1.0_-1.1",
           "TypeId": 1,
           "BoxColor": 2,
           "BlockedNodes": [],
@@ -1244,8 +1482,44 @@ export const SAMPLE_LEVELS: SampleLevelPreset[] = [
             2,
             2,
             2,
+            3,
+            3,
+            3
+          ],
+          "IsHidden": false,
+          "LockedTurn": 0,
+          "IsPaperBox": false,
+          "IsRainbowBox": false
+        },
+        {
+          "Id": "0_0.0_-1.1",
+          "TypeId": 1,
+          "BoxColor": 3,
+          "BlockedNodes": [],
+          "InitCards": [
+            3,
+            3,
+            3,
+            1,
+            1,
+            1
+          ],
+          "IsHidden": false,
+          "LockedTurn": 0,
+          "IsPaperBox": false,
+          "IsRainbowBox": false
+        },
+        {
+          "Id": "0_1.0_-1.1",
+          "TypeId": 1,
+          "BoxColor": 3,
+          "BlockedNodes": [],
+          "InitCards": [
+            3,
+            3,
+            3,
             2,
-            0,
+            2,
             2
           ],
           "IsHidden": false,
@@ -1687,103 +1961,193 @@ export const SAMPLE_LEVELS: SampleLevelPreset[] = [
   },
   {
     "id": "easy_7",
-    "name": "Easy 7: The Hidden Red",
+    "name": "Easy 7: Prism of Secrets",
     "difficulty": "easy",
-    "description": "Visible containers release Red cards, but no Red box is in sight! Deduce that the hidden Rainbow box must be Red to clear them.",
+    "description": "Mystery rainbow boxes conceal their true colors until unblocked to reveal matching conveyor draws.",
     "data": {
       "Id": 7,
       "BoardOffsetX": 0,
       "BoardOffsetZ": 0,
       "BoardNodes": [
         {
-          "Id": "1_-1.5_0.5",
-          "LayerId": 1,
-          "TileMapId": 1,
+          "Id": "2_-1.5_0.0",
+          "LayerId": 2,
+          "TileMapId": 2,
           "XPosition": -1.5,
-          "ZPosition": 0.5,
+          "ZPosition": 0,
           "YRotation": 0,
           "ZRotation": 0,
           "MapPosX": -1.5,
-          "MapPosY": 0.5,
+          "MapPosY": 0,
           "YPosition": 0
         },
         {
-          "Id": "1_0.0_0.5",
-          "LayerId": 1,
-          "TileMapId": 1,
-          "XPosition": 0.0,
-          "ZPosition": 0.5,
-          "YRotation": 0,
-          "ZRotation": 0,
-          "MapPosX": 0.0,
-          "MapPosY": 0.5,
-          "YPosition": 0
-        },
-        {
-          "Id": "1_1.5_0.5",
-          "LayerId": 1,
-          "TileMapId": 1,
+          "Id": "2_1.5_0.0",
+          "LayerId": 2,
+          "TileMapId": 2,
           "XPosition": 1.5,
-          "ZPosition": 0.5,
+          "ZPosition": 0,
           "YRotation": 0,
           "ZRotation": 0,
           "MapPosX": 1.5,
-          "MapPosY": 0.5,
+          "MapPosY": 0,
           "YPosition": 0
         },
         {
-          "Id": "0_-1.5_-0.5",
-          "LayerId": 0,
-          "TileMapId": 0,
-          "XPosition": -1.5,
-          "ZPosition": -0.5,
+          "Id": "1_-2.4_1.0",
+          "LayerId": 1,
+          "TileMapId": 1,
+          "XPosition": -2.4,
+          "ZPosition": 1,
           "YRotation": 0,
           "ZRotation": 0,
-          "MapPosX": -1.5,
-          "MapPosY": -0.5,
+          "MapPosX": -2.4,
+          "MapPosY": 1,
           "YPosition": 0
         },
         {
-          "Id": "0_0.0_-0.5",
-          "LayerId": 0,
-          "TileMapId": 0,
-          "XPosition": 0.0,
-          "ZPosition": -0.5,
+          "Id": "1_-0.8_1.0",
+          "LayerId": 1,
+          "TileMapId": 1,
+          "XPosition": -0.8,
+          "ZPosition": 1,
           "YRotation": 0,
           "ZRotation": 0,
-          "MapPosX": 0.0,
-          "MapPosY": -0.5,
+          "MapPosX": -0.8,
+          "MapPosY": 1,
           "YPosition": 0
         },
         {
-          "Id": "0_1.5_-0.5",
-          "LayerId": 0,
-          "TileMapId": 0,
-          "XPosition": 1.5,
-          "ZPosition": -0.5,
+          "Id": "1_0.8_1.0",
+          "LayerId": 1,
+          "TileMapId": 1,
+          "XPosition": 0.8,
+          "ZPosition": 1,
           "YRotation": 0,
           "ZRotation": 0,
-          "MapPosX": 1.5,
-          "MapPosY": -0.5,
+          "MapPosX": 0.8,
+          "MapPosY": 1,
+          "YPosition": 0
+        },
+        {
+          "Id": "1_2.4_1.0",
+          "LayerId": 1,
+          "TileMapId": 1,
+          "XPosition": 2.4,
+          "ZPosition": 1,
+          "YRotation": 0,
+          "ZRotation": 0,
+          "MapPosX": 2.4,
+          "MapPosY": 1,
+          "YPosition": 0
+        },
+        {
+          "Id": "1_-1.2_-1.0",
+          "LayerId": 1,
+          "TileMapId": 1,
+          "XPosition": -1.2,
+          "ZPosition": -1,
+          "YRotation": 0,
+          "ZRotation": 0,
+          "MapPosX": -1.2,
+          "MapPosY": -1,
+          "YPosition": 0
+        },
+        {
+          "Id": "1_1.2_-1.0",
+          "LayerId": 1,
+          "TileMapId": 1,
+          "XPosition": 1.2,
+          "ZPosition": -1,
+          "YRotation": 0,
+          "ZRotation": 0,
+          "MapPosX": 1.2,
+          "MapPosY": -1,
+          "YPosition": 0
+        },
+        {
+          "Id": "0_-2.0_0.0",
+          "LayerId": 0,
+          "TileMapId": 0,
+          "XPosition": -2,
+          "ZPosition": 0,
+          "YRotation": 0,
+          "ZRotation": 0,
+          "MapPosX": -2,
+          "MapPosY": 0,
+          "YPosition": 0
+        },
+        {
+          "Id": "0_-1.0_0.0",
+          "LayerId": 0,
+          "TileMapId": 0,
+          "XPosition": -1,
+          "ZPosition": 0,
+          "YRotation": 0,
+          "ZRotation": 0,
+          "MapPosX": -1,
+          "MapPosY": 0,
+          "YPosition": 0
+        },
+        {
+          "Id": "0_0.0_0.0",
+          "LayerId": 0,
+          "TileMapId": 0,
+          "XPosition": 0,
+          "ZPosition": 0,
+          "YRotation": 0,
+          "ZRotation": 0,
+          "MapPosX": 0,
+          "MapPosY": 0,
+          "YPosition": 0
+        },
+        {
+          "Id": "0_1.0_0.0",
+          "LayerId": 0,
+          "TileMapId": 0,
+          "XPosition": 1,
+          "ZPosition": 0,
+          "YRotation": 0,
+          "ZRotation": 0,
+          "MapPosX": 1,
+          "MapPosY": 0,
+          "YPosition": 0
+        },
+        {
+          "Id": "0_2.0_0.0",
+          "LayerId": 0,
+          "TileMapId": 0,
+          "XPosition": 2,
+          "ZPosition": 0,
+          "YRotation": 0,
+          "ZRotation": 0,
+          "MapPosX": 2,
+          "MapPosY": 0,
           "YPosition": 0
         }
       ],
       "BoxNodes": [
         {
-          "Id": "1_-1.5_0.5",
-          "TypeId": 1,
-          "BoxColor": 1,
+          "Id": "2_-1.5_0.0",
+          "TypeId": 2,
+          "BoxColor": 0,
           "BlockedNodes": [
-            "0_-1.5_-0.5",
-            "0_0.0_-0.5"
+            "1_-2.4_1.0",
+            "1_-0.8_1.0",
+            "1_-1.2_-1.0",
+            "0_-2.0_0.0",
+            "0_-1.0_0.0",
+            "0_0.0_0.0"
           ],
           "InitCards": [
-            1,
-            1,
-            1,
             0,
             0,
-            0
+            0,
+            0,
+            2,
+            2,
+            2,
+            2
           ],
           "IsHidden": false,
           "LockedTurn": 0,
@@ -1791,13 +2155,39 @@ export const SAMPLE_LEVELS: SampleLevelPreset[] = [
           "IsRainbowBox": false
         },
         {
-          "Id": "1_0.0_0.5",
+          "Id": "2_1.5_0.0",
+          "TypeId": 2,
+          "BoxColor": 1,
+          "BlockedNodes": [
+            "1_0.8_1.0",
+            "1_2.4_1.0",
+            "1_1.2_-1.0",
+            "0_0.0_0.0",
+            "0_1.0_0.0",
+            "0_2.0_0.0"
+          ],
+          "InitCards": [
+            1,
+            1,
+            1,
+            1,
+            3,
+            3,
+            3,
+            3
+          ],
+          "IsHidden": false,
+          "LockedTurn": 0,
+          "IsPaperBox": false,
+          "IsRainbowBox": false
+        },
+        {
+          "Id": "1_-2.4_1.0",
           "TypeId": 1,
           "BoxColor": 0,
           "BlockedNodes": [
-            "0_-1.5_-0.5",
-            "0_0.0_-0.5",
-            "0_1.5_-0.5"
+            "0_-2.0_0.0",
+            "0_-1.0_0.0"
           ],
           "InitCards": [
             0,
@@ -1805,7 +2195,29 @@ export const SAMPLE_LEVELS: SampleLevelPreset[] = [
             0,
             1,
             1,
-            2
+            1
+          ],
+          "IsHidden": false,
+          "LockedTurn": 0,
+          "IsPaperBox": false,
+          "IsRainbowBox": false
+        },
+        {
+          "Id": "1_-0.8_1.0",
+          "TypeId": 1,
+          "BoxColor": 2,
+          "BlockedNodes": [
+            "0_-2.0_0.0",
+            "0_-1.0_0.0",
+            "0_0.0_0.0"
+          ],
+          "InitCards": [
+            2,
+            2,
+            0,
+            0,
+            0,
+            0
           ],
           "IsHidden": false,
           "LockedTurn": 0,
@@ -1813,17 +2225,39 @@ export const SAMPLE_LEVELS: SampleLevelPreset[] = [
           "IsRainbowBox": true
         },
         {
-          "Id": "1_1.5_0.5",
+          "Id": "1_0.8_1.0",
           "TypeId": 1,
-          "BoxColor": 2,
+          "BoxColor": 3,
           "BlockedNodes": [
-            "0_0.0_-0.5",
-            "0_1.5_-0.5"
+            "0_0.0_0.0",
+            "0_1.0_0.0",
+            "0_2.0_0.0"
           ],
           "InitCards": [
-            2,
-            2,
-            2,
+            3,
+            3,
+            1,
+            1,
+            1,
+            1
+          ],
+          "IsHidden": false,
+          "LockedTurn": 0,
+          "IsPaperBox": false,
+          "IsRainbowBox": true
+        },
+        {
+          "Id": "1_2.4_1.0",
+          "TypeId": 1,
+          "BoxColor": 1,
+          "BlockedNodes": [
+            "0_1.0_0.0",
+            "0_2.0_0.0"
+          ],
+          "InitCards": [
+            1,
+            1,
+            1,
             0,
             0,
             0
@@ -1834,10 +2268,14 @@ export const SAMPLE_LEVELS: SampleLevelPreset[] = [
           "IsRainbowBox": false
         },
         {
-          "Id": "0_-1.5_-0.5",
+          "Id": "1_-1.2_-1.0",
           "TypeId": 1,
           "BoxColor": 2,
-          "BlockedNodes": [],
+          "BlockedNodes": [
+            "0_-2.0_0.0",
+            "0_-1.0_0.0",
+            "0_0.0_0.0"
+          ],
           "InitCards": [
             2,
             2,
@@ -1852,7 +2290,29 @@ export const SAMPLE_LEVELS: SampleLevelPreset[] = [
           "IsRainbowBox": false
         },
         {
-          "Id": "0_0.0_-0.5",
+          "Id": "1_1.2_-1.0",
+          "TypeId": 1,
+          "BoxColor": 3,
+          "BlockedNodes": [
+            "0_0.0_0.0",
+            "0_1.0_0.0",
+            "0_2.0_0.0"
+          ],
+          "InitCards": [
+            3,
+            3,
+            3,
+            0,
+            0,
+            0
+          ],
+          "IsHidden": false,
+          "LockedTurn": 0,
+          "IsPaperBox": false,
+          "IsRainbowBox": false
+        },
+        {
+          "Id": "0_-2.0_0.0",
           "TypeId": 1,
           "BoxColor": 0,
           "BlockedNodes": [],
@@ -1860,7 +2320,7 @@ export const SAMPLE_LEVELS: SampleLevelPreset[] = [
             0,
             0,
             0,
-            1,
+            2,
             2,
             2
           ],
@@ -1870,7 +2330,43 @@ export const SAMPLE_LEVELS: SampleLevelPreset[] = [
           "IsRainbowBox": false
         },
         {
-          "Id": "0_1.5_-0.5",
+          "Id": "0_-1.0_0.0",
+          "TypeId": 1,
+          "BoxColor": 1,
+          "BlockedNodes": [],
+          "InitCards": [
+            1,
+            1,
+            1,
+            3,
+            3,
+            3
+          ],
+          "IsHidden": false,
+          "LockedTurn": 0,
+          "IsPaperBox": false,
+          "IsRainbowBox": false
+        },
+        {
+          "Id": "0_0.0_0.0",
+          "TypeId": 1,
+          "BoxColor": 0,
+          "BlockedNodes": [],
+          "InitCards": [
+            0,
+            0,
+            0,
+            1,
+            1,
+            1
+          ],
+          "IsHidden": false,
+          "LockedTurn": 0,
+          "IsPaperBox": false,
+          "IsRainbowBox": false
+        },
+        {
+          "Id": "0_1.0_0.0",
           "TypeId": 1,
           "BoxColor": 1,
           "BlockedNodes": [],
@@ -1881,6 +2377,24 @@ export const SAMPLE_LEVELS: SampleLevelPreset[] = [
             2,
             2,
             2
+          ],
+          "IsHidden": false,
+          "LockedTurn": 0,
+          "IsPaperBox": false,
+          "IsRainbowBox": false
+        },
+        {
+          "Id": "0_2.0_0.0",
+          "TypeId": 1,
+          "BoxColor": 2,
+          "BlockedNodes": [],
+          "InitCards": [
+            2,
+            2,
+            2,
+            0,
+            0,
+            0
           ],
           "IsHidden": false,
           "LockedTurn": 0,
@@ -2964,131 +3478,400 @@ export const SAMPLE_LEVELS: SampleLevelPreset[] = [
   },
   {
     "id": "easy_10",
-    "name": "Easy 10: The Grand Workshop",
+    "name": "Easy 10: Crimson Citadel",
     "difficulty": "easy",
-    "description": "Milestone logic challenge: strategically deploy the paper feeder and deduce the hidden rainbow container to prevent parking gridlock.",
+    "description": "Milestone 4-tier challenge: navigate extreme red scarcity disguised across rainbow boxes.",
     "data": {
       "Id": 10,
       "BoardOffsetX": 0,
       "BoardOffsetZ": 0,
       "BoardNodes": [
         {
-          "Id": "2_-1.1_1.0",
+          "Id": "3_-2.8_0.0",
+          "LayerId": 3,
+          "TileMapId": 3,
+          "XPosition": -2.8,
+          "ZPosition": 0,
+          "YRotation": 0,
+          "ZRotation": 0,
+          "MapPosX": -2.8,
+          "MapPosY": 0,
+          "YPosition": 0
+        },
+        {
+          "Id": "3_-1.4_0.8",
+          "LayerId": 3,
+          "TileMapId": 3,
+          "XPosition": -1.4,
+          "ZPosition": 0.8,
+          "YRotation": 0,
+          "ZRotation": 0,
+          "MapPosX": -1.4,
+          "MapPosY": 0.8,
+          "YPosition": 0
+        },
+        {
+          "Id": "3_0.0_0.0",
+          "LayerId": 3,
+          "TileMapId": 3,
+          "XPosition": 0,
+          "ZPosition": 0,
+          "YRotation": 0,
+          "ZRotation": 0,
+          "MapPosX": 0,
+          "MapPosY": 0,
+          "YPosition": 0
+        },
+        {
+          "Id": "3_1.4_0.8",
+          "LayerId": 3,
+          "TileMapId": 3,
+          "XPosition": 1.4,
+          "ZPosition": 0.8,
+          "YRotation": 0,
+          "ZRotation": 0,
+          "MapPosX": 1.4,
+          "MapPosY": 0.8,
+          "YPosition": 0
+        },
+        {
+          "Id": "3_2.8_0.0",
+          "LayerId": 3,
+          "TileMapId": 3,
+          "XPosition": 2.8,
+          "ZPosition": 0,
+          "YRotation": 0,
+          "ZRotation": 0,
+          "MapPosX": 2.8,
+          "MapPosY": 0,
+          "YPosition": 0
+        },
+        {
+          "Id": "2_-2.4_1.0",
           "LayerId": 2,
           "TileMapId": 2,
-          "XPosition": -1.1,
-          "ZPosition": 1.0,
+          "XPosition": -2.4,
+          "ZPosition": 1,
           "YRotation": 0,
           "ZRotation": 0,
-          "MapPosX": -1.1,
-          "MapPosY": 1.0,
+          "MapPosX": -2.4,
+          "MapPosY": 1,
           "YPosition": 0
         },
         {
-          "Id": "2_1.1_1.0",
+          "Id": "2_-0.8_1.0",
           "LayerId": 2,
           "TileMapId": 2,
-          "XPosition": 1.1,
-          "ZPosition": 1.0,
+          "XPosition": -0.8,
+          "ZPosition": 1,
           "YRotation": 0,
           "ZRotation": 0,
-          "MapPosX": 1.1,
-          "MapPosY": 1.0,
+          "MapPosX": -0.8,
+          "MapPosY": 1,
           "YPosition": 0
         },
         {
-          "Id": "1_-1.5_0.1",
+          "Id": "2_0.8_1.0",
+          "LayerId": 2,
+          "TileMapId": 2,
+          "XPosition": 0.8,
+          "ZPosition": 1,
+          "YRotation": 0,
+          "ZRotation": 0,
+          "MapPosX": 0.8,
+          "MapPosY": 1,
+          "YPosition": 0
+        },
+        {
+          "Id": "2_2.4_1.0",
+          "LayerId": 2,
+          "TileMapId": 2,
+          "XPosition": 2.4,
+          "ZPosition": 1,
+          "YRotation": 0,
+          "ZRotation": 0,
+          "MapPosX": 2.4,
+          "MapPosY": 1,
+          "YPosition": 0
+        },
+        {
+          "Id": "2_-1.2_-1.0",
+          "LayerId": 2,
+          "TileMapId": 2,
+          "XPosition": -1.2,
+          "ZPosition": -1,
+          "YRotation": 0,
+          "ZRotation": 0,
+          "MapPosX": -1.2,
+          "MapPosY": -1,
+          "YPosition": 0
+        },
+        {
+          "Id": "2_1.2_-1.0",
+          "LayerId": 2,
+          "TileMapId": 2,
+          "XPosition": 1.2,
+          "ZPosition": -1,
+          "YRotation": 0,
+          "ZRotation": 0,
+          "MapPosX": 1.2,
+          "MapPosY": -1,
+          "YPosition": 0
+        },
+        {
+          "Id": "1_-2.0_0.0",
           "LayerId": 1,
           "TileMapId": 1,
-          "XPosition": -1.5,
-          "ZPosition": 0.1,
+          "XPosition": -2,
+          "ZPosition": 0,
           "YRotation": 0,
           "ZRotation": 0,
-          "MapPosX": -1.5,
-          "MapPosY": 0.1,
+          "MapPosX": -2,
+          "MapPosY": 0,
           "YPosition": 0
         },
         {
-          "Id": "1_0.0_0.1",
+          "Id": "1_-1.0_0.0",
           "LayerId": 1,
           "TileMapId": 1,
-          "XPosition": 0.0,
-          "ZPosition": 0.1,
+          "XPosition": -1,
+          "ZPosition": 0,
           "YRotation": 0,
           "ZRotation": 0,
-          "MapPosX": 0.0,
-          "MapPosY": 0.1,
+          "MapPosX": -1,
+          "MapPosY": 0,
           "YPosition": 0
         },
         {
-          "Id": "1_1.5_0.1",
+          "Id": "1_0.0_0.0",
           "LayerId": 1,
           "TileMapId": 1,
-          "XPosition": 1.5,
-          "ZPosition": 0.1,
+          "XPosition": 0,
+          "ZPosition": 0,
           "YRotation": 0,
           "ZRotation": 0,
-          "MapPosX": 1.5,
-          "MapPosY": 0.1,
+          "MapPosX": 0,
+          "MapPosY": 0,
           "YPosition": 0
         },
         {
-          "Id": "0_-2.1_-0.8",
-          "LayerId": 0,
-          "TileMapId": 0,
-          "XPosition": -2.1,
-          "ZPosition": -0.8,
+          "Id": "1_1.0_0.0",
+          "LayerId": 1,
+          "TileMapId": 1,
+          "XPosition": 1,
+          "ZPosition": 0,
           "YRotation": 0,
           "ZRotation": 0,
-          "MapPosX": -2.1,
-          "MapPosY": -0.8,
+          "MapPosX": 1,
+          "MapPosY": 0,
           "YPosition": 0
         },
         {
-          "Id": "0_-0.7_-0.8",
-          "LayerId": 0,
-          "TileMapId": 0,
-          "XPosition": -0.7,
-          "ZPosition": -0.8,
+          "Id": "1_2.0_0.0",
+          "LayerId": 1,
+          "TileMapId": 1,
+          "XPosition": 2,
+          "ZPosition": 0,
           "YRotation": 0,
           "ZRotation": 0,
-          "MapPosX": -0.7,
-          "MapPosY": -0.8,
+          "MapPosX": 2,
+          "MapPosY": 0,
           "YPosition": 0
         },
         {
-          "Id": "0_0.7_-0.8",
+          "Id": "0_-1.8_0.0",
           "LayerId": 0,
           "TileMapId": 0,
-          "XPosition": 0.7,
-          "ZPosition": -0.8,
+          "XPosition": -1.8,
+          "ZPosition": 0,
           "YRotation": 0,
           "ZRotation": 0,
-          "MapPosX": 0.7,
-          "MapPosY": -0.8,
+          "MapPosX": -1.8,
+          "MapPosY": 0,
           "YPosition": 0
         },
         {
-          "Id": "0_2.1_-0.8",
+          "Id": "0_-0.6_0.0",
           "LayerId": 0,
           "TileMapId": 0,
-          "XPosition": 2.1,
-          "ZPosition": -0.8,
+          "XPosition": -0.6,
+          "ZPosition": 0,
           "YRotation": 0,
           "ZRotation": 0,
-          "MapPosX": 2.1,
-          "MapPosY": -0.8,
+          "MapPosX": -0.6,
+          "MapPosY": 0,
+          "YPosition": 0
+        },
+        {
+          "Id": "0_0.6_0.0",
+          "LayerId": 0,
+          "TileMapId": 0,
+          "XPosition": 0.6,
+          "ZPosition": 0,
+          "YRotation": 0,
+          "ZRotation": 0,
+          "MapPosX": 0.6,
+          "MapPosY": 0,
+          "YPosition": 0
+        },
+        {
+          "Id": "0_1.8_0.0",
+          "LayerId": 0,
+          "TileMapId": 0,
+          "XPosition": 1.8,
+          "ZPosition": 0,
+          "YRotation": 0,
+          "ZRotation": 0,
+          "MapPosX": 1.8,
+          "MapPosY": 0,
           "YPosition": 0
         }
       ],
       "BoxNodes": [
         {
-          "Id": "2_-1.1_1.0",
-          "TypeId": 1,
-          "BoxColor": 5,
+          "Id": "3_-2.8_0.0",
+          "TypeId": 2,
+          "BoxColor": 1,
           "BlockedNodes": [
-            "1_-1.5_0.1",
-            "1_0.0_0.1"
+            "2_-2.4_1.0",
+            "2_-1.2_-1.0",
+            "1_-2.0_0.0",
+            "1_-1.0_0.0",
+            "0_-1.8_0.0"
+          ],
+          "InitCards": [
+            0,
+            0,
+            0,
+            1,
+            1,
+            1,
+            2,
+            2
+          ],
+          "IsHidden": false,
+          "LockedTurn": 0,
+          "IsPaperBox": false,
+          "IsRainbowBox": false
+        },
+        {
+          "Id": "3_-1.4_0.8",
+          "TypeId": 1,
+          "BoxColor": 2,
+          "BlockedNodes": [
+            "2_-2.4_1.0",
+            "2_-0.8_1.0",
+            "1_-2.0_0.0",
+            "1_-1.0_0.0",
+            "1_0.0_0.0",
+            "0_-1.8_0.0",
+            "0_-0.6_0.0"
+          ],
+          "InitCards": [
+            0,
+            0,
+            0,
+            2,
+            2,
+            3
+          ],
+          "IsHidden": false,
+          "LockedTurn": 0,
+          "IsPaperBox": false,
+          "IsRainbowBox": false
+        },
+        {
+          "Id": "3_0.0_0.0",
+          "TypeId": 2,
+          "BoxColor": 0,
+          "BlockedNodes": [
+            "2_-0.8_1.0",
+            "2_0.8_1.0",
+            "2_-1.2_-1.0",
+            "2_1.2_-1.0",
+            "1_-1.0_0.0",
+            "1_0.0_0.0",
+            "1_1.0_0.0",
+            "0_-1.8_0.0",
+            "0_-0.6_0.0",
+            "0_0.6_0.0",
+            "0_1.8_0.0"
+          ],
+          "InitCards": [
+            0,
+            0,
+            0,
+            0,
+            1,
+            1,
+            2,
+            2
+          ],
+          "IsHidden": false,
+          "LockedTurn": 0,
+          "IsPaperBox": false,
+          "IsRainbowBox": false
+        },
+        {
+          "Id": "3_1.4_0.8",
+          "TypeId": 1,
+          "BoxColor": 3,
+          "BlockedNodes": [
+            "2_0.8_1.0",
+            "2_2.4_1.0",
+            "1_0.0_0.0",
+            "1_1.0_0.0",
+            "1_2.0_0.0",
+            "0_0.6_0.0",
+            "0_1.8_0.0"
+          ],
+          "InitCards": [
+            0,
+            0,
+            0,
+            3,
+            3,
+            1
+          ],
+          "IsHidden": false,
+          "LockedTurn": 0,
+          "IsPaperBox": false,
+          "IsRainbowBox": false
+        },
+        {
+          "Id": "3_2.8_0.0",
+          "TypeId": 2,
+          "BoxColor": 1,
+          "BlockedNodes": [
+            "2_2.4_1.0",
+            "2_1.2_-1.0",
+            "1_1.0_0.0",
+            "1_2.0_0.0",
+            "0_1.8_0.0"
+          ],
+          "InitCards": [
+            0,
+            0,
+            0,
+            1,
+            1,
+            1,
+            3,
+            3
+          ],
+          "IsHidden": false,
+          "LockedTurn": 0,
+          "IsPaperBox": false,
+          "IsRainbowBox": false
+        },
+        {
+          "Id": "2_-2.4_1.0",
+          "TypeId": 1,
+          "BoxColor": 0,
+          "BlockedNodes": [
+            "1_-2.0_0.0",
+            "1_-1.0_0.0",
+            "0_-1.8_0.0"
           ],
           "InitCards": [
             0,
@@ -3100,23 +3883,28 @@ export const SAMPLE_LEVELS: SampleLevelPreset[] = [
           ],
           "IsHidden": false,
           "LockedTurn": 0,
-          "IsPaperBox": true,
+          "IsPaperBox": false,
           "IsRainbowBox": false
         },
         {
-          "Id": "2_1.1_1.0",
+          "Id": "2_-0.8_1.0",
           "TypeId": 1,
-          "BoxColor": 3,
+          "BoxColor": 0,
           "BlockedNodes": [
-            "1_0.0_0.1",
-            "1_1.5_0.1"
+            "1_-2.0_0.0",
+            "1_-1.0_0.0",
+            "1_0.0_0.0",
+            "0_-1.8_0.0",
+            "0_-0.6_0.0",
+            "0_0.6_0.0"
           ],
           "InitCards": [
-            3,
-            3,
-            3,
             0,
-            0
+            0,
+            0,
+            2,
+            2,
+            2
           ],
           "IsHidden": false,
           "LockedTurn": 0,
@@ -3124,76 +3912,45 @@ export const SAMPLE_LEVELS: SampleLevelPreset[] = [
           "IsRainbowBox": true
         },
         {
-          "Id": "1_-1.5_0.1",
+          "Id": "2_0.8_1.0",
           "TypeId": 1,
           "BoxColor": 0,
           "BlockedNodes": [
-            "0_-2.1_-0.8",
-            "0_-0.7_-0.8"
+            "1_0.0_0.0",
+            "1_1.0_0.0",
+            "1_2.0_0.0",
+            "0_-0.6_0.0",
+            "0_0.6_0.0",
+            "0_1.8_0.0"
           ],
           "InitCards": [
             0,
             0,
             0,
             3,
+            3,
             3
           ],
           "IsHidden": false,
           "LockedTurn": 0,
           "IsPaperBox": false,
-          "IsRainbowBox": false
+          "IsRainbowBox": true
         },
         {
-          "Id": "1_0.0_0.1",
+          "Id": "2_2.4_1.0",
           "TypeId": 1,
           "BoxColor": 1,
           "BlockedNodes": [
-            "0_-0.7_-0.8",
-            "0_0.7_-0.8"
+            "1_1.0_0.0",
+            "1_2.0_0.0",
+            "0_1.8_0.0"
           ],
           "InitCards": [
             1,
             1,
             1,
-            3,
-            3
-          ],
-          "IsHidden": false,
-          "LockedTurn": 0,
-          "IsPaperBox": false,
-          "IsRainbowBox": false
-        },
-        {
-          "Id": "1_1.5_0.1",
-          "TypeId": 1,
-          "BoxColor": 2,
-          "BlockedNodes": [
-            "0_0.7_-0.8",
-            "0_2.1_-0.8"
-          ],
-          "InitCards": [
             2,
             2,
-            2,
-            3,
-            3
-          ],
-          "IsHidden": false,
-          "LockedTurn": 0,
-          "IsPaperBox": false,
-          "IsRainbowBox": false
-        },
-        {
-          "Id": "0_-2.1_-0.8",
-          "TypeId": 1,
-          "BoxColor": 0,
-          "BlockedNodes": [],
-          "InitCards": [
-            0,
-            0,
-            0,
-            1,
-            1,
             2
           ],
           "IsHidden": false,
@@ -3202,17 +3959,23 @@ export const SAMPLE_LEVELS: SampleLevelPreset[] = [
           "IsRainbowBox": false
         },
         {
-          "Id": "0_-0.7_-0.8",
+          "Id": "2_-1.2_-1.0",
           "TypeId": 1,
-          "BoxColor": 1,
-          "BlockedNodes": [],
+          "BoxColor": 2,
+          "BlockedNodes": [
+            "1_-2.0_0.0",
+            "1_-1.0_0.0",
+            "1_0.0_0.0",
+            "0_-1.8_0.0",
+            "0_-0.6_0.0"
+          ],
           "InitCards": [
-            1,
-            1,
-            1,
             2,
             2,
-            0
+            2,
+            3,
+            3,
+            3
           ],
           "IsHidden": false,
           "LockedTurn": 0,
@@ -3220,15 +3983,22 @@ export const SAMPLE_LEVELS: SampleLevelPreset[] = [
           "IsRainbowBox": false
         },
         {
-          "Id": "0_0.7_-0.8",
+          "Id": "2_1.2_-1.0",
           "TypeId": 1,
-          "BoxColor": 2,
-          "BlockedNodes": [],
+          "BoxColor": 3,
+          "BlockedNodes": [
+            "1_0.0_0.0",
+            "1_1.0_0.0",
+            "1_2.0_0.0",
+            "0_0.6_0.0",
+            "0_1.8_0.0"
+          ],
           "InitCards": [
-            2,
-            2,
-            2,
-            2,
+            3,
+            3,
+            3,
+            1,
+            1,
             1
           ],
           "IsHidden": false,
@@ -3237,7 +4007,156 @@ export const SAMPLE_LEVELS: SampleLevelPreset[] = [
           "IsRainbowBox": false
         },
         {
-          "Id": "0_2.1_-0.8",
+          "Id": "1_-2.0_0.0",
+          "TypeId": 1,
+          "BoxColor": 0,
+          "BlockedNodes": [
+            "0_-1.8_0.0",
+            "0_-0.6_0.0"
+          ],
+          "InitCards": [
+            0,
+            0,
+            0,
+            1,
+            1,
+            1
+          ],
+          "IsHidden": false,
+          "LockedTurn": 0,
+          "IsPaperBox": false,
+          "IsRainbowBox": false
+        },
+        {
+          "Id": "1_-1.0_0.0",
+          "TypeId": 1,
+          "BoxColor": 1,
+          "BlockedNodes": [
+            "0_-1.8_0.0",
+            "0_-0.6_0.0",
+            "0_0.6_0.0"
+          ],
+          "InitCards": [
+            1,
+            1,
+            1,
+            2,
+            2,
+            2
+          ],
+          "IsHidden": false,
+          "LockedTurn": 0,
+          "IsPaperBox": false,
+          "IsRainbowBox": false
+        },
+        {
+          "Id": "1_0.0_0.0",
+          "TypeId": 2,
+          "BoxColor": 2,
+          "BlockedNodes": [
+            "0_-1.8_0.0",
+            "0_-0.6_0.0",
+            "0_0.6_0.0",
+            "0_1.8_0.0"
+          ],
+          "InitCards": [
+            2,
+            2,
+            0,
+            0,
+            3,
+            3,
+            3,
+            3
+          ],
+          "IsHidden": false,
+          "LockedTurn": 0,
+          "IsPaperBox": false,
+          "IsRainbowBox": false
+        },
+        {
+          "Id": "1_1.0_0.0",
+          "TypeId": 1,
+          "BoxColor": 3,
+          "BlockedNodes": [
+            "0_-0.6_0.0",
+            "0_0.6_0.0",
+            "0_1.8_0.0"
+          ],
+          "InitCards": [
+            3,
+            3,
+            3,
+            0,
+            0,
+            0
+          ],
+          "IsHidden": false,
+          "LockedTurn": 0,
+          "IsPaperBox": false,
+          "IsRainbowBox": false
+        },
+        {
+          "Id": "1_2.0_0.0",
+          "TypeId": 1,
+          "BoxColor": 1,
+          "BlockedNodes": [
+            "0_0.6_0.0",
+            "0_1.8_0.0"
+          ],
+          "InitCards": [
+            1,
+            1,
+            1,
+            0,
+            0,
+            0
+          ],
+          "IsHidden": false,
+          "LockedTurn": 0,
+          "IsPaperBox": false,
+          "IsRainbowBox": false
+        },
+        {
+          "Id": "0_-1.8_0.0",
+          "TypeId": 2,
+          "BoxColor": 0,
+          "BlockedNodes": [],
+          "InitCards": [
+            0,
+            0,
+            0,
+            0,
+            2,
+            2,
+            3,
+            3
+          ],
+          "IsHidden": false,
+          "LockedTurn": 0,
+          "IsPaperBox": false,
+          "IsRainbowBox": false
+        },
+        {
+          "Id": "0_-0.6_0.0",
+          "TypeId": 1,
+          "BoxColor": 2,
+          "BlockedNodes": [],
+          "InitCards": [
+            2,
+            2,
+            1,
+            1,
+            1,
+            1
+          ],
+          "IsHidden": false,
+          "LockedTurn": 0,
+          "IsPaperBox": false,
+          "IsRainbowBox": false
+        },
+        {
+          "Id": "0_0.6_0.0",
           "TypeId": 1,
           "BoxColor": 3,
           "BlockedNodes": [],
@@ -3245,8 +4164,27 @@ export const SAMPLE_LEVELS: SampleLevelPreset[] = [
             3,
             3,
             3,
+            3,
             2,
             2
+          ],
+          "IsHidden": false,
+          "LockedTurn": 0,
+          "IsPaperBox": false,
+          "IsRainbowBox": false
+        },
+        {
+          "Id": "0_1.8_0.0",
+          "TypeId": 1,
+          "BoxColor": 3,
+          "BlockedNodes": [],
+          "InitCards": [
+            3,
+            3,
+            3,
+            1,
+            1,
+            1
           ],
           "IsHidden": false,
           "LockedTurn": 0,
@@ -3259,7 +4197,7 @@ export const SAMPLE_LEVELS: SampleLevelPreset[] = [
       "LinkedBoxes": [],
       "IsOddSize": false,
       "Version": 2,
-      "IsHardLvl": false,
+      "IsHardLvl": true,
       "InitialCards": []
     }
   },
@@ -10660,6 +11598,5 @@ export const SAMPLE_LEVELS: SampleLevelPreset[] = [
   }
 ];
 
-export const PRESET_LEVELS = SAMPLE_LEVELS;
-
+export const PRESET_LEVELS: SampleLevelPreset[] = SAMPLE_LEVELS;
 export const LEVEL_1_SAMPLE: LevelData = SAMPLE_LEVELS[0].data;
