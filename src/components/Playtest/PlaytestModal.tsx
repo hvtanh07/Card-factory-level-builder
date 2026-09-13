@@ -67,9 +67,9 @@ interface RoutePoint {
   angle: number;
 }
 
-const BELT_SPEED = 190.0; // pixels per second
-const MIN_CARD_DISTANCE = 32.0;
-const GRID_SCALE = 62.0; // Screen pixels per unity unit
+const BELT_SPEED = 240.0; // pixels per second
+const MIN_CARD_DISTANCE = 36.0;
+const GRID_SCALE = 80.0; // Screen pixels per unity unit (matches DEFAULT_GRID_UNIT in design mode)
 
 function resolveCardOverlaps(cards: ConveyorCard[], totalLength: number): void {
   if (cards.length <= 1 || totalLength <= 0) return;
@@ -130,6 +130,7 @@ export const PlaytestModal: React.FC<PlaytestModalProps> = ({
   // Game state
   const [boxSlots, setBoxSlots] = useState<(DockedBox | null)[]>(() => new Array(activeSlots.length).fill(null));
   const [clearedNodes, setClearedNodes] = useState<Set<string>>(new Set());
+  const [boxLockTurns, setBoxLockTurns] = useState<Map<string, number>>(new Map());
   const [spawnerQueues, setSpawnerQueues] = useState<Map<string, SpawnBox[]>>(new Map());
   const [deliveredCardsCount, setDeliveredCardsCount] = useState<number>(0);
   const [deliveredBoxesCount, setDeliveredBoxesCount] = useState<number>(0);
@@ -331,6 +332,24 @@ export const PlaytestModal: React.FC<PlaytestModalProps> = ({
     }
     setSpawnerQueues(initialSpawners);
 
+    // Initialize remaining lock turns on board boxes and spawners
+    const initialLockTurns = new Map<string, number>();
+    for (const bn of levelData.BoxNodes) {
+      const turns = bn.LockedTurn ?? 0;
+      if (turns > 0) {
+        initialLockTurns.set(bn.Id, turns);
+      }
+    }
+    for (const sn of (levelData.SpawnerNodes || [])) {
+      if (sn.SpawnBoxes.length > 0) {
+        const turns = sn.SpawnBoxes[0].LockedTurn ?? 0;
+        if (turns > 0) {
+          initialLockTurns.set(sn.Id, turns);
+        }
+      }
+    }
+    setBoxLockTurns(initialLockTurns);
+
     const initialBeltCards: ConveyorCard[] = (levelData.InitialCards || []).map((color, idx) => ({
       uid: `init_card_${idx}_${Date.now()}`,
       color,
@@ -362,9 +381,12 @@ export const PlaytestModal: React.FC<PlaytestModalProps> = ({
   }, [levelData]);
 
   const liveBlockedByMap = useMemo(() => {
-    const remainingBoxNodes = levelData.BoxNodes.filter(b => !clearedNodes.has(b.Id));
-    return getBlockedByMap(remainingBoxNodes);
-  }, [levelData.BoxNodes, clearedNodes]);
+    const remainingNodes = [
+      ...levelData.BoxNodes.filter(b => !clearedNodes.has(b.Id)),
+      ...(levelData.SpawnerNodes || []).filter(s => !clearedNodes.has(s.Id)),
+    ];
+    return getBlockedByMap(remainingNodes as BoxNode[]);
+  }, [levelData.BoxNodes, levelData.SpawnerNodes, clearedNodes]);
 
   // Track position helper
   const getTrackCoords = useCallback((distance: number): RoutePoint => {
@@ -539,9 +561,44 @@ export const PlaytestModal: React.FC<PlaytestModalProps> = ({
     const activeBox = boxNode || (spawnerBoxes ? spawnerBoxes[0] : null);
     if (!activeBox) return;
 
+    // Check if this board box is locked by turns
+    const currentLockTurn = boxLockTurns.get(nodeId) ?? (activeBox.LockedTurn || 0);
+    if (currentLockTurn > 0) {
+      showWarning(`This box is locked! Send ${currentLockTurn} more unblocked box${currentLockTurn > 1 ? 'es' : ''} to unlock.`);
+      return;
+    }
+
     const isTray = Boolean(activeBox.IsPaperBox);
     const boxType = getBoxType(activeBox.TypeId, isTray);
     const { totalTrackLength } = sceneLayout;
+
+    // Helper to decrement lock turns on all unblocked board boxes when a box is sent up
+    const advanceLockTurns = (clearedId: string, hasRemainingSpawnerBox: boolean, nextSpawnerLockTurn: number) => {
+      setBoxLockTurns(prev => {
+        const next = new Map(prev);
+        // Reduce counter by 1 for all remaining board boxes that were UNBLOCKED at the time of this move
+        for (const bn of levelData.BoardNodes) {
+          if (bn.Id === clearedId || clearedNodes.has(bn.Id)) continue;
+          const cur = next.get(bn.Id) ?? 0;
+          if (cur > 0) {
+            const isUnblocked = (liveBlockedByMap.get(bn.Id) || []).length === 0;
+            if (isUnblocked) {
+              next.set(bn.Id, Math.max(0, cur - 1));
+            }
+          }
+        }
+        if (hasRemainingSpawnerBox) {
+          if (nextSpawnerLockTurn > 0) {
+            next.set(clearedId, nextSpawnerLockTurn);
+          } else {
+            next.delete(clearedId);
+          }
+        } else {
+          next.delete(clearedId);
+        }
+        return next;
+      });
+    };
 
     // === TRAY LOGIC ===
     if (isTray) {
@@ -554,6 +611,8 @@ export const PlaytestModal: React.FC<PlaytestModalProps> = ({
       resolveCardOverlaps(conveyorCardsRef.current, totalTrackLength);
 
       const newClearedNodes = new Set(clearedNodes);
+      let hasRemaining = false;
+      let nextLockTurn = 0;
       if (spawnerBoxes && spawnerBoxes.length > 0) {
         const remainingSpawnBoxes = spawnerBoxes.slice(1);
         const updatedMap = new Map(spawnerQueues);
@@ -562,11 +621,15 @@ export const PlaytestModal: React.FC<PlaytestModalProps> = ({
 
         if (remainingSpawnBoxes.length === 0) {
           newClearedNodes.add(nodeId);
+        } else {
+          hasRemaining = true;
+          nextLockTurn = remainingSpawnBoxes[0].LockedTurn || 0;
         }
       } else {
         newClearedNodes.add(nodeId);
       }
 
+      advanceLockTurns(nodeId, hasRemaining, nextLockTurn);
       setClearedNodes(newClearedNodes);
       clearedNodesRef.current = newClearedNodes;
       return;
@@ -641,6 +704,8 @@ export const PlaytestModal: React.FC<PlaytestModalProps> = ({
     boxSlotsRef.current = updatedSlots;
 
     const newClearedNodes = new Set(clearedNodes);
+    let hasRemaining = false;
+    let nextLockTurn = 0;
     if (spawnerBoxes && spawnerBoxes.length > 0) {
       const remainingSpawnBoxes = spawnerBoxes.slice(1);
       const updatedMap = new Map(spawnerQueues);
@@ -649,11 +714,15 @@ export const PlaytestModal: React.FC<PlaytestModalProps> = ({
 
       if (remainingSpawnBoxes.length === 0) {
         newClearedNodes.add(nodeId);
+      } else {
+        hasRemaining = true;
+        nextLockTurn = remainingSpawnBoxes[0].LockedTurn || 0;
       }
     } else {
       newClearedNodes.add(nodeId);
     }
 
+    advanceLockTurns(nodeId, hasRemaining, nextLockTurn);
     setClearedNodes(newClearedNodes);
     clearedNodesRef.current = newClearedNodes;
   };
@@ -774,7 +843,7 @@ export const PlaytestModal: React.FC<PlaytestModalProps> = ({
               transition: isPanning ? 'none' : 'transform 0.05s ease-out',
             }}
           >
-            <svg className="w-[1000px] h-[900px] pointer-events-auto" viewBox="-500 -450 1000 900">
+            <svg className="w-[1200px] h-[1000px] pointer-events-auto" viewBox="-600 -500 1200 1000">
               <defs>
                 <linearGradient id="unifiedBeltGradient" x1="0" y1="0" x2="1" y2="0">
                   <stop offset="0%" stopColor="#293548" />
@@ -1151,6 +1220,8 @@ export const PlaytestModal: React.FC<PlaytestModalProps> = ({
                     const colorDef = getColor(activeBox.BoxColor);
                     const blockers = liveBlockedByMap.get(bn.Id) || [];
                     const isBlocked = blockers.length > 0;
+                    const lockTurn = boxLockTurns.get(bn.Id) ?? (activeBox.LockedTurn || 0);
+                    const isMoveLocked = lockTurn > 0;
 
                     const isHidden = (activeBox.IsRainbowBox || activeBox.IsHidden) && isBlocked;
                     const areCardsHidden = activeBox.IsCardsHidden;
@@ -1162,13 +1233,14 @@ export const PlaytestModal: React.FC<PlaytestModalProps> = ({
                     const rot = bn.YRotation ?? bn.ZRotation ?? 0;
                     const svgAngle = (rot % 360 + 360) % 360;
 
-                    // Box dimensions matching editor (scale ~ 0.65 to fit seamlessly in unified view)
-                    const boxScale = 0.65;
-                    const w = boxType.width * boxScale;
-                    const h = boxType.height * boxScale;
+                    // Box dimensions matching editor exactly (1:1 with design mode)
+                    const w = boxType.width;
+                    const h = boxType.height;
+                    const halfW = w / 2;
+                    const halfH = h / 2;
                     const layerId = bn.LayerId ?? bn.TileMapId ?? 0;
                     const layerElev = Math.min(Math.max(layerId, 0), 4);
-                    const shadowY = layerElev * 3 + 3;
+                    const shadowOffsetY = layerElev * 3 + 2;
 
                     const cardCount = activeBox.InitCards.length;
                     const slotCount = Math.max(boxType.capacity, cardCount || 1);
@@ -1182,35 +1254,35 @@ export const PlaytestModal: React.FC<PlaytestModalProps> = ({
                           handleBoardBoxClick(bn.Id);
                         }}
                         className={`cursor-pointer transition-opacity duration-150 ${
-                          isBlocked ? 'opacity-85 brightness-75' : ''
+                          isBlocked ? 'opacity-85 brightness-75' : isMoveLocked ? 'opacity-90' : ''
                         }`}
                       >
                         {/* Drop Shadow */}
                         <rect
-                          x={-w / 2}
-                          y={-h / 2 + shadowY}
+                          x={-halfW + 2}
+                          y={-halfH + shadowOffsetY}
                           width={w}
                           height={h}
                           rx={12}
-                          fill="rgba(0,0,0,0.35)"
+                          fill="rgba(0,0,0,0.45)"
                         />
 
                         {/* Outer Box Body */}
                         {isTray ? (
                           <g>
                             <rect
-                              x={-w / 2}
-                              y={-h / 2}
+                              x={-halfW}
+                              y={-halfH}
                               width={w}
                               height={h}
                               rx={12}
                               fill="#ffffff"
-                              stroke={isBlocked ? '#64748b' : '#cbd5e1'}
+                              stroke={isBlocked ? '#64748b' : isMoveLocked ? '#a855f7' : '#cbd5e1'}
                               strokeWidth={2}
                             />
                             <rect
-                              x={-w / 2 + 4}
-                              y={-h / 2 + 4}
+                              x={-halfW + 4}
+                              y={-halfH + 4}
                               width={w - 8}
                               height={h - 8}
                               rx={8}
@@ -1222,18 +1294,18 @@ export const PlaytestModal: React.FC<PlaytestModalProps> = ({
                         ) : (
                           <g>
                             <rect
-                              x={-w / 2}
-                              y={-h / 2}
+                              x={-halfW}
+                              y={-halfH}
                               width={w}
                               height={h}
                               rx={12}
                               fill={isHidden ? '#64748b' : colorDef.hex}
-                              stroke={isBlocked ? '#475569' : '#ffffff'}
+                              stroke={isBlocked ? '#475569' : isMoveLocked ? '#a855f7' : '#ffffff'}
                               strokeWidth={2}
                             />
                             <rect
-                              x={-w / 2 + 4}
-                              y={-h / 2 + 4}
+                              x={-halfW + 4}
+                              y={-halfH + 4}
                               width={w - 8}
                               height={h - 8}
                               rx={8}
@@ -1250,17 +1322,17 @@ export const PlaytestModal: React.FC<PlaytestModalProps> = ({
                             const cols = Math.max(Math.ceil(boxType.capacity / rows), 1);
                             const totalSlots = cols * rows;
 
-                            const margin = 6;
+                            const margin = 8;
                             const innerW = w - 2 * margin;
                             const innerH = h - 2 * margin;
 
                             const cellW = innerW / cols;
                             const cellH = innerH / rows;
 
-                            const padX = 2;
-                            const padY = 2;
-                            const cardW = Math.max(cellW - padX * 2, 3);
-                            const cardH = Math.max(cellH - padY * 2, 3);
+                            const padX = 2.5;
+                            const padY = 2.5;
+                            const cardW = Math.max(cellW - padX * 2, 4);
+                            const cardH = Math.max(cellH - padY * 2, 4);
                             const cardRx = Math.min(cardW, cardH) * 0.25;
 
                             const elements: React.ReactNode[] = [];
@@ -1269,8 +1341,8 @@ export const PlaytestModal: React.FC<PlaytestModalProps> = ({
                               const col = Math.floor(slotIdx / rows);
                               const row = slotIdx % rows;
 
-                              const slotCenterX = -w / 2 + margin + (col + 0.5) * cellW;
-                              const slotCenterY = -h / 2 + margin + (row + 0.5) * cellH;
+                              const slotCenterX = -halfW + margin + (col + 0.5) * cellW;
+                              const slotCenterY = -halfH + margin + (row + 0.5) * cellH;
 
                               const hasCard = slotIdx < cardCount;
                               const cardColorId = hasCard ? activeBox.InitCards[slotIdx] : null;
@@ -1303,19 +1375,19 @@ export const PlaytestModal: React.FC<PlaytestModalProps> = ({
                                     {areCardsHidden ? (
                                       <text
                                         x={slotCenterX}
-                                        y={slotCenterY + 3}
+                                        y={slotCenterY + 3.5}
                                         textAnchor="middle"
                                         fill="#94a3b8"
-                                        fontSize={8}
+                                        fontSize={9}
                                         fontWeight="bold"
                                       >
                                         ?
                                       </text>
                                     ) : (
                                       <rect
-                                        x={slotCenterX - cardW / 2 + 1}
-                                        y={slotCenterY - cardH / 2 + 1}
-                                        width={Math.max(cardW - 2, 1)}
+                                        x={slotCenterX - cardW / 2 + 1.5}
+                                        y={slotCenterY - cardH / 2 + 1.5}
+                                        width={cardW - 3}
                                         height={Math.max(cardH * 0.35, 2)}
                                         rx={cardRx / 2}
                                         fill="rgba(255, 255, 255, 0.35)"
@@ -1348,23 +1420,40 @@ export const PlaytestModal: React.FC<PlaytestModalProps> = ({
 
                         {/* Spawner Multiplier Badge */}
                         {isSpawner && spawnerBoxes.length > 1 && (
-                          <g transform={`translate(${-w / 2 + 10}, ${-h / 2 + 10})`}>
-                            <rect x="-10" y="-8" width="20" height="16" rx="4" fill="#a855f7" stroke="#ffffff" strokeWidth="1" />
-                            <text x="0" y="4" textAnchor="middle" fill="#ffffff" fontSize="9" fontWeight="bold">
+                          <g transform={`translate(${-halfW + 14}, ${-halfH + 12})`}>
+                            <rect x="-12" y="-9" width="24" height="18" rx="5" fill="#a855f7" stroke="#ffffff" strokeWidth="1.2" />
+                            <text x="0" y="4" textAnchor="middle" fill="#ffffff" fontSize="10" fontWeight="bold">
                               x{spawnerBoxes.length}
                             </text>
                           </g>
                         )}
 
-                        {/* Lock Overlay if Blocked */}
-                        {isBlocked && (
-                          <g transform="translate(0, 0)">
-                            <circle cx="0" cy="0" r="14" fill="rgba(15, 23, 42, 0.75)" stroke="#ef4444" strokeWidth="1.5" />
-                            <text x="0" y="4" textAnchor="middle" fill="#fca5a5" fontSize="11" fontWeight="bold">
-                              🔒
+                        {/* Lock Turn Badge in Corner if Locked */}
+                        {isMoveLocked && (
+                          <g transform={`translate(${halfW - 20}, ${halfH - 12})`}>
+                            <rect x="-16" y="-8" width="32" height="16" rx="5" fill="#6366f1" stroke="#ffffff" strokeWidth="1.2" />
+                            <text x="0" y="4" textAnchor="middle" fill="#ffffff" fontSize="9" fontWeight="bold">
+                              T:{lockTurn}
                             </text>
                           </g>
                         )}
+
+                        {/* Lock Overlay: If Physically Blocked (Red Lock) or If Unblocked but Move-Locked (Purple Turn Lock) */}
+                        {isBlocked ? (
+                          <g transform="translate(0, 0)">
+                            <circle cx="0" cy="0" r="16" fill="rgba(15, 23, 42, 0.85)" stroke="#ef4444" strokeWidth="1.8" />
+                            <text x="0" y="5" textAnchor="middle" fill="#fca5a5" fontSize="13" fontWeight="bold">
+                              🔒
+                            </text>
+                          </g>
+                        ) : isMoveLocked ? (
+                          <g transform="translate(0, 0)">
+                            <circle cx="0" cy="0" r="16" fill="rgba(30, 27, 75, 0.88)" stroke="#a855f7" strokeWidth="1.8" />
+                            <text x="0" y="5" textAnchor="middle" fill="#f3e8ff" fontSize="11" fontWeight="bold">
+                              🔒{lockTurn}
+                            </text>
+                          </g>
+                        ) : null}
                       </g>
                     );
                   })}
