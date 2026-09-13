@@ -74,6 +74,8 @@ export const BoxNodeVisual: React.FC<BoxNodeVisualProps> = ({
     ? '#ec4899'
     : isHovered
     ? '#93c5fd'
+    : isTray
+    ? '#cbd5e1'
     : boxColorDef.borderHex;
 
   const strokeWidth = (isSelected ? 3 : isHovered || isSpawner || blocksSelected || isBlockedBySelection ? 2.5 : 1.5) * Math.min(Math.max(scaleMultiplier, 0.7), 1.5);
@@ -123,18 +125,18 @@ export const BoxNodeVisual: React.FC<BoxNodeVisualProps> = ({
             width={w}
             height={h}
             rx={12 * scaleMultiplier}
-            fill="#e2e8f0"
+            fill="#ffffff"
             stroke={strokeColor}
             strokeWidth={strokeWidth}
           />
           <rect
-            x={-halfW + 3 * scaleMultiplier}
-            y={-halfH + 3 * scaleMultiplier}
-            width={w - 6 * scaleMultiplier}
-            height={h - 6 * scaleMultiplier}
-            rx={9 * scaleMultiplier}
-            fill="#cbd5e1"
-            stroke="#94a3b8"
+            x={-halfW + 4 * scaleMultiplier}
+            y={-halfH + 4 * scaleMultiplier}
+            width={w - 8 * scaleMultiplier}
+            height={h - 8 * scaleMultiplier}
+            rx={8 * scaleMultiplier}
+            fill="#f8fafc"
+            stroke="#e2e8f0"
             strokeWidth={1}
           />
         </g>

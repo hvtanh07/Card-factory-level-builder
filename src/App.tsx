@@ -521,6 +521,10 @@ export function App() {
       <StatsBar
         levelData={levelData}
         validationIssues={validationIssues}
+        onOpenConveyorCards={() => {
+          setSelectedNodeId(null);
+          setEditorMode('level');
+        }}
         onUpdateGlobalSettings={(isOddSize, version, isHardLvl) => {
           setLevelData(prev => ({
             ...prev,

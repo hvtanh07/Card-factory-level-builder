@@ -225,15 +225,19 @@ export const LevelCanvas: React.FC<LevelCanvasProps> = ({
       const newTotalY = dragStartNodePos.yPos + dy;
 
       if (snapToGrid) {
-        const mapPosX = Math.round(newTotalX);
-        const mapPosY = Math.round(newTotalY);
+        const snappedX = Math.round(newTotalX * 10) / 10;
+        const snappedY = Math.round(newTotalY * 10) / 10;
+        const mapPosX = Math.floor(snappedX + 0.5);
+        const mapPosY = Math.floor(snappedY + 0.5);
+        const xPos = Number((snappedX - mapPosX).toFixed(3));
+        const yPos = Number((snappedY - mapPosY).toFixed(3));
         onUpdateBoardNode({
           ...bn,
-          XPosition: mapPosX,
-          ZPosition: mapPosY,
+          XPosition: snappedX,
+          ZPosition: snappedY,
           MapPosX: mapPosX,
           MapPosY: mapPosY,
-          YPosition: 0,
+          YPosition: yPos,
         });
       } else {
         const mapPosX = Math.floor(newTotalX + 0.5);

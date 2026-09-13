@@ -49,18 +49,12 @@ export function screenToNodePos(
   gridUnit: number = DEFAULT_GRID_UNIT,
   snapToGrid: boolean = false
 ): { mapPosX: number; mapPosY: number; xPos: number; yPos: number } {
-  const unityX = (screenX - originX) / gridUnit;
-  const unityY = -(screenY - originY) / gridUnit;
+  let unityX = (screenX - originX) / gridUnit;
+  let unityY = -(screenY - originY) / gridUnit;
 
   if (snapToGrid) {
-    const mapPosX = Math.round(unityX);
-    const mapPosY = Math.round(unityY);
-    return {
-      mapPosX,
-      mapPosY,
-      xPos: 0,
-      yPos: 0,
-    };
+    unityX = Math.round(unityX * 10) / 10;
+    unityY = Math.round(unityY * 10) / 10;
   }
 
   const mapPosX = Math.floor(unityX + 0.5);

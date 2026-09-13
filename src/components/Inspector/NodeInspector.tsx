@@ -333,10 +333,10 @@ export const NodeInspector: React.FC<NodeInspectorProps> = ({
             </select>
           </div>
 
-          {/* Box Color Selector (10 Colors Grid) */}
+          {/* Box Color Selector (8 Colors Grid) */}
           <div>
             <span className="text-[11px] text-slate-400 mb-1.5 block">Box Color Theme</span>
-            <div className="grid grid-cols-5 gap-1.5">
+            <div className="grid grid-cols-4 gap-1.5">
               {COLOR_LIST.map(c => {
                 const isSelectedColor = currentBox.BoxColor === c.id;
                 return (
@@ -379,7 +379,7 @@ export const NodeInspector: React.FC<NodeInspectorProps> = ({
               />
             </div>
             <div>
-              <span className="text-[11px] text-slate-400 mb-1 block">Paper Box (Tray)</span>
+              <span className="text-[11px] text-slate-400 mb-1 block">Paper Box</span>
               <button
                 onClick={() => {
                   if (boxNode) {
@@ -387,18 +387,17 @@ export const NodeInspector: React.FC<NodeInspectorProps> = ({
                     onUpdateBoxNode({
                       ...boxNode,
                       IsPaperBox: newPaper,
-                      BoxColor: newPaper ? 5 : (boxNode.BoxColor === 5 ? 0 : boxNode.BoxColor),
                     });
                   }
                 }}
                 className={`w-full py-1 px-1.5 rounded-lg text-[11px] font-medium border flex items-center justify-center gap-1 transition ${
                   currentBox.IsPaperBox
-                    ? 'bg-amber-500/20 text-amber-300 border-amber-500/40 font-bold'
+                    ? 'bg-slate-100 text-slate-900 border-white font-bold shadow-sm'
                     : 'bg-slate-900 text-slate-400 border-slate-700 hover:text-slate-300'
                 }`}
-                title="Sets whether this box acts as a paper tray"
+                title="Sets whether this box acts as a paper box (white)"
               >
-                {currentBox.IsPaperBox ? 'Tray Box' : 'Standard'}
+                {currentBox.IsPaperBox ? 'Paper Box' : 'Standard'}
               </button>
             </div>
             <div>
@@ -663,6 +662,14 @@ export const NodeInspector: React.FC<NodeInspectorProps> = ({
               );
             })}
           </div>
+        </div>
+
+        {/* Section 6: Conveyor Preplaced Cards (Level InitialCards) */}
+        <div className="bg-slate-850/50 p-3 rounded-xl border border-slate-800">
+          <ConveyorCardsEditor
+            initialCards={levelData.InitialCards || []}
+            onChange={(cards) => onUpdateLevelSettings?.({ InitialCards: cards })}
+          />
         </div>
       </div>
     </div>

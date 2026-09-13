@@ -221,7 +221,7 @@ export const Navbar: React.FC<NavbarProps> = ({
               ? 'bg-emerald-500/20 text-emerald-300 border border-emerald-500/40 font-semibold'
               : 'text-slate-400 hover:text-slate-200 border border-transparent'
           }`}
-          title="Snap node placement to grid"
+          title="Snap node placement to 0.1 grid units"
         >
           <span>Snap</span>
         </button>

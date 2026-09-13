@@ -1204,18 +1204,18 @@ export const PlaytestModal: React.FC<PlaytestModalProps> = ({
                               width={w}
                               height={h}
                               rx={12}
-                              fill="#e2e8f0"
-                              stroke={isBlocked ? '#475569' : '#ffffff'}
+                              fill="#ffffff"
+                              stroke={isBlocked ? '#64748b' : '#cbd5e1'}
                               strokeWidth={2}
                             />
                             <rect
-                              x={-w / 2 + 3}
-                              y={-h / 2 + 3}
-                              width={w - 6}
-                              height={h - 6}
-                              rx={9}
-                              fill="#cbd5e1"
-                              stroke="#94a3b8"
+                              x={-w / 2 + 4}
+                              y={-h / 2 + 4}
+                              width={w - 8}
+                              height={h - 8}
+                              rx={8}
+                              fill="#f8fafc"
+                              stroke="#e2e8f0"
                               strokeWidth={1}
                             />
                           </g>

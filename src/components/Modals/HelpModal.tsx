@@ -58,7 +58,7 @@ export const HelpModal: React.FC<HelpModalProps> = ({ onClose }) => {
                 </kbd>
                 <div>
                   <span className="font-semibold text-slate-200">Move Position</span>
-                  <p className="text-slate-500 text-[11px]">Hold Shift or toggle Snap to snap to whole grid units.</p>
+                  <p className="text-slate-500 text-[11px]">Hold Shift or toggle Snap to snap to 0.1 grid increments.</p>
                 </div>
               </div>
 

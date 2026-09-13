@@ -99,20 +99,20 @@ export const ConveyorCardsEditor: React.FC<ConveyorCardsEditorProps> = ({
         <span className="text-[10px] font-semibold text-slate-400 uppercase tracking-wider block mb-1.5">
           Quick Add Card:
         </span>
-        <div className="grid grid-cols-5 gap-1.5">
-          {COLOR_LIST.slice(0, 10).map(col => (
+        <div className="grid grid-cols-4 gap-1.5">
+          {COLOR_LIST.map(col => (
             <button
               key={`quick-add-col-${col.id}`}
               onClick={() => handleAddCard(col.id)}
-              className="flex items-center justify-center gap-1 px-1.5 py-1 rounded-lg bg-slate-800/90 hover:bg-slate-750 border border-slate-700/80 hover:border-slate-500 transition group"
-              title={`Add ${col.name} Card`}
+              className="flex items-center justify-center gap-1.5 px-2 py-1 rounded-lg bg-slate-800/90 hover:bg-slate-750 border border-slate-700/80 hover:border-slate-500 transition group"
+              title={`Add ${col.name} (${col.id}) Card`}
             >
               <div
                 className="w-3 h-3 rounded-full border border-white/20 shrink-0 shadow-sm group-hover:scale-110 transition"
                 style={{ backgroundColor: col.hex }}
               />
               <span className="text-[10px] font-bold text-slate-300">
-                {col.id}
+                {col.id}: {col.name}
               </span>
             </button>
           ))}
