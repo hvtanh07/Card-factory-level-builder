@@ -46,7 +46,7 @@ export const BoxNodeVisual: React.FC<BoxNodeVisualProps> = ({
   const boxType = getBoxType(activeBox.TypeId, isTray);
   const boxColorDef = getColor(activeBox.BoxColor);
   const rot = boardNode.YRotation ?? boardNode.ZRotation ?? 0;
-  const svgAngle = (-rot + 360) % 360;
+  const svgAngle = (rot % 360 + 360) % 360;
 
   const w = boxType.width * scaleMultiplier;
   const h = boxType.height * scaleMultiplier;

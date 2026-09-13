@@ -89,8 +89,8 @@ export function getNodeBoundingBox(
   const rot = boardNode.YRotation ?? boardNode.ZRotation ?? 0;
   const layerId = boardNode.LayerId ?? boardNode.TileMapId ?? 0;
 
-  // In SVG, clockwise angle is -YRotation
-  const rad = (-rot * Math.PI) / 180;
+  // In SVG screen space, clockwise angle is +rot
+  const rad = (rot * Math.PI) / 180;
   const cos = Math.cos(rad);
   const sin = Math.sin(rad);
 

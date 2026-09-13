@@ -447,6 +447,28 @@ export function App() {
     showToast(`Deleted node "${id}"`);
   };
 
+  // Clear all boxes, spawners, and conveyor cards
+  const handleClearAll = () => {
+    const boxCount = levelData.BoardNodes.length;
+    const conveyorCardsCount = (levelData.InitialCards || []).length;
+    if (boxCount === 0 && conveyorCardsCount === 0) {
+      showToast('Level is already empty');
+      return;
+    }
+
+    if (window.confirm(`Are you sure you want to clear all ${boxCount} box(es) and ${conveyorCardsCount} preplaced conveyor item(s)?`)) {
+      setLevelData(prev => ({
+        ...prev,
+        BoardNodes: [],
+        BoxNodes: [],
+        SpawnerNodes: [],
+        InitialCards: [],
+      }));
+      setSelectedNodeId(null);
+      showToast('Cleared all boxes and preplaced conveyor items');
+    }
+  };
+
   // Load level from preset / library
   const handleLoadLevel = (level: LevelData, name: string) => {
     setLevelData(level);
@@ -515,6 +537,7 @@ export function App() {
         onToggleGhostLevel={() => setShowGhostLevel(prev => !prev)}
         onStartPlaytest={() => setShowPlaytestModal(true)}
         onOpenHelp={() => setShowHelpModal(true)}
+        onClearAll={handleClearAll}
       />
 
       {/* Stats and Validation Bar */}
@@ -625,6 +648,7 @@ export function App() {
               onSelectNode={setSelectedNodeId}
               onUpdateBoardNode={handleUpdateBoardNode}
               onUpdateBoxNode={handleUpdateBoxNode}
+              onClearAll={handleClearAll}
             />
           ) : (
             <ConveyorCanvas

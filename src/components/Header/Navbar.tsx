@@ -15,7 +15,8 @@ import {
   Layers,
   Workflow,
   Eye,
-  EyeOff
+  EyeOff,
+  Trash2
 } from 'lucide-react';
 
 interface NavbarProps {
@@ -53,11 +54,13 @@ interface NavbarProps {
   onToggleSnapToGrid: () => void;
   onStartPlaytest: () => void;
   onOpenHelp: () => void;
+  onClearAll?: () => void;
 }
 
 export const Navbar: React.FC<NavbarProps> = ({
   editorMode,
   onToggleEditorMode,
+  onClearAll,
   levelName,
   onLevelNameChange,
   onImportFiles,
@@ -152,13 +155,25 @@ export const Navbar: React.FC<NavbarProps> = ({
 
         {/* Contextual Title / Input */}
         {editorMode === 'level' ? (
-          <input
-            type="text"
-            value={levelName}
-            onChange={(e) => onLevelNameChange(e.target.value)}
-            className="bg-slate-900/90 border border-slate-700/80 rounded-lg px-2.5 py-1 text-xs font-semibold text-slate-200 focus:outline-none focus:border-sky-500 w-36 sm:w-44 hover:border-slate-600 transition hidden sm:block"
-            placeholder="Level Name..."
-          />
+          <div className="flex items-center gap-1.5">
+            <input
+              type="text"
+              value={levelName}
+              onChange={(e) => onLevelNameChange(e.target.value)}
+              className="bg-slate-900/90 border border-slate-700/80 rounded-lg px-2.5 py-1 text-xs font-semibold text-slate-200 focus:outline-none focus:border-sky-500 w-32 sm:w-40 hover:border-slate-600 transition hidden sm:block"
+              placeholder="Level Name..."
+            />
+            {onClearAll && (
+              <button
+                onClick={onClearAll}
+                className="px-2 py-1 rounded-lg bg-slate-900 hover:bg-rose-950/80 text-slate-400 hover:text-rose-300 border border-slate-800 hover:border-rose-700/70 text-xs font-medium flex items-center gap-1 transition active:scale-95 shadow-sm"
+                title="Clear all boxes and preplaced conveyor cards"
+              >
+                <Trash2 size={12} className="text-rose-400" />
+                <span className="hidden md:inline">Clear All</span>
+              </button>
+            )}
+          </div>
         ) : (
           <div className="hidden sm:flex items-center gap-1.5 text-xs text-amber-400/90 bg-amber-950/40 border border-amber-800/50 px-2.5 py-1 rounded-lg">
             <Workflow size={12} />

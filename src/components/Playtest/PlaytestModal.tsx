@@ -1160,7 +1160,7 @@ export const PlaytestModal: React.FC<PlaytestModalProps> = ({
 
                     const pos = unityToScreen(unityX, unityZ);
                     const rot = bn.YRotation ?? bn.ZRotation ?? 0;
-                    const svgAngle = (-rot + 360) % 360;
+                    const svgAngle = (rot % 360 + 360) % 360;
 
                     // Box dimensions matching editor (scale ~ 0.65 to fit seamlessly in unified view)
                     const boxScale = 0.65;

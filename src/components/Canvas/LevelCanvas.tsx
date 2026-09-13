@@ -18,7 +18,8 @@ import {
   Move, 
   ArrowUpRight,
   Sparkles,
-  Scaling
+  Scaling,
+  Trash2
 } from 'lucide-react';
 
 interface LevelCanvasProps {
@@ -34,6 +35,7 @@ interface LevelCanvasProps {
   onSelectNode: (id: string | null) => void;
   onUpdateBoardNode: (node: BoardNode) => void;
   onUpdateBoxNode: (box: BoxNode) => void;
+  onClearAll?: () => void;
 }
 
 export const LevelCanvas: React.FC<LevelCanvasProps> = ({
@@ -49,6 +51,7 @@ export const LevelCanvas: React.FC<LevelCanvasProps> = ({
   onSelectNode,
   onUpdateBoardNode,
   onUpdateBoxNode,
+  onClearAll,
 }) => {
   const containerRef = useRef<HTMLDivElement>(null);
   const [dimensions, setDimensions] = useState({ width: 800, height: 600 });
@@ -267,7 +270,7 @@ export const LevelCanvas: React.FC<LevelCanvasProps> = ({
       const deltaY = mouseCanvasY - center.y;
 
       let deg = (Math.atan2(deltaY, deltaX) * 180) / Math.PI;
-      let unityAngle = (-(deg + 90) + 360) % 360;
+      let unityAngle = (deg + 90 + 360) % 360;
 
       if (snapToGrid || e.shiftKey) {
         unityAngle = Math.round(unityAngle / 45) * 45;
@@ -376,6 +379,20 @@ export const LevelCanvas: React.FC<LevelCanvasProps> = ({
           showAllDependencies={showAllDependencies}
         />
       </svg>
+
+      {/* Top-Left Action: Clear All */}
+      {onClearAll && (
+        <div className="absolute top-4 left-4 z-20">
+          <button
+            onClick={onClearAll}
+            className="flex items-center gap-1.5 px-3 py-1.5 bg-slate-900/90 hover:bg-rose-950/90 text-slate-300 hover:text-rose-200 backdrop-blur-md rounded-xl border border-slate-700/70 hover:border-rose-600/80 text-xs font-semibold shadow-xl transition active:scale-95 group"
+            title="Clear all boxes, spawners, and preplaced conveyor items"
+          >
+            <Trash2 size={13} className="text-rose-400 group-hover:scale-110 transition-transform" />
+            <span>Clear All</span>
+          </button>
+        </div>
+      )}
 
       {/* Live Missing & Spare Card Balance Tracker (Top-Right) */}
       <CardBalanceTracker levelData={levelData} />
