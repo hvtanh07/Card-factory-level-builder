@@ -1267,6 +1267,63 @@ export const PlaytestModal: React.FC<PlaytestModalProps> = ({
                           fill="rgba(0,0,0,0.45)"
                         />
 
+                        {/* Spawner Gate Portal & Translucent Chute Fixture */}
+                        {isSpawner && (
+                          <g id={`spawner-fixture-${bn.Id}`} className="pointer-events-none select-none">
+                            {/* 1. Translucent Glass Chute Bed extending under the box */}
+                            <rect
+                              x={-halfW - 24}
+                              y={-halfH - 8}
+                              width={w + 32}
+                              height={h + 16}
+                              rx={10}
+                              fill="rgba(16, 185, 129, 0.18)"
+                              stroke="rgba(52, 211, 153, 0.6)"
+                              strokeWidth={1.5}
+                            />
+                            {/* Glass reflection highlight */}
+                            <path
+                              d={`M ${-halfW - 20} ${-halfH - 4} L ${halfW + 4} ${-halfH - 4}`}
+                              stroke="rgba(255, 255, 255, 0.4)"
+                              strokeWidth={1.5}
+                              strokeLinecap="round"
+                            />
+
+                            {/* 2. Directional Spawn Indicator Arrow */}
+                            <path
+                              d={`M ${-halfW - 14} 0 L ${-halfW - 4} 0 M ${-halfW - 8} -4 L ${-halfW - 4} 0 L ${-halfW - 8} 4`}
+                              stroke="#10b981"
+                              strokeWidth={2}
+                              strokeLinecap="round"
+                              strokeLinejoin="round"
+                            />
+
+                            {/* 3. Wall Portal / Factory Gate Flange at local -X */}
+                            <rect
+                              x={-halfW - 32}
+                              y={-halfH - 12}
+                              width={16}
+                              height={h + 24}
+                              rx={5}
+                              fill="#1e293b"
+                              stroke="#3b82f6"
+                              strokeWidth={2}
+                            />
+                            <rect
+                              x={-halfW - 26}
+                              y={-halfH - 6}
+                              width={10}
+                              height={h + 12}
+                              rx={3}
+                              fill="#020617"
+                              stroke="#0ea5e9"
+                              strokeWidth={1}
+                            />
+                            <circle cx={-halfW - 28} cy={-halfH - 7} r={1.5} fill="#94a3b8" />
+                            <circle cx={-halfW - 28} cy={halfH + 7} r={1.5} fill="#94a3b8" />
+                          </g>
+                        )}
+
                         {/* Outer Box Body */}
                         {isTray ? (
                           <g>
@@ -1420,9 +1477,9 @@ export const PlaytestModal: React.FC<PlaytestModalProps> = ({
 
                         {/* Spawner Multiplier Badge */}
                         {isSpawner && spawnerBoxes.length > 1 && (
-                          <g transform={`translate(${-halfW + 14}, ${-halfH + 12})`}>
-                            <rect x="-12" y="-9" width="24" height="18" rx="5" fill="#a855f7" stroke="#ffffff" strokeWidth="1.2" />
-                            <text x="0" y="4" textAnchor="middle" fill="#ffffff" fontSize="10" fontWeight="bold">
+                          <g transform={`translate(${-halfW - 22}, ${-halfH - 16})`}>
+                            <rect x="-22" y="-8" width="44" height="16" rx="5" fill="#f59e0b" stroke="#ffffff" strokeWidth="1.2" />
+                            <text x="0" y="3.5" textAnchor="middle" fill="#0f172a" fontSize="9" fontWeight="900">
                               x{spawnerBoxes.length}
                             </text>
                           </g>

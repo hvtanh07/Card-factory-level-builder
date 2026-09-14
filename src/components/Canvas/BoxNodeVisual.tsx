@@ -100,20 +100,64 @@ export const BoxNodeVisual: React.FC<BoxNodeVisualProps> = ({
         pointerEvents="none"
       />
 
-      {/* Spawner Outer Glow Base Plate */}
+      {/* Spawner Gate Portal & Translucent Chute Fixture */}
       {isSpawner && (
-        <rect
-          x={-halfW - 6 * scaleMultiplier}
-          y={-halfH - 6 * scaleMultiplier}
-          width={w + 12 * scaleMultiplier}
-          height={h + 12 * scaleMultiplier}
-          rx={16 * scaleMultiplier}
-          fill="none"
-          stroke="#f59e0b"
-          strokeWidth={2}
-          strokeDasharray="6,3"
-          className="animate-pulse"
-        />
+        <g id="spawner-fixture" className="pointer-events-none select-none">
+          {/* 1. Translucent Glass Chute Bed extending under the box */}
+          <rect
+            x={-halfW - 24 * scaleMultiplier}
+            y={-halfH - 8 * scaleMultiplier}
+            width={w + 32 * scaleMultiplier}
+            height={h + 16 * scaleMultiplier}
+            rx={10 * scaleMultiplier}
+            fill="rgba(16, 185, 129, 0.18)"
+            stroke="rgba(52, 211, 153, 0.6)"
+            strokeWidth={1.5}
+          />
+          {/* Glass reflection highlight */}
+          <path
+            d={`M ${-halfW - 20 * scaleMultiplier} ${-halfH - 4 * scaleMultiplier} L ${halfW + 4 * scaleMultiplier} ${-halfH - 4 * scaleMultiplier}`}
+            stroke="rgba(255, 255, 255, 0.4)"
+            strokeWidth={1.5}
+            strokeLinecap="round"
+          />
+
+          {/* 2. Directional Spawn Indicator Arrow */}
+          <path
+            d={`M ${-halfW - 14 * scaleMultiplier} 0 L ${-halfW - 4 * scaleMultiplier} 0 M ${-halfW - 8 * scaleMultiplier} -4 L ${-halfW - 4 * scaleMultiplier} 0 L ${-halfW - 8 * scaleMultiplier} 4`}
+            stroke="#10b981"
+            strokeWidth={2}
+            strokeLinecap="round"
+            strokeLinejoin="round"
+          />
+
+          {/* 3. Wall Portal / Factory Gate Flange at local -X */}
+          {/* Outer Metallic Gate Housing */}
+          <rect
+            x={-halfW - 32 * scaleMultiplier}
+            y={-halfH - 12 * scaleMultiplier}
+            width={16 * scaleMultiplier}
+            height={h + 24 * scaleMultiplier}
+            rx={5 * scaleMultiplier}
+            fill="#1e293b"
+            stroke="#3b82f6"
+            strokeWidth={2}
+          />
+          {/* Dark Tunnel Opening */}
+          <rect
+            x={-halfW - 26 * scaleMultiplier}
+            y={-halfH - 6 * scaleMultiplier}
+            width={10 * scaleMultiplier}
+            height={h + 12 * scaleMultiplier}
+            rx={3 * scaleMultiplier}
+            fill="#020617"
+            stroke="#0ea5e9"
+            strokeWidth={1}
+          />
+          {/* Portal Rivets */}
+          <circle cx={-halfW - 28 * scaleMultiplier} cy={-halfH - 7 * scaleMultiplier} r={1.5 * scaleMultiplier} fill="#94a3b8" />
+          <circle cx={-halfW - 28 * scaleMultiplier} cy={halfH + 7 * scaleMultiplier} r={1.5 * scaleMultiplier} fill="#94a3b8" />
+        </g>
       )}
 
       {/* Outer Box Body */}
@@ -269,8 +313,8 @@ export const BoxNodeVisual: React.FC<BoxNodeVisualProps> = ({
 
       {/* Spawner Queue Badge */}
       {isSpawner && (
-        <g transform={`translate(${-halfW + 8 * scaleMultiplier}, ${-halfH - 8 * scaleMultiplier})`}>
-          <rect x="-14" y="-7" width="28" height="14" rx="4" fill="#f59e0b" stroke="#ffffff" strokeWidth="1.2" />
+        <g transform={`translate(${-halfW - 22 * scaleMultiplier}, ${-halfH - 16 * scaleMultiplier})`}>
+          <rect x="-22" y="-8" width="44" height="16" rx="5" fill="#f59e0b" stroke="#ffffff" strokeWidth="1.2" />
           <text x="0" y="3.5" textAnchor="middle" fill="#0f172a" fontSize="9" fontWeight="900">
             x{spawnerNode.SpawnBoxes.length}
           </text>

@@ -1,5 +1,5 @@
 import React, { useState, useEffect, useMemo, useCallback } from 'react';
-import { LevelData, BoardNode, BoxNode, SpawnerNode, ValidationIssue } from './types/level';
+import { LevelData, BoardNode, BoxNode, SpawnerNode, SpawnBox, ValidationIssue } from './types/level';
 import { ConveyorData } from './types/conveyor';
 import { LEVEL_1_SAMPLE, PRESET_LEVELS } from './constants/sampleLevels';
 import { DEFAULT_CONVEYOR_DATA } from './constants/defaultConveyor';
@@ -340,6 +340,104 @@ export function App() {
     showToast(`Added new Box "${newId}" to Layer ${layerId}`);
   };
 
+  // Move node from one layer to another
+  const handleMoveNodeToLayer = (nodeId: string, targetLayer: number) => {
+    setLevelData(prev => {
+      const updatedBoardNodes = prev.BoardNodes.map(n => {
+        if (n.Id === nodeId) {
+          return {
+            ...n,
+            LayerId: targetLayer,
+            TileMapId: targetLayer,
+          };
+        }
+        return n;
+      });
+
+      return {
+        ...prev,
+        BoardNodes: updatedBoardNodes,
+      };
+    });
+
+    setVisibleLayers(prev => new Set([...prev, targetLayer]));
+    showToast(`Moved "${nodeId}" to Layer ${targetLayer}`);
+  };
+
+  // Reorder node within its layer (up/down)
+  const handleReorderNodeInLayer = (nodeId: string, direction: 'up' | 'down') => {
+    setLevelData(prev => {
+      const node = prev.BoardNodes.find(n => n.Id === nodeId);
+      if (!node) return prev;
+      const layerId = node.LayerId ?? node.TileMapId ?? 0;
+
+      const layerNodes = prev.BoardNodes.filter(n => (n.LayerId ?? n.TileMapId ?? 0) === layerId);
+      const idx = layerNodes.findIndex(n => n.Id === nodeId);
+      if (idx === -1) return prev;
+
+      const targetIdx = direction === 'up' ? idx - 1 : idx + 1;
+      if (targetIdx < 0 || targetIdx >= layerNodes.length) return prev;
+
+      const otherNode = layerNodes[targetIdx];
+
+      const newBoardNodes = [...prev.BoardNodes];
+      const mainIdxA = newBoardNodes.findIndex(n => n.Id === nodeId);
+      const mainIdxB = newBoardNodes.findIndex(n => n.Id === otherNode.Id);
+
+      if (mainIdxA !== -1 && mainIdxB !== -1) {
+        newBoardNodes[mainIdxA] = otherNode;
+        newBoardNodes[mainIdxB] = node;
+      }
+
+      return {
+        ...prev,
+        BoardNodes: newBoardNodes,
+      };
+    });
+  };
+
+  // Drag and drop reordering / moving across layers
+  const handleDragDropReorder = (sourceNodeId: string, targetNodeId: string | null, targetLayerId?: number) => {
+    if (sourceNodeId === targetNodeId) return;
+
+    setLevelData(prev => {
+      const sourceNode = prev.BoardNodes.find(n => n.Id === sourceNodeId);
+      if (!sourceNode) return prev;
+
+      const currentLayer = sourceNode.LayerId ?? sourceNode.TileMapId ?? 0;
+      const finalLayer = targetLayerId !== undefined ? targetLayerId : currentLayer;
+
+      const updatedSourceNode: BoardNode = {
+        ...sourceNode,
+        LayerId: finalLayer,
+        TileMapId: finalLayer,
+      };
+
+      const remainingNodes = prev.BoardNodes.filter(n => n.Id !== sourceNodeId);
+
+      if (targetNodeId) {
+        const targetIdx = remainingNodes.findIndex(n => n.Id === targetNodeId);
+        if (targetIdx !== -1) {
+          remainingNodes.splice(targetIdx, 0, updatedSourceNode);
+        } else {
+          remainingNodes.push(updatedSourceNode);
+        }
+      } else {
+        remainingNodes.push(updatedSourceNode);
+      }
+
+      return {
+        ...prev,
+        BoardNodes: remainingNodes,
+      };
+    });
+
+    if (targetLayerId !== undefined) {
+      setVisibleLayers(prev => new Set([...prev, targetLayerId]));
+      showToast(`Moved "${sourceNodeId}" to Layer ${targetLayerId}`);
+    }
+  };
+
   // Add preset box
   const handleAddPreset = (typeId: number, colorId: number, cards: number[], rotation: number) => {
     const targetLayer = isolatedLayer !== null ? isolatedLayer : 1;
@@ -383,6 +481,65 @@ export function App() {
 
     setSelectedNodeId(newId);
     showToast(`Created new preset Box "${newId}"`);
+  };
+
+  // Add spawner preset
+  const handleAddSpawnerPreset = (preset?: { boxes?: SpawnBox[]; rotation?: number; name?: string }) => {
+    let index = 0;
+    let newId = `sp_${index}`;
+    while (levelData.BoardNodes.some(n => n.Id === newId)) {
+      index++;
+      newId = `sp_${index}`;
+    }
+
+    const existingSpawnersCount = (levelData.SpawnerNodes || []).length;
+    const newBoardNode: BoardNode = {
+      Id: newId,
+      LayerId: 1,
+      YRotation: preset?.rotation ?? 180,
+      ZRotation: preset?.rotation ?? 180,
+      XPosition: 3.75,
+      ZPosition: -0.25 + existingSpawnersCount * 1.5,
+      MapPosX: 3.75,
+      MapPosY: -0.25 + existingSpawnersCount * 1.5,
+      YPosition: 0,
+    };
+
+    const newSpawnerNode: SpawnerNode = {
+      Id: newId,
+      BlockedNodes: [],
+      SpawnBoxes: preset?.boxes
+        ? JSON.parse(JSON.stringify(preset.boxes))
+        : [
+            {
+              Id: '',
+              TypeId: 1,
+              BoxColor: 0,
+              BlockedNodes: [],
+              InitCards: [0, 0, 0, 1, 1, 1],
+              IsHidden: false,
+              LockedTurn: 0,
+            },
+            {
+              Id: '',
+              TypeId: 1,
+              BoxColor: 1,
+              BlockedNodes: [],
+              InitCards: [1, 1, 1, 0, 0, 0],
+              IsHidden: false,
+              LockedTurn: 0,
+            },
+          ],
+    };
+
+    setLevelData(prev => ({
+      ...prev,
+      BoardNodes: [...prev.BoardNodes, newBoardNode],
+      SpawnerNodes: [...(prev.SpawnerNodes || []), newSpawnerNode],
+    }));
+
+    setSelectedNodeId(newId);
+    showToast(`Created new Spawner "${newId}" (${preset?.name || 'Preset'})!`);
   };
 
   // Duplicate node
@@ -624,10 +781,16 @@ export function App() {
                 onSelectNode={setSelectedNodeId}
                 onDeleteNode={handleDeleteNode}
                 onAddNewNodeToLayer={handleAddNewNodeToLayer}
+                onReorderNodeInLayer={handleReorderNodeInLayer}
+                onMoveNodeToLayer={handleMoveNodeToLayer}
+                onDragDropReorder={handleDragDropReorder}
               />
             )}
             {activeSidebarTab === 'palette' && (
-              <PalettePanel onAddPreset={handleAddPreset} />
+              <PalettePanel 
+                onAddPreset={handleAddPreset} 
+                onAddSpawnerPreset={handleAddSpawnerPreset}
+              />
             )}
           </div>
         </aside>
@@ -648,6 +811,8 @@ export function App() {
               onSelectNode={setSelectedNodeId}
               onUpdateBoardNode={handleUpdateBoardNode}
               onUpdateBoxNode={handleUpdateBoxNode}
+              onUpdateSpawnerNode={handleUpdateSpawnerNode}
+              onDeleteSpawnerNode={handleDeleteNode}
               onClearAll={handleClearAll}
             />
           ) : (

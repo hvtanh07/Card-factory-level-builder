@@ -1,11 +1,12 @@
 import React, { useRef, useState, useEffect, useMemo, useCallback } from 'react';
-import { LevelData, BoardNode, BoxNode, ViewportTransform } from '../../types/level';
+import { LevelData, BoardNode, BoxNode, SpawnerNode, ViewportTransform } from '../../types/level';
 import { nodeToScreenPos, DEFAULT_GRID_UNIT, Point } from '../../utils/geometry';
 import { getBlockedByMap } from '../../utils/autoBlocker';
 import { BoxNodeVisual } from './BoxNodeVisual';
 import { DependencyOverlay } from './DependencyOverlay';
 import { GridBackground } from './GridBackground';
 import { CardBalanceTracker } from './CardBalanceTracker';
+import { SpawnerManagerPopup } from './SpawnerManagerPopup';
 import { 
   ZoomIn, 
   ZoomOut, 
@@ -35,6 +36,8 @@ interface LevelCanvasProps {
   onSelectNode: (id: string | null) => void;
   onUpdateBoardNode: (node: BoardNode) => void;
   onUpdateBoxNode: (box: BoxNode) => void;
+  onUpdateSpawnerNode?: (spawner: SpawnerNode) => void;
+  onDeleteSpawnerNode?: (id: string) => void;
   onClearAll?: () => void;
 }
 
@@ -51,6 +54,8 @@ export const LevelCanvas: React.FC<LevelCanvasProps> = ({
   onSelectNode,
   onUpdateBoardNode,
   onUpdateBoxNode,
+  onUpdateSpawnerNode,
+  onDeleteSpawnerNode,
   onClearAll,
 }) => {
   const containerRef = useRef<HTMLDivElement>(null);
@@ -380,18 +385,16 @@ export const LevelCanvas: React.FC<LevelCanvasProps> = ({
         />
       </svg>
 
-      {/* Top-Left Action: Clear All */}
-      {onClearAll && (
-        <div className="absolute top-4 left-4 z-20">
-          <button
-            onClick={onClearAll}
-            className="flex items-center gap-1.5 px-3 py-1.5 bg-slate-900/90 hover:bg-rose-950/90 text-slate-300 hover:text-rose-200 backdrop-blur-md rounded-xl border border-slate-700/70 hover:border-rose-600/80 text-xs font-semibold shadow-xl transition active:scale-95 group"
-            title="Clear all boxes, spawners, and preplaced conveyor items"
-          >
-            <Trash2 size={13} className="text-rose-400 group-hover:scale-110 transition-transform" />
-            <span>Clear All</span>
-          </button>
-        </div>
+      {/* Top-Left: Spawner Manager Popup */}
+      {onUpdateSpawnerNode && (
+        <SpawnerManagerPopup
+          levelData={levelData}
+          selectedNodeId={selectedNodeId}
+          onSelectNode={onSelectNode}
+          onUpdateSpawnerNode={onUpdateSpawnerNode}
+          onUpdateBoardNode={onUpdateBoardNode}
+          onDeleteSpawnerNode={onDeleteSpawnerNode}
+        />
       )}
 
       {/* Live Missing & Spare Card Balance Tracker (Top-Right) */}
@@ -424,6 +427,19 @@ export const LevelCanvas: React.FC<LevelCanvasProps> = ({
         <span className="text-xs font-mono text-slate-400 px-1">
           {Math.round(viewport.zoom * 100)}%
         </span>
+        {onClearAll && (
+          <>
+            <div className="h-5 w-px bg-slate-700 mx-1"></div>
+            <button
+              onClick={onClearAll}
+              className="p-1.5 hover:bg-rose-950/70 rounded-lg text-slate-400 hover:text-rose-300 transition flex items-center gap-1"
+              title="Clear all boxes, spawners, and preplaced conveyor items"
+            >
+              <Trash2 size={15} />
+              <span className="text-[11px] font-semibold pr-1">Clear</span>
+            </button>
+          </>
+        )}
       </div>
 
       {/* Mode & Hotkey hints badge (Bottom-Right) */}

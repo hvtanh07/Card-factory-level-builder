@@ -17,6 +17,7 @@ export const CardStackEditor: React.FC<CardStackEditorProps> = ({
   onChange,
 }) => {
   const handleAddCard = (colorId: number) => {
+    if (cards.length >= boxType.capacity) return;
     onChange([...cards, colorId]);
   };
 
@@ -159,13 +160,14 @@ export const CardStackEditor: React.FC<CardStackEditorProps> = ({
             <button
               key={`add-${c.id}`}
               onClick={() => handleAddCard(c.id)}
-              className="py-1 px-1 rounded-lg border flex flex-col items-center gap-0.5 hover:brightness-125 transition active:scale-95 shadow"
+              disabled={cards.length >= boxType.capacity}
+              className="py-1 px-1 rounded-lg border flex flex-col items-center gap-0.5 hover:brightness-125 transition active:scale-95 shadow disabled:opacity-40 disabled:cursor-not-allowed disabled:hover:brightness-100"
               style={{
                 backgroundColor: c.hex,
                 borderColor: c.borderHex,
                 color: c.textColor,
               }}
-              title={`Add ${c.name} (${c.id})`}
+              title={cards.length >= boxType.capacity ? `Box full (Max: ${boxType.capacity})` : `Add ${c.name} (${c.id})`}
             >
               <span className="text-[9px] font-bold truncate max-w-full">{c.id}: {c.name}</span>
             </button>
