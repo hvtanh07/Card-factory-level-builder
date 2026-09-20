@@ -112,6 +112,7 @@ export const SAMPLE_LEVELS: SampleLevelPreset[] = [
       "IsOddSize": false,
       "Version": 2,
       "IsHardLvl": false,
+      "CameraSize": 8,
       "InitialCards": [
         0,
         0,

@@ -77,6 +77,7 @@ export interface LevelData {
   IsOddSize: boolean;
   Version: number;
   IsHardLvl?: boolean;
+  CameraSize?: number;
   InitialCards?: number[];
 }
 

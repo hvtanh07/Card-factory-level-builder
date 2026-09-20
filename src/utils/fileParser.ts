@@ -105,6 +105,7 @@ export function parseLevelData(rawInput: string | ArrayBuffer | Uint8Array): Lev
     IsOddSize: Boolean(parsed.IsOddSize ?? false),
     Version: Number(parsed.Version ?? 2),
     IsHardLvl: Boolean(parsed.IsHardLvl ?? false),
+    CameraSize: Number(parsed.CameraSize ?? 8),
     InitialCards: Array.isArray(parsed.InitialCards) ? parsed.InitialCards.map(Number) : [],
   };
 
@@ -140,6 +141,7 @@ export function levelDataToJson(data: LevelData, pretty = true): string {
     IsOddSize: Boolean(data.IsOddSize),
     Version: data.Version ?? 2,
     IsHardLvl: Boolean(data.IsHardLvl ?? false),
+    CameraSize: Number(data.CameraSize ?? 8),
     InitialCards: Array.isArray(data.InitialCards) ? data.InitialCards : [],
   };
 
